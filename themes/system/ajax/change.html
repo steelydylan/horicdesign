@@ -1,0 +1,38 @@
+<!-- BEGIN_MODULE Admin_Crmmail_Changemail -->
+<link rel="stylesheet" href="/css/customer.css" type="text/css" media="all" />
+<h1>コンタクト管理</h1>
+<!-- BEGIN step -->
+<div class="contents">
+	<form action="?step=reapply" method="post">
+        <table class="adminTable adminTableY">
+			<tr>
+				<th>コンタクト：</th>
+				<td>
+                    <select name="change" class="js-select2"><!-- BEGIN status:loop -->
+                        <option value="{value}">{label}</option><!-- END status:loop -->
+                    </select>
+                    <input type="hidden" name="field[]" value="change" />
+				</td>
+			</tr>
+		</table>
+        
+		<table class="adminTable">
+			<tr>
+				<td class="systemBtn">
+					<input type="hidden" name="step" value="result" />
+					<input type="hidden" name="thid" value="{thid}" />
+					<input type="hidden" name="maid" value="{maid}" />
+                    <input type="hidden" name="field[]" value="thid" />
+                    <input type="hidden" name="field[]" value="maid" />
+					<input type="submit" name="ACMS_POST_Crmmail_Changemail" value="変更" class="btnSubmit" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<!-- END step -->
+<!-- BEGIN step#reapply  -->
+<p>コンタクトを変更しました</p>
+<!-- END step#reapply  -->
+
+<!-- END_MODULE Admin_Crmmail_Changemail -->

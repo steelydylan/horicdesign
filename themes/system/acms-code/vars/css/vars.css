@@ -1,0 +1,75 @@
+@charset "UTF-8";
+html, body {
+    font-family: "Consolas","Courier New",Courier,monospace;
+    height: 100%;
+}
+h1 {
+    padding: 1em;
+}
+fieldset {
+	margin: 1em;
+	padding: 1em;
+	border: 2px solid gold;
+	background-color: lightyellow;
+}
+fieldset.loop {
+	border: 3px solid firebrick;
+	background-color: snow;
+}
+fieldset.veil {
+	border: 2px dashed royalblue;
+	background-color: whitesmoke;
+}
+legend {
+	padding: 0.3em;
+	font-weight: bold;
+	font-size: x-large;
+	border: 2px solid gold;
+	background-color: lightyellow;
+}
+legend.loop {
+	border: 3px solid firebrick;
+	background-color: snow;
+}
+legend.veil {
+	border: 2px dashed royalblue;
+	background-color: whitesmoke;
+}
+legend vars {
+	display: inline;
+}
+
+var {
+	display: block;
+	margin: 0.5em;
+	padding: 0.5em;
+	font-style: normal;
+	font-weight: bold;
+	font-size: large;
+	border: 3px double black;
+	background-color: white;
+}
+var.deprecated {
+	color: gray;
+}
+var.deprecated:after {
+	content: "　※廃止予定";
+}
+var span {
+	float: right;
+	font-size: 14px;
+	color: #777;
+}
+legend span {
+	margin-left: 20px;
+	font-size: 14px;
+	color: #777;
+}
+
+.textLong {
+	width: 420px;
+}
+
+.textTooLong {
+	width: 520px;
+}

@@ -1,0 +1,52 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->スケジュール管理<!--/T--></h1>
+	</div>
+</header>
+
+<div class="acms-admin-form-group">
+	<div class="acms-admin-float-right acms-admin-float-none-sp acms-admin-position-right acms-admin-fix-right">
+		<form action="" method="post" class="js-acms_fix_marker">
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="hidden" name="admin" value="schedule_edit" />
+			<input type="hidden" name="edit" value="insert" />
+			<input type="hidden" name="query[]" value="edit" />
+			<input type="submit" name="ACMS_POST_2GET" value="<!--T-->スケジュールセットを作成<!--/T-->" class="acms-admin-btn-admin" />
+		</form>
+	</div>
+</div>
+
+<!-- BEGIN_MODULE Admin_Schedule_Index -->
+
+<!-- BEGIN notFound -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon"><span class="acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><!--T-->スケジュールセットがありません。<!--/T--><button class="js-acms-alert-close acms-admin-alert-icon-after"><span aria-hidden="true">×</span><span class="acms-admin-hide-visually">閉じる</span></button></p><!-- END notFound -->
+
+<!-- BEGIN index:touch#result -->
+<div class="acms-admin-table-responsive">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th><!--T-->セット名<!--/T--></th>
+				<th><!--T-->説明<!--/T--></th>
+				<th><!--T-->登録データ<!--/T--></th>
+				<th><!--T-->ラベル<!--/T--></th>
+				<th><!--T-->詳細<!--/T--></th>
+			</tr>
+		</thead>
+		<tbody><!-- BEGIN schedule:loop -->
+			<tr>
+				<td class="acms-admin-width-sp"><span class="acms-admin-label label-default">{id}</span></td>
+				<td class="acms-admin-title-sp"><strong>{name}</strong></td>
+				<td class="acms-admin-width-sp">{desc}[trim(50,...)]</td>
+				<td><a href="{dataUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->表示<!--/T--></a></td>
+				<td><a href="{labelUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->設定<!--/T--></a></td>
+				<td><a href="{itemUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a></td>
+			</tr>
+		</tbody><!-- END schedule:loop -->
+	</table>
+</div><!-- END index:touch#result -->
+<!-- END_MODULE Admin_Schedule_Index -->

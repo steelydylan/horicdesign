@@ -1,0 +1,107 @@
+<!-- BEGIN_MODULE Admin_Menu -->
+<!-- BEGIN entryMenu:veil -->
+<h2><!--T-->エントリーメニュー<!--/T--></h2>
+<div class="subContents">
+	<!-- BEGIN entry:veil -->
+	<h3 class="infoHeading"><!--T-->エントリーを書く<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN entry#index -->
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li><!-- END entry#index --><!-- BEGIN entry#insert -->
+		<li>
+			<form action="" method="post"><!-- BEGIN_MODULE Admin_Category_SelectGlobal -->
+				<select name="cid" class="js-select2">
+					<option value=""><!--T-->なし<!--/T--></option><!-- BEGIN loop -->
+					<option value="{value}"{selected}>{indent}[raw]{label} ( {amount} )</option><!-- END loop -->
+				</select><!-- END_MODULE Admin_Category_SelectGlobal -->
+				<input type="hidden" name="admin" value="entry-edit" />
+				<input type="submit" name="ACMS_POST_2GET" value="作成" class="btn" />
+			</form>
+		</li><!-- END entry#insert -->
+	</ul><!-- END entry:veil -->
+
+	<!-- BEGIN category:veil -->
+	<h3 class="infoHeading"><!--T-->カテゴリー<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN category#index -->
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li><!-- END category#index --><!-- BEGIN category#insert -->
+		<li><a href="{url}"><!--T-->作成<!--/T--></a></li><!-- END category#insert -->
+	</ul><!-- END category:veil -->
+
+	<!-- BEGIN tag -->
+	<h3 class="infoHeading"><!--T-->タグ<!--/T--></h3>
+	<ul class="entryInfoList">
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li>
+	</ul><!-- END tag -->
+
+</div><!-- END entryMenu:veil -->
+
+<!-- BEGIN management:veil -->
+<h2><!--T-->サイト管理<!--/T--></h2>
+<div class="subContents">
+
+	<!-- BEGIN blog:veil -->
+	<h3 class="infoHeading"><!--T-->ブログ<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN blog#index -->
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li><!-- END blog#index --><!-- BEGIN blog#insert -->
+		<li><a href="{url}"><!--T-->作成<!--/T--></a></li><!-- END blog#insert --><!-- BEGIN blog#update -->
+		<li><a href="{url}"><!--T-->編集<!--/T--></a></li><!-- END blog#update -->
+	</ul><!-- END blog:veil -->
+
+	<!-- BEGIN user:veil -->
+	<h3 class="infoHeading"><!--T-->ユーザー<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN user#index -->
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li><!-- END user#index --><!-- BEGIN user#insert -->
+		<li><a href="{url}"><!--T-->作成<!--/T--></a></li><!-- END user#insert -->
+	</ul><!-- END user:veil -->
+
+	<!--<h3 class="infoHeading"/>メール</h3>
+	<ul class="entryInfoList">
+		<li><a href="{url}">/送信履歴</a></li>
+	</ul>-->
+
+	<!-- BEGIN config:veil -->
+	<h3 class="infoHeading"><!--T-->設定<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN config#general -->
+		<li><a href="{url}"><!--T-->一般<!--/T--></a></li><!-- END config#general --><!-- BEGIN config#theme -->
+		<li><a href="{url}"><!--T-->テーマ設定<!--/T--></a></li><!-- END config#theme --><!-- BEGIN config#column -->
+		<li><a href="{url}"><!--T-->カラム設定<!--/T--></a></li><!-- END config#column -->
+		<li><!--T-->モジュール<!--/T--><ul><!-- BEGIN config#entry/body -->
+			<li><a href="{url}"><!--T-->エントリー本文<!--/T--></a></li><!-- END config#entry/body --><!-- BEGIN config#entry/list -->
+			<li><a href="{url}"><!--T-->エントリーリスト<!--/T--></a></li><!-- END config#entry/list --><!-- BEGIN config#entry/photo -->
+			<li><a href="{url}"><!--T-->フォト<!--/T--></a></li><!-- END config#entry/photo --><!-- BEGIN config#entry/headline -->
+			<li><a href="{url}"><!--T-->ヘッドライン<!--/T--></a></li><!-- END config#entry/headline --><!-- BEGIN config#entry/summary -->
+			<li><a href="{url}"><!--T-->サマリー<!--/T--></a></li><!-- END config#entry/summary --><!-- BEGIN config#category/list -->
+			<li><a href="{url}"><!--T-->カテゴリーリスト<!--/T--></a></li><!-- END config#category/list --><!-- BEGIN config#tag/cloud -->
+			<li><a href="{url}"><!--T-->タグクラウド<!--/T--></a></li><!-- END config#tag/cloud --><!-- BEGIN config#calendar/month -->
+			<li><a href="{url}"><!--T-->カレンダー<!--/T--></a></li><!-- END config#calendar/month --><!-- BEGIN config#links -->
+			<li><a href="{url}"><!--T-->リンク集<!--/T--></a></li><!-- END config#links --><!-- BEGIN config#navigation -->
+			<li><a href="{url}"><!--T-->ナビゲーション<!--/T--><a/></li><!-- END config#navigation --><!-- BEGIN config#comment/body -->
+			<li><a href="{url}"><!--T-->コメント本文<!--/T--></a></li><!-- END config#comment/body -->
+		</ul></li><!-- BEGIN config#export -->
+		<li><a href="{url}"><!--T-->エクスポート<!--/T--></a></li><!-- END config#export --><!-- BEGIN config#import -->
+		<li><a href="{url}"><!--T-->インポート<!--/T--></a></li><!-- END config#import -->
+	</ul><!-- END config:veil -->
+
+	<!-- BEGIN rule:veil -->
+	<h3 class="infoHeading"><!--T-->ルール<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN rule#index -->
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li><!-- END rule#index --><!-- BEGIN rule#insert -->
+		<li><a href="{url}"><!--T-->作成<!--/T--></a></li><!-- END rule#insert -->
+	</ul><!-- END rule:veil -->
+
+	<!-- BEGIN module:veil -->
+	<h3 class="infoHeading"><!--T-->モジュールID<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN module#index -->
+		<li><a href="{url}"><!--T-->一覧<!--/T--></a></li><!-- END module#index --><!-- BEGIN module#insert -->
+		<li><a href="{url}"><!--T-->作成<!--/T--></a></li><!-- END module#insert -->
+	</ul><!-- END module:veil -->
+</div><!-- END management:veil -->
+
+<!-- BEGIN acount:veil -->
+<h2>><!--T-->アカウント<!--/T--></h2>
+<div class="subContents">
+	<!-- BEGIN profile:veil -->
+	<h3 class="infoHeading"><!--T-->プロフィール<!--/T--></h3>
+	<ul class="entryInfoList"><!-- BEGIN user#profile -->
+		<li><a href="{url}"><!--T-->ユーザー<!--/T--></a></li><!-- END user#profile -->
+	</ul><!-- END profile:veil -->
+</div><!-- END acount:veil -->
+<!-- END_MODULE Admin_Menu -->

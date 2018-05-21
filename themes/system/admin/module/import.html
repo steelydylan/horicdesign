@@ -1,0 +1,89 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->モジュールインポート<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config_Import -->
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form js-dialog-body">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/module_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Module_Import" value="<!--T-->インポート<!--/T-->"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" onclick="return confirm('<!--T-->インポートを実行します。よろしいですか？<!--/T-->');"/>
+			<input type="file" name="file"/>
+		</div>
+	</div>
+</form>
+
+<!-- BEGIN_MODULE Admin_Errors -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	{error}
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END_MODULE Admin_Errors -->
+
+<!-- BEGIN success -->
+<p class="acms-admin-alert acms-admin-alert-info acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<!--T-->インポートが完了しました。<!--/T-->
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END success -->
+
+<!-- BEGIN notice:veil -->
+<div class="acms-admin-panel acms-admin-panel-danger">
+	<div class="acms-admin-panel-header">
+		<!--T-->以下項目で問題がありました。<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<ul>
+			<!-- BEGIN notice:loop -->
+			<li>
+				<p>
+					<!-- BEGIN_IF [{type}/eq/overlap]-->
+						<!--T-->ID重複よりインポートできませんでした。<!--/T-->[<!--T-->モジュールID<!--/T-->: {identifier}]
+					<!-- ELSE_IF [{type}/eq/conversion] -->
+						<!--T-->IDの変換に失敗しました。<!--/T-->
+						<!-- BEGIN unlink:loop -->
+						<!-- BEGIN_IF [{type}/eq/bid] -->
+							[<!--T-->ブログコード<!--/T-->: {code}]
+						<!-- ELSE_IF [{type}/eq/uid] -->
+							[<!--T-->ユーザーコード<!--/T-->: {code}]
+						<!-- ELSE_IF [{type}/eq/cid] -->
+							[<!--T-->カテゴリーコード<!--/T-->: {code}]
+						<!-- ELSE_IF [{type}/eq/eid] -->
+							[<!--T-->エントリーコード<!--/T-->: {code}]
+						<!-- ELSE_IF [{type}/eq/aid] -->
+							[<!--T-->エイリアス<!--/T-->: {code}]
+						<!-- END_IF -->
+						<!-- END unlink:loop -->
+
+						<!-- BEGIN_IF [{table}/eq/module] -->
+						<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/module_edit/?mid={id}" target="_blank"><!--T-->モジュール<!--/T-->( id={id} )</a>
+						<!-- ELSE_IF [{table}/eq/rule] -->
+						<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/rule_edit/?rid={id}" target="_blank"><!--T-->ルール<!--/T-->( id={id} )</a>
+						<!-- END_IF -->
+					<!-- END_IF -->
+				</p>
+			</li>
+			<!-- END notice:loop -->
+		</ul>
+	</div>
+</div>
+<!-- END notice:veil -->
+
+<div class="acms-admin-panel acms-admin-panel-danger">
+	<div class="acms-admin-panel-header">
+		<!--T-->モジュールのインポート<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<!--T-->idをコードに変換してインポートします。ルール毎の設定はインポートされません。<!--/T-->
+	</div>
+</div>
+<!-- END_MODULE Admin_Config_Import -->

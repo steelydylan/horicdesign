@@ -1,0 +1,564 @@
+<section id="form" class="sectionBox">
+	<h1 class="sectionTitle">フォーム</h1>
+	<h2 class="sectionTitle2">フォームの機能</h2>
+	<p>formタグに .%{STYLEGUIDE_PAGE}-form をつけるとinputタグに装飾がつきます。</p>
+	<p>フォーカスすると周りのボーダーが青色に変わります。</p>
+
+	<h3 class="sectionTitle3">基本のHTML</h3>
+	<form class="%{STYLEGUIDE_PAGE}-form">
+	<input type="email"  placeholder="ex) info@hoge.com">
+</form>
+<pre class="code HTML">
+&lt;form class=&quot;%{STYLEGUIDE_PAGE}-form&quot;&gt;
+	&lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;ex) info@hoge.com&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+	<h2 class="sectionTitle2">ブロック</h2>
+	<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-form-group</h3>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-form-group&quot;&gt;
+	&lt;label for=&quot;email&quot;&gt;メールアドレス&lt;/label&gt;
+	&lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;ex) info@example.com&quot;&gt;
+&lt;/div&gt;
+</pre>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="email">メールアドレス</label>
+		<input type="email" id="email" placeholder="ex) info@example.com">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="password">パスワード</label>
+		<input type="password" class="form-control" id="password" placeholder="Password">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label>住んでいるところ</label>
+		<select class="js-select2">
+			<option value="">---</option>
+			<option value="愛知県">愛知県</option>
+			<option value="岐阜県">岐阜県</option>
+			<option value="三重県">三重県</option>
+		</select>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="file">画像</label>
+		<input type="file" id="file">
+		<p class="%{STYLEGUIDE_PAGE}-helptext">jpeg、gif、ping形式でアップロードしてください。</p>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="color1">
+			<input type="radio" name="color" value="青色" id="color1"> 青色
+		</label>
+
+		<label for="color2">
+			<input type="radio" name="color" value="青色" id="color2"> 赤色
+		</label>
+
+		<label for="color3">
+			<input type="radio" name="color" value="青色" id="color3"> 黄色
+		</label>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label>
+			<input type="checkbox"> パスワードを保存する
+		</label>
+	</div>
+
+	<button type="submit" class="%{STYLEGUIDE_PAGE}-btn">送信</button>
+</form>
+
+	<h2 class="sectionTitle2">ラベルもブロックにする</h2>
+	<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-form-block</h3>
+
+<p>ラベルをブロックするとinputが下にきます。</p>
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="blockEmail" class="%{STYLEGUIDE_PAGE}-form-block">メールアドレス</label>
+		<input type="email" id="blockEmail" placeholder="ex) info@example.com">
+		</div>
+</form>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-form-group&quot;&gt;
+	&lt;label for=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-block&quot;&gt;メールアドレス&lt;/label&gt;
+	&lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;ex) info@example.com&quot;&gt;
+&lt;/div&gt;
+</pre>
+
+<h2 class="sectionTitle2">インライン（横並び）</h2>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<label for="inlineEmail">メールアドレス</label>
+	<input type="email" id="inlineEmail" placeholder="ex) info@example.com">
+
+	<label for="inlinePassword">パスワード</label>
+	<input type="password" class="form-control" id="inlinePassword" placeholder="Password">
+
+	<button type="submit" class="%{STYLEGUIDE_PAGE}-btn">送信</button>
+</form>
+
+<h2 class="sectionTitle2">無効化</h2>
+<p>disabled属性をつける</p>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<label for="disabledEmail">メールアドレス</label>
+	<input type="email" id="disabledEmail" disabled>
+
+	<label for="password">選択</label>
+	<select disabled>
+		<option value="">---</option>
+		<option value="愛知県">愛知県</option>
+		<option value="岐阜県">岐阜県</option>
+		<option value="三重県">三重県</option>
+	</select>
+
+	<label>
+		<input type="checkbox" disabled> 保存する
+	</label>
+
+	<button type="submit" class="%{STYLEGUIDE_PAGE}-btn" disabled="disabled">送信</button>
+</form>
+
+<pre class="code HTML">
+&lt;input type=&quot;email&quot; id=&quot;email&quot; disabled&gt;
+
+&lt;select disabled&gt;
+	&lt;option value=&quot;&quot;&gt;---&lt;/option&gt;
+	&lt;option value=&quot;...&quot;&gt;...&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<h2 class="sectionTitle2">エラー</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-text-error</h3>
+<p>テキストの色が赤色になります。</p>
+<p class="%{STYLEGUIDE_PAGE}-text-error">お名前を入力してください。</p>
+<pre class="code HTML">
+&lt;p class=&quot;%{STYLEGUIDE_PAGE}-text-error&quot;&gt;お名前を入力してください。&lt;/p&gt;
+</pre>
+
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-form-error</h3>
+<p>inputが赤色に変わる</p>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<label for="errorEmail">メールアドレス</label>
+	<input type="email" id="errorEmail" placeholder="ex) info@example.com" class="%{STYLEGUIDE_PAGE}-form-error">
+</form>
+
+<pre class="code HTML">
+&lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;ex) info@example.com&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-error&quot;&gt;
+</pre>
+
+
+
+<h2 class="sectionTitle2">フォームサイズ</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-form-large</h3>
+<p>大きい</p>
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<label for="largeForm">メールアドレス</label>
+	<input type="email" id="largeForm" placeholder="ex) info@example.com" class="%{STYLEGUIDE_PAGE}-form-large">
+</form>
+
+
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-form-small</h3>
+<p>小さい</p>
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<label for="smallForm">メールアドレス</label>
+	<input type="email" id="smallForm" placeholder="ex) info@example.com" class="%{STYLEGUIDE_PAGE}-form-small">
+</form>
+
+<pre class="code HTML">
+&lt;input type=&quot;email&quot; id=&quot;largeForm&quot; placeholder=&quot;ex) info@example.com&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-large&quot;&gt;
+
+&lt;input type=&quot;email&quot; id=&quot;smallForm&quot; placeholder=&quot;ex) info@example.com&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-small&quot;&gt;
+</pre>
+
+<h2 class="sectionTitle2">フォーム長さ</h2>
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthLarge" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-large</label>
+		<input type="email" id="widthLarge" class="%{STYLEGUIDE_PAGE}-form-width-large">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthMedium" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-medium</label>
+		<input type="email" id="widthMedium" class="%{STYLEGUIDE_PAGE}-form-width-medium">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthSmall" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-small</label>
+		<input type="email" id="widthSmall" class="%{STYLEGUIDE_PAGE}-form-width-small">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthMini" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-mini</label>
+		<input type="email" id="widthMini" class="%{STYLEGUIDE_PAGE}-form-width-mini">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthFull" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-full(100%)</label>
+		<input type="email" id="widthFull" class="%{STYLEGUIDE_PAGE}-form-width-full">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="width3quarters" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-3quarters(75%)</label>
+		<input type="email" id="width3quarters" class="%{STYLEGUIDE_PAGE}-form-width-3quarters">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthHalf" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-half(50%)</label>
+		<input type="email" id="widthHalf" class="%{STYLEGUIDE_PAGE}-form-width-half">
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group">
+		<label for="widthQuarter" class="%{STYLEGUIDE_PAGE}-form-block">.%{STYLEGUIDE_PAGE}-form-width-quarter(25%)</label>
+		<input type="email" id="widthQuarter" class="%{STYLEGUIDE_PAGE}-form-width-quarter">
+	</div>
+</form>
+
+<pre class="code HTML">
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-large&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-medium&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-small&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-mini&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-full&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-3quarters&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-half&quot;&gt;
+
+&lt;input type=&quot;email&quot; class=&quot;%{STYLEGUIDE_PAGE}-form-width-quarter&quot;&gt;
+</pre>
+
+<h2 class="sectionTitle2">チェックボックスとラジオボタンのデザインを変える</h2>
+<p>Internet Explorerは11以上で対応しています。</p>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<h3>チェックボックス（左にアイコン）</h3>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-checkbox">
+		<div class="%{STYLEGUIDE_PAGE}-form-checkbox">
+			<input checked="checked" type="checkbox" id="input-checkbox-apple">
+			<label for="input-checkbox-apple">
+				<i class="%{STYLEGUIDE_PAGE}-ico-checkbox"></i>
+				りんご
+			</label>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-checkbox">
+			<input type="checkbox" id="input-checkbox-peach">
+			<label for="input-checkbox-peach">
+				<i class="%{STYLEGUIDE_PAGE}-ico-checkbox"></i>
+				もも
+			</label>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-checkbox">
+			<input type="checkbox" id="input-checkbox-grape">
+			<label for="input-checkbox-grape">
+				<i class="%{STYLEGUIDE_PAGE}-ico-checkbox"></i>
+				ぶどう
+			</label>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-checkbox">
+			<label id="input-checkbox-orange">
+				<input type="checkbox" disabled id="input-checkbox-orange">
+				<i class="%{STYLEGUIDE_PAGE}-ico-checkbox"></i>
+				みかん(disabledあり)
+			</label>
+		</div>
+	</div>
+</form>
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-form-checkbox&quot;&gt;
+	&lt;input checked=&quot;checked&quot; type=&quot;checkbox&quot; id=&quot;input-checkbox-apple&quot;&gt;
+	&lt;label for=&quot;input-checkbox-apple&quot;&gt;
+		&lt;i class=&quot;%{STYLEGUIDE_PAGE}-ico-checkbox&quot;&gt;&lt;/i&gt;りんご
+	&lt;/label&gt;
+&lt;/div&gt;
+</pre>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<h3 class="sectionTitle3">チェックボックス（ボタン）</h3>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-checkbox-btn">
+		<input type="checkbox" id="checkbox-1-1" class="%{STYLEGUIDE_PAGE}-btn-checkbox" /><label for="checkbox-1-1">りんご</label>
+		<input type="checkbox" id="checkbox-1-2" class="%{STYLEGUIDE_PAGE}-btn-checkbox" /><label for="checkbox-1-2">もも</label>
+		<input type="checkbox" id="checkbox-1-3" class="%{STYLEGUIDE_PAGE}-btn-checkbox" /><label for="checkbox-1-3">ぶどう</label>
+		<input type="checkbox" id="checkbox-1-4" class="%{STYLEGUIDE_PAGE}-btn-checkbox" /><label for="checkbox-1-4">みかん</label>
+	</div>
+</form>
+
+<pre class="code HTML">
+&lt;input type=&quot;checkbox&quot; id=&quot;checkbox-1-1&quot; class=&quot;%{STYLEGUIDE_PAGE}-btn-checkbox&quot; /&gt;&lt;label for=&quot;checkbox-1-1&quot;&gt;りんご&lt;/label&gt;
+</pre>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<h3 class="sectionTitle3">ラジオボタン（左にアイコン）</h3>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-radio">
+		<div class="%{STYLEGUIDE_PAGE}-form-radio">
+			<input name="custom-radio" checked="checked" type="radio" id="input-radio-udon">
+			<label for="input-radio-udon">
+				<i class="%{STYLEGUIDE_PAGE}-ico-radio"></i>
+				うどん
+			</label>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-radio">
+			<input name="custom-radio" type="radio" id="input-radio-soba">
+			<label for="input-radio-soba">
+				<i class="%{STYLEGUIDE_PAGE}-ico-radio"></i>
+				そば
+			</label>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-radio">
+			<input name="custom-radio" type="radio" id="input-radio-curry">
+			<label for="input-radio-curry">
+				<i class="%{STYLEGUIDE_PAGE}-ico-radio"></i>
+				カレー
+			</label>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-radio">
+			<input name="custom-radio" type="radio" disabled id="input-radio-gyudon">
+			<label for="input-radio-gyudon">
+				<i class="%{STYLEGUIDE_PAGE}-ico-radio"></i>
+				牛丼(disabledあり)
+			</label>
+		</div>
+	</div>
+</form>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-form-radio&quot;&gt;
+	&lt;input name=&quot;custom-radio&quot; checked=&quot;checked&quot; type=&quot;radio&quot; id="input-radio-udon"&gt;
+	&lt;label for="input-radio-udon"&gt;
+		&lt;i class=&quot;%{STYLEGUIDE_PAGE}-ico-radio&quot;&gt;&lt;/i&gt;うどん
+	&lt;/label&gt;
+&lt;/div&gt;
+</pre>
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<h3 class="sectionTitle3">ラジオボタン（ボタン）</h3>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-radio-btn">
+		<input type="radio" id="radio-1-1" name="radio-1-set" class="%{STYLEGUIDE_PAGE}-btn-radio" checked /><label for="radio-1-1">うどん</label>
+		<input type="radio" id="radio-1-2" name="radio-1-set" class="%{STYLEGUIDE_PAGE}-btn-radio" /><label for="radio-1-2">そば</label>
+		<input type="radio" id="radio-1-3" name="radio-1-set" class="%{STYLEGUIDE_PAGE}-btn-radio" /><label for="radio-1-3">カレー</label>
+	</div>
+</form>
+
+<pre class="code HTML">
+&lt;input type=&quot;radio&quot; id=&quot;radio-1-2&quot; name=&quot;radio-1-set&quot; class=&quot;%{STYLEGUIDE_PAGE}-btn-radio&quot; /&gt;&lt;label for=&quot;radio-1-2&quot;&gt;そば&lt;/label&gt;
+</pre>
+
+
+<form class="%{STYLEGUIDE_PAGE}-form">
+	<h2 class="sectionTitle2">入力欄と一緒に</h2>
+	<h3 class="sectionTitle3">ラジオボタン</h3>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium">
+		<div class="%{STYLEGUIDE_PAGE}-form-action">
+			<div class="%{STYLEGUIDE_PAGE}-form-radio %{STYLEGUIDE_PAGE}-form-side %{STYLEGUIDE_PAGE}-form-side-left">
+				<input name="custom-radio" checked="checked" type="radio" id="input-radio-with-input">
+				<label for="input-radio-with-input"><i class="%{STYLEGUIDE_PAGE}-ico-radio"></i></label>
+			</div>
+			<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small">
+		</div>
+	</div>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium">
+		<div class="%{STYLEGUIDE_PAGE}-form-action">
+			<span class="%{STYLEGUIDE_PAGE}-form-side"><input name="custom-radio" checked="checked" type="radio"></span>
+			<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small">
+		</div>
+	</div>
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;div class="%{STYLEGUIDE_PAGE}-form-radio %{STYLEGUIDE_PAGE}-form-side %{STYLEGUIDE_PAGE}-form-side-left"&gt;
+			&lt;input name="custom-radio" checked="checked" type="radio" id="input-radio-with-input"&gt;
+			&lt;label for="input-radio-with-input"&gt;
+				&lt;i class="%{STYLEGUIDE_PAGE}-ico-radio"&gt;&lt;/i&gt;
+			&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;span class="%{STYLEGUIDE_PAGE}-form-side"&gt;&lt;input name="custom-radio" checked="checked" type="radio"&gt;&lt;/span&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">チェックボックス</h3>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium">
+		<div class="%{STYLEGUIDE_PAGE}-form-action">
+			<div class="%{STYLEGUIDE_PAGE}-form-checkbox %{STYLEGUIDE_PAGE}-form-side">
+				<input name="custom-checkbox" checked="checked" type="checkbox" id="input-checkbox-with-input">
+				<label for="input-checkbox-with-input"><i class="%{STYLEGUIDE_PAGE}-ico-checkbox"></i></label>
+			</div>
+			<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small">
+		</div>
+	</div>
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium">
+		<div class="%{STYLEGUIDE_PAGE}-form-action">
+			<span class="%{STYLEGUIDE_PAGE}-form-side"><input name="custom-checkbox" checked="checked" type="checkbox"></span>
+			<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small">
+		</div>
+	</div>
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;div class="%{STYLEGUIDE_PAGE}-form-checkbox %{STYLEGUIDE_PAGE}-form-side"&gt;
+			&lt;input name="custom-checkbox" checked="checked" type="checkbox" id="input-checkbox-with-input"&gt;
+			&lt;label for="input-checkbox-with-input"&gt;
+				&lt;i class="%{STYLEGUIDE_PAGE}-ico-checkbox"&gt;&lt;/i&gt;
+			&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;span class="%{STYLEGUIDE_PAGE}-form-side"&gt;&lt;input name="custom-checkbox" checked="checked" type="checkbox"&gt;&lt;/span&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">アイコン</h3>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-action %{STYLEGUIDE_PAGE}-form-width-medium">
+		<span class="%{STYLEGUIDE_PAGE}-form-side"><i class="%{STYLEGUIDE_PAGE}-icon-time"></i></span>
+		<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small">
+	</div>
+
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-form-action %{STYLEGUIDE_PAGE}-form-width-medium"&gt;
+	&lt;span class="%{STYLEGUIDE_PAGE}-form-side"&gt;&lt;i class="%{STYLEGUIDE_PAGE}-icon-time"&gt;&lt;/i&gt;&lt;/span&gt;
+	&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">ボタン</h3>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium">
+		<div class="%{STYLEGUIDE_PAGE}-form-action">
+			<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-full">
+			<span class="%{STYLEGUIDE_PAGE}-form-side-btn"><button type="submit" class="%{STYLEGUIDE_PAGE}-btn">送信</button></span>
+		</div>
+	</div>
+
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-grid"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-col-6"&gt;
+		&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+			&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-full"&gt;
+			&lt;span class="%{STYLEGUIDE_PAGE}-form-side-btn"&gt;&lt;button type="submit" class="%{STYLEGUIDE_PAGE}-btn"&gt;送信&lt;/button&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">ボタンの分離</h3>
+
+	<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-form-width-medium">
+		<div class="%{STYLEGUIDE_PAGE}-form-action %{STYLEGUIDE_PAGE}-form-action-separate">
+			<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-full">
+			<span class="%{STYLEGUIDE_PAGE}-form-side-btn"><button type="submit" class="%{STYLEGUIDE_PAGE}-btn">送信</button></span>
+		</div>
+	</div>
+
+	<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-grid"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-col-6"&gt;
+		&lt;div class="%{STYLEGUIDE_PAGE}-form-action %{STYLEGUIDE_PAGE}-form-action-separate"&gt;
+			&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-full"&gt;
+			&lt;span class="%{STYLEGUIDE_PAGE}-form-side-btn"&gt;&lt;button type="submit" class="%{STYLEGUIDE_PAGE}-btn"&gt;送信&lt;/button&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">大きさ</h3>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid %{STYLEGUIDE_PAGE}-form">
+		<div class="%{STYLEGUIDE_PAGE}-col-4 %{STYLEGUIDE_PAGE}-form-action">
+			<span class="%{STYLEGUIDE_PAGE}-form-side"><input name="custom-radio" checked="checked" type="radio"></span><input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small %{STYLEGUIDE_PAGE}-form-small">
+		</div>
+		<div class="%{STYLEGUIDE_PAGE}-col-4 %{STYLEGUIDE_PAGE}-form-action">
+			<span class="%{STYLEGUIDE_PAGE}-form-side"><input name="custom-radio" checked="checked" type="radio"></span><input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small">
+		</div>
+		<div class="%{STYLEGUIDE_PAGE}-col-4 %{STYLEGUIDE_PAGE}-form-action">
+			<span class="%{STYLEGUIDE_PAGE}-form-side"><input name="custom-radio" checked="checked" type="radio"></span><input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small %{STYLEGUIDE_PAGE}-form-large">
+		</div>
+	</div>
+
+</form>
+
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-grid %{STYLEGUIDE_PAGE}-form"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-col-4 %{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;span class="%{STYLEGUIDE_PAGE}-form-side"&gt;
+			&lt;input name="custom-radio" checked="checked" type="radio"&gt;
+		&lt;/span&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small %{STYLEGUIDE_PAGE}-form-small"&gt;
+	&lt;/div&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-col-4 %{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;span class="%{STYLEGUIDE_PAGE}-form-side"&gt;
+			&lt;input name="custom-radio" checked="checked" type="radio"&gt;
+		&lt;/span&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+	&lt;/div&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-col-4 %{STYLEGUIDE_PAGE}-form-action"&gt;
+		&lt;span class="%{STYLEGUIDE_PAGE}-form-side"&gt;
+			&lt;input name="custom-radio" checked="checked" type="radio"&gt;
+		&lt;/span&gt;
+		&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small %{STYLEGUIDE_PAGE}-form-large"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">左右</h3>
+	<div class="%{STYLEGUIDE_PAGE}-grid %{STYLEGUIDE_PAGE}-form">
+		<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-col-6">
+			<div class="%{STYLEGUIDE_PAGE}-form-action"><span class="%{STYLEGUIDE_PAGE}-form-side-btn"><button type="submit" class="%{STYLEGUIDE_PAGE}-btn">送信</button></span><input type="email"  class="%{STYLEGUIDE_PAGE}-form-width-full">
+			</div>
+		</div>
+		<div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-col-6">
+			<div class="%{STYLEGUIDE_PAGE}-form-action">
+				<input type="email" class="%{STYLEGUIDE_PAGE}-form-width-full">
+				<span class="%{STYLEGUIDE_PAGE}-form-side-btn"><button type="submit" class="%{STYLEGUIDE_PAGE}-btn">送信</button></span>
+			</div>
+		</div>
+	</div>
+
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-grid"&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-col-6"&gt;
+		&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+			&lt;span class="%{STYLEGUIDE_PAGE}-form-side-btn"&gt;&lt;button type="submit" class="%{STYLEGUIDE_PAGE}-btn"&gt;送信&lt;/button&gt;&lt;/span&gt;
+			&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="%{STYLEGUIDE_PAGE}-form-group %{STYLEGUIDE_PAGE}-col-6"&gt;
+		&lt;div class="%{STYLEGUIDE_PAGE}-form-action"&gt;
+			&lt;input type="email" class="%{STYLEGUIDE_PAGE}-form-width-small"&gt;
+			&lt;span class="%{STYLEGUIDE_PAGE}-form-side-btn"&gt;&lt;button type="submit" class="%{STYLEGUIDE_PAGE}-btn"&gt;送信&lt;/button&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+</section>

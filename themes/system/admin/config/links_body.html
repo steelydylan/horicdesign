@@ -1,0 +1,42 @@
+<table class="js-fieldgroup-sortable adminTable acms-admin-table-admin-edit">
+	<tr class="acms-admin-hide-sp">
+		<th class="acms-admin-admin-config-table-item-handle"></th>
+		<th class="acms-admin-table-left"><!--T-->リンク名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->リンクとして表示される文字列です。<!--/T-->"></i></th>
+		<th class="acms-admin-table-left">URL<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->リンク先URLです。<!--/T-->"></i></th>
+		<th class="acms-admin-admin-config-table-action"></th>
+	</tr><!-- BEGIN linkgroup:loop -->
+	<tr class="sortable-item">
+		<td class="item-handle acms-admin-hide-sp"><i class="acms-admin-icon-sort"></i></td>
+		<td>
+			<span class="acms-admin-hide acms-admin-show-sp"><!--T-->リンク名<!--/T--></span>
+			<input type="text" name="links_label[{i}]" value="{links_label}" class="acms-admin-form-width-full" />
+		</td>
+		<td>
+			<span class="acms-admin-hide acms-admin-show-sp">URL</span>
+			<input type="text" name="links_value[{i}]" value="{links_value}" class="acms-admin-form-width-full" />
+		</td>
+		<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+	</tr><!-- END linkgroup:loop -->
+	<tr class="sortable-item item-template">
+		<td class="item-handle acms-admin-hide-sp"><i class="acms-admin-icon-sort"></i></td>
+		<td>
+			<span class="acms-admin-hide acms-admin-show-sp"><!--t-->リンク名<!--/T--></span>
+			<input type="text" name="links_label[]" value="" class="acms-admin-form-width-full" />
+		</td>
+		<td>
+			<span class="acms-admin-hide acms-admin-show-sp">URL</span>
+			<input type="text" name="links_value[]" value="" class="acms-admin-form-width-full" />
+		</td>
+		<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+	</tr>
+	<tr>
+		<td colspan="4"><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" /></td>
+	</tr>
+</table>
+<input type="hidden" name="@linkgroup[]" value="links_value" />
+<input type="hidden" name="@linkgroup[]" value="links_label" />
+<input type="hidden" name="config[]" value="links_value" />
+<input type="hidden" name="config[]" value="links_label" />
+<input type="hidden" name="config[]" value="@linkgroup" /><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

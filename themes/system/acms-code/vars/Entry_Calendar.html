@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entry_Calendar</title>
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Entry_Calendar</h1>
+	<fieldset><legend>date<span>日付ブロック</span></legend>
+		<var>year<span>年</span></var>
+		<var>month<span>月</span></var>
+		<var>day<span>日</span></var>
+		<var>date<span>年月日</span></var>
+		<var>prevDate<span>前の年月日</span></var>
+		<var>nextDate<span>次の年月日</span></var>
+		<var>prevMonth<span>前の月</span></var>
+		<var>nextMonth<span>次の月</span></var>
+		<var>firstWeekDay<span>最初の曜日</span></var>
+	</fieldset>
+	<fieldset class="loop"><legend class="loop">weekLabel:loop<span>曜日のループ</span></legend>
+		<var>w<span>曜日(数値)</span></var>
+		<var>label<span>曜日(ラベル)</span></var>
+	</fieldset>
+	<fieldset class="loop"><legend class="loop">week:loop<span>週のループ</span></legend>
+		<var>week<span>曜日(ラベル)</span></var>
+		<var>w<span>曜日(数値)</span></var>
+		<fieldset class="loop"><legend class="loop">foreSpacer<span>月初めのスペース(前月)</span></legend>
+			<var>prevDay<span>日付</span></var>
+			<fieldset class="loop">
+				<legend class="loop">entry:loop<span>エントリーのループ</span>
+					<var class="textLong">entryField<span>エントリーのカスタムフィールド</span></var>
+					<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>エントリーの日付</span></var>
+				</legend>
+				<var>url<span>エントリーURL</span></var>
+				<var>title<span>エントリータイトル</span></var>
+				<var>cid<span>カテゴリーID</span></var>
+				<var>eid<span>エントリーID</span></var>
+				<var>status<span>エントリーステータス</span></var>
+			</fieldset>
+		</fieldset>
+		<fieldset class="loop"><legend class="loop">day:loop<span>日付のループ</span></legend>
+			<var>day<span>日付</span></var>
+			<var>today<span>今日</span></var>
+			<fieldset class="loop">
+				<legend class="loop">entry:loop<span>エントリーのループ</span>
+					<var class="textLong">entryField<span>エントリーのカスタムフィールド</span></var>
+					<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>エントリーの日付</span></var>
+				</legend>
+				<var>url<span>エントリーURL</span></var>
+				<var>title<span>エントリータイトル</span></var>
+				<var>cid<span>カテゴリーID</span></var>
+				<var>eid<span>エントリーID</span></var>
+				<var>status<span>エントリーステータス</span></var>
+			</fieldset>
+		</fieldset>
+		<fieldset class="loop"><legend class="loop">rearSpacer<span>月終わりのスペース(次月)</span></legend>
+			<var>nextDay<span>日付</span></var>
+			<fieldset class="loop">
+				<legend class="loop">entry:loop<span>エントリーのループ</span>
+					<var class="textLong">entryField<span>エントリーのカスタムフィールド</span></var>
+					<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>エントリーの日付</span></var>
+				</legend>
+				<var>url<span>エントリーURL</span></var>
+				<var>title<span>エントリータイトル</span></var>
+				<var>cid<span>カテゴリーID</span></var>
+				<var>eid<span>エントリーID</span></var>
+				<var>status<span>エントリーステータス</span></var>
+			</fieldset>
+		</fieldset>
+	</fieldset>
+</body>
+</html>

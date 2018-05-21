@@ -1,0 +1,306 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+			<strong><!--T-->ルール<!--/T--> : {name} </strong><!-- END_MODULE Admin_Rule_Name -->
+			<!-- BEGIN_MODULE Admin_Module_Name -->
+			<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) </strong><!-- END_MODULE Admin_Module_Name -->
+			<!--T-->プロパティ設定<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-info acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<!--T-->プロパティ情報を保存しました<!--/T-->
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"/>
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<div class="acms-admin-float-right">
+				<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_import-part/?rid=%{rid}" class="acms-admin-btn-admin"><!--T-->インポート<!--/T--></a>
+				<input type="submit" name="ACMS_POST_Config_PartExport" class="acms-admin-btn-admin" value="<!--T-->エクスポート<!--/T-->"/>
+				<a href="{shortcutUrl}" class="acms-admin-btn-admin"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a>
+			</div>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<p class="transaction-notice-{config:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->コンフィグを保存出来ませんでした。
+		<!--/T--></p>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->メタ情報<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->キーワード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+										 data-acms-tooltip="<!--T-->このサイトの meta name=&quot;keywords&quot; の内容として使用できます。「,（カンマ）」で区切ることで複数登録することができます。この入力内容は、グローバル変数の&#37;&#123;META_KEYWORDS}で表示できます。<!--/T-->"></i>
+			</th>
+			<td>
+				<textarea name="meta_keywords" cols="50" rows="5">{meta_keywords}</textarea>
+				<input type="hidden" name="config[]" value="meta_keywords"/>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->説明 ( ディスクリプション ) <!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+													 data-acms-tooltip="<!--T-->このサイトの meta name=&quot;description&quot; の内容として使用できます。この入力内容は、グローバル変数の&#37;&#123;META_DESCRIPTION}で表示できます。<!--/T-->"></i>
+			</th>
+			<td>
+				<textarea name="meta_description" cols="50" rows="5">{meta_description}</textarea>
+				<input type="hidden" name="config[]" value="meta_description"/>
+			</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->ウェブサービス<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><a href="https://console.developers.google.com"><!--T-->Google（ログイン）<!--/T--></a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得した<a href='https://console.developers.google.com' target='_blank'>Googleアプリケーション</a>の情報をセットします。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Client ID<br/><input type="text" name="google_login_client_id" value="{google_login_client_id}"
+										 size="60"/>
+					<input type="hidden" name="config[]" value="google_login_client_id"/>
+				</p>
+				<p>
+					Secret Key<br/><input type="text" name="google_login_secret" value="{google_login_secret}"
+										  size="60"/>
+					<input type="hidden" name="config[]" value="google_login_secret"/>
+				</p>
+				<p>Callback URL : %{BLOG_URL}callback/signin/google.html</p>
+		</tr>
+		<tr>
+			<th>
+				<a href="https://console.developers.google.com"><!--T-->Google Analytics API<!--/T--></a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得したgoogleアプリケーションの情報をセットします。Client ID Key Location は フルパスで入力してください。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Service Account e-mail address<br/>
+					<input type="text" name="google_api_app_service_email" value="{google_api_app_service_email}"
+						   size="60"/>
+					<input type="hidden" name="config[]" value="google_api_app_service_email"/>
+				</p>
+				<p>
+					Client ID Key Location (p12)<br/>
+					<input type="text" name="google_api_client_id_key_location"
+						   value="{google_api_client_id_key_location}" size="60" placeholder="/var/www/xxxxxxxxxxx.p12"/>
+					<input type="hidden" name="config[]" value="google_api_client_id_key_location"/><br>
+					参考: %{SCRIPT_DIR} (a-blog cms設置ディレクトリ)
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<a href="https://console.developers.google.com"><!--T-->Google Maps API Key<!--/T--></a><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得したGoogle Maps API Keyを設定します。Google Mapsをご利用の場合はここの設定が必要です。<!--/T-->"></i>
+			</th>
+			<td>
+				API Key<br/>
+				<input type="text" name="google_api_key" value="{google_api_key}" size="60"/>
+				<input type="hidden" name="config[]" value="google_api_key"/>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<a href="https://console.developers.google.com"><!--T-->Google Translate API Key<!--/T--></a><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得したGoogle Translate API Keyを設定します。Google 翻訳APIをご利用の場合はここの設定が必要です。<!--/T-->"></i>
+			</th>
+			<td>
+				API Key<br/>
+				<input type="text" name="google_translate_api_key" value="{google_translate_api_key}" size="60"/>
+				<input type="hidden" name="config[]" value="google_translate_api_key"/>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->YahooアプリケーションID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->取得した<a href='https://e.developer.yahoo.co.jp/webservices/register_application' target='_blank'>YahooアプリケーションID</a>をセットします。<a href='http://srd.yahoo.jp/olp/about' target='_blank'>Yahoo地図（YOLP）</a><!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Application ID<br/>
+					<input type="text" name="yahoo_search_api_key" value="{yahoo_search_api_key}" size="60"/>
+					<input type="hidden" name="config[]" value="yahoo_search_api_key"/>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th><a href="http://datamarket.azure.com/dataset/bing/search">Bing Search API</a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得した<a href='https://datamarket.azure.com/account/keys' target='_blank'>Application Key</a>をセットします。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Account Key<br/>
+					<input type="text" name="bing_search_api_key" value="{bing_search_api_key}" size="60"/>
+					<input type="hidden" name="config[]" value="bing_search_api_key"/>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th><a href="https://apps.twitter.com/"><!--T-->Twitter アプリケーション<!--/T--></a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得した<a href='https://apps.twitter.com/' target='_blank'>Twitterアプリケーション</a>の情報をセットします。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Consumer Key<br/><input type="text" name="twitter_consumer_key" value="{twitter_consumer_key}"
+											size="60"/>
+					<input type="hidden" name="config[]" value="twitter_consumer_key"/>
+				</p>
+				<p>
+					Consumer Secret<br/><input type="text" name="twitter_consumer_secret"
+											   value="{twitter_consumer_secret}" size="60"/>
+					<input type="hidden" name="config[]" value="twitter_consumer_secret"/>
+				</p>
+				<p>Callback URL : %{BLOG_URL}callback/twitter.html</p>
+			</td>
+		</tr>
+		<tr>
+			<th><a href="https://apps.twitter.com/"><!--T-->Twitter（SNSログイン用）<!--/T--></a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得した<a href='https://apps.twitter.com/' target='_blank'>Twitterアプリケーション</a>の情報をセットします。(SNSログインで使用)<br>コールバックURL&nbsp;:&nbsp;<br>%{BLOG_URL}callback/signin/twitter.html<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Consumer Key<br/><input type="text" name="twitter_sns_login_consumer_key"
+											value="{twitter_sns_login_consumer_key}" size="60"/>
+					<input type="hidden" name="config[]" value="twitter_sns_login_consumer_key"/>
+				</p>
+				<p>
+					Consumer Secret<br/><input type="text" name="twitter_sns_login_consumer_secret"
+											   value="{twitter_sns_login_consumer_secret}" size="60"/>
+					<input type="hidden" name="config[]" value="twitter_sns_login_consumer_secret"/>
+				</p>
+				<p>Callback URL : %{BLOG_URL}callback/signin/twitter.html</p>
+			</td>
+		</tr>
+		<tr>
+			<th><a href="http://developers.facebook.com/"><!--T-->Facebook アプリケーション<!--/T--></a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得した<a href='http://developers.facebook.com/' target='_blank'>Facebookアプリケーション</a>の情報をセットします。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Application ID<br/><input type="text" name="facebook_app_id" value="{facebook_app_id}" size="60"/>
+					<input type="hidden" name="config[]" value="facebook_app_id"/>
+				</p>
+				<p>
+					Application Secret<br/><input type="text" name="facebook_app_secret" value="{facebook_app_secret}"
+												  size="60"/>
+					<input type="hidden" name="config[]" value="facebook_app_secret"/>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th><a href="http://instagram.com/developer/"><!--T-->Instagram アプリケーション<!--/T--></a><i
+				class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+				data-acms-tooltip="<!--T-->取得した<a href='http://instagram.com/developer/' target='_blank'>Instagramアプリケーション</a>の情報をセットします。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Client Id<br/><input type="text" name="instagram_client_id" value="{instagram_client_id}"
+										 size="60"/>
+					<input type="hidden" name="config[]" value="instagram_client_id"/>
+				</p>
+				<p>
+					Client Secret<br/><input type="text" name="instagram_client_secret"
+											 value="{instagram_client_secret}" size="60"/>
+					<input type="hidden" name="config[]" value="instagram_client_secret"/>
+				</p>
+				<p>
+					Client Redirect<br/><input type="text" name="instagram_client_redirect"
+											   value="{instagram_client_redirect}" size="60"/>
+					<input type="hidden" name="config[]" value="instagram_client_redirect"/>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th>Google Analytics Mobile<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+										  data-acms-tooltip="<!--T-->Google Analyticsの携帯電話用コードを参考に、アカウントIDを入力します。a-blog cmsインストール先ディレクトリから、ダウンロードしてきたga.phpへのパスを設定します。<!--/T-->"></i>
+			</th>
+			<td>
+				<p>
+					Account<br/><input type="text" name="google_analytics_mobile_account"
+									   value="{google_analytics_mobile_account}" size="20"/>
+					<input type="hidden" name="config[]" value="google_analytics_mobile_account"/>
+				</p>
+				<p>
+					ga.php Path<br/><input type="text" name="google_analytics_mobile_pixel"
+										   value="{google_analytics_mobile_pixel}" size="20"/>
+					<input type="hidden" name="config[]" value="google_analytics_mobile_pixel"/>
+				</p>
+			</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->Pingショット<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->エンドポイント<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+										   data-acms-tooltip="<!--T-->Ping送信先のRPCエンドポイントを指定します。<!--/T-->"></i></th>
+			<td>
+				<ul class="js-fieldgroup-sortable acms-admin-list-nostyle">
+					<!-- BEGIN ping_weblog_updates_endpoint:loop -->
+					<li class="sortable-item acms-admin-margin-bottom-mini">
+						<input type="text" name="ping_weblog_updates_endpoint[]" value="{ping_weblog_updates_endpoint}"
+							   size="60"/>
+						<input type="button" value="<!--T-->削除<!--/T-->"
+							   class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp"/>
+					</li><!-- END ping_weblog_updates_endpoint:loop -->
+					<li class="sortable-item item-template acms-admin-margin-bottom-mini">
+						<input type="text" name="ping_weblog_updates_endpoint[]" size="60"/>
+						<input type="button" value="<!--T-->削除<!--/T-->"
+							   class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp"/>
+					</li>
+					<li><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin"/></li>
+				</ul>
+				<input type="hidden" name="config[]" value="ping_weblog_updates_endpoint"/>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->拡張エンドポイント<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+											 data-acms-tooltip="<!--T-->拡張規格に対応した、Ping送信先のエンドポイントを指定します。<!--/T-->"></i>
+			</th>
+			<td>
+				<ul class="js-fieldgroup-sortable acms-admin-list-nostyle">
+					<!-- BEGIN ping_weblog_updates_extended_endpoint:loop -->
+					<li class="sortable-item acms-admin-margin-bottom-mini">
+						<input type="text" name="ping_weblog_updates_extended_endpoint[]"
+							   value="{ping_weblog_updates_extended_endpoint}" size="60"/>
+						<input type="button" value="<!--T-->削除<!--/T-->"
+							   class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp"/>
+					</li><!-- END ping_weblog_updates_extended_endpoint:loop -->
+					<li class="sortable-item item-template acms-admin-margin-bottom-mini">
+						<input type="text" name="ping_weblog_updates_extended_endpoint[]" size="60"/>
+						<input type="button" value="<!--T-->削除<!--/T-->"
+							   class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp"/>
+					</li>
+					<li><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin"/></li>
+				</ul>
+				<input type="hidden" name="config[]" value="ping_weblog_updates_extended_endpoint"/>
+			</td>
+		</tr>
+	</table>
+
+	<!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}"/><!-- END_MODULE Admin_Rule_Name -->
+	<!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}"/><!-- END_MODULE Admin_Module_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->

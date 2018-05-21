@@ -1,0 +1,122 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name} の</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) の</strong><!-- END_MODULE Admin_Module_Name --><!--T-->外部認証設定<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+
+<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+<!-- BEGIN_MODULE Api_Twitter_AdminOAuth -->
+<h2 class="acms-admin-admin-title2">Twitter OAuth</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->認証<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->TwitterAPI系モジュールを利用するために、認証してブログとアカウント情報を関連付けます。この設定は、ブログ単位で行われます。ルールを利用した個別の設定はできません<!--/T-->"></i></th>
+		<!-- BEGIN notAuth -->
+		<td>
+			<form action="" method="post" class="acms-admin-form">
+				<input type="submit" name="ACMS_POST_Api_Twitter_OAuth_Connect" value="<!--T-->OAuth認証を行う<!--/T-->" class="overlook acms-admin-btn-admin" />
+				<input type="hidden" name="oauth_url" value="{oauth_url}" />
+				<input type="hidden" name="twitter[]" value="oauth_url" />
+				<input type="hidden" name="oauth_token" value="{oauth_token}" />
+				<input type="hidden" name="twitter[]" value="oauth_token" />
+				<input type="hidden" name="oauth_token_secret" value="{oauth_token_secret}" />
+				<input type="hidden" name="twitter[]" value="oauth_token_secret" />
+				&nbsp;<a href="#directInputTwitter" class="js-fader"><!--T-->認証キーの直接入力<!--/T--></a>
+			</form>
+			<form action="" method="post">
+				<p id="directInputTwitter" style="border:1px solid silver;padding:5px;margin-top:5px;">
+					<!--T-->※アクセストークン(認証キー)を直接入力して、認証する場合は以下から設定してください<!--/T--><br />
+					token: <input type="text" name="access_token" value="" size="30" />&nbsp;
+					secret: <input type="text" name="access_token_secret" value="" size="20" />
+					<input type="hidden" name="twitter[]" value="access_token" />
+					<input type="hidden" name="twitter[]" value="access_token_secret" />
+					<input type="submit" name="ACMS_POST_Api_Twitter_OAuth_DirectSave" value="<!--T-->設定<!--/T-->" class="overlook acms-admin-btn-admin" />
+				</p>
+				<p>※&nbsp;<!--T-->この設定は、ブログ単位で行われます。ルールを利用した個別の設定はできません。<!--/T--></p>
+			</form>
+		</td>
+		<!-- END notAuth -->
+		<!-- BEGIN Auth -->
+		<td>
+			<form action="" method="post">
+				<!--T--><strong><!--$1-->{user_name}<!--/$1--> : <!--$2-->{screen_name}<!--/$2--></strong> で認証済み<!--/T--> ( <!--T-->API 残回数<!--/T--> {remaining} / {limit} reset {reset} )  <input type="submit" name="ACMS_POST_Api_Twitter_OAuth_Revoke" value="認証情報を破棄" class="overlook acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			</form>
+		</td>
+		<!-- END Auth -->
+		<!-- BEGIN failed -->
+		<td>
+			<form action="" method="post">
+			<!--T-->認証確認の接続に失敗しました<!--/T-->&nbsp;<input type="submit" name="ACMS_POST_Api_Twitter_OAuth_Revoke" value="<!--T-->認証情報を破棄<!--/T-->" class="overlook acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			</form>
+		</td>
+		<!-- END failed -->
+		<!-- BEGIN notFoundKeys -->
+		<td>
+			<!--T-->認証には、<a href="https://dev.twitter.com/apps">Twitterアプリケーション</a>の登録が必要です<!--/T-->。<br />
+			<!--T-->登録後に<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_property/">プロパティ設定</a>で、取得したコンシューマーキーとシークレットを入力してください。<!--/T--><br /><br />
+			<!--T--><a href="https://dev.twitter.com/apps">Twitterアプリケーション</a>を登録するときに、下記のURLをコールバックURLに指定してください。<!--/T--><br />
+			<!--T-->このブログのコールバックURL<!--/T-->&nbsp;:&nbsp;<strong>%{BLOG_URL}callback/twitter.html</strong>
+		</td>
+		<!-- END notFoundKeys -->
+	</tr>
+</table>
+<!-- END_MODULE Api_Twitter_AdminOAuth -->
+
+<!-- BEGIN_MODULE Api_Instagram_AdminOAuth -->
+<h2 class="acms-admin-admin-title2">Instagram OAuth</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->認証<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->InstagramAPI系モジュールを利用するために、認証してブログとアカウント情報を関連付けます。この設定は、ブログ単位で行われます。ルールを利用した個別の設定はできません。<!--/T-->"></i></th>
+		<!-- BEGIN notAuth -->
+		<td>
+			<form action="" method="post">
+				<input type="submit" name="ACMS_POST_Api_Instagram_OAuth_Connect" value="<!--T-->OAuth認証を行う<!--/T-->" class="overlook acms-admin-btn-admin" />
+				<input type="hidden" name="oauth_url" value="{oauth_url}" />
+				<input type="hidden" name="instagram[]" value="oauth_url" />
+				&nbsp;<a href="#directInputInstagram" class="js-fader"><!--T-->認証キーの直接入力<!--/T--></a>
+			</form>
+			<form action="" method="post">
+				<p id="directInputInstagram" style="border:1px solid silver;padding:5px;margin-top:5px;">
+					<!--T-->※アクセストークン(認証キー)を直接入力して、認証する場合は以下から設定してください<!--/T--><br />
+					access token: <input type="text" name="access_token" value="" size="30" />
+					<input type="hidden" name="instagram[]" value="access_token" />
+					<input type="submit" name="ACMS_POST_Api_Instagram_OAuth_DirectSave" value="<!--T-->設定<!--/T-->" class="overlook acms-admin-btn-admin" />
+				</p>
+				<p>※&nbsp;<!--T-->この設定は、ブログ単位で行われます。ルールを利用した個別の設定はできません。<!--/T--></p>
+			</form>
+		</td>
+		<!-- END notAuth -->
+		<!-- BEGIN Auth -->
+		<td>
+			<form action="" method="post">
+				<!--T--><strong><!--$1-->{full_name}<!--/$1--> : <!--$2-->{user_name}<!--/$2--></strong> で認証済み<!--/T--> <input type="submit" name="ACMS_POST_Api_Instagram_OAuth_Revoke" value="<!--T-->認証情報を破棄<!--/T-->" class="overlook acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			</form>
+		</td>
+		<!-- END Auth -->
+		<!-- BEGIN failed -->
+		<td>
+			<form action="" method="post">
+				<!--T-->認証確認の接続に失敗しました<!--/T-->&nbsp;<input type="submit" name="ACMS_POST_Api_Instagram_OAuth_Revoke" value="<!--T-->認証情報を破棄<!--/T-->" class="overlook acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			</form>
+		</td>
+		<!-- END failed -->
+		<!-- BEGIN notFoundKeys -->
+		<td>
+			<!--T-->認証には、<a href="http://instagram.com/developer/">Instagramアプリケーション</a>の登録が必要です。<!--/T--><br />
+			<!--T-->登録後に<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_property/">プロパティ設定</a>で、Client Id、Client Secret、Client Redirectを入力してください。<!--/T--><br /><br />
+			<!--T--><a href="http://instagram.com/developer/">Instagramアプリケーション</a>を登録するときに、下記のURLをコールバックURLに指定してください。<!--/T--><br />
+			<!--T-->このブログのコールバックURL<!--/T-->&nbsp;:&nbsp;<strong>%{BLOG_URL}callback/instagram.html</strong>
+		</td>
+		<!-- END notFoundKeys -->
+	</tr>
+</table>
+<!-- END_MODULE Api_Instagram_AdminOAuth -->
+<!-- END_MODULE Admin_Config -->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comment_Body</title>
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Comment_Body</h1>
+	<fieldset class="loop">
+		<legend class="loop">comment:loop<span>コメントのループ</span>
+			<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>コメント日時</span></var>
+		</legend>
+		<fieldset class="veil"><legend class="veil">position:veil</legend>
+			<var>amount<span>コメント数</span></var>
+			<var>from<span>開始コメント件数</span></var>
+			<var>to<span>終了コメント件数</var>
+		</fieldset>
+		<fieldset><legend>div#front<span>コメント開始ブロック</span></legend></fieldset>
+		<fieldset class="veil"><legend class="veil">body:veil</legend>
+			<var>cmid<span>コメントID</span></var>
+			<var>title<span>コメントタイトル</span></var>
+			<fieldset><legend>awaiting#header<span>承認待ちブロック</span></legend></fieldset>
+			<fieldset class="veil"><legend class="veil">replyLink:veil</legend>
+				<var>replyUrl<span>返信URL</span></var>
+			</fieldset>
+			<var>body<span>コメント内容</span></var>
+			<fieldset><legend>awaiting#body<span>承認待ち内容ブロック</span></legend></fieldset>
+
+			<fieldset><legend>posterLink#front<span>投稿者サイトURL開始ブロック</span></legend>
+				<var>url<span>投稿者のサイトURL</span></var>
+			</fieldset>
+			<fieldset class="veil"><legend class="veil">posterName:veil</legend>
+				<var>posterName<span>コメント投稿者</span></var>
+			</fieldset>
+			<fieldset><legend>posterLink#rear<span>投稿者サイトURL終了ブロック</span></legend></fieldset>
+			<fieldset><legend>posterMail#front<spaN>投稿者メールアドレス開始ブロック</spaN></legend>
+				<var>mail<span>投稿者メールアドレス</span></var>
+			</fieldset>
+			<fieldset><legend>posterMail#rear<span>投稿者メールアドレス終了ブロック</span></legend></fieldset>
+		</fieldset>
+
+		<fieldset><legend>div#rear<span>コメント終了ブロック</span></legend></fieldset>
+
+		<fieldset><legend>backLink<span>前のコメント</span></legend>
+			<var>url<span>前のコメントURL</span></var>
+		</fieldset>
+
+		<fieldset><legend>forwardLink<span>次のコメント</span></legend>
+			<var>url<span>次のコメントURL</span></var>
+		</fieldset>
+	</fieldset>
+</body>
+</html>

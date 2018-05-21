@@ -1,0 +1,77 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="category_list_order" class="js-select2">
+				<option value="amount-asc"{category_list_order:selected#amount-asc}><!--T-->エントリー数<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="amount-desc"{category_list_order:selected#amount-desc}><!--T-->エントリー数<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="sort-asc"{category_list_order:selected#sort-asc}><!--T-->表示順<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{category_list_order:selected#sort-desc}><!--T-->表示順<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="code-asc"{category_list_order:selected#code-asc}><!--T-->コードネーム<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="code-desc"{category_list_order:selected#code-desc}><!--T-->コードネーム<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="id-asc"{category_list_order:selected#id-asc}>ID <!--T-->( 昇順 )<!--/T--></option>
+				<option value="id-desc"{category_list_order:selected#id-desc}>ID <!--T-->( 降順 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="category_list_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーの有無<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとエントリーが登録されていないカテゴリーも表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_list_amount_zero" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_list_amount_zero" value="on"{category_list_amount_zero:checked#on} id="input-checkbox-category_list_amount_zero" />
+				<label for="input-checkbox-category_list_amount_zero"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーが登録されていないカテゴリーも表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_list_amount_zero" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリー数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各カテゴリーに登録されているエントリー数を表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_list_amount" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_list_amount" value="on"{category_list_amount:checked#on} id="input-checkbox-category_list_amount" />
+				<label for="input-checkbox-category_list_amount"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリー数を表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_list_amount" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->階層<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示するカテゴリーの階層の深さの設定です。数値で指定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_list_level" value="{category_list_level}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="category_list_level" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをループブロック内に設定できます。例えばグリッドシステムのカラム数設定などにご利用ください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_list_loop_class" value="{category_list_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="category_list_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->フィールド検索<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->絞り込むフィールドを選択します。<!--/T-->"></i></th>
+		<td>
+			<select name="category_list_field_search" class="js-select2">
+				<option value="entry"{category_list_field_search:selected#entry}><!--T-->エントリー<!--/T--></option>
+				<option value="category"{category_list_field_search:selected#category}><!--T-->カテゴリー<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="category_list_field_search" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カスタムフィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとカスタムフィールドを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_list_field" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_list_field" value="on"{category_list_field:checked#on} id="input-checkbox-category_list_field" />
+				<label for="input-checkbox-category_list_field"><i class="acms-admin-ico-checkbox"></i><!--T-->カスタムフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_list_field" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

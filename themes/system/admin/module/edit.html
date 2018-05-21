@@ -1,0 +1,128 @@
+<!-- BEGIN_MODULE Admin_Module_Edit -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<div class="acms-admin-admin-title acms-admin-module-title-wrapper">
+			<h1 class="acms-admin-admin-title"><span class="js-dialog-title"><!-- BEGIN_IF [{name}/nem/] -->{identifier}（{label}）<span class="acms-admin-module-en">{name}</span><!-- ELSE --><!--T-->新規モジュールID<!--/T--><!-- END_IF --></span></h1>
+		</div>
+	</div>
+</header>
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュールIDを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュールIDを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュールIDを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN msg#duplicate -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュールIDを複製しました<!--/T--></p><!-- END msg#duplicate --><!-- BEGIN msg#error -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->入力内容に誤りがあります。<!--/T--></p><!-- END msg#error -->
+
+<form class="acms-admin-form js-dialog-body" action="" method="post" enctype="multipart/form-data">
+	<div class="js-acms_fix_marker acms-admin-form-group">
+		<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/module_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+		<!-- BEGIN_IF [{shortcut}/em/] -->
+		<input type="hidden" name="step" value="" />
+		<!-- BEGIN submit#insert -->
+		<input type="submit" name="ACMS_POST_Module_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		<!-- END submit#insert -->
+		<!-- BEGIN submit#update -->
+		<input type="submit" name="ACMS_POST_Module_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		<input type="submit" name="ACMS_POST_Module_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->IDモジュールを削除します。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+		@include("/admin/config/action.html")
+		<input type="hidden" name="takeover" value="{takeover}" />
+		<!-- END submit#update -->
+		<!-- BEGIN submit#duplicate -->
+		<input type="submit" name="ACMS_POST_Module_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		<!-- END submit#duplicate -->
+		<!-- END_IF -->
+
+		<!-- BEGIN_IF [{shortcut}/nem/] -->
+		<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		<!-- END_IF -->
+
+		<div class="acms-admin-float-right" data-method="post">
+			<!-- BEGIN_IF [{shortcut}/em/] -->
+			<!-- BEGIN submit2#update -->
+			<div class="js-fake-form acms-admin-inline-btn" data-method="post">
+				<input type="hidden" name="edit" value="duplicate" />
+				<input type="hidden" name="ACMS_POST_Module_Duplicate" value="on" />
+				<input type="hidden" name="takeover" value="{takeover}" />
+				<button class="js-submit acms-admin-btn-admin"><!--T-->複製<!--/T--></button>
+				<input type="hidden" name="formToken" value="on" />
+			</div>
+
+			<div class="js-fake-form acms-admin-inline-btn" data-method="post">
+				<input type="hidden" name="ACMS_POST_Module_Export" value="on" />
+				<button class="js-submit acms-admin-btn-admin"><!--T-->エクスポート<!--/T--></button>
+				<input type="hidden" name="formToken" value="on" />
+			</div>
+			<!-- END submit2#update -->
+			<!-- END_IF -->
+
+			<!-- BEGIN_IF [%{edit}/neq/insert]-->
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration --><!-- BEGIN_MODULE Admin_Config -->
+			<a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Admin_Config --><!-- END_MODULE Touch_SessionWithAdministration --><!-- END_IF -->
+		</div>
+	</div>
+
+	<div class="acms-admin-tabs">
+		<!-- BEGIN_IF [{shortcut}/em/] -->
+		<ul class="js-acms_admin_tabs">
+			<!-- BEGIN_IF [%{rid}/em/]-->
+			<!-- BEGIN_IF [{editStatus}/eq/update] -->
+			<li>
+				<!-- BEGIN_IF [%{MODULE_NAME}/nre/^(Blog|Category|Entry|User|Module)_Field$] -->
+				<a href="#acms_box2" class="js-ready-acms_tabs"><!--T-->表示設定<!--/T--></a>
+				<!-- END_IF -->
+			</li>
+			<li>
+				<a href="#acms_box1"><!--T-->条件設定<!--/T--></a>
+			</li>
+			<!-- ELSE -->
+			<li class="acms-admin-hide">
+				<!-- BEGIN_IF [%{MODULE_NAME}/nre/^(Blog|Category|Entry|User|Module)_Field$] -->
+				<a href="#acms_box2" class="js-ready-acms_tabs"><!--T-->表示設定<!--/T--></a>
+				<!-- END_IF -->
+			</li>
+			<li>
+				<a href="#acms_box1" class="js-ready-acms_tabs"><!--T-->条件設定<!--/T--></a>
+			</li>
+			<!-- END_IF -->
+			<li><a href="#acms_box3"><!--T-->カスタム設定<!--/T--></a></li>
+			<!-- ELSE -->
+			<li><a href="#acms_box2"><!--T-->表示設定<!--/T--></a></li>
+			<li class="acms-admin-hide"><a href="#acms_box1"><!--T-->条件設定<!--/T--></a></li>
+			<li class="acms-admin-hide"><a href="#acms_box3"><!--T-->カスタム設定<!--/T--></a></li>
+			<!-- END_IF -->
+		</ul>
+
+		<div id="acms_box1" class="acms-admin-tabs-panel anchorFix">
+			@include("/include/module/edit.html")
+		</div>
+
+		<div id="acms_box3" class="acms-admin-tabs-panel anchorFix">
+			@include("/admin/module/field.html")
+		</div>
+		<!-- END_IF -->
+		<!-- END_MODULE Admin_Module_Edit -->
+
+		<!-- BEGIN_IF [%{MODULE_NAME}/nre/^(Blog|Category|Entry|User|Module)_Field$] -->
+		<div id="acms_box2" class="acms-admin-tabs-panel anchorFix">
+			<!-- BEGIN_IF [%{ADMIN_PATH_MID}/eq/config/banner] -->
+				<!-- BEGIN_MODULE Admin_Config_Banner -->
+				@include("/admin/%{ADMIN_PATH_MID}_body.html")
+				<!-- END_MODULE Admin_Config_Banner -->
+			<!-- ELSE -->
+				<!-- BEGIN_MODULE Admin_Config -->
+				@include("/admin/%{ADMIN_PATH_MID}_body.html")
+				<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-module-config-%{MODULE_NAME}" --><!-- END_MODULE Admin_InjectTemplate -->
+				<!-- END_MODULE Admin_Config -->
+			<!-- END_IF -->
+		</div><!-- END_IF -->
+		<!-- END_IF -->
+	</div>
+	<!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+</form>

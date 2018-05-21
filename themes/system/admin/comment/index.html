@@ -1,0 +1,142 @@
+<!-- BEGIN_MODULE Admin_Comment_Index -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->コメント管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->コメントが見つかりません<!--/T--></p><!-- END index#notFound --><!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->コメント一覧を更新しました。<!--/T--></p><!-- END refresh -->
+
+<div class="acms-admin-filter">
+	<form method="post" action="" class="acms-admin-form"><!-- BEGIN axis -->
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->階層<!--/T-->:
+			<input type="hidden" name="axis" value="self" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="axis" value="descendant-or-self"{axis:checked#descendant-or-self} id="input-checkbox-axis-descendant-or-self" />
+				<label for="input-checkbox-axis-descendant-or-self">
+					<i class="acms-admin-ico-checkbox"></i><!--T-->下階層ブログのコメントも表示する<!--/T-->
+				</label>
+			</div>
+		</div>
+		<!-- END axis -->
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->絞り込み<!--/T-->:
+			<select name="status" class="js-select2">
+				<option value=""><!--T-->全てのステータス<!--/T--></option>
+				<option value="open"{status:selected#open}><!--T-->公開<!--/T--></option>
+				<option value="close"{status:selected#close}><!--T-->非公開<!--/T--></option>
+				<option value="approval"{status:selected#awaiting}><!--T-->承認待ち<!--/T--></option>
+			</select>
+		</div>
+
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->ソート<!--/T-->:
+			<select name="order" class="js-select2">
+				<option value="datetime-asc"{order:selected#datetime-asc}><!--T-->日時<!--/T--> (<!--T-->昇順<!--/T-->)</option>
+				<option value="datetime-desc"{order:selected#datetime-desc}><!--T-->日時<!--/T--> (<!--T-->降順<!--/T-->)</option>
+			</select>
+		</div>
+
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->表示数<!--/T-->:
+			<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+				<option value="{value}"{selected}>{value}</option><!-- END limit:loop -->
+			</select>
+		</div>
+
+		<input type="hidden" name="query[]" value="axis" />
+		<input type="hidden" name="query[]" value="status" />
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="admin" value="comment_index" />
+	</form>
+</div><!-- /.acms-filter -->
+
+<!-- BEGIN form:veil -->
+<form method="post" action="" class="acms-admin-form">
+
+
+<div class="js-acms-tab-select clearfix js-acms_fix_marker">
+	<div class="acms-admin-float-left acms-admin-margin-right-mini">
+		<select name="action-entry" class="js-acms-tab-select-value acms-admin-float-left js-select2">
+			<option value="action-status"{action-entry:selected#action-status}><!--T-->ステータス<!--/T--></option>
+			<option value="action-delete"{action-entry:selected#action-delete}><!--T-->削除<!--/T--></option>
+		</select>
+	</div>
+
+	<div id="action-status" class="js-acms-tab-select-panel js-acms-tab-select-active acms-admin-float-left">
+		<select name="status" class="acms-admin-inline-block">
+			<option value="open"><!--T-->公開<!--/T--></option>
+			<option value="close"><!--T-->非公開<!--/T--></option>
+			<option value="awaiting"><!--T-->承認待ち<!--/T--></option>
+		</select>
+		<input type="submit" name="ACMS_POST_Comment_Index_Status" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+	</div>
+
+	<div id="action-delete" class="js-acms-tab-select-panel acms-admin-float-left">
+		<input type="submit" name="ACMS_POST_Comment_Index_Delete" onclick="return confirm('<!--T-->選択したコメントを削除します。\nこの操作は元に戻せません、よろしいですか？<!--/T-->') " value="<!--T-->削除<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+	</div>
+</div>
+
+
+	<div class="acms-admin-table-responsive">
+		<table class="acms-admin-table-admin js-admin_table-sortable acms-admin-table-hover">
+			<tr>
+				<th class="acms-admin-table-center acms-admin-th-checkbox acms-admin-table-nowrap"><div class="acms-admin-form-checkbox acms-admin-margin-none"><input type="checkbox" id="checkAll" /><label for="checkAll"><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually">コメントをすべてチェックする</span></label></div></th>
+				<th><!--T-->日付<!--/T--> / <!--T-->タイトル<!--/T--> / <!--T-->投稿者<!--/T--></th>
+				<th><!--T-->コメント<!--/T--></th>
+				<th><!--T-->参照エントリー<!--/T--> / <!--T-->ブログ<!--/T--></th>
+				<th class="acms-admin-table-nowrap"><!--T-->ステータス<!--/T--></th>
+				<th class="acms-admin-table-nowrap"><!--T-->アクション<!--/T--></th>
+			</tr><!-- BEGIN comment:loop -->
+			<tr>
+				<td class="acms-admin-table-center acms-admin-td-checkbox acms-admin-table-nowrap"><div class="acms-admin-form-checkbox acms-admin-margin-none"><input type="checkbox" name="checks[]" id="check-comment{id}" value="{id}"{disabled} /><label for="check-comment{id}"><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->コメントタイトル{name}を選択する<!--/T--></span></label></div></td>
+				<td>
+					{datetime}
+					<br /><strong>{title}</strong>
+					<br /><!-- BEGIN url#front --><a href="{url}"><!-- END url#front --><span class="weak">{name}</span><!-- END url#rear --></a><!-- END url#rear -->
+				</td>
+				<td>{body}[trim(128, '...')]</td>
+				<td>
+					<a href="{reflink}">{reftitle}[trim(64, '...')]</a>
+					<br /><a href="{blogLink}">{blogName}</a>
+				</td>
+				<td class="acms-admin-table-nowrap"><!-- BEGIN status#open -->
+					<span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->公開<!--/T--></span><!-- END status#open --><!-- BEGIN status#close -->
+					<span class="acms-admin-label acms-admin-label-danger admin-status-label"><!--T-->非公開<!--/T--></span><!-- END status#close --><!-- BEGIN status#awaiting -->
+					<span class="acms-admin-label"><!--T-->承認待ち<!--/T--></span><!-- END status#awaiting -->
+				</td>
+				<td class="acms-admin-td-edit acms-admin-table-nowrap">
+					<a href="{itemLink}" class="acms-admin-btn-admin"><!--T-->詳細<!--/T--></a>
+				</td>
+			</tr><!-- END comment:loop -->
+		</table>
+	</div>
+
+<div class="acms-admin-grid">
+	<div class="acms-admin-col-md-6">
+		<!-- BEGIN pager:veil -->
+		<div class="acms-admin-pager-container">
+			<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+				<li class="prev"><a href="{url}">&laquo;&nbsp;<!--T-->前へ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+				<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+				<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+				<li class="next"><a href="{url}"><!--T-->次へ<!--/T-->&nbsp;&raquo;</a></li><!-- END forwardLink -->
+			</ul>
+		</div>
+		<!-- END pager:veil -->
+	</div>
+	<div class="acms-admin-col-md-6">
+		<div class="acms-admin-itemsAmount-container">
+			<p>{itemsFrom}<!--T-->件<!--/T--> - {itemsTo}<!--T-->件 <!--/T-->/ <!--T-->全<!--/T-->{itemsAmount}<!--T-->件<!--/T--></p>
+		</div>
+	</div>
+</div><!-- /.acms-grid -->
+
+</form><!-- END form:veil -->
+<!-- END_MODULE Admin_Comment_Index -->

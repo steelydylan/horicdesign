@@ -1,0 +1,1 @@
+[trackback] %{ENTRY_TITLE} | %{BLOG_NAME}

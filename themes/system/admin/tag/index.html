@@ -1,0 +1,65 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->タグ管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Tag_Index -->
+<div class="acms-admin-filter acms-admin-form">
+	<form action="" method="post">
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->ソート<!--/T-->:
+			<select name="order" class="js-select2">
+				<option value="name-asc"{order:selected#name-asc}><!--T-->名前順<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="name-desc"{order:selected#name-desc}><!--T-->名前順<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="amount-asc"{order:selected#amount-asc}><!--T-->タグ数<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="amount-desc"{order:selected#amount-desc}><!--T-->タグ数<!--/T-->（<!--T-->降順<!--/T-->）</option>
+			</select>
+		</div>
+
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->表示数<!--/T-->:
+			<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+				<option value="{value}"{selected}>{label}</option><!-- END limit:loop -->
+			</select>
+		</div>
+
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="admin" value="tag_index" />
+	</form>
+	<div class="acms-admin-margin-bottom-mini">
+		<label for="searchModuleId"><!--T-->クイック検索<!--/T-->:</label>
+		<input type="text" id="searchModuleId" class="js-incremental_search_box" placeholder="<!--T-->例）タグ1<!--/T-->">
+	</div>
+</div>
+
+<!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->タグがありません。<!--/T--></p><!-- END index#notFound -->
+<!-- BEGIN index -->
+<ul id="tagList" class="acms-admin-list-inline js-incremental_search"><!-- BEGIN tag:loop -->
+	<li class="search_element"><a href="{url}?edit=update">{name} <span class="acms-admin-label">{amount}</span></a></li><!-- END tag:loop -->
+</ul>
+<div class="acms-admin-grid">
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<!-- BEGIN pager:veil -->
+		<div class="acms-admin-pager-container">
+			<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+				<li class="prev"><a href="{url}">&laquo;&nbsp;<!--T-->前へ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+				<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+				<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+				<li class="next"><a href="{url}"><!--T-->次へ<!--/T-->&nbsp;&raquo;</a></li><!-- END forwardLink -->
+			</ul>
+		</div>
+		<!-- END pager:veil -->
+	</div>
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<div class="acms-admin-itemsAmount-container">
+			<p>{itemsFrom}<!--T-->件<!--/T--> - {itemsTo}<!--T-->件<!--/T--> / <!--T-->全<!--/T-->{itemsAmount}<!--T-->件<!--/T--></p>
+		</div>
+	</div>
+</div><!-- /.acms-grid -->
+<!-- END index -->
+<!-- END_MODULE Admin_Tag_Index -->

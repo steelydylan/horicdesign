@@ -1,0 +1,81 @@
+/* ------------------------------
+ パネル
+------------------------------- */
+.acms-panel {
+	margin-bottom: 10px;
+	border: 1px solid $acms-panel-black-border;
+}
+
+.acms-panel-header {
+	margin: 0;
+	padding: 10px;
+	border-bottom: 1px solid $acms-panel-black-border;
+	background-color: $acms-panel-black-bg;
+
+	&,
+	& a {
+		color: $acms-panel-black-text-color;
+	}
+}
+
+.acms-panel-body + .acms-panel-header {
+	border-top: 1px solid $acms-panel-black-border;
+}
+
+//フォントサイズ
+.acms-panel-header [class*='acms-icon'] {
+	@include font-size(20);
+}
+
+.acms-panel-title {
+	margin: 0;
+	@include font-size(15);
+	>a {
+		color: inherit;
+		 &:hover {
+			color: inherit;
+			opacity: 0.6;
+		}
+	}
+}
+
+.acms-panel-body {
+	margin: 0;
+	padding: 10px;
+}
+
+.acms-panel-footer {
+	padding: 10px;
+	border-top: 1px solid #DDD;
+}
+
+// info
+.acms-panel-info {
+	 &.acms-panel {
+		border-color: $acms-panel-info-border;
+	}
+	.acms-panel-header,
+	.acms-panel-header a {
+		border-color: $acms-panel-info-border;
+		background-color: $acms-panel-info-bg;
+		color: $acms-panel-info-text-color;
+	}
+	.acms-panel-footer {
+		border-color: $acms-panel-info-border;
+	}
+}
+// danger
+.acms-panel-danger {
+	 &.acms-panel {
+		border-color: $acms-panel-danger-border;
+	}
+	.acms-panel-header,
+	.acms-panel-header a {
+		border-color: $acms-panel-danger-border;
+		background-color: $acms-panel-danger-bg;
+		color: $acms-panel-danger-text-color;
+	}
+	.acms-panel-footer {
+		border-color: $acms-panel-danger-border;
+	}
+}

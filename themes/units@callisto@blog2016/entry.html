@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--#include file="/include/head/meta.html" -->
+<!--#include file="/include/head/link.html" -->
+<!--#include file="/include/head/js.html" -->
+<!-- BEGIN_MODULE Touch_Entry -->
+</head>
+<body class="_theme-blog _theme-entry">
+
+  <!--#include file="/include/header.html" -->
+
+<div class="uc-hero">
+<!-- BEGIN_MODULE Entry_Field -->
+<!-- BEGIN_IF [{ogp_image@path}/nem] -->
+<div class="uc-hero-bg" style="background-image:url(%{ARCHIVES_DIR}{ogp_image@path})"></div>
+<!-- ELSE -->
+<div class="uc-hero-bg" style="background-image:url(https://source.unsplash.com/1600x900/?nature,water)"></div>
+<!-- END_IF -->
+<!-- END_MODULE Entry_Field -->
+<h1 class="uc-hero-title"><!-- BEGIN_IF [%{ENTRY_TITLE}/nem] -->%{ENTRY_TITLE}<!-- ELSE -->Horic Design<!-- END_IF --></h1>
+</div>
+   <!--#include file="/admin/action.html" -->
+  
+   <main class="uc-content content">
+
+    <div class="uc-section">
+
+      <div class="uc-grid _small-col-full">
+        <div class="entry- uc-grid-cell _col-fit">
+
+          <article class="uc-card _col-full">
+           <!-- BEGIN_MODULE Entry_Body id="body_default" -->
+			  <!-- BEGIN entry:loop -->
+              <div class="entry">
+              <div class="acms-entry entry-column">
+			 
+			  <!--#include file="/include/unit.html"-->
+				<!-- BEGIN adminEntryEdit -->
+				<!--#include file="/admin/entry/edit.html"-->
+				<!--#include file="/admin/entry/add.html"-->
+				<!-- END adminEntryEdit -->
+			
+				<!-- BEGIN adminFormEdit -->
+				<!--#include file="/admin/form2/edit.html"-->
+				<!-- END adminFormEdit -->
+				<!--#include file="/admin/entry/action.html"-->
+
+              </div>
+      
+              </div>
+            <hr>
+<div class="ninja_onebutton">
+<script type="text/javascript">
+//<![CDATA[
+(function(d){
+if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_0155b4a1558e8d7fa305d25cb251b0ad)=='undefined'){
+    document.write("<sc"+"ript type='text\/javascript' src='\/\/omt.shinobi.jp\/b\/0155b4a1558e8d7fa305d25cb251b0ad'><\/sc"+"ript>");
+}else{
+    window.NINJA_CO_JP_ONETAG_BUTTON_0155b4a1558e8d7fa305d25cb251b0ad.ONETAGButton_Load();}
+})(document);
+//]]>
+</script><span class="ninja_onebutton_hidden" style="display:none;"></span><span style="display:none;" class="ninja_onebutton_hidden"></span>
+</div>
+            
+ 		<p class="entry-user">
+			<span class="entry-user-info"><i class="acms-icon-user"></i>{posterName}</span><span class="entry-user-info"><a href="%{PERMALINK}" class="js-viewing-indelible"><i class="acms-icon-time"></i>{date#Y}/{date#m}/{date#d} {date#H}:{date#i}</a> 投稿 </span><!-- BEGIN_IF [{date#Y}{date#m}{date#d}{date#H}{date#i}/lt/{udate#Y}{udate#m}{udate#d}{udate#H}{udate#i}] --><span class="entry-user-info"><i class="acms-icon-time"></i>{udate#Y}/{udate#m}/{udate#d} {udate#H}:{udate#i} 修正</span><!-- END_IF -->
+		</p>
+        
+			  <!-- END entry:loop -->
+			  <!-- END_MODULE Entry_Body -->
+			  
+<!-- footer -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1809493930689268"
+     data-ad-slot="9141794050"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+          </article>
+        </div>
+
+
+        <div class="uc-sidebar uc-grid-cell _col-4">
+        	<!--#include file="/include/side.html" -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- BEGIN_MODULE Entry_Body id="body_default" -->
+  <div class="uc-pager-unit _center">
+    <div class="uc-btn"><a href="/">Home</a></div>
+		<!-- BEGIN nextLink -->
+    <div class="uc-btn _primary"><a href="{url}">Next entry →</a></div>
+		<!-- END nextLink -->
+
+  </div>
+  <!-- END_MODULE Entry_Body -->
+
+  <!--#include file="/include/footer.html" -->
+  
+</body>
+</html>

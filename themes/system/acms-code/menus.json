@@ -1,0 +1,295 @@
+{
+  "title": "<!--T-->メニュー<!--/T-->",
+  "enTitle": "Menu",
+  "items": [
+    <!-- BEGIN_MODULE Admin_Menu --><!-- BEGIN dashboard -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ダッシュボード<!--/T-->",
+      "subtitle": "dashboard",
+      "url": "{url}"
+    },<!-- END dashboard --><!-- BEGIN update -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->更新<!--/T-->",
+      "subtitle": "update",
+      "url": "{url}"
+    },<!-- END update --><!-- BEGIN entry#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリー一覧<!--/T-->",
+      "subtitle": "entry",
+      "url": "{url}"
+    },<!-- END entry#index --><!-- BEGIN entry#trash -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ゴミ箱<!--/T-->",
+      "subtitle": "trash",
+      "url": "{url}"
+    },<!-- END entry#trash --><!-- BEGIN category#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カテゴリー一覧<!--/T-->",
+      "subtitle": "category",
+      "url": "{url}"
+    },<!-- END category#index --><!-- BEGIN tag -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->タグ一覧<!--/T-->",
+      "subtitle": "tag",
+      "url": "{url}"
+    },<!-- END tag --><!-- BEGIN approval#notification -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->承認通知<!--/T-->",
+      "subtitle": "approval notification",
+      "url": "{url}"
+    },<!-- END approval#notification --><!-- BEGIN blog#edit -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ブログ<!--/T-->",
+      "subtitle": "blog",
+      "url": "{url}"
+    },<!-- END blog#edit --><!-- BEGIN user#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ユーザー一覧<!--/T-->",
+      "subtitle": "user",
+      "url": "{url}"
+    },<!-- END user#index --><!-- BEGIN form#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->フォーム一覧<!--/T-->",
+      "subtitle": "form",
+      "url": "{url}"
+    },<!-- END form#index --><!-- BEGIN comment -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->コメント<!--/T-->",
+      "subtitle": "comment",
+      "url": "{url}"
+    },<!-- END comment --><!-- BEGIN media#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->メディア<!--/T-->",
+      "subtitle": "media",
+      "url": "{url}"
+    },<!-- END media#index --><!-- BEGIN role#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ロール<!--/T-->",
+      "subtitle": "role",
+      "url": "{url}"
+    },<!-- END role#index --><!-- BEGIN usergroup#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ユーザーグループ<!--/T-->",
+      "subtitle": "usergroup",
+      "url": "{url}"
+    },<!-- END usergroup#index --><!-- BEGIN workflow#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ワークフロー<!--/T-->",
+      "subtitle": "workflow",
+      "url": "{url}"
+    },<!-- END workflow#index --><!-- BEGIN approval#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->承認履歴一覧<!--/T-->",
+      "subtitle": "approval",
+      "url": "{url}"
+    },<!-- END approval#index --><!-- BEGIN schedule#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->スケジュール<!--/T-->",
+      "subtitle": "schedule",
+      "url": "{url}"
+    },<!-- END schedule#index --><!-- BEGIN shop#menu -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ショップ<!--/T-->",
+      "subtitle": "shop",
+      "url": "{url}"
+    },<!-- END shop#menu --><!-- BEGIN cart#menu -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カート<!--/T-->",
+      "subtitle": "cart",
+      "url": "{url}"
+    },<!-- END cart#menu --><!-- BEGIN config#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->コンフィグ<!--/T-->",
+      "subtitle": "config",
+      "url": "{url}"
+    },<!-- END config#index --><!-- BEGIN rule#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ルール<!--/T-->",
+      "subtitle": "rule",
+      "url": "{url}"
+    },<!-- END rule#index --><!-- BEGIN module#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->モジュールID<!--/T-->",
+      "subtitle": "module",
+      "url": "{url}"
+    },<!-- END module#index --><!-- BEGIN moduleDefault#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->モジュール<!--/T-->",
+      "subtitle": "module default",
+      "url": "{url}"
+    },<!-- END moduleDefault#index --><!-- BEGIN checklist -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->チェックリスト<!--/T-->",
+      "subtitle": "checklist",
+      "url": "{url}"
+    },<!-- END checklist --><!-- BEGIN shortcut#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ショートカット<!--/T-->",
+      "subtitle": "shortcut",
+      "url": "{url}"
+    },<!-- END shortcut#index --><!-- BEGIN alias#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エイリアス<!--/T-->",
+      "subtitle": "alias",
+      "url": "{url}"
+    },<!-- END alias#index --><!-- BEGIN publish#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->テンプレート書出し<!--/T-->",
+      "subtitle": "publish",
+      "url": "{url}"
+    },<!-- END publish#index --><!-- BEGIN fix#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->データ修正<!--/T-->",
+      "subtitle": "fix",
+      "url": "{url}"
+    },<!-- END fix#index --><!-- BEGIN backup#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->バックアップ<!--/T-->",
+      "subtitle": "backup",
+      "url": "{url}"
+    },<!-- END backup#index --><!-- BEGIN import#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->インポート<!--/T-->",
+      "subtitle": "import",
+      "url": "{url}"
+    },<!-- END import#index --><!-- BEGIN static_export#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->静的書き出し<!--/T-->",
+      "subtitle": "static_export",
+      "url": "{url}"
+    },<!-- END static_export#index --><!-- BEGIN app#index -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->拡張アプリ<!--/T-->",
+      "subtitle": "app",
+      "url": "{url}"
+    },<!-- END app#index -->
+    <!-- END_MODULE Admin_Menu -->
+    <!-- BEGIN_MODULE Admin_Shortcut_List --><!-- BEGIN shortcut:loop -->
+    {
+      "bid": "%{BID}",
+      "title": "{name}",
+      "subtitle": "{admin}",
+      "url": "{url}"
+    },
+    <!-- END shortcut:loop --><!-- END_MODULE Admin_Shortcut_List -->
+    {
+      "bid": "%{BID}",
+      "title": "",
+      "subtitle": "",
+      "url": "dummy"
+    }
+    <!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+    ,
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->機能設定<!--/T-->",
+      "subtitle": "config_function",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_function/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->出力設定<!--/T-->",
+      "subtitle": "config_output",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_output/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->プロパティ設定<!--/T-->",
+      "subtitle": "config_property",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_property/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->メール設定<!--/T-->",
+      "subtitle": "config_mail",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_mail/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->アクセス設定<!--/T-->",
+      "subtitle": "config_access",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_access/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->テーマ設定<!--/T-->",
+      "subtitle": "config_theme",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_theme/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->外部認証設定<!--/T-->",
+      "subtitle": "config_authorize",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_authorize/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->編集設定<!--/T-->",
+      "subtitle": "config_edit",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_edit/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ユニット設定<!--/T-->",
+      "subtitle": "config_unit",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/config_unit/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->スタイルガイド（管理画面）<!--/T-->",
+      "subtitle": "styleguide_acms-admin",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/styleguide_acms-admin/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->スタイルガイド（CSSフレームワーク）<!--/T-->",
+      "subtitle": "styleguide_acms",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/styleguide_acms/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カスタムフィールドメーカー<!--/T-->",
+      "subtitle": "customfield_maker",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/customfield_maker/"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->国際化<!--/T-->",
+      "subtitle": "i18n_index",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/admin/i18n_index/"
+    }
+    <!-- END_MODULE Touch_SessionWithAdministration -->
+  ]
+}

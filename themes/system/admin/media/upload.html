@@ -1,0 +1,111 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->メディア管理<!--/T--></h1>
+	</div>
+</header>
+
+<form method="post" action="">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="media_index" />
+	<input type="submit" class="acms-admin-btn-admin" name="ACMS_POST_2GET" value="<!--T-->メディア一覧<!--/T-->" />
+</form>
+
+<div id="js-media_multiple">
+	<div id="js-media_drop_area" class="acms-admin-media">
+		<div class="acms-admin-drop-inside">
+			<i class="acms-admin-icon acms-admin-icon-media"></i>
+			<p class="acms-admin-media-dropText"><!--T-->ここにファイルをドロップ<!--/T--></p>
+			<p><!--T-->または<!--/T--></p>
+			<p><input type="file" id="js-media_files" class="btn btn-default" name="files[]" multiple /></p>
+			<input type="hidden" name="mediaFiles" multiple />
+		</div>
+	</div>
+
+	<div id="js-media_disp_area">
+
+	<div class="acms-admin-form" style="margin-bottom: 20px;">
+		<!-- BEGIN_MODULE Admin_Media_Tag -->
+		<select class="acms-admin-select-large js-select2" name="image_size"><!-- BEGIN size:loop -->
+			<option value="{value}">{label}</option><!-- END size:loop -->
+		</select>
+
+		<select class="acms-admin-select-large js-select2" name="media_tag_select">
+			<option value=""><!--T-->ラベルを選択<!--/T--></option><!-- BEGIN tag:loop -->
+			<option value="{name}">{name}<!--  ({amount}件) --></option><!-- END tag:loop -->
+		</select>
+		<input type="text" name="media_tag_text" value="" placeholder="<!--T-->新しいラベル<!--/T-->" style="width:200px;" class="acms-admin-form" />
+
+		<!-- END_MODULE Admin_Media_Tag -->
+
+		<button id="js-media_upload" class="acms-admin-btn-admin acms-admin-btn-admin-primary"><span><!--T-->アップロード<!--/T--></span></button>
+		<!-- BEGIN_MODULE Admin_Dashboard_PhpStatus -->
+		<!-- <p class="acms-admin-float-right acms-admin-float-none-sp">POSTデータ上限サイズ{post_max_size}</p> -->
+		<!-- END_MODULE Admin_Dashboard_PhpStatus -->
+	</div>
+	<!-- END_MODULE Admin_Config -->
+
+	<table role="presentation" class="acms-admin-table-admin">
+		<tbody class="files">
+		<script id="js-media_tmpl" type="text/template">
+		<% data.size_kb = data.size/1000; %>
+		<tr>
+			<td>
+				<div class="preview">
+					<% if ( data.filetype == 'image' ) { %>
+						<img src="<%= data.preview %>" height="60" />
+					<% } else if ( data.filetype == 'file' ) { %>
+						<span class="acms-admin-icon acms-admin-icon-entry" style="font-size:40px;"></span>
+					<% } %>
+				</div>
+			</td>
+			<td>
+				<p class="name"><%- data.name %></p>
+			</td>
+			<td>
+				<p class="size"><%- data.size_kb %> KB</p>
+				<div class="acms-admin-progress acms-admin-progress-striped acms-admin-active" style="display:none;">
+					<div class="acms-admin-progress-bar acms-admin-progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+						<span class="acms-admin-progress-mess"></span>
+					</div>
+				</div>
+			</td>
+			<td>
+				<button class="js-media_cancel_btn acms-admin-btn-admin acms-admin-btn-admin">
+					<span><!--T-->キャンセル<!--/T--></span>
+				</button>
+			</td>
+		</tr>
+		</script>
+		</tbody>
+	</table>
+	</div>
+</div>
+
+<div id="js-media_browser">
+	<!-- BEGIN_MODULE Admin_Config -->
+	<form action="" method="post" class="acms-admin-form" enctype="multipart/form-data">
+		<div class="acms-admin-form-group" style="margin-top: 20px;">
+			<input type="file" class="btn btn-default" name="file" />
+		</div>
+
+		<div class="acms-admin-form-group">
+			<select name="size" class="js-select2"><!-- BEGIN column_image_size_group:loop -->
+				<option value="{column_image_size}">{column_image_size_label}</option><!-- END column_image_size_group:loop -->
+			</select>
+
+			<!-- BEGIN_MODULE Admin_Media_Tag -->
+			<select name="tags" class="js-select2">
+				<option value=""><!--T-->ラベルを選択<!--/T--></option><!-- BEGIN tag:loop -->
+				<option value="{name}">{name}<!--  ({amount}件) --></option><!-- END tag:loop -->
+			</select><!-- END_MODULE Admin_Media_Tag -->
+
+			<input type="text" name="tags" value="" placeholder="<!--T-->新しいラベル<!--/T-->" />
+
+			<input type="submit" class="acms-admin-btn-admin acms-admin-btn-admin-primary" name="ACMS_POST_Media_Upload" value="<!--T-->アップロード<!--/T-->" />
+		</div>
+
+	</form><!-- END_MODULE Admin_Config -->
+</div>

@@ -1,0 +1,10 @@
+<!-- BEGIN adminCommentAction:veil -->
+<form action="{target}" method="post">
+	<input type="submit" name="ACMS_POST_Comment_Edit" value="<!--T-->編集<!--/T-->" class="acms-admin-btn-flat" />
+	<!-- BEGIN replyLink:veil -->
+	<a href="{replyUrl}#comment" class="acms-admin-btn-flat">返信</a>
+	<!-- END replyLink:veil --><!-- BEGIN status#open -->
+	<input type="submit" name="ACMS_POST_Comment_Status_Open" value="<!--T-->公開<!--/T-->" class="acms-admin-btn-flat" /><!-- END status#open --><!-- BEGIN status#close -->
+	<input type="submit" name="ACMS_POST_Comment_Status_Close" value="<!--T-->非公開<!--/T-->" class="acms-admin-btn-flat" /><!-- END status#close --><!-- BEGIN status#awaiting -->
+	<input type="submit" name="ACMS_POST_Comment_Status_Awaiting" value="<!--T-->承認待ち<!--/T-->" class="acms-admin-btn-flat" /><!-- END status#awaiting -->
+</form><!-- END adminCommentAction:veil -->

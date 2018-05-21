@@ -1,0 +1,10 @@
+{<!-- BEGIN_MODULE Response -->
+    "isValid"       : <!-- BEGIN response:isValid#true -->1,<!-- END response:isValid#true --><!-- BEGIN response:isValid#false -->0,<!-- END response:isValid#false -->
+    "nameRequired"  : "{name:validator#required}",
+    "codeRequired"  : "{code:validator#required}",
+    "codeDouble"    : "{code:validator#double}",
+    "codeReserved"  : "{code:validator#reserved}",
+    "scopeRequired" : "{scope:validator#required}",<!-- BEGIN id -->
+    "id"            : {id},<!-- END id -->
+    "name"          : "{name}"<!-- END_MODULE Response -->
+}

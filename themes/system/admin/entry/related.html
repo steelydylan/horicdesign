@@ -1,0 +1,69 @@
+<!-- BEGIN_MODULE Touch_RelatedEntryFunction -->
+<style>
+	.ui-autocomplete-loading {
+		background: white url("%{ROOT_DIR}themes/system/images/ajax-loader.gif") right center no-repeat;
+		background-size: 16px 16px;
+	}
+</style>
+
+<script type="text/template" class="js-related_entry_autocomplete_tpl">
+	<tr class="sortable-item js-related_entry_item">
+		<td class="item-handle acms-admin-table-nowrap"><i class="acms-admin-icon-sort"></i></td>
+		<td>
+			<input type="hidden" name="related[]" value="<%- id %>">
+			<%- title %>
+			<% if ( categoryName.length > 0 ) { %>
+			/ <span class="acms-admin-icon-category acms-admin-icon-mute acms-admin-margin-right-mini"></span><%-
+			categoryName %>
+			<% } %>
+			<div class="entryFormRelatedActions">
+				<input type="button" class="js-related_entry_remove acms-admin-btn-admin acms-admin-btn-admin-danger"
+				   value="<!--T-->削除<!--/T-->"/>
+				<a href="<%- url %>" class="acms-admin-btn-admin" target="_blank"><!--T-->確認<!--/T--></a>
+			</div>
+		</td>
+	</tr>
+</script>
+<!-- END_MODULE Touch_RelatedEntryFunction -->
+
+<!-- BEGIN_MODULE Touch_RelatedEntryFunction -->
+<div class="acms-admin-accordion">
+	<h3 class="acms-admin-accordion-title">
+		<a href="#relatedEntry" class="js-fader acms-admin-accordion-title-link"><!--T-->関連エントリー設定<!--/T-->
+			<span class="acms-admin-icon-arrow-small-down acms-admin-margin-left-mini"></span>
+		</a>
+	</h3>
+	<div id="relatedEntry" class="acms-admin-accordion-inner<!-- BEGIN_IF [<!-- BEGIN related:loop -->1<!-- END related:loop -->/nem/] --> js-ready-fader<!-- END_IF -->">
+		<table class="entryFormTable acms-admin-table-entry">
+			<tr>
+				<th><label for="entry-related"><!--T-->関連エントリー<!--/T--></label></th>
+				<td><input id="entry-related"
+						   class="js-related_entry_autocomplete_word acms-admin-form-width-medium" type="text"
+						   placeholder="<!--T-->検索ワード<!--/T-->" value=""></td>
+			</tr>
+		</table>
+		<table class="js-fieldgroup-sortable adminTable acms-admin-table-sort acms-admin-margin-bottom-small">
+			<tbody class="js-related_entry_index"><!-- BEGIN related:loop -->
+			<tr class="js-related_entry_item sortable-item">
+				<td class="acms-admin-table-nowrap item-handle"><i class="acms-admin-icon-sort"
+																   aria-hidden="true"></i></td>
+				<td>
+					<input type="hidden" name="related[]" value="{related.eid}">
+					{related.title}<!-- BEGIN_IF [{related.categoryName}/nem] --> / <span
+					class="acms-admin-icon-category acms-admin-icon-mute acms-admin-margin-right-mini"></span>{related.categoryName}
+					<!-- END_IF -->
+					<div class="entryFormRelatedActions">
+						<input type="button"
+							class="js-related_entry_remove acms-admin-btn-admin acms-admin-btn-admin-danger"
+							value="<!--T-->削除<!--/T-->"/>
+						<a href="{related.url}" class="acms-admin-btn-admin" target="_blank"><!--T-->確認<!--/T--></a>
+					</div>
+				</td>
+			</tr><!-- END related:loop -->
+			</tbody>
+			<tfoot></tfoot>
+		</table>
+		<input type="hidden" name="entry[]" value="related"/>
+	</div>
+</div>
+<!-- END_MODULE Touch_RelatedEntryFunction -->

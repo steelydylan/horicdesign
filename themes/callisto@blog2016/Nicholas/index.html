@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name=”robots” content=”noindex” />
+<meta charset="UTF-8">
+<!--#include file="/include/meta.html" -->
+<!--#include file="/include/link.html" -->
+<style>
+@font-face{
+	font-family:Blank;
+	src:url(%{HTTP_THEMES_DIR}callisto@blog2015/AdobeBlank.otf);
+}
+.hideVisually{
+	font-family:Blank;
+}
+.blogHeaderNaviBtn{
+	border:none;
+}
+</style>
+<!--#include file="/include/js.html" -->
+</head>
+<body>
+<!--#include file="/include/social/sns_script.html" -->
+<a class="blogSpBg" href="#"></a>
+<!-- メインビジュアル -->
+<!--#include file="/include/mainVisual.html" -->
+<!--#include file="/include/globalNavigation.html" -->
+<!-- オフキャンバス開閉ボタン -->
+<button class="blogHeaderNaviBtn js-offcanvas-btn">
+	<span class="blogHeaderNaviBtnLine"></span>
+	<span class="blogHeaderNaviBtnLine"></span>
+	<span class="blogHeaderNaviBtnLine"></span>
+	<span class="hideVisually">メニュー（オフキャンバスメニューを開閉します）</span>
+</button>
+
+<div class="acms-container blogContainer">
+	<main role="main acms-form">
+		<p>
+		<button class="js-jp acms-btn">Japanese</button>
+		<button class="js-en acms-btn">English</button>
+		<label class="acms-form-checkbox"><input type="checkbox" class="js-include"><i class="acms-ico-checkbox"></i>include tag</label>
+		</p>
+		
+		<textarea class="js-text-area" placeholder="Enter source code here" style="width:100%;" rows="5"></textarea>
+		<textarea class="js-result-area" placeholder="The result will be written here" style="width:100%;" rows="5"></textarea>
+	</main>
+</div>
+<!-- フッター -->
+<!--#include file="/include/footer.html" -->
+<script>
+$(".js-jp").click(function(e){
+	e.preventDefault();
+	var val = $(".js-text-area").val();
+	var ret = "";
+	val.replace(/<j>(([\\n\\r\\t]|.)*?)<\/j>/g,function(a,text){
+		if($(".js-include").prop('checked')){
+			ret += a+"\n";
+		}else{
+			ret += text+"\n";	
+		}
+	});
+	$(".js-result-area").val(ret);
+});
+$(".js-en").click(function(e){
+	e.preventDefault();
+	var val = $(".js-text-area").val();
+	var ret = "";
+	val.replace(/<e type="check" ver="1">(([\\n\\r\\t]|.)*?)<\/e>/g,function(a,text){
+		if($(".js-include").prop('checked')){
+			ret += a+"\n";
+		}else{
+			ret += text+"\n";	
+		}	
+	});
+	$(".js-result-area").val(ret);
+});
+</script>
+</body>
+</html>

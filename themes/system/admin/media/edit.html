@@ -1,0 +1,163 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><span class="js-dialog-title"><!--T-->メディア編集<!--/T--></span></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Media_Edit -->
+
+<!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->編集を保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->メディアを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN media:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END media:validator#operable -->
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form js-dialog-body">
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/media_index/" class="acms-admin-btn-admin acms-admin-inline-btn"><!--T-->一覧<!--/T--></a>
+
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_Media_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_Role_Available -->
+			<!-- BEGIN_MODULE Touch_Role_CategoryEdit -->
+			<input type="submit" name="ACMS_POST_Media_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END_MODULE Touch_Role_CategoryEdit -->
+			<!-- END_MODULE Touch_Role_Available -->
+
+			<!-- END submit#update -->
+		</div>
+	</div>
+
+	<div>
+		<h3 class="acms-admin-admin-title2 "><!--T-->基本設定<!--/T--></h3>
+		<table class="adminTable acms-admin-table-admin-edit"><!-- BEGIN_IF [{type}/eq/image] -->
+			<tr>
+				<th><!--T-->サムネイル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->画像のサムネイルです。<!--/T-->"></i></th>
+				<td>
+					<img src="%{MEDIA_ARCHIVES_DIR}{path}" style="max-width:50%;">
+				</td>
+			</tr><!-- END_IF -->
+			<tr>
+				<th><!--T-->編集<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->画像またはファイルを変更します。<!--/T-->"></i></th>
+				<td>
+					<div class="acms-admin-margin-bottom-mini">
+						<input type="file" name="media_file" size="20"/>
+						<input type="hidden" name="extension" value="{extension}" />
+						<input type="hidden" name="media_old" value="{path}" />
+						<input type="hidden" name="type" value="{type}" />
+
+						<input type="hidden" name="media[]" value="extension" />
+						<input type="hidden" name="media[]" value="media_old" />
+						<input type="hidden" name="media[]" value="type" />
+					</div>
+
+					<!-- BEGIN_IF [{type}/eq/image] -->
+					<div class="acms-admin-form">
+						<select class="acms-admin-select-large js-select2" name="file_size"><!-- BEGIN size:loop -->
+							<option value="{value}"{selected}>{label}</option><!-- END size:loop -->
+						</select>
+						<input type="hidden" name="media[]" value="file_size" />
+
+						<select name="image_edit" class="acms-admin-select-block js-select2">
+							<option value=""><!--T-->編集しない<!--/T--></option>
+							<option value="rotate270"><!--T-->時計回りで90度回転<!--/T--></option>
+							<option value="rotate90"><!--T-->反時計回りで90度回転<!--/T--></option>
+						</select>
+						<input type="hidden" name="media[]" value="image_edit" />
+					</div><!-- ELSE_IF [{type}/eq/file] -->
+
+					<input type="hidden" name="file_size" value="{file_size}" />
+					<input type="hidden" name="media[]" value="file_size" />
+					<!-- END_IF -->
+				</td>
+			</tr><!-- BEGIN_IF [{type}/eq/file] -->
+			<tr>
+				<th><!--T-->サムネイル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->ファイルのサムネイル画像です。<!--/T-->"></th>
+				<td>
+					<!-- BEGIN_IF [{thumbnail@path}/nem/] -->
+					<img src="%{ARCHIVES_DIR}{thumbnail@path}" />
+					<input type="hidden" name="thumbnail@old" value="{thumbnail@path}" /><br />
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="thumbnail@edit" value="delete" id="input-checkbox-thumbnail" />
+						<label for="input-checkbox-thumbnail">
+							<i class="acms-admin-ico-checkbox"></i><!--T-->削除<!--/T-->
+						</label>
+					</div><!-- ELSE -->
+					<img src="%{ROOT_DIR}{icon}" /><br />
+					<!-- END_IF -->
+					<input type="file" name="thumbnail" size="20" />
+					<input type="hidden" name="media[]" value="thumbnail" />
+					<input type="hidden" name="thumbnail@size" value="160" />
+					<input type="hidden" name="thumbnail:extension" value="image" />
+				</td>
+			</tr><!-- END_IF -->
+			<tr>
+				<th><!--T-->ラベル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->管理用のラベルです。<!--/T-->"></i></th>
+				<td>
+					<input class="acms-admin-form-width-full" type="text" name="media_label" value="{media_label}">
+					<input type="hidden" name="media[]" value="media_label" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->パーマリンク<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->メディアへのリンクです。<!--/T-->"></i></th>
+				<td>
+					<input class="acms-admin-form-block acms-admin-form-width-full" type="text" value="%{HTTP_MEDIA_ARCHIVES_DIR}{path}" readonly="readonly" />
+
+					<input type="hidden" name="path" value="{path}" />
+					<input type="hidden" name="media[]" value="path" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->アップロード日時<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->アップロード日時<!--/T-->"></i></th>
+				<td>
+					{upload_date}
+					<input type="hidden" name="upload_date" value="{upload_date}" />
+					<input type="hidden" name="media[]" value="upload_date" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->ファイル名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->メディアのファイル名<!--/T-->"></i></th>
+				<td>
+					{file_name}
+					<input type="hidden" name="file_name" value="{file_name}" />
+					<input type="hidden" name="media[]" value="file_name" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->キャプション<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->キャプション<!--/T-->"></i></th>
+				<td>
+					<input class="acms-admin-form-width-full" type="text" name="field_1" value="{field_1}">
+					<input type="hidden" name="media[]" value="field_1" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->リンク<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->リンクを設定できます。<!--/T-->"></i></th>
+				<td>
+					<input class="acms-admin-form-width-full" type="text" name="field_2" value="{field_2}">
+					<input type="hidden" name="media[]" value="field_2" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->代替テキスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->代替テキスト<!--/T-->"></i></th>
+				<td>
+					<input class="acms-admin-form-width-full" type="text" name="field_3" value="{field_3}">
+					<input type="hidden" name="media[]" value="field_3" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->テキスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->詳細な情報を入力できます。<!--/T-->"></i></th>
+				<td>
+					<textarea name="field_4" rows="5" style="width:80%;">{field_4}</textarea>
+					<input type="hidden" name="media[]" value="field_4" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
+<!-- END_MODULE Admin_Media_Edit -->

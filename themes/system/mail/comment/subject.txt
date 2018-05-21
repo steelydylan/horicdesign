@@ -1,0 +1,1 @@
+[comment] %{ENTRY_TITLE} | %{BLOG_NAME}

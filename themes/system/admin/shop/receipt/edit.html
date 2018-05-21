@@ -1,0 +1,357 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">受注詳細</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Shop_Receipt_Edit -->
+
+<!-- BEGIN step -->
+<!-- BEGIN headline --><!-- END headline -->
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-info">受注を作成しました</p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-info">受注を保存しました</p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-danger">受注を削除しました</p><!-- END msg#delete -->
+
+
+現在のステータス<strong>『{status}』</strong>を変更
+<!-- BEGIN_MODULE Admin_Shop_Receipt_Status --><!-- BEGIN status:loop -->
+<form action="" method="post" class="adminBtn">
+	<input type="hidden" name="checks[]" value="\{code\}" />
+	<input type="hidden" name="status" value="{status}" />
+	<input type="submit" name="ACMS_POST_Shop_Receipt_Status" value="{status}" class="btn" />
+</form><!-- END status:loop -->
+<!-- END_MODULE Admin_Shop_Receipt_Status -->
+
+<h2 class="acms-admin-admin-title2">受注金額</h2>
+<table class="adminTable acms-admin-table-admin acms-admin-table-heading acms-admin-table-hover">
+<tr>
+	<th>配送手数料</th>
+	<th>その他手数料</th>
+	<th>商品の合計金額</th>
+	<th>支払い手数料</th>
+	<th><strong>注文の合計金額</strong></th>
+</tr>
+<tr>
+	<td>&yen;{charge_deliver}[number_format]</td>
+	<td><!-- BEGIN charge_others:veil -->&yen;{charge_others}[number_format]<!-- END charge_others:veil -->
+	<!-- BEGIN charge_others:null -->なし<!-- END charge_others:null --></td>
+	<td>&yen;{subtotal}[number_format]</td>
+	<td>&yen;{charge_payment}[number_format]</td>
+	<td><strong>&yen;{total}[number_format]</strong></td>
+</tr>
+</table>
+
+<!-- BEGIN_MODULE Admin_Shop_Receipt_Detail -->
+<h2 class="acms-admin-admin-title2">受注商品</h2>
+<table class="adminTable acms-admin-table-admin acms-admin-table-heading acms-admin-table-hover">
+<tr>
+	<th>商品ID</th>
+	<th>商品名</th>
+	<th>単価</th>
+	<th>数量</th>
+</tr><!-- BEGIN item:loop -->
+<tr>
+	<td>{item_id}</td>
+	<td><a href="{url}">{name}</a></td>
+	<td>&yen;{price}[number_format]</td>
+	<td>{qty}</td>
+</tr><!-- END item:loop -->
+</table>
+<!-- END_MODULE Admin_Shop_Receipt_Detail -->
+
+<h2 class="acms-admin-admin-title2">受注情報</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>受注番号</th>
+		<td>{code}</td>
+	</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td>{payment}</td>
+	</tr>
+	<tr>
+		<th>配送方法</th>
+		<td>{deliver}</td>
+	</tr><!-- BEGIN request_date:veil -->
+	<tr>
+		<th>配送希望日</th>
+		<td>{request_date}</td>
+	</tr><!-- END request_date:veil --><!-- BEGIN request_time:veil -->
+	<tr>
+		<th>配送希望時間帯</th>
+		<td>{request_time}</td>
+	</tr><!-- END request_time:veil --><!-- BEGIN request_others:veil -->
+	<tr>
+		<th>その他オプション</th>
+		<td>{request_others}</td>
+	</tr><!-- END request_others:veil --><!-- BEGIN note:veil -->
+	<tr>
+		<th>備考欄</th>
+		<td>{note}[nl2br]</td>
+	</tr><!-- END note:veil -->
+</table>
+
+<h2 class="acms-admin-admin-title2">配送先</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>名前 ( ふりがな )</th>
+		<td>{name} ( {ruby} )</td>
+	</tr><!-- BEGIN country:veil -->
+	<tr>
+		<th>国</th>
+		<td>{country}</td>
+	</tr><!-- END country:veil -->
+	<tr>
+		<th>郵便番号</th>
+		<td>{zip}</td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td>{prefecture}　{city}　{field_1}　{field_2}</td>
+	</tr>
+	<tr>
+		<th>電話番号</th>
+		<td>{telephone}</td>
+	</tr>
+</table>
+
+<!-- BEGIN primary:veil -->
+<h2 class="acms-admin-admin-title2">注文者</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>名前 ( ふりがな )</th>
+		<td>{address_name} ( {address_ruby} )</td>
+	</tr>
+	<tr>
+		<th>郵便番号</th>
+		<td>{address_zip}</td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td>{address_prefecture}　{address_city}　{address_field_1}　{address_field_2}</td>
+	</tr>
+	<tr>
+		<th>電話番号</th>
+		<td>{address_telephone}</td>
+	</tr>
+	<!-- BEGIN user_id:veil -->
+	<tr>
+		<th>詳細情報</th>
+		<td>
+		<form action="" method="post" class="adminBtn">
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="hidden" name="uid" value="{user_id}" />
+			<input type="hidden" name="admin" value="shop_customer_edit" />
+			<input type="submit" name="ACMS_POST_2GET" value="お客様情報を表示" class="btn" />
+		</form>
+		</td>
+	</tr>
+<!-- END user_id:veil -->
+</table>
+<!-- END primary:veil -->
+
+<!-- BEGIN takeover -->
+<form action="%{QOL}edit=update&step=reapply" method="post" class="adminBtn">
+	<input type="submit" name="ACMS_POST_Form_Chain" value="情報を変更" class="btn" />
+	<input type="hidden" name="takeover" value="{takeover}" />
+</form>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<form action="" method="post" class="adminBtn">
+	<input type="hidden" name="edit" value="delete" />
+	<input type="hidden" name="step" value="" />
+	<input type="submit" name="ACMS_POST_Shop_Receipt_Delete" value="受注を削除" onclick="return confirm('この操作は取り消せません。\nよろしいですか？');" class="btn" />
+	<input type="hidden" name="takeover" value="{takeover}" />
+</form><!-- END_MODULE Touch_SessionWithAdministration -->
+<!-- END takeover -->
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<form action="" method="post" class="adminBtn">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="shop_receipt_index" />
+	<input type="submit" name="ACMS_POST_2GET" value="一覧に戻る" class="btn" />
+</form><!-- END_MODULE Touch_SessionWithAdministration -->
+<!-- END step -->
+<!-- BEGIN step#reapply -->
+
+<!-- BEGIN headline#insert -->
+<!-- END headline#insert --><!-- BEGIN headline#update -->
+<!-- END headline#update -->
+
+<p class="transaction-notice-{insert:validator} acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>カテゴリーを作成できませんでした。</p>
+<p class="transaction-notice-{update:validator} acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>カテゴリーを保存できませんでした。</p>
+
+<!-- BEGIN footer#insert -->
+<form action="" method="post">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="shop_receipt_index" />
+	<input type="submit" name="ACMS_POST_2GET" value="一覧" class="acms-admin-btn-admin" />
+</form><!-- END footer#insert -->
+
+<!-- BEGIN footer#update -->
+<form action="%{QOL}edit&step" method="post">
+	<input type="submit" name="ACMS_POST_Form_Chain" value="戻る" class="acms-admin-btn-admin" />
+</form><!-- END footer#update -->
+
+<form action="" method="post" enctype="multipart/form-data">
+
+<!-- BEGIN submit#insert -->
+<input type="submit" name="ACMS_POST_Shop_Receipt_Insert" value="作成" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" /><!-- END submit#insert --><!-- BEGIN submit#update -->
+<input type="submit" name="ACMS_POST_Shop_Receipt_Update" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" /><!-- END submit#update -->
+
+<!-- input要素を編集可能な属性に変更することで編集可能です -->
+<input type="hidden" name="charge_payment" value="{charge_payment}" />
+<input type="hidden" name="receipt[]" value="charge_payment" />
+<input type="hidden" name="charge_deliver" value="{charge_deliver}" />
+<input type="hidden" name="receipt[]" value="charge_deliver" />
+<input type="hidden" name="charge_others" value="{charge_others}" />
+<input type="hidden" name="receipt[]" value="charge_others" />
+<input type="hidden" name="subtotal" value="{subtotal}" />
+<input type="hidden" name="receipt[]" value="subtotal" />
+<input type="hidden" name="total" value="{total}" />
+<input type="hidden" name="receipt[]" value="total" />
+
+<h2 class="acms-admin-admin-title2">受注金額</h2>
+<table class="adminTable acms-admin-table-admin acms-admin-table-heading acms-admin-table-hover">
+	<tr>
+		<th>支払い手数料</th>
+		<th>配送手数料</th>
+		<th>その他手数料</th>
+		<th>商品の合計金額</th>
+		<th><strong>注文の合計金額</strong></th>
+	</tr>
+	<tr>
+		<td>&yen;{charge_payment}[number_format]</td>
+		<td>&yen;{charge_deliver}[number_format]</td>
+		<td>&yen;{charge_others}[number_format]</td>
+		<td>&yen;{subtotal}[number_format]</td>
+		<td><strong>&yen;{total}[number_format]</strong></td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2">受注情報</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+<tr>
+	<th>支払い方法</th>
+	<td>
+	<input type="text" name="payment" value="{payment}" />
+	<input type="hidden" name="receipt[]" value="payment" />
+	<input type="hidden" name="payment:v#required" />
+	</td>
+</tr>
+<tr>
+	<th>配送方法</th>
+	<td>
+	<input type="text" name="deliver" value="{deliver}" />
+	<input type="hidden" name="receipt[]" value="deliver" />
+	<input type="hidden" name="deliver:v#required" />
+	</td>
+</tr>
+<tr>
+	<th>配送希望日</th>
+	<td>
+	<input type="text" name="request_date" value="{request_date}" />
+	<input type="hidden" name="receipt[]" value="request_date" />
+	</td>
+</tr>
+<tr>
+	<th>配送希望時間帯</th>
+	<td>
+	<input type="text" name="request_time" value="{request_time}" />
+	<input type="hidden" name="receipt[]" value="request_time" />
+	</td>
+</tr>
+<tr>
+	<th>その他オプション</th>
+	<td>
+	<input type="text" name="request_others" value="{request_others}" />
+	<input type="hidden" name="receipt[]" value="request_others" />
+	</td>
+</tr>
+<tr>
+	<th>備考欄</th>
+	<td>
+	<textarea name="note" rows="3" cols="50">{note}</textarea>
+	<input type="hidden" name="receipt[]" value="note" />
+	</td>
+</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2">配送先</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+<tr>
+	<th>お届け先のお名前</th>
+	<td>
+	<input type="text" name="name" value="{name}" />
+	<input type="hidden" name="address[]" value="name" />
+	</td>
+</tr>
+<tr>
+	<th>ふりがな</th>
+	<td>
+	<input type="text" name="ruby" value="{ruby}" />
+	<input type="hidden" name="address[]" value="ruby" />
+	</td>
+</tr><!-- BEGIN country:veil -->
+<tr>
+	<th>国</th>
+	<td>
+	<input type="text" name="country" value="{country}" />
+	<input type="hidden" name="address[]" value="country" />
+	</td>
+</tr><!-- END country:veil -->
+<tr>
+	<th>郵便番号</th>
+	<td>
+	<input type="text" name="zip" value="{zip}" />
+	<input type="hidden" name="address[]" value="zip" />
+	</td>
+</tr>
+<tr>
+	<th>県</th>
+	<td>
+	<input type="text" name="prefecture" value="{prefecture}" />
+	<input type="hidden" name="address[]" value="prefecture" />
+	</td>
+</tr>
+<tr>
+	<th>市</th>
+	<td>
+	<input type="text" name="city" value="{city}" />
+	<input type="hidden" name="address[]" value="city" />
+	</td>
+</tr>
+<tr>
+	<th>フィールド1(丁・番地・字など)</th>
+	<td>
+	<input type="text" name="field_1" value="{field_1}" />
+	<input type="hidden" name="address[]" value="field_1" />
+	</td>
+</tr><!-- BEGIN field_2:veil -->
+<tr>
+	<th>フィールド2(建物名・部屋名など)</th>
+	<td>
+	<input type="text" name="field_2" value="{field_2}" />
+	<input type="hidden" name="address[]" value="field_2" />
+	</td>
+</tr><!-- END field_2:veil -->
+<tr>
+	<th>お届け先の電話番号</th>
+	<td>
+	<input type="text" name="telephone" value="{telephone}" />
+	<input type="hidden" name="address[]" value="telephone" />
+	</td>
+</tr>
+</table>
+
+<input type="hidden" name="takeover" value="{primary:takeover}" />
+
+<input type="hidden" name="step" value="" />
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Shop_Receipt_Edit -->
+@include("/admin/tooltip/category.html")

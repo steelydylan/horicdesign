@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendar_Year</title>
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Calendar_Year</h1>
+	<fieldset class="veil">
+		<legend class="veil">prevLink:veil</legend>
+		<fieldset><legend>prevLink<span>前年のブロック</span></legend>
+			<var>url<span>前年のURL</span></var>
+			<var>pYear<span>前年</span></var>
+		</fieldset>
+	</fieldset>
+
+	<fieldset class="veil">
+		<legend class="veil">nextLink:veil</legend>
+		<fieldset><legend>nextLink<span>次年のブロック</span></legend>
+			<var>url<span>次年のURL</span></var>
+			<var>nYear<span>次年</span></var>
+		</fieldset>
+	</fieldset>
+
+	<fieldset class="loop"><legend class="loop">unit:loop<span>ユニットのループ</span></legend>
+		<fieldset class="loop"><legend class="loop">month:loop<span>月のループ</span></legend>
+			<var>month<span>月（1〜12）</span></var>
+			<var>monthDate<span>月（日付形式）</span></var>
+			<var>monthUrl<span>月のURLコンテキストリンク</span></var>
+
+			<fieldset class="loop"><legend class="loop">weekLabel:loop<span>曜日のループ</span></legend>
+				<var>w<span>曜日（数値）</span></var>
+				<var>label<span>曜日（ラベル）</span></var>
+			</fieldset>
+			<fieldset class="loop"><legend class="loop">week:loop<span>週のループ</span></legend>
+				<fieldset class="loop"><legend class="loop">day:loop<span>日のループ</span></legend>
+					<fieldset><legend>spacer<span>月初めのスペース領域</span></legend></fieldset>
+					<fieldset><legend>link<span>エントリーがある日</span></legend>
+						<var>w<span>曜日（数値）</span></var>
+						<var>url<span>日付のURLコンテキストリンク</span></var>
+						<var>day<span>日付</span></var>
+					</fieldset>
+					<fieldset><legend>none<span>エントリーがない日</span></legend>
+						<var>w<span>曜日（数値）</span></var>
+						<var>day<span>日付</span></var>
+					</fieldset>
+				</fieldset>
+			</fieldset>
+		</fieldset>
+	</fieldset>
+</body>
+</html>

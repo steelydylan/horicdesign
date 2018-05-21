@@ -1,0 +1,11 @@
+<!-- BEGIN_MODULE Admin_Entry_Autocomplete -->[<!-- BEGIN entry:loop -->
+\{
+	"label": "<!-- BEGIN categoryField -->（{fieldCategoryName}）<!-- END categoryField -->{title}",
+	"value": "<!-- BEGIN categoryField -->（{fieldCategoryName}）<!-- END categoryField -->{title}",
+	"title": "{title}",
+	"id": {eid},
+	"url": "{url}",
+	"datetime": "{date#Y}/{date#m}/{date#d} {date#H}:{date#i}",
+	"categoryName": "<!-- BEGIN categoryField -->{fieldCategoryName}<!-- END categoryField -->"
+\}<!-- BEGIN glue -->, <!-- END glue --><!-- END entry:loop -->
+]<!-- END_MODULE Admin_Entry_Autocomplete -->

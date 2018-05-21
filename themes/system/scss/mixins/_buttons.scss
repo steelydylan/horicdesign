@@ -1,0 +1,109 @@
+@mixin button-shape(
+	$border-radius: 3px,
+	$padding: $acms-btn-padding,
+	$font-size: $acms-btn-font-size,
+	$font-size-desktop: $acms-btn-font-size-desktop
+) {
+    line-height: 1;
+    display: inline-block;
+    padding: $padding;
+    transition: background-color .2s, border-color .2s;
+    border-radius: $border-radius;
+    text-align: center;
+    text-decoration: none;
+    @include font-size($font-size);
+	vertical-align: middle;
+    @media screen and (min-width: $breakpoint-md-min){
+        @include font-size($font-size-desktop);
+    }
+}
+
+@mixin button-decoration(
+	$bg-color: #F7F7F7,
+	$active-bg-color: $bg-color,
+	$hover-bg-color: $bg-color,
+	$focus-bg-color: $bg-color,
+	$border-radius: 3px,
+	$border: 1px solid $acms-btn-border-color,
+	$border-color: $acms-btn-border-color,
+	$hover-border-color: $acms-btn-hover-border-color,
+	$active-border-color: $acms-btn-active-border-color,
+	$focus-border-color: $acms-btn-focus-border-color,
+	$text-color: $acms-btn-text-default-color,
+	$active-text-color: $text-color,
+	$hover-text-color: $text-color,
+	$focus-text-color: $text-color,
+	$box-shadow: null,
+	$active-box-shadow: $box-shadow,
+	$hover-box-shadow: $box-shadow,
+	$focus-box-shadow: $acms-btn-focus-box-shadow
+) {
+	border: $border;
+    background-color: $bg-color;
+    color: $text-color;
+	transition: background-color .2s;
+
+	// 色
+	 &:link,
+	 &:hover,
+	 &:active,
+	 &:visited {
+		color: $text-color;
+	}
+
+	&:hover {
+        background-color: $hover-bg-color;
+		border-color: $hover-border-color;
+		box-shadow: $hover-box-shadow;
+        text-decoration: none;
+	}
+
+	// active
+	 &:active,
+	 &-active {
+        background-color: $active-bg-color;
+        border-color: $active-border-color;
+        box-shadow: $active-box-shadow;
+        color: $text-color;
+		text-decoration: none;
+	}
+
+	// focus
+	 &:focus {
+        background-color: $focus-bg-color;
+		border-color: $focus-border-color;
+		box-shadow: $focus-box-shadow;
+        outline: none;
+	}
+}
+
+@mixin button-gradation($start-color:#F9F9F9, $end-color:#E1E1E1) {
+	filter: unquote(("progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}', endColorstr='#{$end-color}', GradientType=0)"));
+	background-image: -moz-linear-gradient(top, $start-color, $end-color);
+	background-image: -ms-linear-gradient(top, $start-color, $end-color);
+	background-image: -o-linear-gradient(top, $start-color, $end-color);
+	background-image: -webkit-gradient(linear, center top, center bottom, from($start-color), to($end-color));
+	background-image: -webkit-linear-gradient(top, $start-color, $end-color);
+	background-image: linear-gradient(top, $start-color, $end-color);
+}
+
+@mixin button-desktop() {
+	padding: 8px 10px;
+	@include font-size(12);
+}
+
+// ログインボタン
+//===============================
+
+// 色
+@mixin btn-color($start-color:#F9F9F9, $end-color:#E1E1E1, $base-color: $end-color, $color: #333){
+	background-color: $base-color;
+	color: $color;
+}
+
+// active
+@mixin btn-color-active($background-color:#E1E1E1, $color: #333, $inset-color:#B2B2B2){
+	background-color: $background-color;
+	box-shadow: inset 0 1px 2px $inset-color;
+	color: $color;
+}

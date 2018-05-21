@@ -1,0 +1,31 @@
+<!-- BEGIN_MODULE User_Profile -->
+<section class="blogProfile">
+	<!--#include file="/admin/config/setting.html"-->
+	<!-- BEGIN user:loop -->
+		<!-- BEGIN image:veil -->
+		<img src="%{ARCHIVES_DIR}{image@path}" class="blogProfileImg" width="{image@x}" height="{image@y}" alt="{image@alt}" />
+		<!-- END image:veil -->
+		<!-- BEGIN_IF [{position}/nem/_or_/{title}/nem/] -->
+		<p class="blogProfilePosition">
+			<!-- BEGIN position:veil -->{position}<!-- END position:veil -->
+			<!-- BEGIN_IF [{position}/nem/_and_/{title}/nem/] -->・<!-- END_IF -->
+			<!-- BEGIN title:veil -->{title}<!-- END title:veil -->
+		</p>
+		<!-- END_IF -->
+		<!-- BEGIN name:veil -->
+		<h2 class="blogProfileName">{name}</h2>
+		<!-- END name:veil -->
+		<!-- BEGIN profile:veil -->
+		<p class="blogProfileText">{profile}[raw]</p>
+		<!-- END profile:veil -->
+
+		<!-- BEGIN iconList:veil -->
+		<ul class="blogProfileIconList">
+			<!-- BEGIN twitter:veil --><li class="blogProfileIconTwitter"><a href="{twitter}"><span class="acms-icon-github"></span></a></li><!-- END twitter:veil -->
+			<!-- BEGIN facebook:veil --><li class="blogProfileIconFacebook"><a href="{facebook}"><span class="acms-icon-facebook"></span></a></li><!-- END facebook:veil -->
+			<!-- BEGIN googlePlus:veil --><li class="blogProfileIconGplus"><a href="{googlePlus}"><span class="acms-icon-gplus"></span></a></li><!-- END googlePlus:veil -->
+		</ul>
+		<!-- END iconList:veil -->
+	<!-- END user:loop -->
+</section>
+<!-- END_MODULE User_Profile -->

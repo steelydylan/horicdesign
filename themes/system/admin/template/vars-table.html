@@ -1,0 +1,135 @@
+<link href="/themes/system/css/template-vars.css" rel="stylesheet" media="all">
+<script>
+	ACMS.Ready(function () {
+		ACMS.Config.acmsTabsConfig.readyMark = '#js-tab_dummy';
+
+		var $sidebar = $('#side-nav'),
+			$offset = $sidebar.offset(),
+			$sidebarItem = $('.js-scrollspy-item');
+		var throttled = _.throttle(function () {
+			// 追従ナビゲーション
+			if ($(window).scrollTop() > $offset.top) {
+				$sidebar.addClass('fixed');
+			} else {
+				$sidebar.removeClass('fixed');
+			}
+
+			// 現在位置をカレントで表示する
+			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+			var height = (window.innerHeight || document.documentElement.clientHeight || 0);
+			var flag = false;
+			$sidebarItem.removeClass("current");
+			$sidebarItem.each(function () {
+				if (flag) {
+					return;
+				}
+				var $target = $($(this).attr("href"));
+				if (parseInt($target.outerHeight()) + parseInt($target.offset().top) > scrollTop && parseInt($target.outerHeight()) + parseInt($target.offset().top) < scrollTop + height) {
+					$(this).addClass("current");
+					flag = true;
+				}
+			});
+		}, 30);
+		$(window).scroll(throttled).scroll();
+
+		// プレビュータブをクリックしたとき、Setしたテンプレートの組み込みJSを動作させる
+		$('a[href*="#preview-"]').click(function(){
+			ACMS.Dispatch();
+		});
+	});
+</script>
+
+<header class="tv-page-header">
+	<div class="tv-page-header-inner">
+		<h1 class="tv-page-title">テンプレート変数表</h1>
+	</div>
+</header>
+
+<div class="tv-sub">
+	<nav id="side-nav" class="tv-sidebar">
+		<div class="acms-admin-form">
+			<div class="tv-form-inner">
+				<label for="searchModuleId" class="acms-admin-hide-visually">クイック検索</label>
+				<input type="search" class="js-search-box acms-admin-form-width-full acms-admin-font" placeholder="&#xe99e 例）banner">
+			</div>
+		</div>
+		<div class="tv-side-navigation-wrap">
+			<ul class="tv-side-navigation js-incremental-search"><!-- BEGIN search:loop -->
+				<li class="tv-side-navigation-item js-search-element">
+					<a class="tv-side-navigation-link scrollTo js-scrollspy-item" href="{link}">{label}</a>
+				</li><!-- END search:loop -->
+				<li class="tv-side-navigation-item"></li>
+					<a class="tv-side-navigation-link" href="http://developer.a-blogcms.jp/document/template/varstable.html">変数表の使い方</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<main class="tv-main">
+
+	<!-- BEGIN notFound -->
+		<p class="acms-admin-alert acms-admin-alert-danger">テンプレート内にDocコメントが見つかりませんでした。テンプレートの変数表を使用するには、各テンプレート用にDocコメントを記述してください。
+		</p>
+	<!-- END notFound -->
+	<!-- BEGIN comment:loop -->
+	<section id="{id}" class="tv-section">
+		<h2 class="acms-admin-admin-title2">id: {id}</h2>
+
+		<header class="tv-header-info">
+			<!-- BEGIN author:veil --><p class="tv-info-item"><span class="acms-admin-label tv-info-label">作成者</span>{author}
+		</p><!-- END author:veil -->
+			<!-- BEGIN create:veil --><p class="tv-info-item"><span class="acms-admin-label tv-info-label">作成日</span>{create}
+		</p><!-- END create:veil -->
+		</header>
+
+		<div class="tv-main-contents">
+			<!-- BEGIN comment:veil -->
+			<div class="tv-comment">
+				<p class="tv-comment-text"><span class="acms-admin-label tv-info-label">コメント</span></p>
+				{comment}[nl2br]
+			</div><!-- END comment:veil -->
+
+			<div class="js-acms_tabs tv-tab">
+				<ul class="tv-tab-list">
+					<li class="tv-tab-list-item"><a href="#parameter-{id}" class="tv-tab-list-link">パラメーター</a></li>
+					<li class="tv-tab-list-item"><a href="#preview-{id}" class="tv-tab-list-link">プレビュー</a></li>
+					<li><a href="#js-tab_dummy"></a></li>
+				</ul>
+			</div>
+
+			<div class="tv-tab-area">
+				<div id="parameter-{id}" class="tv-tab-item">
+					<!-- BEGIN_IF [{numberOfParam}/gt/0] -->
+					<table class="acms-admin-admin-mini-table"><!-- BEGIN param:loop -->
+						<tr>
+							<th width="100">{param}</th>
+							<td>
+								{label}
+							</td>
+						</tr><!-- END param:loop -->
+					</table><!-- ELSE -->
+					<p class="tv-parameter-text">パラメーターがありません。</p>
+					<!-- END_IF -->
+				</div>
+				<!-- BEGIN_IF [{preview}/nem] -->
+				<div id="preview-{id}" class="tv-tab-item">
+					<div class="tv-preview">
+						<div class="tv-preview-area">
+							{preview}[raw|buildTpl]
+						</div>
+					</div>
+				</div>
+				<!-- END_IF-->
+			</div>
+
+			<!-- BEGIN snippet:veil -->
+
+			<pre class="tv-pre">{snippet}</pre>
+
+			<!-- END snippet:veil -->
+		</div>
+	</section>
+	<!-- END comment:loop -->
+</main>
+

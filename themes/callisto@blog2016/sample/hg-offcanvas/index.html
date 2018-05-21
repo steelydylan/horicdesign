@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hg-offcanvas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/sample/hg-offcanvas/hg-offcanvas.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/sample/hg-offcanvas/style.css">
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-45966702-2', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</head>
+<body>
+<div id="offcanvas-right">
+	<ul class="offcanvasList">
+		<li>Right Menu1</li>
+		<li>Right Menu2</li>
+		<li>Right Menu3</li>
+		<li>Right Menu4</li>
+		<li>Right Menu5</li>
+		<li>Right Menu6</li>
+		<li>Right Menu7</li>
+		<li>Right Menu8</li>
+		<li>Right Menu9</li>
+		<li>Right Menu10</li>
+		<li>Right Menu11</li>
+		<li>Right Menu12</li>
+		<li>Right Menu13</li>
+		<li>Right Menu14</li>
+		<li>Right Menu15</li>
+		<li>Right Menu16</li>
+		<li>Right Menu17</li>
+		<li>Right Menu18</li>
+		<li>Right Menu19</li>
+		<li>Right Menu20</li>
+	</ul>
+</div>
+<div id="offcanvas-left">
+<ul class="offcanvasList">
+		<li>Left Menu1</li>
+		<li>Left Menu2</li>
+		<li>Left Menu3</li>
+		<li>Left Menu4</li>
+		<li>Left Menu5</li>
+		<li>Left Menu6</li>
+		<li>Left Menu7</li>
+		<li>Left Menu8</li>
+		<li>Left Menu9</li>
+		<li>Left Menu10</li>
+		<li>Left Menu11</li>
+		<li>Left Menu12</li>
+		<li>Left Menu13</li>
+		<li>Left Menu14</li>
+		<li>Left Menu15</li>
+		<li>Left Menu16</li>
+		<li>Left Menu17</li>
+		<li>Left Menu18</li>
+		<li>Left Menu19</li>
+		<li>Left Menu20</li>
+	</ul>	
+</div>
+<header id="header">
+	<button id="offcanvas-btn-left"></button>
+	<button id="offcanvas-btn-right"></button>
+</header>
+<div id="mainArea">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<script src="/sample/hg-offcanvas/jquery.js"></script>
+<script src="/sample/hg-offcanvas/hg-offcanvas.js"></script>
+<script>
+$(function(){
+	$("#offcanvas-right").offcanvas({
+		btn:"#offcanvas-btn-right",
+		fixedHeader:"#header",
+		direction:"right"
+	});
+	$("#offcanvas-left").offcanvas({
+		btn:"#offcanvas-btn-left",
+		fixedHeader:"#header",
+		direction:"left"
+	});
+});
+</script>
+</body>
+</html>

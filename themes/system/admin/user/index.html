@@ -1,0 +1,228 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ユーザー管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_User_Index -->
+
+<!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザー一覧を更新しました。<!--/T--></p><!-- END refresh --><!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザーがありません。<!--/T--></p><!-- END index#notFound --><!-- BEGIN user:validator#limit -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	<!--T-->ユーザー作成数の上限に達しているため、現在お使いのライセンスでは以下の操作を行えません。<!--/T--><br>
+	<!--T-->・新規ユーザーの作成（読者以外）<!--/T--><br>
+	<!--T-->・読者ユーザーの権限昇格<!--/T--><br>
+	<!--T-->登録済みのユーザーを削除するか、<a href="http://www.a-blogcms.jp/license/" target="_blank">無制限ユーザーライセンス</a>の新規購入をご検討ください。<!--/T-->
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p><!-- END user:validator#limit -->
+
+<div class="acms-admin-filter">
+	<form action="" method="post" class="acms-admin-form">
+		<div>
+			<!--T-->絞り込み<!--/T-->:
+			<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+				<select name="auth" class="js-select2">
+					<option value=""><!--T-->全ての権限<!--/T--></option>
+					<option value="administrator" {auth:selected#administrator}><!--T-->管理者<!--/T--></option>
+					<option value="editor" {auth:selected#editor}><!--T-->編集者<!--/T--></option>
+					<option value="contributor" {auth:selected#contributor}><!--T-->投稿者<!--/T--></option>
+					<option value="subscriber" {auth:selected#subscriber}><!--T-->読者<!--/T--></option>
+				</select>
+				<input type="hidden" name="query[]" value="auth">
+			</div>
+
+			<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+				<select name="status" class="js-select2">
+					<option value=""><!--T-->全てのステータス<!--/T--></option>
+					<option value="open" {status:selected#open}><!--T-->有効<!--/T--></option>
+					<option value="close" {status:selected#close}><!--T-->無効<!--/T--></option>
+				</select>
+				<input type="hidden" name="query[]" value="status">
+			</div>
+
+			<!-- BEGIN_MODULE Admin_Blog_Select -->
+			<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+				<select name="_bid" style="width:200px;" class="js-select2">
+					<option value=""><!--T-->現在のブログ<!--/T--></option><!-- BEGIN loop -->
+					<option value="{value}" {selected}>{indent}[raw]{label}</option><!-- END loop -->
+				</select>
+				<input type="hidden" name="query[]" value="_bid">
+			</div>
+			<!-- END_MODULE Admin_Blog_Select -->
+
+			<!-- BEGIN axis -->
+			<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+				<input type="hidden" name="axis" value="self">
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="axis" value="descendant-or-self" {axis:checked#descendant-or-self} id="input-checkbox-axis-descendant-or-self">
+					<label for="input-checkbox-axis-descendant-or-self">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->下階層のブログも表示<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="query[]" value="axis">
+			</div>
+			<!-- END axis -->
+		</div>
+		<div>
+			<div class="acms-admin-margin-bottom-mini">
+				<!--T-->キーワード<!--/T-->:
+				<input type="text" name="keyword" value="%{KEYWORD}" class="js-placeholder acms-admin-form-width-large" title="<!--T-->ユーザーの名前・メールアドレス・カスタムフィールドの値から検索（複数指定可）<!--/T-->">
+			</div>
+		</div>
+		<div>
+			<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+				<!--T-->ソート<!--/T-->:
+				<select name="order" class="js-select2">
+					<option value="sort-asc" {order:selected#sort-asc}><!--T-->表示順<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+					<option value="sort-desc" {order:selected#sort-desc}><!--T-->表示順<!--/T-->（<!--T-->降順<!--/T-->）</option>
+					<option value="code-asc" {order:selected#code-asc}><!--T-->コードネーム<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+					<option value="code-desc" {order:selected#code-desc}><!--T-->コードネーム<!--/T-->（<!--T-->降順<!--/T-->）</option>
+					<option value="amount-asc" {order:selected#amount-asc}><!--T-->エントリー数<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+					<option value="amount-desc" {order:selected#amount-desc}><!--T-->エントリー数<!--/T-->（<!--T-->降順<!--/T-->）</option>
+					<option value="id-asc" {order:selected#id-asc}>ID（<!--T-->昇順<!--/T-->）</option>
+					<option value="id-desc" {order:selected#id-desc}>ID（<!--T-->降順<!--/T-->）</option>
+				</select>
+			</div>
+
+			<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+				<!--T-->表示数<!--/T-->:
+				<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+					<option value="{value}" {selected}>{value}</option><!-- END limit:loop -->
+				</select>
+			</div>
+
+			<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp">
+			<input type="hidden" name="admin" value="user_index">
+		</div>
+	</form>
+</div>
+
+<form method="post" action="" id="sortableForm" class="acms-admin-form">
+	<!-- BEGIN index -->
+
+	<div class="js-acms-tab-select clearfix js-acms_fix_marker">
+
+		<div class="acms-admin-float-left">
+			<select name="action-user" class="js-acms-tab-select-value acms-admin-float-left acms-admin-select-large">
+				<option value="action-order" {action-user:selected#action-order}><!--T-->表示順<!--/T--></option>
+				<option value="action-auth" {action-user:selected#action-auth}><!--T-->権限<!--/T--></option>
+				<option value="action-status" {action-user:selected#action-status}><!--T-->ステータス<!--/T--></option>
+			</select>
+
+			<div id="action-order" class="js-acms-tab-select-panel js-acms-tab-select-active acms-admin-float-left">
+				<input type="submit" name="ACMS_POST_User_Index_Sort" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+			</div>
+		</div>
+
+		<div id="action-auth" class="js-acms-tab-select-panel acms-admin-float-left">
+			<select name="auth" class="js-select2">
+				<option value="administrator"><!--T-->管理者<!--/T--></option>
+				<option value="editor"><!--T-->編集者<!--/T--></option>
+				<option value="contributor" checked="checked"><!--T-->投稿者<!--/T--></option>
+				<option value="subscriber"><!--T-->読者<!--/T--></option>
+			</select>
+			<input type="submit" name="ACMS_POST_User_Index_Auth" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+		</div>
+
+		<div id="action-status" class="js-acms-tab-select-panel acms-admin-float-left">
+			<select name="status" class="js-select2">
+				<option value="open"><!--T ctx="user"-->有効<!--/T--></option>
+				<option value="close"><!--T ctx="user"-->無効<!--/T--></option>
+			</select>
+			<input type="submit" name="ACMS_POST_User_Index_Status" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+		</div>
+		<div class="js-fake-form acms-admin-margin-bottom-mini acms-admin-inline-block acms-admin-float-right" data-method="post">
+			<input type="hidden" name="bid" value="%{BID}">
+			<input type="hidden" name="admin" value="user_edit">
+			<input type="hidden" name="edit" value="insert">
+			<input type="hidden" name="query[]" value="edit">
+			<input type="hidden" name="step" value="reapply">
+			<input type="hidden" name="query[]" value="step">
+			<input type="hidden" name="ACMS_POST_2GET" value="Create User"/>
+			<button class="js-submit acms-admin-btn-admin acms-admin-float-right"><!--T-->ユーザー作成<!--/T--></button>
+			<input type="hidden" name="formToken" value="on" />
+		</div>
+	</div>
+
+	<div class="acms-admin-table-responsive acms-admin-clear">
+		<table class="js-admin_table-sortable acms-admin-table-admin acms-admin-table-hover" data-sort-enable="{sortable}" data-sort-submit="ACMS_POST_User_Index_Sort" data-sort-target="#sortableForm">
+			<thead>
+			<tr>
+				<th class="item-handle acms-admin-hide-sp"></th>
+				<th class="acms-admin-table-center acms-admin-th-checkbox">
+					<div class="acms-admin-form-checkbox"><input type="checkbox" id="checkAll"><label for="checkAll"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->すべてのユーザーを選択する<!--/T--></span></label></div>
+				</th><!-- BEGIN sort#header -->
+				<th><!--T-->表示順<!--/T--></th><!-- END sort#header -->
+				<th>ID</th>
+				<th><!--T-->ユーザー名<!--/T-->/<!--T-->メールアドレス<!--/T--> / <!--T-->ユーザーID<!--/T--></th>
+				<th><!--T-->エントリー数<!--/T--></th>
+				<th><!--T-->権限<!--/T--></th>
+				<th><!--T-->ステータス<!--/T--></th>
+				<th><!--T-->アクション<!--/T--></th>
+			</tr>
+			</thead>
+			<tbody><!-- BEGIN user:loop -->
+			<tr data-sort-level="parallel" data-sort-name="sort-{sort#uid}">
+				<td class="item-handle acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+				<td class="acms-admin-table-center">
+					<div class="acms-admin-form-checkbox"><input type="checkbox" name="checks[]" value="{uid}" id="input-checkbox-sort-{sort#uid}"><label for="input-checkbox-sort-{sort#uid}"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->ユーザー名「{name}」を選択する<!--/T--></span></label></div>
+				</td><!-- BEGIN sort:veil -->
+				<td><input type="text" name="sort-{sort#uid}" value="{sort}" size="4"></td><!-- END sort:veil -->
+				<td><span class="acms-admin-label label-default">{uid}</span></td>
+				<td class="acms-admin-show-sp acms-admin-width-sp">
+					<div class="acms-admin-summary">
+						<div class="acms-admin-summary-img acms-admin-margin-right-small acms-admin-cell-text-middle">
+							<img src="%{ARCHIVES_DIR}{icon}" width="40" height="40" alt="%{SESSION_USER_NAME}" class="acms-admin-user">
+						</div>
+						<div class="acms-admin-summary-body">
+							<strong>{name}</strong><br>{mail}<br>{code}
+						</div>
+					</div>
+				</td>
+				<td><span class="acms-admin-hide-tablet acms-admin-hide-pc"><!--T-->エントリー数：<!--/T--></span>{amount}</td>
+				<td><span class="acms-admin-hide-tablet acms-admin-hide-pc"><!--T-->権限：<!--/T--></span><!-- BEGIN auth#administrator -->
+					<!--T-->管理者<!--/T--><!-- END auth#administrator --><!-- BEGIN auth#editor -->
+					<!--T-->編集者<!--/T--><!-- END auth#editor --><!-- BEGIN auth#contributor -->
+					<!--T-->投稿者<!--/T--><!-- END auth#contributor --><!-- BEGIN auth#subscriber -->
+					<!--T-->読者<!--/T--><!-- END auth#subscriber -->
+				</td>
+				<td><span class="acms-admin-hide-tablet acms-admin-hide-pc"><!--T-->ステータス：<!--/T--></span><!-- BEGIN status#open -->
+					<span class="acms-admin-label acms-admin-label-info"><!--T-->有効<!--/T--></span><!-- END status#open --><!-- BEGIN status#close -->
+					<span class="acms-admin-label"><!--T-->無効<!--/T--></span><!-- END status#close -->
+				</td>
+				<td><a href="{itemUrl}?edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a></td>
+			</tr>
+			<!-- END user:loop --></tbody>
+		</table>
+	</div>
+
+	<div class="acms-admin-grid">
+		<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+			<!-- BEGIN pager:veil -->
+			<div class="acms-admin-pager-container">
+				<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+					<li class="prev"><a href="{url}">&laquo;&nbsp;<!--T-->前へ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+					<li
+						{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+					<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+					<li class="next"><a href="{url}"><!--T-->次へ<!--/T-->&nbsp;&raquo;</a></li><!-- END forwardLink -->
+				</ul>
+			</div>
+			<!-- END pager:veil -->
+		</div>
+		<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+			<div class="acms-admin-itemsAmount-container">
+				<p>{itemsFrom}<!--T-->件<!--/T--> - {itemsTo}<!--T-->件<!--/T--> / <!--T-->全<!--/T-->{itemsAmount}<!--T-->件<!--/T--></p>
+			</div>
+		</div>
+	</div><!-- /.acms-grid -->
+	<!-- END index -->
+</form>
+<!-- END_MODULE Admin_User_Index -->

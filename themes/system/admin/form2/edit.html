@@ -1,0 +1,63 @@
+<!-- BEGIN_MODULE Touch_Admin -->
+<!-- BEGIN_MODULE Admin_Form2_Edit -->
+<!-- BEGIN step#reapply -->
+<form action="" method="post" enctype="multipart/form-data" id="entryForm" class="js-observeFileSize acms-admin-form" aria-label="動的フォームの入力が始まります">
+	<div class="entryFormWrapper">
+		<table class="entryFormTable acms-admin-table-entry">
+			<tr>
+				<th><label for="dynamic-form-status"><!--T-->ステータス<!--/T--></label></th>
+				<td>
+					<select name="form_status" id="dynamic-form-status" class="js-select2">
+						<option value="open"{form_status:selected#open}><!--T-->公開<!--/T--></option>
+						<option value="close"{form_status:selected#close}><!--T-->非公開<!--/T--></option>
+					</select>
+					<input type="hidden" name="form[]" value="form_status" />
+				</td>
+			</tr>
+			<tr>
+				<th><label for="dynamic-form-set"><!--T-->フォームセット<!--/T--></label></th>
+				<td>
+					<select name="form_id" id="dynamic-form-set" class="js-select2">
+						<option value=""<!-- BEGIN_IF [{selected}/em] --> selected="selected"<!-- END_IF -->><!--T-->選択して下さい<!--/T--></option><!-- BEGIN form:loop -->
+						<option value="{form_id}"{selected}>{form_name} / {form_code}</option><!-- END form:loop -->
+					</select>
+					<input type="hidden" name="form[]" value="form_id" />
+					<input type="hidden" name="form_id:validator#required" id="validator-form_id-required" />
+					<div role="alert" aria-live="assertive">
+						<div data-validator-label="validator-form_id-required" class="validator-result-{form_id:validator#required}">
+							<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->フォームセットが入力されていません。<!--/T--></p>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	@include("/admin/form2/unit.html")
+	<div class="comPost">
+		<div class="comPostInner">
+			<!-- BEGIN action#update -->
+			<div class="comPostMain">
+				<input type="submit" name="ACMS_POST_Form2_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			</div>
+			<!-- END action#update -->
+
+			<div class="comPostSide">
+				<input type="submit" name="ACMS_POST_2GET" value="<!--T-->戻る<!--/T-->" class="cancelBtn overlook acms-admin-btn" onclick="return confirm('<!--T-->エントリーの編集を中止します。\n現在の変更内容が破棄されますが、よろしいですか？<!--/T-->');" />
+			</div>
+
+			<input type="hidden" name="entry:takeover" value="{entry:takeover}" />
+			<input type="hidden" name="field:takeover" value="{field:takeover}" />
+			<input type="hidden" name="column_object" value="{column:takeover}" />
+			
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="hidden" name="cid" value="%{CID}" />
+			<input type="hidden" name="eid" value="%{EID}" />
+			<input type="hidden" name="arg[]" value="bid" />
+			<input type="hidden" name="arg[]" value="cid" />
+			<input type="hidden" name="arg[]" value="eid" />
+		</div>
+	</div>
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Form2_Edit -->
+<!-- END_MODULE Touch_Admin -->

@@ -1,0 +1,53 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->n-gramインデックス<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Fix_Ngram -->
+<form method="post" action="" class="acms-admin-form">
+	<!-- BEGIN message#success -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->n-gramインデックスを付与しました。<!--/T--></p><!-- END message#success -->
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-info">
+		<div class="acms-admin-panel-header">
+			<!--T-->概要<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->既存コンテンツにN-gramインデックスを付与します。文字列を指定した文字数(gram)で切り分けることで検索用のキーを生成します。<br>この処理を実行した後に、config.system.yamlなどからngramを有効にすると、サイト内検索の内部処理が変更されます。<!--/T-->
+		</div>
+	</div>
+
+	<!-- BEGIN step -->
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>ngram<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->private/config.system.yamlのngramの値と同じ（標準は2）である必要があります。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="ngram" value="{ngram}" size="1" />&nbsp;gram
+
+				<input type="hidden" name="fix[]" value="ngram" />
+				<input type="hidden" name="ngram:validator#required" />
+				<!-- BEGIN ngram:v#required -->
+				<label class="validator-result-0"><!--T-->N-gramを入力して下さい<!--/T--></label>
+				<!-- END ngram:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="submit" name="ACMS_POST_Fix_Ngram" value="<!--T-->N-gramインデックスを付与<!--/T-->" onclick="return confirm('<!--T-->N-gramインデックスを付与します。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+			</td>
+		</tr>
+	</table>
+	<!-- END step -->
+</form>
+<!-- END_MODULE Admin_Fix_Ngram -->

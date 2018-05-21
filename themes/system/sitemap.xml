@@ -1,0 +1,7 @@
+<!-- BEGIN_MODULE Sitemap --><?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84"><!-- BEGIN url:loop -->
+   <url>
+      <loc>{loc}</loc><!-- BEGIN lastmod:veil -->
+      <lastmod>{lastmod}</lastmod><!-- END lastmod:veil -->
+   </url><!-- END url:loop -->
+</urlset><!-- END_MODULE Sitemap -->

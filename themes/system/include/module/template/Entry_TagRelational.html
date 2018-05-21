@@ -1,0 +1,20 @@
+<!-- BEGIN_MODULE Entry_TagRelational -->
+<div class="acms-admin-margin-bottom-medium">
+@include("/admin/module/setting.html")
+	<div class="acms-admin-grid-r">
+		<!-- BEGIN entry:loop -->
+		<div class="{entry:loop.class}">
+			<div class="acms-admin-thumbnail">
+			<!-- BEGIN_IF [{path}/nem] --><img src="%{ROOT_DIR}{path}" alt="{alt}"><!-- ELSE --><img src="/images/default/noimage.gif" alt="" class="acms-admin-img-responsive" /><!-- END_IF -->
+				<div>
+					<h3>{title}</h3>
+					<p>{summary}[trim(151, '...')]</p>
+					<p class="acms-admin-text-muted">関連度: {grade}</p>
+					<p><a href="{url}" class="acms-admin-btn acms-admin-btn-primary" role="button">詳細をみる</a></p>
+				</div>
+			</div>
+		</div>
+		<!-- END entry:loop -->
+	</div>
+</div>
+<!-- END_MODULE Entry_TagRelational -->

@@ -1,0 +1,73 @@
+<!-- BEGIN_MODULE Admin_Category_Index -->
+
+<!-- BEGIN_IF [%{send}/neq/ajax] -->
+<div class="acms-admin-filter">
+	<form action="" method="post" class="js-ajax_load acms-admin-form" target=".js-ajax_load_replace">
+		<div class="acms-admin-form-group">
+			<!-- BEGIN_MODULE Admin_Blog_Select -->
+			<select name="_bid" class="js-select2">
+				<option value="">現在のブログ</option><!-- BEGIN loop -->
+				<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+			</select>
+			<input type="hidden" name="query[]" value="_bid" />
+			<!-- END_MODULE Admin_Blog_Select -->
+
+			<select name="order" class="js-select2">
+				<option value="sort-asc"{order:selected#sort-asc}>表示順（昇順）</option>
+				<option value="sort-desc"{order:selected#sort-desc}>表示順（降順）</option>
+				<option value="code-asc"{order:selected#code-asc}>コードネーム（昇順）</option>
+				<option value="code-desc"{order:selected#code-desc}>コードネーム（降順）</option> 
+			</select>
+			<input type="hidden" name="send" value="ajax" />
+			<input type="hidden" name="query[]" value="send" />
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="hidden" name="tpl" value="ajax/arg/cid-reference.html" />
+
+			<input type="submit" name="ACMS_POST_2GET" value="表示" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		</div>
+	</form>
+</div><!-- /.acms-filter -->
+<!-- END_IF -->
+
+<div class="js-ajax_load_link_delegate">
+<div class="js-ajax_load_replace">
+	<!-- BEGIN index -->
+	<table class="acms-admin-table acms-admin-table-heading acms-admin-table-hover">
+		<!-- <thead class="acms-admin-table-admin-title"> -->
+		<thead>
+			<tr>
+				<th class="acms-admin-hide-sp">cid</th>
+				<th class="acms-admin-show-sp">ステータス</th>
+				<th class="acms-admin-show-sp">タイトル</th>
+				<th class="acms-admin-hide-sp">グローバル</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN category:loop -->
+			<tr class="js-arg_reference_anchor" data-id="{cid}" data-label="{name}（cid:{cid}）">
+				<td class="acms-admin-td-id">
+					<span class="acms-admin-label label-default">{cid}</span>
+				</td>
+				<td class="acms-admin-td-status">
+					<small>
+						<!-- BEGIN status#close -->
+						<span class="acms-admin-label acms-admin-label-danger admin-status-label">非公開</span><!-- END status#close --><!-- BEGIN status#open --><span class="acms-admin-label acms-admin-label-info admin-status-label">公開</span><!-- END status#open --><!-- BEGIN status#draft --><span class="acms-admin-label acms-admin-label-warning admin-status-label">下書き</span><!-- END status#draft -->
+						
+					</small>
+				</td>
+				<td>
+					<!-- BEGIN indent:loop --><!-- BEGIN descendant -->&#9475;<!-- END descendant --><!-- BEGIN descendant#last -->&#12288;<!-- END descendant#last --><!-- BEGIN child -->&#9507;<!-- END child --><!-- BEGIN child#last -->&#9495;<!-- END child#last --><!-- END indent:loop -->&nbsp;{name}
+				</td>
+				<td>
+					<!-- BEGIN scope:touch#global -->有効<!-- END scope:touch#global -->
+					<!-- BEGIN scope:touch#local --> - <!-- END scope:touch#local -->
+					<!-- BEGIN scope:touch#parental --> - <!-- END scope:touch#parental -->
+				</td>
+			</tr>
+			<!-- END category:loop -->
+		</tbody>
+	</table><!-- END index -->
+</div>
+</div>
+
+<!-- END_MODULE Admin_Category_Index -->

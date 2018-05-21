@@ -1,0 +1,60 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->タグ管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Tag_Edit -->
+
+<!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->タグを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->タグを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN tag:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END tag:validator#operable -->
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms-admin-form-group acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/tag_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_Tag_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_Role_Available -->
+			<!-- BEGIN_MODULE Touch_Role_TagEdit -->
+			<input type="submit" name="ACMS_POST_Tag_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END_MODULE Touch_Role_TagEdit -->
+			<!-- END_MODULE Touch_Role_Available -->
+
+			<!-- BEGIN_MODULE Touch_Role_NotAvailable -->
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<input type="submit" name="ACMS_POST_Tag_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+			<!-- END_MODULE Touch_Role_NotAvailable -->
+			<!-- END submit#update -->
+		</div>
+	</div>
+
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->タグ名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このタグの名前です。管理、表示とも同じ内容が使われます。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="tag" value="{tag}" />
+				<input type="hidden" name="tag:validator#required" id="validator-tag-required" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-tag-required" class="validator-result-{tag:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->タグ名が入力されていません。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-tag-string" class="validator-result-{tag:validator#string}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な文字が含まれています。<!--/T--></p>
+					</div>
+				</div>
+				<input type="hidden" name="old_tag" value="{tag}">
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Tag_Edit -->

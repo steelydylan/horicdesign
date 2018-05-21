@@ -1,0 +1,114 @@
+@extends("/_layouts/unit.html")
+
+@section(text-unit)
+<!-- BEGIN p -->
+<p{class}>{text2}[nl2br]</p><!-- END p --><!-- BEGIN h2 -->
+<h2{class} id="{extend_tag}">{text2}[nl2br]</h2><!-- END h2 --><!-- BEGIN h3 -->
+<h3{class} id="{extend_tag}">{text2}[nl2br]</h3><!-- END h3 --><!-- BEGIN h4 -->
+<h4{class} id="{extend_tag}">{text2}[nl2br]</h4><!-- END h4 --><!-- BEGIN h5 -->
+<h5{class} id="{extend_tag}">{text2}[nl2br]</h5><!-- END h5 --><!-- BEGIN ul -->
+<ul{class}>{text2}[list]</ul><!-- END ul --><!-- BEGIN ol -->
+<ol{class}>{text2}[list]</ol><!-- END ol --><!-- BEGIN dl -->
+<dl{class}>{text2}[definition_list]</dl><!-- END dl --><!-- BEGIN blockquote -->
+<div class="entry-container"><blockquote{class}>{text2}[nl2br]</blockquote></div><!-- END blockquote --><!-- BEGIN table -->
+<div class="entry-container"><table{class}>{text2}[table]</table></div><!-- END table --><!-- BEGIN pre -->
+<div class="entry-container"><pre{class}>{text2}</pre></div><!-- END pre --><!-- BEGIN none -->
+{text2}[raw]<!-- END none --><!-- BEGIN markdown -->
+{text2}[markdown]<!-- END markdown --><!-- BEGIN wysiwyg -->
+{text2}[raw]<!-- END wysiwyg -->
+
+@include("/include/unit/tag-select.html")
+@endsection
+
+@section(table-unit)
+<!-- テーブル -->
+<div class="column-table-{align}">
+	<div class="entry-container">
+	{table2}[raw]
+	</div>
+</div>
+@endsection
+
+@section(image-unit)
+<div class="column-image-{align}{display_size_class}"{display_size}[raw]><!-- BEGIN link2#front -->
+	<a href="{url2}"{viewer2}[raw]><!-- END link2#front -->
+		<img class="columnImage" src="%{ROOT_DIR}{path2}" alt="{alt2}" width="{x2}" height="{y2}" /><!-- BEGIN link2#rear -->
+	</a><!-- END link2#rear --><!-- BEGIN_IF [{caption2}[delnl]/nem] -->
+	<p class="caption">{caption2}[nl2br]</p><!-- END_IF -->
+</div>
+@endsection
+
+@section(file-unit)
+<!-- ファイル -->
+<div class="column-file-{align} js_notStyle">
+	<a href="%{HTTP_ROOT}{path2}"><img class="columnIcon" src="%{ROOT_DIR}{icon2}" alt="ファイルを開く" width="{x2}" height="{y2}" /></a>
+	<!-- BEGIN_IF [{caption2}[delnl]/nem] --><p class="caption">{caption2}[nl2br]</p><!-- END_IF -->
+</div>
+@endsection
+
+@section(youtube-unit)
+<div class="column-youtube-{align}{display_size_class}"{display_size}[raw]>
+	<div class="column-iframe">
+		<iframe width="{x}" height="{y}" src="https://www.youtube.com/embed/{youtubeId2}?wmode=transparent" frameborder="0" allowfullscreen></iframe>
+	</div>
+</div>
+@endsection
+
+@section(video-unit)
+<div class="column-video-{align}{display_size_class}"{display_size}[raw]>
+	<div class="column-iframe">
+		<iframe width="{x}" height="{y}" src="https://www.youtube.com/embed/{videoId2}?wmode=transparent" frameborder="0" allowfullscreen></iframe>
+	</div>
+</div>
+@endsection
+
+@section(eximage-unit)
+<!-- 画像URL -->
+<div class="column-eximage-{align}{display_size_class}"{display_size}[raw]><!-- BEGIN link2#front -->
+	<a href="{url2}"{viewer2}[raw]><!-- END link2#front -->
+		<img class="columnImage" src="{normal2}" alt="{alt2}" width="{x2}" height="{y2}" /><!-- BEGIN link2#rear -->
+	</a><!-- END link2#rear --><!-- BEGIN_IF [{caption2}[delnl]/nem] -->
+	<p class="caption">{caption2}[nl2br]</p><!-- END_IF -->
+</div>
+@endsection
+
+@section(media-unit)
+<!-- media -->
+<div class="column-media-{align}{display_size_class}"{display_size}[raw]><!-- BEGIN type2#image -->
+	<!-- BEGIN link2#front -->
+	<a href="{url2}"{viewer2}[raw]><!-- END link2#front -->
+		<img class="columnImage" src="%{ROOT_DIR}{path2}" alt="{alt2}" width="{x2}" /><!-- BEGIN link2#rear -->
+	</a><!-- END link2#rear --><!-- BEGIN_IF [{caption2}[delnl]/nem] -->
+	<p class="caption">{caption2}[nl2br]</p><!-- END_IF --><!-- BEGIN text2:veil -->
+	<p class="">{text2}</p><!-- END text2:veil -->
+
+	<!-- END type2#image --><!-- BEGIN type2#file -->
+
+	<a href="%{HTTP_ROOT}{path2}"><!-- BEGIN_IF [{thumbnail2}/nem/] -->
+	<img class="columnIcon" src="%{HTTP_ARCHIVES_DIR}{thumbnail2}" alt="ファイルを開く" width="{x2}" height="{y2}" /><!-- ELSE -->
+	<img class="columnIcon" src="%{ROOT_DIR}{icon2}" alt="ファイルを開く" width="{x2}" height="{y2}" /><!-- END_IF -->
+	</a><!-- BEGIN_IF [{caption2}[delnl]/nem] -->
+	<p class="caption">{caption2}[nl2br]</p><!-- END_IF --><!-- BEGIN text2:veil -->
+	<p class="">{text2}</p><!-- END text2:veil -->
+	<!-- END type2#file -->
+</div>
+@endsection
+
+@section(quote-unit)
+<!-- 引用 -->
+<div class="column-quote-{align}"{display_size}[raw]><!-- BEGIN html2:veil -->
+	{quote_html2}[raw]<!-- END html2:veil --><!-- BEGIN_IF [{quote_title2}/nem/] -->
+	<blockquote class="js-biggerlink"><!-- BEGIN image2:veil -->
+		<div class="quoteImageContainer">
+			<img src="{quote_image2}" class="quoteImage" width="154" alt="" />
+		</div><!-- END image2:veil -->
+		<div>
+			<p class="quoteTitle"><a href="{quote_url}" class="quoteTitleLink">{quote_title2}</a></p><!-- BEGIN description2:veil --><!-- BEGIN site_name2:veil -->
+			<p class="quoteSiteName">{quote_site_name2}</p><!-- END site_name2:veil -->
+			<p class="quoteDescription">{quote_description2}[trim(180, '...')]</p><!-- END description2:veil -->
+		</div>
+		<hr class="clearHidden" />
+	</blockquote><!-- END_IF -->
+</div>
+@endsection
+

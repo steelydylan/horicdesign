@@ -1,0 +1,478 @@
+<h3 class="acms-admin-admin-title2"><!--T-->エントリー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。フィールド、数値フィールドはカスタムフィールドでの検索結果の表示時に利用します。<!--/T-->"></i></th>
+		<td>
+			<select name="entry_body_order" class="js-select2">
+				<option value="datetime-asc"{entry_body_order:selected#datetime-asc}><!--T-->日時 ( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{entry_body_order:selected#datetime-desc}><!--T-->日時 ( 降順 )<!--/T--></option>
+				<option value="updated_datetime-asc"{entry_body_order:selected#updated_datetime-asc}><!--T-->更新日<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="updated_datetime-desc"{entry_body_order:selected#updated_datetime-desc}><!--T-->更新日<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="posted_datetime-asc"{entry_body_order:selected#posted_datetime-asc}><!--T-->作成日<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="posted_datetime-desc"{entry_body_order:selected#posted_datetime-desc}><!--T-->作成日<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="code-asc"{entry_body_order:selected#code-asc}><!--T-->ファイル名 ( 昇順 )<!--/T--></option>
+				<option value="code-desc"{entry_body_order:selected#code-desc}><!--T-->ファイル名 ( 降順 )<!--/T--></option>
+				<option value="id-asc"{entry_body_order:selected#id-asc}><!--T-->ID ( 昇順 )<!--/T--></option>
+				<option value="id-desc"{entry_body_order:selected#id-desc}><!--T-->ID ( 降順 )<!--/T--></option>
+				<option value="sort-asc"{entry_body_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{entry_body_order:selected#sort-desc}><!--T-->表示順 ( 降順 )<!--/T--></option>
+				<option value="field-asc"{entry_body_order:selected#field-asc}><!--T-->フィールド ( 昇順 )<!--/T--></option>
+				<option value="field-desc"{entry_body_order:selected#field-desc}><!--T-->フィールド ( 降順 )<!--/T--></option>
+				<option value="intfield-asc"{entry_body_order:selected#intfield-asc}><!--T-->数値フィールド ( 昇順 )<!--/T--></option>
+				<option value="intfield-desc"{entry_body_order:selected#intfield-desc}><!--T-->数値フィールド ( 降順 )<!--/T--></option>
+				<option value="random"{entry_body_order:selected#random}><!--T-->ランダム<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="entry_body_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリー表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーの親子関係の表示順設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="entry_body_category_order" class="js-select2">
+				<option value="child_order"{entry_body_category_order:selected#child_order}><!--T-->子から ( 降順 )<!--/T--></option>
+				<option value="parent_order"{entry_body_category_order:selected#parent_order}><!--T-->親から ( 昇順 )<!--/T--></option>
+				<option value="current_order"{entry_body_category_order:selected#current_order}><!--T-->現在のカテゴリーのみ<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="entry_body_category_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->記事を複数表示した場合の表示件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_limit" value="{entry_body_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_body_limit" />
+			<input type="hidden" name="entry_body_limit:convert" value="a" />
+			<input type="hidden" name="entry_body_limit:validator#digits" id="validator-entry_body_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_body_limit-digits" class="validator-result-{entry_body_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->オフセット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示順で並び替えた後の先頭から数えて、設定した件数のエントリーを表示しなくします。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_offset" value="{entry_body_offset}" size="4" class="acms-admin-form-width-mini"  />
+			<input type="hidden" name="config[]" value="entry_body_offset" />
+			<input type="hidden" name="entry_body_offset:convert" value="a" />
+			<input type="hidden" name="entry_body_offset:validator#digits" id="validator-entry_body_offset-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_body_offset-digits" class="validator-result-{entry_body_offset:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをループブロック内に設定できます。例えばグリッドシステムのカラム数など設定してください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_loop_class" value="{entry_body_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="entry_body_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->イメージビューワー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像ユニットのa要素に割り当てられる属性です。（変数名 : viewer）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_image_viewer" value="{entry_body_image_viewer}" size="20" />
+			<input type="hidden" name="config[]" value="entry_body_image_viewer" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないエントリーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_indexing" value="on"{entry_body_indexing:checked#on} id="input-checkbox-entry_body_indexing" />
+				<label for="input-checkbox-entry_body_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているエントリーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_indexing" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->新着期間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの公開日時を基点に、ここで設定した期間中はnew:touchブロックが出力されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_newtime" value="{entry_body_newtime}" size="8" class="acms-admin-form-width-mini"  /> <!--T-->秒<!--/T-->
+			<input type="hidden" name="config[]" value="entry_body_newtime" />
+			<input type="hidden" name="entry_body_newtime:convert" value="a" />
+			<input type="hidden" name="entry_body_newtime:validator#digits" id="validator-entry_body_newtime-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_body_newtime-digits" class="validator-result-{entry_body_newtime:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->タグ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとタグ情報を出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_tag_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_tag_on" value="on"{entry_body_tag_on:checked#on} id="input-checkbox-entry_body_tag_on" />
+				<label for="input-checkbox-entry_body_tag_on"><i class="acms-admin-ico-checkbox"></i><!--T-->タグを表示できるようにする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_tag_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->サマリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとサマリーを出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_summary_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_summary_on" value="on"{entry_body_summary_on:checked#on} id="input-checkbox-entry_body_summary_on" />
+				<label for="input-checkbox-entry_body_summary_on" class="acms-admin-form-checkbox"><i class="acms-admin-ico-checkbox"></i><!--T-->サマリーを表示できるようにする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_summary_on" />
+
+			<!--T-->文字数<!--/T-->:
+			<input type="text" name="entry_body_fulltext_width" value="{entry_body_fulltext_width}" />
+			<input type="hidden" name="config[]" value="entry_body_fulltext_width" />
+
+			<!--T-->追加文字<!--/T-->:
+			<input type="text" name="entry_body_fulltext_marker" value="{entry_body_fulltext_marker}" />
+			<input type="hidden" name="config[]" value="entry_body_fulltext_marker" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->一覧表示のユニット数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一覧表示にここで設定したユニット数分で続きを読むに強制します。<!--/T-->"></i></th>
+		<td>
+			<!--T-->表示ユニット数（強制）<!--/T-->:
+			<!--T--><input type="text" name="entry_body_fix_summary_range" value="{entry_body_fix_summary_range}" />個を表示<!--/T-->
+			<input type="hidden" name="config[]" value="entry_body_fix_summary_range" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->一覧全表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると一覧表示で続きを読むを無視して全て表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_show_all_index" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_show_all_index" value="on"{entry_body_show_all_index:checked#on} id="input-checkbox-entry_body_show_all_index" />
+				<label for="input-checkbox-entry_body_show_all_index"><i class="acms-admin-ico-checkbox"></i><!--T-->一覧で続きを読むを無視して全表示します。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_show_all_index" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリー日付<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとエントリー日付を出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_date_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_date_on" value="on"{entry_body_date_on:checked#on} id="input-checkbox-entry_body_date_on" />
+				<label for="input-checkbox-entry_body_date_on"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリー日付を表示できるようにする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_date_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->投稿日時・変更日時<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="チェックをすると投稿日時・更新日時を出力できるようになります。"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_detail_date_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_detail_date_on" value="on"{entry_body_detail_date_on:checked#on} id="input-checkbox-entry_body_detail_date_on" />
+				<label for="input-checkbox-entry_body_detail_date_on"><i class="acms-admin-ico-checkbox"></i><!--T-->投稿日時・変更日時を表示できるようにする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_detail_date_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->コメント情報<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとコメント情報を出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_comment_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_comment_on" value="on"{entry_body_comment_on:checked#on} id="input-checkbox-entry_body_comment_on" />
+				<label for="input-checkbox-entry_body_comment_on"><i class="acms-admin-ico-checkbox"></i><!--T-->コメント情報を表示できるようにする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_comment_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->位置情報<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると位置情報を出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_geolocation_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_geolocation_on" value="on"{entry_body_geolocation_on:checked#on} id="input-checkbox-entry_body_geolocation_on" />
+				<label for="input-checkbox-entry_body_geolocation_on"><i class="acms-admin-ico-checkbox"></i><!--T-->位置情報を表示できるようにする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_geolocation_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーがない場合のHTTP応答<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このモジュールが表示すべきエントリー情報が0件のときに、リクエストされたページの応答を404 Not Foundとします。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_notfound_status_404" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_notfound_status_404" value="on"{entry_body_notfound_status_404:checked#on} id="input-checkbox-entry_body_notfound_status_404" />
+				<label for="input-checkbox-entry_body_notfound_status_404"><i class="acms-admin-ico-checkbox"></i><!--T-->リクエストに404 Not Foundとして応答する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_notfound_status_404" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->ページャー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->簡易ページャー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると簡易ページャー（前後ページへのリンク）機能に必要な情報を出力します。記事数が多く通常のページャーが重い場合はこちらのペジャーをお使いください。ページャー機能を使用するには、モジュールIDとしてこのモジュールを使用し、引数の「ページ」のURLコンテキストにチェックをしてください。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_simple_pager_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_simple_pager_on" value="on"{entry_body_simple_pager_on:checked#on} id="input-checkbox-entry_body_simple_pager_on" />
+				<label for="input-checkbox-entry_body_simple_pager_on"><i class="acms-admin-ico-checkbox"></i><!--T-->簡易ページャーを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_simple_pager_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ページャー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとページャー（ページ送り）機能に必要な情報を出力します。ページャー機能を使用するには、モジュールIDとしてこのモジュールを使用し、引数の「ページ」のURLコンテキストにチェックをしてください。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_pager_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_pager_on" value="on"{entry_body_pager_on:checked#on} class="switching-function-btn" id="input-checkbox-entry_body_pager_on" />
+				<label for="input-checkbox-entry_body_pager_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ページャーを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_pager_on" />
+		</td>
+	</tr>
+</table>
+
+<div>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->前後に表示するページ数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページを基点として、ここで設定した値の数だけページ番号が表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_pager_delta" value="{entry_body_pager_delta}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_body_pager_delta" />
+			<input type="hidden" name="entry_body_pager_delta:validator#digits" id="validator-entry_body_pager_delta-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_body_pager_delta-digits" class="validator-result-{entry_body_pager_delta:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->現在のページの要素の属性<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページ番号に割り当てられる属性です。（変数名 : pageCurAttr）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_pager_cur_attr" value="{entry_body_pager_cur_attr}" size="20" />
+			<input type="hidden" name="config[]" value="entry_body_pager_cur_attr" />
+		</td>
+	</tr>
+</table>
+</div>
+
+
+<h3 class="acms-admin-admin-title2"><!--T-->前後リンク<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->前後リンク<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとエントリーの詳細表示時に前後のエントリーへ移動するリンクを使用できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_serial_navi_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_serial_navi_on" value="on"{entry_body_serial_navi_on:checked#on} class="switching-function-btn" id="input-checkbox-entry_body_serial_navi_on" />
+				<label for="input-checkbox-entry_body_serial_navi_on"><i class="acms-admin-ico-checkbox"></i><!--T-->前後リンクを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_serial_navi_on" />
+		</td>
+	</tr>
+</table>
+<div>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->1記事の時の前後リンク<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、エントリーの詳細表示時の前後リンクが、カテゴリーを考慮しなくなります。<br />チェックが入っていない状態で、カテゴリーが指定されていないエントリーを表示すると、前後リンクはカテゴリーが指定されていないエントリーの中から選ばれます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_serial_navi_ignore_category" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_serial_navi_ignore_category" value="on"{entry_body_serial_navi_ignore_category:checked#on} id="input-checkbox-entry_body_serial_navi_ignore_category" />
+				<label for="input-checkbox-entry_body_serial_navi_ignore_category"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーを無視して、ブログ内の全記事における前後のリンクを表示する<!--/T-->
+				</label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_serial_navi_ignore_category" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<h3 class="acms-admin-admin-title2"><!--T-->マイクロページ<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->マイクロページ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ひとつのエントリーをページ分割して表示することができるようになります。（テンプレート、ユニットのカスタマイズが必要です）<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_micropage" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_micropage" value="on"{entry_body_micropage:checked#on} class="switching-function-btn" id="input-checkbox-entry_body_micropage" />
+				<label for="input-checkbox-entry_body_micropage"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーをページ分割する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_micropage" />
+		</td>
+	</tr>
+</table>
+<div>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->前後表示するページ数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページを基点として、ここで設定した値の数だけページ番号が表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_micropager_delta" value="{entry_body_micropager_delta}" size="4" />
+			<input type="hidden" name="config[]" value="entry_body_micropager_delta" />
+			<input type="hidden" name="entry_body_micropager_delta:validator#digits" id="validator-entry_body_micropager_delta-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_body_micropager_delta-digits" class="validator-result-{entry_body_micropager_delta:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->現在のページ要素の属性<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページ番号に割り当てられる属性です。（変数名 : pageCurAttr）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_body_micropager_cur_attr" value="{entry_body_micropager_cur_attr}" size="20" />
+			<input type="hidden" name="config[]" value="entry_body_micropager_cur_attr" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<h3 class="acms-admin-admin-title2"><!--T-->イメージ<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->メインイメージ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとメインイメージを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_image_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_image_on" value="on"{entry_body_image_on:checked#on} class="switching-function-btn" id="input-checkbox-entry_body_image_on" />
+				<label for="input-checkbox-entry_body_image_on"><i class="acms-admin-ico-checkbox"></i><!--T-->メインイメージを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_image_on" />
+		</td>
+	</tr>
+</table>
+<div>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->サイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールで出力する画像のサイズを設定します。<!--/T-->"></i></th>
+			<td>
+				<!--T-->横<!--/T-->&nbsp;<input type="text" name="entry_body_image_x" value="{entry_body_image_x}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル x 縦<!--/T-->&nbsp;<input type="text" name="entry_body_image_y" value="{entry_body_image_y}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル<!--/T-->
+				<input type="hidden" name="config[]" value="entry_body_image_x" />
+				<input type="hidden" name="config[]" value="entry_body_image_y" />
+				<input type="hidden" name="entry_body_image_x:convert" value="a" />
+				<input type="hidden" name="entry_body_image_x:validator#digits" id="validator-entry_body_image_x-digits" />
+				<input type="hidden" name="entry_body_image_y:convert" value="a" />
+				<input type="hidden" name="entry_body_image_y:validator#digits" id="validator-entry_body_image_y-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-entry_body_image_x-digits" class="validator-result-{entry_body_image_x:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-entry_body_image_y-digits" class="validator-result-{entry_body_image_y:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->トリミング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイズで指定された大きさに、画像をトリミングして表示します。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="entry_body_image_trim" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="entry_body_image_trim" value="on"{entry_body_image_trim:checked#on} id="input-checkbox-entry_body_image_trim" />
+					<label for="input-checkbox-entry_body_image_trim"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズにトリミングする<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="entry_body_image_trim" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->拡大　( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像が指定されたサイズよりも小さいときに、指定されたサイズまで拡大します。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="entry_body_image_zoom" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="entry_body_image_zoom" value="on"{entry_body_image_zoom:checked#on} id="input-checkbox-entry_body_image_zomm" />
+					<label for="input-checkbox-entry_body_image_zomm"><i class="acms-admin-ico-checkbox"></i><!--T-->画像が指定されたサイズに満たない場合に拡大する<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="entry_body_image_zoom" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->表示位置 ( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像を指定されたサイズの中心に表示します。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="entry_body_image_center" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="entry_body_image_center" value="on"{entry_body_image_center:checked#on} id="input-checkbox-entry_body_image_center" />
+					<label for="input-checkbox-entry_body_image_center"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズの中心に表示する<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="entry_body_image_center" />
+			</td>
+		</tr>
+	</table>
+</div>
+
+<h3 class="acms-admin-admin-title2"><!--T-->フィールド<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->フィールド基本設定<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドの基本設定（名前など）を出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_category_info_on" value="off" />
+
+			<input type="hidden" name="config[]" value="entry_body_category_info_on" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_category_info_on" value="on"{entry_body_category_info_on:checked#on} id="input-checkbox-entry_body_category_info_on" />
+				<label for="input-checkbox-entry_body_category_info_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリー情報<!--/T--></label>
+			</div><br>
+
+			<input type="hidden" name="entry_body_user_info_on" value="off" />
+			<input type="hidden" name="config[]" value="entry_body_user_info_on" />
+
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_user_info_on" value="on"{entry_body_user_info_on:checked#on} id="input-checkbox-entry_body_user_info_on" />
+				<label for="input-checkbox-entry_body_user_info_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザー情報<!--/T--></label>
+			</div><br>
+
+			<input type="hidden" name="entry_body_blog_info_on" value="off" />
+			<input type="hidden" name="config[]" value="entry_body_blog_info_on" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_blog_info_on" value="on"{entry_body_blog_info_on:checked#on} id="input-checkbox-entry_body_blog_info_on" />
+				<label for="input-checkbox-entry_body_blog_info_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ブログ情報<!--/T--></label>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カスタムフィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドのカスタムフィールドを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_body_entry_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_entry_field_on" value="on"{entry_body_entry_field_on:checked#on} id="input-checkbox-entry_body_entry_field_on" />
+				<label for="input-checkbox-entry_body_entry_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_entry_field_on" />
+			<br>
+
+			<input type="hidden" name="entry_body_category_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_category_field_on" value="on"{entry_body_category_field_on:checked#on} id="input-checkbox-entry_body_category_field_on" />
+				<label for="input-checkbox-entry_body_category_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_body_category_field_on" />
+			<br>
+
+			<input type="hidden" name="entry_body_user_field_on" value="off" />
+
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_user_field_on" value="on"{entry_body_user_field_on:checked#on} id="input-checkbox-entry_body_user_field_on" />
+				<label for="input-checkbox-entry_body_user_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザーフィールド<!--/T--></label>
+				<input type="hidden" name="config[]" value="entry_body_user_field_on" />
+			</div>
+			<br>
+
+			<input type="hidden" name="entry_body_blog_field_on" value="off" />
+
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_body_blog_field_on" value="on"{entry_body_blog_field_on:checked#on} id="input-checkbox-entry_body_blog_field_on" />
+				<label for="input-checkbox-entry_body_blog_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ブログフィールド<!--/T--></label>
+					<br/><!--T-->(エントリーフィールド以外のフィールドは各基本設定がonの時のみ有効)<!--/T-->
+				<input type="hidden" name="config[]" value="entry_body_blog_field_on" />
+			</div>
+
+		</td>
+	</tr>
+</table>
+
+<!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

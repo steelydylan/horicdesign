@@ -1,0 +1,172 @@
+<h2 class="acms-admin-admin-title2"><!--T-->表示順<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->バナーが表示される順番を表示順かランダムかを選びます。<!--/T-->"></i></th>
+		<td>{banner_order}
+			<select name="banner_order" class="js-select2">
+				<option value="sort-asc"{banner_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{banner_order:selected#sort-desc}><!--T-->表示順 ( 降順 )<!--/T--></option>
+				<option value="random"{banner_order:selected#random}><!--T-->ランダム<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="banner_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->バナーが表示される数です。空白または数値でない場合、全件表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="banner_limit" value="{banner_limit}" size="5" />
+			<input type="hidden" name="config[]" value="banner_limit" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをループブロック内に設定できます。例えばグリッドシステムのカラム数設定などにご利用ください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="banner_loop_class" value="{banner_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="banner_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!-- T -->画像の最大サイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像の最大サイズを設定します。値がなければそのままのサイズで画像がアップロードされます。<!--/T-->"></i></th>
+		<td>
+			<select name="banner_size_large_criterion" class="js-banner_size_large_criterion js-select2">
+				<option value><!-- T -->長辺<!--/T --></option>
+				<option value="width"{banner_size_large_criterion:selected#width}><!-- T -->横<!--/T --></option>
+				<option value="height"{banner_size_large_criterion:selected#height}><!-- T -->縦<!--/T --></option>
+			</select>
+			<input type="hidden" name="config[]" value="banner_size_large_criterion" />
+			<input type="text" name="banner_size_large" value="{banner_size_large}" size="5" class="js-banner_size_large" /> px
+			<input type="hidden" name="config[]" value="banner_size_large" />
+			<!-- BEGIN_SetRendered id="bnr_resize" --><!-- BEGIN_IF [{banner_size_large}/nem] --> class="js-img_resize_input"<!-- END_IF --><!-- END_SetRendered -->
+		</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2"><!--T-->画像データ<!--/T--></h2>
+<table class="js-admin_table-sortable acms-admin-table-admin-edit-bordered" data-sort-enable="on" data-sort-submit="ACMS_POST_Config" data-sort-target="#sortableForm">
+	<thead class="acms-admin-hide-sp">
+		<tr>
+			<th class="acms-admin-admin-config-table-item-handle"></th>
+			<th class="acms-admin-table-left acms-admin-admin-config-table-sort acms-admin-table-nowrap"><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->バナーが表示される順番です。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left acms-admin-admin-config-table-publish acms-admin-table-nowrap"><!--T-->公開<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->バナーの公開状態です。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left acms-admin-width-max acms-admin-table-nowrap"><!--T-->バナー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->表示されるバナーの情報です。<!--/T-->"></i></th>
+		</tr>
+	</thead>
+	<tbody><!-- BEGIN banner:loop -->
+		<tr data-sort-level="parallel" data-sort-name="banner-{id}@sort">
+			<td class="item-handle acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->表示順<!--/T--></span>
+				<select name="banner-{id}@sort" class="js-select2"><!-- BEGIN sort:loop -->
+					<option value="{value}"{selected}>{label}</option><!-- END sort:loop -->
+				</select>
+				<input type="hidden" name="config[]" value="banner-{id}@sort" />
+			</td>
+			<td>
+				<input type="hidden" name="banner-{id}@status" value="close" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="banner-{id}@status" value="open"{status:checked#open} id="banner-status-{id}" />
+					<label for="banner-status-{id}"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-pc acms-admin-show-inline-sp"><!--T-->公開<!--/T--></span></label>
+				</div>
+				<input type="hidden" name="config[]" value="banner-{id}@status" />
+			</td>
+			<td>
+				<!-- BEGIN banner#src -->
+				<table>
+					<tr>
+						<th><!--T-->ソース<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->HTMLを直接記述してバナーを掲載する場合、この欄にHTMLを入力してください。<!--/T-->"></i></th>
+						<td>
+							<textarea name="banner-{banner#src_id}@src" cols="60" rows="5">{src}</textarea>
+							<input type="hidden" name="config[]" value="banner-{banner#src_id}@src" />
+						</td>
+					</tr>
+					<tr>
+						<th><!--T-->公開日時<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->このバナーの公開日時を指定します。バナーの表示には日時の範囲内であっても、公開設定にチェックが入っている必要があります。<!--/T-->"></i></th>
+						<td>
+						<input type="text" name="banner-{banner#src_id}@datestart" value="{datestart}" class="js-datepicker" size="10" />
+						<input type="text" name="banner-{banner#src_id}@timestart" value="{timestart}" size="7" /> 〜
+						<input type="text" name="banner-{banner#src_id}@dateend" value="{dateend}" class="js-datepicker" size="10" />
+						<input type="text" name="banner-{banner#src_id}@timeend" value="{timeend}" size="7" />
+						<input type="hidden" name="config[]" value="banner-{banner#src_id}@datestart" />
+						<input type="hidden" name="config[]" value="banner-{banner#src_id}@dateend" />
+						<input type="hidden" name="config[]" value="banner-{banner#src_id}@timestart" />
+						<input type="hidden" name="config[]" value="banner-{banner#src_id}@timeend" />
+						</td>
+					</tr>
+				</table>
+				<!-- END banner#src --><!-- BEGIN banner#img -->
+
+				<table>
+					<tr>
+						<th><!--T-->画像<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->表示されるバナー画像です。<!--/T-->"></i></th>
+						<td class="js-img_resize_cf"><!-- BEGIN banner@img:veil -->
+							<input type="hidden" name="banner-{banner@img_id}@old" value="{img}" />
+							<div class="acms-admin-form-checkbox">
+								<input type="checkbox" name="banner-{banner@img_id}@edit" value="delete" id="input-checkbox-banner-{banner@img_id}@edit" />
+								<label for="input-checkbox-banner-{banner@img_id}@edit"><i class="acms-admin-ico-checkbox"></i> <!--T-->削除<!--/T--></label>
+							</div>
+							<br />
+							<img src="%{ARCHIVES_DIR}{img}" style="max-width: 450px;" alt="" class="js-img_resize_preview"/><br /><!-- END banner@img:veil -->
+							<!-- BEGIN_IF [{img}/em] -->
+							<img src="" class="js-img_resize_preview" style="display:none;">
+							<!-- END_IF -->
+							<input type="file" name="banner-{banner#img_id}" size="20"<!-- GET_Rendered id="bnr_resize" -->/>
+							<input type="hidden" name="config[]" value="banner-{banner#img_id}" />
+							<input type="hidden" name="banner-{banner#img_id}:extension" value="image" />
+						</td>
+					</tr>
+					<tr>
+						<th>URL<i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->バナーのリンク先URLです。<!--/T-->"></i></th>
+						<td>
+							<input type="text" name="banner-{banner#img_id}@url" value="{url}" style="width:90%;" />
+							<input type="hidden" name="config[]" value="banner-{banner#img_id}@url" />
+						</td>
+					</tr>
+					<tr>
+						<th><!--T-->代替テキスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->バナー画像が表示できなかった場合に表示される代替テキストです。<!--/T-->"></i></th>
+						<td><input type="text" name="banner-{banner#img_id}@alt" value="{alt}" style="width:90%;" /></td>
+					</tr>
+					<tr>
+						<th><!--T-->属性1<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->任意の属性を設定できます。（変数名 attr1）<!--/T-->"></i></th>
+						<td><input type="text" name="banner-{banner#img_id}@attr1" value="{attr1}" style="width:90%;" />
+						<input type="hidden" name="config[]" value="banner-{banner#img_id}@attr1" /></td>
+					</tr>
+					<tr>
+						<th><!--T-->属性2<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->任意の属性を設定できます。（変数名 attr2）<!--/T-->"></i></th>
+						<td><input type="text" name="banner-{banner#img_id}@attr2" value="{attr2}" style="width:90%;" />
+						<input type="hidden" name="config[]" value="banner-{banner#img_id}@attr2" /></td>
+					</tr>
+					<tr>
+						<th><!--T ctx="banner"-->新規ページ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->このバナーのリンクを新しいウィンドウで開くかのチェックです。チェックすると新しいウィンドウで開きます。<!--/T-->"></i></th>
+						<td>
+							<input type="hidden" name="banner-{banner#img_id}@target" value="_self" />
+							<div class="acms-admin-form-checkbox">
+								<input type="checkbox" name="banner-{banner#img_id}@target" value="_blank"{target:checked#_blank} id="input-checkbox-banner-{banner#img_id}@target" />
+								<label for="input-checkbox-banner-{banner#img_id}@target"><i class="acms-admin-ico-checkbox"></i><!--T-->新しいウィンドウで開く<!--/T--></label>
+							</div>
+							<input type="hidden" name="config[]" value="banner-{banner#img_id}@target" />
+						</td>
+					</tr>
+					<tr>
+						<th><!--T-->公開日時<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="<!--T-->このバナーの公開日時を指定します。バナーの表示には日時の範囲内であっても、公開設定にチェックが入っている必要があります。<!--/T-->"></i></th>
+						<td>
+						<input type="text" name="banner-{banner#img_id}@datestart" value="{datestart}" class="js-datepicker" size="10" />
+						<input type="text" name="banner-{banner#img_id}@timestart" value="{timestart}" size="7" /> 〜
+						<input type="text" name="banner-{banner#img_id}@dateend" value="{dateend}" class="js-datepicker" size="10" />
+						<input type="text" name="banner-{banner#img_id}@timeend" value="{timeend}" size="7" />
+						<input type="hidden" name="config[]" value="banner-{banner#img_id}@datestart" />
+						<input type="hidden" name="config[]" value="banner-{banner#img_id}@dateend" />
+						<input type="hidden" name="config[]" value="banner-{banner#img_id}@timestart" />
+						<input type="hidden" name="config[]" value="banner-{banner#img_id}@timeend" />
+						</td>
+					</tr>
+				</table>
+				<!-- END banner#img -->
+
+				<input type="hidden" name="banner@id[]" value="{id}" />
+			</td>
+		</tr><!-- END banner:loop -->
+	</tbody>
+</table>
+<input type="hidden" name="config[]" value="banner@id" /><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

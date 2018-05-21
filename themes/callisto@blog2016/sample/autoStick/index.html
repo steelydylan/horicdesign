@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="Sat, 31 Aug 2002 17:35:42 GMT">
+    <meta http-equiv="x-ua-compatible" content="IE=10">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/callisto.css" />
+    <style>
+    	footer{
+    		height:500px;
+    		background: #333333;
+    		margin-top: 20px;
+    	}
+    	.js-wrapper{
+    		width:100%;
+    	}
+    	.commonP{
+    		margin-bottom: 20px;
+    		font-size: 15px;
+    	}
+    	.imgContainer{
+	    	width:200px;
+    	}
+    	.responsiveImg{
+	    	width:100%;
+	    	height:auto;
+    	}
+    </style>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.autoStick.js"></script>
+    <script>
+    	$(function(){
+    		$(".js-stick").autoStick({
+    			wrapperElement:".js-wrapper",
+    			beforeElement:".js-top",
+    			marginTop:50,
+    			fixTop:50,
+    			marginLeft:15,
+    			enableCondition:function(){
+    				return $(window).innerWidth() > 768 ? true : false;
+    			}
+    		});
+    	});
+    </script>
+  </head>
+  <body>
+  	<div class="container">
+	  	<div class="cs-row js-wrapper">
+	  		<div class="cs-col-xs-12 cs-col-sm-6">
+	  			<div class="js-top">
+		  			<p>テスト</p>
+		  			<p>テスト</p>
+		  			<p>テスト</p>
+		  		</div>
+		  		<div class="js-stick imgContainer">
+		  		<img src="/images/atlas-chan.png" class="responsiveImg" />
+		  		</div>
+	  		</div>
+	  		<div class="cs-col-xs-12 cs-col-sm-6">
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quisquam explicabo sunt dignissimos delectus saepe autem! Natus alias reprehenderit voluptatibus, repudiandae optio modi. Repellat perferendis non sunt impedit rerum deserunt!</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore deserunt quia blanditiis sunt voluptate nesciunt magni explicabo, natus veniam, consequatur ex, dignissimos eligendi ipsum labore rem pariatur odit vel doloremque?</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem at, assumenda perferendis ducimus ab laborum vel delectus numquam similique illum rerum nam velit tempore explicabo nisi voluptatibus sit et perspiciatis.</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eum beatae fugiat explicabo incidunt error minima deleniti voluptatibus id dolore tempora quas, non, numquam nostrum, sit repellat molestiae, fugit ducimus.</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nesciunt iusto. Dolorum similique earum veritatis magni porro amet itaque tempora blanditiis, minus nisi, rerum, id impedit quasi maxime consequuntur molestias.</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam placeat ducimus, ut voluptates? Perspiciatis corporis minima maiores id quaerat assumenda explicabo iste laborum ut fuga quas, alias, iure esse voluptatum!</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nihil, neque suscipit sunt voluptates ex. Reprehenderit facilis officia autem sint vero, dicta, deleniti eum neque modi quaerat provident iste! Laborum?</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ipsam quod quis molestias rem maiores velit quidem tempora exercitationem veritatis illum repellendus sapiente iste esse magni necessitatibus autem, asperiores aspernatur.</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi animi doloribus cumque, distinctio culpa. Nostrum, ipsum eum modi numquam, aut quisquam corporis, quam quidem eos obcaecati consequuntur asperiores, saepe ipsam!</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente aut porro, sit vitae ex beatae quas saepe placeat? Alias doloremque ratione maiores sapiente similique fugit commodi non aut maxime voluptas?</p>
+	  			<p class="commonP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quas amet quibusdam autem. Rem alias deleniti saepe asperiores, itaque quo id exercitationem temporibus, veritatis aliquam est iure, hic voluptatibus, ratione.</p>
+	  		</div>
+	  	</div>
+	  </div>
+	  <footer></footer>
+  </body>
+</html>

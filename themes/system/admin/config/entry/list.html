@@ -1,0 +1,33 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<div class="acms-admin-admin-title acms-admin-module-title-wrapper">
+			<div class="acms-admin-module-title">
+				<!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name}</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} )</strong><!-- END_MODULE Admin_Module_Name -->
+				<h1><span class="js-dialog-title"><!--T-->エントリーリスト<!--/T--></span><span class="acms-admin-module-en">Entry_List</span></h1>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>Entry_List <!--T-->設定を保存しました<!--/T--></p>
+<!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form js-dialog-body">
+	<div class="acms-admin-form-group acms-admin-margin-sp">
+		<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+		<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		@include("/admin/config/action.html")
+
+		<!-- BEGIN_MODULE Touch_SessionWithAdministration --><a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+	</div>
+	@include("/admin/%{ADMIN_PATH}_body.html")
+</form>
+<!-- END_MODULE Admin_Config -->

@@ -1,0 +1,8 @@
+[
+     <!-- BEGIN_MODULE Entry_Summary id="jsonEntrySummary" -->
+          <!-- BEGIN entry:loop -->
+               \{"summary":"{summary}[trim(51, '...')]","src":"<!-- BEGIN path:veil -->%{HOME_URL}{path}<!-- END path:veil -->"\}
+               <!-- BEGIN glue -->,<!-- END glue -->
+          <!-- END entry:loop -->
+     <!-- END_MODULE Entry_Summary -->
+]

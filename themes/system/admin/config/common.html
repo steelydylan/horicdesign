@@ -1,0 +1,56 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<div class="acms-admin-admin-title acms-admin-module-title-wrapper">
+			<i class="acms-admin-icon acms-admin-icon-config_common"></i>
+			<div class="acms-admin-module-title js-dialog-title">
+				<!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name}</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} )</strong><!-- END_MODULE Admin_Module_Name -->
+				<h1><!--T-->共通設定<!--/T--><span class="acms-admin-module-en">common</span></h1>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->共通設定を保存しました<!--/T--></p><!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form js-dialog-body">
+	<div class="acms-admin-form-group acms-admin-margin-sp">
+		<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+		<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		@include("/admin/config/action.html")
+
+		<!-- BEGIN_MODULE Touch_SessionWithAdministration --><a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+	</div>
+
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->曜日のラベル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->モジュールの曜日表示に共通で使用される文字です。<!--/T-->"></i></th>
+			<td>
+				<div>
+					<input type="text" name="week_label[]" value="{week_label}" size="6" class="acms-admin-form-width-mini" />
+					<input type="text" name="week_label[]" value="{week_label[1]}" size="6" class="acms-admin-form-width-mini" />
+					<input type="text" name="week_label[]" value="{week_label[2]}" size="6" class="acms-admin-form-width-mini" />
+					<input type="text" name="week_label[]" value="{week_label[3]}" size="6" class="acms-admin-form-width-mini" />
+					<input type="text" name="week_label[]" value="{week_label[4]}" size="6" class="acms-admin-form-width-mini" />
+					<input type="text" name="week_label[]" value="{week_label[5]}" size="6" class="acms-admin-form-width-mini" />
+					<input type="text" name="week_label[]" value="{week_label[6]}" size="6" class="acms-admin-form-width-mini" />
+					<input type="hidden" name="config[]" value="week_label" />
+
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->
+@include("/admin/tooltip/config/general.html")

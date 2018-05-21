@@ -1,0 +1,28 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->APIリクエスト キャッシュ有効時間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->APIリクエストの結果を、ここで設定した秒数の間だけキャッシュ利用します。ページのキャッシュとは異なることに注意してください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="twitter_list_members_cache_expire" value="{twitter_list_members_cache_expire}" size="8" class="acms-admin-form-width-mini" /> 秒
+			<input type="hidden" name="config[]" value="twitter_list_members_cache_expire" />
+			<input type="hidden" name="twitter_list_members_cache_expire:validator#digits" id="validator-twitter_list_members_cache_expire-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-twitter_list_members_cache_expire-digits" class="validator-result-{twitter_list_members_cache_expire:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->リスト指定方法<!--/T--></th>
+		<td>
+			<p>
+				<!--T-->このモジュールについてモジュールIDを作成し、フィールドの引数に以下の情報を追加します。<!--/T-->
+
+				<strong>user/[owner_screen_name]/and/list/[list_name]/</strong><br>
+				<!--T-->フィールド欄に上記の内容を追加することで指定したリストのユーザー情報が表示できます<!--/T-->
+			</p>
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Tag_Filter</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Tag_Filter --&gt;
+&lt;!-- BEGIN tagBox --&gt;
+&lt;div&gt;
+	&lt;p&gt;選択されているタグ :  &lt;!-- BEGIN selected:loop --&gt;&lt;span class="acms-label-group acms-inline-space"&gt;&lt;a href="{url}" class="acms-label"&gt;{name}&lt;/a&gt;&lt;a href="{omitUrl}" class="acms-label acms-label-side"&gt;x&lt;/a&gt;&lt;/span&gt;&lt;!-- END selected:loop --&gt;
+	&lt;/p&gt;
+	&lt;!-- BEGIN choice:veil --&gt;
+	&lt;p id="nextTagTitle"&gt;タグを絞り込む : &lt;!-- BEGIN choice:loop --&gt;&lt;a href="{url}" class="acms-label acms-inline-space"&gt;{name}&lt;/a&gt;&lt;!-- END choice:loop --&gt;
+	&lt;!-- END choice:veil --&gt;
+	&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- END tagBox --&gt;
+&lt;!-- END_MODULE Tag_Filter --&gt;
+</textarea>
+</body>
+</html>

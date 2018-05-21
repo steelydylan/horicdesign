@@ -1,0 +1,16 @@
+<table class="acms-admin-table-admin-edit">
+	<tr>
+		<th>キャッシュタイム<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="JSONファイルをキャッシュする時間を秒で指定します。"></i></th>
+		<td>
+			<input type="text" name="json_2tpl_cache_expire" value="{json_2tpl_cache_expire}" class="acms-admin-form-width-mini" placeholder="180"/> 秒
+			<input type="hidden" name="config[]" value="json_2tpl_cache_expire"/>
+		</td>
+	</tr>
+	<tr>
+		<th>JSONファイル<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="JSONファイルをURLまたはパスで指定します。"></i></th>
+		<td>
+			<input type="text" name="json_2tpl_source" value="{json_2tpl_source}" class="acms-admin-form-width-full" placeholder="http://example.com/sample.json または themes/sample_theme/sample.json"/>
+			<input type="hidden" name="config[]" value="json_2tpl_source"/>
+		</td>
+	</tr>
+</table>

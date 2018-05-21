@@ -1,0 +1,63 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->スケジュール管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Schedule_Edit -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->スケジュールセットを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->スケジュールセットを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->スケジュールセットを削除しました<!--/T--></p><!-- END msg#delete -->
+
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/schedule_index/" class="acms-admin-btn-admin acms-admin-margin-sp"><!--T-->一覧<!--/T--></a>
+
+			<!-- BEGIN submit#insert -->
+			<input type="submit" name="ACMS_POST_Schedule_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			<!-- END submit#insert -->
+
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_Schedule_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<input type="submit" name="ACMS_POST_Schedule_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->スケジュールセットを削除します。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+
+			<div class="acms-admin-float-right"><!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+				<a href="/bid/%{BID}/admin/shortcut_edit/?scid=%{scid}&action=Schedule_Update&admin=schedule_edit&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-inline-btn acms-admin-shortcut-btn"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+			</div>
+			<!-- END submit#update -->
+		</div>
+	</div>
+
+	<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->セット名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このスケジュールを管理するための名前です。（日本語可）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="name" value="{name}" size="50" />
+			<input type="hidden" name="schedule[]" value="name" />
+			<input type="hidden" name="name:validator#required" id="validator-name-required" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-name-required" class="validator-result-{name:validator#required}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前が入力されていません。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->説明<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このスケジュールがどのような動作をするかなどのメモです。<!--/T-->"></i></th>
+		<td>
+		<input type="text" name="desc" value="{desc}" size="50" />
+		<input type="hidden" name="schedule[]" value="desc" />
+		</td>
+	</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Schedule_Edit -->

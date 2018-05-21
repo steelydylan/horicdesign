@@ -1,0 +1,129 @@
+<!-- BEGIN_MODULE Admin_ActionMenu -->
+<div id="adminMinBox" class="clearfix js-dragAdminBox_disable minBox">
+	<span class="dragBoxHandle"><i class="acms-admin-icon-sort"></i></span>
+	<span class="dragBoxToggle"><i class="acms-admin-icon-arrow-down"></i></span>
+</div>
+
+<div id="adminBox" class="clearfix js-dragAdminBox_disable acms-admin-box normalBox">
+	<div id="loginUserStatus">
+		<img src="%{ARCHIVES_DIR}{icon}" width="20" height="20" alt="" class="acms-admin-user acms-admin-margin-right-mini" />{name}
+		<span class="acms-admin-label"><a href="/bid/%{SBID}/uid/%{SUID}/admin/user_edit/"><!--T-->プロフィール<!--/T--></a></span><!-- BEGIN approval -->
+		<div class="acms-admin-label-approval-group"><a href="{url}"><!--T-->承認通知<!--/T--></a>&nbsp;<span class="acms-admin-badge acms-admin-badge-approval">{badge}</span></div><!-- END approval --><!-- BEGIN_MODULE Touch_Debug -->
+		&nbsp;<span class="acms-admin-label acms-admin-label-danger"><a href="/bid/%{SBID}/admin/checklist/"><!--T-->デバッグモード<!--/T--></a></span>
+		&nbsp;<!--T-->現在表示中のテンプレート<!--/T-->：%{ROOT_TPL}<!-- BEGIN_IF [%{RID}/nem] -->&nbsp;
+		&nbsp;<!--T-->現在のルール<!--/T-->：%{RULE_NAME}（RID:%{RID}）<!-- END_IF --><!-- BEGIN_IF [%{IS_DEVELOPMENT}/eq/on] -->
+		/ <a href="https://mypage.a-blogcms.jp" target="_blank"><strong><!--T-->ライセンス未購入<!--/T--></strong></a><!-- END_IF -->
+		<!-- END_MODULE Touch_Debug --><!-- BEGIN status#usersover -->
+		/ <strong><!--T-->登録されているユーザー数が上限を超えているため、ラインセンスが無効になっています。<!--/T--></strong><!-- END status#usersover --><!-- BEGIN status#illegal -->
+		/ <strong><!--T-->データベースのタイムスタンプが不正であるため、ライセンスが無効になっています。<!--/T--></strong> : {expire}<!-- END status#illegal -->
+
+		<span class="dragBoxHandle" style="display:none;"><i class="acms-admin-icon-sort"></i></span>
+		<span class="dragBoxToggle" style="display:none;"><i class="acms-admin-icon-arrow-up"></i></span>
+	</div>
+
+	<!-- BEGIN_MODULE Touch_Entry -->
+	<!-- BEGIN_MODULE Touch_SessionWithContribution -->
+
+	<!-- BEGIN_MODULE Touch_NotEditInplace --><!-- BEGIN_MODULE Touch_NotApprovalORsessionWithApprovalAdministrator -->
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="hidden" name="acms_config_entry_edit_inplace_enable" value="on" />
+		<input type="hidden" name="cookie[]" value="acms_config_entry_edit_inplace_enable" />
+		<input type="submit" name="ACMS_POST_Cookie" value="<!--T-->ダイレクト編集ONにする<!--/T-->" class="acms-admin-btn-admin" />
+	</form><!-- END_MODULE Touch_NotApprovalORsessionWithApprovalAdministrator --><!-- END_MODULE Touch_NotEditInplace -->
+	<!-- BEGIN_MODULE Touch_EditInplace -->
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="hidden" name="acms_config_entry_edit_inplace_enable" value="off" />
+		<input type="hidden" name="cookie[]" value="acms_config_entry_edit_inplace_enable" />
+		<input type="submit" name="ACMS_POST_Cookie" value="<!--T-->ダイレクト編集OFFにする<!--/T-->" class="acms-admin-btn-admin" />
+	</form><!-- END_MODULE Touch_EditInplace --><!-- END_MODULE Touch_SessionWithContribution -->
+	<!-- END_MODULE Touch_Entry -->
+
+	<!-- BEGIN insert -->
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->エントリー作成<!--/T-->"  class="acms-admin-btn-admin"/>
+		<input type="hidden" name="admin" value="entry-edit" />
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="hidden" name="cid" value="%{CID}" />
+	</form><!-- END insert -->
+	<!-- BEGIN_MODULE Touch_NotAdmin -->
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->管理ページ<!--/T-->" class="acms-admin-btn-admin" />
+		<input type="hidden" name="admin" value="top" />
+		<input type="hidden" name="bid" value="%{BID}" />
+	</form>
+	<!-- END_MODULE Touch_NotAdmin -->
+	<!-- BEGIN_MODULE Touch_Edit -->
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->管理ページ<!--/T-->" class="acms-admin-btn-admin" />
+		<input type="hidden" name="admin" value="top" />
+		<input type="hidden" name="bid" value="%{BID}" />
+	</form><!-- END_MODULE Touch_Edit -->
+
+	<!-- BEGIN pingUpdate -->
+	<form action="" method="post" class="acms-admin-inline-btn"><!-- BEGIN ping_weblog_updates_endpoint:loop -->
+		<input type="hidden" name="ping_weblog_updates_endpoint[]" value="{ping_weblog_updates_endpoint}" /><!-- END ping_weblog_updates_endpoint:loop -->
+		<input type="hidden" name="pingUpdate[]" value="ping_weblog_updates_endpoint" /><!-- BEGIN ping_weblog_updates_extended_endpoint:loop -->
+		<input type="hidden" name="ping_weblog_updates_extended_endpoint[]" value="{ping_weblog_updates_extended_endpoint}" /><!-- END ping_weblog_updates_extended_endpoint:loop -->
+		<input type="hidden" name="pingUpdate[]" value="ping_weblog_updates_extended_endpoint" />
+		<input type="hidden" name="pingUpdateTpl" value="/rpc/weblog-updates-ping.xml" />
+		<input type="hidden" name="pingUpdate[]" value="pingUpdateTpl" />
+		<input type="submit" name="ACMS_POST_PingWeblogUpdate" value="<!--T-->Ping送信<!--/T-->" class="acms-admin-btn-admin" />
+	</form><!-- END pingUpdate -->
+
+	<!-- BEGIN_MODULE Touch_HigherLicense -->
+	<!-- BEGIN_MODULE Touch_SessionWithCompilation -->
+	<!-- BEGIN_MODULE Touch_NotTimemachineMode -->
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="submit" name="ACMS_POST_Timemachine_Enable" value="<!--T-->プレビューモード<!--/T-->" class="acms-admin-btn-admin">
+	</form>
+	<!-- END_MODULE Touch_NotTimemachineMode -->
+	<!-- END_MODULE Touch_SessionWithCompilation -->
+	<!-- END_MODULE Touch_HigherLicense -->
+
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="submit" name="ACMS_POST_Logout" value="<!--T-->ログアウト<!--/T-->" class="acms-admin-btn-admin" />
+	</form>
+
+	<!-- BEGIN_MODULE Touch_Entry --><!-- BEGIN_MODULE Touch_SessionWithAdministration --><!-- BEGIN_MODULE Touch_MailMagazineEnable -->
+	<hr class="clearHidden" style="margin:0;" />
+	<form action="" method="post" class="acms-admin-inline-btn selectLink acms-admin-form">
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="hidden" name="eid" value="%{EID}" />
+		<input type="submit" name="ACMS_POST_Entry_Mail" value="<!--T-->このエントリーをメールで送信<!--/T-->" class="acms-admin-btn-admin" />
+		<!-- BEGIN_MODULE Admin_Blog_SelectGlobal -->
+		<select name="user_blog_id" class="js-select2"><!-- BEGIN loop -->
+			<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+		</select><!-- END_MODULE Admin_Blog_SelectGlobal -->
+		<div class="acms-admin-form-checkbox">
+			<input type="checkbox" name="issue" value="true" id="entry-mail-broadcast" />
+			<label for="entry-mail-broadcast"><i class="acms-admin-ico-checkbox"></i><!--T-->一斉送信<!--/T--></label>
+		</div>
+	</form><!-- END_MODULE Touch_MailMagazineEnable --><!-- END_MODULE Touch_SessionWithAdministration --><!-- END_MODULE Touch_Entry -->
+
+	<hr class="clearHidden" style="margin:0;" />
+
+	<!-- BEGIN_MODULE Touch_Admin --><!-- BEGIN_MODULE Touch_NotEdit -->
+	<!-- BEGIN_MODULE Admin_Shortcut_List:disabled -->
+	<form action="" method="post" class="acms-admin-form selectLink">
+	<select name="shorcut" class="js-select2">
+		<option value="">( <!--T-->ショートカットを選択<!--/T--> )</option><!-- BEGIN shortcut:loop -->
+		<option value="{url}">{name}</option><!-- END shortcut:loop -->
+	</select>
+	</form>
+	<!-- END_MODULE Admin_Shortcut_List:disabled -->
+
+	<!-- BEGIN_MODULE Admin_Blog_SelectGlobal:disabled -->
+	<form action="" method="post" class="acms-admin-form selectLink">
+	<select name="blogtree" class="js-select2">
+		<option value="">( <!--T-->他ブログの管理ページへ移動<!--/T--> )</option><!-- BEGIN loop -->
+		<option value="{adminUrl}">{indent}[raw]{label}</option><!-- END loop -->
+	</select>
+	</form>
+	<!-- END_MODULE Admin_Blog_SelectGlobal:disabled -->
+	<!-- END_MODULE Touch_NotEdit --><!-- END_MODULE Touch_Admin -->
+
+	<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-action" --><!-- END_MODULE Admin_InjectTemplate -->
+</div>
+<!-- END_MODULE Admin_ActionMenu -->
+
+@include("/include/timemachine.html")

@@ -1,0 +1,14 @@
+{name} 様
+
+以下のユーザー登録内容が変更されました。
+
+変更後のご登録内容
+━━━━━━━━━━━━━━━━
+
+名前: {name} <!-- BEGIN old_name:veil -->【変更前】{old_name}<!-- END old_name:veil -->
+ユーザーID: {code} <!-- BEGIN old_code:veil -->【変更前】{old_code}<!-- END old_code:veil -->
+メールアドレス: {mail} <!-- BEGIN old_mail:veil -->【変更前】{old_mail}<!-- END old_mail:veil -->
+メールアドレス (携帯): {mail_mobile} <!-- BEGIN old_mail_mobile:veil -->【変更前】{old_mail_mobile}<!-- END old_mail_mobile:veil -->
+URL: {url} <!-- BEGIN old_url:veil -->【変更前】{old_url}<!-- END old_url:veil -->
+
+※このメールはサーバからの自動送信メールです。

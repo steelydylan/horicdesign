@@ -1,0 +1,224 @@
+{
+  "title": "<!--T-->変数表<!--/T-->",
+  "enTitle": "Vars",
+  "items": [
+    <!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリー本文<!--/T-->",
+      "subtitle": "Entry_Body",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_Body.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリーリスト<!--/T-->",
+      "subtitle": "Entry_List",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_List.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->フォト<!--/T-->",
+      "subtitle": "Entry_Photo",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_Photo.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ヘッドライン<!--/T-->",
+      "subtitle": "Entry_Headline",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_Headline.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリーサマリー<!--/T-->",
+      "subtitle": "Entry_Summary",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_Summary.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリー位置リスト<!--/T-->",
+      "subtitle": "Entry_GeoList",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_GeoList.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリーアーカイブリスト<!--/T-->",
+      "subtitle": "Entry_ArchiveList",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_ArchiveList.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->タグリレーショナル<!--/T-->",
+      "subtitle": "Entry_TagRelational",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_TagRelational.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エントリーカレンダー<!--/T-->",
+      "subtitle": "Entry_Calendar",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Entry_Calendar.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カテゴリーリスト<!--/T-->",
+      "subtitle": "Category_List",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Category_List.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カテゴリーエントリーリスト<!--/T-->",
+      "subtitle": "Category_EntryList",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Category_EntryList.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カテゴリーエントリーサマリー<!--/T-->",
+      "subtitle": "Category_EntrySummary",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Category_EntrySummary.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->リンク集<!--/T-->",
+      "subtitle": "Links",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Links.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->バナー<!--/T-->",
+      "subtitle": "Banner",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Banner.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ナビゲーション<!--/T-->",
+      "subtitle": "Navigation",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Navigation.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->トピックパス<!--/T-->",
+      "subtitle": "Topicpath",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Topicpath.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->コメント本文<!--/T-->",
+      "subtitle": "Comment_Body",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Comment_Body.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->コメントリスト<!--/T-->",
+      "subtitle": "Comment_List",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Comment_List.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->タグクラウド<!--/T-->",
+      "subtitle": "Tag_Cloud",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Tag_Cloud.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->タグフィルター<!--/T-->",
+      "subtitle": "Tag_Filter",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Tag_Filter.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->Google Analyticsランキング<!--/T-->",
+      "subtitle": "Api_GoogleAnalytics_Ranking",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Api_GoogleAnalytics_Ranking.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->Bingウェブ検索<!--/T-->",
+      "subtitle": "Api_Bing_WebSearch",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Api_Bing_WebSearch.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->Bingイメージ検索<!--/T-->",
+      "subtitle": "Api_Bing_ImageSearch",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Api_Bing_ImageSearch.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->Ogp<!--/T-->",
+      "subtitle": "Ogp",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Ogp.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ユニットリスト<!--/T-->",
+      "subtitle": "Unit_List",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Unit_List.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->カレンダー<!--/T-->",
+      "subtitle": "Calendar_Month",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Calendar_Month.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->年間カレンダー<!--/T-->",
+      "subtitle": "Calendar_Year",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Calendar_Year.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ユーザープロフィール<!--/T-->",
+      "subtitle": "User_Profile",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/User_Profile.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->Dummy<!--/T-->",
+      "subtitle": "Dummy",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Dummy.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->RSS2<!--/T-->",
+      "subtitle": "Feed_Rss2",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Feed_Rss2.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->外部フィードリスト<!--/T-->",
+      "subtitle": "Feed_ExList",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Feed_ExList.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->スケジュール<!--/T-->",
+      "subtitle": "Schedule",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Schedule.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->子ブログリスト<!--/T-->",
+      "subtitle": "Blog_ChildList",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Blog_ChildList.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->エイリアスリスト<!--/T-->",
+      "subtitle": "Alias_List",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Alias_List.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->ユーザーサーチ<!--/T-->",
+      "subtitle": "User_Search",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/User_Search.html"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "<!--T-->フィールドバリューリスト<!--/T-->",
+      "subtitle": "Field_ValueList",
+      "url": "%{ADMIN_BASE_URL}bid/%{BID}/acms-code/vars/Field_ValueList.html"
+    }
+    <!-- END_MODULE Touch_SessionWithAdministration -->
+  ]
+}

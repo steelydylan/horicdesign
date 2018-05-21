@@ -1,0 +1,53 @@
+<!-- BEGIN_MODULE Admin_Fix_Index -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->データ修正<!--/T--></h1>
+	</div>
+</header>
+
+<div class="acms-admin-grid-r">
+	<div class="acms-admin-col-md-6">
+		<table class="acms-admin-admin-mini-table acms-admin-admin-config-table">
+			<thead>
+				<th><!--T-->システムの修正ツール<!--/T--></th>
+			</thead>
+			<tbody><!-- BEGIN fix_image -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-unit-image"></i><!--T-->画像サイズ修正<!--/T--></a></td>
+				</tr><!-- END fix_image --><!-- BEGIN fix_unit-size -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-config_unit"></i><!--T-->ユニットサイズ修正<!--/T--></a></td>
+				</tr><!-- END fix_unit-size --><!-- BEGIN fix_unit-group -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-config_unit"></i><!--T-->ユニットグループ修正<!--/T--></a></td>
+				</tr><!-- END fix_unit-group --><!-- BEGIN fix_sequence -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-config_field_value-list"></i><!--T-->シーケンス修正<!--/T--></a></td>
+				</tr><!-- END fix_sequence --><!-- BEGIN fix_fulltext -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-config_api_twitter_search"></i><!--T-->フルテキスト修正<!--/T--></a></td>
+				</tr><!-- END fix_fulltext --><!-- BEGIN fix_replacement -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-unit-text"></i><!--T-->テキスト置換<!--/T--></a></td>
+				</tr><!-- END fix_replacement -->
+			</tbody>
+		</table>
+	</div>
+	<div class="acms-admin-col-md-6">
+		<table class="acms-admin-admin-mini-table acms-admin-admin-config-table">
+			<thead><th><!--T-->その他のツール<!--/T--></th></thead>
+			<tbody><!-- BEGIN fix_ngram -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-sort2"></i><!--T-->N-gramインデックスの付与<!--/T--></a></td>
+				</tr><!-- END fix_ngram --><!-- BEGIN fix_tag -->
+				<tr>
+					<td class="acms-admin-config-name"><a href="{url}" class="acms-admin-block"><i class="acms-admin-icon acms-admin-icon-config_tag_cloud"></i><!--T-->既存エントリーへのタグ追加<!--/T--></a></td>
+				</tr><!-- END fix_tag -->
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- END_MODULE Admin_Fix_Index -->

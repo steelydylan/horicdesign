@@ -1,0 +1,26 @@
+<tr>
+    <th><!--T-->メールアドレス<!--/T--> (<!--T-->携帯<!--/T-->)<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーの携帯電話のEメールアドレスです。「メールマガジンを受け取る」がチェックされているユーザーにはHTML形式のメールマガジンを送信できます。<!--/T-->"></i></th>
+    <td>
+        <input type="text" name="mail_mobile" value="{mail_mobile}" size="30" />
+        <input type="hidden" name="user[]" value="mail_mobile" />
+        <input type="hidden" name="mail_mobile:validator#email" id="validator-mail_mobile-email" />
+        <div role="alert" aria-live="assertive">
+            <div data-validator-label="validator-mail_mobile-email" class="validator-result-{mail_mobile:validator#email}">
+                <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->無効なメールアドレスです。<!--/T--></p>
+            </div>
+        </div>
+        <input type="hidden" name="mail_mobile_magazine" value="off" />
+        <div class="acms-admin-form-checkbox">
+            <input type="checkbox" name="mail_mobile_magazine" value="on"{mail_mobile_magazine:checked#on} id="input-checkbox-mail-mobile-magazine" />
+            <label for="input-checkbox-mail-mobile-magazine">
+                <i class="acms-admin-ico-checkbox"></i><!--T-->メールマガジンを受け取る<!--/T--> ( <!--T-->テキスト<!--/T--> )
+            </label>
+        </div>
+        <input type="hidden" name="user[]" value="mail_mobile_magazine" /><!-- END mail_mobile_magazine:checked#off -->
+        <div role="alert" aria-live="assertive">
+            <div data-validator-label="validator-mail_mobile-email" class="validator-result-{mail_mobile:validator#email}">
+                <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->無効なメールアドレスです。<!--/T--></p>
+            </div>
+        </div>
+    </td>
+</tr>

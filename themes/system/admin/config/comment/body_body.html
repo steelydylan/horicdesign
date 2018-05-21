@@ -1,0 +1,48 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示形式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->スレッドはコメントをスレッド形式で表示します。コメントに対して返信されたコメントを階層化して表示します。<br>リストはコメントをリスト形式で表示します。スレッド形式とは違い、全てのコメントを同列階層としてリスト表示します。<!--/T-->"></i></th>
+		<td>
+			<select name="comment_body_display" class="js-select2">
+				<option value="list"{comment_body_display:selected#list}><!--T-->リスト<!--/T--></option>
+				<option value="thread"{comment_body_display:selected#thread}><!--T-->スレッド<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="comment_body_display" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示順<!--/T--> <!--T-->( リスト表示のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示順で決められたルールでの昇順、降順の設定です。[表示形式]が「リスト表示」のときのみ適用されます。<!--/T-->"></i></th>
+		<td>
+			<select name="comment_body_order" class="js-select2">
+				<option value="datetime-asc"{comment_body_order:selected#datetime-asc}><!--T-->日時<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{comment_body_order:selected#datetime-desc}><!--T-->日時<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="comment_body_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->並び<!--/T--> <!--T-->( リスト表示のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->[表示順]の設定とは別に、1ページ内で一度に表示されるコメント本文の中での並びの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="comment_body_reverse" class="js-select2">
+				<option value="off"{comment_body_reverse:selected#off}><!--T-->上から並べる<!--/T--></option>
+				<option value="on"{comment_body_reverse:selected#on}><!--T-->下から並べる<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="comment_body_reverse" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示されるコメントの件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="comment_body_limit" value="{comment_body_limit}" size="4" />
+			<input type="hidden" name="config[]" value="comment_body_limit" />
+			<input type="hidden" name="comment_body_limit:convert" value="a" />
+			<input type="hidden" name="comment_body_limit:validator#digits" id="validator-comment_body_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-comment_body_limit-digits" class="validator-result-{comment_body_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

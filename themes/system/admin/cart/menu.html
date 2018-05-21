@@ -1,0 +1,37 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->カート<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カート設定を保存しました<!--/T--></p><!-- END_IF -->
+
+<p class="transaction-notice-{config:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->コンフィグを保存出来ませんでした。<!--/T--></p>
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<a href="/bid/%{BID}/admin/shortcut_edit/?action=Shop2&admin=%{ADMIN}&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-float-right"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<input type="hidden" name="shop" value="on" />
+	<input type="hidden" name="config[]" value="shop" />
+
+	<!-- 基本設定 -->
+	@include("/admin/cart/setting/misc.html")
+
+	<!-- 注文画面設定 -->
+	@include("/admin/cart/setting/order.html")
+
+	<!-- 送料設定 -->
+	@include("/admin/cart/setting/shipping.html")
+</form><!-- END_MODULE Admin_Config -->

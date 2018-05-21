@@ -1,0 +1,36 @@
+<!-- BEGIN_MODULE Entry_Body -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->エントリー編集<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_IF [<!-- BEGIN_MODULE Admin_Messages -->{message}<!-- END_MODULE Admin_Messages -->/eq/save/_or_/%{new}/eq/true/_or_/%{action}/eq/save] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->保存しました。<!--/T--></p><!-- END_IF -->
+
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->エントリーを更新しました。<!--/T--></p><!-- END_IF -->
+
+<!-- BEGIN entry:loop -->
+<div class="acms-admin-box-medium">
+@include("/admin/entry/revision-info.html")
+</div>
+<article class="entry">
+	<section>
+		<!-- BEGIN adminEntryEdit -->
+		@include("/admin/form2/edit.html")
+		@include("/admin/form2/add.html")
+		@include("/admin/entry/edit.html")
+		@include("/admin/entry/add.html")
+		<!-- END adminEntryEdit -->
+
+		@include("/admin/entry/action.html")
+	</section>
+</article>
+
+<!-- END entry:loop -->
+<!-- 1記事▲▲ -->
+<!-- END_MODULE Entry_Body -->

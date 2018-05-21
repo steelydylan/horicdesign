@@ -1,0 +1,33 @@
+<!-- BEGIN_MODULE Entry_Calendar -->
+<div>
+@include("/admin/module/setting.html")
+<!-- BEGIN date -->
+<ul class="acms-admin-text-center acms-admin-list-inline">
+	<li><a href="%{BASE_URL}calendar.html/{prevDate}" class="acms-admin-btn-flat" title="前月へ">&laquo;</a></li>
+	<li><a href="%{BASE_URL}calendar.html/{year}/{month}" class="acms-admin-btn-flat">{month}月</a></li>
+	<li><a href="%{BASE_URL}calendar.html/{nextDate}" class="acms-admin-btn-flat" title="次月へ">&raquo;</a></li>
+</ul><!-- END date -->
+<div class="acms-admin-table-responsive">
+<table class="acms-admin-table acms-admin-table-bordered calendarTable">
+	<!-- BEGIN week:loop -->
+		<!-- BEGIN foreSpacer -->
+		<tr class="acms-admin-table-info">
+			<th>{prevDay}<span class="text-muted">（{week}）</span></th>
+			<td><!-- BEGIN foreEntry:loop --><div><!-- BEGIN url#front --><a href="{url}"><!-- END url#front -->{title}<!-- BEGIN url#rear --></a><!-- END url#rear --></div><!-- END foreEntry:loop --></td>
+		</tr><!-- END foreSpacer -->
+		<!-- BEGIN day:loop -->
+		<tr>
+			<th class="{today}">{day}<span class="text-muted">（{week}）</span></th>
+			<td><!-- BEGIN entry:loop --><div><!-- BEGIN url#front --><a href="{url}"><!-- END url#front -->{title}<!-- BEGIN url#rear --></a><!-- END url#rear --></div><!-- END entry:loop --></td>
+		</tr><!-- END day:loop -->
+		<!-- BEGIN rearSpacer -->
+		<tr class="acms-admin-table-info">
+			<th>{nextDay}<span class="text-muted">（{week}）</span></th>
+			<td><!-- BEGIN rearEntry:loop --><div><!-- BEGIN url#front --><a href="{url}"><!-- END url#front -->{title}<!-- BEGIN url#rear --></a><!-- END url#rear --></div><!-- END rearEntry:loop --></td>
+		</tr>
+		<!-- END rearSpacer -->
+	<!-- END week:loop -->
+</table>
+</div>
+</div>
+<!-- END_MODULE Entry_Calendar -->

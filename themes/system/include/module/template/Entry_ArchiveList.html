@@ -1,0 +1,10 @@
+<!-- BEGIN_MODULE Entry_ArchiveList id="" -->
+<div class="acms-admin-margin-bottom-medium">
+@include("/admin/module/setting.html")
+<ul class="acms-admin-list-group">
+	<!-- BEGIN archive:loop -->
+	<li><a href="{url}" class="acms-admin-list-group-item">{date#Y}年 {date#n}月 <span class="acms-admin-badge acms-admin-float-right">{amount}</span></a></li>
+	<!-- END archive:loop -->
+</ul>
+</div>
+<!-- END_MODULE Entry_ArchiveList -->

@@ -1,0 +1,54 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->エクスポート<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Errors -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	{error}<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END_MODULE Admin_Errors -->
+
+<!-- BEGIN_MODULE Admin_Config -->
+<form method="post" class="js-dialog-body">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+</form>
+
+<div class="acms-admin-panel acms-admin-panel-info">
+	<div class="acms-admin-panel-header">
+		<!--T-->コンフィグのエクスポート<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<form method="post" action="">
+			<input type="submit" name="ACMS_POST_Config_Export" value="<!--T-->エクスポート<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</form>
+		<p><!--T-->コンフィグ / ルール / モジュール のエクスポートを行います。<!--/T--></p>
+	</div>
+</div>
+
+
+<div class="acms-admin-panel">
+	<div class="acms-admin-panel-header">
+		<!--T-->デフォルトコンフィグのエクスポート<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<form method="post" action="">
+			<input type="submit" name="ACMS_POST_Config_DefaultExport" value="<!--T-->エクスポート<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</form>
+		<p><!--T-->デフォルトのコンフィグのみエクスポートを行います。ブログコンフィグの初期値の config.system.yaml などに使用します。<!--/T--></p>
+		<p><!--T-->＊ このファイルをインポートに利用しないでください。<!--/T--></p>
+	</div>
+</div>
+<!-- END_MODULE Admin_Config -->

@@ -1,0 +1,69 @@
+<h2 class="acms-admin-admin-title2"><!--T-->表示<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。フィールド、数値フィールドはカスタムフィールドでの検索結果の表示時に利用します。<!--/T-->"></i></th>
+		<td>
+			<select name="feed_rss2_order" class="js-select2">
+				<option value="datetime-asc"{feed_rss2_order:selected#datetime-asc}><!--T-->日時<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{feed_rss2_order:selected#datetime-desc}><!--T-->日時<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="updated_datetime-asc"{feed_rss2_order:selected#updated_datetime-asc}><!--T-->更新日時<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="updated_datetime-desc"{feed_rss2_order:selected#updated_datetime-desc}><!--T-->更新日時<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="posted_datetime-asc"{feed_rss2_order:selected#posted_datetime-asc}><!--T-->投稿日時<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="posted_datetime-desc"{feed_rss2_order:selected#posted_datetime-desc}><!--T-->投稿日時<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="code-asc"{feed_rss2_order:selected#code-asc}><!--T-->ファイル名<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="code-desc"{feed_rss2_order:selected#code-desc}><!--T-->ファイル名<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="id-asc"{feed_rss2_order:selected#id-asc}>ID <!--T-->( 昇順 )<!--/T--></option>
+				<option value="id-desc"{feed_rss2_order:selected#id-desc}>ID <!--T-->( 降順 )<!--/T--></option>
+				<option value="sort-asc"{feed_rss2_order:selected#sort-asc}><!--T-->表示順<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{feed_rss2_order:selected#sort-desc}><!--T-->表示順<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="field-asc"{feed_rss2_order:selected#field-asc}><!--T-->フィールド<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="field-desc"{feed_rss2_order:selected#field-desc}><!--T-->フィールド<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="intfield-asc"{feed_rss2_order:selected#intfield-asc}><!--T-->数値フィールド<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="intfield-desc"{feed_rss2_order:selected#intfield-desc}><!--T-->数値フィールド<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="random"{feed_rss2_order:selected#random}><!--T-->ランダム<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="feed_rss2_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->フィード配信時の件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_rss2_limit" value="{feed_rss2_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="feed_rss2_limit" />
+			<input type="hidden" name="feed_rss2_limit:convert" value="a" />
+			<input type="hidden" name="feed_rss2_limit:validator#digits" id="validator-feed_rss2_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-feed_rss2_limit-digits" class="validator-result-{feed_rss2_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2"><!--T-->フィルタ<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->ブログ フィルタ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログのカスタムフィールドで絞り込む事が出来るようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_rss2_blog_field" value="{feed_rss2_blog_field}" class="acms-admin-form-width-half" />
+			<input type="hidden" name="config[]" value="feed_rss2_blog_field" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリー フィルタ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリのカスタムフィールドで絞り込む事が出来るようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_rss2_category_field" value="{feed_rss2_category_field}" class="acms-admin-form-width-half" />
+			<input type="hidden" name="config[]" value="feed_rss2_category_field" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリ フィルタ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリのカスタムフィールドで絞り込む事が出来るようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_rss2_entry_field" value="{feed_rss2_entry_field}" class="acms-admin-form-width-half" />
+			<input type="hidden" name="config[]" value="feed_rss2_entry_field" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

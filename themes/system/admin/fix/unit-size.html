@@ -1,0 +1,161 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ユニット修正<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Fix_UnitSize -->
+
+<form method="post" action="" class="acms-admin-form">
+	<!-- BEGIN message#success -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユニットサイズのデータを修正しました。<!--/T--></p><!-- END message#success -->
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/fix_unit-size/" class="acms-admin-btn-admin"><!--T-->リセット<!--/T--></a>
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-info">
+		<div class="acms-admin-panel-header">
+			<!--T-->概要<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->ユニットのサイズ（画像、マップ、メディア、ビデオ、画像URL）を修正します。サイズはピクセル指定の実際サイズ、表示サイズはクラスや %指定ができます。<!--/T-->
+		</div>
+	</div>
+
+	<!-- BEGIN step -->
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->タイプ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユニットのサイズを変更するユニットのタイプを選択します。<!--/T-->"></i></th>
+			<td>
+				<select name="unit_size_unit_type" class="js-select2">
+					<option value=""><!--T-->選択して下さい<!--/T--></option>
+					<option value="image"{unit_size_unit_type:selected#image}><!--T-->画像<!--/T--></option>
+					<option value="map"{unit_size_unit_type:selected#map}><!--T-->マップ<!--/T--></option>
+					<option value="media"{unit_size_unit_type:selected#media}><!--T-->メディア<!--/T--></option>
+					<option value="video"{unit_size_unit_type:selected#video}><!--T-->ビデオサイズ<!--/T--></option>
+					<option value="eximage"{unit_size_unit_type:selected#eximage}><!--T-->画像URL<!--/T--></option>
+				</select>
+
+				<input type="hidden" name="fix[]" value="unit_size_unit_type" />
+				<input type="hidden" name="unit_size_unit_type:validator#required" />
+				<!-- BEGIN unit_size_unit_type:v#required -->
+				<label class="validator-result-0"><!--T-->タイプを選択して下さい<!--/T--></label>
+				<!-- END unit_size_unit_type:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->サイズ<!--/T--> / <!--T-->表示サイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユニットサイズのタイプを選択して下さい。サイズはピクセル。表示サイズは%またはクラスが設定されています。<!--/T-->"></i></th>
+			<td>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="unit_size_size_type" value="size"{unit_size_size_type:checked#size} id="input-radio-unit-size-type-size">
+					<label for="input-radio-unit-size-type-size">
+						<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->サイズ<!--/T-->
+					</label>
+				</div>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="unit_size_size_type" value="display"{unit_size_size_type:checked#display} id="input-radio-unit-size-type-display">
+					<label for="input-radio-unit-size-type-display">
+						<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->表示サイズ<!--/T-->
+					</label>
+				</div>
+
+				<input type="hidden" name="fix[]" value="unit_size_size_type" />
+				<input type="hidden" name="unit_size_size_type:validator#required" />
+				<!-- BEGIN unit_size_size_type:v#required -->
+				<label class="validator-result-0"><!--T-->サイズタイプを選択して下さい<!--/T--></label>
+				<!-- END unit_size_size_type:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="hidden" name="step" value="2" />
+				<input type="submit" name="ACMS_POST_Fix_Confirm" value="<!--T-->選択<!--/T-->" class="acms-admin-btn-admin">
+			</td>
+		</tr>
+	</table>
+	<!-- END step -->
+	<!-- BEGIN step#2 -->
+	<h3 class="acms-admin-admin-title2"><!--T-->ユニットサイズ<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>タイプ<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユニットのサイズを変更するユニットのタイプを選択します。<!--/T-->"></i></th>
+			<td><!-- BEGIN unit_size_unit_type:touch#image -->
+				<!--T-->画像<!--/T--><!-- END unit_size_unit_type:touch#image --><!-- BEGIN unit_size_unit_type:touch#map -->
+				<!--T-->マップ<!--/T--><!-- END unit_size_unit_type:touch#map --><!-- BEGIN unit_size_unit_type:touch#media -->
+				<!--T-->メディア<!--/T--><!-- END unit_size_unit_type:touch#media --><!-- BEGIN unit_size_unit_type:touch#video -->
+				<!--T-->ビデオ<!--/T--><!-- END unit_size_unit_type:touch#video --><!-- BEGIN unit_size_unit_type:touch#eximage -->
+				<!--T-->画像URL<!--/T--><!-- END unit_size_unit_type:touch#eximage -->
+
+				<input type="hidden" name="unit_size_unit_type" value="{unit_size_unit_type}" />
+				<input type="hidden" name="fix[]" value="unit_size_unit_type" />
+				<input type="hidden" name="unit_size_unit_type:validator#required" />
+				<!-- BEGIN unit_size_unit_type:v#required -->
+				<label class="validator-result-0"><!--T-->タイプを選択して下さい<!--/T--></label>
+				<!-- END unit_size_unit_type:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->サイズ<!--/T--> / <!--T-->表示サイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユニットサイズのタイプを選択して下さい。サイズはピクセル。表示サイズは%またはクラスが設定されています。<!--/T-->"></i></th>
+			<td><!-- BEGIN unit_size_size_type:touch#size -->
+				<!--T-->サイズ<!--/T--><!-- END unit_size_size_type:touch#size --><!-- BEGIN unit_size_size_type:touch#display -->
+				<!--T-->表示サイズ<!--/T--><!-- END unit_size_size_type:touch#display -->
+
+				<input type="hidden" name="unit_size_size_type" value="{unit_size_size_type}" />
+				<input type="hidden" name="fix[]" value="unit_size_size_type" />
+				<input type="hidden" name="unit_size_size_type:validator#required" />
+				<!-- BEGIN unit_size_size_type:v#required -->
+				<label class="validator-result-0"><!--T-->サイズタイプを選択して下さい<!--/T--></label>
+				<!-- END unit_size_size_type:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ターゲット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->変更したいユニットのサイズを選択します。<!--/T-->"></i></th>
+			<td>
+				<select name="unit_size_target" class="js-select2">
+					<option value=""><!--T-->選択して下さい<!--/T--></option><!-- BEGIN unit_size:loop -->
+					<option value="{unit_size}"\{unit_size_target:selected#{unit_size}\}>{unit_size}</option><!-- END unit_size:loop -->
+				</select>
+
+				<input type="hidden" name="fix[]" value="unit_size_target" />
+				<input type="hidden" name="unit_size_target:validator#required" />
+				<!-- BEGIN unit_size_target:v#required -->
+				<label class="validator-result-0"><!--T-->変更前サイズを選択して下さい<!--/T--></label>
+				<!-- END unit_size_target:v#required -->
+			</td>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->変更値<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->選択したユニットのサイズの値をここで入力した値に変更します。<!--/T-->"></i></th>
+			<td><!-- BEGIN_IF [{unit_size_unit_type}/eq/image/_and_/{unit_size_size_type}/eq/size] -->
+				<select name="unit_size_fix_criterion" class="js-select2">
+					<option value=""><!--T-->長辺<!--/T--></option>
+					<option value="width"><!--T-->横<!--/T--></option>
+					<option value="height"><!--T-->縦<!--/T--></option>
+				</select><!-- END_IF -->
+				<input type="hidden" name="fix[]" value="unit_size_fix_criterion" />
+
+				<input type="text" name="unit_size_fix" value="{unit_size_fix}" />
+				<input type="hidden" name="fix[]" value="unit_size_fix" />
+				<!-- BEGIN unit_size_fix:v#required -->
+				<label class="validator-result-0"><!--T-->変更値を入力して下さい<!--/T--></label>
+				<!-- END unit_size_fix:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="submit" name="ACMS_POST_Fix_UnitSize" value="<!--T-->修正<!--/T-->" onclick="return confirm('<!--T-->ユニットのデータを修正します。この作業は元に戻せません。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+			</td>
+		</tr>
+	</table>
+	<!-- END step#2 -->
+</form>
+<!-- END_MODULE Admin_Fix_UnitSize -->

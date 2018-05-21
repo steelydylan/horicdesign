@@ -1,0 +1,221 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><span class="js-dialog-title"><!--T-->カテゴリー詳細<!--/T--></span></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Category_Edit -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カテゴリーを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カテゴリーを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カテゴリーを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN category:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END category:validator#operable --><!-- BEGIN category:validator#entryExists -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->カテゴリーを削除できませんでした。<!--/T--><br />
+	<!--T-->エントリーが登録されているカテゴリーは削除できません。<!--/T--><br />
+</p><!-- END category:validator#entryExists --><!-- BEGIN category:validator#subCategoryExists -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->カテゴリーを削除できませんでした。<!--/T--><br />
+	<!--T-->サブカテゴリーがあるカテゴリーは削除できません。<!--/T--><br />
+</p><!-- END category:validator#subCategoryExists -->
+
+<!-- BEGIN headline#insert --><!-- END headline#insert -->
+<!-- BEGIN headline#update --><!-- END headline#update -->
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form js-dialog-body">
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/category_index/" class="acms-admin-btn-admin acms-admin-inline-btn"><!--T-->一覧<!--/T--></a>
+
+			<!-- BEGIN submit#insert -->
+			<input type="submit" name="ACMS_POST_Category_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			<!-- END submit#insert -->
+
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_Category_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_Role_Available -->
+			<!-- BEGIN_MODULE Touch_Role_CategoryEdit -->
+			<input type="submit" name="ACMS_POST_Category_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END_MODULE Touch_Role_CategoryEdit -->
+			<!-- END_MODULE Touch_Role_Available -->
+
+			<!-- BEGIN_MODULE Touch_Role_NotAvailable -->
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<input type="submit" name="ACMS_POST_Category_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+			<!-- END_MODULE Touch_Role_NotAvailable -->
+
+			<!-- BEGIN_IF [%{edit}/neq/insert] -->
+			<div class="js-fake-form acms-admin-float-right acms-admin-float-none-sp acms-admin-margin-bottom-mini" data-method="post">
+				<input type="hidden" name="bid" value="%{BID}" />
+				<input type="hidden" name="admin" value="category_edit" />
+				<input type="hidden" name="edit" value="insert" />
+				<input type="hidden" name="pcid" value="%{CID}" />
+				<input type="hidden" name="query[]" value="edit" />
+				<input type="hidden" name="query[]" value="pcid" />
+				<input type="hidden" name="ACMS_POST_2GET" value="Create Category"/>
+				<button class="js-submit acms-admin-btn-admin"><!--T-->子カテゴリーを作成<!--/T--></button>
+				<input type="hidden" name="formToken" value="on" />
+			</div><!-- END_IF -->
+			<!-- END submit#update -->
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<a href="/bid/%{BID}/admin/shortcut_edit/?cid=%{CID}&action=Category_Update&admin=%{ADMIN}&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp acms-admin-margin-right-mini"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<!-- BEGIN category:validator#operable -->
+	<p class="transaction-notice-error acms-admin-alert acms-admin-alert-danger"><!--T-->この操作は許可されていません。<!--/T--></p><!-- END category:validator#operable -->
+	<p class="transaction-notice-{insert:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->カテゴリーを作成できませんでした。<!--/T--></p>
+	<p class="transaction-notice-{update:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->カテゴリーを保存できませんでした。<!--/T--></p>
+	<p class="transaction-notice-{delete:validator#entryExists} acms-admin-alert acms-admin-alert-danger">
+		<!--T-->カテゴリーを削除できませんでした。<!--/T--><br />
+		<!--T-->エントリーが登録されているカテゴリーは削除できません。<!--/T--><br />
+	</p>
+	<p class="transaction-notice-{delete:validator#subCategoryExists} acms-admin-alert acms-admin-alert-danger">
+		<!--T-->カテゴリーを削除できませんでした。<!--/T--><br />
+		<!--T-->サブカテゴリーがあるカテゴリーは削除できません。<!--/T--><br />
+	</p>
+	<input type="hidden" name="scope" value="local" />
+	<input type="hidden" name="category[]" value="scope" />
+
+	<div class="acms-admin-tabs">
+		<ul class="js-acms_admin_tabs">
+			<li><a href="#acms_basic"><!--T-->基本設定<!--/T--></a></li>
+			<li><a href="#acms_custom"><!--T-->カスタム設定<!--/T--></a></li>
+		</ul>
+
+		<div id="acms_basic" class="acms-admin-tabs-panel">
+			<table class="adminTable acms-admin-table-admin-edit"><!-- BEGIN id:veil -->
+				<tr>
+					<th>ID<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーの管理番号です。<!--/T-->"></i></th>
+					<td>{id}</td>
+				</tr><!-- END id:veil -->
+				<tr>
+					<th><!--T-->ステータス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-position="top" data-acms-tooltip="<!--T-->カテゴリーの公開状態です。チェックを外すとこのカテゴリーに所属するエントリーもすべて非公開になります。<!--/T-->"></i></th>
+					<td>
+						<input type="hidden" name="status" value="close" />
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" name="status" value="open"{status:checked#open} id="input-checkbox-status" />
+							<label for="input-checkbox-status"><i class="acms-admin-ico-checkbox"></i><!--T-->公開<!--/T--></label>
+						</div>
+						<input type="hidden" name="category[]" value="status" />
+						<input type="hidden" name="status:validator#status" />
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-status-status" class="validator-result-{status:validator#status}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->親カテゴリーが非公開の場合はステータスを公開にできません。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->カテゴリー名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーの名前です<!--/T-->。（<!--T-->日本語可<!--/T-->）"></i></th>
+					<td>
+						<input type="text" name="name" value="{name}" />
+						<input type="hidden" name="category[]" value="name" />
+						<input type="hidden" name="name:validator#required" id="validator-name-required" />
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-name-required" class="validator-result-{name:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前が入力されていません。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->コードネーム<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->URL上で表示されるカテゴリーの名前（ディレクトリ名）です。<!--/T-->"></i></th>
+					<td>
+						<input type="text" name="code" value="{code}" />
+						<input type="hidden" name="category[]" value="code" />
+						<input type="hidden" name="code:validator#required" id="validator-code-required" />
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-code-required" class="validator-result-{code:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->コードネームが入力されていません。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-code-double" class="validator-result-{code:validator#double}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->既に使用されているコードネームです。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-code-reserved" class="validator-result-{code:validator#reserved}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->システムで予約されているキーワードです。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-code-string" class="validator-result-{code:validator#string}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な文字が含まれています。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->親カテゴリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このカテゴリーを特定のカテゴリーの下位階層に置く場合、上位（親）となるカテゴリーを指定してください。<!--/T-->"></i></th>
+					<td>
+						<select name="parent" class="categoryWidth js-select2">
+							<option value="0"><!--T-->なし<!--/T--></option><!-- BEGIN_MODULE Admin_Category_Select --><!-- BEGIN loop -->
+							<option value="{value}"\{parent:selected#{value}\}>{indent}[raw]{label} ( {amount} )</option><!-- END loop --><!-- END_MODULE Admin_Category_Select -->
+						</select>
+						<input type="hidden" name="category[]" value="parent" />
+						<div role="alert" aria-live="assertive">
+							<!-- BEGIN parent:validator#isSelf -->
+							<div data-validator-label="validator-parent-isSelf" class="validator-result-0">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->自分自身を親カテゴリーに設定できません。<!--/T--></p>
+							</div><!-- END parent:validator#isSelf --><!-- BEGIN parent:validator#isChild -->
+							<div data-validator-label="validator-parent-isChild" class="validator-result-0">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->自分自身を親カテゴリーに設定できません。<!--/T--></p>
+							</div><!-- END parent:validator#isChild -->
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->グローバル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックされたカテゴリーは子ブログにも受け継がれて表示されます。<!--/T-->"></i></th>
+					<td>
+						<!-- BEGIN_MODULE Touch_BlogParent -->
+						<input type="hidden" name="scope" value="local" /><!-- END scope:touch#local -->
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" name="scope" value="global" id="input-checkbox-scope"{scope:checked#global} />
+							<label for="input-checkbox-scope"><i class="acms-admin-ico-checkbox"></i><!--T-->下の階層のブログが利用することを許可する<!--/T-->
+							</label>
+						</div>
+
+						<div role="alert" aria-live="assertive">
+							<!-- BEGIN scope:validator#tree -->
+							<div data-validator-label="validator-scope-tree" class="validator-result-0">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->親カテゴリーと異なる共有設定にすることはできません。<!--/T--></p>
+							</div><!-- END scope:validator#tree --><!-- BEGIN scope:validator#shared -->
+							<div data-validator-label="validator-scope-shared" class="validator-result-0">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->子ブログのエントリーが登録されています。<!--/T--></p>
+							</div><!-- END scope:validator#shared -->
+						</div>
+						<!-- END_MODULE Touch_BlogParent -->
+
+						<!-- BEGIN_MODULE Touch_NotBlogParent -->
+						<input type="checkbox" disabled="disable"> <!--T-->下の階層のブログと共有する ( 子ブログを持たないブログでは設定できません )<!--/T-->
+						<!-- END_MODULE Touch_NotBlogParent -->
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックが外されたカテゴリーはカテゴリー一覧に表示されなくなります。しかし「非表示」ではないのでURLを入力するとカテゴリーを表示することができます。<!--/T-->"></i></th>
+					<td>
+						<input type="hidden" name="indexing" value="off" />
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" name="indexing" value="on"{indexing:checked#on} id="input-checkbox-indexing" />
+							<label for="input-checkbox-indexing" class="acms-admin-form-checkbox">
+								<i class="acms-admin-ico-checkbox"></i><!--T-->リストに出す<!--/T-->
+							</label>
+						</div>
+						<input type="hidden" name="category[]" value="indexing" />
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="acms_custom" class="acms-admin-tabs-panel">
+			@include("/admin/category/field.html")
+			<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-category-field" --><!-- END_MODULE Admin_InjectTemplate -->
+		</div>
+	</div>
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Category_Edit -->

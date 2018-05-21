@@ -1,0 +1,105 @@
+<link href="./css/docs.css" rel="stylesheet" media="screen">
+<link href="/css/acms.min.css" rel="stylesheet" media="screen">
+
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->スタイルガイド<!--/T-->（<!--T-->CSSフレームワーク<!--/T-->）</h1>
+	</div>
+</header>
+
+
+<div class="styleguideMain clearfix js-pretty-scroll-container">
+	<p class="gulp-version">Ver. 2.0.0</p>
+	<p class="gulp-update">更新日時: 2018.3.1</p>
+	<p class="acms-admin-text-danger"><i class="acms-admin-icon acms-admin-icon-attention"></i>a-blog cms Ver.2.5より、管理画面のクラス名の接頭辞が<code class="acms- admin-code">acms-admin-</code>に変更になりました。CSSフレームワーク用スタイルガイドのページのみ acms.cssを読み込んでいますので、ご注意ください。</p>
+	<p class="acms-admin-text-danger"><i class="acms-admin-icon acms-admin-icon-attention"></i>system内よりもご利用中のテーマ内に存在しているacms.cssを優先的に読み込みます。acms.cssとこちらの管理画面のテンプレートのバージョンにずれが発生すると、正しく表示しない可能性があります。ご了承ください。</p>
+	<div class="acms-admin-col-lg-2">
+		<nav id="navSub" class="js-pretty-scroll">
+			<!-- スタイルガイド内 ローカルナビゲーション -->
+			@include("/admin/styleguide/include/localNav.html")
+		</nav>
+	</div>
+	<div class="acms-admin-col-lg-10">
+
+	@include("/admin/styleguide/include/at-first.html")
+
+	<!-- ユーティリティ -->
+	@include("/admin/styleguide/include/parts/utility.html")
+
+	<!-- 表示非表示 -->
+	@include("/admin/styleguide/include/parts/display.html")
+
+	<!-- グリッドシステム -->
+	@include("/admin/styleguide/include/parts/grid.html")
+
+	<!-- テキスト -->
+	@include("/admin/styleguide/include/parts/typo.html")
+
+	<!-- コード -->
+	@include("/admin/styleguide/include/parts/code.html")
+
+	<!-- テーブル -->
+	@include("/admin/styleguide/include/parts/table.html")
+
+	<!-- フォーム -->
+	@include("/admin/styleguide/include/parts/form.html")
+
+	<!-- ボタン -->
+	@include("/admin/styleguide/include/parts/button.html")
+
+	<!-- リストグループ -->
+	@include("/admin/styleguide/include/parts/list-group.html")
+
+	<!-- サマリー -->
+	@include("/admin/styleguide/include/parts/summary.html")
+
+	<!-- サムネイル -->
+	@include("/admin/styleguide/include/parts/thumbnails.html")
+
+	<!-- 絞り込みフィルター -->
+	@include("/admin/styleguide/include/parts/filter.html")
+
+	<!-- トピックパス -->
+	@include("/admin/styleguide/include/parts/topicpath.html")
+
+	<!-- タイトル -->
+	@include("/admin/styleguide/include/parts/title.html")
+
+	<!-- ページャー -->
+	@include("/admin/styleguide/include/parts/pager.html")
+
+	<!-- アラート -->
+	@include("/admin/styleguide/include/parts/alert.html")
+
+	<!-- ラベル -->
+	@include("/admin/styleguide/include/parts/label.html")
+
+	<!-- バッジ -->
+	@include("/admin/styleguide/include/parts/badge.html")
+
+	<!-- パネル -->
+	@include("/admin/styleguide/include/parts/panel.html")
+
+	<!-- ドロップダウンメニュー -->
+	@include("/admin/styleguide/include/parts/dropdown.html")
+
+	<!-- ツールチップ -->
+	@include("/admin/styleguide/include/parts/tooltip.html")
+
+	<!-- タブ -->
+	@include("/admin/styleguide/include/parts/tab.html")
+
+	<!-- プログレスバー -->
+	@include("/admin/styleguide/include/parts/progressbar.html")
+
+	<!-- アニメーション -->
+	@include("/admin/styleguide/include/parts/animation.html")
+
+	<!-- シンボルフォント -->
+	@include("/admin/styleguide/include/parts/fonts.html")
+	</div>	
+</div>
+

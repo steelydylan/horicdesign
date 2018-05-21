@@ -1,0 +1,32 @@
+<div class="js-acms_layout_menu acms-admin-layout-menu">
+	<div class="js-acms_layout_menu_handle acms-admin-layout-menu-header">
+		<span class="acms-admin-icon-sort acms-admin-layout-menu-handle"></span>
+		<div class="acms-admin-float-right">
+			<a href="{url}" class="acms-admin-btn-unstyled" onClick="return confirm('変更を破棄します。本当によろしいですか？');"><span class="js-acms_layout_menu_handle acms-admin-layout-menu-delete acms-admin-icon-delete"></span></a>
+		</div>
+	</div>
+
+	<!-- BEGIN_MODULE Admin_Layout_Add -->
+	<div class="acms-admin-form-group js-acms_layout_list acms_layout_list">
+		@include("/admin/layout/block.html")
+	</div><!-- END_MODULE Admin_Layout_Add -->
+
+	<div class="acms-admin-form-group">
+		<div class="acms-admin-layout-menu-half">
+			<a href="{preview}" class="js-layout_preview acms-admin-btn-admin acms-admin-btn-admin-default acms-admin-btn-block"><!--T-->プレビュー<!--/T--></a>
+		</div>
+		<div class="acms-admin-layout-menu-half">
+			<button class="js-layout_save acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-block"><!--T-->保存<!--/T--></button>
+		</div>
+	</div>
+</div>
+
+<form action="" method="post" class="js-layout_edit_form">
+	<div class="js-acms_layout_container js-acms_layout js-acms_layout_edit js-acms_layout_contents acms-admin-layout-edit acms-admin-layout-contents">
+		@include("/admin/layout/block.html")
+	</div>
+	<input type="hidden" name="id" value="{admin_module_identifier}">
+	<input type="hidden" name="ACMS_POST_Layout_Save" value="submit">
+</form>
+
+<div class="preview-container" style="display:none;"></div>

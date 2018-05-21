@@ -1,0 +1,251 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->参照先スケジュール<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->データ参照先のスケジュールセット名を選択します。「サイト管理」内の「スケジュール」で設定したものが選択肢として表示されます。<!--/T-->"></i></th>
+		<td><!-- BEGIN_MODULE Admin_Schedule_Keys -->
+			<select name="schedule_key" class="js-select2"><!-- BEGIN notFound -->
+			<option value=""><!--T-->参照候補が見つかりません<!--/T--></option><!-- END notFound --><!-- BEGIN key:loop -->
+			<option value="{id}"\{schedule_key:selected#{id}\}>{id}: {name}</option><!-- END key:loop -->
+			</select><!-- END_MODULE Admin_Schedule_Keys -->
+			<input type="hidden" name="config[]" value="schedule_key" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->デフォルトの表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->URLコンテキストに年月の情報が指定されていない状態の表示単位を設定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_viewmode" value="month"{schedule_viewmode:checked#month} id="schedule-viewmode-month" />
+				<label for="schedule-viewmode-month"><!--T-->月表示<!--/T--> <i class="acms-admin-ico-radio"></i></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_viewmode" value="year"{schedule_viewmode:checked#year} id="schedule-viewmode-year" />
+				<label for="schedule-viewmode-year"><!--T-->年表示<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_viewmode" value="days"{schedule_viewmode:checked#days} id="schedule-viewmode-days" />
+				<label for="schedule-viewmode-days"><!--T-->指定日数表示<!--/T--><i class="acms-admin-ico-radio"></i></label>
+				<input type="hidden" name="config[]" value="schedule_viewmode" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->月の表示モード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->月表示時のリスト表示か七曜表（カレンダー）表示を選択します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_layout_month" value="list"{schedule_layout_month:checked#list} id="schedule-layout-month-list" />
+				<label for="schedule-layout-month-list"><!--T-->リスト<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_layout_month" value="grid"{schedule_layout_month:checked#grid} id="schedule-layout-month-grid" />
+				<label for="schedule-layout-month-grid"><!--T-->七曜表<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>
+			<input type="hidden" name="config[]" value="schedule_layout_month" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->年の表示モード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->年表示時のリスト表示か七曜表（カレンダー）表示を選択します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_layout_year" value="list"{schedule_layout_year:checked#list} id="schedule-layout-year-list" />
+				<label for="schedule-layout-year-list"><!--T-->リスト<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_layout_year" value="grid"{schedule_layout_year:checked#grid} id="schedule-layout-year-grid" />
+				<label for="schedule-layout-year-grid"><!--T-->七曜表<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>
+			<input type="hidden" name="config[]" value="schedule_layout_year" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->指定日数の表示モード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定日数表示時の表示です。現在はリスト表示のみ対応しています。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_layout_days" value="list"{schedule_layout_days:checked#list} id="schedule-layout-days-list" />
+				<label for="schedule-layout-days-list"><!--T-->リスト<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>
+			<input type="hidden" name="config[]" value="schedule_layout_days" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->七曜表時の曜日始まり<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->七曜表（カレンダー）表示の時に日曜始まりか、月曜始まりかを選択します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_week_start" value="0"{schedule_week_start:checked#0} id="schedule-week-start-0" />
+				<label for="schedule-week-start-0"><!--T-->日曜始まり<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="schedule_week_start" value="1"{schedule_week_start:checked#1} id="schedule-week-start-1" />
+				<label for="schedule-week-start-1"><!--T-->月曜始まり<!--/T--><i class="acms-admin-ico-radio"></i></label>
+			</div>
+			<input type="hidden" name="config[]" value="schedule_week_start" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->月表示のときの前後月の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->月表示時に、当月に加えて前後指定月分を表示できます。<!--/T-->"></i></th>
+		<td>
+			<label class="acms-admin-show-inline-sp"><!--T-->過去<!--/T-->
+			<select name="schedule_backM" class="acms-admin-width-auto-sp js-select2">
+				<option value="0"{schedule_backM:selected#0}>0</option>
+				<option value="1"{schedule_backM:selected#1}>1</option>
+				<option value="2"{schedule_backM:selected#2}>2</option>
+				<option value="3"{schedule_backM:selected#3}>3</option>
+				<option value="4"{schedule_backM:selected#4}>4</option>
+				<option value="5"{schedule_backM:selected#6}>5</option>
+				<option value="6"{schedule_backM:selected#5}>6</option>
+				<option value="7"{schedule_backM:selected#7}>7</option>
+				<option value="8"{schedule_backM:selected#8}>8</option>
+				<option value="9"{schedule_backM:selected#9}>9</option>
+				<option value="10"{schedule_backM:selected#10}>10</option>
+				<option value="11"{schedule_backM:selected#11}>11</option>
+			</select><!--T ctx="past"-->ヶ月<!--/T-->
+			</label> /
+			<label class="acms-admin-show-inline-sp"><!--T-->未来<!--/T-->
+			<select name="schedule_forwardM" class="acms-admin-width-auto-sp js-select2">
+				<option value="0"{schedule_forwardM:selected#0}>0</option>
+				<option value="1"{schedule_forwardM:selected#1}>1</option>
+				<option value="2"{schedule_forwardM:selected#2}>2</option>
+				<option value="3"{schedule_forwardM:selected#3}>3</option>
+				<option value="4"{schedule_forwardM:selected#4}>4</option>
+				<option value="5"{schedule_forwardM:selected#6}>5</option>
+				<option value="6"{schedule_forwardM:selected#5}>6</option>
+				<option value="7"{schedule_forwardM:selected#7}>7</option>
+				<option value="8"{schedule_forwardM:selected#8}>8</option>
+				<option value="9"{schedule_forwardM:selected#9}>9</option>
+				<option value="10"{schedule_forwardM:selected#10}>10</option>
+				<option value="11"{schedule_forwardM:selected#11}>11</option>
+			</select><!--T ctx="future"-->ヶ月<!--/T-->
+			</label>
+			<input type="hidden" name="config[]" value="schedule_backM" />
+			<input type="hidden" name="config[]" value="schedule_forwardM" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->指定日数表示のときの前後日数の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定日数表示時に、当日に加えて前後の指定日数分を表示できます。<!--/T-->"></i></th>
+		<td>
+			<label class="acms-admin-show-inline-sp"><!--T-->過去<!--/T-->
+			<select name="schedule_backD" class="acms-admin-width-auto-sp js-select2">
+				<option value="0"{schedule_backD:selected#0}>0</option>
+				<option value="1"{schedule_backD:selected#1}>1</option>
+				<option value="2"{schedule_backD:selected#2}>2</option>
+				<option value="3"{schedule_backD:selected#3}>3</option>
+				<option value="4"{schedule_backD:selected#4}>4</option>
+				<option value="5"{schedule_backD:selected#6}>5</option>
+				<option value="6"{schedule_backD:selected#5}>6</option>
+				<option value="7"{schedule_backD:selected#7}>7</option>
+				<option value="8"{schedule_backD:selected#8}>8</option>
+				<option value="9"{schedule_backD:selected#9}>9</option>
+				<option value="10"{schedule_backD:selected#10}>10</option>
+				<option value="11"{schedule_backD:selected#11}>11</option>
+				<option value="12"{schedule_backD:selected#12}>12</option>
+				<option value="13"{schedule_backD:selected#13}>13</option>
+				<option value="14"{schedule_backD:selected#14}>14</option>
+				<option value="15"{schedule_backD:selected#15}>15</option>
+				<option value="16"{schedule_backD:selected#16}>16</option>
+				<option value="17"{schedule_backD:selected#17}>17</option>
+				<option value="18"{schedule_backD:selected#18}>18</option>
+				<option value="19"{schedule_backD:selected#19}>19</option>
+				<option value="20"{schedule_backD:selected#20}>20</option>
+				<option value="21"{schedule_backD:selected#21}>21</option>
+				<option value="22"{schedule_backD:selected#22}>22</option>
+				<option value="23"{schedule_backD:selected#23}>23</option>
+				<option value="24"{schedule_backD:selected#24}>24</option>
+				<option value="25"{schedule_backD:selected#25}>25</option>
+				<option value="26"{schedule_backD:selected#26}>26</option>
+				<option value="27"{schedule_backD:selected#27}>27</option>
+				<option value="28"{schedule_backD:selected#28}>28</option>
+				<option value="29"{schedule_backD:selected#29}>29</option>
+				<option value="30"{schedule_backD:selected#30}>30</option>
+			</select><!--T ctx="past"-->日<!--/T-->　
+			</label> /
+			<label class="acms-admin-show-inline-sp"><!--T-->未来<!--/T-->
+			<select name="schedule_forwardD" class="acms-admin-width-auto-sp js-select2">
+				<option value="0"{schedule_forwardD:selected#0}>0</option>
+				<option value="1"{schedule_forwardD:selected#1}>1</option>
+				<option value="2"{schedule_forwardD:selected#2}>2</option>
+				<option value="3"{schedule_forwardD:selected#3}>3</option>
+				<option value="4"{schedule_forwardD:selected#4}>4</option>
+				<option value="5"{schedule_forwardD:selected#5}>5</option>
+				<option value="6"{schedule_forwardD:selected#6}>6</option>
+				<option value="7"{schedule_forwardD:selected#7}>7</option>
+				<option value="8"{schedule_forwardD:selected#8}>8</option>
+				<option value="9"{schedule_forwardD:selected#9}>9</option>
+				<option value="10"{schedule_forwardD:selected#10}>10</option>
+				<option value="11"{schedule_forwardD:selected#11}>11</option>
+				<option value="12"{schedule_forwardD:selected#12}>12</option>
+				<option value="13"{schedule_forwardD:selected#13}>13</option>
+				<option value="14"{schedule_forwardD:selected#14}>14</option>
+				<option value="15"{schedule_forwardD:selected#15}>15</option>
+				<option value="16"{schedule_forwardD:selected#16}>16</option>
+				<option value="17"{schedule_forwardD:selected#17}>17</option>
+				<option value="18"{schedule_forwardD:selected#18}>18</option>
+				<option value="19"{schedule_forwardD:selected#19}>19</option>
+				<option value="20"{schedule_forwardD:selected#20}>20</option>
+				<option value="21"{schedule_forwardD:selected#21}>21</option>
+				<option value="22"{schedule_forwardD:selected#22}>22</option>
+				<option value="23"{schedule_forwardD:selected#23}>23</option>
+				<option value="24"{schedule_forwardD:selected#24}>24</option>
+				<option value="25"{schedule_forwardD:selected#25}>25</option>
+				<option value="26"{schedule_forwardD:selected#26}>26</option>
+				<option value="27"{schedule_forwardD:selected#27}>27</option>
+				<option value="28"{schedule_forwardD:selected#28}>28</option>
+				<option value="29"{schedule_forwardD:selected#29}>29</option>
+				<option value="30"{schedule_forwardD:selected#30}>30</option>
+			</select><!--T ctx="future"-->日<!--/T-->
+			</label>
+			<input type="hidden" name="config[]" value="schedule_backD" />
+			<input type="hidden" name="config[]" value="schedule_forwardD" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ユニット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定した件数の月ごとに、unitブロックが表示されます。何件ごとに折り返すなどの指定に応用できます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="schedule_unit" value="{schedule_unit}" size="1" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="schedule_unit" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->年の表示形式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->年の表示形式を選択します。<!--/T-->"></i></th>
+		<td>
+			<select name="schedule_formatY" class="js-select2">
+			<option value="Y"{schedule_formatY:selected#Y}><!--T-->4桁の数字 ( 例:2009 )<!--/T--></option>
+			<option value="y"{schedule_formatY:selected#y}><!--T-->2桁の数字 ( 例:09 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="schedule_formatY" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->月の表示形式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->月の表示形式を選択します。<!--/T-->"></i></th>
+		<td>
+			<select name="schedule_formatM" class="js-select2">
+				<option value="m"{schedule_formatM:selected#m}><!--T-->先頭に0がつく数字 ( 01 ~ 12 )<!--/T--></option>
+				<option value="n"{schedule_formatM:selected#n}><!--T-->先頭に0がない数字 ( 1 ~ 12 )<!--/T--></option>
+				<option value="M"{schedule_formatM:selected#M}><!--T-->3文字形式 ( Jan ~ Aug )<!--/T--></option>
+				<option value="F"{schedule_formatM:selected#F}><!--T-->フルスペル形式 ( January ~ August )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="schedule_formatM" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->日の表示形式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->日の表示形式を選択します。<!--/T-->"></i></th>
+		<td>
+			<select name="schedule_formatD" class="js-select2">
+			<option value="d"{schedule_formatD:selected#d}><!--T-->先頭に0がつく数字 ( 01 ~ 31 )<!--/T--></option>
+			<option value="j"{schedule_formatD:selected#j}><!--T-->先頭に0がない数字 ( 1 ~ 31 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="schedule_formatD" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->曜日の表示形式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->曜日の表示形式を選択します。<!--/T-->"></i></th>
+		<td>
+			<select name="schedule_formatW" class="js-select2">
+				<option value="D"{schedule_formatW:selected#D}><!--T-->3文字形式 ( Mon ~ Sun )<!--/T--></option>
+				<option value="l"{schedule_formatW:selected#l}><!--T-->フルスペル形式 ( Monday ~ Sunday )<!--/T--></option>
+				<option value="JP"{schedule_formatW:selected#JP}><!--T-->日本語表記 ( 月 ~ 日 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="schedule_formatW" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+<input type="hidden" name="%{SNAME}" value="%{SID}" />

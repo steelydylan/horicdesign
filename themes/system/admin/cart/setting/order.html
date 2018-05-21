@@ -1,0 +1,152 @@
+<h2 class="acms-admin-admin-title2"><!--T-->決済と配送の設定<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+<tr>
+<th><!--T-->決済方法と手数料<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->決済方法と手数料を設定します。3つ目のブロックには、result.htmlで表示させたいブロックを設定します。（空白の場合にはdefaultが表示されます）<!--/T-->"></i></th>
+<td>
+	<table>
+		<tr class="thX">
+			<th class="acms-admin-table-left"><!--T-->ラベル<!--/T--></th>
+			<th class="acms-admin-table-left"><!--T-->手数料<!--/T--></th>
+			<th class="acms-admin-table-left"><!--T-->ブロック<!--/T--></th>
+		</tr>
+		<tr>
+			<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label}" /></td>
+			<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge}" /></td>
+			<td><input type="text" name="shop_order_payment_block[]" value="{shop_order_payment_block}" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[1]}" /></td>
+			<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[1]}" /></td>
+			<td><input type="text" name="shop_order_payment_block[]" value="{shop_order_payment_block[1]}" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[2]}" /></td>
+			<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[2]}" /></td>
+			<td><input type="text" name="shop_order_payment_block[]" value="{shop_order_payment_block[2]}" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[3]}" /></td>
+			<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[3]}" /></td>
+			<td><input type="text" name="shop_order_payment_block[]" value="{shop_order_payment_block[3]}" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[4]}" /></td>
+			<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[4]}" /></td>
+			<td><input type="text" name="shop_order_payment_block[]" value="{shop_order_payment_block[4]}" /></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[5]}" /></td>
+			<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[5]}" /></td>
+			<td><input type="text" name="shop_order_payment_block[]" value="{shop_order_payment_block[5]}" /></td>
+		</tr>
+	</table>
+	<input type="hidden" name="config[]" value="shop_order_payment_label" />
+	<input type="hidden" name="config[]" value="shop_order_payment_charge" />
+	<input type="hidden" name="config[]" value="shop_order_payment_block" />
+</td>
+</tr>
+<tr>
+	<th><!--T-->配送方法と手数料<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->配送方法と手数料を設定します。<!--/T-->"></i></th>
+<td>
+	<table>
+		<tr class="thX"><th class="acms-admin-table-left"><!--T-->方法<!--/T--></th><th class="acms-admin-table-left"><!--T-->手数料<!--/T--></th></tr>
+		<tr>
+		<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label}" /></td>
+		<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[1]}" /></td>
+		<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[1]}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[2]}" /></td>
+		<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[2]}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[3]}" /></td>
+		<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[3]}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[4]}" /></td>
+		<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[4]}" /></td>
+		</tr>
+	</table>
+	<input type="hidden" name="config[]" value="shop_order_deliver_label" />
+	<input type="hidden" name="config[]" value="shop_order_deliver_charge" />
+	<p>※<!--T-->手数料を空欄にすると別項「送料の設定」が適用されます<!--/T--></p>
+</td>
+</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2"><!--T-->配送オプションの設定<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+<tr>
+	<th><!--T-->配送希望日の選択肢の設定<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->配送希望日の選択肢の設定します。<!--/T-->"></i></th>
+	<td>
+	<input type="text" name="shop_order_request_date_min" value="{shop_order_request_date_min}" size="2" />
+	<input type="hidden" name="config[]" value="shop_order_request_date_min" /><!--T-->日先から<!--/T-->
+	<input type="text" name="shop_order_request_date_max" value="{shop_order_request_date_max}" size="3" />
+	<input type="hidden" name="config[]" value="shop_order_request_date_max" /><!--T-->日先までを配達希望日の範囲とします<!--/T-->
+	</td>
+</tr>
+<tr>
+	<th><!--T-->配送希望時間帯の選択肢の設定<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->配送希望時間帯の選択肢の設定します。<!--/T-->"></i></th>
+	<td>
+		<table>
+			<tr class="thX"><th class="acms-admin-table-left"><!--T-->配送時間帯<!--/T--></th></tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[1]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[2]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[3]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[4]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[5]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[6]}" /></td>
+			</tr>
+		</table>
+		<input type="hidden" name="config[]" value="shop_order_request_time" />
+	</td>
+</tr>
+<tr>
+<th><!--T-->その他のオプション<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->その他のオプションの手数料を設定します。<!--/T-->"></i></th>
+<td>
+	<table>
+		<tr class="thX"><th class="acms-admin-table-left"><!--T-->オプション<!--/T--></th><th class="acms-admin-table-left"><!--T-->手数料<!--/T--></th></tr>
+		<tr>
+		<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label}" /></td>
+		<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[1]}" /></td>
+		<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[1]}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[2]}" /></td>
+		<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[2]}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[3]}" /></td>
+		<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[3]}" /></td>
+		</tr>
+		<tr>
+		<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[4]}" /></td>
+		<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[4]}" /></td>
+		</tr>
+	</table>
+	<input type="hidden" name="config[]" value="shop_order_request_others_label" />
+	<input type="hidden" name="config[]" value="shop_order_request_others_charge" />
+</td>
+</tr>
+</table>

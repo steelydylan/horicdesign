@@ -1,0 +1,27 @@
+<!-- BEGIN_MODULE Admin_Topicpath -->
+<ol class="acms-admin-system-topicpath">
+	<!-- BEGIN_IF [{blog_theme_logo@squarePath}/nem/] -->
+	<li class="site-image">
+		<img src="%{ARCHIVES_DIR}{blog_theme_logo@squarePath}" width="36" height="36" >
+	</li>
+	<!-- END_IF -->
+	<!-- BEGIN topic:loop -->
+	<li>
+		<!-- BEGIN_IF [{child_blog}/nem] -->
+		<span class="js-acms-dropdown-toggle js-acms-dropdown-toggle-hover acms-admin-dropdown-bottom">
+			<a href="{url}" class="js-acms-dropdown-btn link">
+				@include("/admin/topicpath-list.html")
+				<span class="acms-admin-arrow-bottom"></span>
+			</a>
+			<ul class="js-acms-dropdown-menu acms-admin-list-scroll"><!-- BEGIN childBlog:loop -->
+				<li><a href="{blogUrl}">{name}</a></li><!-- END childBlog:loop -->
+			</ul>
+		</span>
+		<!-- ELSE -->
+		<a href="{url}" class="link">
+			@include("/admin/topicpath-list.html")
+		</a>
+		<!-- END_IF -->
+	</li><!-- END topic:loop -->
+</ol>
+<!-- END_MODULE Admin_Topicpath -->

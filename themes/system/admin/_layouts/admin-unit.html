@@ -1,0 +1,578 @@
+<div class="js-ajax_upload_image_unit entryFormColumn" aria-label="ユニットの入力が始まります">
+	<!-- BEGIN adminEntryColumn -->
+	<div id="more">
+		<div class="sorthandle"><i class="acms-admin-icon-sort js-sp-sort-handle" aria-hidden="true"></i> <!--T-->以下のユニットが<!--/T--><span class="acms-admin-hide-sp"><!--T-->一覧表示時に<!--/T--></span><!--T-->「続きを読む」<!--/T--><span class="acms-admin-hide-sp"><!--T-->になります<!--/T--></span></div>
+	</div>
+	<!-- BEGIN column:loop -->
+	<div class="js-ajax_upload_image_box entryFormColumnItem entryFormColumnItem-opened" aria-label="<!--T-->ユニットが追加されました<!--/T-->" tabindex="-1">
+		<!-- .entryFormColumnHead -->
+		<div class="entryFormColumnHead clearfix">
+			<p class="acms-admin-hide-visually" role="status" tabindex="-1" aria-hidden="true"><!--T-->ユニットが追加されました<!--/T--></p>
+			<div class="sorthandle"><i class="acms-admin-icon-sort js-sp-sort-handle" aria-hidden="true"></i></div>
+			<div class="entryFormColumnHeadAction">
+				<p class="label" aria-label="{clname}<!--T-->ユニットが始まります<!--/T-->">{clname}</p>
+				<button type="button" class="js-add-unit-parts addunit acms-admin-hide-sp"><i class="acms-admin-icon-plus js-acms-tooltip-hover" data-acms-position="top-left" role="tooltip" data-acms-tooltip="<!--T-->このユニットの下に新規ユニットを追加する<!--/T-->"></i></button>
+				<button type="button" class="togglebody acms-admin-hide-sp"><i class="acms-admin-icon-contract js-acms-tooltip-hover" data-acms-position="top-left" role="tooltip" data-acms-tooltip="<!--T-->このユニットのコンテンツ部分を閉じる<!--/T-->"></i></button>
+				<button type="button" class="removethis"><i class="acms-admin-icon-cross js-acms-tooltip-hover" data-acms-position="top-left" role="tooltip" data-acms-tooltip="<!--T-->このユニットを削除する<!--/T-->"></i></button>
+			</div>
+
+			<input type="hidden" name="id[]" value="{uniqid}">
+			<input type="hidden" name="type[]" value="{cltype}">
+			<input type="hidden" name="clid[]" value="{clid}">
+
+			<div class="entryFormColumnHeadLayoutBox"><!-- BEGIN sort:veil -->
+				<select name="sort[]" aria-label="<!--T-->ユニットの並び順<!--/T-->"><!-- BEGIN sort:loop -->
+					<option value="{value}"{selected}>{label}</option><!-- END sort:loop -->
+				</select><!-- END sort:veil -->
+
+				<label for="unit-align-" class="js-align_label entryFormColumnHeadLabel"><!--T-->配置<!--/T-->:</label>
+				<select name="align[]" id="unit-align-">
+					<!-- BEGIN align#liquid -->
+					<option value="auto"{align:selected#auto}><!--T-->おまかせ<!--/T--></option>
+					<option value="center"{align:selected#center}><!--T-->全体<!--/T--></option>
+					<option value="hidden"{align:selected#hidden}><!--T-->非表示<!--/T--></option>
+					<!-- END align#liquid -->
+					<!-- BEGIN align#solid -->
+					<option value="auto"{align:selected#auto}><!--T-->おまかせ<!--/T--></option>
+					<option value="left"{align:selected#left}><!--T-->左<!--/T--></option>
+					<option value="right"{align:selected#right}><!--T-->右<!--/T--></option>
+					<option value="center"{align:selected#center}><!--T-->中央<!--/T--></option>
+					<option value="hidden"{align:selected#hidden}><!--T-->非表示<!--/T--></option>
+					<!-- END align#solid -->
+					<!-- BEGIN align#etc -->
+					<option value="auto"{align:selected#auto}><!--T-->おまかせ<!--/T--></option>
+					<option value="hidden"{align:selected#hidden}><!--T-->非表示<!--/T--></option>
+					<!-- END align#etc -->
+				</select>
+
+				<!-- BEGIN group:veil -->
+				<label class="js-group_label entryFormColumnHeadLabel" for="unit-group-"><!--T-->グループ<!--/T-->:</label>
+				<select id="unit-group-" name="group[]" class="entryFormSelectBottom"><!-- BEGIN group:loop -->
+					<option value="{value}"{selected}>{label}</option><!-- END group:loop -->
+				</select><!-- END group:veil -->
+
+				<!-- BEGIN clattr#none -->
+				<input type="hidden" name="attr[]" value=""><!-- END clattr#none --><!-- BEGIN clattr:veil -->
+				<label for="unit-attr-" class="entryFormColumnHeadLabel"><!--T-->属性<!--/T-->:</label>
+				<select id="unit-attr-" name="attr[]" class="entryFormSelectBottom"><!-- BEGIN clattr:loop -->
+					<option value="{value}"{selected}>{label}</option><!-- END clattr:loop -->
+				</select><!-- END clattr:veil -->
+			</div>
+		</div>
+		<!-- /.entryFormColumnHead -->
+		<!-- .entryFormColumnBody -->
+		<div class="entryFormColumnBody">
+			<!-- BEGIN text -->
+			@section(admin-text-unit)
+			<textarea type="text" name="text_text_{id}" aria-label="<!--T-->テキストユニットに内容を入力する<!--/T-->" rows="10" style="width:100%;" class="entryFormTextarea {diff}">{text}[escape|escvars]</textarea>
+			<div class="js-extendTagSelect">
+				<select name="text_tag_{id}" aria-label="<!--T-->タグを選択する<!--/T-->"><!-- BEGIN textTag:loop -->
+					<option value="{value}" {selected} data-tag_extend="{extend}">{label}</option><!-- END textTag:loop -->
+				</select>
+				<div class="acms-admin-extend-field-wrap">
+					<label for="unit_text_extend_tag-{id}" class="acms-admin-extend-field"></label>
+					<input type="text" name="text_extend_tag_{id}" value="{extend_tag}" id="unit_text_extend_tag-{id}" class="acms-admin-extend-field-input">
+				</div>
+			</div>
+			<div class="editTextInsert">
+				<span class="emoji-edit"></span><!-- BEGIN_IF [%{MEDIA_LIBRARY}/eq/on] -->
+				<a href="#" class="js-media_insert"><!--T-->メディアを挿入<!--/T--></a><!-- END_IF -->
+			</div>
+			@endsection
+			<!-- END text -->
+			<!-- BEGIN table -->
+			@section(admin-table-unit)
+			<div class="entryFormColumnTable {diff}">
+				<div class="acms-admin-table-unit-container">
+					<div class="acms-admin-table-unit-wrap">
+						<div class="acms-admin-table-unit-inner">
+							<!-- BEGIN_IF [{table}[delnl]/em] -->
+							<div class="js-editable-table-{id}">
+								<table>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+								<input type="hidden" name="table_source_{id}[]" value="{table}" class="js-editable-table-dest" />
+							</div>
+							<!-- ELSE -->
+							<div class="js-editable-table-{id}" data-dest="table_source_{id}[]">
+								{table}[raw]
+								<input type="hidden" name="table_source_{id}[]" value="{table}" class="js-editable-table-dest" />
+							</div>
+							<!-- END_IF -->
+						</div>
+					</div>
+				</div>
+			</div>
+			@endsection
+			<!-- END table -->
+			<!-- BEGIN image -->
+			@section(admin-image-unit)
+			<div class="js-img_resize">
+				<div class="js-drop_area">
+					<div class="acms-admin-drop-area-wrap">
+						<div class="acms-admin-drop-area">
+							<div class="acms-admin-drop-area-inner">
+								<span class="acms-admin-icon acms-admin-icon-media acms-admin-drop-area-icon"></span>
+								<p class="acms-admin-drop-area-text"><!--T-->ここにファイルをドロップ<!--/T--></p>
+							</div>
+						</div>
+					</div>
+					<table class="entryFormColumnTable {diff}">
+						<tr>
+							<!-- BEGIN_IF [{tiny}/nem/] -->
+							<td class="entryFormFileentryFormImages">
+								<a href="%{HTTP_ARCHIVES_DIR}{popup}" data-rel="SmartPhoto[]" data-caption="{caption}" class="js-img_resize_preview_old"><img src="%{ARCHIVES_DIR}{tiny}" width="{tinyX}" height="{tinyY}" alt="<!--T-->プレビュー<!--/T-->" class="entryFormFileImage"></a>
+								<img src="" width="280" alt="<!--T-->プレビュー<!--/T-->" class="js-img_resize_preview entryFormFileImage" style="display:none;">
+							</td>
+							<!-- ELSE -->
+							<td class="entryFormFileentryFormImages">
+								<img src="" width="280" alt="<!--T-->プレビュー<!--/T-->" class="js-img_resize_preview entryFormFileImage" style="display:none;">
+							</td>
+							<!-- END_IF -->
+							<td class="entryFormFileControl">
+								<div class="acms-admin-form-group">
+									<input type="file" name="image_file_{id}[]" size="20" multiple="multiple" accept="image/*" id="unit-image-file-{id}" class="js-img_resize_input acms-admin-hide-visually">
+									<label for="unit-image-file-{id}" class="acms-admin-btn-admin" style="cursor:pointer;"><i class="acms-admin-icon-config_export"></i><!--T-->ファイル選択<!--/T--></label>
+								</div>
+								<div class="entryFormFileControlSelects">
+									<div class="entryFormFileControlSelectsItem">
+										<select name="image_size_{id}" class="acms-admin-select-block"><!-- BEGIN size:loop -->
+											<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+										</select>
+										<input type="hidden" name="old_image_size_{id}" value="{size_old}" />
+									</div>
+									<div class="entryFormFileControlSelectsItem">
+										<select name="image_edit_{id}" class="acms-admin-select-block">
+											<option value="none"{edit:selected#none}><!--T-->編集しない<!--/T--></option>
+											<option value="deleteLarge"{edit:selected#deleteLarge}><!--T-->拡大表示させない<!--/T--></option><!-- BEGIN rotate -->
+											<option value="rotate270"{edit:selectedEditRotate270}><!--T-->時計回りで90度回転<!--/T--></option>
+											<option value="rotate90"{edit:selectedEditRotate90}><!--T-->反時計回りで90度回転<!--/T--></option>
+											<option value="rotate180"{edit:selectedEditRotate180}><!--T-->180度回転<!--/T--></option><!-- END rotate -->
+											<option value="delete"{edit:selected#delete}><!--T-->削除<!--/T--></option>
+										</select>
+									</div>
+								</div>
+								<table class="entryFormImageTable">
+									<tr class="detail-column-head" id="detail-column--{id}">
+										<td colspan="2">
+											<a href="#" class="toggle"><span class="acms-admin-icon-arrow-small-right" aria-hidden="true"></span> <!--T-->詳細<!--/T--></a><!-- BEGIN normal:veil -->
+											<strong>Normal </strong>({normalX} x {normalY})<!-- END normal:veil --><!-- BEGIN large:veil -->
+											<strong class="imageLargeSize">Large </strong>({largeX} x {largeY})<!-- END large:veil -->
+										</td>
+									</tr>
+									<tr class="textM detail-column-body detail-column-body--{id}">
+										<th><label for="unit-image-caption-{id}"><!--T-->キャプション<!--/T--></label></th>
+										<td>
+											<textarea name="image_caption_{id}" rows="1" id="unit-image-caption-{id}" class="acms-admin-form-width-full">{caption}</textarea>
+											<input type="hidden" name="image_old_{id}" value="{old}">
+										</td>
+									</tr>
+									<tr class="textM detail-column-body detail-column-body--{id}">
+										<th><label for="unit-image-link-{id}"><!--T-->リンク<!--/T--></label></th>
+										<td><input type="text" name="image_link_{id}" value="{link}" id="unit-image-link-{id}" class="acms-admin-form-width-full"></td>
+									</tr>
+									<tr class="textM detail-column-body detail-column-body--{id}">
+										<th><label for="unit-image-alt-text"><!--T-->代替テキスト<!--/T--></label></th>
+										<td>
+											<textarea name="image_alt_{id}" rows="1" id="unit-image-alt-text" class="acms-admin-form-width-full">{alt}</textarea>
+										</td>
+									</tr>
+									<tr class="textM detail-column-body detail-column-body--{id}">
+										<th></th>
+										<td><!-- BEGIN primaryImage:veil -->
+											<div class="acms-admin-form-radio">
+												<input type="radio" name="primary_image" value="{primaryImageId}"{primaryImageChecked}[raw] id="input-radio-image_primary_image_{primaryImageId}">
+												<label for="input-radio-image_primary_image_{primaryImageId}"><i class="acms-admin-ico-radio"></i><!--T-->メイン画像<!--/T--></label><!-- END primaryImage:veil -->
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			@endsection
+			<!-- END image -->
+			<!-- BEGIN file -->
+			@section(admin-file-unit)
+			<table class="entryFormColumnTable {diff}">
+				<tr>
+					<td class="entryFormFilePreview">
+						<!-- BEGIN icon#none -->
+						<img src="%{IMAGES_DIR}default/noimage.gif" width="100" height="100" alt="<!--T-->登録されていません<!--/T-->"><!-- END icon#none --><!-- BEGIN icon:veil -->
+						<a href="%{HTTP_ARCHIVES_DIR}{old}" class="entryFormFileName"><img src="%{IMAGES_DIR}fileicon/{icon}.gif" class="icon" alt="{type}" width="64" height="64" alt="<!--T-->登録したファイル<!--/T-->"></a>
+						<!-- END icon:veil -->
+						<input type="hidden" name="file_old_{id}" value="{old}">
+					</td>
+					<td class="entryFormFileControl">
+						<table class="entryFormColumnSettingTable">
+							<tr>
+								<th><label for="entry-file"><!--T-->ファイル<!--/T--></label></th>
+								<td><input type="file" name="file_file_{id}[]" id="entry-file" multiple="multiple">
+								<!-- BEGIN fileDelete:veil --><br>
+								<div class="acms-admin-form-checkbox">
+									<input type="checkbox" name="file_edit_{deleteId}" value="delete" id="input-checkbox-file_edit_{deleteId}">
+									<label for="input-checkbox-file_edit_{deleteId}"><i class="acms-admin-ico-checkbox"></i><!--T-->削除<!--/T--></label>
+								</div><!-- END fileDelete:veil -->
+								</td>
+							</tr>
+							<!-- BEGIN fileName:veil --><tr>
+								<th><!--T-->ファイル名<!--/T--></th>
+								<td>
+									<p class="entryFormFileName"><a href="%{HTTP_ARCHIVES_DIR}{old}">{basename}</a></p>
+								</td>
+							</tr><!-- END fileName:veil -->
+							<tr>
+								<th><label for="unit-file-caption-{id}"><!--T-->キャプション<!--/T--></label></th>
+								<td>
+									<textarea name="file_caption_{id}" rows="1" id="unit-file-caption-{id}" class="acms-admin-form-width-full">{caption}</textarea>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			@endsection
+			<!-- END file -->
+			<!-- BEGIN map -->
+			@section(admin-map-unit)
+			<table class="formColumnMap {diff}">
+				<tr>
+					<td class="formColumnMapTd">
+						<div class="acms-admin-margin-bottom-small">
+							<input type="text" size="34" name="mapSearchTexts[]" value="<!--T-->検索機能は使用できません。<!--/T-->" disabled="disabled" class="mapSearchText">
+							<input type="button" name="mapSearchButtons[]" value="<!--T-->検索<!--/T-->" disabled="disabled" class="acms-admin-btn-admin">
+						</div>
+						<div class="acms-admin-gmap-container">
+							<img class="column-map" src="//maps.google.com/maps/api/staticmap?center={lat},{lng}&zoom={zoom}&size=400x400&maptype=roadmap&markers={lat},{lng}&key=%{GOOGLE_API_KEY}" width="400" height="400">
+						</div>
+
+					</td>
+					<td class="entryFormFileControl">
+						<table class="acms-admin-margin-bottom-small">
+							<tr>
+								<th><label for="unit_map_size-{id}"><!--T-->地図の大きさ<!--/T--></label></th>
+								<td>
+									<div class="acms-admin-form-group acms-admin-margin-none">
+										<select name="map_size_{id}" id="unit_map_size-{id}"><!-- BEGIN size:loop -->
+											<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+										</select>
+									</div>
+								</td>
+							</tr>
+						</table>
+
+						<table class="entryFormImageTable">
+							<tr class="detail-column-head" id="detail-column--{id}">
+								<td>
+									<a href="#" class="toggle"><span class="acms-admin-icon-arrow-small-right" aria-hidden="true"></span> <!--T-->詳細<!--/T--></a>
+								</td>
+							</tr>
+							<tr class="textM detail-column-body detail-column-body--{id}">
+								<td>
+									<dl class="acms-admin-margin-none">
+										<dt><label for="unit-map-lat-{id}"><!--T-->緯度<!--/T--></label></dt>
+										<dd><input type="text" name="map_lat_{id}" value="{lat}" size="9" id="unit-map-lat-{id}" class="acms-admin-form-width-mini"></dd>
+										<dt><label for="unit-map-lng-{id}"><!--T-->経度<!--/T--></label></dt>
+										<dd><input type="text" name="map_lng_{id}" value="{lng}" size="10" id="unit-map-lng-{id}" class="acms-admin-form-width-mini"></dd>
+										<dt><label for="unit-map-zoom-{id}"><!--T-->ズーム<!--/T--></label></dt>
+										<dd><input type="text" name="map_zoom_{id}" value="{zoom}" size="2" id="unit-map-zoom-{id}" class="acms-admin-form-width-mini"></dd>
+										<dt><label for="unit-map-msg-{id}"><!--T-->吹き出し ( HTML可 )<!--/T--></label></dt>
+										<dd><textarea name="map_msg_{id}" rows="9" id="unit-map-msg-{id}" class="map_msg_id">{msg}</textarea></dd>
+									</dl>
+								</td>
+							</tr>
+						</table>
+						@include("/include/gmaps-error.html")
+					</td>
+				</tr>
+			</table>
+			@endsection
+			<!-- END map -->
+			<!-- BEGIN yolp -->
+			@section(admin-yolp-unit)
+			<table class="formColumnMap {diff}">
+				<tr>
+					<td class="formColumnMapTd"><img class="column-map" src="http://map.olp.yahooapis.jp/OpenLocalPlatform/V1/static?appid=%{YAHOO_API_KEY}&lat={lat}&lon={lng}&z={zoom}&width=400&height=400&pointer=on" width="400" height="400">
+					</td>
+					<td class="entryFormFileControl">
+						<table class="entryFormMapTable">
+						<tr>
+							<th><label for="unit-yolp-size-{id}"><!--T-->地図大きさ<!--/T--></label></th>
+							<td>
+								<select name="yolp_size_{id}" id="unit-yolp-size-{id}"><!-- BEGIN size:loop -->
+									<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th><label for="unit-yolp-layer-{id}"><!--T-->レイヤー<!--/T--></label></th>
+							<td>
+								<select name="yolp_layer_{id}" id="unit-yolp-layer-{id}"><!-- BEGIN layer:loop -->
+									<option value="{value}"{selected}>{label}</option><!-- END layer:loop -->
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th><label for="unit-yolp-lat-{id}"><!--T-->緯度<!--/T--></label></th>
+							<td>
+								<input type="text" name="yolp_lat_{id}" value="{lat}" size="9" id="unit-yolp-lat-{id}" class="acms-admin-form-width-mini">
+							</td>
+						</tr>
+						<tr>
+							<th><label for="unit-yolp-lng-{id}"><!--T-->経度<!--/T--></label></th>
+							<td>
+								<input type="text" name="yolp_lng_{id}" value="{lng}" size="10" id="unit-yolp-lng-{id}" class="acms-admin-form-width-mini">
+							</td>
+						</tr>
+						<tr>
+							<th><label for="unit-yolp-zoom-{id}"><!--T-->ズーム<!--/T--></label></th>
+							<td>
+								<input type="text" name="yolp_zoom_{id}" value="{zoom}" size="2" id="unit-yolp-zoom-{id}" class="acms-admin-form-width-mini">
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="yolp_msg_{id}" value="">
+			@endsection
+			<!-- END yolp -->
+			<!-- BEGIN youtube -->
+			@section(admin-youtube-unit)
+			<table class="entryFormColumnSettingTable entryFormColumnTable {diff}">
+			<tr>
+				<!-- BEGIN_IF [{youtubeId}/nem/] -->
+				<td class="entryFormFileentryFormImages">
+					<iframe width="240" height="150" src="http://www.youtube.com/embed/{youtubeId}?wmode=transparent" frameborder="0" allowfullscreen></iframe>
+				</td>
+				<!-- END_IF -->
+				<td class="entryFormFileControl">
+					<table>
+					<tr>
+						<th><label for="unit-youtube-id-{id}">YouTube ID</label></th>
+						<td><input name="youtube_id_{id}" type="text" value="{youtubeId}" size="15" id="unit-youtube-id-{id}"></td>
+					</tr>
+					<tr>
+						<th><label for="unit-youtube-size-{id}"><!--T-->サイズ<!--/T--></label></th>
+						<td>
+							<select name="youtube_size_{id}" id="unit-youtube-size-{id}"><!-- BEGIN size:loop -->
+								<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+							</select>
+						</td>
+					</tr>
+					</table>
+				</td>
+			</tr>
+			</table>
+			@endsection
+			<!-- END youtube -->
+			<!-- BEGIN video -->
+			@section(admin-video-unit)
+			<table class="entryFormColumnSettingTable entryFormColumnTable {diff}">
+			<tr>
+				<!-- BEGIN_IF [{videoId}/nem/] -->
+				<td class="entryFormFileentryFormImages">
+					<iframe width="240" height="150" src="http://www.youtube.com/embed/{videoId}?wmode=transparent" frameborder="0" allowfullscreen></iframe>
+				</td>
+				<!-- END_IF -->
+				<td class="entryFormFileControl">
+					<table>
+					<tr>
+						<th><label for="unit-video-id-{id}">Video ID</label></th>
+						<td><input name="video_id_{id}" type="text" value="{videoId}" size="15" id="unit-video-id-{id}"></td>
+					</tr>
+					<tr>
+						<th><label for="unit-video-size-{id}"><!--T-->サイズ<!--/T--></label></th>
+						<td>
+							<select name="video_size_{id}" id="unit-video-size-{id}"><!-- BEGIN size:loop -->
+								<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+							</select>
+						</td>
+					</tr>
+					</table>
+				</td>
+			</tr>
+			</table>
+			@endsection
+			<!-- END video -->
+			<!-- BEGIN eximage -->
+			@section(admin-eximage-unit)
+			<table class="entryFormColumnSettingTable entryFormColumnTable {diff}">
+			<tr><!-- BEGIN_IF [{normal}/nem] -->
+				<td class="entryFormFileentryFormImages"><!-- BEGIN preview:veil -->
+					<a href="{normal}" data-rel="SmartPhoto[]" data-caption="{caption}"><img src="{normal}" alt="<!--T-->プレビュー<!--/T-->" class="entryFormFileImage"></a><!-- END preview:veil -->
+				</td><!-- END_IF -->
+				<td class="entryFormFileControl">
+					<dl class="acms-admin-margin-none acms-admin-margin-small">
+						<dt><label for="unit-eximage-normal-{id}"><!--T-->標準画像<!--/T--></label></dt>
+						<dd><input type="text" name="eximage_normal_{id}" size="45" value="{normal}" id="unit-eximage-normal-{id}" class="entryFormInputText acms-admin-form-width-full" placeholder="例）https://"></dd>
+
+						<dt><label for="unit-eximage-large-{id}"><!--T-->拡大画像<!--/T--></label></dt>
+						<dd><input type="text" name="eximage_large_{id}" size="45" value="{large}" id="unit-eximage-large-{id}" class="entryFormInputText acms-admin-form-width-full" placeholder="例）https://"></dd>
+
+						<dt><label for="unit-eximage-size-{id}"><!--T-->画像の大きさ<!--/T--></label></dt>
+						<dd>
+							<select name="eximage_size_{id}" id="unit-eximage-size-{id}"><!-- BEGIN size:loop -->
+								<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+								<option value=""{size:selected#none}><!--T-->そのまま<!--/T--></option>
+							</select>
+							<!-- BEGIN_IF [%{MEDIA_LIBRARY}/eq/on] -->
+							<a href="#" class="js-media_insert"><!--T-->メディアを挿入<!--/T--></a><!-- END_IF -->
+						</dd>
+					</dl>
+
+					<table class="entryFormImageTable">
+						<tr class="detail-column-head" id="detail-column--{id}">
+							<td colspan="2">
+								<a href="#" class="toggle"><span class="acms-admin-icon-arrow-small-right" aria-hidden="true"></span> <!--T-->詳細<!--/T--></a>
+							</td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><label for="unit-eximage-caption-{id}"><!--T-->キャプション<!--/T--></label></th>
+							<td><textarea name="eximage_caption_{id}" rows="1" id="unit-eximage-caption-{id}" class="acms-admin-form-width-full">{caption}</textarea>
+							</td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><label for="unit-eximage-link-{id}"><!--T-->リンク<!--/T--></label></th>
+							<td><input type="text" name="eximage_link_{id}" value="{link}" id="unit-eximage-link-{id}" class="entryFormInputText acms-admin-form-width-full"></td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><label for="unit-eximage-alt-text-{id}"><!--T-->代替テキスト<!--/T--></label></th>
+							<td><textarea name="eximage_alt_{id}" rows="1" id="unit-eximage-alt-text-{id}" class="acms-admin-form-width-full">{alt}</textarea>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			</table>
+			@endsection
+			<!-- END eximage -->
+			<!-- BEGIN media -->
+			@section(admin-media-unit)
+			<table class="entryFormColumnSettingTable entryFormColumnTable {diff}">
+			<tr class="entryFormFileControl">
+
+				<!-- BEGIN preview:veil -->
+				<td class="js-media_preview entryFormFileentryFormImages"><!-- BEGIN_IF [{type}/eq/image] -->
+					<img src="%{HTTP_MEDIA_ARCHIVES_DIR}{tiny}" alt=""><!-- ELSE_IF [{thumbnail}/nem/] -->
+					<img src="%{ARCHIVES_DIR}{thumbnail}" alt=""><!-- ELSE_IF [{icon}/nem/] -->
+					<img src="%{ROOT_DIR}{icon}" alt=""><!-- END_IF -->
+				</td><!-- END preview:veil -->
+
+				<td class="entryFormFileControl">
+
+					<table class="acms-admin-margin-bottom-mini">
+						<tr>
+							<th><!-- T -->メディアID<!-- /T --></th>
+							<td>{media_id}<input type="hidden" name="media_id_{id}" value="{media_id}"><!-- BEGIN_IF [{media_id}/em/_and_/%{MEDIA_LIBRARY}/eq/on] --> <a href="#" class="js-media_insert acms-admin-btn-admin"><!--T-->メディアを挿入する<!--/T--></a><!-- ELSE_IF [%{MEDIA_LIBRARY}/neq/on] -->機能を利用するには<a href="%{HTTP_ROOT}bid/%{BID}/admin/config_function/">機能設定</a>にてメディア管理を利用可能にしてください<!-- END_IF --></td>
+						</tr>
+						<tr>
+							<th><label for="unit-media-size-{id}"><!--T-->サイズ<!--/T--></label></th>
+							<td>
+								<select name="media_size_{id}" id="unit-media-size-{id}"><!-- BEGIN size:loop -->
+									<option value="{value}:{display}"{selected}>{label}</option><!-- END size:loop -->
+								</select>
+							</td>
+						</tr><!-- BEGIN_IF [{media_id}/nem] -->
+						<tr>
+							<td colspan="2">
+								<a href="%{HTTP_ROOT}/bid/{bid}/admin/media_edit/?_mid={media_id}" class="acms-admin-btn-admin js-dialog-btn js-link_no_rewrite">詳細情報を編集する</a>
+								<!-- BEGIN_IF [%{MEDIA_LIBRARY}/eq/on] --> <a href="#" class="js-media_insert acms-admin-btn-admin"><!--T-->メディアを挿入する<!--/T--></a><!-- END_IF -->
+							</td>
+						</tr><!-- END_IF -->
+					</table>
+
+					<table class="entryFormImageTable">
+						<tr class="detail-column-head" id="detail-column--{id}">
+							<td colspan="2">
+								<a href="#" class="toggle"><span class="acms-admin-icon-arrow-small-right" aria-hidden="true"></span> <!--T-->詳細<!--/T--></a>
+							</td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><!--T-->キャプション<!--/T--></th>
+							<td><!-- BEGIN_IF [{caption}/nem] -->{caption}<!-- ELSE --><span class="acms-admin-label">登録されていません</span><!-- END_IF --></td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><!--T-->リンク<!--/T--></th>
+							<td><!-- BEGIN_IF [{link}/nem] -->{link}<!-- ELSE --><span class="acms-admin-label">登録されていません</span><!-- END_IF --></td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><!--T-->代替テキスト<!--/T--></th>
+							<td><!-- BEGIN_IF [{alt}/nem] -->{alt}<!-- ELSE --><span class="acms-admin-label">登録されていません</span><!-- END_IF --></td>
+						</tr>
+						<tr class="textM detail-column-body detail-column-body--{id}">
+							<th><!--T-->テキスト<!--/T--></th>
+							<td><!-- BEGIN_IF [{text}/nem] -->{text}<!-- ELSE --><span class="acms-admin-label">登録されていません</span><!-- END_IF --></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			</table>
+			@endsection
+			<!-- END media -->
+			<!-- BEGIN quote -->
+			@section(admin-quote-unit)
+			<table class="entryFormColumnSettingTable entryFormColumnTable {diff}">
+			<tr class="entryFormFileControl">
+				<th><label for="unit-quote-link-{id}"><!--T-->引用URL<!--/T--></label></th>
+				<td>
+					<input type="text" name="quote_url_{id}" size="45" value="{quote_url}" id="unit-quote-link-{id}" class="entryFormInputText acms-admin-form-width-full"/>
+					<!-- BEGIN html:veil -->{tw_oembed}[raw]<!-- END html:veil -->
+				</td>
+			</tr>
+			</table>
+			@endsection
+			<!-- END quote -->
+
+			<!-- BEGIN break -->
+			<input type="text" name="break_label_{id}" value="{label}" style="width:98%" placeholder="<!--T-->例）続きをみる<!--/T-->"><!-- END break -->
+
+			<!-- BEGIN module -->
+			@section(admin-module-unit)
+			 <div class="acms_layout_unit acms_layout_module_unit">
+				<div class="js-acms_layout_edit_box">
+					<button type="button" class="js-acms_layout_select_module acms-admin-btn-admin acms-admin-btn-small"><span class="acms-admin-icon acms-admin-icon-module"></span><!--T-->モジュール<!--/T--></button>
+				</div>
+				<div class="js-acms_layout_contents js-acms_layout_module_box" data-col="1">
+					{view}[raw]
+				</div>
+			</div>
+
+			<input type="hidden" name="module_mid_{id}" value="{mid}">
+			<input type="hidden" name="module_tpl_{id}" value="{tpl}">
+			@endsection
+			<!-- END module -->
+
+			<!-- BEGIN custom -->
+			@include("/admin/entry/unit/custom.html")
+			<!-- END custom -->
+
+			@include("/admin/entry/unit/extend.html")
+		</div>
+		<!-- /.entryFormColumnBody -->
+	</div><!-- END column:loop -->
+	<!-- END adminEntryColumn -->
+
+	<div class="formEntryActionUnit ablogcms--column-add-btn">
+		<div class="sorthandle">
+		  <span class="adminBtn"><i class="acms-admin-icon-sort js-sp-sort-handle" aria-hidden="true"></i><!--T-->追加<!--/T--></span>
+		</div>
+		<span class="buttonlist"></span>
+	</div>
+</div>

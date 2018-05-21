@@ -1,0 +1,56 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name} の</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) の</strong><!-- END_MODULE Admin_Module_Name --><!--T-->ユニット設定<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<form action="" method="post">
+	<!-- BEGIN Config_Column -->
+	<!-- BEGIN mode:loop -->
+<div class="column-definition">
+	<h3 class="crosshead3table">{mode}</h3>
+		<div class="column-definition-wrapper">
+		<p class="columnVeil">
+        	<a class="{modePrefix}-text" href="#"><!--T-->テキストを追加<!--/T--></a>
+			<a class="{modePrefix}-image" href="#"><!--T-->画像を追加<!--/T--></a>
+			<a class="{modePrefix}-file" href="#"><!--T-->ファイルを追加<!--/T--></a>
+			<a class="{modePrefix}-map" href="#"><!--T-->地図を追加<!--/T--></a>
+			<a class="{modePrefix}-youtube" href="#"><!--T-->YouTubeを追加<!--/T--></a>
+			<a class="{modePrefix}-eximage" href="#"><!--T-->画像URLを追加<!--/T--></a>
+		</p>
+		<hr class="clearHidden" />
+		<!-- BEGIN loop -->
+		@include("/admin/config/column-definition.html")<!-- END loop -->
+        <input type="hidden" name="config[]" value="{modePrefix}type" />
+		<input type="hidden" name="config[]" value="{modePrefix}align" />
+		<input type="hidden" name="config[]" value="{modePrefix}class" />
+		<input type="hidden" name="config[]" value="{modePrefix}size" />
+		<input type="hidden" name="config[]" value="{modePrefix}edit" />
+		<input type="hidden" name="config[]" value="{modePrefix}field_1" />
+		<input type="hidden" name="config[]" value="{modePrefix}field_2" />
+		<input type="hidden" name="config[]" value="{modePrefix}field_3" />
+		<input type="hidden" name="config[]" value="{modePrefix}field_4" />
+		<input type="hidden" name="config[]" value="{modePrefix}field_5" />
+
+	</div>
+</div>
+	<!-- END mode:loop -->
+	<!-- END Config_Column --><!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+	<table class="adminTable">
+		<tr>
+			<td class="systemBtn">
+				<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="btn" />
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Config -->

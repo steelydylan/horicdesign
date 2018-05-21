@@ -1,0 +1,310 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title"><span
+			class="js-dialog-title"><!-- BEGIN_IF [%{edit}/neq/insert] --><!--T-->ブログ管理<!--/T--><!-- ELSE --><!--T-->新規ブログ作成<!--/T--><!-- END_IF --></span></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Blog_Edit -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ブログを作成しました<!--/T-->
+</p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ブログを保存しました<!--/T-->
+</p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ブログを削除しました<!--/T-->
+</p><!-- END msg#delete --><!-- BEGIN msg:touch#reset -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->コンフィグを初期化しました<!--/T-->
+</p><!-- END msg:touch#reset --><!-- BEGIN blog:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->この操作は許可されていません。<!--/T-->
+</p><!-- END blog:validator#operable --><!-- BEGIN blog:validator#subBlogExists -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ブログを削除できませんでした。子を持つブログは削除できません。<!--/T-->
+</p><!-- END blog:validator#subBlogExists -->
+<!-- BEGIN headline#insert --><!-- END headline#insert -->
+<!-- BEGIN headline#update --><!-- END headline#update -->
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form js-dialog-body">
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<!-- BEGIN submit#insert -->
+			<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+				<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/blog_edit/" class="acms-admin-btn-admin"><!--T-->戻る<!--/T--></a>
+			</div>
+			<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+				<input type="submit" name="ACMS_POST_Blog_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"/>
+			</div>
+			<!-- END submit#insert -->
+
+			<!-- BEGIN submit#update -->
+			<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+				<input type="submit" name="ACMS_POST_Blog_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"/>
+			</div>
+
+			<!-- BEGIN_MODULE Touch_BlogGlobal --><!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<!-- BEGIN_IF [%{BID}/neq/%{RBID}] -->
+			<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+				<input type="submit" value="<!--T-->削除<!--/T-->" name="ACMS_POST_Blog_Delete" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger"/>
+			</div>
+			<!-- END_IF -->
+			<!-- END_MODULE Touch_SessionWithAdministration --><!-- END_MODULE Touch_BlogGlobal -->
+			<!-- END submit#update -->
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<!-- BEGIN_MODULE Touch_BlogGlobal --><!-- BEGIN_IF [%{edit}/neq/insert] -->
+			<div class="js-fake-form acms-admin-float-right acms-admin-float-none-sp acms-admin-margin-bottom-mini" data-method="post">
+				<input type="hidden" name="bid" value="%{BID}" />
+				<input type="hidden" name="admin" value="blog_edit" />
+				<input type="hidden" name="edit" value="insert" />
+				<input type="hidden" name="query[]" value="edit" />
+				<input type="hidden" value="New Blog" name="ACMS_POST_2GET" />
+				<button class="js-submit acms-admin-btn-admin"><!--T-->子ブログを作成<!--/T--></button>
+				<input type="hidden" name="formToken" value="on" />
+			</div><!-- END_IF -->
+			<!-- END_MODULE Touch_BlogGlobal -->
+
+			<a href="/bid/%{BID}/admin/shortcut_edit/?bid=%{BID}&action=Blog_Update&admin=blog_edit&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp acms-admin-margin-right-mini"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<div class="acms-admin-tabs">
+		<ul class="js-acms_admin_tabs">
+			<li><a href="#acms_basic"><!--T-->基本設定<!--/T--></a></li>
+			<li><a href="#acms_custom"><!--T-->カスタム設定<!--/T--></a></li>
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<li><a href="#acms_import"インポート><!--T-->エクスポート・インポート<!--/T--></a></li>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+		</ul>
+		<div id="acms_basic" class="acms-admin-tabs-panel">
+			<table class="adminTable acms-admin-table-admin-edit"><!-- BEGIN id:veil -->
+				<tr>
+					<th>ID<i class="acms-admin-icon-tooltip-hover js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログの管理番号です。<!--/T-->"></i></th>
+					<td>{id}</td>
+				</tr><!-- END id:veil -->
+				<tr>
+					<th><!--T-->ステータス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログの公開状態です。シークレットを選択した場合、ログインしたユーザーにのみブログが公開されます。<!--/T-->"></i></th>
+					<td>
+						<select name="status" class="js-select2">
+							<option value="open" {status:selected#open}><!--T-->公開<!--/T--></option>
+							<option value="close" {status:selected#close}><!--T-->非公開<!--/T--></option>
+							<option value="secret" {status:selected#secret}><!--T-->シークレット<!--/T--></option>
+						</select>
+						<input type="hidden" name="blog[]" value="status"/>
+						<input type="hidden" name="status:validator#status"/>
+						<input type="hidden" name="status:validator#root"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-status-status" class="validator-result-{status:validator#status}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->親ブログのステータスとの関係でステータスを変更できません。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-status-root" class="validator-result-{status:validator#root}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->ルートブログは非公開にできません。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->名前<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+											  data-acms-tooltip="<!--T-->ブログの名前です。<!--/T-->（<!--T-->日本語可<!--/T-->）"></i>
+					</th>
+					<td>
+						<input type="text" name="name" value="{name}" size="40" placeholder="<!--T-->ブログ名<!--/T-->"/> (
+						<!--T-->日本語可<!--/T-->)
+						<input type="hidden" name="blog[]" value="name"/>
+						<input type="hidden" name="name:validator#required" id="validator-name-required"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-name-required" class="validator-result-{name:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前が入力されていません。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->ドメイン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログのドメイン名です。<!--/T-->"></i></th>
+					<td>
+						<input type="text" name="domain" value="{domain}" size="40" placeholder="example.com"/> (
+						<!--T-->英数字<!--/T-->)
+						<input type="hidden" name="blog[]" value="domain"/>
+						<input type="hidden" name="domain:validator#required" id="validator-domain-required"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-domain-required" class="validator-result-{domain:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->ドメインが入力されていません。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-domain-domain" class="validator-result-{domain:validator#domain}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->入力されたドメイン名はご利用できません。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-code-identify" class="validator-result-{code:validator#exists}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->入力されたドメインとコードネームの組み合わせは既に使用されています。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->コードネーム<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+												  data-acms-tooltip="<!--T-->URL上で表示されるブログのコード（ディレクトリー名）を変更します。スラッシュでパス指定可（例：parent/own）<!--/T-->"></i>
+					</th>
+					<td>
+						<input type="text" name="code" value="{code}" size="20"/> (<!--T-->英数字<!--/T-->)
+						<input type="hidden" name="blog[]" value="code"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-code-identify" class="validator-result-{code:validator#exists}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->入力されたドメインとコードネームの組み合わせは既に使用されています。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-code-reserved" class="validator-result-{code:validator#reserved}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->システムで予約されているキーワードです。<!--/T--></p>
+							</div>
+							<div data-validator-label="validator-code-string" class="validator-result-{code:validator#string}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な文字が含まれています。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+												   data-acms-tooltip="<!--T-->チェックが外されたブログはブログ一覧に表示されなくなります。しかし「非表示」ではないのでURLを入力するとブログが表示されます。<!--/T-->"></i>
+					</th>
+					<td>
+						<input type="hidden" name="indexing" value="off"/>
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" name="indexing" value="on" {indexing:checked#on}
+								   id="input-checkbox-indexing"/>
+							<label for="input-checkbox-indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->リストに出す<!--/T--></label>
+						</div>
+						<input type="hidden" name="blog[]" value="indexing"/>
+					</td>
+				</tr>
+				<tr>
+					<th><!--T-->テーマカラー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログのテーマカラーを16進数で設定します。<!--/T-->"></i></th>
+					<td class="js-acms-color-picker js-acms-theme-select">
+						<input class="blog_theme_color acms-admin-float-left acms-admin-margin-bottom-small" type="text" name="blog_theme_color" value="{blog_theme_color}" placeholder="#FF0000"/>
+						<input type="hidden" name="config[]" value="blog_theme_color"/>&nbsp;
+						<button class="js-acms-color-picker-submit acms-admin-btn-admin" data-target=".blog_theme_color"><!--T-->色を選択<!--/T--></button>
+					</td>
+				</tr><!-- BEGIN_IF [%{RBID}/eq/%{BID}] --><!-- BEGIN_IF [%{edit}/neq/insert] -->
+				<tr>
+					<th><!--T-->サイトロゴ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイトのロゴを設定します。<!--/T-->"></i></th>
+					<td>
+						<!-- BEGIN_IF [{blog_theme_logo@squarePath}/nem] -->
+						<img src="%{ARCHIVES_DIR}{blog_theme_logo@squarePath}" class="acms-admin-img-responsive js-img_resize_preview">
+						<input type="hidden" name="blog_theme_logo@old" value="{blog_theme_logo@path}">
+						<br>
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" name="blog_theme_logo@edit" value="delete" id="input-checkbox-blog_theme_logo@edit">
+							<label for="input-checkbox-blog_theme_logo@edit">
+								<i class="acms-admin-ico-checkbox"></i>削除</label>
+						</div>
+						<!-- ELSE -->
+						<img src="%{ARCHIVES_DIR}{blog_theme_logo@squarePath}" class="acms-admin-img-responsive js-img_resize_preview" style="display: none;">
+						<!-- END_IF -->
+						<input type="file" name="blog_theme_logo" size="20" class="js-img_resize_input">
+						<input type="hidden" name="config[]" value="blog_theme_logo">
+						<input type="hidden" name="blog_theme_logo:extension" value="image">
+						<input type="hidden" name="blog_theme_logo@squareWidth" value="64">
+						<input type="hidden" name="blog_theme_logo@filename" value="">
+					</td>
+				</tr><!-- END_IF --><!-- END_IF -->
+			</table>
+		</div>
+		<div id="acms_custom" class="acms-admin-tabs-panel">
+			@include("/admin/blog/field.html")
+			<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-blog-field" --><!-- END_MODULE Admin_InjectTemplate -->
+		</div>
+		<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+		<div id="acms_import" class="acms-admin-tabs-panel">
+			<!-- BEGIN_IF [{error}/nem/] -->
+			<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+				<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+				<!--T-->エラーが発生しました<!--/T--> {error}
+				<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+			</p>
+			<!-- END_IF -->
+
+			<p><!--T-->以下のデータがインポートされます。<!--/T--><br><strong><!--T-->インポート時にこれらのデータは削除されるのでお気をつけください。<!--/T--></strong></p>
+			<ul class="acms-admin-list-inline acms-admin-exported-list">
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->カテゴリー<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->エントリー<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->タグ<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->モジュールID<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->コンフィグ<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->レイアウト<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->ルール<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->ダッシュボード<!--/T--></span></li>
+				<li><span class="acms-admin-label acms-admin-exported-label"><!--T-->カスタムフィールド<!--/T--></span></li>
+			</ul>
+
+			<!-- BEGIN success -->
+			<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><!--T-->インポートが完了しました。<!--/T--></p>
+			<!-- END success -->
+
+			<!-- BEGIN_MODULE Admin_Errors -->
+			<div class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger">
+				<span class="acms-admin-icon-attention acms-admin-alert-icon-before"></span><button class="js-acms-alert-close acms-admin-alert-icon-after"><span atia-hidden="true">×</span><span class="acms-admin-hide-visually">閉じる</span></button>
+				<ul>
+				<!-- BEGIN error:loop -->
+					<li>{error}</li>
+				<!-- END error:loop -->
+				</ul>
+			</div>
+			<!-- END_MODULE Admin_Errors -->
+
+			<h3 class="acms-admin-admin-title2"><!--T-->ブログのエクスポート<!--/T--></h3>
+			<table class="adminTable acms-admin-table-admin-edit">
+				<tr>
+					<td><!--T-->このブログのデータ（データ、アーカイブ）をzip形式でダウンロードします。<!--/T--></td>
+					<td class="acms-admin-text-right">
+						<div class="js-fake-form" data-method="post">
+							<button class="js-submit acms-admin-btn-admin acms-admin-btn-admin-primary" onclick="return confirm('<!--T-->このブログのデータをエクスポートします。データが大きい場合にはサーバに負荷がかかります。よろしいですか？<!--/T-->');"><!--T-->エクスポート<!--/T--></button>
+							<input type="hidden" name="ACMS_POST_Backup_BlogExport" value="on" />
+							<input type="hidden" name="formToken" value=""/>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<h3 class="acms-admin-admin-title2"><!--T-->ブログのインポート<!--/T--></h3>
+			<table class="adminTable acms-admin-table-admin-edit">
+				<tr>
+					<td>
+						<strong>private/import/</strong> <!--T-->ディレクトリにアップロードされたエクスポートファイル<br>（zipファイル）を使用してインポートします。<!--/T-->
+					</td>
+					<td class="acms-admin-text-right">
+					<!-- BEGIN_MODULE Admin_Backup_ArchiveZipList -->
+						<!-- BEGIN import:veil -->
+					<div class="js-fake-form" data-method="post">
+						<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+							<div class="acms-admin-inline-block acms-admin-margin-bottom-mini"><!--T-->参照先<!--/T-->：/private/import/</div>
+							<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+								<select name="zipfile" class="js-select2">
+									<!-- BEGIN export:loop -->
+									<option value="{zip}">{zip}</option><!-- END export:loop -->
+								</select>
+							</div>
+						</div>
+						<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+							<button onclick="return confirm('<!--T-->このブログのデータをすべて削除しインポート処理を行います。よろしいですか？<!--/T-->');" class="js-submit acms-admin-btn-admin acms-admin-btn-admin-primary"><!--T-->インポート<!--/T--></button>
+							<input type="hidden" name="ACMS_POST_Backup_BlogImport" value="on"/>
+							<input type="hidden" name="formToken" value=""/>
+						</div>
+					</div>
+						<!-- END import:veil -->
+					<!-- END_MODULE Admin_Backup_ArchiveZipList -->
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- END_MODULE Touch_SessionWithAdministration -->
+	</div>
+</form>
+<!-- END_MODULE Admin_Blog_Edit -->
+
+<!-- BEGIN_IF [%{edit}/neq/insert] -->
+@include("/admin/blog/index.html")
+<!-- END_IF -->

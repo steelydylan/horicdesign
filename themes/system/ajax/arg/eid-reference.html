@@ -1,0 +1,137 @@
+<!-- BEGIN_MODULE Admin_Entry_Index -->
+
+<!-- BEGIN_IF [%{send}/neq/ajax] -->
+<div class="acms-admin-filter">
+	<form action="" method="post" class="js-ajax_load acms-admin-form" target=".js-ajax_load_replace">
+		<div class="acms-admin-form-group">
+			<select name="status" class="js-select2">
+				<option value="">全てのステータス</option>
+				<option value="open"{status:selected#open}>公開</option>
+				<option value="close"{status:selected#close}>非公開</option>
+				<option value="draft"{status:selected#draft}>下書き</option>
+			</select>
+			<input type="hidden" name="query[]" value="status" />
+
+			<!-- BEGIN userSelect#filter -->
+			<select name="uid" class="js-select2">
+				<option value="">全てのユーザー</option><!-- BEGIN_MODULE Admin_User_Select --><!-- BEGIN loop -->
+				<option value="{value}"{selected}>{label}</option><!-- END loop --><!-- END_MODULE Admin_User_Select -->
+			</select>
+			<!-- END userSelect#filter -->
+
+			<select name="cid" id="js-entry_index_category_filter" class="js-select2">
+				<option value="">全てのカテゴリー</option>
+				<option value="0"{non_category#selected}>カテゴリーなし</option><!-- BEGIN_MODULE Admin_Category_SelectGlobal --><!-- BEGIN loop -->
+				<option value="{value}"{selected}>{indent}[raw]{label} ( {amount} )</option><!-- END loop --><!-- END_MODULE Admin_Category_SelectGlobal -->
+			</select>
+			<input type="hidden" name="_cid" value="" id="js-entry_index_category_filter_dup"/>
+			<input type="hidden" name="query[]" value="_cid" />
+		</div>
+
+		<div class="acms-admin-form-group">
+			<select name="order" class="js-select2">
+				<option value="datetime-asc"{order:selected#datetime-asc}>日付 (昇順)</option>
+				<option value="datetime-desc"{order:selected#datetime-desc}>日付 (降順)</option>
+				<option value="code-asc"{order:selected#code-asc}>ファイル名（昇順）</option>
+				<option value="code-desc"{order:selected#code-desc}>ファイル名（降順）</option>
+				<option value="id-asc"{order:selected#id-asc}>ID（昇順）</option>
+				<option value="id-desc"{order:selected#id-desc}>ID（降順）</option>
+				<option value="sort-asc"{order:selected#sort-asc}>表示順（昇順）</option>
+				<option value="sort-desc"{order:selected#sort-desc}>表示順（降順）</option>
+			</select>
+
+			<!-- BEGIN_MODULE Admin_Blog_Select -->
+			<select name="_bid" class="js-select2">
+				<option value="">現在のブログ</option><!-- BEGIN loop -->
+				<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+			</select>
+			<input type="hidden" name="query[]" value="_bid" />
+			<!-- END_MODULE Admin_Blog_Select -->
+			<!-- BEGIN axis -->
+			<input type="hidden" name="axis" value="self" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="axis" value="descendant-or-self"{axis:checked#descendant-or-self} id="input-checkbox-axis-descendant-or-self" />
+				<label for="input-checkbox-axis-descendant-or-self">
+					<i class="acms-admin-ico-checkbox"></i>下階層のブログも表示
+				</label>
+			</div>
+			<input type="hidden" value="axis" name="query[]">
+			<!-- END axis -->
+		</div>
+
+		<div class="acms-admin-form-group">
+			<input type="text" name="keyword" value="%{KEYWORD}" class="acms-admin-form-width-medium" id="filter-keyword" placeholder="タイトル・本文・カスタムフィールドから検索（複数指定可）"/>
+
+			<input type="hidden" name="send" value="ajax" />
+			<input type="hidden" name="query[]" value="send" />
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="submit" name="ACMS_POST_2GET" value="表示" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+			<input type="hidden" name="tpl" value="/ajax/arg/eid-reference.html" />
+		</div>
+	</form>
+</div><!-- /.acms-filter -->
+<!-- END_IF -->
+
+<div class="js-ajax_load_link_delegate">
+<div class="js-ajax_load_replace">
+	<table class="acms-admin-table acms-admin-table-heading acms-admin-table-hover">
+		<!-- <thead class="acms-admin-table-admin-title"> -->
+		<thead>
+			<tr>
+				<th class="acms-admin-hide-sp">eid</th>
+				<th class="acms-admin-show-sp">ステータス</th>
+				<th class="acms-admin-show-sp">タイトル</th>
+				<th class="acms-admin-hide-sp">日時</th>
+				<th class="acms-admin-hide-sp">ブログ / カテゴリ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN entry:loop -->
+			<tr class="js-arg_reference_anchor" data-id="{eid}" data-label="{title}（eid:{eid}）">
+				<td class="acms-admin-td-id">
+					<span class="acms-admin-label label-default">{eid}</span>
+				</td>
+				<td class="acms-admin-td-status">
+					<small>
+						<!-- BEGIN status#close -->
+						<span class="acms-admin-label acms-admin-label-danger admin-status-label">非公開</span><!-- END status#close --><!-- BEGIN status#open --><span class="acms-admin-label acms-admin-label-info admin-status-label">公開</span><!-- END status#open --><!-- BEGIN status#draft --><span class="acms-admin-label acms-admin-label-warning admin-status-label">下書き</span><!-- END status#draft -->
+
+					</small>
+				</td>
+				<td>
+					{title}
+				</td>
+				<td>
+					{datetime}[date('Y/n/d H:i')]
+				</td>
+				<td>
+					{blogName} / {categoryName}
+				</td>
+			</tr>
+			<!-- END entry:loop -->
+		</tbody>
+	</table>
+
+	<div class="js-ajax_load_link acms-admin-grid">
+		<div class="acms-admin-col-8">
+			<!-- BEGIN pager:veil -->
+			<div class="acms-admin-pager-container">
+				<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+					<li class="prev"><a href="{url}">&laquo;&nbsp;前へ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+					<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+					<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+					<li class="next"><a href="{url}">次へ&nbsp;&raquo;</a></li><!-- END forwardLink -->
+				</ul>
+			</div>
+			<!-- END pager:veil -->
+		</div>
+		<div class="acms-admin-col-4">
+			<div class="acms-admin-float-right">
+				<p>{itemsFrom}件 - {itemsTo}件 / 全{itemsAmount}件</p>
+			</div>
+		</div>
+	</div><!-- /.acms-grid -->
+</div>
+</div>
+
+<!-- END_MODULE Admin_Entry_Index -->

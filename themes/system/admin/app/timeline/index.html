@@ -1,0 +1,106 @@
+<header class="">
+	<div class="acms-admin-grid">
+		<div class="acms-admin-col-md-6">
+			<h1 class="acms-admin-admin-title">タイムライン</h1>
+		</div>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_App_Timeline_Index -->
+
+<!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-info">メディア一覧を更新しました。</p><!-- END refresh --><!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-danger">タイムラインはありません。</p><!-- END index#notFound -->
+
+<div class="acms-admin-filter">
+	<form action="" method="post" class="filter acms-admin-form">
+		<!-- BEGIN axis -->
+		<div class="acms-admin-form-checkbox">
+			<input type="checkbox" name="axis" value="descendant-or-self"{axis:checked#descendant-or-self} id="input-checkbox-axis-descendant-or-self" />
+			<label for="input-checkbox-axis-descendant-or-self"><i class="acms-admin-ico-checkbox"></i>下階層のブログも表示</label>
+		</div>
+		<input type="hidden" name="axis" value="self" />
+		<input type="hidden" name="query[]" value="axis" />
+		<!-- END axis -->
+		<!-- BEGIN_MODULE Admin_Blog_Select -->
+		<select name="_bid" class="js-select2">
+			<option value="">現在のブログ</option><!-- BEGIN loop -->
+			<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+		</select>
+		<input type="hidden" name="query[]" value="_bid" />
+		<!-- END_MODULE Admin_Blog_Select -->
+		&nbsp;
+		ソート:
+		<select class="input-sm js-select2" name="order">
+			<option value="desc"{order:selected#desc}>日付 (降順)</option>
+			<option value="asc"{order:selected#asc}>日付 (昇順)</option>
+		</select>
+		&nbsp;
+		表示数:
+		<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+			<option value="{limit}"{selected}>{limit}</option><!-- END limit:loop -->
+		</select>
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="submit" name="ACMS_POST_2GET" value="表示" class="acms-admin-btn-admin acms-admin-btn-admin-info" />
+		<input type="hidden" name="admin" value="app_timeline_index" />
+	</form>
+</div>
+<form method="post" action="" id="media-list-form">
+	<!-- BEGIN index:veil -->
+	<div class="js-acms-tab-select clearfix">
+		<div class="acms-admin-float-left">
+			<input type="submit" class="acms-admin-btn-admin acms-admin-btn-admin-primary" name="ACMS_POST_App_Timeline_Index_Create" value="エントリー作成" onclick="return confirm('チェックしたタイムラインからエントリーを下書きで作成します。\nよろしいですか？');">
+
+			<input type="submit" class="acms-admin-btn-admin acms-admin-btn-admin-danger" name="ACMS_POST_App_Timeline_Index_Delete" value="削除" onclick="return confirm('この操作は取り消せません。\nよろしいですか？');">
+		</div>
+	</div>
+
+	<div class="acms-admin-table-responsive">
+		<table class="adminTable acms-admin-table-admin acms-admin-table-hover">
+			<thead>
+				<tr>
+					<th class="acms-admin-table-center acms-admin-th-checkbox acms-admin-show-sp">
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" id="checkAll" />
+							<label for="checkAll"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually">すべてを選択する</span></label>
+						</div>
+					</th>
+					<th class="acms-admin-hide-sp">画像</th>
+					<th class="acms-admin-hide-sp">日付</th>
+					<th class="acms-admin-hide-sp">内容</th>
+				</tr>
+			</thead>
+			<tbody class="files"><!-- BEGIN feed:loop -->
+			<tr>
+				<td class="acms-admin-table-center">
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="checks[]" value="{bid}:{tid}" id="check-{bid}-{tid}" />
+						<label for="check-{bid}-{tid}"><i class="acms-admin-ico-checkbox"></i>{text}を選択する</label>
+					</div>
+				</td>
+				<td><!-- BEGIN image:veil -->
+					<span class="preview"><img src="%{ARCHIVES_DIR}{path}" width="60" /></span><!-- END image:veil -->
+				</td>
+				<td>
+					<p>{datetime}[date('Y/m/d H:i:s')]</p>
+				</td>
+				<td>
+					<p>{text}</p>
+				</td>
+			</tr><!-- END feed:loop -->
+			</tbody>
+		</table>
+	</div>
+
+	<!-- BEGIN pager:veil -->
+	<div class="acms-admin-pager-container">
+		<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+			<li class="prev"><a href="{url}">&laquo;&nbsp;前へ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+			<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+			<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+			<li class="next"><a href="{url}">次へ&nbsp;&raquo;</a></li><!-- END forwardLink -->
+		</ul>
+	</div><!-- END pager:veil -->
+	<!-- END index:veil -->
+</form>
+<!-- END_MODULE Admin_App_Timeline_Index -->

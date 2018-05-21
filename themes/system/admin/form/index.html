@@ -1,0 +1,102 @@
+<!-- BEGIN_MODULE Admin_Form_Index -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->フォーム管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->フォームIDがありません。<!--/T--></p><!-- END index#notFound --><!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->フォームID一覧を更新しました<!--/T--></p><!-- END refresh -->
+
+<div class="acms-admin-filter">
+	<form action="" method="post" class="acms-admin-form">
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->ソート<!--/T-->:
+			<select name="order" class="js-select2">
+				<option value="id-asc"{order:selected#id-asc}><!--T-->作成順<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="id-desc"{order:selected#id-desc}><!--T-->作成順<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="code-asc"{order:selected#code-asc}><!--T-->フォームID<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="code-desc"{order:selected#code-desc}><!--T-->フォームID<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="amount-asc"{order:selected#amount-asc}><!--T-->投稿数<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="amount-desc"{order:selected#amount-desc}><!--T-->投稿数<!--/T--> (<!--T-->降順<!--/T-->）</option>
+				<option value="datetime-asc"{order:selected#datetime-asc}><!--T-->最新の投稿<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="datetime-desc"{order:selected#datetime-desc}><!--T-->最新の投稿<!--/T-->（<!--T-->降順<!--/T-->）</option>
+			</select>
+		</div>
+
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->表示数<!--/T-->:
+			<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+				<option value="{value}"{selected}>{value}</option><!-- END limit:loop -->
+			</select>
+		</div>
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="admin" value="form_index" />
+	</form>
+</div>
+
+<div class="acms-admin-form-group acms-admin-float-right acms-admin-float-none-sp js-acms_fix_marker acms-admin-position-right acms-admin-fix-right">
+	<form action="" method="post" class="acms-admin-float-right acms-admin-float-none-sp">
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="hidden" name="admin" value="form_edit" />
+		<input type="hidden" name="edit" value="insert" />
+		<input type="hidden" name="query[]" value="edit" />
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->フォームIDを作成<!--/T-->" class="acms-admin-btn-admin" />
+	</form>
+</div>
+
+<!-- BEGIN index -->
+<div class="acms-admin-table-responsive">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<tr>
+				<th><!--T-->フォームID<!--/T--></th>
+				<th><!--T-->フォーム名<!--/T--></th>
+				<th><!--T-->最新の投稿<!--/T--></th>
+				<th><!--T-->投稿数<!--/T--></th>
+				<th><!--T-->グローバル<!--/T--></th>
+				<th><!--T-->アクション<!--/T--></th>
+			</tr>
+		</thead>
+		<tbody><!-- BEGIN form:loop -->
+			<tr>
+				<td>{code}</td>
+				<td class="acms-admin-width-sp"><p class="acms-admin-title-sp">{name}</p></td>
+				<td>{datetime}</td>
+				<td>{amount}</td>
+				<td><!-- BEGIN_IF [{scope}/eq/global] -->
+					<span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->グローバル<!--/T--></span><!-- ELSE --><!--T--> - <!--/T--><!-- END_IF -->
+				</td>
+				<td class="acms-admin-border-bottom-sp acms-admin-width-sp"><!-- BEGIN editAction -->
+					<a href="{itemUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a><!-- END editAction --><!-- BEGIN logAction -->
+					<a href="{logUrl}" class="acms-admin-btn-admin"><!--T-->投稿データ<!--/T--></a><!-- END logAction -->
+				</td>
+			</tr>
+		</tbody><!-- END form:loop -->
+	</table>
+</div>
+<div class="acms-admin-grid">
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<!-- BEGIN pager:veil -->
+		<div class="acms-admin-pager-container">
+			<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+				<li class="prev"><a href="{url}">&laquo;&nbsp;<!--T-->前へ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+				<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+				<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+				<li class="next"><a href="{url}"><!--T-->次へ<!--/T-->&nbsp;&raquo;</a></li><!-- END forwardLink -->
+			</ul>
+		</div>
+		<!-- END pager:veil -->
+	</div>
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<div class="acms-admin-itemsAmount-container">
+			<p>{itemsFrom}<!--T-->件<!--/T--> - {itemsTo}<!--T-->件<!--/T--> / <!--T-->全<!--/T-->{itemsAmount}<!--T-->件<!--/T--></p>
+		</div>
+	</div>
+</div>
+<!-- END index -->
+<!-- END_MODULE Admin_Form_Index -->

@@ -1,0 +1,15 @@
+<!-- BEGIN_MODULE Banner -->
+<div>
+@include("/admin/module/setting.html")
+<ul class="acms-admin-list-nostyle acms-admin-grid-r">
+	<!-- BEGIN banner:loop -->
+	<!-- BEGIN banner#src -->
+	<li class="{banner:loop.class}">{src}[raw]</li>
+	<!-- END banner#src -->
+	<!-- BEGIN banner#img -->
+	<li class="{banner:loop.class}"><a href="{url}" target="{target}"><img src="%{ARCHIVES_DIR}{img}" width="{x}" height="{y}" class="acms-admin-img-responsive" alt="{alt}" /></a></li>
+	<!-- END banner#img -->
+	<!-- END banner:loop -->
+</ul>
+</div>
+<!-- END_MODULE Banner -->

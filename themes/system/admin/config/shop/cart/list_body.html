@@ -1,0 +1,58 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->サムネイル画像のサイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サムネイル画像のサイズを指定します。<!--/T-->"></i></th>
+		<td>
+			<!--T-->横<!--/T-->&nbsp;<input type="text" name="shop_cart_list_image_x" value="{shop_cart_list_image_x}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル x 縦<!--/T-->&nbsp;<input type="text" name="shop_cart_list_image_y" value="{shop_cart_list_image_y}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル<!--/T-->
+			<input type="hidden" name="config[]" value="shop_cart_list_image_x" />
+			<input type="hidden" name="config[]" value="shop_cart_list_image_y" />
+			<input type="hidden" name="shop_cart_list_image_x:convert" value="a" />
+			<input type="hidden" name="shop_cart_list_image_x:validator#digits" id="validator-shop_cart_list_image_x-digits" />
+			<input type="hidden" name="shop_cart_list_image_y:convert" value="a" />
+			<input type="hidden" name="shop_cart_list_image_y:validator#digits" id="validator-shop_cart_list_image_y-digits" />
+
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-shop_cart_list_image_x-digits" class="validator-result-{shop_cart_list_image_x:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+				<div data-validator-label="validator-shop_cart_list_image_y-digits" class="validator-result-{shop_cart_list_image_y:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->トリミング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイズで指定された大きさに、画像をトリミングして表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="shop_cart_list_image_trim" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="shop_cart_list_image_trim" value="on"{shop_cart_list_image_trim:checked#on} id="input-checkbox-shop_cart_list_image_trim" />
+				<label for="input-checkbox-shop_cart_list_image_trim"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズにトリミングする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="shop_cart_list_image_trim" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->拡大　( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像が指定されたサイズよりも小さいときに、指定されたサイズまで拡大します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="shop_cart_list_image_zoom" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="shop_cart_list_image_zoom" value="on"{shop_cart_list_image_zoom:checked#on} id="input-checkbox-shop_cart_list_image_zomm" />
+				<label for="input-checkbox-shop_cart_list_image_zomm"><i class="acms-admin-ico-checkbox"></i><!--T-->画像が指定されたサイズに満たない場合に拡大する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="shop_cart_list_image_zoom" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示位置 ( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像を指定されたサイズの中心に表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="shop_cart_list_image_center" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="shop_cart_list_image_center" value="on"{shop_cart_list_image_center:checked#on} id="input-checkbox-shop_cart_list_image_center" />
+				<label for="input-checkbox-shop_cart_list_image_center"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズの中心に表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="shop_cart_list_image_center" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

@@ -1,0 +1,31 @@
+<script src="/js/jquery.js"></script>
+<!-- BEGIN_MODULE Api_GoogleAnalytics_Ranking -->
+
+<!-- BEGIN notFound -->
+<p>Not Found.</p><!-- END notFound -->
+
+<ul><!-- BEGIN ranking:loop -->
+	<li>
+		<a href="{path}">[{views} views] {title}</a>
+	</li><!-- END ranking:loop -->
+</ul>
+
+<!-- END_MODULE Api_GoogleAnalytics_Ranking -->
+<script>
+function get_social_count_hatebu(url) {
+	$.ajax({
+		url:'http://api.b.st-hatena.com/entry.count?callback=?',
+		dataType:'jsonp',
+		data:{
+			url:url
+		},
+		success:function(res){
+			console.log(res);
+		},
+		error:function(){
+			$('#' + counterId + ' .count').text('?');
+		}
+	});
+}
+get_social_count_hatebu("http://horicdesign.com");
+</script>

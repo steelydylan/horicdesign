@@ -1,0 +1,288 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ロール詳細<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Role_Edit -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->ロールを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->ロールを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-danger"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->ロールを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN role:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-danger"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END role:validator#operable -->
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form"><!-- BEGIN role:validator#operable -->
+	<p class="transaction-notice-error acms-admin-alert acms-admin-alert-danger"><!--T-->この操作は許可されていません。<!--/T--></p><!-- END role:validator#operable -->
+	<p class="transaction-notice-{insert:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->ロールを作成できませんでした。<!--/T--></p>
+	<p class="transaction-notice-{update:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->ロールを保存できませんでした。<!--/T--></p>
+
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<input type="button" name="Config_Index" value="<!--T-->一覧<!--/T-->" onclick="location.href='%{SCRIPT_ROOT}bid/%{BID}/admin/role_index/';" class="acms-admin-btn-admin" />
+
+		<!-- BEGIN submit#insert -->
+		<input type="submit" name="ACMS_POST_Role_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		<!-- END submit#insert -->
+
+		<!-- BEGIN submit#update -->
+		<input type="submit" name="ACMS_POST_Role_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+		<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+		<input type="submit" name="ACMS_POST_Role_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+		<input type="hidden" name="takeover" value="{takeover}" />
+		<!-- END_MODULE Touch_SessionWithAdministration -->
+		<!-- END submit#update -->
+	</div>
+
+	<table class="adminTable acms-admin-table-admin-edit"><!-- BEGIN id:veil -->
+		<tr>
+			<th>ID<i data-acms-tooltip="<!--T-->ロールのIDです。固有の値になります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>{id}</td>
+		</tr><!-- END id:veil -->
+		<tr>
+			<th><!--T-->ロール名<!--/T--><i data-acms-tooltip="<!--T-->ロール名を指定します（日本語化）<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input class="form-control" type="text" name="name" value="{name}" />
+				<input type="hidden" name="role[]" value="name" />
+				<input type="hidden" name="name:validator#required" id="validator-name-required" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-name-required" class="validator-result-{name:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前が入力されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->説明<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このロールがどのような動作をするかなどのメモです。<!--/T-->"></i></th>
+			<td>
+				<textarea name="description" style="width:100%;" rows="3">{description}</textarea>
+				<input type="hidden" name="role[]" value="description" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->エントリー権限<!--/T--><i data-acms-tooltip="<!--T-->エントリーについての権限を設定します。<br>自分のエントリー以外も管理にチェックをつけると自分以外が書いたエントリも管理できるようになります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="entry_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="entry_edit" value="on"{entry_edit:checked#on} id="input-checkbox-entry_edit" />
+					<label for="input-checkbox-entry_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->エントリーの投稿・編集<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="entry_edit" />
+
+				<input type="hidden" name="entry_edit_all" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="entry_edit_all" value="on"{entry_edit_all:checked#on} id="input-checkbox-entry_edit_all" />
+					<label for="input-checkbox-entry_edit_all">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->自分のエントリー以外も管理<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="entry_edit_all" />
+
+				<input type="hidden" name="entry_delete" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="entry_delete" value="on"{entry_delete:checked#on} id="input-checkbox-entry_delete" />
+					<label for="input-checkbox-entry_delete">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->エントリーの削除<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="entry_delete" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->カテゴリー権限<!--/T--><i data-acms-tooltip="<!--T-->カテゴリーについての権限を設定します。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="category_create" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="category_create" value="on"{category_create:checked#on} id="input-checkbox-category_create" />
+					<label for="input-checkbox-category_create">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーの作成<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="category_create" />
+
+				<input type="hidden" name="category_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="category_edit" value="on"{category_edit:checked#on} id="input-checkbox-category_edit" />
+					<label for="input-checkbox-category_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーの編集・削除<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="category_edit" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->フォーム権限<!--/T--><i data-acms-tooltip="<!--T-->フォームについての権限を設定します。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="form_view" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="form_view" value="on"{form_view:checked#on} id="input-checkbox-form_view" />
+					<label for="input-checkbox-form_view">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->フォームデータの閲覧<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="form_view" />
+
+				<input type="hidden" name="form_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="form_edit" value="on"{form_edit:checked#on} id="input-checkbox-form_edit" />
+					<label for="input-checkbox-form_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->フォーム設定の編集・削除<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="form_edit" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->タグ権限<!--/T--><i data-acms-tooltip="<!--T-->タグについての権限を設定します。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="tag_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="tag_edit" value="on"{tag_edit:checked#on} id="input-checkbox-tag_edit" />
+					<label for="input-checkbox-tag_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->タグの編集・削除<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="tag_edit" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->メディア権限<!--/T--><i data-acms-tooltip="<!--T-->メディアについての権限を設定します。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="media_upload" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="media_upload" value="on"{media_upload:checked#on} id="input-checkbox-media_upload" />
+					<label for="input-checkbox-media_upload">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->メディアのアップロード<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="media_upload" />
+
+				<input type="hidden" name="media_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="media_edit" value="on"{media_edit:checked#on} id="input-checkbox-media_edit" />
+					<label for="input-checkbox-media_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->メディアの編集・削除<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="media_edit" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->テンプレート書出し権限<!--/T--><i data-acms-tooltip="<!--T-->テンプレート書出しについての権限を設定します。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="publish_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="publish_edit" value="on"{publish_edit:checked#on} id="input-checkbox-publish_edit" />
+					<label for="input-checkbox-publish_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->テンプレート書出しの編集<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="publish_edit" />
+
+				<input type="hidden" name="publish_exec" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="publish_exec" value="on"{publish_exec:checked#on} id="input-checkbox-publish_exec" />
+					<label for="input-checkbox-publish_exec">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->テンプレート書出しの実行<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="publish_exec" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->管理権限<!--/T--><i data-acms-tooltip="<!--T-->管理操作についての権限を設定します。<br>その他管理操作にチェックをつけるとロールにない機能が全て使えるようになりますので、ご注意下さい。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="config_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="config_edit" value="on"{config_edit:checked#on} id="input-checkbox-config_edit" />
+					<label for="input-checkbox-config_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->コンフィグの編集<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="config_edit" />
+
+				<input type="hidden" name="module_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="module_edit" value="on"{module_edit:checked#on} id="input-checkbox-module_edit" />
+					<label for="input-checkbox-module_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->モジュールの編集<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="module_edit" />
+
+				<input type="hidden" name="rule_edit" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="rule_edit" value="on"{rule_edit:checked#on} id="input-checkbox-rule_edit" />
+					<label for="input-checkbox-rule_edit">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->ルールの編集<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="rule_edit" />
+
+				<input type="hidden" name="backup_export" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="backup_export" value="on"{backup_export:checked#on} id="input-checkbox-backup_export" />
+					<label for="input-checkbox-backup_export">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->バックアップ（エクスポート）<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="backup_export" />
+
+				<input type="hidden" name="backup_import" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="backup_import" value="on"{backup_import:checked#on} id="input-checkbox-backup_import" />
+					<label for="input-checkbox-backup_import">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->バックアップ（インポート）<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="backup_import" />
+
+				<input type="hidden" name="admin_etc" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="admin_etc" value="on"{admin_etc:checked#on} id="input-checkbox-admin_etc" />
+					<label for="input-checkbox-admin_etc">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->その他管理操作<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="admin_etc" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->子ブログを管理対象にする<!--/T--><i data-acms-tooltip="<!--T-->子ブログを管理対象にします。チェックをつけたブログの下階層のブログがチェックをつけていなくても管理対象となります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="blog_axis" value="self" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="blog_axis" value="descendant"{blog_axis:checked#descendant} id="input-checkbox-blog_axis" />
+					<label for="input-checkbox-blog_axis">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->子ブログを管理対象にする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="role[]" value="blog_axis" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->対象ブログ<!--/T--><i data-acms-tooltip="<!--T-->対象ブログを設定します。チェックをつけると管理対象となります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td><!-- BEGIN_MODULE Admin_Blog_SelectGlobal -->
+				<ul style="list-style:none; padding:0;"><!-- BEGIN loop -->
+					<li>
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" name="blog_list[]" value="{value}"\{blog_list:checked#{value}\} id="input-checkbox-blog-list-{value}"/>
+							<label for="input-checkbox-blog-list-{value}">
+								<i class="acms-admin-ico-checkbox"></i>{indent}[raw]{label}
+							</label>
+						</div>
+					</li><!-- END loop -->
+				</ul>
+				<input type="hidden" name="role[]" value="blog_list" /><!-- END_MODULE Admin_Blog_SelectGlobal -->
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Role_Edit -->
+@include("/admin/tooltip/role.html")

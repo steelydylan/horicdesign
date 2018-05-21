@@ -1,0 +1,128 @@
+/* ------------------------------
+ アラート
+------------------------------- */
+.acms-alert {
+	margin-bottom: 20px;
+	padding: $acms-alert-padding;
+	border: 1px solid $acms-alert-black-border;
+	background: $acms-alert-black-bg;
+	border-radius: $acms-alert-border-radius;
+	box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+	color: $acms-alert-black-text-color;
+	font-weight: bold;
+	@include animation(anime1 .5s ease 1 alternate);
+
+	.acms-icon {
+		color: $acms-alert-black-icon-color;
+	}
+
+	.js-acms-alert-close {
+		color: $acms-alert-black-close-color;
+	}
+}
+
+// アニメーション
+@keyframes anime1 {
+	0% {
+		opacity: 0;
+		transform: translate(0,-5px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0,0);
+	}
+}
+
+// info
+.acms-alert-info {
+	border-color: $acms-alert-info-border;
+	background: $acms-alert-info-bg;
+	color: $acms-alert-info-text-color;
+
+	//閉じるボタン　文字カラー
+	.js-acms-alert-close {
+		color: $acms-alert-info-close-color;
+	}
+
+	.acms-alert-icon-before {
+		color: $acms-alert-info-icon-color;
+	}
+}
+
+// danger
+.acms-alert-danger {
+	border-color: $acms-alert-danger-border;
+	background: $acms-alert-danger-bg;
+	color: $acms-alert-danger-text-color;
+
+	//閉じるボタン　文字カラー
+	.js-acms-alert-close {
+		color: $acms-alert-danger-close-color;
+	}
+
+	.acms-alert-icon-before {
+		color: $acms-alert-danger-icon-color;
+	}
+}
+
+// warning
+.acms-alert-warning {
+	border-color: $acms-alert-warning-border;
+	background: $acms-alert-warning-bg;
+	color: $acms-alert-warning-text-color;
+
+	//閉じるボタン　文字カラー
+	.js-acms-alert-close {
+		color: $acms-alert-warning-close-color;
+	}
+	.acms-alert-icon-before {
+		color: $acms-alert-warning-icon-color;
+	}
+}
+
+// success
+.acms-alert-success {
+	border-color: $acms-alert-success-border;
+	background: $acms-alert-success-bg;
+	color: $acms-alert-success-text-color;
+
+	//閉じるボタン　文字カラー
+	.js-acms-alert-close {
+		color: $acms-alert-success-close-color;
+	}
+	.acms-alert-icon-before {
+		color: $acms-alert-success-icon-color;
+	}
+}
+
+
+.acms-alert-icon {
+	position: relative;
+	padding: $acms-alert-icon-padding;
+}
+.acms-alert-icon-before {
+	position: absolute;
+	left: 20px;
+	@include font-size(20);
+}
+.acms-alert-icon-after {
+	position: absolute;
+	right: 20px;
+	@include font-size(20);
+}
+
+
+// 閉じるボタン
+.js-acms-alert-close {
+	top: 50%;
+	margin-top: -10px;
+	line-height: 1;
+	font-weight: normal;
+	background: transparent;
+	border: 0;
+	-webkit-appearance: none;
+	outline: 0;
+	@include font-size(18);
+	padding: 0;
+}

@@ -1,0 +1,430 @@
+@import "mixins/buttons";
+
+
+// ------------------------------
+// grid
+// ------------------------------
+@mixin make-grid($name,$grid-name,$number){
+	@for $i from 1 through $number{
+		@if $grid-name{
+			.#{$name}-#{$grid-name}-#{$i}{
+				@if $i != $number {
+					float: left;
+				} @else{
+					float: none;
+				}
+				width: percentage($i / $number);
+			}
+		} @else {
+			.#{$name}-#{$i}{
+				@if $i != $number {
+					float: left;
+				} @else{
+					float: none;
+				}
+				width: percentage($i / $number);
+			}
+		}
+	}
+}
+
+@mixin make-pulled-grid($name,$grid-name,$number){
+	$limit : $number - 1;
+	@for $i from 1 through $limit{
+		@if $grid-name{
+			.#{$name}-#{$grid-name}-#{$i}{
+				right: percentage($i / $number);
+			}
+		} @else {
+			.#{$name}-#{$i}{
+				right: percentage($i / $number);
+			}
+		}
+	}
+}
+
+@mixin make-pushed-grid($name,$grid-name,$number){
+	$limit : $number - 1;
+	@for $i from 1 through $limit{
+		@if $grid-name{
+			.#{$name}-#{$grid-name}-#{$i}{
+				left: percentage($i / $number);
+			}
+		} @else {
+			.#{$name}-#{$i}{
+				left: percentage($i / $number);
+			}
+		}
+	}
+}
+
+// ------------------------------
+// clearfix
+// ------------------------------
+
+@mixin clearfix(){
+	 &:before,
+	 &:after {
+		content: " ";
+		display: table;
+	}
+	 &:after {
+		clear: both;
+	}
+}
+
+
+
+// ------------------------------
+// 不可視化
+// ------------------------------
+
+@mixin hide-visually(){
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+
+
+// ------------------------------
+// フォントサイズ
+// ------------------------------
+
+@mixin font-size($sizeValue){
+	font-size: $sizeValue + px;
+	// font-size: ($sizeValue / 10) * 1rem;
+}
+@mixin font-size-important($sizeValue){
+	font-size: $sizeValue + px!important;
+	// font-size: ($sizeValue / 10) * 1rem!important;
+}
+
+
+
+
+// ------------------------------
+// プレースホルダー
+// ------------------------------
+@mixin placeholder($color){
+	 &:-moz-input-placeholder {
+		color: $color;
+	}
+	  &:-ms-input-placeholder {
+		color: $color;
+	 }
+	 &::-webkit-input-placeholder  {
+		color: $color;
+	}
+}
+
+
+
+
+// ------------------------------
+// ボックスサイズ
+// ------------------------------
+
+@mixin box-sizing($boxmodel){
+	box-sizing: $boxmodel;
+}
+
+
+
+
+// ------------------------------
+// 角丸
+// ------------------------------
+
+// 上だけ角丸
+@mixin round-top( $radius ){
+	border-top-left-radius: $radius;
+	border-top-right-radius: $radius;
+}
+// 下だけ角丸
+@mixin round-bottom( $radius ){
+	border-bottom-left-radius: $radius;
+	border-bottom-right-radius: $radius;
+}
+// 右だけ角丸
+@mixin round-right( $radius ){
+	border-top-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+}
+// 左だけ角丸
+@mixin round-left( $radius ){
+	border-top-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+}
+
+
+
+
+// ------------------------------
+// 透過
+// ------------------------------
+
+// Opacity
+@mixin opacity($opacity){
+	opacity: $opacity;
+}
+
+
+
+
+// ------------------------------
+// 時間変化
+// ------------------------------
+
+// transition-property、 transition-duration、 transition-timing-function、 transition-delay の各プロパティの値
+@mixin transition($transition){
+	-webkit-transition: $transition;
+	transition: $transition;
+}
+// プロパティ
+@mixin transition-property($transition-property){
+	-webkit-transition-property: $transition-property;
+	transition-property: $transition-property;
+}
+// いつ始まるか
+@mixin transition-delay($transition-delay){
+	-webkit-transition-delay: $transition-delay;
+	transition-delay: $transition-delay;
+}
+// かかる時間
+@mixin transition-duration($transition-duration){
+	-webkit-transition-duration: $transition-duration;
+	transition-duration: $transition-duration;
+}
+// 時間変化
+@mixin transition-transform($transition){
+	-webkit-transition: -webkit-transform $transition;
+	transition: transform $transition;
+}
+
+
+
+
+// ------------------------------
+// 回転
+// ------------------------------
+
+// 回転
+@mixin rotate($degrees){
+	-webkit-transform: rotate($degrees);
+	-ms-transform: rotate($degrees);
+	transform: rotate($degrees);
+}
+// X軸に回転
+@mixin rotateX($degrees){
+	-webkit-transform: rotateX($degrees);
+	-ms-transform: rotateX($degrees); // IE9+
+	transform: rotateX($degrees);
+}
+// Y軸に回転
+@mixin rotateY($degrees){
+	-webkit-transform: rotateY($degrees);
+	-ms-transform: rotateY($degrees); // IE9+
+	transform: rotateY($degrees);
+}
+
+
+
+
+// ------------------------------
+// 変形
+// ------------------------------
+
+// 拡大・縮小
+@mixin scale($ratio){
+	-webkit-transform: scale($ratio);
+	-ms-transform: scale($ratio);
+	transform: scale($ratio);
+}
+// 表示位置を移動
+@mixin translate($x, $y){
+	-webkit-transform: translate($x, $y);
+	-ms-transform: translate($x, $y);
+	transform: translate($x, $y);
+}
+// Z方向に表示位置を移動
+@mixin translateZ($z){
+	-webkit-transform: translateZ($z);
+	-ms-transform: translateZ($z);
+	transform: translateZ($z);
+}
+// X方向とY方向とZ方向の距離で3D移動
+@mixin translate3d($x, $y, $z){
+	-webkit-transform: translate3d($x, $y, $z);
+	transform: translate3d($x, $y, $z);
+}
+// 傾斜変形
+@mixin skew($x, $y){
+	-webkit-transform: skew($x, $y);
+	-ms-transform: skewX($x) skewY($y);
+	transform: skew($x, $y);
+}
+// 3D変形の奥行きの深さ
+@mixin perspective($perspective){
+	-webkit-perspective: $perspective;
+	-moz-perspective: $perspective;
+	perspective: $perspective;
+}
+// 遠近投影の基点となる位置を指定
+@mixin perspective-origin($perspective){
+	-webkit-perspective-origin: $perspective;
+	-moz-perspective-origin: $perspective;
+	perspective-origin: $perspective;
+}
+// 要素を変形させる際の基準点を指定する
+@mixin transform-origin($origin){
+	-webkit-transform-origin: $origin;
+	-moz-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+
+
+
+// ------------------------------
+// UI
+// ------------------------------
+// ユーザーの選択
+@mixin user-select($select){
+	-webkit-user-select: $select;
+	-moz-user-select: $select;
+	-ms-user-select: $select;
+	-o-user-select: $select;
+	user-select: $select;
+}
+
+// リサイズ
+@mixin resizable($direction){
+	resize: $direction;
+	overflow: auto;
+}
+
+// 単語途中での改行方法を指定
+@mixin hyphens($mode: auto){
+	word-wrap: break-word;
+	-webkit-hyphens: $mode;
+	-moz-hyphens: $mode;
+	-ms-hyphens: $mode;
+	-o-hyphens: $mode;
+	hyphens: $mode;
+}
+
+
+
+
+// ------------------------------
+// グラデーション
+// ------------------------------
+
+// 水平グラデーション
+@mixin horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%){
+	background-color: $end-color;
+	background-image:  linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10
+	background-repeat: repeat-x;
+}
+// 垂直グラデーション
+@mixin vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%){
+	background-color: $end-color;
+	background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10
+	background-repeat: repeat-x;
+}
+// 指定グラデーション
+@mixin directional($start-color: #555, $end-color: #333, $deg: 45deg){
+	background-repeat: repeat-x;
+	background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10
+}
+// 3つ水平グラデーション
+@mixin horizontal-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f){
+	background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color); // Standard, IE10
+	background-repeat: no-repeat;
+}
+// 3つ垂直グラデーション
+@mixin vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f){
+	background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color); // Standard, IE10
+	background-repeat: no-repeat;
+}
+// 円形グラデーション
+@mixin radial($inner-color: #555, $outer-color: #333){
+	background-image: radial-gradient(circle, $inner-color, $outer-color); // Standard, IE10
+	background-repeat: no-repeat;
+}
+// 縞模様グラデーション
+@mixin striped($color: rgba(255,255,255,.15), $angle: 45deg){
+	background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent); // Standard, IE10
+}
+
+
+
+
+// ------------------------------
+// アニメーション
+// ------------------------------
+
+// アニメーション
+@mixin animation($animation){
+	-webkit-animation: $animation;
+	animation: $animation;
+}
+
+// hoverのアニメーション
+@mixin hover-animation($duration: 0.1s){
+	-webkit-transition: all $duration linear;
+	transition: all $duration linear;
+}
+
+
+
+// ------------------------------
+// フォーム
+// ------------------------------
+
+// セレクト
+//===============================
+@mixin select(
+		$border-radius: 3px,
+		$background-color: $acms-form-select-bg-color,
+		$background-color-hover:#FFF ){
+	position: relative;
+	-moz-appearance:  none;
+	-webkit-appearance: button;
+	display: inline-block;
+	padding: $acms-form-select-padding;
+	border: $acms-form-border;
+	border-radius: $border-radius;
+	background-color: $background-color;
+	background: url($acms-form-select) right center,$background-color;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	text-align: center;
+	@include font-size($acms-form-select-font-size);
+	line-height: 1.3;
+	vertical-align: middle;
+	transition: border-color .2s;
+
+	&:hover {
+		border-color: $acms-form-hover-border-color;
+		background-color: $background-color-hover;
+		background-repeat: no-repeat;
+	}
+}
+@mixin desktop-select(){
+	min-height: 30px;
+	padding: 5px 30px 5px 10px;
+	@include font-size(12);
+	line-height: 1.2;
+}
+@mixin desktop-select-for-ie(){
+	@media all and (-ms-high-contrast:none){
+		padding-right: 30px;
+	}
+}

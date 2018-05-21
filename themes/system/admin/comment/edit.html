@@ -1,0 +1,94 @@
+<!-- BEGIN_MODULE Admin_Comment_Edit -->
+<!-- BEGIN step#apply -->
+<div class="comment-form" id="comment-form">
+	<h3 class="base-heading">コメント</h3>
+	<!-- BEGIN header#reply -->
+	<h4 class="relationHeader"><a name="comment-form">コメントを返信する</a></h4><!-- END header#reply -->
+	<form action="#comment-form" method="post" id="comment-form" class="acms-form">
+		@include("/admin/comment/input.html")
+		<input type="submit" name="ACMS_POST_Comment_Confirm_Insert" value="内容の確認" class="comment-btn"><!-- BEGIN reply:veil -->
+		<input type="hidden" name="reply_id" value="{reply_id}" />
+		<input type="hidden" name="comment[]" value="reply_id" /><!-- END reply:veil -->
+		<input type="hidden" name="action" value="insert" />
+		<input type="hidden" name="step" value="reapply" />
+		<input type="hidden" name="nextstep" value="confirm" />
+	</form>
+</div>
+<!-- END step#apply -->
+<!-- BEGIN step#reapply -->
+<div class="comment-form" id="comment-form">
+	<form action="#comment-form" method="post" id="comment-form" class="reapply acms-form">
+	@include("/admin/comment/input.html")
+		<!-- BEGIN action#insert -->
+		<input type="submit" name="ACMS_POST_Comment_Confirm_Insert" value="内容の確認" class="comment-btn"><!-- END action#insert --><!-- BEGIN action#update -->
+		<input type="submit" name="ACMS_POST_Comment_Confirm_Delete" value="削除" class="acms-btn">
+		<input type="submit" name="ACMS_POST_Comment_Confirm_Update" value="確認" class="acms-btn"><!-- END action#update --><!-- BEGIN action#delete -->
+		<input type="submit" name="ACMS_POST_Comment_Confirm_Delete" value="削除" class="acms-btn">
+		<input type="submit" name="ACMS_POST_Comment_Confirm_Update" value="確認" class="acms-btn"><!-- END action#delete --><!-- BEGIN oldPass:veil -->
+		<input type="hidden" name="old_pass" value="{old_pass}" />
+		<input type="hidden" name="comment[]" value="old_pass" /><!-- END oldPass:veil --><!-- BEGIN reply:veil -->
+		<input type="hidden" name="reply_id" value="{reply_id}" />
+		<input type="hidden" name="comment[]" value="reply_id" /><!-- END reply:veil -->
+		<input type="hidden" name="action" value="{action}" />
+		<input type="hidden" name="step" value="reapply" />
+		<input type="hidden" name="nextstep" value="confirm" />
+	</form>
+</div>
+
+<!-- END step#reapply -->
+
+<!-- BEGIN step#confirm -->
+<div class="comment-form" id="comment-form">
+	<p class="base-heading">コメント内容確認</p>
+	<form action="#comment-form" method="post" id="comment-form">
+		@include("/admin/comment/confirm.html")
+		<!-- BEGIN msg#insert -->
+		<p class="acms-alert acms-alert-info">上記の内容で投稿します。よろしいですか？</p><!-- END msg#insert --><!-- BEGIN msg#update -->
+		<p class="acms-alert acms-alert-info">上記の内容で保存します。よろしいですか？</p><!-- END msg#update --><!-- BEGIN msg#delete -->
+		<p class="acms-alert acms-alert-danger">上記のコメントを削除します。よろしいですか？</p><!-- END msg#delete -->
+		<input type="submit" name="ACMS_POST_Comment_Apply" value="修正する" class="comment-btn-inline"><!-- BEGIN action#insert -->
+		<input type="submit" name="ACMS_POST_Comment_Insert" value="投稿する" class="comment-btn-inline"><!-- END action#insert --><!-- BEGIN action#update -->
+		<input type="submit" name="ACMS_POST_Comment_Update" value="保存する" class="comment-btn-inline"><!-- END action#update --><!-- BEGIN action#delete -->
+		<input type="submit" name="ACMS_POST_Comment_Delete" value="削除する" class="comment-btn-inline"><!-- END action#delete -->
+		<input type="hidden" name="comment:takeover" value="{comment:takeover}" />
+		<input type="hidden" name="action" value="{action}" />
+		<input type="hidden" name="step" value="confirm" />
+		<input type="hidden" name="nextstep" value="result" />
+	</form>
+</div>
+
+<!-- END step#confirm -->
+<!-- BEGIN step#result -->
+<div class="comment-form" id="comment-form">
+	<p class="base-heading">コメントを投稿しました</p>
+	<form action="" method="post">
+		@include("/admin/comment/confirm.html")
+		<!-- BEGIN msg#insert -->
+		<p class="acms-alert acms-alert-info">上記の内容で投稿しました。</p><!-- END msg#insert --><!-- BEGIN msg#update -->
+		<p class="acms-alert acms-alert-info">上記の内容で保存しました。</p><!-- END msg#update --><!-- BEGIN msg#delete -->
+		<p class="acms-alert acms-alert-danger">上記のコメントを削除しました。</p><!-- END msg#delete -->
+		<input type="submit" name="ACMS_POST_2GET" value="コメント一覧へ" class="comment-btn" />
+		<input type="hidden" name="fragment" value="comment" />
+		<input type="hidden" name="eid" value="%{EID}" />
+	</form>
+</div>
+<!-- END step#result -->
+
+<!-- BEGIN step#auth -->
+<div class="comment-form" id="comment-form">
+	<p class="base-heading">コメントの認証</p>
+	<form action="#comment-form" method="post" id="comment-form" class="acms-form"><!-- BEGIN msg#auth -->
+		<p class="acms-alert acms-alert-danger">上記のコメントを投稿する際に登録したパスワードを入力してください。</p><!-- END msg#auth -->
+		<input type="password" name="pass" value="{pass}" class="formSizeS" />
+		<input type="submit" name="ACMS_POST_Comment_Auth" value="認証" class="comment-btn-inline" />
+		<input type="hidden" name="comment[]" value="pass" />
+		<input type="hidden" name="pass:validator#auth" value="%{CMID}" id="validator-pass-auth" />
+		<div role="alert" aria-live="assertive">
+			<div data-validator-label="validator-pass-auth" class="validator-result-{pass:validator#auth}">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span>パスワードが正しくありません。</p>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- END step#auth -->
+<!-- END_MODULE Admin_Comment_Edit -->

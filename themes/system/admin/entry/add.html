@@ -1,0 +1,19 @@
+<!-- BEGIN_MODULE Admin_Entry_Add -->
+<a name="entry-add"></a>
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form">
+	@include("/admin/entry/unit.html")
+	<div class="comPost">
+		<div class="comPostInner">
+			<div class="comPostMain">
+				<input type="submit" name="ACMS_POST_Entry_Add" value="<!--T-->ユニット追加<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			</div>
+			<div class="comPostSide">
+				<input type="submit" name="ACMS_POST_2GET" value="<!--T-->戻る<!--/T-->" class="acms-admin-btn-admin" onclick="return confirm('<!--T-->現在の変更が破棄されます、よろしいですか？<!--/T-->');" />
+				<input type="hidden" name="cid" value="%{CATEGORY_ID}" />
+				<input type="hidden" name="eid" value="%{ENTRY_ID}" />
+				<input type="hidden" name="arg[]" value="cid" />
+				<input type="hidden" name="arg[]" value="eid" />
+			</div>
+		</div>
+	</div>
+</form><!-- END_MODULE Admin_Entry_Add -->

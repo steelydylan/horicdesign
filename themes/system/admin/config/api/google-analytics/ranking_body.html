@@ -1,0 +1,49 @@
+<script>
+ACMS.Ready(function(){
+	ACMS.Config.dpicMark = '';
+});
+</script>
+
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ga_ranking_max_results" value="{ga_ranking_max_results}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="ga_ranking_max_results" />
+			<input type="hidden" name="ga_ranking_max_results:convert" value="a" />
+			<input type="hidden" name="ga_ranking_max_results:validator#digits" id="validator-ga_ranking_max_results-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-ga_ranking_max_results-digits" class="validator-result-{ga_ranking_max_results:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->集計開始日<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ランキング集計期間の開始日を指定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ga_ranking_start_date" value="{ga_ranking_start_date}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="ga_ranking_start_date" />
+			<input type="hidden" name="ga_ranking_start_date:convert" value="a" />
+			<!--T-->例)<!--/T--> YYYY-MM-DD | today | yesterday | daysAgo (7daysAgo)
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->集計終了日<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ランキング集計期間の終了日を指定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ga_ranking_end_date" value="{ga_ranking_end_date}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="ga_ranking_end_date" />
+			<input type="hidden" name="ga_ranking_end_date:convert" value="a" />
+			<!--T-->例)<!--/T--> YYYY-MM-DD | today | yesterday | daysAgo (7daysAgo)
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->フィルター<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->取得するデータを制限します。<!--/T--> <a href='https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters'>Google Developers</a> // e.g. ga:pagePath=~/(.*)\.html"></i></th>
+		<td>
+			<input type="text" name="ga_ranking_filters" value="{ga_ranking_filters}" size="8" class="acms-admin-form-width-large" />
+			<input type="hidden" name="config[]" value="ga_ranking_filters" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

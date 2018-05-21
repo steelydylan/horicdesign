@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xml:lang="ja"><!-- BEGIN_MODULE Feed_Rss2 -->
+	<channel>
+		<title>%{BLOG_NAME}<!-- BEGIN_MODULE Touch_Category --> - %{CATEGORY_NAME}<!-- END_MODULE Touch_Category --></title>
+		<link>%{BASE_URL}</link>
+		<atom:link href="%{INHERLINK}" rel="self" type="application/rss+xml" />
+		<description>%{META_DESCRIPTION}</description>
+		<language>ja</language>
+		<copyright>Copyright (C) %{Y} %{BLOG_NAME} All rights reserved.</copyright>
+		<lastBuildDate>{lastBuildDate}</lastBuildDate>
+		<generator>a-blog cms</generator>
+		<docs>http://blogs.law.harvard.edu/tech/rss</docs><!-- BEGIN item:loop -->
+		<item>
+			<dc:creator>{creator}</dc:creator>
+			<title>{title}</title>
+			<link>{link}</link>
+			<description><![CDATA[
+				@include("/include/unit.html")
+			]]></description><!-- BEGIN category:veil -->
+			<category>{category}</category><!-- END category:veil -->
+			<guid isPermaLink="true">{permalink}</guid>
+			<pubDate>{pubDate}</pubDate>
+		</item><!-- END item:loop -->
+	</channel><!-- END_MODULE Feed_Rss2 -->
+</rss>

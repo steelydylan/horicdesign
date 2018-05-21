@@ -1,0 +1,101 @@
+<!-- BEGIN_MODULE Admin_Entry_ApprovalHistory -->
+<header class="acms-admin-grid">
+	<div class="acms-admin-col-md-6">
+		<h1 class="acms-admin-admin-title"><!--T-->承認履歴<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->承認履歴がありません。<!--/T--></p><!-- END index#notFound -->
+
+<div class="acms-admin-filter">
+	<form action="" method="post" class="acms-admin-form acms-admin-margin-bottom-small">
+		<label for="filter-order" class="acms-admin-show-sp"><!--T-->ソート<!--/T-->:</label>
+		<select class="input-sm js-select2" name="order" id="filter-order">
+			<option value="desc"{order:selected#desc}><!--T-->日付<!--/T--> (<!--T-->降順<!--/T-->)</option>
+			<option value="asc"{order:selected#asc}><!--T-->日付<!--/T--> (<!--T-->昇順<!--/T-->)</option>
+		</select>
+		&nbsp;
+		<label for="filter-limit" class="acms-admin-show-sp"><!--T-->表示数<!--/T-->:</label>
+		<select name="limit" id="filter-limit" class="js-select2"><!-- BEGIN limit:loop -->
+			<option value="{limit}"{selected}>{limit}</option><!-- END limit:loop -->
+		</select>
+
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="hidden" name="eid" value="%{EID}" />
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="admin" value="entry_approval-history" />
+	</form>
+</div><!-- /.acms-filter -->
+
+<form method="post" action="" id="entry-list-form" class="acms-admin-form">
+	<!-- BEGIN index -->
+	<table class="adminTable acms-admin-table-admin acms-admin-table-hover">
+		<!-- <thead class="acms-admin-table-admin-title"> -->
+		<thead>
+			<tr>
+				<th class="acms-admin-hide-sp"><!--T-->タイプ<!--/T--></th>
+				<th class="acms-admin-hide-sp">ID / <!--T-->バージョン名<!--/T--></th>
+				<th class="acms-admin-hide-sp"><!--T-->操作ユーザー<!--/T--></th>
+				<th class="acms-admin-show-sp"><!--T-->日時<!--/T--></th>
+				<th class="acms-admin-show-sp"><!--T-->コメント<!--/T--></th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN history:loop -->
+			<tr data-sort-level="parallel" data-sort-name="sort-{sort#eid}">
+				<td>
+					<small>
+						<!-- BEGIN type#reject -->
+						<span class="acms-admin-label acms-admin-label-warning admin-status-label"><!--T-->承認却下<!--/T--></span><!-- END type#reject --><!-- BEGIN type#public -->
+						<span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->最終承認<!--/T--></span><!-- END type#public --><!-- BEGIN type#request -->
+						<span class="acms-admin-label admin-status-label"><!--T-->承認依頼<!--/T--></span><!-- END type#request --><!-- BEGIN type#trash -->
+						<span class="acms-admin-label acms-admin-label-danger admin-status-label"><!--T-->削除依頼<!--/T--></span><!-- END type#trash -->
+					</small>
+				</td>
+				<td>
+					<span class="acms-admin-label label-default">{rvid}</span>
+					<!-- BEGIN_IF [{title}/nem/] -->
+					<a href="{revisionUrl}">{title}</a><!-- ELSE -->
+					<p><!--T-->バージョンが削除されています<!--/T--></p><!-- END_IF -->
+				</td>
+				<td>
+					<img src="%{ARCHIVES_DIR}{requestUserIcon}" width="24" height="24" alt="" class="acms-admin-user acms-admin-margin-right-mini">{requestUser}
+				</td>
+				<td>
+					<ul class="acms-admin-list-inline">
+						<li>{datetime}[date('Y/n/d H:i')]</li>
+					</ul>
+				</td>
+				<td>
+					{comment}
+				</td>
+			</tr>
+			<!-- END history:loop -->
+		</tbody>
+	</table>
+	<!-- END index -->
+
+	<!-- BEGIN index -->
+	<div class="acms-admin-grid">
+		<div class="acms-admin-col-md-6">
+			<!-- BEGIN pager:veil -->
+			<div class="acms-admin-pager-container">
+				<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+					<li class="prev"><a href="{url}">&laquo;&nbsp;<!--T-->前へ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+					<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+					<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+					<li class="next"><a href="{url}"><!--T-->次へ<!--/T-->&nbsp;&raquo;</a></li><!-- END forwardLink -->
+				</ul>
+			</div>
+			<!-- END pager:veil -->
+		</div>
+		<div class="acms-admin-col-md-6">
+			<div class="acms-admin-itemsAmount-container">
+				<p>{itemsFrom}<!--T-->件<!--/T--> - {itemsTo}<!--T-->件<!--/T--> / <!--T-->全<!--/T-->{itemsAmount}<!--T-->件<!--/T--></p>
+			</div>
+		</div>
+	</div><!-- /.acms-grid -->
+	<!-- END index -->
+</form>
+<!-- END_MODULE Admin_Entry_ApprovalHistory -->

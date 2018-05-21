@@ -1,0 +1,157 @@
+<div class="js-navigation-ie" style="display:none;">
+	<table class="js-admin_table-sortable exceptionSort adminTable acms-admin-table-admin-edit" data-sort-enable="on" data-sort-submit="ACMS_POST_Config" data-sort-target="#navigationForm">
+		<thead class="acms-admin-hide-sp">
+		<tr>
+			<th class="acms-admin-admin-config-table-item-handle acms-admin-table-nowrap"></th>
+			<th class="acms-admin-table-left acms-admin-admin-config-table-sort acms-admin-table-nowrap"><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->ナビゲーションが表示される順番です。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left acms-admin-admin-config-table-publish acms-admin-table-nowrap">公開<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->チェックをするとナビゲーションを表示できるようになります。親のナビゲーションが非公開だと子のナビゲーションも非公開になります。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left"><!--T-->リンク名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->リンクとして表示される文字列です。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left" style="width: 20%;">URL<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->リンク先URLです。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left acms-admin-admin-config-table-target acms-admin-table-nowrap">_blank<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->このバナーのリンクを新しいウィンドウで開くかのチェックです。チェックすると新しいウィンドウで開きます。<!--/T-->"></i></th>
+			<th class="acms-admin-table-left"><!--T-->属性<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->このナビゲーション項目の要素に割り当てられる属性です。（変数名 : attr）<!--/T-->"></i></th>
+			<th class="acms-admin-table-left"><!--T-->子要素属性<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->このナビゲーション項目の子要素に割り当てられる属性です。（変数名 : attr）<!--/T-->"></i></th>
+			<th class="acms-admin-table-left acms-admin-admin-config-table-parent"><!--T-->親<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="<!--T-->このナビゲーション項目の、親になるナビゲーション項目の設定です。<!--/T-->"></i></th>
+			<th class="acms-admin-admin-config-table-action acms-admin-table-nowrap"></th>
+		</tr><!-- BEGIN Config_Navigation -->
+		</thead>
+		<tbody>
+		<!-- BEGIN_IF [<!-- BEGIN navigation:loop -->1<!-- END navigation:loop -->/nem/] -->
+		<!-- BEGIN navigation:loop -->
+		<tr data-sort-level="level-{level}-{pseq}" data-sort-name="navigation@sort" class="sort-item">
+			<td class="item-handle acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+			<td class="acms-admin-table-nowrap">
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->表示順<!--/T--></span>
+				<!-- BEGIN indent:loop --><!-- BEGIN descendant -->&#9475;<!-- END descendant --><!-- BEGIN descendant#last -->&#12288;<!-- END descendant#last --><!-- BEGIN child -->&#9507;<!-- END child --><!-- BEGIN child#last -->&#9495;<!-- END child#last --><!-- END indent:loop -->
+				<select name="navigation@sort[]"><!-- BEGIN sort:loop -->
+					<option value="{value}"{selected}>{label}</option><!-- END sort:loop -->
+				</select>
+			</td>
+			<td>
+				<input type="hidden" name="navigation_publish-{seq}" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="navigation_publish-{seq}" value="on"{navigation_publish:checked#on} id="input-checkbox-navigation-publish-{seq}" />
+					<label for="input-checkbox-navigation-publish-{seq}"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-pc acms-admin-show-inline-sp"><!--T-->公開<!--/T--></span></label>
+				</div>
+				<input type="hidden" name="config[]" value="navigation_publish-{seq}" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->リンク名<!--/T--></span>
+				<input type="text" name="navigation_label[]" value="{label}" size="" class="acms-admin-form-width-full" />
+			</td>
+			<td nowrap="nowrap">
+				<span class="acms-admin-hide acms-admin-show-sp">URL</span>
+				<input type="text" name="navigation_uri[]" value="{uri}" size="" class="acms-admin-form-width-full" />
+				<input type="hidden" name="navigation_target-{seq}" value="_self" />
+			</td>
+			<td>
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="navigation_target-{seq}" value="_blank"{navigation_target:checked#_blank} id="input-checkbox-navigation-target"" />
+					<label for="input-checkbox-navigation-target"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-pc acms-admin-show-inline-sp">_blank</span></label>
+				</div>
+				<input type="hidden" name="config[]" value="navigation_target-{seq}" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->属性<!--/T--></span>
+				<input type="text" name="navigation_attr[]" value="{attr}[escape]" size="8" class="acms-admin-form-width-full" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->子要素属性<!--/T--></span>
+				<input type="text" name="navigation_a_attr[]" value="{a_attr}[escape]" size="8" class="acms-admin-form-width-full" />
+			</td>
+			<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->親<!--/T--></span>
+				<select name="navigation_parent[]" class="acms-admin-module-navigation-select">
+					<option value=""><!--T-->なし<!--/T--></option><!-- BEGIN parent:loop -->
+					<option value="{value}"{selected}>{indent}[raw]{label}[raw]</option><!-- END parent:loop -->
+				</select>
+			</td>
+			<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+		</tr><!-- END navigation:loop --><!-- END_IF -->
+		<!-- END Config_Navigation -->
+		<tr data-sort-level="level-0-0" data-sort-name="navigation@sort" class="item-template">
+			<td class="item-handle acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+			<td class="acms-admin-table-nowrap">
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->表示順<!--/T--></span>
+				<select name="navigation@sort[]" class="sort-select">
+
+				</select>
+			</td>
+			<td>
+				<input type="hidden" name="navigation_publish---seq--" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="navigation_publish---seq--" value="on" checked="checked" id="input-checkbox-navigation_publish---seq--" />
+					<label for="input-checkbox-navigation_publish---seq--"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-pc acms-admin-show-inline-sp"><!--T-->公開<!--/T--></span></label>
+				</div>
+				<input type="hidden" name="config[]" value="navigation_publish---seq--" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->リンク名<!--/T--></span>
+				<input type="text" name="navigation_label[]" value="" size="" class="acms-admin-form-width-full" />
+			</td>
+			<td nowrap="nowrap">
+				<span class="acms-admin-hide acms-admin-show-sp">URL</span>
+				<input type="text" name="navigation_uri[]" value="" size="" class="acms-admin-form-width-full" />
+				<input type="hidden" name="navigation_target---seq--" value="_self" />
+			</td>
+			<td>
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="navigation_target---seq--" value="_blank" id="input-checkbox-navigation_target---seq--" />
+					<label for="input-checkbox-navigation_target---seq--"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-pc acms-admin-show-inline-sp">_blank</span></label>
+				</div>
+				<input type="hidden" name="config[]" value="navigation_target---seq--" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->属性<!--/T--></span>
+				<input type="text" name="navigation_attr[]" value="" size="8" class="acms-admin-form-width-full" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->子要素属性<!--/T--></span>
+				<input type="text" name="navigation_a_attr[]" value="" size="8" class="acms-admin-form-width-full" />
+			</td>
+			<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->親<!--/T--></span>
+				<select name="navigation_parent[]" class="parent-select acms-admin-module-navigation-select">
+
+				</select>
+			</td>
+			<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+		</tr>
+		<tr>
+			<td colspan="10"><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" /></td>
+		</tr>
+		</tbody>
+	</table>
+	<input type="hidden" name="config[]" value="navigation@sort" />
+	<input type="hidden" name="config[]" value="navigation_label" />
+	<input type="hidden" name="config[]" value="navigation_uri" />
+	<input type="hidden" name="config[]" value="navigation_attr" />
+	<input type="hidden" name="config[]" value="navigation_a_attr" />
+	<input type="hidden" name="config[]" value="navigation_parent" />
+</div>
+
+<div id="js-navigation-edit"></div>
+<script type="text/template" id="js-navigation-json">
+[
+<!-- BEGIN Config_Navigation -->
+<!-- BEGIN navigation:loop -->
+{
+	"navigation_uri": "{uri}",
+	"navigation_target": <!-- BEGIN_IF [{navigation_target:checked#_blank}/nem] -->true<!-- ELSE -->false<!-- END_IF -->,
+	"navigation_publish": <!-- BEGIN_IF [{navigation_publish:checked#on}/nem] -->true<!-- ELSE -->false<!-- END_IF -->,
+	"navigation_attr": "{attr}[escape]",
+	"navigation_a_attr": "{a_attr}[escape]",
+	"navigation_label": "{label}[escape]",
+	<!-- BEGIN parent:loop --><!-- BEGIN_IF [{selected}/nem] -->
+	"parent": {value},
+	<!-- END_IF --><!-- END parent:loop -->
+	"hide": true
+}
+<!-- BEGIN glue -->,<!-- END glue -->
+<!-- END navigation:loop -->
+<!-- END Config_Navigation -->
+]
+</script>
+<!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+<style id="fix-style"></style>

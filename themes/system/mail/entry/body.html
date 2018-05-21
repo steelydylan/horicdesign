@@ -1,0 +1,487 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>[メールマガジン] %{ENTRY_TITLE}</title>
+
+<style type="text/css">
+<!--
+
+/* ---------------
+マージン・余白のリセット
+--------------- */
+body, div,
+dl, dt, dd, ul, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, textarea, p, blockquote, th ,td {
+	margin: 0;
+	padding: 0;
+}
+
+ul{
+	list-style-type: none;
+	padding: 0.5em 0;
+}
+/* ---------------
+要素の再定義
+--------------- */
+body  {
+	background-color: #FFFFFF;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Osaka",  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 12px; /* モダンブラウザ向け */
+	_text-align: center;
+}
+
+table {
+	font-size: 12px; /* Dreamweaver cs4 デザインビュー向け bodyのフォントサイズに合わせる。 */
+}
+/* ie6 only */
+* html body {
+	font-size: 75%;
+	letter-spacing:0.1em;
+}
+/* ie7 only */
+*+html body  {
+	font-size: 75%;
+	letter-spacing:0.1em;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Osaka",  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 1em;
+}
+textarea {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 1em;
+}
+textarea {
+	padding: 2px 4px;
+}
+blockquote {
+	margin: 1em;
+	padding: 0.5em 0 1em 1em;
+	border: #CCCCCC 1px solid;
+	background-color: #FDFDFD;
+	color: #888888;
+}
+img {
+	border: none;
+}
+address {
+	font-style:normal;
+	}
+
+/* リンクの設定 */
+a {
+outline : 0;
+}
+a:link,a:visited,a:active {
+border: none;
+text-decoration: none;
+}
+a:hover {
+border: none;
+text-decoration: underline;
+}
+
+a:hover img {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+/* ---------------
+エントリー表示設定
+--------------- */
+/* 見出し2 */
+.entry h2 {
+	margin: 0 0 7px 0;
+	font-size: 16px;
+}
+
+/* 見出し3 */
+.entry h3 {
+	margin: 0 0 7px 0;
+	font-size: 15px;
+}
+
+/* 見出し4 */
+.entry h4 {
+	margin: 0 0 7px 0;
+	font-size: 14px;
+}
+
+/* 見出し5 */
+.entry h5 {
+	margin: 0 0 7px 0;
+}
+
+/* 段落 */
+.entry p {
+	margin: 0 0 7px 0;
+}
+
+/* 引用 */
+.entry blockquote p {
+	font-size: 1em;
+}
+
+/* リスト */
+.entry ul {
+	list-style-type: disc;
+	list-style-position: inside;
+	margin: 0 0 15px 10px;
+}
+.entry ul li {
+	margin: 0 0 7px 0;
+	padding: 0 0 0 0;
+	line-height: 1.2;
+}
+
+/* 番号付きリスト */
+.entry ol {
+	list-style-position: inside;
+	margin: 0 0 15px 10px;
+	padding: 0;
+}
+.entry ol li {
+	margin: 0 0 7px 0;
+	padding: 0 0 0 0;
+	line-height:1.2;
+}
+
+/* 定義リスト */
+.entry dl {
+	width: 98%;
+	line-height:1.2;
+}
+
+/* ソース */
+.entry pre {
+	overflow: auto;
+	_overflow: scroll;
+	clear: both;
+	max-height: 10em;
+	_height: 6em;
+	width:  90%;
+	margin: 5px 0 5px 10px;
+	padding: 10px;
+	background: #E7E7E7;
+}
+
+/* 引用 */
+.entry blockquote {
+	clear: both;
+	padding: 17px 20px;
+}
+
+/* テーブル */
+.entry table {
+	margin: 0 0 10px 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+/* テーブル：キャプション */
+.entry table caption {
+	background: #E7E7E7;
+}
+.entry tr {
+	margin: 0;
+	padding: 0;
+}
+
+/* テーブル：見出し */
+.entry th {
+	padding: 0.5em 0.8em;
+	border: 1px solid #CCCCCC;
+	background: #ECECEC;
+	font-weight: normal;
+	text-align: left;
+}
+
+/* テーブル：データ */
+.entry td {
+	padding: 0.5em 0.8em;
+	border: 1px solid #CCCCCC;
+}
+
+/* ---------------
+float解除に関わる表示設定
+--------------- */
+
+/* フロート解除 */
+.clear {
+	clear: both !important;
+}
+/*	フロート解除(不可視)(予備)	*/
+.clearHidden {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+/* フロート解除(不可視) */
+.clearfix:after {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	height: 0;
+	content: ".";
+}
+.clearfix {
+	_display: inline-table;
+	zoom: 1;
+}
+
+
+/* ---------------
+各コンテンツ(画像、地図、動画など)表示設定
+--------------- */
+
+/* 添付画像配置（おまかせ） */
+div.column-image-auto {
+}
+/* 添付画像配置（左） */
+div.column-image-left {
+	float: left;
+	margin-right: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-image-auto {display:block;}
+/* 添付画像配置（右） */
+div.column-image-right {
+	float: right;
+	margin-left: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-image-right {display:block;}
+/* 添付画像配置（中央） */
+div.column-image-center {
+	margin-left: auto;
+	margin-right: auto;
+	_text-align: center;
+}
+
+/* ファイル配置（おまかせ） */
+div.column-file-auto {
+}
+/* ファイル配置（左） */
+div.column-file-left {
+	float: left;
+	margin-right: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-file-left {display:block;}
+/* ファイル配置（右） */
+div.column-file-right {
+	float: right;
+	margin-left: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-file-right {display:block;}
+/* ファイル配置（中央） */
+div.column-file-center {
+	margin-left: auto;
+	margin-right: auto;
+	_text-align: center;
+}
+
+/* 地図配置（おまかせ） */
+.column-map-auto {
+	margin-bottom: 10px;
+	/*macie¥*/
+	overflow: hidden;/*macie*/
+}
+/* 地図配置（左） */
+.column-map-left {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	/*macie¥*/
+	overflow: hidden;/*macie*/
+}
+/* 地図配置（右） */
+.column-map-right {
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	/*macie¥*/
+	overflow: hidden;/*macie*/
+}
+/* 地図配置（中央） */
+.column-map-center {
+	display:block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+	/*macie¥*/
+	overflow: hidden;/*macie*/
+}
+
+/* YouTube配置 (おまかせ) */
+.column-youtube-auto {
+}
+/* YouTube配置 (左) */
+.column-youtube-left {
+	float: left;
+	margin-right: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-youtube-left {display:block;}
+/* YouTube配置 (右) */
+.column-youtube-right {
+	float: right;
+	margin-left: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-youtube-right {display:block;}
+/* YouTube配置 (中央) */
+.column-youtube-center {
+	margin-left: auto;
+	margin-right:auto;
+}
+
+/* 画像URL配置（おまかせ） */
+div.column-eximage-auto {
+}
+/* 画像URL配置（左） */
+div.column-eximage-left {
+	float: left;
+	margin-right: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-eximage-auto {display:block;}
+/* 画像URL配置（右） */
+div.column-eximage-right {
+	float: right;
+	margin-left: 10px;
+	display: inline;
+}
+html[xmlns*=""] body:last-child .column-eximage-right {display:block;}
+/* 画像URL配置（中央） */
+div.column-eximage-center {
+	margin-left: auto;
+	margin-right:auto;
+	_text-align: center;
+}
+
+-->
+</style>
+
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0; padding:0; background-color: #F8F8F8;">
+<!-- BEGIN_MODULE Entry_Body -->
+<table width="700" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top: 20px; margin-bottom: 20px; border-top: solid 4px #CCC; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; background-color: #FFF;">
+<!-- BEGIN entry:loop -->
+  <tr><td colspan="2" style="padding: 5px 15px; font-size: 12px; text-align: left; line-height: 1.5; background-color: #EEE;">
+	※このメールはHTMLメールです。正しく表示されない場合は<a href="{titleUrl}">こちら</a>からご覧ください。
+ </td></tr>
+  <tr><th colspan="2" style="padding: 20px 15px 10px; font-size: 18px; font-weight: bold; text-align: left;"><a href="%{BASE_URL}">%{BLOG_NAME}</a></th></tr>
+  
+  <tr><td colspan="2" style="padding: 0 15px; font-size: 13px; color: #666; text-align: right;">{date#Y}/{date#m}/{date#d}</td></tr>
+  <tr><th colspan="2" style="padding: 10px 15px; font-size: 20px; color: #26228B; text-align: left;"><h1 style="margin: 0; font-size: 20px;"><a href="{titleUrl}" style="color: #26228B;">{title}</a></h1></th></tr>
+  <tr><td style="width: 450px; padding: 20px 20px 20px 15px; font-size: 13px; line-height: 1.5; vertical-align: top; overflow: hidden;">
+	<div class="entry" style="width: 450px; overflow:hidden;">
+		<div class="textBody">
+			<!-- BEGIN unit:veil -->
+			<!-- BEGIN unit:loop --><!-- BEGIN unitGroup#rear -->
+			</div><!-- END unitGroup#rear --><!-- BEGIN unitGroup#front -->
+			<div class="{class}"><!-- END unitGroup#front --><!-- BEGIN inplace#front -->
+			<div class="js-edit_inplace" id="{unit:loop.unit_eid}-{unit:loop.utid}"><!-- END inplace#front -->
+			
+			<!-- BEGIN clear -->
+			<hr class="clearHidden" style="border: solid 1px #FFF;" /><!-- END clear --><!-- BEGIN unit#text -->
+			
+			<!-- テキスト -->
+			<!-- BEGIN p -->
+			<p{class} style="margin: 0 0 7px 0;">{text}[nl2br]</p><!-- END p --><!-- BEGIN h2 -->
+			<h2{class} id="h{utid}" style="margin: 0 0 7px 0; font-size: 15px; color: #666;">{text}[nl2br]</h2><!-- END h2 --><!-- BEGIN h3 -->
+			<h3{class} id="h{utid}" style="margin: 0 0 7px 0; font-size: 15px; color: #666;">{text}[nl2br]</h3><!-- END h3 --><!-- BEGIN h4 -->
+			<h4{class} id="h{utid}" style="margin: 0 0 7px 0; font-size: 14px; color: #666;">{text}[nl2br]</h4><!-- END h4 --><!-- BEGIN h5 -->
+			<h5{class} id="h{utid}" style="margin: 0 0 7px 0; color: #666;">{text}[nl2br]</h5><!-- END h5 --><!-- BEGIN ul -->
+			<ul{class} style="padding: 0; list-style-type: disc; list-style-position: inside; margin: 0 0 15px 10px;">{text}[list]</ul><!-- END ul --><!-- BEGIN ol -->
+			<ol{class} style="padding: 0; list-style-position: inside; margin: 0 0 15px 10px; padding: 0;">{text}[list]</ol><!-- END ol --><!-- BEGIN blockquote -->
+			<blockquote{class} style="">{text}[nl2br]</blockquote><!-- END blockquote --><!-- BEGIN table -->
+			<table{class} border="1" cellspacing="0" cellpadding="5" bordercolor="#333333">{text}[table]</table><!-- END table --><!-- BEGIN pre -->
+			<pre{class}>{text}</pre><!-- END pre --><!-- BEGIN none -->
+			{text}[raw]<!-- END none --><!-- BEGIN markdown -->
+			{text}[markdown]<!-- END markdown --><!-- BEGIN wysiwyg -->
+			{text}[raw]<!-- END wysiwyg -->
+			<!-- END unit#text --><!-- BEGIN unit#image -->
+			
+			<!-- 画像 -->
+			<div class="column-image-{align}" style="margin-bottom: 20px;"><!-- BEGIN link#front -->
+				<a href="{url}"{viewer}[raw]><!-- END link#front -->
+					<img class="columnImage" src="%{HTTP_ROOT}{path}" alt="{alt}" width="{x}" height="{y}" style="border: none;" /><!-- BEGIN link#rear -->
+				</a><!-- END link#rear --><!-- BEGIN caption:veil -->
+				<p class="caption" style="margin: 0;">{caption}</p><!-- END caption:veil -->
+			</div><!-- END unit#image --><!-- BEGIN unit#file -->
+			
+			<!-- ファイル -->
+			<div class="column-file-{align}" style="margin-bottom: 20px;">
+				<a href="%{HTTP_ROOT}{path}"><img class="columnIcon" src="%{HTTP_ROOT}{icon}" alt="ファイルイメージ" width="{x}" height="{y}" /></a><!-- BEGIN caption:veil -->
+				<p class="caption" style="margin: 0;">{caption}</p><!-- END caption:veil -->
+			</div><!-- END unit#file --><!-- BEGIN unit#map -->
+			
+			<!-- 地図 -->
+			<img class="column-map-{align}" src="{proxy}http://maps.google.com/staticmap?center={lat},{lng}&zoom={zoom}&size={x}x{y}&maptype=roadmap&markers=<!-- BEGIN marker:loop -->{lat},{lng}<!-- BEGIN glue -->|<!-- END glue --><!-- END marker:loop -->" alt="{msg}" width="{x}" height="{y}" title="地図" /><!-- END unit#map --><!-- BEGIN unit#youtube -->
+			
+			<!-- YouTube -->
+			<div class="column-youtube-{align}">
+				<object width="{x}" height="{y}"><param name="movie" value="http://www.youtube.com/v/0zldvi6V0ms&hl=ja&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="sameDomain"></param><embed src="http://www.youtube.com/v/{youtubeId}&hl=ja&fs=1" type="application/x-shockwave-flash" allowscriptaccess="sameDomain" allowfullscreen="true" width="{x}" height="{y}"></embed></object>
+			</div><!-- END unit#youtube --><!-- BEGIN unit#eximage -->
+			
+			<!-- 画像URL -->
+			<div class="column-eximage-{align}"><!-- BEGIN link#front -->
+				<a href="{url}"{viewer}[raw]><!-- END link#front -->
+					<img class="columnImage" src="{normal}" alt="{alt}" width="{x}" height="{y}" /><!-- BEGIN link#rear -->
+				</a><!-- END link#rear --><!-- BEGIN caption:veil -->
+				<p class="caption">{caption}</p><!-- END caption:veil -->
+			</div>
+			<!-- END unit#eximage --><!-- BEGIN unit#break -->
+			
+			<!-- 改ページ -->
+			<!-- {label} -->
+			
+			<!-- END unit#break -->
+			
+				<!-- BEGIN inplace#rear --></div><!-- END inplace#rear -->
+			<!-- BEGIN unitGroup#last --></div><!-- END unitGroup#last -->
+			
+			<!-- END unit:loop -->
+			<hr class="clearHidden" style="border: solid 1px #FFF;" /><!-- END unit:veil -->
+
+		</div>
+	</div>
+  </td>
+  <td style="width: 200px; padding: 20px 15px 20px 0; font-size: 13px; line-height: 1.5; vertical-align: top; overflow: hidden;">
+	  <!-- BEGIN_MODULE Entry_List -->
+	   <h3>最近のエントリー</h3>
+	   <ul style="padding: 0; list-style-type: disc; list-style-position: inside; margin: 0 0 20px 10px;">
+			<!-- BEGIN entry:loop -->
+			<li style="margin-bottom: 10px;"><a href="{url}">{title}</a></li>
+			<!-- END entry:loop -->
+	   </ul>
+	   <!-- END_MODULE Entry_List -->
+	   
+	   <!-- BEGIN_MODULE Banner -->
+		<ul style="list-style: none; width: 200px; margin: 0 0 20px 0; padding: 0; overflow: hidden;">
+			<!-- BEGIN banner:loop -->
+			<!-- BEGIN banner#src -->
+			<li style="margin: 0 0 10px 0; padding: 0;">{src}[raw]</li>
+			<!-- END banner#src -->
+			<!-- BEGIN banner#img -->
+			<li style="margin: 0 0 10px 0; padding: 0;"><a href="{url}" target="{target}"><img src="%{HTTP_ROOT}archives/{img}" width="{x}" height="{y}" alt="{alt}" style="border: none;" /></a></li>
+			<!-- END banner#img -->
+			<!-- END banner:loop -->
+		</ul>
+		<!-- END_MODULE Banner -->
+
+  </td>
+  </tr>
+  <!-- END entry:loop -->
+  <tr><td colspan="2" style="padding: 10px 29px; background-color: #CCC; line-height: 1.5; font-size: 11px; text-align: center;">Copyright(c) %{BLOG_NAME}</td></tr>
+</table>
+<!-- END_MODULE Entry_Body -->
+</body>
+</html>

@@ -1,0 +1,69 @@
+<h2 class="acms-admin-admin-title2"><!--T-->ショップの動作設定<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->カートに商品を追加した後の移動先<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サンプルのテンプレートでは order.html か form.html に設定して下さい。<!--/T-->"></i></th>
+		<td>
+		<input type="text" name="shop_tpl_added" value="{shop_tpl_added}" />
+		<input type="hidden" name="config[]" value="shop_tpl_added" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->在庫管理<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->在庫を管理する場合にチェックをつけてください。<!--/T-->"></i></th>
+		<td>
+		<div class="acms-admin-form-checkbox">
+			<input type="checkbox" name="shop_stock_change" id="shop-stock-change" value="on"{shop_stock_change:checked#on}>
+			<label for="shop-stock-change"><i class="acms-admin-ico-checkbox"></i><!--T-->有効<!--/T--></label>
+		</div>
+		<input type="hidden" name="config[]" value="shop_stock_change" />
+		</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2"><!--T-->税金の設定<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->税率の設定<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->消費税の税率を設定してください。<!--/T-->"></i></th>
+		<td>
+		<input type="text" name="shop_tax_rate" value="{shop_tax_rate}" size="5" />
+		<input type="hidden" name="config[]" value="shop_tax_rate" />
+		</td>
+		</tr>
+		<tr>
+		<th><!--T-->税換算の設定<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->内税・外税の切り替えを行う事ができます。<!--/T-->"></i></th>
+		<td>
+			<select name="shop_tax_calculate" class="js-select2">
+			<option value="intax"{shop_tax_calculate:selected#intax}><!--T ctx="tax_included"-->内税<!--/T--></option>
+			<option value="extax"{shop_tax_calculate:selected#extax}><!--T ctx="tax_excluded" -->外税<!--/T--></option>
+			</select>&nbsp;<!--T-->方式<!--/T-->
+			<input type="hidden" name="config[]" value="shop_tax_calculate" />
+		</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2"><!--T-->合計算出の設定<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->合計金額( total )に含める項目<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->合計金額に含める手数料を設定します。<!--/T-->"></i></th>
+		<td>
+		<ul class="acms-admin-list-nostyle">
+			<li><div class="acms-admin-form-radio"><input type="radio" name="shop_total_involve[]" value="deliver"{shop_total_involve:checked#deliver} id="input-radio-shop-total-involve-deliver"/><label for="input-radio-shop-total-involve-deliver"><i class="acms-admin-ico-radio"></i> <!--T-->配送手数料<!--/T--></label></div></li>
+			<li><div class="acms-admin-form-radio"><input type="radio" name="shop_total_involve[]" value="deliver-others"{shop_total_involve:checked#deliver-others} id="input-radio-shop-total-involve-deliver-others"/><label for="input-radio-shop-total-involve-deliver-others"><i class="acms-admin-ico-radio"></i> <!--T-->配送手数料＋オプション手数料<!--/T--></label></div></li>
+			<li><div class="acms-admin-form-radio"><input type="radio" name="shop_total_involve[]" value="deliver-others-payment"{shop_total_involve:checked#deliver-others-payment} id="input-radio-shop-total-involve-deliver-others-payment"/><label for="input-radio-shop-total-involve-deliver-others-payment"><i class="acms-admin-ico-radio"></i> <!--T-->配送手数料＋オプション手数料＋支払い手数料<!--/T--></label></div></li>
+			</ul>
+		<input type="hidden" name="config[]" value="shop_total_involve" />
+		</td>
+	</tr>
+</table>
+
+<!--
+<h2 class="acms-admin-admin-title2">Google Analytics</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tbody><tr>
+	<th>ECトラッキングコード<i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip=""></i></th>
+	<td>
+		<textarea name="shop_order_tracking_code" cols="60" rows="10"></textarea>
+		<input type="hidden" name="config[]" value="shop_order_tracking_code">
+	</td>
+	</tr>
+</tbody></table>
+-->

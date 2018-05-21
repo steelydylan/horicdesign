@@ -1,0 +1,144 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->カテゴリー管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Category_Index -->
+
+<!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カテゴリー一覧を更新しました。<!--/T--></p><!-- END refresh --><!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カテゴリーがありません。<!--/T--></p><!-- END index#notFound -->
+
+<!-- <h2 class="acms-admin-panel-title">カテゴリー一覧</h2> -->
+<div class="acms-admin-filter">
+	<form action="" method="post" class="filter acms-admin-form">
+		<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+			ソート:
+			<select name="order" class="js-select2">
+				<option value="sort-asc"{order:selected#sort-asc}><!--T-->表示順<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="sort-desc"{order:selected#sort-desc}><!--T-->表示順<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="code-asc"{order:selected#code-asc}><!--T-->コードネーム<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="code-desc"{order:selected#code-desc}><!--T-->コードネーム<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<!--<option value="amount-asc"{order:selected#amount-asc}>エントリー数（昇順）</option>-->
+				<!--<option value="amount-desc"{order:selected#amount-desc}>エントリー数（降順）</option>-->
+				<option value="id-asc"{order:selected#id-asc}>ID（<!--T-->昇順<!--/T-->）</option>
+				<option value="id-desc"{order:selected#id-desc}>ID（<!--T-->降順<!--/T-->）</option>
+			</select>
+		</div>
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="pid" value="{pid}" />
+		<input type="hidden" name="admin" value="category_index" />
+	</form>
+</div><!-- /.acms-filter -->
+
+<!-- BEGIN action#categoryInsert -->
+<div class="acms-admin-float-right acms-admin-position-right acms-admin-fix-right" style="width:300px">
+	<form action="" method="post" class="js-acms_fix_marker">
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="hidden" name="admin" value="category_edit" />
+		<input type="hidden" name="edit" value="insert" />
+		<input type="hidden" name="query[]" value="edit" />
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->新規カテゴリー作成<!--/T-->" class="acms-admin-btn-admin acms-admin-float-right">
+	</form>
+</div>
+<!-- END action#categoryInsert -->
+
+<!-- BEGIN index -->
+<form method="post" action="" id="sortableForm" class="acms-admin-form acms-admin-clear-sp">
+	<div class="js-acms-tab-select clearfix js-acms_fix_marker acms-admin-form-group"><!-- BEGIN_IF [%{_cid}/nem] -->
+		<div class="acms-admin-margin-bottom-small acms-admin-float-left">
+			<a href="?_cid=%{pre}" class="acms-admin-float-left acms-admin-btn-admin js-acms-tab-select-value"><!--T-->戻る<!--/T--></a>
+		</div><!-- END_IF -->
+
+		<div class="acms-admin-margin-bottom-small acms-admin-float-left">
+			<select name="action-category" class="js-acms-tab-select-value acms-admin-float-left acms-admin-select">
+				<option value="action-order"{action-category:selected#action-order}><!--T-->表示順<!--/T--></option>
+				<option value="action-parent"{action-category:selected#action-parent}><!--T-->親カテゴリーを<!--/T--></option>
+				<option value="action-status"{action-category:selected#action-status}><!--T-->ステータス<!--/T--></option>
+			</select>
+			<div id="action-order" class="js-acms-tab-select-panel js-acms-tab-select-active acms-admin-float-left">
+				<input type="submit" name="ACMS_POST_Category_Index_Sort" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+			</div>
+		</div>
+
+		<div class="acms-admin-float-left">
+			<div id="action-parent" class="js-acms-tab-select-panel acms-admin-float-left acms-admin-margin-bottom-small">
+				<select name="parent" class="categoryWidth js-select2">
+					<option value="0"><!--T-->なし<!--/T--></option><!-- BEGIN_MODULE Admin_Category_Select --><!-- BEGIN loop -->
+					<option value="{value}"{selected}>{indent}[raw]{label} ( {amount} )</option><!-- END loop --><!-- END_MODULE Admin_Category_Select -->
+				</select>
+				<input type="submit" name="ACMS_POST_Category_Index_Parent" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+			</div>
+
+			<div id="action-status" class="js-acms-tab-select-panel acms-admin-float-left acms-admin-margin-bottom-small">
+				<select name="status" class="js-select2">
+					<option value="open"><!--T-->公開<!--/T--></option>
+					<option value="close"><!--T-->非公開<!--/T--></option>
+				</select>
+
+				<input type="submit" name="ACMS_POST_Category_Index_Status" value="<!--T-->変更<!--/T-->" onclick="if ( 'close' == $(':input[name=status]', $(this).parents('form')).val() ) return confirm('<!--T-->カテゴリーのステータスを非公開にすると\nサブカテゴリーのステータスも非公開になります。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+			</div>
+		</div>
+	</div>
+
+	<div class="acms-admin-table-responsive">
+		<table class="js-admin_table-sortable acms-admin-table-admin acms-admin-form acms-admin-table-hover" data-sort-enable="{sortable}" data-sort-submit="ACMS_POST_Category_Index_Sort" data-sort-target="#sortableForm">
+			<thead>
+				<tr>
+					<th class="item-handle acms-admin-hide-sp acms-admin-table-nowrap"></th>
+					<th class="acms-admin-table-center acms-admin-th-checkbox acms-admin-table-nowrap">
+						<div class="acms-admin-form-checkbox acms-admin-margin-none">
+							<input type="checkbox" id="checkAll" />
+							<label for="checkAll"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually">すべてのカテゴリーを選択する</span></label>
+						</div>
+					</th>
+					<th class="acms-admin-table-nowrap"><!--T-->表示順<!--/T--></th>
+					<th class="acms-admin-table-nowrap"><!--T-->ステータス<!--/T--></th>
+					<th><!--T-->カテゴリー名<!--/T--></th>
+					<th>cid / <!--T-->コード<!--/T--></th>
+					<th><!--T-->エントリー数<!--/T--></th>
+					<th class="acms-admin-table-nowrap"><!--T-->グローバル<!--/T--></th>
+					<th class="acms-admin-table-nowrap"><!--T-->アクション<!--/T--></th>
+				</tr>
+			</thead>
+			<tbody><!-- BEGIN category:loop -->
+				<tr data-sort-level="level-{level}-{pcid}" data-sort-name="sort-{cid}">
+					<td class="item-handle acms-admin-td-sort acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+					<td class="acms-admin-table-center acms-admin-td-checkbox"><!-- BEGIN check -->
+						<div class="acms-admin-form-checkbox acms-admin-margin-none">
+							<input type="checkbox" name="checks[]" id="check-category{cid}" value="{cid}"{disabled} />
+							<label for="check-category{cid}"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->カテゴリー名{name}を選択する<!--/T--></span></label>
+						</div><!-- END check -->
+					</td>
+					<td nowrap="nowrap" class="acms-admin-td-number"><!-- BEGIN indent:loop --><!-- BEGIN descendant -->&#9475;<!-- END descendant --><!-- BEGIN descendant#last -->&#12288;<!-- END descendant#last --><!-- BEGIN child -->&#9507;<!-- END child --><!-- BEGIN child#last -->&#9495;<!-- END child#last --><!-- END indent:loop --><!-- BEGIN sort:veil -->
+						<input type="text" class="sort-number acms-admin-width-auto-sp" name="sort-{cid}" value="{sort}" size="4"{disabled}/><!-- END sort:veil -->
+					</td>
+					<td class="acms-admin-text-center">
+						<!-- BEGIN status#open --><span class="acms-admin-label acms-admin-label-info admin-status-label acms-admin-text-nowrap"><!--T-->公開<!--/T--></span><!-- END status#open --><!-- BEGIN status#close --><span class="acms-admin-label acms-admin-label-danger admin-status-label"><!--T-->非公開<!--/T--></span><!-- END status#close -->
+					</td>
+					<td>
+						<p class="acms-admin-title-sp">{name}</p>
+					</td>
+					<td class="acms-admin-td-id"><span class="acms-admin-label label-default admin-eid-label">{cid}</span> {code}</td>
+					<td class="acms-admin-td-amount">{amount}</td>
+					<td class="acms-admin-td-global acms-admin-table-nowrap acms-admin-text-center">
+						<!-- BEGIN scope:touch#global --><span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->グローバル<!--/T--></span><!-- END scope:touch#global -->
+						<!-- BEGIN scope:touch#local --> - <!-- END scope:touch#local -->
+						<!-- BEGIN scope:touch#parental --> - <!-- END scope:touch#parental -->
+					</td>
+					<td class="acms-admin-table-nowrap"><!-- BEGIN mine -->
+						<a href="{itemLink}?edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a><!-- END mine --><!-- BEGIN notMinePermit -->
+						<a href="{itemLink}?edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a> &nbsp;<!--T-->親に所属<!--/T--><!-- END notMinePermit --><!-- BEGIN notMine -->
+						<!--T-->親ブログに所属<!--/T--><!-- END notMine --><!-- BEGIN childLink -->
+						<a href="?_cid={parent_cid}&amp;pre={pre_cid}" class="acms-admin-btn-admin"><!--T-->子カテゴリー<!--/T--></a><!-- END childLink -->
+					</td>
+				</tr><!-- END category:loop -->
+			</tbody>
+		</table>
+	</div>
+</form><!-- END index -->
+<!-- END_MODULE Admin_Category_Index -->

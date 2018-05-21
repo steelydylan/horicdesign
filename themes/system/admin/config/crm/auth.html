@@ -1,0 +1,89 @@
+<h1>CRM権限管理</h1>
+@include("/admin/topicpath.html")
+<!-- BEGIN_MODULE Admin_Crm_Auth -->
+<div class="titleWrapper">
+	<h2>ユーザ一覧</h2>
+</div>
+<form action="" method="post">
+<div class="contents">
+	<!--<p class="infoTxt">ユーザーの表示順を変更したり、各ユーザーの詳細ページへ移ることができます。
+	</p>-->
+	<form method="post" action=""><!-- BEGIN refresh -->
+		<p class="noticeMsg">ユーザー一覧を更新しました。</p><!-- END refresh --><!-- BEGIN index#notFound -->
+		<p class="noticeMsg">ユーザーがありません。</p><!-- END index#notFound --><!-- BEGIN user:validator#limit -->
+		<p class="transaction-notice-error">
+			ユーザー作成数の上限に達しているため、現在お使いのライセンスでは以下の操作を行えません。<br />
+			・新規ユーザーの作成（読者以外）<br />
+			・読者ユーザーの権限昇格<br />
+			登録済みのユーザーを削除するか、<a href="http://www.a-blogcms.jp/license/" target="_blank">無制限ユーザーライセンス</a>の新規購入をご検討ください。
+		</p><!-- END user:validator#limit --><!-- BEGIN index -->
+
+		<p style="texe-align:center;">全<strong>{itemsAmount}</strong>件中　<strong>{itemsFrom}</strong>件～<strong>{itemsTo}</strong>件を表示</p>
+
+		<!-- BEGIN pager:veil -->
+		<ul class="pager"><!-- BEGIN backLink -->
+			<li><a href="{url}">&lt; 前のページ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+			<li{pageCurAttr}><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+			<li><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+			<li><a href="{url}">次のページ &gt;</a></li><!-- END forwardLink -->
+		</ul><!-- END pager:veil -->
+
+		<table class="adminTable">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="checkAll" /></th>
+					<th>ID</th>
+					<th>ユーザー名 / メールアドレス / ユーザーID</th>
+					<th>ステータス</th>
+					<th>CMS権限</th>
+					<th>CRM権限</th>
+				</tr>
+			</thead>
+			<tbody><!-- BEGIN user:loop -->
+				<tr>
+					<td><input type="checkbox" name="checks[]" value="{uid}" /></td>
+					<td>{uid}</td>
+					<td>
+						<strong>{name}</strong><br />
+						{mail}<br />
+						{code}
+					</td>
+					<td><!-- BEGIN status#open -->
+						有効<!-- END status#open --><!-- BEGIN status#close -->
+						無効<!-- END status#close -->
+					</td>
+					<td><!-- BEGIN cms_auth#administrator -->
+						管理者<!-- END cms_auth#administrator --><!-- BEGIN cms_auth#editor -->
+						編集者<!-- END cms_auth#editor --><!-- BEGIN cms_auth#contributor -->
+						投稿者<!-- END cms_auth#contributor --><!-- BEGIN cms_auth#subscriber -->
+						読者<!-- END cms_auth#subscriber -->
+					</td>
+					<td><!-- BEGIN crm_auth#administrator -->
+						管理者<!-- END crm_auth#administrator --><!-- BEGIN crm_auth#general -->
+						一般ユーザー<!-- END crm_auth#general --><!-- BEGIN crm_auth#viewer -->
+						ビューワー<!-- END crm_auth#viewer --><!-- BEGIN crm_auth#deny -->
+						権限なし<!-- END crm_auth#deny -->
+					</td>
+				</tr>
+			<!-- END user:loop --></tbody>
+		</table>
+
+		<table class="adminTable">
+			<tr>
+				<td class="systemBtn">
+					選択したユーザーの<strong>CRM権限</strong>を
+					<select name="auth" class="js-select2">
+						<option value="administrator">管理者</option>
+						<option value="general">一般ユーザー</option>
+						<option value="viewer" checked="checked">ビューワー</option>
+						<option value="deny">権限なし</option>
+					</select>
+					に
+					<input type="submit" name="ACMS_POST_Crm_Auth" value="変更" />
+				</td>
+			</tr>
+		</table>
+	<!-- END index -->
+	</form>
+</div>
+<!-- END_MODULE Admin_Crm_Auth -->

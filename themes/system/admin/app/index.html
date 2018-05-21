@@ -1,0 +1,98 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->拡張アプリ管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_App_Index -->
+
+<!-- BEGIN requirementsNotEnough -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span><!--T-->インストールに必要な要件を満たしていません。<!--/T--></p><!-- END requirementsNotEnough -->
+<!-- BEGIN installSucceed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span><!--T-->インストールに成功しました。<!--/T--></p><!-- END installSucceed -->
+<!-- BEGIN installFailed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span><!--T-->インストールに失敗しました。<!--/T--></p><!-- END installFailed -->
+<!-- BEGIN uninstallSucceed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span><!--T-->アンインストールに成功しました。<!--/T--></p><!-- END uninstallSucceed -->
+<!-- BEGIN uninstallFailed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span><!--T-->アンインストールに失敗しました。<!--/T--></p><!-- END uninstallFailed -->
+<!-- BEGIN activateSucceed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span><!--T-->アプリ有効化に成功しました。<!--/T--></p><!-- END activateSucceed -->
+<!-- BEGIN activateFailed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span><!--T-->アプリ有効化に失敗しました。<!--/T--></p><!-- END activateFailed -->
+<!-- BEGIN deactivateSucceed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-alert-icon-before acms-admin-icon-news"></span><!--T-->アプリ無効化に成功しました。<!--/T--></p><!-- END deactivateSucceed -->
+<!-- BEGIN deactivateFailed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span><!--T-->アプリ無効化に失敗しました。<!--/T--></p><!-- END deactivateFailed -->
+<!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span><!--T-->拡張アプリが見つかりません。<!--/T--></p><!-- END index#notFound -->
+
+<div class="acms-admin-table-responsive">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<tr>
+				<th><!--T-->アプリ名<!--/T--></th>
+				<th><!--T-->状態<!--/T--></th>
+				<th><!--T-->提供<!--/T--></th>
+				<th><!--T-->説明<!--/T--></th>
+				<th><!--T-->アクション<!--/T--></th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN notFound -->
+			<tr>
+				<td colspan="5" style="text-align: center;padding: 1em;">
+					<!--T-->利用可能な拡張アプリはありません。子ブログで利用するにはルートブログでインストールを行ってください。<!--/T-->
+				</td>
+			</tr>
+			<!-- END notFound -->
+			<!-- BEGIN app:loop -->
+			<tr>
+				<td class="acms-admin-title-sp"><strong>{name}</strong></td>
+				<td class="acms-admin-table-nowrap">
+					<!-- BEGIN status:touch#on --><span class="acms-admin-label acms-admin-label-info"><!--T-->有効<!--/T--></span><!-- END status:touch#on -->
+					<!-- BEGIN status:touch#off --><span class="acms-admin-label acms-admin-label-danger"><!--T-->無効<!--/T--></span><!-- END status:touch#off -->
+					<!-- BEGIN status:touch#init --><span class="acms-admin-label"><!--T-->未インストール<!--/T--></span><!-- END status:touch#init -->
+					<!-- BEGIN status:touch#update --><span class="acms-admin-label"><!--T-->要アップデート<!--/T--></span><!-- END status:touch#update -->
+				</td>
+				<td>
+					{author}
+				</td>
+				<td>{desc}</td>
+				<td class="acms-admin-table-nowrap">
+					<form action="" method="post">
+						<input type="hidden" name="class_name" value="{className}" />
+					<!-- BEGIN action:touch#on -->
+						<input type="submit" name="ACMS_POST_App_Deactivate" value="<!--T-->無効化<!--/T-->" onclick="return confirm('<!--T-->アプリを無効化をします。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin" />
+						<!-- BEGIN_MODULE Touch_RootBlog -->
+						<input type="submit" name="ACMS_POST_App_Uninstall" value="<!--T-->アンインストール<!--/T-->" onclick="return confirm('<!--T-->アプリのアンインストールをします。またデータも削除されます。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+						<!-- END_MODULE Touch_RootBlog -->
+					<!-- END action:touch#on -->
+					<!-- BEGIN action:touch#init -->
+						<input type="submit" name="ACMS_POST_App_Install" value="<!--T-->インストール<!--/T-->" onclick="return confirm('<!--T-->アプリのインストールをします。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+					<!-- END action:touch#init -->
+					<!-- BEGIN action:touch#off -->
+						<input type="submit" name="ACMS_POST_App_Activate" value="<!--T-->有効化<!--/T-->" onclick="return confirm('<!--T-->アプリを有効化をします。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+						<!-- BEGIN_MODULE Touch_RootBlog -->
+						<input type="submit" name="ACMS_POST_App_Uninstall" value="<!--T-->アンインストール<!--/T-->" onclick="return confirm('<!--T-->アプリのアンインストールをします。またデータも削除されます。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+						<!-- END_MODULE Touch_RootBlog -->
+					<!-- END action:touch#off -->
+					<!-- BEGIN action:touch#update -->
+						<!-- BEGIN_MODULE Touch_RootBlog -->
+						<input type="submit" name="ACMS_POST_App_Update" value="<!--T-->アップデート<!--/T-->" onclick="return confirm('<!--T-->アプリのアップデートをします。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+						<input type="submit" name="ACMS_POST_App_Uninstall" value="<!--T-->アンインストール<!--/T-->" onclick="return confirm('<!--T-->アプリのアンインストールをします。またデータも削除されます。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+						<!-- END_MODULE Touch_RootBlog -->
+						<!-- BEGIN_MODULE Touch_NotRootBlog -->
+						<!--T-->ルートブログで操作してください<!--/T-->
+						<!-- END_MODULE Touch_NotRootBlog -->
+					<!-- END action:touch#update -->
+					</form>
+				</td>
+			</tr>
+		</tbody><!-- END app:loop -->
+	</table>
+</div>
+<!-- END_MODULE Admin_App_Index -->

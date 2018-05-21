@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UIkit demo</title>
+	<link rel="stylesheet" type="text/css" href="uikit.min.css">
+	<script src="./jquery.js"></script>
+	<script src="./uikit.min.js"></script>
+	<style>
+		button{
+			width:150px;
+			height:50px;
+			background-color: orange;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+	<div class="uk-offcanvas" id="my-id">
+		<div class="uk-offcanvas-bar">
+		</div>
+	</div>
+	<button class="uk-button" data-uk-offcanvas="{target:'#my-id'}">オフキャンバスを開閉</button>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- BEGIN_MODULE Plugin_Schedule --><!-- BEGIN unit:loop -->
+<div class="unit"><!-- BEGIN month:loop -->
+	<!-- BEGIN monthly --><ul class="acms-admin-text-center acms-admin-list-inline">
+	<li><a href="{prevUrl}" class="acms-admin-btn-flat">≪前月</a></li>
+	<li><a href="{url}" class="acms-admin-btn-flat">{year}年 {month}月</a></li>
+	<li><a href="{nextUrl}" class="acms-admin-btn-flat">次月≫</a></li>
+</ul><!-- END monthly -->
+<div class="month">
+	<table class="{mode} acms-admin-table"><!-- BEGIN week:loop -->
+		<tr class="week"><!-- BEGIN day:loop -->
+			<td class="day{weekNo}">
+				<!-- BEGIN day:veil -->
+				<span class="week">
+					{day} <small>({week})</small>
+				</span>
+				<!-- END day:veil -->
+			</td><!-- BEGIN plan:veil -->
+			<td class="plan"><!-- BEGIN plan -->
+				<div<!-- BEGIN class:veil --> class="{class}"<!-- END class:veil -->>
+				<!-- BEGIN item:veil -->{item}<!-- END item:veil -->
+				<!-- BEGIN item:null -->(なし)<!-- END item:null -->
+				<!-- BEGIN label:veil -->{label}<!-- END label:veil -->
+				<!-- BEGIN label:null -->(ラベルなし)<!-- END label:null -->
+			</div><!-- END plan -->
+		</td><!-- END plan:veil --><!-- END day:loop -->
+	</tr><!-- END week:loop -->
+</table>
+</div><!-- END month:loop -->
+</div><!-- END unit:loop -->
+<!-- END_MODULE Plugin_Schedule -->

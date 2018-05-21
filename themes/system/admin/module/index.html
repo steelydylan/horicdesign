@@ -1,0 +1,160 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->モジュールID管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Module_Index -->
+
+<!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュールIDがありません。<!--/T--></p><!-- END index#notFound --><!-- BEGIN refreshed -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュール一覧を更新しました。<!--/T--></p><!-- END refreshed --><!-- BEGIN error#blog -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->移動に失敗したモジュールIDがあります<!--/T--></p><!-- END error#blog -->
+
+
+<div class="acms-admin-filter acms-admin-form">
+	<form action="" method="post" class="acms-admin-margin-bottom-mini">
+		<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+			<label for="refineModuleId"><!--T-->絞り込み<!--/T-->:</label>
+			<select name="name" id="refineModuleId" class="js-select2">
+			@include("/admin/module/select.html")
+			</select>
+			<input type="hidden" name="query[]" value="name" />
+		</div>
+
+		<div class="acms-admin-margin-bottom-mini acms-admin-inline-block">
+			<label for="sortModuleId"><!--T-->ソート<!--/T--></label>:
+			<select name="order" id="sortModuleId" class="js-select2">
+				<option value="identifier-asc"{order:selected#identifier-asc}>id (<!--T-->昇順<!--/T-->)</option>
+				<option value="identifier-desc"{order:selected#identifier-desc}>id (<!--T-->降順<!--/T-->)</option>
+				<option value="label-asc"{order:selected#label-asc}><!--T-->名前<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="label-desc"{order:selected#label-desc}><!--T-->名前<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="name-asc"{order:selected#name-asc}><!--T-->適用モジュール名<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="name-desc"{order:selected#name-desc}><!--T-->適用モジュール名<!--/T-->（<!--T-->降順<!--/T-->）</option>
+			</select>
+		</div>
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp acms-admin-inline-block" />
+		<input type="hidden" name="admin" value="module_index" />
+	</form>
+
+	<div class="acms-admin-margin-bottom-mini">
+		<label for="searchModuleId"><!--T-->クイック検索<!--/T-->:</label>
+		<input type="text" id="searchModuleId" class="js-incremental_search_box acms-admin-font" placeholder="<!--T-->例）<!--/T-->banner">
+	</div>
+
+</div>
+
+<form method="post" action="" id="entry-list-form" class="acms-admin-form">
+	<!-- BEGIN_MODULE Touch_NotApprovalORsessionWithApprovalAdministrator -->
+	<div class="js-acms-tab-select clearfix js-acms_fix_marker">
+		<div class="acms-admin-margin-bottom-sp acms-admin-float-none-sp acms-admin-float-left clearfix">
+			<select name="action-entry" class="js-acms-tab-select-value acms-admin-float-left">
+				<option value="action-status"{action-entry:selected#action-status}><!--T-->ステータス<!--/T--></option>
+				<option value="action-blog"{action-entry:selected#action-blog}><!--T-->ブログ<!--/T--></option>
+				<option value="action-export"{action-entry:selected#action-export}><!--T-->エクスポート<!--/T--></option>
+				<option value="action-delete"{action-entry:selected#action-delete}><!--T-->削除<!--/T--></option>
+			</select>
+
+			<div id="action-status" class="js-acms-tab-select-panel js-acms-tab-select-active acms-admin-float-left">
+				<select name="status" class="js-select2">
+					<option value="open"><!--T-->有効<!--/T--></option>
+					<option value="close"><!--T-->無効<!--/T--></option>
+				</select>
+				<input type="submit" name="ACMS_POST_Module_Index_Status" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+			</div>
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<!-- BEGIN_MODULE Admin_Blog_SelectGlobal -->
+			<div id="action-blog" class="js-acms-tab-select-panel acms-admin-float-left">
+				<select name="bid" class="js-select2"><!-- BEGIN loop -->
+					<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+				</select>
+				<input type="submit" name="ACMS_POST_Module_Index_Blog" value="<!--T-->移動<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+			</div>
+			<!-- END_MODULE Admin_Blog_SelectGlobal -->
+
+			<div id="action-export" class="js-acms-tab-select-panel acms-admin-float-left">
+				<input type="submit" name="ACMS_POST_Module_Index_Export" value="<!--T-->実行<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+			</div>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+
+			<div id="action-delete" class="js-acms-tab-select-panel acms-admin-float-left">
+				<input type="submit" name="ACMS_POST_Module_Index_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->')" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+				<span class="acms-admin-tab-text">※<!--T-->現在のブログで管理しているモジュールのみ削除できます<!--/T--></span>
+			</div>
+		</div>
+
+		<div class="acms-admin-float-right acms-admin-float-none-sp acms-admin-margin-bottom-sp">
+			<span class="js-fake-form" data-method="post">
+				<input type="hidden" name="bid" value="%{BID}"/>
+				<input type="hidden" name="admin" value="module_import"/>
+				<input type="hidden" name="ACMS_POST_2GET" value="Module Import"/>
+				<button class="js-submit acms-admin-btn-admin"><!--T-->インポート<!--/T--></button>
+				<input type="hidden" name="formToken" value="on" />
+			</span>
+
+			<span class="js-fake-form" data-method="post">
+				<input type="hidden" name="bid" value="%{BID}"/>
+				<input type="hidden" name="admin" value="module_edit"/>
+				<input type="hidden" name="edit" value="insert"/>
+				<input type="hidden" name="query[]" value="edit"/>
+				<input type="hidden" name="ACMS_POST_2GET" value="New Module"/>
+				<button class="js-submit acms-admin-btn-admin"><!--T-->モジュールIDを作成<!--/T--></button>
+				<input type="hidden" name="formToken" value="on" />
+			</span>
+		</div>
+	</div>
+	<!-- END_MODULE Touch_NotApprovalORsessionWithApprovalAdministrator -->
+
+	<!-- BEGIN index:touch#result -->
+	<div class="acms-admin-table-responsive">
+		<table class="adminTable acms-admin-table-admin js-incremental_search">
+			<thead>
+				<tr>
+					<th class="acms-admin-table-center acms-admin-th-checkbox acms-admin-table-nowrap"><div class="acms-admin-form-checkbox acms-admin-margin-none"><input type="checkbox" id="checkAll" /><label for="checkAll"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->すべてのモジュールを選択する<!--/T--></span></label></div></th>
+					<th>mid</th>
+					<th>id</th>
+					<th class="acms-admin-table-nowrap"><!--T-->ステータス<!--/T--></th>
+					<th><!--T-->名前<!--/T--></th>
+					<th><!--T-->適用モジュール<!--/T--></th>
+					<th class="acms-admin-table-nowrap"><!--T-->グローバル<!--/T--></th>
+					<th class="acms-admin-table-nowrap"><!--T-->アクション<!--/T--></th>
+				</tr>
+			</thead>
+			<tbody><!-- BEGIN module:loop -->
+				<tr class="search_element">
+					<td class="acms-admin-table-center acms-admin-td-checkbox">
+						<div class="acms-admin-form-checkbox acms-admin-margin-none">
+							<input type="checkbox" name="checks[]" value="{bid}:{mid}" id="input-checkbox-module-{bid}:{mid}" />
+							<label for="input-checkbox-module-{bid}:{mid}"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->モジュールID名「{name}」を選択する<!--/T--></span></label>
+						</div>
+					</td>
+					<td class="acms-admin-table-nowrap"><span class="acms-admin-label">{mid}</span></td>
+					<td>
+						<strong>{identifier}</strong>
+					</td>
+					<td><!-- BEGIN status#open -->
+						<span class="acms-admin-label acms-admin-label-info admin-status-label acms-admin-text-nowrap"><!--T-->有効<!--/T--></span><!-- END status#open --><!-- BEGIN status#close -->
+						<span class="acms-admin-label acms-admin-label-danger admin-status-label acms-admin-text-nowrap"><!--T-->無効<!--/T--></span><!-- END status#close -->
+					</td>
+					<td class="acms-admin-title-sp">{label}</td>
+					<td>{name}</td>
+					<td class="acms-admin-table-nowrap">
+					<!-- BEGIN scope:touch#global --><span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->グローバル<!--/T--></span><!-- END scope:touch#global -->
+						<!-- BEGIN scope:touch#local --><div class="acms-admin-text-center"> - </div><!-- END scope:touch#local -->
+					<!-- BEGIN scope:touch#parental --> <!--T-->親に所属<!--/T--> <!-- END scope:touch#parental -->
+					</td>
+					<td class="acms-admin-width-sp"><!-- BEGIN mine -->
+						<a href="{itemUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->設定<!--/T--></a><!-- END mine --><!-- BEGIN notMinePermit -->
+						<a href="{itemUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->設定<!--/T--></a><!-- END notMinePermit --><!-- BEGIN notMine --><!--T-->親ブログに所属<!--/T--><!-- END notMine -->
+					</td>
+				</tr>
+				<!-- END module:loop -->
+			</tbody>
+		</table>
+	</div><!-- END index:touch#result -->
+</form>
+<!-- END_MODULE Admin_Module_Index -->

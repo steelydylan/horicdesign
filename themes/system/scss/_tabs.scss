@@ -1,0 +1,108 @@
+/* ------------------------------
+ タブ
+------------------------------- */
+.acms-tabs{
+
+	.acms-tabs-panel {
+		padding: 20px;
+		border: 1px solid #CFCFCF;
+		background: #FFF;
+	}
+
+	// タブの切り替え
+	.js-acms_tabs,
+	.js-acms_admin_tabs{
+		@include clearfix();
+		margin: 0;
+		padding: 0;
+		li{
+			list-style: none;
+			float: left;
+			margin-right: 2px;
+		}
+		a{
+			position: relative;
+			display: block;
+			padding: 10px 8px;
+			color: #404040;
+			font-weight: 500;
+			@include font-size(14);
+			line-height: 1;
+			outline: none;
+
+			 &:hover{
+				color: #666666;
+				background: #F2F2F4;
+			}
+
+			// 現在いる位置
+			 &.js-acms_tab-active{
+				color: #014cc5;
+				border-bottom: 3px solid #014cc5;
+				 background: #F2F2F4;
+				&:before {
+					content: "";
+					position: absolute;
+						left: 0;
+						bottom: -1px;
+					width: 100%;
+					height: 1px;
+					background: #F2F2F4;
+				}
+			}
+		}
+	}
+}
+
+.acms-tabs-inverse {
+	.acms-tabs-panel {
+		padding: 20px;
+		background: #FFF;
+	}
+
+	// タブの切り替え
+	.js-acms_tabs,
+	.js-acms_admin_tabs{
+
+		@include clearfix();
+		margin: -10px -10px 0 -10px;
+		padding: 10px 0 0 0;
+		background: #f0f1f5;
+		li{
+			list-style: none;
+			float: left;
+			margin-right: 2px;
+		}
+		a{
+			display: block;
+			padding: 10px 8px;
+			color: #333333;
+			@include font-size(14);
+			line-height: 1;
+			outline: none;
+			border-radius: 3px 3px 0 0;
+			background: #f0f1f5;
+			transition: background-color .2s;
+
+			 &:hover{
+				text-decoration: none;
+				background: #e4e6ea;
+				border-bottom: 1px solid #FFF;
+			}
+
+			// 現在いる位置
+			 &.js-acms_tab-active{
+				background: #FFF;
+				border-bottom: 1px solid #FFF;
+			}
+		}
+	}
+}
+
+// タブ内の見出しはmarginを外す
+.acms-tabs-panel {
+
+	.acms-table-admin-edit:last-child {
+		margin-bottom: 5px;
+	}
+}

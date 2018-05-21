@@ -1,0 +1,93 @@
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<!-- BEGIN_MODULE Touch_NotEdit -->
+<script>
+ACMS.Ready(function()
+{
+	var tpl = _.template($('#js-seo_info_template').html());
+	var output, keywords, description, ogimage, robots;
+
+	if ( keywords = document.getElementsByName('keywords').item(0) ) {
+		keywords = keywords.content;
+	}
+	if ( description = document.getElementsByName('description').item(0) ) {
+		description = description.content;
+	}
+	if ( robots = document.getElementsByName('robots').item(0) ) {
+		robots = robots.content;
+	}
+
+	ogimage = $('meta[property="og:image"]').attr('content');
+
+	if ( !!ogimage ) {
+		var checkImg = new Image();
+		checkImg.src = ogimage;
+		checkImg.onerror = function() {
+			$('#js-seo_info_ogimage').remove();
+		};
+	} else {
+		$('#js-seo_info_ogimage').remove();
+	}
+
+	output = tpl({
+		title: document.title,
+		keywords: keywords,
+		description: description,
+		ogimage: ogimage,
+		robots: robots
+	});
+
+	$('#js-seo_info').html(output);
+});
+</script>
+
+<div id="js-seo_info"></div>
+
+<script id="js-seo_info_template" type="text/template">
+<section class="acms-container">
+	<div class="acms-admin-edit-info">
+		<p>
+			<!--T-->※以下の内容は管理者のみに表示されています。<!--/T-->
+			<a href="https://www.google.co.jp/search?q=site:%{INHERLINK}" target="_blank"><!--T-->googleで確認<!--/T--></a> |
+			<a href="http://search.yahoo.co.jp/search?p=site:%{INHERLINK}" target="_blank"><!--T-->yahooで確認<!--/T--></a>
+		</p>
+		<h3 class="acms-admin-edit-info-heading"><!--T-->情報<!--/T--></h3>
+		<table class="acms-admin-table acms-edit-info-table">
+			<tr>
+				<th class="acms-admin-text-nowrap"><!--T-->タイトル<!--/T--> - <small>title</small></th>
+				<td>
+					<%- title %>
+				</td>
+			</tr><% if ( !!keywords ) { %>
+			<tr>
+				<th class="acms-admin-text-nowrap"><!--T-->キーワード<!--/T--> - <small>keywords</small></th>
+				<td>
+					<%- keywords %>
+				</td>
+			</tr><% } %>
+			<tr>
+				<th class="acms-admin-text-nowrap"><!--T-->概要文<!--/T--> - <small>description</small></th>
+				<td>
+					<%- description %>
+				</td>
+			</tr>
+			<tr>
+				<th class="acms-admin-text-nowrap"><!--T-->検索エンジン<!--/T--> - <small>robots</small></th>
+				<td>
+					<% if ( robots && robots.match(/noindex/) ) { %>
+					<span class="acms-admin-label acms-admin-label-danger"><!--T-->検索エンジンに表示しない<!--/T--></span>
+					<% } %>
+				</td>
+			</tr>
+			<tr>
+				<th class="acms-admin-text-nowrap"><!--T-->OGP画像<!--/T--> - <small>og:image</small></th>
+				<td>
+					<img id="js-seo_info_ogimage" src="<%- ogimage %>" alt="OGP画像" class="acms-admin-edit-info-ogpimage">
+				</td>
+			</tr>
+			@include("/include/check-seo-extend.html")
+		</table>
+	</div>
+</section>
+</script>
+<!-- END_MODULE Touch_NotEdit -->
+<!-- END_MODULE Touch_SessionWithAdministration -->

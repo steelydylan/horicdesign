@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Plugin_Schedule</h1>
+<textarea>
+
+&lt;!-- ##### CELL GRID CAL ##### --&gt;
+&lt;!--
+	==========有効な設定==========
+	デフォルトの表示 	= 月表示 OR 年表示
+	月の表示モード 	= 七曜表
+	年の表示モード 	= 七曜表
+--&gt;
+&lt;!-- BEGIN_MODULE Plugin_Schedule --&gt;&lt;!-- BEGIN unit:loop --&gt;
+&lt;div class="unit"&gt;&lt;!-- BEGIN month:loop --&gt;
+	&lt;!-- BEGIN monthly --&gt;&lt;p&gt;&lt;a href="{prevUrl}"&gt;≪前月&lt;/a&gt; | &lt;a href="{nextUrl}"&gt;次月≫&lt;/a&gt;&lt;/p&gt;&lt;!-- END monthly --&gt;
+	&lt;div class="month"&gt;
+	&lt;p&gt;&lt;a href="{url}"&gt;{year}年 {month}月 {time}[date(F)]&lt;/a&gt;&lt;/p&gt;
+		&lt;table class="{mode}"&gt;
+		&lt;tr style="display:none;"&gt;
+			&lt;th&gt;{w#0}&lt;/th&gt;
+			&lt;th&gt;{w#1}&lt;/th&gt;
+			&lt;th&gt;{w#2}&lt;/th&gt;
+			&lt;th&gt;{w#3}&lt;/th&gt;
+			&lt;th&gt;{w#4}&lt;/th&gt;
+			&lt;th&gt;{w#5}&lt;/th&gt;
+			&lt;th&gt;{w#6}&lt;/th&gt;
+		&lt;/tr&gt;
+		&lt;!-- BEGIN week:loop --&gt;
+			&lt;tr class="week{weekRowNo}"&gt;
+				&lt;!-- BEGIN day:loop --&gt;
+					&lt;td class="day{weekNo}&lt;!-- BEGIN dayClass:veil --&gt; {dayClass}&lt;!-- END dayClass:veil --&gt;"&gt;
+						&lt;!-- BEGIN day:veil --&gt;
+						&lt;span class="week"&gt;
+						{day} &lt;small&gt;({week})&lt;/small&gt;
+						{dayLabel}
+						{dayItem}
+						&lt;/span&gt;
+						&lt;!-- END day:veil --&gt;
+					&lt;/td&gt;
+				&lt;!-- END day:loop --&gt;
+			&lt;/tr&gt;&lt;!-- END week:loop --&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;&lt;!-- END month:loop --&gt;
+&lt;/div&gt;&lt;!-- END unit:loop --&gt;
+&lt;!-- END_MODULE Plugin_Schedule --&gt;
+
+&lt;!-- ##### LIST CAL ##### --&gt;
+&lt;!--
+	==========有効な設定==========
+	デフォルトの表示 		= 月表示 OR 年表示 OR 指定日数表示
+	月の表示モード 		= リスト
+	年の表示モード 		= リスト
+	指定日数の表示モード	= リスト
+--&gt;
+&lt;!-- BEGIN_MODULE Plugin_Schedule --&gt;&lt;!-- BEGIN unit:loop --&gt;
+&lt;div class="unit"&gt;&lt;!-- BEGIN month:loop --&gt;
+	&lt;!-- BEGIN monthly --&gt;&lt;p&gt;&lt;a href="{prevUrl}"&gt;≪前月&lt;/a&gt; | &lt;a href="{nextUrl}"&gt;次月≫&lt;/a&gt;&lt;/p&gt;&lt;!-- END monthly --&gt;
+	&lt;div class="month"&gt;
+	&lt;p&gt;&lt;a href="{url}"&gt;{year}年 {month}月 {time}[date(F)]&lt;/a&gt;&lt;/p&gt;
+		&lt;table class="{mode}"&gt;
+		&lt;!-- BEGIN week:loop --&gt;
+			&lt;tr class="week"&gt;
+				&lt;!-- BEGIN day:loop --&gt;
+					&lt;td class="day{weekNo}"&gt;
+						&lt;!-- BEGIN day:veil --&gt;
+						&lt;span class="week"&gt;
+						{day} &lt;small&gt;({week})&lt;/small&gt;
+						&lt;/span&gt;
+						&lt;!-- END day:veil --&gt;
+					&lt;/td&gt;
+					&lt;!-- BEGIN plan:veil --&gt;
+					&lt;td class="plan"&gt;&lt;!-- BEGIN plan --&gt;
+						&lt;p&lt;!-- BEGIN class:veil --&gt; class="{class}"&lt;!-- END class:veil --&gt;&gt;
+							&lt;!-- BEGIN item:veil --&gt;{item}&lt;!-- END item:veil --&gt;
+							&lt;!-- BEGIN item:null --&gt;(なし)&lt;!-- END item:null --&gt;
+							&lt;!-- BEGIN label:veil --&gt;{label}&lt;!-- END label:veil --&gt;
+							&lt;!-- BEGIN label:null --&gt;(ラベルなし)&lt;!-- END label:null --&gt;
+						&lt;/p&gt;&lt;!-- END plan --&gt;
+					&lt;/td&gt;
+					&lt;!-- END plan:veil --&gt;
+				&lt;!-- END day:loop --&gt;
+			&lt;/tr&gt;&lt;!-- END week:loop --&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;&lt;!-- END month:loop --&gt;
+&lt;/div&gt;&lt;!-- END unit:loop --&gt;
+&lt;!-- END_MODULE Plugin_Schedule --&gt;
+
+
+&lt;!-- ##### DAYS LIST ##### --&gt;
+&lt;!--
+	==========有効な設定==========
+	デフォルトの表示 		= 指定日数表示
+	指定日数の表示モード	= リスト
+--&gt;
+&lt;!-- BEGIN_MODULE Plugin_Schedule --&gt;&lt;!-- BEGIN unit:loop --&gt;
+&lt;div class="unit"&gt;&lt;!-- BEGIN month:loop --&gt;
+	&lt;div class="month"&gt;
+		&lt;table class="{mode}"&gt;
+		&lt;!-- BEGIN week:loop --&gt;
+			&lt;tr class="week"&gt;
+				&lt;!-- BEGIN day:loop --&gt;
+					&lt;td class="day{weekNo}"&gt;
+						&lt;!-- BEGIN day:veil --&gt;
+						&lt;span class="week"&gt;
+						{year}/{month}/{day} &lt;small&gt;({week})&lt;/small&gt;
+						&lt;/span&gt;
+						&lt;!-- END day:veil --&gt;
+					&lt;/td&gt;
+					&lt;!-- BEGIN plan:veil --&gt;
+					&lt;td class="plan"&gt;&lt;!-- BEGIN plan --&gt;
+						&lt;p&lt;!-- BEGIN class:veil --&gt; class="{class}"&lt;!-- END class:veil --&gt;&gt;
+							&lt;!-- BEGIN item:veil --&gt;{item}&lt;!-- END item:veil --&gt;
+							&lt;!-- BEGIN item:null --&gt;(なし)&lt;!-- END item:null --&gt;
+							&lt;!-- BEGIN label:veil --&gt;{label}&lt;!-- END label:veil --&gt;
+							&lt;!-- BEGIN label:null --&gt;(ラベルなし)&lt;!-- END label:null --&gt;
+						&lt;/p&gt;&lt;!-- END plan --&gt;
+					&lt;/td&gt;
+					&lt;!-- END plan:veil --&gt;
+				&lt;!-- END day:loop --&gt;
+			&lt;/tr&gt;&lt;!-- END week:loop --&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;&lt;!-- END month:loop --&gt;
+&lt;/div&gt;&lt;!-- END unit:loop --&gt;
+&lt;!-- END_MODULE Plugin_Schedule --&gt;
+
+</textarea>
+</body>
+</html>

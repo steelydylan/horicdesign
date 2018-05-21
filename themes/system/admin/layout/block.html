@@ -1,0 +1,33 @@
+<!-- BEGIN block:loop -->
+<!-- BEGIN layoutGroup#begin -->
+<div class="acms-admin-layout-unit-menu">
+	<div class="js-acms_layout_menu_label acms-admin-layout-menu-order acms-admin-layout-menu-inner"><p class="acms-admin-layout-menu-text"><span class="acms-admin-label acms-admin-layout-menu-step-label">1</span><!--T-->レイアウトをドラッグ<!--/T--></p></div><!-- END layoutGroup#begin -->
+
+<!-- BEGIN layoutGroup#rear -->
+</div><!-- END layoutGroup#rear --><!-- BEGIN layoutGroup#front -->
+<a href="#{group}" class="js-fader acms-admin-layout-menu-group-heading">{groupLabel}</a>
+<div class="acms-admin-layout-menu-group-body" id="{group}"><!-- END layoutGroup#front -->
+
+<div class="js-acms_layout_row acms_layout_row">
+	<input type="hidden" name="ids[]" value="{id}">
+	<input type="hidden" name="parent_{id}" value="{parent}">
+	<input type="hidden" name="col_{id}" value="{col}">
+	<input type="hidden" name="row_{id}" value="{row}">
+	<input type="hidden" name="class_{id}" value="{class}">
+	<input type="hidden" name="mid_{id}" value="{mid}">
+	<input type="hidden" name="tpl_{id}" value="{tpl}">
+
+	<div class="js-acms_layout_label"><!-- BEGIN moduleLabel -->
+		<div class="js-acms_layout-menu-inner acms-admin-layout-menu-inner">
+			<p class="js-acms_layout_menu_label acms-admin-layout-menu-text"><span class="acms-admin-label acms-admin-layout-menu-step-label">2</span><!--T-->モジュールをドラッグ<!--/T--></p>
+			<div class="acms-admin-insert-box acms-admin-insert-box-module"><span class="acms-admin-icon-module"></span><!--T-->モジュール<!--/T--></div>
+		</div><!-- END moduleLabel -->
+		<!-- BEGIN label:veil -->
+		<div class="acms-admin-insert-box acms-admin-insert-box-layout">{label}</div><!-- END label:veil -->
+	</div>
+	@include("/admin/layout/parts.html")
+</div>
+
+<!-- BEGIN layoutGroup#last -->
+</div></div><!-- END layoutGroup#last -->
+<!-- END block:loop -->

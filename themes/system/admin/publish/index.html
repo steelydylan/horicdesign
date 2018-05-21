@@ -1,0 +1,228 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title"><!--T-->テンプレート書出し管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Publish_Index -->
+
+<!-- BEGIN apply -->
+<p class="acms-admin-alert acms-admin-alert-info acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<!--T-->テンプレート書出し設定を保存しました<!--/T-->
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END apply --><!-- BEGIN notAllow -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+	<!--T-->テンプレート書出しの実行が許可されていません。このブログがテンプレート書出しを実行するには、親ブログで設定をする必要があります。<!--/T-->
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END notAllow -->
+<!-- BEGIN allow -->
+<form action="" method="post" class="acms-admin-form">
+
+	<div class="js-acms_fix_marker">
+
+
+		<!-- BEGIN_MODULE Touch_SessionWithAdministration --><a
+		href="/bid/%{BID}/admin/shortcut_edit/?action=Publish_Apply&admin=publish_index&edit=add&step=reapply"
+		class="acms-admin-btn-admin acms-admin-float-right"><i class="acms-admin-icon acms-admin-icon-shortcut"></i>
+		<!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+
+		<!-- BEGIN_MODULE Touch_Role_PublishEdit -->
+		<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->"
+			   class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"/>
+		<!-- END_MODULE Touch_Role_PublishEdit -->
+
+		<!-- BEGIN_MODULE Touch_Role_PublishExec -->
+		<input type="submit" name="ACMS_POST_Publish_Apply" value="<!--T-->テンプレート書出しを実行する<!--/T-->"
+		class="acms-admin-btn-admin acms-admin-btn-admin-info"/>
+		<!-- END_MODULE Touch_Role_PublishExec -->
+	</div>
+
+	<!-- BEGIN_MODULE Admin_Errors -->
+	<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+		<span class="acms-admin-alert-icon-before acms-admin-icon-attention"></span>
+		{error}
+		<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+	</p>
+
+	<!-- END_MODULE Admin_Errors -->
+
+	<h3 class="acms-admin-admin-title2"><!--T-->入出力パス<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<thead class="acms-admin-hide-sp">
+		<tr>
+			<th class="acms-admin-table-left"><!--T-->生成元URI ( スキーム : http:// または acms:// )<!--/T--></th>
+			<th class="acms-admin-table-left"><!--T-->生成範囲<!--/T--></th>
+			<th class="acms-admin-table-left"><!--T-->出力先パス ( テーマ・テンプレート )<!--/T--></th>
+		</tr>
+		</thead>
+		<tbody><!-- BEGIN publish:loop -->
+		<tr>
+			<td width="55%">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->生成元URI ( スキーム : http:// または acms:// )<!--/T-->
+				</p>
+				<input type="text" name="publish_resource_uri[]" class="acms-admin-form-width-full" value="{publish_resource_uri}" size="20"/>
+				<!-- BEGIN invalid:uri --><p class="validator-result-error"><!--T-->URIが不正です<!--/T--></p>
+				<!-- END invalid:uri -->
+				<!-- BEGIN failed:put --><p class="validator-result-error"><!--T-->書き込みに失敗しました<!--/T--></p>
+				<!-- END failed:put -->
+				<!-- BEGIN failed:get --><p class="validator-result-error"><!--T-->取得に失敗しました<!--/T--></p>
+				<!-- END failed:get -->
+			</td>
+			<td width="15%">
+				<select name="publish_layout_only[]" class="js-select2">
+					<option value="all"><!--T-->全て<!--/T--></option>
+					<option value="layout" {publish_layout_only:selected#layout}><!--T-->レイアウトのみ<!--/T--></option>
+				</select>
+			</td>
+			<td width="30%">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->出力先パス ( テーマ・テンプレート )<!--/T-->
+				</p>
+				<div class="acms-admin-form-action acms-admin-form-action-width-select">
+					<span class="acms-admin-form-side-select">
+						<!-- BEGIN_MODULE Admin_Dashboard_ThemeChanger -->
+						<select name="publish_target_theme[]" class="js-select2">
+							<option value=""><!--T-->選択してください<!--/T--></option><!-- BEGIN theme:loop -->
+							<option value="{theme}" \{publish_target_theme:selected#{theme}\}>{label}</option>
+							<!-- END theme:loop -->
+						</select>
+						<!-- END_MODULE Admin_Dashboard_ThemeChanger -->
+					</span>
+					<input type="text" class="acms-form-width-full" name="publish_target_path[]" value="{publish_target_path}" size="30"/>
+				</div>
+				<!-- BEGIN invalid:mod --><p class="validator-result-error"><!--T-->出力先の書き込み権限がありません<!--/T--></p>
+				<!-- END invalid:mod -->
+				<!-- BEGIN invalid:path --><p class="validator-result-error"><!--t-->出力先が存在しない、またはアクセスできません<!--/T--></p>
+				<!-- END invalid:path -->
+			</td>
+		</tr><!-- END publish:loop -->
+		<tr>
+			<td width="55%">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->生成元URI ( スキーム : http:// または acms:// )<!--/T-->
+				</p>
+				<input type="text" name="publish_resource_uri[]" class="acms-admin-form-width-full" value="{publish_resource_uri}" size="20"/>
+			</td>
+			<td width="15%">
+				<select name="publish_layout_only[]" class="js-select2">
+					<option value="all"><!--T-->全て<!--/T--></option>
+					<option value="layout" {publish_layout_only:selected#layout}><!--T-->レイアウトのみ<!--/T--></option>
+				</select>
+			</td>
+			<td width="30%" class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->出力先パス ( テーマ・テンプレート )<!--/T-->
+				</p>
+				<div class="acms-admin-form-action acms-admin-form-action-width-select">
+					<span class="acms-admin-form-side-select">
+						<!-- BEGIN_MODULE Admin_Dashboard_ThemeChanger -->
+						<select name="publish_target_theme[]" class="js-select2">
+							<option value=""><!--T-->選択してください<!--/T--></option><!-- BEGIN theme:loop -->
+							<option value="{theme}" \{publish_target_theme:selected#{theme}\}>{label}</option>
+							<!-- END theme:loop -->
+						</select>
+						<!-- END_MODULE Admin_Dashboard_ThemeChanger -->
+					</span>
+					<input type="text" name="publish_target_path[]" value="{publish_target_path}" size="30"/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="55%">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->生成元URI ( スキーム : http:// または acms:// )<!--/T-->
+				</p>
+				<input type="text" name="publish_resource_uri[]" class="acms-admin-form-width-full" value="{publish_resource_uri}" size="20"/>
+			</td>
+			<td width="15%">
+				<select name="publish_layout_only[]" class="js-select2">
+					<option value="all"><!--T-->全て<!--/T--></option>
+					<option value="layout" {publish_layout_only:selected#layout}><!--T-->レイアウトのみ<!--/T--></option>
+				</select>
+			</td>
+			<td width="30%" class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->出力先パス ( テーマ・テンプレート )<!--/T-->
+				</p>
+				<div class="acms-admin-form-action acms-admin-form-action-width-select">
+					<span class="acms-admin-form-side-select">
+						<!-- BEGIN_MODULE Admin_Dashboard_ThemeChanger -->
+						<select name="publish_target_theme[]" class="js-select2">
+							<option value=""><!--T-->選択してください<!--/T--></option><!-- BEGIN theme:loop -->
+							<option value="{theme}" \{publish_target_theme:selected#{theme}\}>{label}</option>
+							<!-- END theme:loop -->
+						</select>
+						<!-- END_MODULE Admin_Dashboard_ThemeChanger -->
+					</span>
+					<input type="text" name="publish_target_path[]" value="{publish_target_path}" size="30"/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="55%">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->生成元URI ( スキーム : http:// または acms:// )<!--/T-->
+				</p>
+				<input type="text" name="publish_resource_uri[]" class="acms-admin-form-width-full" value="{publish_resource_uri}" size="20"/>
+			</td>
+			<td width="15%">
+				<select name="publish_layout_only[]" class="js-select2">
+					<option value="all"><!--T-->全て<!--/T--></option>
+					<option value="layout" {publish_layout_only:selected#layout}><!--T-->レイアウトのみ<!--/T--></option>
+				</select>
+			</td>
+			<td width="30%" class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				<p class="acms-admin-hide acms-admin-show-sp">
+					<!--T-->出力先パス ( テーマ・テンプレート )<!--/T-->
+				</p>
+				<div class="acms-admin-form-action acms-admin-form-action-width-select">
+					<span class="acms-admin-form-side-select">
+						<!-- BEGIN_MODULE Admin_Dashboard_ThemeChanger -->
+						<select name="publish_target_theme[]" class="js-select2">
+							<option value=""><!--T-->選択してください<!--/T--></option><!-- BEGIN theme:loop -->
+							<option value="{theme}" \{publish_target_theme:selected#{theme}\}>{label}</option>
+							<!-- END theme:loop -->
+						</select>
+						<!-- END_MODULE Admin_Dashboard_ThemeChanger -->
+					</span>
+					<input type="text" name="publish_target_path[]" value="{publish_target_path}" size="30"/>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<h3 class="acms-admin-admin-title2"><!--T-->子ブログ<!--/T--></h3>
+	<table class="adminTable adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->子ブログでのテンプレート書出し<!--/T--></th>
+			<td>
+
+				<input type="hidden" name="publish_children_allow" value="off"/>
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="publish_children_allow" value="on" {publish_children_allow:checked#on}
+						   id="input-checkbox-publish-children-allow"/>
+					<label for="input-checkbox-publish-children-allow">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->直接の子ブログでのテンプレート書出しの実行を許可する<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="publish_children_allow"/>
+			</td>
+		</tr>
+	</table>
+
+	<input type="hidden" name="config[]" value="publish_resource_uri"/>
+	<input type="hidden" name="config[]" value="publish_layout_only"/>
+	<input type="hidden" name="config[]" value="publish_target_theme"/>
+	<input type="hidden" name="config[]" value="publish_target_path"/>
+</form>
+<!-- END allow -->
+<!-- END_MODULE Admin_Publish_Index -->

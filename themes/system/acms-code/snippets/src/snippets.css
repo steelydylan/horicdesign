@@ -1,0 +1,16 @@
+@charset "UTF-8";
+html, body {
+    font-family: "Consolas","Courier New",Courier,monospace;
+    height: 100%;
+    overflow: hidden;
+}
+h1 {
+    padding: 1em;
+}
+textarea {
+    font-size: 1.3em;
+    font-family: "Consolas","Courier New",Courier,monospace;
+    margin: 0 1em;
+    width: 90%;
+    height: 50%;
+}

@@ -1,0 +1,24 @@
+<!-- BEGIN_MODULE Entry_Photo -->
+<div class="acms-admin-margin-bottom-medium">
+@include("/admin/module/setting.html")
+<!-- BEGIN notFound -->
+<p>エントリーが見つかりませんでした。</p>
+<!-- END notFound -->
+
+	<div class="acms-admin-grid-r">
+	<!-- BEGIN unit:loop -->
+		<!-- BEGIN entry:loop -->
+		<div class="{entry:loop.class}">
+			<a href="{url}" class="acms-admin-thumbnail">
+				<!-- BEGIN image:veil -->
+				<img src="%{ROOT_DIR}{path}" alt="{alt}" class="acms-admin-img-responsive" /><!-- END image:veil --><!-- BEGIN noimage -->
+				<img src="/images/noImage.png" alt="" class="acms-admin-img-responsive" />
+				<!-- END noimage -->
+				<p>{title}</p>
+			</a>
+		</div>
+		<!-- END entry:loop -->
+		<!-- END unit:loop -->
+	</div>
+</div>
+<!-- END_MODULE Entry_Photo -->

@@ -1,0 +1,5 @@
+{
+  "menus": @include('/acms-code/menus.json'),
+  "snippets": @include('/acms-code/snippets.json'),
+  "vars":  @include('/acms-code/vars.json')
+}

@@ -1,0 +1,13 @@
+<!-- BEGIN_MODULE Category_List -->
+<div class="acms-admin-margin-bottom-medium">
+@include("/admin/module/setting.html")
+	<ul class="acms-admin-list-group">
+	<!-- BEGIN category:loop --><!-- BEGIN ul#front -->
+	<!-- END ul#front --><!-- BEGIN li#front -->
+		<li class="{category:loop.class}"><!-- END li#front --><!-- BEGIN category:veil -->
+			<a href="{url}" class="acms-admin-list-group-item">{name}<!-- BEGIN amount:veil --><span class="acms-admin-badge acms-admin-float-right">{amount}</span><!-- END amount:veil --></a><!-- END category:veil --><!-- BEGIN li#rear -->
+		</li><!-- END li#rear --><!-- BEGIN ul#rear -->
+	<!-- END ul#rear --><!-- END category:loop -->
+	</ul>
+</div>
+<!-- END_MODULE Category_List -->

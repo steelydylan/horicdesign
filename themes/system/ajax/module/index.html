@@ -1,0 +1,121 @@
+<link href="/css/acms-system.css" rel="stylesheet">
+
+<div id="js-module_management" class="acms-admin-modal acms-admin-layout-module-edit out">
+	<div class="acms-admin-modal-dialog large">
+		<div class="acms-admin-modal-content clearfix">
+			<div class="acms-admin-modal-header">
+				<button type="button" class="acms-admin-modal-hide"><i class="acms-admin-modal-hide acms-admin-icon-delete"></i><span class="acms-admin-hide-visually">閉じる</span></button>
+				<h3 class="acms-admin-modal-heading"><!--T-->モジュール選択<!--/T--></h3>
+			</div>
+			<div class="acms-admin-form">
+
+				<div class="acms-admin-col-4 acms-admin-padding-none">
+					<!-- BEGIN_MODULE Admin_Module_Index -->
+
+					<!-- BEGIN index#notFound -->
+					<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->モジュールIDがありません。<!--/T--></p><!-- END index#notFound -->
+
+					<div class="acms-admin-filter acms-admin-filter-fit">
+						<button class="js-acms_layout_create_module acms-admin-btn-admin acms-admin-float-right acms-admin-margin-bottom-small" data-mid="new"><!--T-->モジュールIDを作成<!--/T--></button>
+						<div>
+							<label for="searchModuleId" class="acms-admin-hide-visually"><!--T-->クイック検索<!--/T--></label>
+							<input type="text" id="searchModuleId" class="js-incremental_search_box acms-admin-form-width-full acms-admin-font" placeholder="&#xe99e 例）banner">
+						</div>
+					</div>
+
+					<!-- BEGIN index:touch#result -->
+					<div class="js-resize_to_window_height acms-admin-layout-scroll-area acms-admin-layout-sidebar acms-admin-bg-light-gray acms-admin-padding-none" data-offset="200">
+						<ul class="js-module_index_table js-incremental_search">
+							<!-- BEGIN module:loop -->
+							<li class="search_element acms-admin-layout-sidebar-item js-layout_preview_module_id" data-mid="{mid}">
+								<div class="acms-admin-layout-sidebar-item-inner">
+									<div class="acms-admin-layout-sidebar-item-cell">
+										<div class="acms-admin-layout-sidebar-item-sub clearfix">
+											<p class="acms-admin-float-left">
+												<span class="acms-admin-label acms-admin-margin-right-mini acms-admin-label-min-width">{mid}</span>
+											</p>
+											<p class="acms-admin-float-left"><!-- BEGIN_IF [{mid}/eq/%{mid}] -->
+												<span class="acms-admin-label acms-admin-label-success acms-admin-margin-right-mini acms-admin-label-min-width"><!--T-->選択中<!--/T--></span><!-- END_IF -->
+											</p>
+											<p class="acms-admin-float-left">{identifier}</p>
+											<p class="acms-admin-float-right">{name}</p>
+										</div>
+										<div class="acms-admin-layout-sidebar-item-main-inner">
+											<div class="acms-admin-layout-sidebar-item-cell acms-admin-layout-sidebar-item-cell-full acms-admin-text-ellipsis-table-cell">
+												<p class="acms-admin-layout-sidebar-item-main acms-admin-text-ellipsis"> {label}</p>
+											</div>
+
+											<div class="acms-admin-layout-sidebar-item-cell acms-table-nowrap">
+												<!-- BEGIN scope:touch#global --><span class="acms-admin-label acms-admin-label-info acms-admin-text-nowrap"><!--T-->グローバル<!--/T--></span><!-- END scope:touch#global -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<!-- END module:loop -->
+						</ul>
+					</div><!-- END index:touch#result -->
+					<!-- END_MODULE Admin_Module_Index -->
+				</div>
+
+				<div class="acms-admin-col-8 acms-admin-padding-none">
+					<div class="acms-admin-layout-scroll-area">
+						<script id="js-module_info_tpl" type="text/template">
+
+							<header>
+								<div class="acms-admin-module-title-sub clearfix">
+									<p class="acms-admin-margin-none acms-admin-float-left"><span class="acms-admin-label acms-admin-margin-right-small"><%- module.mid %></span><%- module.moduleID %></p>
+									<p class="acms-admin-margin-none acms-admin-float-right"><%- module.module %></p>
+								</div>
+								<div class="acms-admin-module-title-main clearfix">
+									<h1 class="acms-admin-module-title acms-admin-float-left"><%- module.name %></h1>
+									<ul class="acms-admin-list-nostyle acms-admin-margin-none acms-admin-float-right">
+										<% if ( module.template.length > 0 ) { %>
+											<li class="acms-admin-margin-left-small acms-admin-float-left"><span class="acms-admin-label"><%- module.template %></span></li>
+											<% } %>
+										<% if ( module.scope === 'global' ) { %>
+										<li class="acms-admin-margin-left-small acms-admin-float-left"><span class="acms-admin-label acms-admin-label-info"><!--T-->グローバル<!--/T--></span></li>
+										<% } %>
+									</ul>
+								</div>
+							</header>
+
+							<div class="acms-admin-margin-bottom-mini">
+								<div class="acms-admin-float-right acms-admin-position-right">
+									<button class="js-acms_layout_dup_module acms-admin-btn-admin" data-mid="<%- module.mid %>"><!--T-->複製<!--/T--></button>
+
+									<button class="js-acms_layout_edit_module acms-admin-btn-admin" data-mid="<%- module.mid %>"><!--T-->設定<!--/T--></button>
+								</div>
+
+								<form class="acms-admin-form-inline" action="" method="post" enctype="multipart/form-data">
+									<button class="js-layout_select_module_id acms-admin-btn-admin acms-admin-btn-admin-primary" data-mid="<%- module.mid %>" data-tpl="<%- module.template %>">選択する</button>
+								</form>
+
+
+								<% if ( module.tpl_type === 'array' ) { %>
+									<select name="template" class="js-acms_layout_select_template js-select2" data-mid="<%- module.mid %>">
+										<option value="">標準</option><% _.each(module.tpl_list, function(tpl) { %>
+										<option value="<%- tpl.tpl %>"<%- tpl.selected %>><%- tpl.label %></option><% }); %>
+									</select>
+									<% } else if ( module.tpl_type === 'fix' ) { %>
+										<span class="acms-admin-layout-module-edit-tpl-type"><!--T-->固定テンプレート<!--/T-->（※<!--T-->テンプレートは変更できません<!--/T-->）</small></span>
+									<% } %>
+							</div>
+							<h3 class="acms-admin-admin-title2"><!--T-->プレビュー<!--/T--> (<!--T-->75%表示<!--/T-->)</h3>
+							<div class="acms-admin-layout-module-edit-inner acms-admin-padding-small">
+								<div style="transform: scale(0.75); transform-origin:0 0; width: 133.3%;"><%= module.preview %></div>
+							</div>
+						</script>
+						<div id="js-module_info_box" class="acms-admin-padding-large">
+							<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info">
+								<span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span>
+								<!--T-->サイドバーからモジュールを選択すると、プレビューが表示されます<!--/T-->
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

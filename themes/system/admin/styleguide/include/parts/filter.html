@@ -1,0 +1,73 @@
+<section id="filter" class="sectionBox">
+
+<h1 class="sectionTitle" id="admin">絞り込みフィルター</h1>
+
+<div class="%{STYLEGUIDE_PAGE}-filter">
+	<form class="%{STYLEGUIDE_PAGE}-form" method="post" action="">
+		<div class="%{STYLEGUIDE_PAGE}-form-group">
+			絞り込み:
+
+			<select name="status" class="js-select2">
+				<option value="">全てのステータス</option>
+				<option value="open">公開</option>
+				<option value="close">非公開</option>
+				<option value="draft">下書き</option>
+			</select>
+			<input type="hidden" value="status" name="query[]">
+
+
+			<select name="uid" class="js-select2">
+				<option value="">全てのユーザー</option>
+			</select>
+
+
+			<select id="js-entry_index_category_filter" name="cid" class="js-select2">
+				<option value="">全てのカテゴリー</option>
+			</select>
+			<input type="hidden" id="js-entry_index_category_filter_dup" value="" name="_cid">
+			<input type="hidden" value="_cid" name="query[]">
+
+
+			<select name="_bid" class="js-select2">
+				<option value="">現在のブログ</option>
+				<option selected="selected" value="1">a-blog cms</option>
+			</select>
+			<input type="hidden" value="_bid" name="query[]">
+
+			<div class="%{STYLEGUIDE_PAGE}-form-checkbox">
+				<input type="checkbox" name="axis" value="descendant-or-self" id="input-checkbox-axis-descendant-or-self">
+				<label for="input-checkbox-axis-descendant-or-self">
+					<i class="%{STYLEGUIDE_PAGE}-ico-checkbox"></i>下階層のブログも表示
+				</label>
+				<input type="hidden" value="axis" name="query[]">
+			</div>
+
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-form-group">
+			<label class="%{STYLEGUIDE_PAGE}-show-sp" for="filter-keyword">キーワード:</label>
+			<input type="text" placeholder="タイトル・本文・カスタムフィールドから検索（複数指定可）" id="filter-keyword" class="%{STYLEGUIDE_PAGE}-form-width-medium" value="" name="keyword">
+		</div>
+		&nbsp;
+		<label class="%{STYLEGUIDE_PAGE}-show-sp" for="filter-order">ソート:</label>
+		<select id="filter-order" name="order" class="input-sm js-select2">
+			<option value="datetime-asc">日付 (昇順)</option>
+		</select>
+		&nbsp;
+		<label class="%{STYLEGUIDE_PAGE}-show-sp" for="filter-limit">表示数:</label>
+		<select id="filter-limit" name="limit" class="js-select2">
+			<option value="5">5</option>
+		</select>
+
+		<input type="submit" class="%{STYLEGUIDE_PAGE}-btn-admin %{STYLEGUIDE_PAGE}-btn-admin-info %{STYLEGUIDE_PAGE}-width-sp" value="表示" name="#">
+
+	</form>
+</div>
+
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-filter"&gt;
+   ...
+&lt;/div&gt;
+</pre>
+
+</section>

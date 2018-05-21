@@ -1,0 +1,42 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="twitter_statuses_usertl_limit" value="{twitter_statuses_usertl_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="twitter_statuses_usertl_limit" />
+			<input type="hidden" name="twitter_statuses_usertl_limit:convert" value="a" />
+			<input type="hidden" name="twitter_statuses_usertl_limit:validator#digits" id="validator-twitter_statuses_usertl_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-twitter_statuses_usertl_limit-digits" class="validator-result-{twitter_statuses_usertl_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->非公開ツイート<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると非公開アカウントのツイートを表示しません。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="twitter_statuses_usertl_private" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="twitter_statuses_usertl_private" value="on"{twitter_statuses_usertl_private:checked#on} id="input-checkbox-twitter_statuses_usertl_private" />
+				<label for="input-checkbox-twitter_statuses_usertl_private"><i class="acms-admin-ico-checkbox"></i><!--T-->非公開ツイートを表示しない<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="twitter_statuses_usertl_private" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->APIリクエスト キャッシュ有効時間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->APIリクエストの結果を、ここで設定した秒数の間だけキャッシュ利用します。ページのキャッシュとは異なることに注意してください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="twitter_statuses_usertl_cache_expire" value="{twitter_statuses_usertl_cache_expire}" size="8" class="acms-admin-form-width-mini" /> <!--T-->秒<!--/T-->
+			<input type="hidden" name="config[]" value="twitter_statuses_usertl_cache_expire" />
+			<input type="hidden" name="twitter_statuses_usertl_cache_expire:validator#digits" id="validator-twitter_statuses_usertl_cache_expire-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-twitter_statuses_usertl_cache_expire-digits" class="validator-result-{twitter_statuses_usertl_cache_expire:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

@@ -1,0 +1,504 @@
+<section id="grid" class="sectionBox">
+<h1 class="sectionTitle">グリッドシステム</h1>
+<h2 class="sectionTitle2">デフォルト</h2>
+<p>.%{STYLEGUIDE_PAGE}-containerで囲うと幅940px中央揃えに変わります。ブロックをレイアウトするために使います。合計12カラムで計算します。</p>
+<p class="%{STYLEGUIDE_PAGE}-text-warning">※Ver.1.0.1では<code class="%{STYLEGUIDE_PAGE}-code">%{STYLEGUIDE_PAGE}-grid</code>と<code class="%{STYLEGUIDE_PAGE}-code">%{STYLEGUIDE_PAGE}-grid-r</code>でレスポンシブ対応にするか分けていましたが、Ver.1.1.0からは<code class="%{STYLEGUIDE_PAGE}-code">%{STYLEGUIDE_PAGE}-col-</code>のクラス名の指定の仕方で管理できるように変更しました。従来の<code class="%{STYLEGUIDE_PAGE}-code">%{STYLEGUIDE_PAGE}-grid</code>（レスポンシブ対応しないようにするクラス）を使う場合は、<code class="%{STYLEGUIDE_PAGE}-code">%{STYLEGUIDE_PAGE}-col-</code>クラスをお使いください。</p>
+
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-col-（レスポンシブ無し）</h3>
+	<div class="%{STYLEGUIDE_PAGE}-grid">
+		<div class="%{STYLEGUIDE_PAGE}-col-1">
+			<div class="panel">
+			col-1
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-11">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-11
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid">
+		<div class="%{STYLEGUIDE_PAGE}-col-2">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-2
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-10">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-10
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid">
+		<div class="%{STYLEGUIDE_PAGE}-col-3">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-3
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-9">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-9
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid">
+		<div class="%{STYLEGUIDE_PAGE}-col-4">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-4
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-8">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-8
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid">
+		<div class="%{STYLEGUIDE_PAGE}-col-5">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-5
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-7">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-7
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid">
+		<div class="%{STYLEGUIDE_PAGE}-col-6">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-6
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-6">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-6
+			</div>
+		</div>
+	</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-container&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid&quot;&gt;
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-5&quot;&gt;
+		...
+		&lt;/div&gt;
+
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-7&quot;&gt;
+		...
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+	<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-col-*-（レスポンシブ有り）</h3>
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+		<div class="%{STYLEGUIDE_PAGE}-col-md-1">
+			<div class="panel">
+			col-md-1
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-11">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-11
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+		<div class="%{STYLEGUIDE_PAGE}-col-md-2">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-2
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-10">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-10
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+		<div class="%{STYLEGUIDE_PAGE}-col-md-3">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-3
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-9">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-9
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+		<div class="%{STYLEGUIDE_PAGE}-col-md-4">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-4
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-8">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-8
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+		<div class="%{STYLEGUIDE_PAGE}-col-md-5">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-5
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-7">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-7
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+		<div class="%{STYLEGUIDE_PAGE}-col-md-6">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-6
+			</div>
+		</div>
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-6">
+			<div class="panel">
+			%{STYLEGUIDE_PAGE}-col-md-6
+			</div>
+		</div>
+	</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-container&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5&quot;&gt;
+		...
+		&lt;/div&gt;
+
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7&quot;&gt;
+		...
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3 class="sectionTitle3">スマートフォン、タブレット、デスクトップ幅</h3>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-col-sm-6">
+			<div class="panel">
+			.%{STYLEGUIDE_PAGE}-col-md-7 .%{STYLEGUIDE_PAGE}-col-sm-6
+			</div>
+		</div>
+		<div class="%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-col-sm-6">
+			<div class="panel">
+			.%{STYLEGUIDE_PAGE}-col-md-5 .%{STYLEGUIDE_PAGE}-col-sm-6
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-4">
+			<div class="panel">
+			.%{STYLEGUIDE_PAGE}-col-md-7 .%{STYLEGUIDE_PAGE}-col-sm-6 .%{STYLEGUIDE_PAGE}-col-lg-4
+			</div>
+		</div>
+		<div class="%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-8">
+			<div class="panel">
+			.%{STYLEGUIDE_PAGE}-col-md-5 .%{STYLEGUIDE_PAGE}-col-sm-6 . %{STYLEGUIDE_PAGE}-col-lg-8
+			</div>
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-grid-r">
+
+		<div class="%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-4 %{STYLEGUIDE_PAGE}-col-xlg-8">
+			<div class="panel">
+			.%{STYLEGUIDE_PAGE}-col-md-7 .%{STYLEGUIDE_PAGE}-col-sm-6 .%{STYLEGUIDE_PAGE}-col-lg-4 .%{STYLEGUIDE_PAGE}-col-xl-8
+			</div>
+		</div>
+		<div class="%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-8 %{STYLEGUIDE_PAGE}-col-lg-4">
+			<div class="panel">
+			.%{STYLEGUIDE_PAGE}-col-md-5 .%{STYLEGUIDE_PAGE}-col-sm-6 . %{STYLEGUIDE_PAGE}-col-lg-8 .%{STYLEGUIDE_PAGE}-col-xl-4
+			</div>
+		</div>
+	</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-container&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-col-sm-6&quot;&gt;
+		...
+		&lt;/div&gt;
+
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-col-sm-6&quot;&gt;
+		...
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-4&quot;&gt;
+		...
+		&lt;/div&gt;
+
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-8&quot;&gt;
+		...
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-4 %{STYLEGUIDE_PAGE}-col-xl-8&quot;&gt;
+		...
+		&lt;/div&gt;
+
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-col-sm-6 %{STYLEGUIDE_PAGE}-col-lg-8 %{STYLEGUIDE_PAGE}-col-xl-4&quot;&gt;
+		...
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3 class="sectionTitle3">各画面幅対応表</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>クラス名</th>
+			<th>デフォルトのブレイクポイント</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>%{STYLEGUIDE_PAGE}-col-</th>
+		<td>全て</td>
+	</tr>
+	<tr>
+		<th>%{STYLEGUIDE_PAGE}-col-sm-</th>
+		<td>480px以上〜</td>
+	</tr>
+	<tr>
+		<th>%{STYLEGUIDE_PAGE}-col-md-</th>
+		<td>768px以上〜</td>
+	</tr>
+	<tr>
+		<th>%{STYLEGUIDE_PAGE}-col-lg-</th>
+		<td>1024px以上〜</td>
+	</tr>
+	<tr>
+		<th>%{STYLEGUIDE_PAGE}-col-xl-</th>
+		<td>1440px以上〜</td>
+	</tr>
+</table>
+
+<h2 class="sectionTitle2">グリッドの入れ子</h2>
+
+<div class="%{STYLEGUIDE_PAGE}-grid">
+	<div class="%{STYLEGUIDE_PAGE}-col-md-4">
+		<div class="panel">
+		%{STYLEGUIDE_PAGE}-col-md-4
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-col-md-8">
+		<div class="panel">
+		%{STYLEGUIDE_PAGE}-col-md-8
+
+			<div class="%{STYLEGUIDE_PAGE}-grid">
+				<div class="%{STYLEGUIDE_PAGE}-col-md-5">
+					<div class="panel_nest">
+					.%{STYLEGUIDE_PAGE}-col-md-5
+					</div>
+				</div>
+				<div class="%{STYLEGUIDE_PAGE}-col-md-7">
+					<div class="panel_nest">
+					.%{STYLEGUIDE_PAGE}-col-md-7
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-4&quot;&gt;
+	...
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-8&quot;&gt;
+		&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid&quot;&gt;
+			&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5&quot;&gt;
+			...
+			&lt;/div&gt;
+
+			&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7&quot;&gt;
+			...
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3 class="sectionTitle3">グリッドの入れ替え push(左→右) 、pull(右→左)</h3>
+<p>.%{STYLEGUIDE_PAGE}-push-5にするとグリッドが右側にきて、.%{STYLEGUIDE_PAGE}-pull-7にするとグリッドが左側にきます。</p>
+<div class="%{STYLEGUIDE_PAGE}-grid">
+	<div class="%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-5">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-push-md-5(左から右へ入れ替え)
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-7">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-pull-md-7(右から左へ入れ替え)
+		</div>
+	</div>
+</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-5&quot;&gt;
+	...
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-7&quot;&gt;
+	...
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3 class="sectionTitle3">グリッドの入れ替え push(左→右) 、pull(右→左) タブレット幅</h3>
+<p>タブレット幅のときに.%{STYLEGUIDE_PAGE}-push-md-5にするとグリッドが右側にきて、.%{STYLEGUIDE_PAGE}-pull-md-7にするとグリッドが左側にきます。</p>
+<div class="%{STYLEGUIDE_PAGE}-grid-r">
+	<div class="%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-5">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-push-md-5(左から右へ入れ替え)
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-7">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-pull-md-7(右から左へ入れ替え)
+		</div>
+	</div>
+</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-5&quot;&gt;
+	...
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-7&quot;&gt;
+	...
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3 class="sectionTitle3">グリッドの入れ替え push(左→右) 、pull(右→左) スマートフォン幅</h3>
+<p>スマートフォンの幅のときに.%{STYLEGUIDE_PAGE}-push-sm-5にするとグリッドが右側にきて、.%{STYLEGUIDE_PAGE}-pull-sm-7にするとグリッドが左側にきます。</p>
+<div class="%{STYLEGUIDE_PAGE}-grid-r">
+	<div class="%{STYLEGUIDE_PAGE}-col-sm-7 %{STYLEGUIDE_PAGE}-push-sm-5">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-push-sm-5(左から右へ入れ替え)
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-col-sm-5 %{STYLEGUIDE_PAGE}-pull-sm-7">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-pull-sm-7(右から左へ入れ替え)
+		</div>
+	</div>
+</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-sm-7 %{STYLEGUIDE_PAGE}-push-sm-5&quot;&gt;
+	...
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-col-sm-5 %{STYLEGUIDE_PAGE}-pull-sm-7&quot;&gt;
+	...
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3 class="sectionTitle3">グリッドの入れ替え push、pullを解除する スマートフォン幅、タブレット幅</h3>
+<p>タブレット幅のときにpush、pullを解除する</p>
+<div class="%{STYLEGUIDE_PAGE}-grid-r">
+	<div class="%{STYLEGUIDE_PAGE}-push-5 %{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-auto">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-push-md-auto(左から右→右から左へ入れ替え)
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-pull-7 %{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-auto">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-pull-md-auto(右から左→左から右へ入れ替え)
+		</div>
+	</div>
+</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-push-5 %{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-auto&quot;&gt;
+	...
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-pull-7 %{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-auto&quot;&gt;
+	...
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<p>スマートフォン幅のときにpush、pullを解除する</p>
+<div class="%{STYLEGUIDE_PAGE}-grid-r">
+	<div class="%{STYLEGUIDE_PAGE}-push-5 %{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-5 %{STYLEGUIDE_PAGE}-col-sm-7 %{STYLEGUIDE_PAGE}-push-sm-auto">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-push-sm-auto(左から右→右から左へ入れ替え)
+		</div>
+	</div>
+
+	<div class="%{STYLEGUIDE_PAGE}-pull-7 %{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-7 %{STYLEGUIDE_PAGE}-col-sm-5 %{STYLEGUIDE_PAGE}-pull-sm-auto">
+		<div class="panel">
+		.%{STYLEGUIDE_PAGE}-pull-sm-auto(右から左→左から右へ入れ替え)
+		</div>
+	</div>
+</div>
+
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-grid-r&quot;&gt;
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-push-5 %{STYLEGUIDE_PAGE}-col-md-7 %{STYLEGUIDE_PAGE}-push-md-5 %{STYLEGUIDE_PAGE}-col-sm-7 %{STYLEGUIDE_PAGE}-push-sm-auto&quot;&gt;
+	...
+	&lt;/div&gt;
+
+	&lt;div class=&quot;%{STYLEGUIDE_PAGE}-pull-7 %{STYLEGUIDE_PAGE}-col-md-5 %{STYLEGUIDE_PAGE}-pull-md-7 %{STYLEGUIDE_PAGE}-col-sm-5 %{STYLEGUIDE_PAGE}-pull-sm-auto&quot;&gt;
+	...
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+</section>

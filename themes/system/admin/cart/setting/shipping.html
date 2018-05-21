@@ -1,0 +1,232 @@
+<h2 class="acms-admin-admin-title2"><!--T-->送料の設定（配送方法の手数料に何も入力しないと，この送料が適用されます）<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->送料無料のしきい値<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->送料無料のしきい値を設定します。<!--/T-->"></i></th>
+		<td>
+		<input type="text" name="shop_order_shipping_limit" value="{shop_order_shipping_limit}" size="6" />
+		<input type="hidden" name="config[]" value="shop_order_shipping_limit" /><!--T-->円<!--/T--> （<!--T-->各種手数料を除いた合計金額がこの値を超えると無料になります<!--/T-->）
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->送料の全国一括設定<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->送料の全国一括設定します。<!--/T-->"></i></th>
+		<td>
+		<input type="text" name="shop_order_shipping_common" value="{shop_order_shipping_common}" size="6" />
+		<input type="hidden" name="config[]" value="shop_order_shipping_common" /><!--T-->円<!--/T--> （<!--T-->入力すると送料が地域を問わず共通になります<!--/T-->）
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->配送地域と送料の設定<!--/T--><i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="各地の配送地域と送料の設定します。"></i>
+		</th>
+		<td>
+			<table>
+				<tr class="thX"><th class="acms-admin-table-left"><!--T-->地域<!--/T--></th><th class="acms-admin-table-left"><!--T-->送料<!--/T--></th></tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[1]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[1]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[2]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[2]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[3]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[3]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[4]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[4]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[5]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[5]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[6]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[6]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[7]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[7]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[8]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[8]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[9]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[9]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[10]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[10]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[11]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[11]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[12]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[12]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[13]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[13]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[14]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[14]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[15]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[15]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[16]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[16]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[17]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[17]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[18]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[18]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[19]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[19]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[20]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[20]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[21]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[21]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[22]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[22]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[23]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[23]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[24]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[24]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[25]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[25]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[26]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[26]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[27]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[27]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[28]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[28]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[29]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[29]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[30]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[30]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[31]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[31]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[32]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[32]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[33]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[33]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[34]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[34]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[35]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[35]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[36]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[36]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[37]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[37]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[38]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[38]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[39]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[39]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[40]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[40]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[41]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[41]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[42]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[42]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[43]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[43]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[44]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[44]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[45]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[45]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[46]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[46]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[47]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[47]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[48]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[48]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[49]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[49]}" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="shop_order_shipping_label[]" value="{shop_order_shipping_label[50]}" /></td>
+					<td><input type="text" name="shop_order_shipping_charge[]" value="{shop_order_shipping_charge[50]}" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="config[]" value="shop_order_shipping_label" />
+			<input type="hidden" name="config[]" value="shop_order_shipping_charge" />
+		</td>
+	</tr>
+</table>

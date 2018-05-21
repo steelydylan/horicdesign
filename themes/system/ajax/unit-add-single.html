@@ -1,0 +1,12 @@
+<!-- BEGIN_MODULE Admin_Unit_Single -->
+<!-- actionに更新後のユニットを取得するURLを指定 -->
+<form action="/bid/%{BID}/eid/%{EID}/tpl/include/unit-fetch.html/?hash=%{U}&sort={sort}" id="unitForm" class="acms-admin-form acms-admin-form-edit acms-admin-form-direct" method="post" enctype="multipart/form-data" data-file-max="%{PHP_FILE_MAX_SIZE}" data-post-max="%{PHP_POST_MAX_SIZE}">
+@include("/admin/entry/unit.html")
+<input type="hidden" name="group[]" value="{group}" />
+<input type="hidden" name="sort[]" value="{sort}" />
+<input type="hidden" name="bid" value="%{BID}" />
+<input type="hidden" name="eid" value="%{EID}" />
+<input type="hidden" name="ACMS_POST_Unit_Update" value="追加" />
+<input type="button" id="js-edit_inplace-submit" value="ユニットを追加" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+</form>
+<!-- END_MODULE Admin_Unit_Single -->

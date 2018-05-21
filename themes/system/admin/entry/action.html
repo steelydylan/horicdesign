@@ -1,0 +1,56 @@
+<!-- BEGIN adminEntryAction -->
+<!-- BEGIN_IF [%{RVID}/em/] --><!-- BEGIN_IF [%{trash}]/neq/show] -->
+<div class="acms-admin-btn-action-group">
+	<table>
+		<tr>
+		<th><!--T-->エントリーの編集<!--/T--></th>
+		<td>
+			<!-- BEGIN edit -->
+			<form action="" method="post" class="acms-admin-inline-btn"><input name="ACMS_POST_2GET" type="submit" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin" aria-label="<!--T-->エントリーを変更する<!--/T-->" /><input type="hidden" name="admin" value="entry-edit" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /><input type="hidden" name="query" value="rvid" /><input type="hidden" name="rvid" value="{rvid}" /></form>
+			<form action="" method="post" class="acms-admin-inline-btn"><input type="submit" name="ACMS_POST_Entry_Duplicate" value="<!--T-->複製<!--/T-->" class="acms-admin-btn-admin" onclick="javascript:return confirm('<!--T-->エントリーを複製します。よろしいですか？<!--/T-->')" aria-label="<!--T-->エントリーを複製する<!--/T-->" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /></form>
+			<!-- BEGIN_MODULE Touch_sessionWithApprovalAdministrator --><!-- BEGIN_MODULE Touch_Form2 -->
+			<form action="" method="post" class="acms-admin-inline-btn"><input name="ACMS_POST_2GET" type="submit" value="<!--T-->フォーム<!--/T-->" class="acms-admin-btn-admin" aria-label="<!--T-->動的フォームを追加する<!--/T-->" /><input type="hidden" name="admin" value="form2-edit" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /></form>
+			<!-- END_MODULE Touch_Form2 --><!-- END_MODULE Touch_sessionWithApprovalAdministrator --><!-- END edit --><!-- BEGIN delete -->
+
+			<!-- BEGIN delete -->
+			<form action="" method="post" class="acms-admin-inline-btn"><input type="submit" name="ACMS_POST_Entry_Trash" value="<!--T-->削除<!--/T-->" class="acms-admin-btn-admin" onclick="javascript:return confirm('<!--T-->エントリーを削除します。よろしいですか？<!--/T-->')" aria-label="<!--T-->エントリーを削除する<!--/T-->" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /></form>
+			<!-- END delete -->
+
+			<!-- BEGIN_MODULE Touch_sessionWithApprovalAdministrator -->
+			<!-- BEGIN open --> 
+			<form action="" method="post" class="acms-admin-inline-btn"><input type="submit" name="ACMS_POST_Entry_Open" value="<!--T-->公開<!--/T-->" class="acms-admin-btn-admin" aria-label="<!--T-->エントリーを公開する<!--/T-->"/><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /></form><!-- END open --><!-- BEGIN close -->
+			<form action="" method="post" class="acms-admin-inline-btn"><input type="submit" name="ACMS_POST_Entry_Close" value="<!--T-->非公開<!--/T-->" class="acms-admin-btn-admin" aria-label="<!--T-->エントリーを非公開にする<!--/T-->" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /></form><!-- END close -->
+			<!-- END_MODULE Touch_sessionWithApprovalAdministrator -->
+		</td>
+		</tr><!-- BEGIN_MODULE Touch_NotApprovalORsessionWithApprovalAdministrator --><!-- BEGIN_MODULE Touch_NotEntry --><!-- BEGIN add -->
+		<tr>
+			<th><!--T-->ユニットの追加<!--/T--></th>
+			<td>
+			<!-- BEGIN add:loop -->
+			<form action="" method="post" class="acms-admin-inline-btn"><input type="submit" value="{label}" name="ACMS_POST_2GET" class="acms-admin-btn-admin" aria-label="{label}<!--T-->ユニットを追加する<!--/T-->" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /><input type="hidden" name="admin" value="entry-add-{type}" /><input type="hidden" name="fragment" value="entry-add" /></form><!-- END add:loop -->
+			</td>
+		</tr>
+		<!-- END add --><!-- END_MODULE Touch_NotEntry -->
+		<!-- BEGIN_MODULE Touch_Entry --><!-- BEGIN_MODULE Touch_NotEditDirect --><!-- BEGIN add -->
+		<tr>
+			<th>ユニットの追加</th>
+			<td>
+				<!-- BEGIN add:loop -->
+				<form action="" method="post" class="acms-admin-inline-btn"><input type="submit" value="{label}" name="ACMS_POST_2GET" class="acms-admin-btn-admin" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /><input type="hidden" name="admin" value="entry-add-{type}" /><input type="hidden" name="fragment" value="entry-add" /><input type="hidden" name="query" value="rvid" /><input type="hidden" name="rvid" value="{rvid}" /></form><!-- END add:loop -->
+			</td>
+		</tr>
+		<!-- END add -->
+		<!-- END_MODULE Touch_NotEditDirect -->
+		<!-- BEGIN_MODULE Touch_EditDirect --><!-- BEGIN add -->
+		<tr>
+			<th><!--T-->ユニットの追加<!--/T--></th>
+			<td>
+				<!-- BEGIN add:loop -->
+				<form action="/bid/%{BID}/eid/%{EID}/tpl/include/unit-fetch.html/?hash=%{U}" method="post" class="acms-admin-inline-btn">
+				<input type="submit" value="{label}" name="ACMS_POST_Entry_Direct" class="js-direct-unit acms-admin-btn-admin" /><input type="hidden" name="bid" value="{bid}" /><input type="hidden" name="cid" value="{cid}" /><input type="hidden" name="eid" value="{eid}" /><input type="hidden" name="admin" value="entry-add-{type}" /><input type="hidden" name="fragment" value="entry-add" /><input type="hidden" name="query" value="rvid" /><input type="hidden" name="rvid" value="{rvid}" /></form><!-- END add:loop -->
+			</td>
+		</tr>
+		<!-- END add --><!-- END_MODULE Touch_EditDirect --><!-- END_MODULE Touch_Entry --><!-- END_MODULE Touch_NotApprovalORsessionWithApprovalAdministrator -->
+	</table>
+</div>
+<!-- END_IF --><!-- END_IF --><!-- END adminEntryAction -->

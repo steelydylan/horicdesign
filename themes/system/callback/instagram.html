@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="ja" lang="ja" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>%{BLOG_NAME}｜OAuth認証</title>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+    height: 100%;
+}
+
+body {
+	color: #333333;
+	font-size: 14px; /* モダンブラウザ向け */
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Osaka",  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	background: #ffffff;
+}
+#callbackBox {
+	width: 500px;
+	position: relative;
+	top: 50%;
+	margin: -175px auto 0 auto;
+	padding: 30px;
+	background-color: #F0F0F1;
+	border: 1px solid #EEEEEE;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-box-shadow: 1px 1px 2px silver;
+	-moz-box-shadow: 1px 1px 2px silver;
+	text-align:left;
+}
+</style>
+<body>
+<!-- BEGIN_MODULE Api_Instagram_OAuthCallback -->
+
+<!-- BEGIN successed -->
+<div id="callbackBox">
+<h1>OAuth認証に成功しました。</h1>
+<p>あなたのInstagramrアカウントの認証情報をシステムに保存しました。<br />今回認証されたブログのBID( %{BID} )で、Instagram APIを利用したInstagramモジュールの利用が可能になります。</p>
+<p><a href="%{BLOG_URL}">トップページに戻る</a></p>
+</div>
+<!-- END successed -->
+
+<!-- BEGIN failed -->
+<div id="callbackBox">
+<h1>OAuth認証に失敗しました。</h1>
+<p>コールバックURLが、認証しようとしているブログのURLになっているか、<a href="http://instagr.am/developer/manage/">Instagramアプリケーション</a>側の登録情報をご確認ください。</p>
+<p>管理ページの外部認証設定から、再試行することができます。</p>
+<p><a href="%{BLOG_URL}">トップページに戻る</a></p>
+</div>
+<!-- END failed -->
+
+<!-- BEGIN unlogin -->
+<div id="callbackBox">
+<h1>a-blog cmsのログイン情報が確認できません。</h1>
+<p>ログイン状態でないため、認証を処理できませんでした。</p>
+<p>管理ページの外部認証から、再試行することができます。</p>
+</div>
+<!-- END unlogin -->
+
+<!-- END_MODULE Api_Instagram_OAuthCallback -->
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- BEGIN_MODULE Admin_Shortcut_Edit -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ショートカット管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ショートカットを作成しました。<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ショートカットを保存しました。<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ショートカットを削除しました。<!--/T--></p><!-- END msg#delete -->
+
+<!-- BEGIN headline#insert --><!-- END headline#insert -->
+<!-- BEGIN headline#update --><!-- END headline#update -->
+<form action="" method="post" class="acms-admin-inline-btn">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="shortcut_index" />
+	<input type="submit" name="ACMS_POST_2GET" value="<!--T-->一覧<!--/T-->" class="acms-admin-btn-admin" />
+</form>
+
+<form action="" method="post" class="acms-admin-form">
+	<!-- BEGIN submit#insert -->
+	<input type="submit" name="ACMS_POST_Shortcut_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+	<!-- END submit#insert -->
+
+	<!-- BEGIN submit#update -->
+	<input type="submit" name="ACMS_POST_Shortcut_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+	<input type="submit" name="ACMS_POST_Shortcut_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->ショートカットを削除します。\nよろしいですか？<!--/T-->')" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+	<input type="hidden" name="takeover" value="{takeover}" />
+	<!-- END submit#update -->
+
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->ショートカット名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このショートカットを管理するための名前です。（日本語可）<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="name" value="{name}" id="input-text-name" size="70" />
+				<input type="hidden" name="shortcut[]" value="name" />
+				<label for="input-text-name" class="validator-result-{name:validator#required}"> <!--T-->名前が入力されていません。<!--/T--></label>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->対象ユーザー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ここで設定した権限以上のユーザーが、このショートカットを利用できます。<!--/T-->"></i></th>
+			<td>
+				<select name="auth" class="js-select2">
+					<option value="administration"{auth:selected#administration}><!--T-->管理権限<!--/T--></option>
+					<option value="compilation"{auth:selected#compilation}><!--T-->編集権限<!--/T--></option>
+					<option value="contribution"{auth:selected#contribution}><!--T-->投稿権限<!--/T--></option>
+				</select>
+				<input type="hidden" name="shortcut[]" value="auth" />
+				<!--T-->を持つユーザー<!--/T-->
+			</td>
+		</tr>
+		<tr>
+			<th>URL<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ショートカット先になるURLを設定します。<!--/T-->"></i></th>
+			<td><a href="{url}">{url}</a></td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Shortcut_Edit -->

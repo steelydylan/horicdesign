@@ -1,0 +1,199 @@
+<section id="typo" class="sectionBox">
+	<h1 class="sectionTitle">Typography</h1>
+
+	<!-- 見出し -->
+	<article id="heading" class="articleBox">
+		<h2 class="sectionTitle2">見出し h1 〜 h6</h2>
+
+		<h1 class="%{STYLEGUIDE_PAGE}-h1">h1. 見出し1</h1>
+		<h2 class="%{STYLEGUIDE_PAGE}-h2">h2. 見出し2</h2>
+		<h3 class="%{STYLEGUIDE_PAGE}-h3">h3. 見出し3</h3>
+		<h4 class="%{STYLEGUIDE_PAGE}-h4">h4. 見出し4</h4>
+		<h5 class="%{STYLEGUIDE_PAGE}-h5">h5. 見出し5</h5>
+		<h6 class="%{STYLEGUIDE_PAGE}-h6">h6. 見出し6</h6>
+
+<pre class="code HTML">
+&lt;h1 class=&quot;%{STYLEGUIDE_PAGE}-h1&quot;&gt;h1. 見出し1&lt;/h1&gt;
+&lt;h2 class=&quot;%{STYLEGUIDE_PAGE}-h2&quot;&gt;h2. 見出し2&lt;/h2&gt;
+&lt;h3 class=&quot;%{STYLEGUIDE_PAGE}-h3&quot;&gt;h3. 見出し3&lt;/h3&gt;
+&lt;h4 class=&quot;%{STYLEGUIDE_PAGE}-h4&quot;&gt;h4. 見出し4&lt;/h4&gt;
+&lt;h5 class=&quot;%{STYLEGUIDE_PAGE}-h5&quot;&gt;h5. 見出し5&lt;/h5&gt;
+&lt;h6 class=&quot;%{STYLEGUIDE_PAGE}-h6&quot;&gt;h6. 見出し6&lt;/h6&gt;
+</pre>
+
+	</article>
+
+	<!-- 段落 -->
+	<article id="paragraph" class="articleBox">
+		<h2 class="sectionTitle2">段落 p</h2>
+		<p class="%{STYLEGUIDE_PAGE}-p">これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。<br />これはサンプルテキストです。</p>
+		<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+
+
+<pre class="code HTML">
+&lt;p class=&quot;%{STYLEGUIDE_PAGE}-p&quot;&gt;
+	サンプルテキストです。
+&lt;/p&gt;
+</pre>
+
+</article>
+
+<!-- ul リスト -->
+<article id="ul" class="articleBox">
+	<h2 class="sectionTitle2">リスト ul</h2>
+
+	<ul class="%{STYLEGUIDE_PAGE}-ul">
+		<li>りんご</li>
+		<li>みかん</li>
+		<li>ぶどう
+			<ul>
+				<li>山梨県</li>
+				<li>富士岡フォーム</li>
+				<li>ワイン</li>
+			</ul>
+		</li>
+		<li>もも</li>
+	</ul>
+
+<pre class="code HTML">
+&lt;ul class=&quot;%{STYLEGUIDE_PAGE}-ul&quot;&gt;
+	&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+	<h3 class="sectionTitle3">リスト（点なし）</h3>
+	<p>.%{STYLEGUIDE_PAGE}-list-nostyle</p>
+	<ul class="%{STYLEGUIDE_PAGE}-list-nostyle">
+		<li>りんご</li>
+		<li>みかん</li>
+		<li>ぶどう
+			<ul>
+				<li>山梨県</li>
+				<li>富士岡フォーム</li>
+				<li>ワイン</li>
+			</ul>
+		</li>
+		<li>もも</li>
+	</ul>
+
+<pre class="code HTML">
+&lt;ul class=&quot;%{STYLEGUIDE_PAGE}-list-nostyle&quot;&gt;
+	&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+	<h3 class="sectionTitle3">リスト（インライン）</h3>
+	<p>.%{STYLEGUIDE_PAGE}-list-inline</p>
+	<ul class="%{STYLEGUIDE_PAGE}-list-inline">
+		<li>りんご</li>
+		<li>みかん</li>
+		<li>ぶどう</li>
+		<li>もも</li>
+	</ul>
+
+<pre class="code HTML">
+&lt;ul class=&quot;%{STYLEGUIDE_PAGE}-list-inline&quot;&gt;
+	&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+</article>
+
+<!-- ol 番号付きリスト -->
+<article id="ol" class="articleBox">
+	<h2 class="sectionTitle2">番号付きリスト ol</h2>
+
+	<ol>
+		<li>りんご</li>
+		<li>みかん</li>
+		<li>ぶどう
+			<ol>
+				<li>山梨県</li>
+				<li>富士岡フォーム</li>
+				<li>ワイン</li>
+			</ol>
+			</li>
+		<li>もも</li>
+	</ol>
+
+<pre class="code HTML">
+&lt;ol class=&quot;%{STYLEGUIDE_PAGE}-ol&quot;&gt;
+	&lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+</article>
+
+<!-- dl 定義リスト -->
+<article id="dl" class="articleBox">
+	<h2 class="sectionTitle2">定義リスト dl</h2>
+
+	<dl class="%{STYLEGUIDE_PAGE}-dl">
+		<dt>りんご</dt>
+		<dd>青森県産。品種名は「ふじ」。日本で多く生産されており、甘みが強く歯ごたえもあるりんご。収穫時期は10月中旬になる。</dd>
+		<dt>みかん</dt>
+		<dd>愛媛県産。ウンシュウミカン。ビニールハウスや温室で栽培されており一年中収穫ができる。ビタミンCも多く含まれている。</dd>
+		<dt>ぶどう</dt>
+		<dd>山梨県産。巨峰。ぶどうはワイン、ジャム、レーズン、ゼリーなど多くの食品として使われる。</dd>
+	</dl>
+
+<pre class="code HTML">
+&lt;dl class=&quot;%{STYLEGUIDE_PAGE}-dl&quot;&gt;
+	&lt;dt&gt;用語&lt;/dt&gt;
+	&lt;dd&gt;用語の説明&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+
+	<h3 class="sectionTitle3">定義リスト（横並び）</h3>
+	<p>.%{STYLEGUIDE_PAGE}-dl-horizontal</p>
+	<dl class="%{STYLEGUIDE_PAGE}-dl-horizontal">
+		<dt>りんご</dt>
+		<dd>青森県産。品種名は「ふじ」。日本で多く生産されており、甘みが強く歯ごたえもあるりんご。収穫時期は10月中旬になる。</dd>
+		<dt>みかん</dt>
+		<dd>愛媛県産。ウンシュウミカン。ビニールハウスや温室で栽培されており一年中収穫ができる。ビタミンCも多く含まれている。</dd>
+		<dt>ぶどう</dt>
+		<dd>山梨県産。巨峰。ぶどうはワイン、ジャム、レーズン、ゼリーなど多くの食品として使われる。</dd>
+	</dl>
+
+<pre class="code HTML">
+&lt;dl class=&quot;%{STYLEGUIDE_PAGE}-dl-horizontal&quot;&gt;
+	&lt;dt&gt;用語&lt;/dt&gt;
+	&lt;dd&gt;用語の説明&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+
+<h3 class="sectionTitle3">定義リスト（横並び - 線つき）</h3>
+<p>.%{STYLEGUIDE_PAGE}-dl-line</p>
+<dl class="%{STYLEGUIDE_PAGE}-dl-line">
+	<dt>2013.07.12</dt>
+	<dd>青森県産。品種名は「ふじ」。日本で多く生産されており、甘みが強く歯ごたえもあるりんご。収穫時期は10月中旬になる。</dd>
+	<dt>2013.08.15</dt>
+	<dd>愛媛県産。ウンシュウミカン。ビニールハウスや温室で栽培されており一年中収穫ができる。ビタミンCも多く含まれている。</dd>
+	<dt>2013.09.17</dt>
+	<dd>山梨県産。巨峰。ぶどうはワイン、ジャム、レーズン、ゼリーなど多くの食品として使われる。</dd>
+</dl>
+
+<pre class="code HTML">
+&lt;dl class=&quot;%{STYLEGUIDE_PAGE}-dl-line&quot;&gt;
+	&lt;dt&gt;用語&lt;/dt&gt;
+	&lt;dd&gt;用語の説明&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+
+</article>
+
+<!-- 引用 -->
+<article id="blockquote" class="articleBox">
+	<h2 class="sectionTitle2">引用 blockquote</h2>
+
+	<blockquote class="%{STYLEGUIDE_PAGE}-blockquote">HyperText Markup Language（ハイパーテキスト マークアップ ランゲージ）、略記・略称：HTML（エイチティーエムエル）とは、ウェブ上の文書を記述するためのマークアップ言語である。文章の中に記述することでさまざまな機能を記述設定することができる。</blockquote>
+
+<pre class="code HTML">
+&lt;blockquote class=&quot;%{STYLEGUIDE_PAGE}-blockquote&quot;&gt;
+	HyperText Markup Language（ハイパーテキスト マークアップ ランゲージ）、略記・略称：HTML（エイチティーエムエル）とは、ウェブ上の文書を記述するためのマークアップ言語である。文章の中に記述することでさまざまな機能を記述設定することができる。
+&lt;/blockquote&gt;
+</pre>
+
+</article>
+
+</section>

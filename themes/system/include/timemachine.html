@@ -1,0 +1,33 @@
+<!-- BEGIN_MODULE Timemachine -->
+<style>
+.js-timemachine_menu {
+	position: fixed;
+	padding: 5px;
+	bottom: 20px;
+	left: 20px;
+	z-index: 99999;
+	background: #DDD;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+</style>
+
+<div class="js-timemachine_menu">
+	<form action="" method="post" class="acms-admin-inline">
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->管理ページ<!--/T-->" class="acms-admin-btn-admin" />
+		<input type="hidden" name="admin" value="top" />
+		<input type="hidden" name="bid" value="%{BID}" />
+	</form>
+	<form action="" method="post" class="acms-form acms-admin-inline">
+		<input type="text" name="date" value="{date}" class="js-datepicker">
+		<input type="text" name="time" value="{time}">
+		<!-- BEGIN_MODULE Timemachine_RuleSelectGlobal -->
+		<select name="rule" class="js-select2">
+			<option value=""><!--T-->ルールなし<!--/T--></option><!-- BEGIN rule:loop -->
+			<option vlaue="{rid}"{selected}>{rid}: {label}</option><!-- END rule:loop -->
+		</select>
+		<!-- END_MODULE Timemachine_RuleSelectGlobal -->
+		<input type="submit" name="ACMS_POST_Timemachine_Change" value="<!--T-->変更<!--/T-->" class="acms-btn">
+		<input type="submit" name="ACMS_POST_Timemachine_Disable" value="<!--T-->プレビューモードを終了<!--/T-->" class="acms-btn">
+	</form>
+</div>
+<!-- END_MODULE Timemachine -->

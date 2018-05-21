@@ -1,0 +1,130 @@
+<!-- BEGIN_MODULE Admin_User_Index -->
+
+<!-- BEGIN_IF [%{send}/neq/ajax] -->
+<div class="acms-admin-filter">
+	<form action="" method="post" class="js-ajax_load acms-admin-form" target=".js-ajax_load_replace">
+		<div class="acms-admin-form-group">
+			<select name="auth" class="js-select2">
+				<option value="">全ての権限</option>
+				<option value="administrator"{auth:selected#administrator}>管理者</option>
+				<option value="editor"{auth:selected#editor}>編集者</option>
+				<option value="contributor"{auth:selected#contributor}>投稿者</option>
+				<option value="subscriber"{auth:selected#subscriber}>読者</option>
+			</select>
+			<input type="hidden" name="query[]" value="auth" />
+
+			<select name="status" class="js-select2">
+				<option value="">全てのステータス</option>
+				<option value="open"{status:selected#open}>有効</option>
+				<option value="close"{status:selected#close}>無効</option>
+			</select>
+			<input type="hidden" name="query[]" value="status" />
+
+			<!-- BEGIN_MODULE Admin_Blog_Select -->
+			<select name="_bid" style="width:200px;">
+				<option value="">現在のブログ</option><!-- BEGIN loop -->
+				<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+			</select>
+			<input type="hidden" name="query[]" value="_bid" />
+			<!-- END_MODULE Admin_Blog_Select -->
+
+			<!-- BEGIN axis -->
+			<input type="hidden" name="axis" value="self" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="axis" value="descendant-or-self"{axis:checked#descendant-or-self} id="input-checkbox-axis-descendant-or-self" />
+				<label for="input-checkbox-axis-descendant-or-self">
+					<i class="acms-admin-ico-checkbox"></i>下階層のブログも表示
+				</label>
+			</div>
+			<input type="hidden" name="query[]" value="axis" />
+			<!-- END axis -->
+		</div>
+
+		<div class="acms-admin-form-group">
+			<select name="order" class="js-select2">
+				<option value="sort-asc"{order:selected#sort-asc}>表示順（昇順）</option>
+				<option value="sort-desc"{order:selected#sort-desc}>表示順（降順）</option>
+				<option value="code-asc"{order:selected#code-asc}>コードネーム（昇順）</option>
+				<option value="code-desc"{order:selected#code-desc}>コードネーム（降順）</option>
+				<option value="amount-asc"{order:selected#amount-asc}>エントリー数（昇順）</option>
+				<option value="amount-desc"{order:selected#amount-desc}>エントリー数（降順）</option>
+				<option value="id-asc"{order:selected#id-asc}>ID（昇順）</option>
+				<option value="id-desc"{order:selected#id-desc}>ID（降順）</option>
+			</select>
+
+			<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+				<option value="{value}"{selected}>{value}</option><!-- END limit:loop -->
+			</select>
+		</div>
+
+		<div class="acms-admin-form-group">
+			<input type="text" name="keyword" value="%{KEYWORD}" size="50" class="js-placeholder" title="ユーザーの名前・メールアドレス・カスタムフィールドの値から検索（複数指定可）" class="acms-admin-form-width-medium" />
+
+			<input type="submit" name="ACMS_POST_2GET" value="表示" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+
+			<input type="hidden" name="send" value="ajax" />
+			<input type="hidden" name="query[]" value="send" />
+			<input type="hidden" name="tpl" value="/ajax/arg/uid-reference.html" />
+		</div>
+	</form>
+</div><!-- /.acms-filter -->
+<!-- END_IF -->
+
+<div class="js-ajax_load_link_delegate">
+<div class="js-ajax_load_replace">
+	<table class="acms-admin-table acms-admin-table-heading acms-admin-table-hover">
+		<!-- <thead class="acms-admin-table-admin-title"> -->
+		<thead>
+			<tr>
+				<th class="acms-admin-hide-sp">uid</th>
+				<th class="acms-admin-hide-sp">ステータス</th>
+				<th class="acms-admin-show-sp">ユーザ名 / コード</th>
+				<th class="acms-admin-hide-sp">メールアドレス</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN user:loop -->
+			<tr class="js-arg_reference_anchor" data-id="{uid}" data-label="{name}（uid:{uid}）">
+				<td class="acms-admin-td-id">
+					<span class="acms-admin-label label-default">{uid}</span>
+				</td>
+				<td class="acms-admin-td-status">
+					<small>
+						<!-- BEGIN status#close -->
+						<span class="acms-admin-label acms-admin-label-danger admin-status-label">非公開</span><!-- END status#close --><!-- BEGIN status#open --><span class="acms-admin-label acms-admin-label-info admin-status-label">公開</span><!-- END status#open --><!-- BEGIN status#draft --><span class="acms-admin-label acms-admin-label-warning admin-status-label">下書き</span><!-- END status#draft -->
+
+					</small>
+				</td>
+				<td>
+					{name} / {code}
+				</td>
+				<td>
+					{mail}
+				</td>
+			</tr>
+			<!-- END user:loop -->
+		</tbody>
+	</table>
+
+	<div class="js-ajax_load_link acms-admin-grid">
+		<div class="acms-admin-col-8">
+			<!-- BEGIN pager:veil -->
+			<div class="acms-admin-pager-container">
+				<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+					<li class="prev"><a href="{url}">&laquo;&nbsp;前へ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+					<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+					<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+					<li class="next"><a href="{url}">次へ&nbsp;&raquo;</a></li><!-- END forwardLink -->
+				</ul>
+			</div>
+			<!-- END pager:veil -->
+		</div>
+		<div class="acms-admin-col-4">
+			<div class="acms-admin-float-right">
+				<p>{itemsFrom}件 - {itemsTo}件 / 全{itemsAmount}件</p>
+			</div>
+		</div>
+	</div><!-- /.acms-grid -->
+</div>
+</div>
+<!-- END_MODULE Admin_User_Index -->

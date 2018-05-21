@@ -1,0 +1,111 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">受注一覧</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Shop_Receipt_Index -->
+<div class="acms-admin-filter">
+<form action="" method="post" class="acms-admin-form">
+	絞り込み:
+	<select name="status" class="js-select2">
+		<option value="">全てのステータス</option> <!-- BEGIN status:loop#filter -->
+		<option value="{status}"{selected}>{status}</option><!-- END status:loop#filter -->
+	</select>
+	<input type="hidden" name="query[]" value="status" />
+	<select name="payment" class="js-select2">
+		<option value="">全ての支払方法</option> <!-- BEGIN payment:loop -->
+		<option value="{payment}"{selected}>{payment}</option><!-- END payment:loop -->
+	</select>
+	<input type="hidden" name="query[]" value="payment" />
+	<select name="deliver" class="js-select2">
+		<option value="">全ての配送方法</option> <!-- BEGIN deliver:loop -->
+		<option value="{deliver}"{selected}>{deliver}</option><!-- END deliver:loop -->
+	</select>
+	<input type="hidden" name="query[]" value="deliver" />
+
+	ソート:
+	<select name="order" class="js-select2">
+		<option value="datetime-asc"{order:selected#datetime-asc}>日付順（昇順）</option>
+		<option value="datetime-desc"{order:selected#datetime-desc}>日付順（降順）</option>
+		<option value="code-asc"{order:selected#code-asc}>伝票番号（昇順）</option>
+		<option value="code-desc"{order:selected#code-desc}>伝票番号（降順）</option>
+	</select>
+	伝票番号検索:
+	<input type="text" name="keyword" value="%{KEYWORD}" size="20" />
+	<input type="submit" name="ACMS_POST_2GET" value="表示" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+	<input type="hidden" name="pid" value="{pid}" />
+	<input type="hidden" name="admin" value="shop_receipt_index" />
+</form>
+</div>
+
+<form method="post" action="" class="acms-admin-form"><!-- BEGIN refresh -->
+	<p class="acms-admin-alert acms-admin-alert-info">><button class="js-acms-alert-close">×</button>受注一覧を更新しました。</p><!-- END refresh --><!-- BEGIN notFound -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>受注情報は見つかりませんでした。</p><!-- END notFound -->
+
+	<!-- BEGIN index -->
+
+	<!-- BEGIN_MODULE Touch_Keyword -->
+	<p>[ %{KEYWORD} ] での検索結果</p><!-- END_MODULE Touch_Keyword -->
+
+	選択した受注の<strong>ステータス</strong>を
+	<select name="status" class="js-select2"><!-- BEGIN status:loop#button -->
+		<option value="{status}">{status}</option><!-- END status:loop#button -->
+	</select>
+	に
+	<input type="submit" name="ACMS_POST_Shop_Receipt_Status" value="変更" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+	<table class="adminTable acms-admin-table-admin acms-admin-table-heading js-admin_table-sortable acms-admin-table-hover">
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="checkAll" /></th>
+				<!--<th>受注日時</th>-->
+				<th>伝票No</th>
+				<th>ステータス</th>
+				<th>注文者名</th>
+				<th>合計（小計）</th>
+				<th>支払方法</th>
+				<th>配送方法</th>
+				<th>詳細</th>
+			</tr>
+		</thead>
+		<tbody><!-- BEGIN receipt:loop -->
+			<tr>
+				<td><input type="checkbox" name="checks[]" value="{code}" id="check:{code}" /></td>
+				<!--<td>{datetime}[datetime(Y-m-d)]</td>-->
+				<td><label for="check:{code}">{code}</label></td>
+				<td>{status}</td>
+				<td><a href="mailto:{user_mail}">{user_name}</a></td>
+				<td>&yen;{total}[number_format]（&yen;{subtotal}[number_format]）</td>
+				<td>{payment}</td>
+				<td>{deliver}</td>
+				<td><a href="{editUrl}">詳細</a></td>
+			</tr><!-- END receipt:loop -->
+		</tbody>
+	</table>
+
+	<div class="acms-admin-grid">
+		<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+			<!-- BEGIN pager:veil -->
+			<div class="acms-admin-pager-container">
+				<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+					<li class="prev"><a href="{url}">&laquo;&nbsp;前へ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+					<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+					<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+					<li class="next"><a href="{url}">次へ&nbsp;&raquo;</a></li><!-- END forwardLink -->
+				</ul>
+			</div>
+			<!-- END pager:veil -->
+		</div>
+		<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+			<div class="acms-admin-itemsAmount-container">
+				<p>{itemsFrom}件 - {itemsTo}件 / 全{itemsAmount}件</p>
+			</div>
+		</div>
+	</div><!-- /.acms-grid -->
+
+</form><!-- END index -->
+<!-- END_MODULE Admin_Shop_Receipt_Index -->

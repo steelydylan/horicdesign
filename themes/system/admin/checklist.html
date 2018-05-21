@@ -1,0 +1,364 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->チェックリスト<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_CheckList -->
+<div class="acms-admin-grid-r">
+	<div class="acms-admin-col-md-6">
+		<!-- BEGIN license -->
+		<h2 class="acms-admin-admin-title2"><!--T-->ライセンス・バージョン情報<!--/T--></h2>
+		<table class="acms-admin-admin-mini-table">
+			<thead><th><!--T-->項目<!--/T--></th><th><!--T-->状態<!--/T--></th></thead>
+			<tbody>
+				<tr>
+					<td><!--T-->バージョン<!--/T--></td>
+					<td>
+						{version} / {edition}
+					</td>
+				</tr>
+				<tr>
+					<td><!--T-->ライセンス<!--/T--></td><!-- BEGIN_IF [%{IS_DEVELOPMENT}/eq/on] -->
+					<td class="caution">開発ライセンス</td><!-- ELSE -->
+					<td>正式ライセンス</td><!-- END_IF -->
+				</tr>
+				<tr>
+					<td><!--T-->ドメイン<!--/T--></td>
+					<td class="{caution}">{domain} <!-- BEGIN matchDomain:veil -->({matchDomain})<!-- END matchDomain:veil --></td>
+				</tr>
+				<tr>
+					<td><!--T-->ユーザー数<!--/T--></td>
+					<td><!-- BEGIN userUnlimited -->
+						<!--T-->無制限<!--/T--><!-- END userUnlimited --><!-- BEGIN userLimited -->{limit}<!-- END userLimited -->
+					</td>
+				</tr>
+				<tr>
+					<td><!--T-->オプション<!--/T--></td>
+					<td>
+						<!-- BEGIN licenseType:loop -->
+						<!-- BEGIN licenseType:glue --><!--T-->,<!--/T--> <!-- END licenseType:glue --><!--T-->{type}<!--/T--><!-- END licenseType:loop -->
+					</td>
+				</tr><!-- BEGIN_IF [{expire}/nem] -->
+				<tr>
+					<td><!--T-->有効期限<!--/T--></td>
+					<td>{expire}</td>
+				</tr><!-- END_IF -->
+			</tbody>
+		</table>
+		<!-- END license -->
+		<!-- BEGIN systemMode -->
+		<h2 class="acms-admin-admin-title2"><!--T-->動作モード<!--/T--></h2>
+		<table class="acms-admin-admin-mini-table">
+			<thead><th><!--T-->項目<!--/T--></th><th><!--T-->状態<!--/T--></th></thead>
+			<tbody>
+				<!-- BEGIN debugMode -->
+				<tr>
+					<td><!--T-->デバッグモード<!--/T--></td>
+					<td class="{caution}">{mode}</td>
+				</tr><!-- END debugMode --><!-- BEGIN benchmarkMode -->
+				<tr>
+					<td><!--T-->ベンチマークモード<!--/T--></td>
+					<td class="{caution}">{mode}</td>
+				</tr><!-- END benchmarkMode --><!-- BEGIN imgLibrary -->
+				<tr>
+					<td><!--T-->画像エンジン<!--/T--></td>
+					<td>{mode}</td>
+				</tr><!-- END imgLibrary --><!-- BEGIN imgOptimizer -->
+				<tr>
+					<td>
+						<!--T-->ロスレス圧縮対応フォーマット<!--/T-->
+						<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->themes/system/images/system にあるファイルに書き込み権限があるか確認ください。<!--/T-->"></i>
+					</td>
+					<td>
+						<!-- BEGIN_IF [{format}/em/]--><!--T-->なし<!--/T--><!-- ELSE -->{format}<!-- END_IF -->
+					</td>
+				</tr><!-- END imgOptimizer -->
+			</tbody>
+		</table>
+		<!-- END systemMode -->
+
+		<!-- BEGIN_MODULE Admin_Dashboard_LogAccess -->
+		<div class="acms-admin-box-group">
+			<h2 class="acms-admin-admin-title2"><!--T-->アクセスログ<!--/T--></h2>
+			<form action="" method="post" class="acms-admin-form">
+				<div class="acms-admin-filter">
+					<select name="target_span_start" class="js-select2">
+						<option value="">(<!--T-->開始<!--/T-->)</option><!-- BEGIN start:loop -->
+						<option value="{start}"{selected}>{date}</option><!-- END start:loop -->
+					</select>
+					〜
+					<select name="target_span_end" class="js-select2">
+						<option value="">(<!--T-->終了<!--/T-->)</option><!-- BEGIN end:loop -->
+						<option value="{end}"{selected}>{date}</option><!-- END end:loop -->
+					</select>
+					<input type="hidden" name="axis" value="self" />
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="axis" value="descendant-or-self" id="input-checkbox-axis" />
+						<label for="input-checkbox-axis">
+							<i class="acms-admin-ico-checkbox"></i><!--T-->子ブログのログも含める<!--/T-->
+						</label>
+					</div>
+					<!-- BEGIN term_not_selected --><label class="validator-result-0"><!--T-->対象期間を選択してください。<!--/T--></label><!-- END term_not_selected -->
+					<!-- BEGIN archives_not_writable --><label class="validator-result-0"><!--T-->archivesディレクトリを書き込み可能にしてください。<!--/T--></label><!-- END archives_not_writable -->
+
+					<input type="submit" name="ACMS_POST_Log_Access_Download" value="<!--T-->CSVダウンロード<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+
+					<!-- <input type="submit" name="ACMS_POST_Log_Access_Delete" value="削除" class="acms-admin-btn-admin" /> -->
+				</div>
+
+				<table class="adminTable acms-admin-table-admin-edit">
+					<tr>
+						<th><!--T-->ログ収集の状態<!--/T--></th>
+						<td>
+							<!-- BEGIN log_access_enable -->
+							<!--T-->全て取得<!--/T-->(GET,POST)
+							<!-- END log_access_enable -->
+							<!-- BEGIN log_access_post_enable -->
+							<!--T-->POSTのみ取得<!--/T-->
+							<!-- END log_access_post_enable -->
+							<!-- BEGIN log_access_disable -->
+							<!--T-->無効<!--/T-->
+							<!-- END log_access_disable -->
+						</td>
+					</tr>
+					<tr>
+						<th><!--T-->全体の件数<!--/T--></th>
+						<td>{amount_all}[number_format]<!--T-->件<!--/T--></td>
+					</tr>
+					<!--<tr>-->
+					<!--<td>動的生成時の件数</td>-->
+					<!--<td>{amount_dynamic}[number_format]件</td>-->
+					<!--</tr>-->
+					<!--<tr>-->
+					<!--<td>静的生成時の件数</td>-->
+					<!--<td>{amount_static}[number_format]件</td>-->
+					<!--</tr>-->
+					<!--<tr>-->
+					<!--<td>その他の件数</td>-->
+					<!--<td>{amount_false}[number_format]件</td>-->
+					<!--</tr>-->
+				</table>
+			</form>
+		</div>
+		<!-- END_MODULE Admin_Dashboard_LogAccess -->
+	</div>
+	<div class="acms-admin-col-md-6">
+		<!-- BEGIN_MODULE Admin_Dashboard_PhpStatus -->
+		<h2 class="acms-admin-admin-title2"><!--T-->サーバー環境情報<!--/T--></h2>
+		<table class="acms-admin-admin-mini-table">
+			<thead>
+			<tr>
+				<th><!--T-->項目<!--/T--></th>
+				<th><!--T-->設定値<!--/T--></th>
+			</tr>
+			</thead>
+			<tbody><!-- BEGIN memory_limit:veil -->
+				<tr>
+					<td><!--T-->メモリー占有量の上限<!--/T--></td>
+					<td>{memory_limit}</td>
+				</tr><!-- END memory_limit:veil --><!-- BEGIN upload_max_filesize:veil -->
+				<tr>
+					<td><!--T-->アップロード上限サイズ<!--/T--></td>
+					<td>{upload_max_filesize}</td>
+				</tr><!-- END upload_max_filesize:veil --><!-- BEGIN post_max_size:veil -->
+				<tr>
+					<td><!--T-->POSTデータ上限サイズ<!--/T--></td>
+					<td>{post_max_size}</td>
+				</tr><!-- END post_max_size:veil --><!-- BEGIN max_file_uploads:veil -->
+				<tr>
+					<td><!--T-->同時アップロード上限ファイル数<!--/T--></td>
+					<td>{max_file_uploads}</td>
+				</tr><!-- END max_file_uploads:veil --><!-- BEGIN safe_mode:veil -->
+				<tr>
+					<td><!--T-->セーフモード<!--/T--></td>
+					<td>{safe_mode}</td>
+				</tr><!-- END safe_mode:veil -->
+				<!-- BEGIN php_version:veil -->
+				<tr>
+					<td><!--T-->PHPのバージョン<!--/T--></td>
+					<td>{php_version}</td>
+				</tr><!-- END php_version:veil --><!-- BEGIN php_sapi:veil -->
+				<tr>
+					<td><!--T-->PHP動作環境<!--/T-->
+					</td>
+					<td>{php_sapi}</td>
+				</tr><!-- END php_sapi:veil --><!-- BEGIN mysql_version:veil -->
+				<tr>
+					<td><!--T-->MySQLのバージョン<!--/T--></td>
+					<td>{mysql_version}</td>
+				</tr><!-- END mysql_version:veil -->
+				<tr>
+					<td><!--T-->サーバー内時間<!--/T--></td>
+					<td>{php_datetime}</td>
+				</tr>
+				<tr>
+					<td>gettext</td>
+					<td><!-- BEGIN_IF [{php_gettext}/eq/enable] --><!--T-->利用可<!--/T--><!-- ELSE --><!--T-->利用不可<!--/T--><!-- END_IF --></td>
+				</tr>
+				<tr>
+					<td>ImageMagick</td>
+					<td><!-- BEGIN_IF [{php_imagick}/eq/enable] --><!--T-->利用可<!--/T--><!-- ELSE --><!--T-->利用不可<!--/T--><!-- END_IF --></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- BEGIN_MODULE Touch_Debug -->
+		<h2 class="acms-admin-admin-title2"><!--T-->使用条件がある機能<!--/T--></h2>
+		<table class="acms-admin-admin-mini-table">
+			<thead>
+				<tr>
+					<th><!--T-->項目<!--/T--></th>
+					<th><!--T-->状態<!--/T--></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><!--T-->Twitter API系モジュール<!--/T--></td>
+					<td>{Twitter}</td>
+				</tr>
+				<tr>
+					<td><!--T-->Facebook API系モジュール<!--/T--></td>
+					<td>{Facebook}</td>
+				</tr>
+				<tr>
+					<td><!--T-->画像の回転処理<!--/T--></td>
+					<td>{ImageRotate}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- END_MODULE Touch_Debug -->
+		<!-- END_MODULE Admin_Dashboard_PhpStatus -->
+	</div>
+</div>
+
+<h2 class="acms-admin-admin-title2"><!--T-->キャッシュ・アクセスログ<!--/T--></h2>
+<div class="acms-admin-table-responsive acms-admin-margin-bottom-large">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<th><!--T-->ブログID<!--/T--></th>
+			<th><!--T-->ルールID<!--/T--></th>
+			<th><!--T-->キャッシュ<!--/T--></th>
+			<th><!--T-->キャッシュ感度<!--/T--></th>
+			<th><!--T-->アクセスログ<!--/T--></th>
+			<th class="acms-admin-admin-mini-table-action"><!--T-->編集<!--/T--></th>
+		</thead>
+		<tbody>
+			<!-- BEGIN blog:loop -->
+			<tr>
+				<td><span class="acms-admin-label label-default">{bid}</span></td>
+				<td>{rid}</td><!-- BEGIN cacheCaution -->
+				<td class="{caution}"><!-- END cacheCaution -->{cache}</td><!-- BEGIN cacheSensitivityCaution -->
+				<td class="{caution}"><!-- END cacheSensitivityCaution -->{cacheSensitivity}</td>
+				<td>{logAccess}</td>
+				<td class="acms-admin-admin-mini-table-action">
+					<a href="{editUrl}" class="acms-admin-btn-admin"><!--T-->編集<!--/T--></a>
+				</td>
+			</tr><!-- END blog:loop -->
+		</tbody>
+	</table>
+</div>
+
+<h2 class="acms-admin-admin-title2"><!--T-->フォーム<!--/T-->（<!--T-->一般宛メール設定<!--/T-->）</h2>
+<div class="acms-admin-table-responsive acms-admin-margin-bottom-large">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<th><!--T-->ブログID<!--/T--></th>
+			<th><!--T-->フォームID<!--/T--></th>
+			<th>To</th>
+			<th>From</th>
+			<th>Cc</th>
+			<th>Bcc</th>
+			<th>Reply-To</th>
+			<th><!--T-->文字コード<!--/T--></th>
+			<th class="acms-admin-admin-mini-table-action"><!--T-->編集<!--/T--></th>
+		</thead>
+		<tbody>
+			<!-- BEGIN formGeneral:loop -->
+			<tr>
+				<td><span class="acms-admin-label label-default">{bid}</span></td>
+				<td>{fmid}</td>
+				<td>{To}</td>
+				<td>{From}</td>
+				<td>{Cc}</td>
+				<td>{Bcc}</td>
+				<td>{Reply-To}</td>
+				<td>{Charset}</td>
+				<td class="acms-admin-admin-mini-table-action">
+					<a href="{editUrl}" class="acms-admin-btn-admin"><!--T-->編集<!--/T--></a>
+				</td>
+		</tr><!-- END formGeneral:loop -->
+		</tbody>
+	</table>
+</div>
+
+<h2 class="acms-admin-admin-title2"><!--T-->フォーム<!--/T-->（<!--T-->管理者宛メール設定<!--/T-->）</h2>
+<div class="acms-admin-table-responsive acms-admin-margin-bottom-large">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<th><!--T-->ブログID<!--/T--></th>
+			<th><!--T-->フォームID<!--/T--></th>
+			<th>To</th>
+			<th>From</th>
+			<th>Cc</th>
+			<th>Bcc</th>
+			<th>Reply-To</th>
+			<th class="acms-admin-admin-mini-table-action"><!--T-->編集<!--/T--></th>
+		</thead>
+		<tbody>
+			<!-- BEGIN formAdmin:loop -->
+			<tr>
+				<td><span class="acms-admin-label label-default">{bid}</span></td>
+				<td>{fmid}</td>
+				<td>{AdminTo}</td>
+				<td>{AdminFrom}</td>
+				<td>{AdminCc}</td>
+				<td>{AdminBcc}</td>
+				<td>{AdminReply-To}</td>
+				<td class="acms-admin-admin-mini-table-action">
+					<a href="{editUrl}" class="acms-admin-btn-admin"><!--T-->編集<!--/T--></a>
+				</td>
+			</tr><!-- END formAdmin:loop -->
+		</tbody>
+	</table>
+</div>
+
+<h2 class="acms-admin-admin-title2"><!--T-->コンフィグ検索<!--/T--> ( <!--T-->DBのconfigテーブルを検索します<!--/T--> )</h2>
+<div class="acms-admin-margin-bottom-small">
+	<form action="#search" method="post" class="acms-admin-form">
+	<div class="acms-admin-form-action acms-admin-form-width-medium">
+			<input type="text" name="keyword" value="{keyword}">
+			<input type="hidden" name="query" value="keyword">
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="hidden" name="admin" value="checklist" />
+			<input type="text" name="iebug" value="" style="display:none;" class="iebug">
+			<span class="acms-admin-form-side-btn"><input type="submit" name="ACMS_POST_2GET" value="<!--T-->検索<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info"></span>
+		</div>
+	</form>
+</div>
+<!-- BEGIN config -->
+<div class="acms-admin-table-responsive acms-admin-margin-bottom-large">
+	<table class="acms-admin-table-admin">
+		<thead>
+			<th><!--T-->ブログID<!--/T--></th>
+			<th><!--T-->モジュールID<!--/T--></th>
+			<th><!--T-->ルール名<!--/T--></th>
+			<th><!--T-->キー<!--/T--></th>
+			<th><!--T-->バリュー<!--/T--></th>
+		</thead>
+		<tbody>
+			<!-- BEGIN config:loop -->
+			<tr>
+				<td><a href="{blogUrl}"><span class="acms-admin-label label-default">{bid}</span></a></td>
+				<td><a href="{moduleUrl}">{mcode}</a></td>
+				<td><a href="{ruleUrl}">{rcode}</a></td>
+				<td>{key}</td>
+				<td>{value}</td>
+			</tr><!-- END config:loop -->
+		</tbody>
+	</table>
+</div><!-- END config -->
+<!-- END_MODULE Admin_CheckList -->
+@include("/admin/tooltip/config/general.html")

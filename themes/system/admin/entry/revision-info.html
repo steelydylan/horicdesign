@@ -1,0 +1,40 @@
+<!-- BEGIN revision -->
+<!-- BEGIN_IF [%{RVID}/em/] --><!-- BEGIN_IF [%{trash}]/neq/show] -->
+<!-- BEGIN_MODULE Touch_Entry -->
+<!-- BEGIN_MODULE Touch_Version -->
+<div class="acms-admin-revison-admin">
+	<form action="" method="post" class="acms-admin-inline-btn">
+		<input type="button" value="<!--T-->バージョン管理<!--/T-->" class="js-get_revisions acms-admin-btn-admin" />
+		<!-- BEGIN_MODULE Touch_NotsessionWithApprovalAdministrator -->
+		<input type="hidden" name="revisionName" value="" />
+		<input type="hidden" name="redirect" value="approval" />
+		<input type="submit" name="ACMS_POST_Revision_Duplicate" value="<!--T-->作業領域から承認依頼<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" onclick="return confirm('<!--T-->作業領域からバージョンを作成して承認画面に移動します。よろしいですか？<!--/T-->');" />
+		<!-- END_MODULE Touch_NotsessionWithApprovalAdministrator -->
+	</form>
+
+	<hr class="clearHidden" />
+
+	<!-- BEGIN_MODULE Admin_Entry_Revision_Current -->
+	<!-- BEGIN currentVersion:veil --><!--T-->現在のバージョン<!--/T--> : <span class="acms-admin-label acms-admin-label-info">{currentVersion}</span> <!-- END currentVersion:veil -->
+	<!-- BEGIN amount:veil --><!--T-->バージョン数<!--/T--> : <span class="acms-admin-label">{amount}</span> <!-- END amount:veil -->
+	<!-- BEGIN notExistCurrentVersion --><!--T-->現在の状態がバージョンとして保存されていません<!--/T--><!-- END notExistCurrentVersion -->
+	<!-- END_MODULE Admin_Entry_Revision_Current -->
+</div>
+<!-- BEGIN_MODULE Touch_ApprovalEntrySave --><!-- BEGIN_MODULE Touch_NotsessionWithApprovalAdministrator -->
+<form action="" method="post">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="cid" value="%{CID}" />
+	<input type="hidden" name="eid" value="%{EID}" />
+	<input type="hidden" name="tpl" value="ajax/revision-preview.html" />
+	<input type="hidden" name="rvid" value="1" />
+	<input type="hidden" name="query[]" value="rvid" />
+
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!-- BEGIN_MODULE Touch_NotPreApproval --><!--T-->以下のエントリーは承認が完了されているものになります。<!--/T--><!-- END_MODULE Touch_NotPreApproval --><!--T-->保存した内容は<!--/T-->
+	<input type="submit" name="ACMS_POST_2GET" value="<!--T-->作業領域<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin" /> <!--T-->に保存されています。<!--/T--></p>
+</form>
+<!-- END_MODULE Touch_NotsessionWithApprovalAdministrator --><!-- END_MODULE Touch_ApprovalEntrySave -->
+
+<!-- END_MODULE Touch_Version -->
+<!-- END_MODULE Touch_Entry -->
+<!-- END_IF --><!-- END_IF -->
+<!-- END revision -->

@@ -1,0 +1,210 @@
+/* モーダル */
+.acms-modal {
+	position: fixed;
+	top: 80px;
+	right: 0;
+	bottom: -80px;
+	left: 0;
+	display: none;
+	padding-right: calc(constant(safe-area-inset-right));
+	padding-left: calc(constant(safe-area-inset-left));
+	overflow-x: hidden;
+	overflow-y: auto;
+	@include opacity(0);
+	z-index: zIndex(acms-modal);
+	-webkit-overflow-scrolling: touch;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0, 0, 0);
+	will-change: transform, opacity;
+	outline: 0;
+
+	@if $admin == true {
+		font-family: $acms-admin-font-family;
+	}
+}
+
+.acms-modal.in {
+	@include translate(0, -80px);
+	transition: all 0.3s;
+	@include opacity(1);
+}
+
+.acms-modal.out {
+	@include translate(0, 40px);
+	transition: all 0.3s;
+	@include opacity(0);
+}
+
+.acms-modal.display {
+	top: 0;
+	bottom: -20px;
+	@include opacity(1);
+}
+
+.acms-modal-middle {
+	position: fixed;
+	overflow: hidden;
+
+	&.display {
+		bottom: 0;
+	}
+
+	.acms-modal-dialog {
+		height: 100vh;
+		box-shadow: none;
+	}
+	.acms-modal-content {
+		margin: 50px auto 50px auto;
+	}
+}
+
+.acms-modal-middle-scroll {
+	overflow: auto;
+	max-height: 50vh;
+}
+
+.acms-modal-dialog {
+	position: relative;
+	max-width: 800px;
+	margin: 10px 10px;
+	box-shadow: 0 5px 15px #000;
+}
+
+.acms-modal-dialog.large {
+	max-width: 100%;
+	width: 95%;
+}
+
+@media screen and (min-width: $breakpoint-md-min){
+	.acms-modal-dialog {
+		margin: 30px auto;
+	}
+}
+
+.acms-modal-content {
+	padding: 5px;
+	background: #fff;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.acms-modal-header {
+	margin: 0 -5px;
+	padding: 0 10px;
+	border-bottom: 1px solid #cccccc;
+}
+
+.acms-modal-heading {
+	margin: 5px 0;
+	@include font-size(14);
+	color: #333;
+}
+
+.acms-modal-body {
+	margin: 0 -5px;
+	padding: 0 10px;
+}
+
+.acms-modal-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: zIndex(acms-modal);
+	background-color: #4e4e4e;
+	-webkit-transform: translateZ(0);
+}
+
+.acms-modal-hide {
+	float: right;
+	padding: 0;
+	font-size: 20px;
+	color: #4b4b4b;
+	line-height: 1;
+	cursor: pointer;
+	border: 0;
+	background: #fff;
+	border: 1px solid transparent;
+
+	&:focus {
+		outline: 0;
+		border-color: $acms-btn-focus-border-color;
+	}
+}
+
+.acms-modal-footer {
+	border-top: 1px solid #cccccc;
+	padding: 15px;
+	text-align: right;
+	.acms-btn:last-child {
+		margin-left: 5px;
+	}
+}
+
+
+.acms-modal .acms-modal-quick-search {
+	max-width: 600px;
+	height: auto;
+	.acms-table-hover tr:hover td {
+		background-color: #FFF;
+	}
+	.acms-table-hover tr.hover td {
+		background: #5690d8;
+		color: #fff;
+		a {
+			color: #fff;
+		}
+		span {
+			color: #fff;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-md-min){
+	.acms-modal-header {
+		padding: 0 15px;
+	}
+	.acms-modal-heading {
+		margin: 15px 0;
+		@include font-size(18);
+	}
+
+	.acms-modal-body {
+		padding: 0 15px;
+	}
+}
+
+// モジュールのタイトル
+.acms-module-title-wrapper {
+	position: relative;
+
+	.acms-modal-heading {
+		margin: 15px 0;
+	}
+
+	// アイコン
+	.acms-icon {
+		position: absolute;
+		left: 0;
+		top: 2px;
+	}
+
+	strong {
+		display: block;
+		margin-bottom: 10px;
+		@include font-size(13);
+	}
+
+	h1 {
+		margin: 0;
+		@include font-size(20);
+	}
+
+	.acms-module-en {
+		display: block;
+		margin-top: 5px;
+		color: #666666;
+		@include font-size(12);
+	}
+}

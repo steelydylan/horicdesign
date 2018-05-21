@@ -1,0 +1,75 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name --><strong><!--T-->ルール<!--/T--> : {name} </strong><!-- END_MODULE Admin_Rule_Name -->
+			<!-- BEGIN_MODULE Admin_Module_Name --><strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) </strong>
+			<!-- END_MODULE Admin_Module_Name --><!--T-->ユニット設定<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span
+	class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span>
+	<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユニット設定を保存しました<!--/T-->
+</p><!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index acms-admin-form-group">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"/>
+			@include("/admin/config/action.html")
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<div class="acms-admin-float-right">
+				<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_import-part/?rid=%{rid}" class="acms-admin-btn-admin"><!--T-->インポート<!--/T--></a>
+				<input type="submit" name="ACMS_POST_Config_PartExport" class="acms-admin-btn-admin" value="<!--T-->エクスポート<!--/T-->"/>
+				<a href="{shortcutUrl}" class="acms-admin-btn-admin"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a>
+			</div>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<!-- BEGIN Config_Column -->
+	<!-- BEGIN mode:loop -->
+	<div class="acms-admin-unitbox">
+		<div class="panel-heading clearfix ">
+			<h2 class="acms-admin-unitbox-title"><span class="acms-admin-label"><!--T-->{mode}<!--/T--></span></h2>
+		</div>
+		<div class="panel-body column-definition-wrapper ui-sortable">
+
+			<p class="columnVeil">
+				<!-- BEGIN add_type:loop -->
+				<a class="{modePrefix.type}-{type}" href="#">
+					<button class="acms-admin-btn-admin"><!--T-->{label}<!--/T--></button>
+				</a>
+				<!-- END add_type:loop -->
+			</p>
+			<hr class="clearHidden"/>
+			<!-- BEGIN loop -->
+			@include("/admin/config/column-definition.html")<!-- END loop -->
+			<input type="hidden" name="config[]" value="{modePrefix}type"/>
+			<input type="hidden" name="config[]" value="{modePrefix}align"/>
+			<input type="hidden" name="config[]" value="{modePrefix}group"/>
+			<input type="hidden" name="config[]" value="{modePrefix}class"/>
+			<input type="hidden" name="config[]" value="{modePrefix}size"/>
+			<input type="hidden" name="config[]" value="{modePrefix}edit"/>
+			<input type="hidden" name="config[]" value="{modePrefix}field_1"/>
+			<input type="hidden" name="config[]" value="{modePrefix}field_2"/>
+			<input type="hidden" name="config[]" value="{modePrefix}field_3"/>
+			<input type="hidden" name="config[]" value="{modePrefix}field_4"/>
+			<input type="hidden" name="config[]" value="{modePrefix}field_5"/>
+		</div>
+	</div>
+	<!-- END mode:loop -->
+	<!-- END Config_Column --><!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}"/><!-- END_MODULE Admin_Rule_Name -->
+	<!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}"/><!-- END_MODULE Admin_Module_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->

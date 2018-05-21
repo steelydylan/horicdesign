@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="src/snippets.css"/>
+	<!--[if lte IE 9]>
+	<script src="/js/html5shiv.min.js"></script><![endif]-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Ogp</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Ogp --&gt;
+&lt;title&gt;{title}&lt;/title&gt;
+&lt;meta property="og:url" content="&#x25;{PERMALINK}"&gt;
+&lt;meta property="og:site_name" content="&#x25;{ROOT_BLOG_NAME}"&gt;
+&lt;meta property="og:title" content="{title}"&gt;
+&lt;meta property="og:type" content="{type}"&gt;
+
+&lt;!-- BEGIN_IF [{description}[delnl]/nem/] --&gt;
+&lt;meta property="og:description" content="{description}[trim(200, '...')|delnl|escape]"&gt;
+&lt;!-- END_IF --&gt;
+&lt;!-- BEGIN_IF [{image}/nem/] --&gt;
+&lt;meta property="og:image" content="&#x25;{HTTP_ARCHIVES_DIR}{image}"&gt;
+&lt;!-- END_IF --&gt;
+&lt;!-- BEGIN_IF [{description}[delnl]/nem/] --&gt;
+&lt;meta name="description" content="{description}[trim(200, '...')|delnl|escape]"&gt;
+&lt;!-- END_IF --&gt;
+&lt;!-- BEGIN_IF [{keywords}/nem/] --&gt;
+&lt;meta name="keywords" content="{keywords}"&gt;
+&lt;!-- END_IF --&gt;
+&lt;!-- END_MODULE Ogp --&gt;
+</textarea>
+</body>
+</html>

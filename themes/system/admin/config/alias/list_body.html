@@ -1,0 +1,36 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エイリアスリストが表示される順番です。<!--/T-->"></i></th>
+		<td>
+			<select name="alias_list_order" class="js-select2">
+				<option value="domain-asc"{alias_list_order:selected#domain-asc}><!--T-->ドメイン<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="domain-desc"{alias_list_order:selected#domain-desc}><!--T-->ドメイン<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="code-asc"{alias_list_order:selected#code-asc}><!--T-->コード名<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="code-desc"{alias_list_order:selected#code-desc}><!--T-->コード名<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="id-asc"{alias_list_order:selected#id-asc}>ID <!--T-->( 昇順 )<!--/T--></option>
+				<option value="id-desc"{alias_list_order:selected#id-desc}>ID <!--T-->( 降順 )<!--/T--></option>
+				<option value="sort-asc"{alias_list_order:selected#sort-asc}><!--T-->表示順<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{alias_list_order:selected#sort-desc}><!--T-->表示順<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="name-asc"{alias_list_order:selected#name-asc}><!--T-->名前<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="name-desc"{alias_list_order:selected#name-desc}><!--T-->名前<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="alias_list_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エイリアスリストが表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="alias_list_limit" value="{alias_list_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="alias_list_limit" />
+			<input type="hidden" name="alias_list_limit:convert" value="a" />
+			<input type="hidden" name="alias_list_limit:validator#digits" id="validator-alias_list_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-alias_list_limit-digits" class="validator-result-{alias_list_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

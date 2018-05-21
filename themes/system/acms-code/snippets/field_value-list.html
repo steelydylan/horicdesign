@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Field_ValueList</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Field_ValueList --&gt;
+&lt;div class="acms-form acms-margin-bottom-medium"&gt;
+&#64;include("/admin/module/setting.html")
+&lt;select&gt;
+	&lt;!-- BEGIN value:loop --&gt;
+	&lt;option value="{value}"&gt;{value}&lt;/option&gt;
+	&lt;!-- END value:loop --&gt;
+&lt;/select&gt;
+&lt;/div&gt;
+&lt;!-- END_MODULE Field_ValueList --&gt;
+</textarea>
+</body>
+</html>

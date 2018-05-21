@@ -1,0 +1,114 @@
+<script type="text/javascript">
+var BANNERLIST_NUM = 7
+  , DELAY          = 250
+  , INTERVAL       = 10000
+;
+</script>
+
+
+
+<!-- BEGIN_MODULE Banner -->
+<div id="ablogcms-module--jsbanner--bannerlist">
+	<ul class="bannerBox">
+<!-- BEGIN banner:loop -->
+<!-- BEGIN banner#src -->
+		<li style="display:none;">{src}[raw]</li>
+<!-- END banner#src -->
+<!-- BEGIN banner#img -->
+		<li style="display:none;"><a href="{url}" target="{target}"><img src="%{ARCHIVES_DIR}{img}" width="{x}" height="{y}" alt="{alt}" /></a></li>
+<!-- END banner#img -->
+<!-- END banner:loop -->
+	</ul>
+</div>
+<!-- END_MODULE Banner -->
+
+<script type="text/javascript">
+$(function(){
+    var div        = $( '#ablogcms-module--jsbanner--bannerlist' )
+      , ul         = $( 'ul', div )
+    ;
+
+    function sort_bannerlist( ul_target, flg_show ) {
+        var bannerlist = [];
+        var h_div = 0;
+        
+        $( 'li', ul_target ).each(function(){
+            bannerlist.push( this );
+        });
+
+        bannerlist.sort(function(){ return .5 - Math.random(); });
+
+        if( bannerlist.length <= BANNERLIST_NUM )  BANNERLIST_NUM = bannerlist.length;
+
+        for( var i = 0; i < bannerlist.length; i++ ) {
+            if( flg_show  &&  i < BANNERLIST_NUM ) {
+                bannerlist[i].style.display = 'block';
+                h_div += $( bannerlist[i] ).height();
+            }
+            ul_target.append( bannerlist[i] );
+        }
+
+        if( flg_show )  div.height( h_div );
+    }
+
+    function update_bannerlist() {
+        var h_div       = 0
+          , h_sum_count = 0
+        ;
+
+        //ul.slideUp( DELAY, function() {
+        ul.fadeOut( DELAY, function() {
+            var i;
+            
+
+            if( BANNERLIST_NUM == $( 'li', ul ).size() )  sort_bannerlist( ul );
+
+            for( i = 0; i < BANNERLIST_NUM; i++ )
+              $( 'li:first-child', ul ).hide().appendTo( ul );
+                
+            $( 'li', ul ).each( function( i ) {
+                if( i + 1 > BANNERLIST_NUM )  return;
+
+                this.style.display = 'block';
+
+                if( i == BANNERLIST_NUM - 1 ) {
+                    // リストの複製を見えないところに表示する
+                    var clone = ul.clone()
+                      .css({
+                          position:   'absolute',
+                          top:        0,
+                          left:       -9999,
+                          background: '#000000',
+                          _:1
+                      })
+                      .show( function() {
+                          // 表示完了後，その高さを取得し，囲っているdivの高さとする
+                          h_div =
+                            $( this ).height()
+                            + parseInt( $( this ).css( 'paddingTop' ) )
+                            + parseInt( $( this ).css( 'paddingBottom' ) )
+                          ;
+                          $( this ).remove();
+
+                          div.height( h_div );
+                          //ul.slideDown( DELAY, function() {
+                          ul.fadeIn( DELAY, function() {
+                              setTimeout( update_bannerlist, INTERVAL );
+                          });
+                      })
+                      .insertAfter( ul )
+                    ;
+                }
+                
+            });
+
+        });
+    }
+
+    sort_bannerlist( ul, true );
+    setTimeout( function() {
+        update_bannerlist();
+    }, INTERVAL );
+
+});
+</script>

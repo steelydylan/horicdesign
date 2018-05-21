@@ -1,0 +1,13 @@
+<!-- BEGIN_MODULE Entry_Body --><!-- BEGIN entry:loop -->----------------------------------------
+[メールマガジン] %{BLOG_NAME}
+{title}
+日付：{date#Y}/{date#m}/{date#d}
+----------------------------------------
+<!-- BEGIN unit:veil --><!-- BEGIN unit:loop --><!-- BEGIN unit#text -->
+<!-- BEGIN p -->{text}[striptags]<!-- END p --><!-- BEGIN h2 -->{text}[striptags]<!-- END h2 --><!-- BEGIN h3 -->{text}[striptags]<!-- END h3 --><!-- BEGIN h4 -->{text}[striptags]<!-- END h4 --><!-- BEGIN h5 -->{text}[striptags]<!-- END h5 --><!-- BEGIN ul -->{text}[striptags]<!-- END ul --><!-- BEGIN ol -->{text}[striptags]<!-- END ol --><!-- BEGIN blockquote -->{text}[striptags]<!-- END blockquote --><!-- BEGIN table -->{text}[striptags]<!-- END table --><!-- BEGIN pre -->{text}[striptags]<!-- END pre --><!-- BEGIN none -->{text}[striptags]<!-- END none --><!-- BEGIN markdown -->{text}[striptags]<!-- END markdown --><!-- BEGIN wysiwyg -->{text}[striptags]<!-- END wysiwyg -->
+<!-- END unit#text --><!-- BEGIN unit#image -->
+画像：%{HTTP_ROOT}{path}<!-- BEGIN caption:veil -->
+{caption}<!-- END caption:veil -->
+<!-- END unit#image --><!-- END unit:loop --><!-- END unit:veil -->
+
+Copyright(c) %{BLOG_NAME}<!-- END entry:loop --><!-- END_MODULE Entry_Body -->

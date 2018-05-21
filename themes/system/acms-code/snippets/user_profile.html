@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>User_Profile</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE User_Profile --&gt;
+&lt;!-- BEGIN user:loop --&gt;
+&lt;div&gt;
+	&lt;!-- BEGIN image:veil --&gt;
+	&lt;img src=&quot;&#x0025;{ARCHIVES_DIR}{image@path}&quot; width=&quot;{image@x}&quot; height=&quot;{image@y}&quot; alt=&quot;{image@alt}&quot; /&gt;
+	&lt;!-- END image:veil --&gt;
+	&lt;!-- BEGIN position:veil --&gt;
+	&lt;p&gt;{profilePosition}&lt;/p&gt;
+	&lt;!-- END position:veil --&gt;
+	&lt;!-- BEGIN title:veil --&gt;
+	&lt;p&gt;{title}&lt;/p&gt;
+	&lt;!-- END title:veil --&gt;
+	&lt;!-- BEGIN name:veil --&gt;
+	&lt;p&gt;{name}&lt;/p&gt;
+	&lt;!-- END name:veil --&gt;
+	&lt;!-- BEGIN profile:veil --&gt;
+	&lt;p&gt;{profile}[raw]&lt;/p&gt;
+	&lt;!-- END profile:veil --&gt;
+&lt;/div&gt;
+&lt;!-- END user:loop --&gt;
+&lt;!-- END_MODULE User_Profile --&gt;
+</textarea>
+</body>
+</html>

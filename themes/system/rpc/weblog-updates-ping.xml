@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<methodCall>
+	<methodName>weblogUpdates.{method}</methodName>
+	<params>
+		<param>
+			<value>{siteName}</value>
+		</param>
+		<param>
+			<value>{siteLink}</value>
+		</param><!-- BEGIN extended -->
+		<param>
+			<value>{checkLink}</value>
+		</param>
+		<param>
+			<value>http://%{DOMAIN_ROOT}%{SCRIPT_ROOT}bid/%{BID}/<!-- BEGIN cid -->cid/%{CID}/<!-- END cid -->tpl/rss2.xml</value>
+		</param><!-- BEGIN category -->
+		<param>
+			<value>%{CATEGORY_NAME}</value>
+		</param><!-- END category --><!-- END extended -->
+	</params>
+</methodCall>

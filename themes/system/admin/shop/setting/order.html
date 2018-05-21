@@ -1,0 +1,191 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">注文画面の設定</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<form action="/bid/%{BID}/admin/shop_menu/" method="post" class="acms-admin-form">
+
+<p class="transaction-notice-{config:validator}" class="acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>コンフィグを保存出来ませんでした。</p>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<a href="/bid/%{BID}/admin/shortcut_edit/?action=Shop_Order&admin=%{ADMIN}&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-shortcut-btn"><i class="acms-admin-icon acms-admin-icon-shortcut"></i>ショートカットに追加</a><!-- END_MODULE Touch_SessionWithAdministration -->
+
+<input type="submit" name="ACMS_POST_Config" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+<h2 class="acms-admin-admin-title2">決済と配送の設定</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+	<th>決済方法と手数料<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-payment" class="tooltipIcon" /></th>
+	<td>
+		<table>
+			<tr class="thX">
+				<th style="width:19%" class="acms-admin-table-left">ラベル</th>
+				<th style="width:19%" class="acms-admin-table-left">手数料</th>
+				<th style="width:19%" class="acms-admin-table-left">クロネコ</th>
+				<th style="width:19%" class="acms-admin-table-left">SGP</th>
+				<th style="width:19%" class="acms-admin-table-left">PayPal</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label}" /></td>
+				<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge}" /></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_kuroneko" value="0"{shop_order_payment_kuroneko:checked#0} id="input-radio-shop-order-payment-kuroneko" /><label for="input-radio-shop-order-payment-kuroneko"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_sgp" value="0"{shop_order_payment_sgp:checked#0} id="input-radio-shop-order-payment-sgp" /><label for="input-radio-shop-order-payment-sgp"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_paypal" value="0"{shop_order_payment_paypal:checked#0} id="input-radio-shop-order-payment-paypal" /><label for="input-radio-shop-order-payment-paypal"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[1]}" /></td>
+				<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[1]}" /></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_kuroneko" value="1"{shop_order_payment_kuroneko:checked#1} id="input-radio-shop-order-payment-kuroneko-1" /><label for="input-radio-shop-order-payment-kuroneko-1"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_sgp" value="1"{shop_order_payment_sgp:checked#1} id="input-radio-shop-order-payment-sgp-1" /><label for="input-radio-shop-order-payment-sgp-1"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_paypal" value="1"{shop_order_payment_paypal:checked#1} id="input-radio-shop-order-payment-paypal-1" /><label for="input-radio-shop-order-payment-paypal-1"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[2]}" /></td>
+				<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[2]}" /></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_kuroneko" value="2"{shop_order_payment_kuroneko:checked#2} id="input-radio-shop-order-payment-kuroneko-2" /><label for="input-radio-shop-order-payment-kuroneko-2"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_sgp" value="2"{shop_order_payment_sgp:checked#2} id="input-radio-shop-order-payment-sgp-2" /><label for="input-radio-shop-order-payment-sgp-2"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_paypal" value="2"{shop_order_payment_paypal:checked#2} id="input-radio-shop-order-payment-paypal-2" /><label for="input-radio-shop-order-payment-paypal-2"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[3]}" /></td>
+				<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[3]}" /></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_kuroneko" value="3"{shop_order_payment_kuroneko:checked#3} id="input-radio-shop-order-payment-kuroneko-3" /><label for="input-radio-shop-order-payment-kuroneko-3"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_sgp" value="3"{shop_order_payment_sgp:checked#3} id="input-radio-shop-order-payment-sgp-3" /><label for="input-radio-shop-order-payment-sgp-3"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_paypal" value="3"{shop_order_payment_paypal:checked#3} id="input-radio-shop-order-payment-paypal-3" /><label for="input-radio-shop-order-payment-paypal-3"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[4]}" /></td>
+				<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[4]}" /></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_kuroneko" value="4"{shop_order_payment_kuroneko:checked#4} id="input-radio-shop-order-payment-kuroneko-4" /><label for="input-radio-shop-order-payment-kuroneko-4"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_sgp" value="4"{shop_order_payment_sgp:checked#4} id="input-radio-shop-order-payment-sgp-4" /><label for="input-radio-shop-order-payment-sgp-4"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_paypal" value="4"{shop_order_payment_paypal:checked#4} id="input-radio-shop-order-payment-paypal-4" /><label for="input-radio-shop-order-payment-paypal-4"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="shop_order_payment_label[]" value="{shop_order_payment_label[5]}" /></td>
+				<td><input type="text" name="shop_order_payment_charge[]" value="{shop_order_payment_charge[5]}" /></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_kuroneko" value="5"{shop_order_payment_kuroneko:checked#5} id="input-radio-shop-order-payment-kuroneko-5" /><label for="input-radio-shop-order-payment-kuroneko-5"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_sgp" value="5"{shop_order_payment_sgp:checked#5} id="input-radio-shop-order-payment-sgp-5" /><label for="input-radio-shop-order-payment-sgp-5"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+				<td><div class="acms-admin-form-radio"><input type="radio" name="shop_order_payment_paypal" value="5"{shop_order_payment_paypal:checked#5} id="input-radio-shop-order-payment-paypal-5" /><label for="input-radio-shop-order-payment-paypal-5"><i class="acms-admin-ico-radio"></i> 有効</label></div></td>
+			</tr>
+		</table>
+		<input type="hidden" name="config[]" value="shop_order_payment_label" />
+		<input type="hidden" name="config[]" value="shop_order_payment_charge" />
+		<input type="hidden" name="config[]" value="shop_order_payment_kuroneko" />
+		<input type="hidden" name="config[]" value="shop_order_payment_sgp" />
+		<input type="hidden" name="config[]" value="shop_order_payment_paypal" />
+	</td>
+	</tr>
+	<tr>
+		<th>配送方法と手数料<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-deliver" class="tooltipIcon" /></th>
+	<td>
+		<table>
+			<tr class="thX"><th class="acms-admin-table-left">方法</th><th class="acms-admin-table-left">手数料</th></tr>
+			<tr>
+			<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label}" /></td>
+			<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[1]}" /></td>
+			<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[1]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[2]}" /></td>
+			<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[2]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[3]}" /></td>
+			<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[3]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_deliver_label[]" value="{shop_order_deliver_label[4]}" /></td>
+			<td><input type="text" name="shop_order_deliver_charge[]" value="{shop_order_deliver_charge[4]}" /></td>
+			</tr>
+		</table>
+		<input type="hidden" name="config[]" value="shop_order_deliver_label" />
+		<input type="hidden" name="config[]" value="shop_order_deliver_charge" />
+		<p>※手数料を空欄にすると別項「送料の設定」が適用されます</p>
+	</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2">配送オプションの設定</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>配送希望日の選択肢の設定<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-date" class="tooltipIcon" /></th>
+		<td>
+		<input type="text" name="shop_order_request_date_min" value="{shop_order_request_date_min}" size="2" />
+		<input type="hidden" name="config[]" value="shop_order_request_date_min" />日先から
+		<input type="text" name="shop_order_request_date_max" value="{shop_order_request_date_max}" size="3" />
+		<input type="hidden" name="config[]" value="shop_order_request_date_max" />日先までを配達希望日の範囲とします
+		</td>
+	</tr>
+	<tr>
+		<th>配送希望時間帯の選択肢の設定<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-time" class="tooltipIcon" /></th>
+		<td>
+			<table>
+				<tr class="thX"><th class="acms-admin-table-left">配送時間帯</th></tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[1]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[2]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[3]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[4]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[5]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_order_request_time[]" value="{shop_order_request_time[6]}" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="config[]" value="shop_order_request_time" />
+		</td>
+	</tr>
+	<tr>
+	<th>その他のオプション<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-others" class="tooltipIcon" /></th>
+	<td>
+		<table>
+			<tr class="thX"><th class="acms-admin-table-left">オプション</th><th class="acms-admin-table-left">手数料</th></tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label}" /></td>
+			<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[1]}" /></td>
+			<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[1]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[2]}" /></td>
+			<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[2]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[3]}" /></td>
+			<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[3]}" /></td>
+			</tr>
+			<tr>
+			<td><input type="text" name="shop_order_request_others_label[]" value="{shop_order_request_others_label[4]}" /></td>
+			<td><input type="text" name="shop_order_request_others_charge[]" value="{shop_order_request_others_charge[4]}" /></td>
+			</tr>
+		</table>
+		<input type="hidden" name="config[]" value="shop_order_request_others_label" />
+		<input type="hidden" name="config[]" value="shop_order_request_others_charge" />
+	</td>
+	</tr>
+</table>
+
+</form>
+<!-- END_MODULE Admin_Config -->
+@include("/admin/tooltip/shop/setting/order.html")

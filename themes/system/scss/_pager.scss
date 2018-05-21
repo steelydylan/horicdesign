@@ -1,0 +1,64 @@
+/* ------------------------------
+ ページャー
+------------------------------- */
+.acms-pager {
+	display: inline-block;
+	list-style: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0;
+	@include font-size(13);
+	color: #333;
+	@include clearfix();
+
+	// ページ
+	li {
+		float: left;
+		margin-left: 4px;
+		text-align: center;
+		// 最初の1件
+		 &:first-child {
+			margin-left: 0;
+		}
+		// リンク
+		> a:link {
+			text-decoration: none;
+		}
+		// ページの見栄え
+		span > a,
+		 &.cur span,
+		> a {
+			@include button-shape();
+			@include button-decoration();
+			padding: 14px;
+			color: #333;
+
+		}
+		 &.cur span {
+			 background-color:#EFEFEF;
+			 border: 1px solid $acms-btn-active-border-color;
+			text-decoration: none;
+		}
+		// active
+		> a:active {
+			background-color:#D0D0D0;
+			border: 1px solid $acms-btn-active-border-color;
+		}
+	}
+}
+
+// デスクトップ対応
+@media (min-width : $breakpoint-md-min) {
+	.acms-pager {
+		margin-left: 0;
+		margin-right: 0;
+		// ページ
+		li {
+			span > a,
+			 &.cur span,
+			> a {
+				@include button-desktop();
+			}
+		}
+	}
+}

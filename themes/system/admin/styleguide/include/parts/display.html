@@ -1,0 +1,204 @@
+<section id="display" class="sectionBox">
+<h1 class="sectionTitle">表示の制御</h1>
+
+<h2 class="sectionTitle2">デバイス別</h2>
+<h3 class="sectionTitle3">表示種類</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>表示方法</th>
+			<th>クラス名</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>表示する</th>
+		<td>%{STYLEGUIDE_PAGE}-show-*</td>
+	</tr>
+	<tr>
+		<th>表示しない</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-*</td>
+	</tr>
+</table>
+<h3 class="sectionTitle3">各デバイス別</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>デバイス</th>
+			<th>クラス名</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>スマートフォン</th>
+		<td>%{STYLEGUIDE_PAGE}-*-sp</td>
+	</tr>
+	<tr>
+		<th>タブレット</th>
+		<td>%{STYLEGUIDE_PAGE}-*-tablet</td>
+	</tr>
+	<tr>
+		<th>PC</th>
+		<td>%{STYLEGUIDE_PAGE}-*-pc</td>
+	</tr>
+</table>
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-show-sp&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-show-tablet&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-show-pc&quot;&gt;表示します&lt;div&gt;
+</pre>
+
+<h2 class="sectionTitle2">画面幅別</h2>
+<h3 class="sectionTitle3">表示種類</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>表示方法</th>
+			<th>クラス名</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>block表示</th>
+		<td>.%{STYLEGUIDE_PAGE}-block</td>
+	</tr>
+	<tr>
+		<th>inline表示</th>
+		<td>.%{STYLEGUIDE_PAGE}-inline</td>
+	</tr>
+	<tr>
+		<th>inline-block表示</th>
+		<td>.%{STYLEGUIDE_PAGE}-inline-block</td>
+	</tr>
+	<tr>
+		<th>table-cell表示</th>
+		<td>.%{STYLEGUIDE_PAGE}-table-cell</td>
+	</tr>
+	<tr>
+		<th>非表示</th>
+		<td>.%{STYLEGUIDE_PAGE}-hide</td>
+	</tr>
+</table>
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-inline&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-inline-block&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-table-cell&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide&quot;&gt;非表示にします&lt;div&gt;
+</pre>
+
+<h3 class="sectionTitle3">各画面幅別</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>画面幅</th>
+			<th>クラス名</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>デフォルト</th>
+		<td>そのまま</td>
+	</tr>
+	<tr>
+		<th>479px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-*-xs</td>
+	</tr>
+	<tr>
+		<th>480px以上、767px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-*-sm</td>
+	</tr>
+	<tr>
+		<th>768px以上、1023px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-*-md</td>
+	</tr>
+	<tr>
+		<th>1024px以上、1439px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-*-lg</td>
+	</tr>
+	<tr>
+		<th>1440px以上</th>
+		<td>%{STYLEGUIDE_PAGE}-*-xl</td>
+	</tr>
+</table>
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block&quot;&gt;常に表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block-xs&quot;&gt;479以下で表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block-sm&quot;&gt;480px以上、767px以下で表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block-md&quot;&gt;768px以上、1023px以下で表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block-lg&quot;&gt;1024px以上、1439px以下で表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-block-xl&quot;&gt;1440px以上で表示します&lt;div&gt;
+</pre>
+
+<h2 class="sectionTitle2">プリント用</h2>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>表示方法</th>
+			<th>クラス名</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>block表示</th>
+		<td>%{STYLEGUIDE_PAGE}-print-block</td>
+	</tr>
+	<tr>
+		<th>inline表示</th>
+		<td>%{STYLEGUIDE_PAGE}-print-inline</td>
+	</tr>
+	<tr>
+		<th>inline-block表示</th>
+		<td>%{STYLEGUIDE_PAGE}-print-inline-block</td>
+	</tr>
+	<tr>
+		<th>表示しない</th>
+		<td>%{STYLEGUIDE_PAGE}-print-hide</td>
+	</tr>
+</table>
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-print-block&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-print-inline&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-print-inline-block&quot;&gt;表示します&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-print-hide&quot;&gt;非表示にします&lt;div&gt;
+</pre>
+
+<h2 class="sectionTitle2">アクセシビリティ用</h2>
+<p>視覚的に表示はされませんが、音声で出力します。</p>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<thead class="%{STYLEGUIDE_PAGE}-table-heading">
+		<tr>
+			<th>表示方法</th>
+			<th>クラス名</th>
+		</tr>
+	</thead>
+	<tr>
+		<th>デフォルト</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-visually</td>
+	</tr>
+	<tr>
+		<th>479px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-visually-xs</td>
+	</tr>
+	<tr>
+		<th>480px以上、767px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-visually-sm</td>
+	</tr>
+	<tr>
+		<th>768px以上、1023px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-visually-md</td>
+	</tr>
+	<tr>
+		<th>1024px以上、1439px以下</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-visually-lg</td>
+	</tr>
+	<tr>
+		<th>1440px以上</th>
+		<td>%{STYLEGUIDE_PAGE}-hide-visually-xl</td>
+	</tr>
+</table>
+<pre class="code HTML">
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide-visually&quot;&gt;常に視覚的には表示されません&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide-visually-xs&quot;&gt;479以下で視覚的には表示されません&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide-visually-sm&quot;&gt;480px以上、767px以下で視覚的には表示されません&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide-visually-md&quot;&gt;768px以上、1023px以下で視覚的には表示されません&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide-visually-lg&quot;&gt;1024px以上、1439px以下で視覚的には表示されません&lt;div&gt;
+&lt;div class=&quot;%{STYLEGUIDE_PAGE}-hide-visually-xl&quot;&gt;1440px以上で視覚的には表示されません&lt;div&gt;
+</pre>
+
+</section>

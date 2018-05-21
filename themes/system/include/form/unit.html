@@ -1,0 +1,97 @@
+<!-- BEGIN_MODULE Form -->
+<!-- BEGIN step -->
+<!-- フォームステップ：初期 -->
+<section class="acms-admin-entry">
+	<div class="acms-admin-grid-r">
+		<h2>メールでのお問い合わせ</h2>
+		<p>ご質問やご要望がありましたら、お気軽にお問い合わせください。</p>
+	</div>
+<form action="?step=reapply" method="post">
+	<div class="acms-admin-margin-bottom-medium">
+		@include("/include/form/input.html")
+	</div>
+	<div class="formBtnBox acms-admin-col-12">
+		<input type="hidden" name="step" value="confirm" />
+		<input type="hidden" name="id" value="{form_id}" />
+		<input type="submit" name="ACMS_POST_Form_Confirm" value="送信内容の確認へ" id="btnConfirm" class="acms-admin-btn acms-admin-float-right" />
+		<hr class="clearHidden" />
+	</div>
+</form>
+</section>
+<!-- END step -->
+
+<!-- BEGIN step#reapply -->
+<!-- フォームステップ：修正・エラー -->
+<section class="acms-admin-entry">
+	<div class="acms-admin-grid-r">
+		<h2>メールでのお問い合わせ</h2>
+		<p>入力内容を、もう一度ご確認下さい。</p>
+	</div>
+	<form action="?step=reapply" method="post">
+		<div class="acms-admin-margin-bottom-medium">
+			@include("/include/form/input.html")
+		</div>
+		<div class="formBtnBox acms-admin-col-12">
+			<input type="hidden" name="step" value="confirm" />
+			<input type="hidden" name="id" value="{form_id}" />
+			<input type="submit" name="ACMS_POST_Form_Confirm" value="送信内容の確認へ" id="btnConfirm" class="acms-admin-btn acms-admin-float-right" />
+			<hr class="clearHidden" />
+		</div>
+	</form>
+</section>
+<!-- END step#reapply -->
+
+<!-- BEGIN step#confirm -->
+<!-- フォームステップ：確認画面 -->	
+<section class="acms-admin-entry">
+	<div class="acms-admin-grid-r">
+		<h2>メールでのお問い合わせ</h2>
+		<p>内容に誤りがないか、よくご確認ください。</p>
+	</div>
+	<div class="acms-admin-margin-bottom-medium">
+		@include("/include/form/confirm.html")
+	</div>
+	<form action="?step=reapply" method="post" class="formBtnBox formBtnBoxHalf">
+		<input type="hidden" name="step" value="reapply" />
+		<input type="hidden" name="takeover" value="{takeover}" />
+		<input type="submit" name="ACMS_POST_Form_Chain" value="入力画面へ戻る" id="btnToInput" class="acms-admin-btn acms-admin-float-left" />
+	</form>
+	
+	<form action="/bid/%{BID}/eid/%{EID}/tpl/thanks.html" method="post" class="formBtnBox formBtnBoxHalf">
+		<input type="hidden" name="To[]" value="{email}" />
+		<input type="hidden" name="AdminReply-To[]" value="{email}" />
+		<input type="hidden" name="AdminFrom[]" value="{email}" />
+		<input type="hidden" name="step" value="result" />
+		<input type="hidden" name="takeover" value="{takeover}" />
+		<input type="hidden" name="id" value="{form_id}" />
+		<input type="submit" name="ACMS_POST_Form_Submit" value="送信" id="btnSubmit" class="acms-admin-btn acms-admin-float-right" />
+	</form>
+	<hr class="clearHidden" />
+</section>
+<!-- END step#confirm -->
+
+<!-- BEGIN step#result -->
+<!-- フォームステップ：完了画面 -->
+<section class="acms-admin-entry">
+	<div class="acms-admin-grid-r">
+		<h2>メールでのお問い合わせ</h2>
+		<p>お問い合わせありがとうございました。以下の内容で送信しました。</p>
+	</div>
+	@include("/include/form/confirm.html")
+</section>
+<!-- END step#result -->
+
+<!-- BEGIN step#forbidden -->
+<section class="acms-admin-entry">
+	<div class="acms-admin-grid-r">
+		<h2>不正なアクセスです。</h2>
+		<p>お手数ですが、はじめからやり直して下さい。</p>
+	</div>
+</section>
+<!-- END step#forbidden -->
+
+<!-- BEGIN error -->
+	<!-- フォームID : {formID} / エラー項目 : {errorKey} -->
+<!-- END error -->
+
+<!-- END_MODULE Form -->

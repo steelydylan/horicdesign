@@ -1,0 +1,192 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name}</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} )</strong><!-- END_MODULE Admin_Module_Name --><!--T-->出力設定<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->出力設定を保存しました<!--/T--></p><!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form">
+	<p class="transaction-notice-{config:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->コンフィグを保存出来ませんでした。<!--/T--></p>
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<div class="acms-admin-float-right">
+				<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_import-part/?rid=%{rid}" class="acms-admin-btn-admin"><!--T-->インポート<!--/T--></a>
+				<input type="submit" name="ACMS_POST_Config_PartExport" class="acms-admin-btn-admin" value="<!--T-->エクスポート<!--/T-->"/>
+				<a href="{shortcutUrl}" class="acms-admin-btn-admin"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a>
+			</div>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<h3 class="acms-admin-admin-title2 "><!--T-->変換<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->文字コード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログの文字コードを「Shift_JIS」「UTF-8」「EUC-JP」に変更します。<!--/T-->"></i>
+			</th>
+			<td>
+				<select name="charset" class="js-select2">
+					<option value="Shift-JIS"{charset:selected#Shift-JIS}>Shift-JIS</option>
+					<option value="EUC-JP"{charset:selected#EUC-JP}>EUC-JP</option>
+					<option value="UTF-8"{charset:selected#UTF-8}>UTF-8</option>
+				</select>
+				<input type="hidden" name="config[]" value="charset" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->HTTP圧縮<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->対応ブラウザからのアクセス時に、gzip圧縮でデータを送信します。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="zip_http" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="zip_http" value="on"{zip_http:checked#on} id="input-checkbox-zip_http" />
+					<label for="input-checkbox-zip_http"><i class="acms-admin-ico-checkbox"></i><!--T-->使用する<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="zip_http" />
+				<!--T-->※圧縮ページの読み込みに対応しているブラウザのみ有効になります。<!--/T-->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->HTMLコメントの削除<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->出力するHTMLソースからHTMLコメント（&lt;-- コメント -- &gt;）を取り除きます<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="remove_comment" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="remove_comment" value="on"{remove_comment:checked#on} id="input-checkbox-remove_comment" />
+					<label for="input-checkbox-remove_comment">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->HTMLコメントを取り除く<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="remove_comment" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->余分な空白の削除<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->出力するHTMLソースから余分な空白を取り除きます。連続する空白文字（改行、スペース、タブ）の二つ目以降が取り除かれます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="remove_blank" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="remove_blank" value="on"{remove_blank:checked#on} id="input-checkbox-remove_blank" />
+					<label for="input-checkbox-remove_blank">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->余分な空白を取り除く<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="remove_blank" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->定数定義ファイルの指定 ( 絵文字 )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->絵文字用の定義ファイルの場所を指定します。<!--/T-->"></i></th>
+			<td>
+				<input type="text" size="20" name="const_file_path" value="{const_file_path}" />
+				<!--T-->※ index.phpが基準となります。<!--/T-->
+				<input type="hidden" name="config[]" value="const_file_path" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ブラウザキャッシュ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->リソースのパスの最後にクエリを追加することで、ブラウザキャッシュをクリアするようにします。<!--/T-->"></i>
+			</th>
+			<td>
+				<select name="cache_busting_type" class="js-select2">
+					<option value="date"{cache_busting_type:selected#date}><!--T-->ファイルのタイムスタンプ<!--/T--></option>
+					<option value="random"{cache_busting_type:selected#random}><!--T-->ファイルのタイムスタンプのハッシュ<!--/T--></option>
+					<option value="disable"{cache_busting_type:selected#disable}><!--T-->クエリをつけない<!--/T--></option>
+				</select>
+				<input type="hidden" name="config[]" value="cache_busting_type" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->全角／半角の変換<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->全体のデータに、変換をかけます。設定値は、PHPのmb_convert_kana関数に準拠します。<!--/T-->
+			<table>
+				<tbody>
+					<tr>
+						<th>a</th>
+						<td><!--T-->英数字 全角 → 半角<!--/T--></td>
+					</tr>
+					<tr>
+						<th>A</th>
+						<td><!--T-->英数字 半角 → 全角<!--/T--></td>
+					</tr>
+					<tr>
+						<th>k</th>
+						<td><!--T-->全角カナ → 半角カナ<!--/T--></td>
+					</tr>
+					<tr>
+						<th>K</th>
+						<td><!--T-->半角カナ → 全角カナ<!--/T--></td>
+					</tr>
+					<tr>
+						<th>h</th>
+						<td><!--T-->全角かな → 半角カナ<!--/T--></td>
+					</tr>
+					<tr>
+						<th>H</th>
+						<td><!--T-->半角カナ → 全角かな<!--/T--></td>
+					</tr>
+					<tr>
+						<th>c</th>
+						<td><!--T-->全角カナ → 全角かな<!--/T--></td>
+					</tr>
+					<tr>
+						<th>C</th>
+						<td><!--T-->全角かな → 全角カナ<!--/T--></td>
+					</tr>
+				</tbody>
+			</table>
+			<!--T-->設定値は「AK」の様に複数指定する事も出来ます。<!--/T--><br />
+			<!--T-->参考リンク<!--/T--> : <a href='http://us3.php.net/manual/ja/function.mb-convert-kana.php'>PHP: mb_convert_kana - Manual</a>"></i></th>
+			<td>
+				<input type="text" name="convert_kana" value="{convert_kana}" size="4" />
+				<input type="hidden" name="config[]" value="convert_kana" />
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="acms-admin-admin-title2 "><!--T-->コンテントタイプと拡張子の関連付け<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit js-fieldgroup-sortable table">
+		<thead class="acms-admin-hide-sp">
+			<tr>
+				<th></th>
+				<th class="acms-admin-table-left"><!--T-->コンテントタイプ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->コンテントタイプ（MIMEタイプ）と拡張子の関連を個別に指定します。<!--/T-->"></i></th>
+				<th class="acms-admin-table-left"><!--T-->拡張子<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->コンテントタイプ（MIMEタイプ）と拡張子の関連を個別に指定します。<!--/T-->"></i></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody><!-- BEGIN addtype_group:loop -->
+			<tr class="sortable-item">
+				<td class="item-handle acms-admin-hide-sp"><i class="acms-admin-icon-sort"></i></td>
+				<td><span class="acms-admin-hide acms-admin-show-sp"><!--T-->コンテントタイプ<!--/T--></span><input type="text" name="addtype_mimetype[{i}]" value="{addtype_mimetype}" /></td>
+				<td><span class="acms-admin-hide acms-admin-show-sp"><!--T-->拡張子<!--/T--></span><input type="text" name="addtype_extension[{i}]" value="{addtype_extension}" /></td>
+				<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp"><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+			</tr><!-- END addtype_group:loop -->
+			<tr class="sortable-item item-template">
+				<td class="item-handle acms-admin-hide-sp"><i class="acms-admin-icon-sort"></i></td>
+				<td><span class="acms-admin-hide acms-admin-show-sp"><!--T-->コンテントタイプ<!--/T--></span><input type="text" name="addtype_mimetype[]" value="" /></td>
+				<td><span class="acms-admin-hide acms-admin-show-sp"><!--T-->拡張子<!--/T--></span><input type="text" name="addtype_extension[]" value="" /></td>
+				<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp"><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr><td colspan="4"><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" /></td></tr>
+		</tfoot>
+	</table>
+
+	<input type="hidden" name="@addtype_group[]" value="addtype_mimetype" />
+	<input type="hidden" name="@addtype_group[]" value="addtype_extension" />
+	<input type="hidden" name="config[]" value="addtype_mimetype" />
+	<input type="hidden" name="config[]" value="addtype_extension" />
+	<input type="hidden" name="config[]" value="@addtype_group" /><!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->

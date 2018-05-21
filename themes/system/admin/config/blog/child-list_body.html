@@ -1,0 +1,41 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="blog_child_list_order" class="js-select2">
+				<option value="code-asc"{blog_child_list_order:selected#code-asc}><!--T-->コード名<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="code-desc"{blog_child_list_order:selected#code-desc}><!--T-->コード名<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="id-asc"{blog_child_list_order:selected#id-asc}>ID <!--T-->( 昇順 )<!--/T--></option>
+				<option value="id-desc"{blog_child_list_order:selected#id-desc}>ID <!--T-->( 降順 )<!--/T--></option>
+				<option value="sort-asc"{blog_child_list_order:selected#sort-asc}><!--T-->表示順<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{blog_child_list_order:selected#sort-desc}><!--T-->表示順<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="name-asc"{blog_child_list_order:selected#name-asc}><!--T-->名前<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="name-desc"{blog_child_list_order:selected#name-desc}><!--T-->名前<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="blog_child_list_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="blog_child_list_limit" value="{blog_child_list_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="blog_child_list_limit" />
+			<input type="hidden" name="blog_child_list_limit:convert" value="a" />
+			<input type="hidden" name="blog_child_list_limit:validator#digits" id="validator-blog_child_list_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-blog_child_list_limit-digits" class="validator-result-{blog_child_list_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをループブロック内に設定できます。例えばグリッドシステムのカラム数設定などにご利用ください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="blog_child_list_loop_class" value="{blog_child_list_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="blog_child_list_loop_class" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

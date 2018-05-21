@@ -1,0 +1,380 @@
+/* ------------------------------
+ ボタン デフォルト
+------------------------------- */
+.acms-btn {
+	@include button-shape();
+	@include button-decoration(
+		$border: 1px solid rgba(0,0,0,.2),
+		$hover-bg-color: #F1F1F1,
+		$hover-border-color: rgba(0,0,0,.3),
+		$text-color: $acms-btn-text-default-color,
+		$active-border-color: $acms-btn-active-border-color,
+		$active-bg-color: #E1E1E1,
+		$active-box-shadow: inset 0 1px 2px rgba(0,0,0,.3),
+		$active-text-color: #333,
+		$focus-border-color: $acms-btn-focus-border-color
+	);
+
+	@media (min-width: $breakpoint-md-min) {
+		@include button-desktop();
+	}
+
+	// ---------------
+    // primary
+    // ---------------
+    &.acms-btn-primary {
+        @include button-decoration(
+			$bg-color: $acms-btn-primary-color-base,
+			$hover-bg-color: $acms-btn-primary-color-darker,
+			$text-color: $acms-btn-text-color,
+			$hover-border-color: rgba(0,0,0,.3),
+			$active-border-color: $acms-btn-primary-active-border,
+			$active-box-shadow: inset 0 1px 2px rgba(0,0,0,.3),
+			$focus-border-color: $acms-btn-primary-focus-border-color
+		);
+	}
+
+	// ---------------
+    // info
+    // ---------------
+    &.acms-btn-info {
+        @include button-decoration(
+			$bg-color: $acms-btn-info-color-base,
+			$hover-bg-color: $acms-btn-info-color-darker,
+			$text-color: $acms-btn-text-color,
+			$border-color: $acms-btn-info-border,
+			$hover-border-color: rgba(0,0,0,.3),
+			$active-border-color: rgba(0,0,0,.3),
+			$focus-border-color: $acms-btn-info-focus-border-color
+		);
+    }
+
+	// ---------------
+    // success
+    // ---------------
+    &.acms-btn-success {
+        @include button-decoration(
+			$bg-color: $acms-btn-success-color-base,
+			$hover-bg-color: $acms-btn-success-color-darker,
+			$text-color: $acms-btn-text-color,
+			$border-color: $acms-btn-success-border,
+			$hover-border-color: rgba(0,0,0,.3),
+			$active-border-color: rgba(0,0,0,.3),
+			$focus-border-color: $acms-btn-success-focus-border-color
+		);
+    }
+
+	// ---------------
+    // warning
+    // ---------------
+    &.acms-btn-warning {
+        @include button-decoration(
+			$bg-color: $acms-btn-warning-color-base,
+			$hover-bg-color: $acms-btn-warning-color-darker,
+			$text-color: $acms-btn-text-color,
+			$border-color: $acms-btn-warning-border,
+			$hover-border-color: $acms-btn-warning-hover-border,
+			$active-border-color: $acms-btn-warning-active-border,
+			$focus-border-color: $acms-btn-warning-focus-border-color
+		);
+    }
+
+	// ---------------
+    // danger
+    // ---------------
+    &.acms-btn-danger {
+        @include button-decoration(
+			$bg-color: $acms-btn-danger-color-base,
+			$hover-bg-color: $acms-btn-danger-color-darker,
+			$text-color: $acms-btn-text-color,
+			$border-color: $acms-btn-danger-border,
+			$hover-border-color: $acms-btn-danger-hover-border,
+			$active-border-color: $acms-btn-danger-active-border,
+			$focus-border-color: $acms-btn-danger-focus-border-color
+		);
+    }
+
+	// ---------------
+    // link
+    // ---------------
+    &.acms-btn-link,
+    .acms-btn-link:hover,
+    .acms-btn-link:active,
+    .acms-btn-link:visited {
+        border: 0!important;
+        color: $acms-btn-link-color;
+        text-decoration: underline;
+        background: none;
+        border-radius: 0;
+    }
+	// hover
+    &.acms-btn-link:hover {
+        color: $acms-btn-link-color-hover;
+    }
+	// active
+    &.acms-btn-link:active {
+        box-shadow: none;
+    }
+}
+
+
+/* ---------------
+ ボタン フラット
+--------------- */
+
+.acms-btn-flat {
+	@include button-shape(
+		$padding: $acms-btn-flat-padding,
+		$border-radius: $acms-btn-flat-border-radius
+	);
+	@include button-decoration(
+		$text-color: $acms-btn-flat-text-default-color,
+		$bg-color: #EEEEEE,
+		$border-color: rgba(0,0,0,.1),
+		$hover-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+		$hover-bg-color: #D6D6D6,
+		$hover-border-color: rgba(0,0,0,.2),
+		$active-bg-color: rgba(0,0,0,.3),
+		$active-border-color: #A6A6A6,
+		$active-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2),
+		$focus-bg-color: #D6D6D6,
+		$focus-border-color: $acms-btn-focus-border-color,
+		$focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+	);
+	font-weight: bold;
+	line-height: 1.2;
+	cursor: pointer;
+
+	@media (min-width: $breakpoint-md-min) {
+		@include button-desktop();
+	}
+}
+
+// primary
+.acms-btn-flat-primary {
+	@include button-decoration(
+		$text-color: $acms-btn-flat-text-color,
+		$bg-color: $acms-btn-flat-primary-color,
+		$border-color: rgba(0,0,0,.1),
+		$hover-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+		$hover-bg-color: $acms-btn-flat-primary-hover-color,
+		$hover-border-color: rgba(0,0,0,.2),
+		$active-bg-color: $acms-btn-flat-primary-active-bg,
+		$active-border-color: rgba(0,0,0,.3),
+		$active-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2),
+		$focus-bg-color: $acms-btn-flat-primary-active-bg,
+		$focus-border-color: $acms-btn-focus-border-color,
+		$focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+	);
+}
+
+// info
+.acms-btn-flat-info {
+	@include button-decoration(
+		$text-color: $acms-btn-flat-text-color,
+		$bg-color: $acms-btn-flat-info-color,
+		$border-color:rgba(0,0,0,.1),
+		$hover-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+		$hover-bg-color: $acms-btn-flat-info-hover-color,
+		$hover-border-color: rgba(0,0,0,.2),
+		$active-bg-color: $acms-btn-flat-info-active-bg,
+		$active-border-color: rgba(0,0,0,.3),
+		$active-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2),
+		$focus-bg-color: $acms-btn-flat-info-active-bg,
+		$focus-border-color: $acms-btn-focus-border-color,
+		$focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+	);
+}
+
+// success
+.acms-btn-flat-success {
+	@include button-decoration(
+		$text-color: $acms-btn-flat-text-color,
+		$bg-color: $acms-btn-flat-success-color,
+		$border-color: rgba(0,0,0,.1),
+		$hover-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+		$hover-bg-color: $acms-btn-flat-success-hover-color,
+		$hover-border-color: rgba(0,0,0,.2),
+		$active-bg-color: $acms-btn-flat-success-active-bg,
+		$active-border-color: rgba(0,0,0,.2),
+		$active-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2),
+		$focus-bg-color: $acms-btn-flat-success-active-bg,
+		$focus-border-color: $acms-btn-focus-border-color,
+		$focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+	);
+}
+
+// warning
+.acms-btn-flat-warning {
+	@include button-decoration(
+		$text-color: $acms-btn-flat-text-color,
+		$bg-color: $acms-btn-flat-warning-color,
+		$border-color: rgba(0,0,0,.1),
+		$hover-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+		$hover-bg-color: $acms-btn-flat-warning-hover-color,
+		$hover-border-color: rgba(0,0,0,.2),
+		$active-bg-color: $acms-btn-flat-warning-active-bg,
+		$active-border-color: rgba(0,0,0,.2),
+		$active-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2),
+		$focus-bg-color: $acms-btn-flat-warning-active-bg,
+		$focus-border-color: $acms-btn-focus-border-color,
+		$focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+	);
+}
+
+// danger
+.acms-btn-flat-danger {
+	@include button-decoration(
+		$text-color: $acms-btn-flat-text-color,
+		$bg-color: $acms-btn-flat-danger-color,
+		$border-color: rgba(0,0,0,.1),
+		$hover-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+		$hover-bg-color: $acms-btn-flat-danger-hover-color,
+		$hover-border-color: rgba(0,0,0,.2),
+		$active-bg-color: $acms-btn-flat-danger-active-bg,
+		$active-border-color: rgba(0,0,0,.3),
+		$active-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2),
+		$focus-bg-color: $acms-btn-flat-danger-active-bg,
+		$focus-border-color: $acms-btn-focus-border-color,
+		$focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+	);
+}
+
+
+@if $admin == true {
+
+	/* ---------------
+     管理画面のボタン
+    --------------- */
+    .acms-btn-admin {
+		@include button-shape();
+		@include button-decoration(
+			$border: 1px solid rgba(0,0,0,.2),
+			$hover-bg-color: #F1F1F1,
+			$hover-border-color: rgba(0,0,0,.3),
+			$text-color: $acms-btn-text-default-color,
+			$active-border-color: $acms-btn-active-border-color,
+			$active-bg-color: #E1E1E1,
+			$active-box-shadow: inset 0 1px 2px rgba(0,0,0,.3),
+			$active-text-color: #333,
+			$focus-border-color: $acms-btn-focus-border-color
+		)
+    }
+	// ---------------
+    // 管理画面のボタン primary
+    // ---------------
+    .acms-btn-admin-primary {
+        @include button-decoration(
+			$bg-color: $acms-btn-primary,
+			$hover-bg-color: $acms-btn-primary-color-darker,
+			$active-bg-color: $acms-btn-primary-color-darker,
+			$text-color: #FFFFFF,
+			$border-color: $acms-btn-primary-border,
+			$hover-border-color: rgba(0,0,0,.2),
+			$active-border-color: rgba(0,0,0,.2),
+			$focus-border-color: $acms-btn-focus-border-color
+		);
+    }
+	// ---------------
+    // 管理画面のボタン info
+    // ---------------
+    .acms-btn-admin-info {
+        @include button-decoration(
+			$bg-color: $acms-btn-info,
+			$hover-bg-color: $acms-btn-info-color-darker,
+			$active-bg-color: $acms-btn-info-color-darker,
+			$text-color: #FFFFFF,
+			$border-color: $acms-btn-info-border,
+			$hover-border-color: rgba(0,0,0,.2),
+			$active-border-color: rgba(0,0,0,.2),
+			$focus-border-color: $acms-btn-focus-border-color
+		);
+    }
+	// ---------------
+    // 管理画面のボタン danger
+    // ---------------
+    .acms-btn-admin-danger {
+        @include button-decoration(
+			$bg-color: $acms-btn-danger,
+			$hover-bg-color: $acms-btn-danger-color-darker,
+			$active-bg-color: $acms-btn-danger-color-darker,
+			$text-color: #FFFFFF,
+			$border-color: rgba(0,0,0,.1),
+			$hover-border-color: rgba(0,0,0,.2),
+			$active-border-color: rgba(0,0,0,.2),
+			$focus-border-color: $acms-btn-focus-border-color
+		);
+    }
+	// リンクのとき
+    a.acms-btn,
+    a.acms-btn-admin,
+    a.acms-btn-flat {
+        text-decoration: none;
+    } // 保存ボタン
+    .acms-btn-admin-save {
+        padding-right: 60px !important;
+        padding-left: 60px !important;
+    }
+    @media (min-width: $breakpoint-md-min) {
+        [class*='acms-btn'] {
+            @include button-desktop();
+        }
+    }
+}
+
+// ---------------
+// ユーティリティ
+// ---------------
+// disabled
+.acms-btn-disabled,
+button[disabled],
+input[type="submit"][disabled],
+input[type="reset"][disabled],
+input[type="image"][disabled],
+input[type="button"][disabled],
+fieldset[disabled] .acms-btn {
+    pointer-events: none;
+    opacity: $acms-btn-disbled-opacity;
+    filter: alpha(opacity=$acms-btn-disbled-opacity-ie);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+// ブロックレベルのボタン
+.acms-btn-block {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    @include box-sizing(border-box);
+}
+
+// インライン
+.acms-inline-btn {
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+// サイズ小
+.acms-btn-small {
+    padding: $acms-btn-small-padding;
+    @include font-size($acms-btn-small-font-size);
+}
+
+// サイズ大
+.acms-btn-large {
+    padding: $acms-btn-large-padding;
+    @include font-size($acms-btn-large-font-size);
+    border-radius: $acms-btn-large-border-radius;
+}
+
+.acms-btn-unstyled {
+    padding: 0;
+    background: 0;
+    border: 0;
+    &:focus {
+        outline: 0;
+    }
+}

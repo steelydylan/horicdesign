@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Plugin_Schedule</h1>
+	<fieldset class="loop"><legend class="loop">unit:loop<span>ユニットのループ</span></legend>
+		<fieldset class="loop">
+			<legend class="loop">month:loop<span>月のループ</span></legend>
+			<fieldset>
+				<legend>monthly<span>月のリンクブロック</span></legend>
+				<var>prevUrl<span>前の月URL</span></var>
+				<var>nextUrl<span>次の月URL</span></var>
+			</fieldset>
+			<var>url<span>スケジュールのURL</span></var>
+			<var>yaer<span>年</span></var>
+			<var>month<span>月</span></var>
+			<fieldset class="loop">
+				<legend class="loop">week:loop<span>週のループ</span></legend>
+				<var>weekRowNo<span>第何週</span></var>
+				<fieldset class="loop">
+					<legend class="loop">day:loop<span>日のループ</span>
+						<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>日時</span></var>
+					</legend>
+					<var>weekNo<span>何曜日</span></var>
+					<var>dayLabel<span>ラベル（七曜表のみ）</span></var>
+					<var>dayItem<span>スケジュール内容（七曜表のみ）</span></var>
+					<fieldset>
+						<legend>day:veil</legend>
+						<var>day<span>日</span></var>
+						<var>week<span>曜日</span></var>
+					</fieldset>
+					<fieldset>
+						<legend>plan:veil</legend>
+						<fieldset>
+							<legend>plan<span>ラベルブロック</span></legend>
+							<fieldset>
+								<legend>class:veil</legend>
+								<var>class<span>ラベルクラス</span></var>
+							</fieldset>
+							<fieldset>
+								<legend>item:veil</legend>
+								<var>item<span>スケジュール内容</span></var>
+							</fieldset>
+							<fieldset>
+								<legend>item:null<span>スケジュール内容なしブロック</span></legend>
+							</fieldset>
+							<fieldset>
+								<legend>label:veil</legend>
+								<var>label<span>ラベル</span></var>
+							</fieldset>
+							<fieldset>
+								<legend>label:null<span>ラベルなしブロック</span></legend>
+							</fieldset>
+						</fieldset>
+					</fieldset>
+				</fieldset>
+			</fieldset>
+		</fieldset>
+	</fieldset>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name} の</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) の</strong><!-- END_MODULE Admin_Module_Name --><!--T-->アクセス設定<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->アクセス設定を保存しました<!--/T--></p><!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			@include("/admin/config/action.html")
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration --><a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<h3 class="acms-admin-admin-title2 "><!--T-->ログイン<!--/T--></h3>
+	<!-- ルールが使えない -->
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->許可リスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->IPアドレスを半角数字と「.」「/」を使い<a href='http://ja.wikipedia.org/wiki/Classless_Inter-Domain_Routing' target='_blank'>CIDR記法</a>で入力してください。(例：a.b.c.d/32)<br />指定されたIPアドレスからのアクセスに限りログインできるようになります。（この項目はブログごとの設定となり、ルールには反映されません。）<!--/T-->"></i>
+</th>
+			<td>
+				<ul class="js-fieldgroup-sortable acms-admin-list-nostyle"><!-- BEGIN login_white_hosts:loop -->
+					<li class="sortable-item acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<input type="text" name="login_white_hosts[]" value="{login_white_hosts}" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li><!-- END login_white_hosts:loop -->
+					<li class="item-template sortable-item acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<input type="text" name="login_white_hosts[]" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li>
+					<li>
+						<input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" />
+					</li>
+				</ul>
+				<input type="hidden" name="config[]" value="login_white_hosts" />
+				<input type="hidden" name="login_white_hosts:validator#regex" value="@\d+(\.\d+)\{3\}/\d+@" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-login_white_hosts" class="validator-result-{login_white_hosts:validator#regex}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な形式です<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->拒否リスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->IPアドレスを半角数字と「.」「/」を使い<a href='http://ja.wikipedia.org/wiki/Classless_Inter-Domain_Routing' target='_blank'>CIDR記法</a>で入力してください。(例：a.b.c.d/32)<br />指定されたIPアドレスからのアクセスに限りログインが拒否されるようになります。（この項目はブログごとの設定となり、ルールには反映されません。）<!--/T-->"></i>
+</th>
+			<td>
+				<ul class="js-fieldgroup-sortable acms-admin-list-nostyle"><!-- BEGIN login_black_hosts:loop -->
+					<li class="sortable-item acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<input type="text" name="login_black_hosts[]" value="{login_black_hosts}" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li><!-- END login_black_hosts:loop -->
+					<li class="item-template sortable-item acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<input type="text" name="login_black_hosts[]" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li>
+					<li>
+						<input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" />
+					</li>
+				</ul>
+				<input type="hidden" name="config[]" value="login_black_hosts" />
+				<input type="hidden" name="login_black_hosts:validator#regex" value="@\d+(\.\d+)\{3\}/\d+@" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-login_black_hosts" class="validator-result-{login_black_hosts:validator#regex}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な形式です<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<h3 class="acms-admin-admin-title2 "><!--T-->ベーシック認証<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->アカウント<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ベーシック認証に使用するユーザー名とパスワードを設定します。<!--/T-->"></i>
+</th>
+			<td>
+				<ul class="js-fieldgroup-sortable acms-admin-list-nostyle"><!-- BEGIN basic_auth_group:loop -->
+					<li class="sortable-item acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<!--T-->ユーザー<!--/T--> : <input type="text" name="basic_auth_user[{i}]" value="{basic_auth_user}" size="20" />
+						<!--T-->パスワード<!--/T--> : <input type="password" name="basic_auth_pass[{i}]" value="{basic_auth_pass}" size="20" class="password_target_{i}" />
+						<div class="acms-admin-form-checkbox">
+							<input type="checkbox" id="input-disclose_password[{i}]" class="js-disclose_password" data-target=".password_target_{i}" />
+							<label class="acms-admin-form-checkbox" for="input-disclose_password[{i}]">
+								<i class="acms-admin-ico-checkbox"></i> <!--T-->パスワードを表示<!--/T-->
+							</label>
+						</div>
+
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+						<!-- BEGIN basic_auth_user:validator#regex -->
+						<p class="transaction-notice-error"><!--T-->ユーザーは半角英数字のみ入力できます。<!--/T--></p><!-- END basic_auth_user:validator#regex -->
+						<!-- BEGIN basic_auth_pass:validator#regex -->
+						<p class="transaction-notice-error"><!--T-->パスワードは半角英数字のみ入力できます。<!--/T--></p><!-- END basic_auth_pass:validator#regex -->
+					</li><!-- END basic_auth_group:loop -->
+					<li class="sortable-item item-template acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<!--T-->ユーザー<!--/T--> : <input type="text" name="basic_auth_user[]" size="20" />
+						<!--T-->パスワード<!--/T--> : <input type="password" name="basic_auth_pass[]" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li>
+					<li>
+						<input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" />
+					</li>
+				</ul>
+				<input type="hidden" name="basic_auth_user:validator#regex" value="@^[0-9a-zA-Z]+$@" />
+				<input type="hidden" name="basic_auth_pass:validator#regex" value="@^[0-9a-zA-Z]+$@" />
+				<input type="hidden" name="@basic_auth_group[]" value="basic_auth_user" />
+				<input type="hidden" name="@basic_auth_group[]" value="basic_auth_pass" />
+				<input type="hidden" name="config[]" value="basic_auth_user" />
+				<input type="hidden" name="config[]" value="basic_auth_pass" />
+				<input type="hidden" name="config[]" value="@basic_auth_group" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->認証スキップ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->IPアドレスを半角数字と「.」「/」を使い<a href='http://ja.wikipedia.org/wiki/Classless_Inter-Domain_Routing' target='_blank'>CIDR記法</a>で入力してください。(例：a.b.c.d/32)<br />指定されたIPアドレスからのアクセスに限り、ベーシック認証をスキップできます。<!--/T-->"></i>
+</th>
+			<td>
+				<ul class="js-fieldgroup-sortable acms-admin-list-nostyle"><!-- BEGIN basic_auth_skip_hosts:loop -->
+					<li class="sortable-item acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<input type="text" name="basic_auth_skip_hosts[]" value="{basic_auth_skip_hosts}" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li><!-- END basic_auth_skip_hosts:loop -->
+					<li class="sortable-item item-template acms-admin-form-group">
+						<span class="item-handle acms-admin-icon-sort acms-admin-hide-sp"></span>
+						<input type="text" name="basic_auth_skip_hosts[]" size="20" />
+						<input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger acms-admin-margin-top-bottom-sp" />
+					</li>
+					<li>
+						<input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" />
+					</li>
+				</ul>
+				<input type="hidden" name="config[]" value="basic_auth_skip_hosts" />
+				<input type="hidden" name="basic_auth_skip_hosts:validator#regex" value="@\d+(\.\d+)\{3\}/\d+@" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-basic_auth_skip_hosts" class="validator-result-{basic_auth_skip_hosts:validator#regex}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な形式です<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->

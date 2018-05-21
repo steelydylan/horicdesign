@@ -1,0 +1,45 @@
+<!-- BEGIN_MODULE Form2_Unit -->
+<div class="table-container">
+<table class="acms-admin-table acms-admin-table-heading acms-admin-dynamic-form acms-admin-form" summary="お問い合わせ内容">
+	<tr>
+		<th><label for="email">メールアドレス</label></th>
+		<td>\{email\}</td>
+	</tr>
+
+	<!-- BEGIN column:loop -->
+	<!-- BEGIN text -->
+	<tr>
+		<th><label>{label}</label></th>
+		<td>\{form-unit-{utid}\}</td>
+	</tr><!-- END text -->
+
+	<!-- BEGIN textarea -->
+	<tr>
+		<th><label>{label}</label></th>
+		<td>\{form-unit-{utid}\}[escape|nl2br]</td>
+	</tr><!-- END textarea -->
+
+	<!-- BEGIN radio -->
+	<tr>
+		<th><label>{label}</label></th>
+		<td>\{form-unit-{utid}\}</td>
+	</tr><!-- END radio -->
+
+	<!-- BEGIN select -->
+	<tr>
+		<th><label>{label}</label></th>
+		<td>\{form-unit-{utid}\}</td>
+	</tr><!-- END select -->
+
+	<!-- BEGIN checkbox -->
+	<tr>
+		<th><label>{label}</label></th>
+		<td><!-- BEGIN\ form-unit-{utid}:loop -->
+			\{form-unit-{utid}\} <!-- END\ form-unit-{utid}:loop -->
+		</td>
+	</tr><!-- END checkbox -->
+
+	<!-- END column:loop -->
+</table>
+</div>
+<!-- END_MODULE Form2_Unit -->

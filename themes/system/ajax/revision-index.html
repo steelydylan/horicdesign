@@ -1,0 +1,10 @@
+<div class="acms-admin-padding-small">
+	<!-- BEGIN_MODULE Admin_Entry_Revision_Index --><!-- BEGIN revisionTmp -->
+	<form class="js-post_include acms-admin-form acms-admin-margin-bottom-large" method="post" target=".revison_box">
+		<input type="text" name="revisionName" value="" size="40" placeholder="バージョン名">
+		<input type="submit" name="ACMS_POST_Revision_Duplicate" class="acms-admin-btn-admin" value="作業領域からバージョンを作成" onclick="return confirm('作業領域からバージョンを作成します。よろしいですか？');" />
+	</form><!-- END revisionTmp -->
+	<!-- END_MODULE Admin_Entry_Revision_Index -->
+
+	@include("/ajax/revision-index-list.html")
+</div>

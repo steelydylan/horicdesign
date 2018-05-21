@@ -1,0 +1,331 @@
+<!-- blog/edit.html用ツールチップテキスト -->
+<dl id="tooltip">
+
+	<!-- ページ設定 -->
+	<dt>文字コード</dt>
+		<dd id="tooltipContents-generalCharset">ブログの文字コードを「Shift_JIS」「UTF-8」「EUC-JP」に変更します。</dd>
+	<dt>キャッシュ</dt>
+		<dd id="tooltipContents-generalCache">キャッシュ機能の設定状態です。</dd>
+	<dt>キャッシュ有効時間</dt>
+		<dd id="tooltipContents-generalCacheExpire">キャッシュが有効な時間です。</dd>
+	<dt>キャッシュの感度</dt>
+		<dd id="tooltipContents-generalCacheSensitivity">チェックすると、子ブログが更新されたときにもキャッシュのリフレッシュを行うようになります。</dd>
+    <dt>クライアントのキャッシュ有効時間</dt>
+        <dd id="tooltipContents-cacheExpireClient">クライアント（ブラウザ）のキャッシュの有効時間です。この時間内はクライアント側のキャッシュが使用されサーバにアクセスしません。そのためページが更新された場合にも反映されないことがあります。管理ページにログインした時にブラウザの再読込ボタンを押したり、キャッシュを消したりしないとページが切り替わらないことがあります。</dd>
+	<dt>アクセスログ</dt>
+		<dd id="tooltipContents-generalLogAccess">チェックすると、アクセスを記録して、データベースに記録します。</dd>
+	<dt>HTTP圧縮</dt>
+		<dd id="tooltipContents-generalZipHttp">対応ブラウザからのアクセス時に、gzip圧縮でデータを送信します。</dd>
+	<dt>ログインクッキー有効時間</dt>
+		<dd id="tooltipContents-generalloginCookie">ログイン画面で「パスワードを保存」のチェックボックスにチェックした場合、この有効時間内はログイン状態を保持できます。</dd>
+	<dt>コメントクッキー有効時間</dt>
+		<dd id="tooltipContents-generalCommentCookie">コメント欄で「Cookieに保存」のチェックボックスにチェックした場合、この有効時間内は名前などの情報がコメントした人のブラウザに保持されます。</dd>
+	<dt>バージョン管理</dt>
+		<dd id="tooltipContents-manageRevisions">チェックをつけるとエントリーをバージョン管理する事ができるようになります。</dd>
+	<dt>動的フォーム</dt>
+		<dd id="tooltipContents-formEditActionDirect">チェックをつけるとエントリー毎にフォームを作成する事ができるようになります。</dd>
+	<dt>メディア管理</dt>
+		<dd id="tooltipContents-mediaLibrary">チェックをつけるとメディア（アップロードした画像）の管理ができるようになります。</dd>
+    <!-- その他 -->
+    <dt>バンドルjQueryのバージョン</dt>
+   		<dd id="tooltipContents-generaljQueryVersion">acms.js読み込み時に自動ロードされるバンドルされたjQueryのバージョンを選択します。</dd>
+   	<dt>カテゴリーコードによるテンプレート探索</dt>
+   		<dd id="tooltipContents-generalTplFindFromAscendantsCcd">カテゴリーコードと同名のディレクトリからテンプレートを探索する処理について、先祖カテゴリーのカテゴリーコードも遡って探索します。</dd>
+   	<dt>投稿者がログインしたとき</dt>
+   		<dd id="tooltipContents-generalSessionContributorOnlyOwnEntry">投稿者権限のユーザーがログインしたときには、そのユーザー自身が投稿したエントリーのみを表示します。</dd>
+
+	<dt>Google Analytics Mobile	</dt>
+		<dd id="tooltipContents-generalGoogleAnalyticsMobile">Google Analyticsの携帯電話用コードを参考に、アカウントIDを入力します。a-blog cmsインストール先ディレクトリから、ダウンロードしてきたga.phpへのパスを設定します。</dd>
+    <dt>Twitterアプリケーション</dt>
+        <dd id="tooltipContents-generalTwitterApps">取得した<a href="https://twitter.com/apps" target="_blank">Twitterアプリケーション</a>の情報をセットします。</dd>
+    <dt>Facebookアプリケーション</dt>
+        <dd id="tooltipContents-generalFacebookApps">取得した<a href="http://developers.facebook.com/" target="_blank">Facebookアプリケーション</a>の情報をセットします。</dd>
+    <dt>Instagramアプリケーション</dt>
+        <dd id="tooltipContents-generalInstagramApps">取得した<a href="http://instagr.am/developer/manage/" target="_blank">Instagramアプリケーション</a>の情報をセットします。</dd>
+	<dt>YahooアプリケーションID</dt>
+		<dd id="tooltipContents-generalYahooApplicationId">取得した<a href="https://e.developer.yahoo.co.jp/webservices/register_application" target="_blank">YahooアプリケーションID</a>をセットします。<a href="http://srd.yahoo.jp/olp/about" target="_blank">Yahoo地図(YOLP)</a></dd>
+	<dt>Bing Search API</dt>
+		<dd id="tooltipContents-generalBingSearchApi">取得した<a href="https://datamarket.azure.com/account/keys" target="_blank">Application Key</a>をセットします。</dd>
+	<dt>現在のURLでログイン</dt>
+		<dd id="tooltipContents-generalLognAutoRedirect">ログイン後にログイン時のページを表示します。</dd>
+	<dt>ログイン後ページの指定</dt>
+		<dd id="tooltipContents-generalLognAdminPath">ログイン後に表示したい管理ページのacmsパスを指定できます。</dd>
+
+    <dt>許可リスト</dt>
+    <dd id="tooltipContents-loginWhiteHosts">ここにIPを指定すると、指定されたIPからのアクセスに限りログインできるようになります。(この項目はブログごとの設定となり、ルールには反映されません。)</dd>
+    <dt>拒否リスト</dt>
+    <dd id="tooltipContents-loginBlackHosts">ここにIPを指定すると、指定されたIPからのアクセスに限りログインを拒絶するようになります。(この項目はブログごとの設定となり、ルールには反映されません。)</dd>
+    <dt>アカウント</dt>
+    <dd id="tooltipContents-basicAuth">ベーシック認証に使用するユーザー名とパスワードを設定します。</dd>
+    <dt>認証スキップ</dt>
+    <dd id="tooltipContents-basicAuthSkipHosts">ここにIPを指定すると、指定されたIPからのアクセスに限り、ベーシック認証をスキップできます。</dd>
+
+	<dt>全角／半角の変換</dt>
+		<dd id="tooltipContents-generalConvertKana">
+			全体のデータに、変換をかけます。設定値は、PHPのmb_convert_kana関数に準拠します。
+			<table>
+				<tbody>
+					<tr>
+						<th>a</th>
+						<td>英数字 全角 → 半角</td>
+					</tr>
+					<tr>
+						<th>A</th>
+						<td>英数字 半角 → 全角</td>
+					</tr>
+					<tr>
+						<th>k</th>
+						<td>全角カナ → 半角カナ</td>
+					</tr>
+					<tr>
+						<th>K</th>
+						<td>半角カナ → 全角カナ</td>
+					</tr>
+					<tr>
+						<th>h</th>
+						<td>全角かな → 半角カナ</td>
+					</tr>
+					<tr>
+						<th>H</th>
+						<td>半角カナ → 全角かな</td>
+					</tr>
+					<tr>
+						<th>c</th>
+						<td>全角カナ → 全角かな</td>
+					</tr>
+					<tr>
+						<th>C</th>
+						<td>全角かな → 全角カナ</td>
+					</tr>
+				</tbody>
+			</table>
+			設定値は「AK」の様に複数指定する事も出来ます。<br />
+			参考リンク : <a href="http://us3.php.net/manual/ja/function.mb-convert-kana.php">PHP: mb_convert_kana - Manual</a>
+		</dd>
+	<dt>定数定義ファイルの指定 ( 絵文字 )</dt>
+		<dd id="tooltipContents-generalConstFile">絵文字用の定義ファイルの場所を指定します。</dd>
+	<dt>曜日のラベル</dt>
+		<dd id="tooltipContents-generalWeekLabel">モジュールの曜日表示に共通で使用される文字です。</dd>
+	<dt>読者登録</dt>
+		<dd id="tooltipContents-generalSubscribe">チェックを付けると読者登録を受け付けることが可能になります。</dd>
+	<dt>外部申請時のアクティベーション</dt>
+		<dd id="tooltipContents-generalSubscribeActivation">チェックを付けると即座に有効なユーザーとして作成されます。チェックを付けない場合は仮ユーザーとして作成し、ユーザーに届いたメールに記載されているパスワードを使って最初にログインした時に有効なユーザーとして適応されます。</dd>
+	<dt>外部申請時の権限</dt>
+		<dd id="tooltipContents-generalSubscribeAuth">
+		外部申請で登録されるユーザーの権限を設定します。</dd>
+	<dt>ログイン中の投稿者</dt>
+		<dd id="tooltipContents-generalSessionContributorOnlyOwnEntry">
+		チェックをすると投稿者権限ユーザーがログインしている場合、自身が投稿したエントリーのみ表示されるようになります。</dd>
+    <dt>メールマガジン</dt>
+        <dd id="tooltipContents-mailmagazine">エントリーをブログの登録ユーザーにメールで配信できるようになります。</dd>
+
+	<!-- メタ情報 -->
+	<dt>キーワード</dt>
+		<dd id="tooltipContents-generalMetaKeyword">このサイトの&lt;meta name=&quot;keywords&quot;&gt;の内容です。「, (コンマ)」で区切ることで複数登録することができます。</dd>
+	<dt>説明</dt>
+		<dd id="tooltipContents-generalMetaDescription">このサイトの&lt;meta name=&quot;description&quot;&gt;の内容です。</dd>
+
+	<!-- コメント -->
+	<dt>コメント機能</dt>
+		<dd id="tooltipContents-generalComment">コメントを受け取るか／受け取らないかの設定状態です。</dd>
+	<dt>コメント受信時の初期状態</dt>
+		<dd id="tooltipContents-generalCommentStatus">投稿されたコメントが「承認待ち」「公開」「非公開」のどの状態になるか選択します。</dd>
+	<dt>ブラックリスト</dt>
+		<dd id="tooltipContents-generalCommentBlacklist">コメントに対するNGワードの設定です。カンマ、スペース、改行のいずれかで単語が区切れます。</dd>
+
+	<!-- トラックバック -->
+	<dt>トラックバック機能</dt>
+		<dd id="tooltipContents-generalTrackback">コメントを受け付けるか／受け付けないかの設定状態です。</dd>
+	<dt>トラックバック受信時の初期状態</dt>
+		<dd id="tooltipContents-generalTrackbackStatus">送信されたトラックバックが「承認待ち」「公開」「非公開」のどの状態になるか選択します。</dd>
+	<dt>1バイト文字チェック</dt>
+		<dd id="tooltipContents-generalTrackbackByteCheck">トラックバックスパム防止用の機能で、 1バイト文字(半角英数など)だけのトラックバックを拒否します。</dd>
+	<dt>リンクチェック</dt>
+		<dd id="tooltipContents-generalTrackbackLinkCheck">トラックバックスパム防止用の機能で、 送信元のエントリーに当該エントリーのリンクが無い場合にはトラックバックを拒否します。</dd>
+
+	<!-- エントリー編集 -->
+	<dt>イメージサイズ選択肢</dt>
+		<dd id="tooltipContents-generalColumnImageSize">投稿した画像のサイズを設定します。サイズが200なら縦または横の辺の大きい方が200pxになります。</dd>
+	<dt>マップサイズ選択肢</dt>
+		<dd id="tooltipContents-generalColumnMapSize">地図を表示するサイズを設定します。210x210なら210px の正方形になります。</dd>
+	<dt>Youtubeサイズ選択肢</dt>
+		<dd id="tooltipContents-generalColumnYoutubeSize">Youtubeを表示するサイズを設定します。320x205なら320x205px の長方形になります。※画面比率16:9 + 縦25px(コントロールバー)</dd>
+	<dt>画像URLサイズ選択肢</dt>
+		<dd id="tooltipContents-generalColumnExImageSize">画像URLを表示するサイズを設定します。サイズが200なら縦または横の辺の大きい方が200pxになります。</dd>
+	<dt>ファイル名の自動生成</dt>
+		<dd id="tooltipContents-generalEntryCodeTitle">チェックするとファイル名が指定されていない時に、エントリーのタイトルをファイル名として使います。</dd>
+	<dt>ファイル名接頭辞</dt>
+		<dd id="tooltipContents-generalEntryCodePrefix">ファイル名を自動生成するときの接頭辞です。デフォルトは entry- です。</dd>
+	<dt>ファイル名拡張子</dt>
+		<dd id="tooltipContents-generalEntryCodeExtension">ファイル名を自動生成するときの拡張子です。</dd>
+
+    <!--　編集の拡張機能 -->
+    <dt>ダイレクト編集</dt>
+        <dd id="tooltipContents-generalDirectEdit">チェックすると、ダイレクト編集機能を有効にします</dd>
+    <dt>ユニットグループ</dt>
+        <dd id="tooltipContents-generalUnitGroup">チェックすると、ユニットグループ機能を有効にします</dd>
+
+    <!-- ユニットグループ -->
+    <dt>クラス</dt>
+        <dd id="tooltipContents-generalUnitGroupClass">エントリーのユニットグループにおける、DIV要素のクラス名を設定します。</dd>
+    <dt>ラベル</dt>
+        <dd id="tooltipContents-generalUnitGroupLabel">エントリーのユニットグループにおける、選択肢のラベル名を設定します。</dd>
+
+	<!-- テキストタグ -->
+	<dt>タグ</dt>
+		<dd id="tooltipContents-generalColumnTextTag">エントリーのテキストユニットにおける、タグのブロック名を設定します。</dd>
+	<dt>ラベル</dt>
+		<dd id="tooltipContents-generalColumnTextLabel">エントリーのテキストユニットにおける、タグのラベル名を設定します。</dd>
+
+	<!-- イメージ編集 -->
+	<dt>拡大表示時の最大幅</dt>
+		<dd id="tooltipContents-generalImageSizeLarge">画像をクリックした際に拡大して表示される画像のサイズです。</dd>
+	<dt>モバイル用画像の最大幅</dt>
+		<dd id="tooltipContents-generalImageSizeTiny">携帯電話などモバイル機器で見た時の画像の最大幅です。</dd>
+	<dt>正方形画像の一辺サイズ</dt>
+		<dd id="tooltipContents-generalImageSizeSquare">正方形画像の一辺のサイズです。画像はトリミングされます。0を設定すると正方形画像を生成しなくなります。</dd>
+	<dt>JPEG画像の圧縮率</dt>
+		<dd id="tooltipContents-generalImageJpegQuality">数字が小さいほど容量を抑えますが画質は低下します。</dd>
+
+	<!-- エントリー編集 -->
+	<dt>命名方法</dt>
+	    <dd id="tooltipContents-fileSavename">アップロードするファイルの命名方法を選択します。</dd>
+	<dt>ドキュメント</dt>
+		<dd id="tooltipContents-generalDocument">アップロードを許可したい文章ファイルの拡張子を追加します。</dd>
+	<dt>アーカイブ</dt>
+		<dd id="tooltipContents-generalArchive">アップロードを許可したい圧縮ファイルの拡張子を追加します。</dd>
+	<dt>ムービー</dt>
+		<dd id="tooltipContents-generalMovie">アップロードを許可したい動画ファイルの拡張子を追加します。</dd>
+	<dt>オーディオ</dt>
+		<dd id="tooltipContents-generalAudio">アップロードを許可したい音声ファイルの拡張子を追加します。</dd>
+		
+	<!-- ユニット追加ボタン -->
+	<dt>モード</dt>
+		<dd id="tooltipContents-generalColumnAddType">ユニット追加ボタンで追加される、ユニットモードを設定します。基本モードに続きアンダーバー適当な文字列で基本ユニットを拡張できます。（例:image_h2）</dd>
+	<dt>ラベル</dt>
+		<dd id="tooltipContents-generalColumnAddTypeLabel">ユニット追加ボタンの、ボタン名を設定します。</dd>
+	
+	<!-- タグフィルター -->
+	<dt>表示数</dt>
+		<dd id="tooltipContents-generalTagFilterLimit">タグフィルターの表示の上限数を設定します。</dd>
+	
+	<!-- Pingショット -->
+	<dt>エンドポイント</dt>
+		<dd id="tooltipContents-generalEndpoint">PING送信先のエンドポイントを指定します。</dd>
+	<dt>拡張エンドポイント</dt>
+		<dd id="tooltipContents-generalExtendedEndpoint">拡張規格に対応した、PING送信先のエンドポイントを指定します。</dd>
+	
+	<!-- コンテントタイプと拡張子の関連付け -->
+	<dt>コンテントタイプ</dt>
+		<dd id="tooltipContents-generalMimetype">コンテントタイプ(MIMEタイプ)と拡張子の関連を個別に指定します。</dd>
+	<dt>拡張子</dt>
+		<dd id="tooltipContents-generalExtension">コンテントタイプ(MIMEタイプ)と拡張子の関連を個別に指定します。</dd>
+
+	<!-- キャッシュ消去日時 -->
+	<dt>次回削除日時</dt>
+		<dd id="tooltipContents-generalChacheNext">指定された日時にキャッシュをクリアします。</dd>
+	<dt>自動設定</dt>
+		<dd id="tooltipContents-generalChacheCron">定期的にクリアする日時をCronと同じ記述方法で指定します（*：ワイルドカード）。<br />クリアされるたびに次回削除日時が更新されます。</dd>
+
+	<!-- HTML整形 -->
+	<dt>HTMLコメントの削除</dt>
+		<dd id="tooltipContents-remove_comment">出力するHTMLソースからHTMLコメント ( &lt;-- コメント -- &gt; ) を取り除きます。</dd>
+	<dt>余分な空白の削除</dt>
+		<dd id="tooltipContents-remove_blank">出力するHTMLソースから余分な空白を取り除きます。連続する空白文字 ( 改行、スペース、タブ ) の二つ目以降が取り除かれます。</dd>
+
+    <!-- SMTPサーバ -->
+    <dt>ホスト名</dt>
+        <dd id="tooltipContents-mailSmtpHost">メールを送信するSMTPサーバのホスト名を指定します。指定されない場合はphp.iniのsendmail_pathに従い、sendmailを使用してメールを送信します。</dd>
+    <dt>ポート</dt>
+        <dd id="tooltipContents-mailSmtpPort">SMTPサーバのポートを指定します。サーバによって異なる場合があります。25や587がよく使われます。</dd>
+    <dt>ユーザー名</dt>
+        <dd id="tooltipContents-mailSmtpUser">SMTP認証が必要な場合にユーザー名を指定します。</dd>
+    <dt>パスワード</dt>
+        <dd id="tooltipContents-mailSmtpPass">SMTP認証が必要な場合にパスワードを指定します。</dd>
+
+    <!-- 読者登録 -->
+    <dt>From</dt>
+        <dd id="tooltipContents-mailSubscribeFrom">送信されるメールの差出人を指定します。</dd>
+    <dt>To</dt>
+        <dd id="tooltipContents-mailSubscribeTo">送信されるメールの宛先を指定します。</dd>
+    <dt>Bcc</dt>
+        <dd id="tooltipContents-mailSubscribeBcc">送信されるメールのBcc（ブラインドカーボンコピー）を指定します。</dd>
+    <dt>件名テンプレート</dt>
+        <dd id="tooltipContents-mailSubscribeTplSubject">件名のテンプレートの場所を指定します。</dd>
+    <dt>本文テンプレート</dt>
+        <dd id="tooltipContents-mailSubscribeTplBody">本文のテンプレートの場所を指定します。</dd>
+
+    <!-- 読者登録（管理者） -->
+    <dt>From（管理者）</dt>
+        <dd id="tooltipContents-mailSubscribeAdminFrom">送信されるメールの差出人を指定します。</dd>
+    <dt>To（管理者）</dt>
+        <dd id="tooltipContents-mailSubscribeAdminTo">送信されるメールの宛先を指定します。</dd>
+    <dt>Bcc（管理者）</dt>
+        <dd id="tooltipContents-mailSubscribeAdminBcc">送信されるメールのBcc（ブラインドカーボンコピー）を指定します。</dd>
+    <dt>件名テンプレート（管理者）</dt>
+        <dd id="tooltipContents-mailSubscribeAdminTplSubject">件名のテンプレートの場所を指定します。</dd>
+    <dt>本文テンプレート（管理者）</dt>
+        <dd id="tooltipContents-mailSubscribeAdminTplBody">本文のテンプレートの場所を指定します。</dd>
+
+    <!-- パスワード再発行 -->
+    <dt>From</dt>
+        <dd id="tooltipContents-mailRemindFrom">送信されるメールの差出人を指定します。</dd>
+    <dt>To</dt>
+        <dd id="tooltipContents-mailRemindTo">送信されるメールの宛先を指定します。</dd>
+    <dt>Bcc</dt>
+        <dd id="tooltipContents-mailRemindBcc">送信されるメールのBcc（ブラインドカーボンコピー）を指定します。</dd>
+    <dt>件名テンプレート</dt>
+        <dd id="tooltipContents-mailRemindTplSubject">件名のテンプレートの場所を指定します。</dd>
+    <dt>本文テンプレート</dt>
+        <dd id="tooltipContents-mailRemindTplBody">本文のテンプレートの場所を指定します。</dd>
+
+    <!-- コメント -->
+    <dt>From</dt>
+        <dd id="tooltipContents-mailCommentFrom">送信されるメールの差出人を指定します。</dd>
+    <dt>To</dt>
+        <dd id="tooltipContents-mailCommentTo">送信されるメールの宛先を指定します。</dd>
+    <dt>Bcc</dt>
+        <dd id="tooltipContents-mailCommentBcc">送信されるメールのBcc（ブラインドカーボンコピー）を指定します。</dd>
+    <dt>件名テンプレート</dt>
+        <dd id="tooltipContents-mailCommentTplSubject">件名のテンプレートの場所を指定します。</dd>
+    <dt>本文テンプレート</dt>
+        <dd id="tooltipContents-mailCommentTplBody">本文のテンプレートの場所を指定します。</dd>
+
+    <!-- トラックバック -->
+    <dt>From</dt>
+        <dd id="tooltipContents-mailTrackbackFrom">送信されるメールの差出人を指定します。</dd>
+    <dt>To</dt>
+        <dd id="tooltipContents-mailTrackbackTo">送信されるメールの宛先を指定します。</dd>
+    <dt>Bcc</dt>
+        <dd id="tooltipContents-mailTrackbackBcc">送信されるメールのBcc（ブラインドカーボンコピー）を指定します。</dd>
+    <dt>件名テンプレート</dt>
+        <dd id="tooltipContents-mailTrackbackTplSubject">件名のテンプレートの場所を指定します。</dd>
+    <dt>本文テンプレート</dt>
+        <dd id="tooltipContents-mailTrackbackTplBody">本文のテンプレートの場所を指定します。</dd>
+
+    <!-- メールマガジン -->
+    <dt>From</dt>
+        <dd id="tooltipContents-mailEntryFrom">送信されるメールの差出人を指定します。</dd>
+    <dt>To</dt>
+        <dd id="tooltipContents-mailEntryTo">送信されるメールの宛先を指定します。</dd>
+    <dt>件名テンプレート</dt>
+        <dd id="tooltipContents-mailEntryTplSubject">送信されるメールの件名になる文章の雛形が記述されているテンプレートファイルの場所を指定します。</dd>
+    <dt>本文テンプレート（プレーンテキスト）</dt>
+        <dd id="tooltipContents-mailEntryTplBodyPlain">送信されるメールのテキスト形式の本文になる文章の雛形が記述されているテンプレートファイルの場所を指定します。</dd>
+    <dt>本文テンプレート（HTML）</dt>
+        <dd id="tooltipContents-mailEntryTplBodyHtml">送信されるメールのHTML形式の本文になる文章の雛形が記述されているテンプレートファイルの場所を指定します。</dd>
+    <dt>一斉同報件数</dt>
+        <dd id="tooltipContents-mailEntryBccLimit">一通のメールでBccに指定する登録ユーザーのメールアドレスの最大数。この数字を大きくし過ぎるとプロバイダによってはスパムと判断されてしまう場合があります。</dd>
+
+    <!-- アドバンス -->
+    <dt>Return-Path</dt>
+        <dd id="tooltipContents-mailFrom">メールのReturn-Pathを特定のメールアドレスに指定します。</dd>
+    <dt>メールヘッダ分割コード</dt>
+        <dd id="tooltipContents-mailHeaderDivider">メールヘッダの分割コード（改行コード）を指定します。"自動"で不具合がある場合に設定してください。送信サーバにqmailを利用している場合、LFでないと一部環境で正常にメールが受け取れない可能性があります。</dd>
+
+    <!-- 外部認証 -->
+    <dt>Twitter OAuth</dt>
+        <dd id="tooltipContents-generalTwitterOAuth">TwitterAPI系モジュールを利用するために、認証してブログとアカウント情報を関連付けます。この設定は、ブログ単位で行われます。ルールを利用した個別の設定はできません。</dd>
+	<dt>Instagram OAuth</dt>
+        <dd id="tooltipContents-generalInstagramOAuth">InstagramAPI系モジュールを利用するために、認証してブログとアカウント情報を関連付けます。この設定は、ブログ単位で行われます。ルールを利用した個別の設定はできません。</dd>
+</dl>

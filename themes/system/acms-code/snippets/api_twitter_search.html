@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Api_Twitter_Search</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Api_Twitter_Search --&gt;
+&lt;h2&gt;Twitter_Search : &lt;/h2&gt;
+&lt;!-- BEGIN pager --&gt;
+&lt;p&gt;last_id: {last_id}, first-id: {first_id}&lt;/p&gt;
+&lt;!-- END pager --&gt;
+
+&lt;!-- BEGIN notFound --&gt;
+&lt;p class="acms-alert acms-alert-danger"&gt;&lt;span class="acms-icon acms-icon-attention"&gt;&lt;/span&gt;結果が見つかりませんでした。&lt;/p&gt;
+&lt;!-- END notFound --&gt;
+&lt;!-- BEGIN failed --&gt;
+&lt;p class="acms-alert acms-alert-danger"&gt;&lt;span class="acms-icon acms-icon-attention"&gt;&lt;/span&gt;API接続が確立されていない、または接続に失敗しました。API Keyの設定、もしくはAPI本体の稼働状況をご確認ください。( {error_msg} )&lt;/p&gt;
+&lt;!-- END failed --&gt;
+&lt;ul class="acms-list-nostyle"&gt;
+	&lt;!-- BEGIN tweet:loop --&gt;
+	&lt;li class="acms-summary"&gt;
+		&lt;p class="acms-summary-image"&gt;&lt;img src="{image}" alt="{id}" width="48" height="48"&gt;&lt;/p&gt;
+		&lt;p class="acms-summary-body"&gt;@{screen_name} ( {user_id} / {status_id} ) {text}[urldecode] ( {date#m}/{date#d} {date#H}:{date#i} )&lt;br&gt;&lt;a href="{permalink}" class="acms-btn-flat acms-btn-small acms-float-right"&gt;元のツイートを見る&lt;span class="acms-icon-arrow-small-right"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;!-- END tweet:loop --&gt;
+&lt;/ul&gt;
+&lt;!-- END_MODULE Api_Twitter_Search --&gt;
+</textarea>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<h3 class="acms-admin-admin-title2"><!--T-->タイトル設定<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->優勢順序<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->タイトルで使われるパーツの優先順序を設定します。<br>利用可能パーツ (entry,page,tag,keyword,date,admin,404,category,blog,rootBlog)<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_order" value="{ogp_title_order}" class="acms-admin-form-width-large" placeholder="entry,page,tag,keyword,date,admin,404,category,blog,rootBlog" />
+			<input type="hidden" name="config[]" value="ogp_title_order" />
+			<input type="hidden" name="ogp_title_order:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->パーツの区切り文字<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->タイトルの区切り文字を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_delimiter" value="{ogp_title_delimiter}" class="acms-admin-form-width-mini" placeholder=" | " />
+			<input type="hidden" name="config[]" value="ogp_title_delimiter" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->タイトルで使われるカスタムフィールド名を設定します。このフィールドがない場合は、エントリーのタイトルが使われます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_entry_field_name" value="{ogp_title_entry_field_name}" class="acms-admin-form-width-small" placeholder="entry_meta_title" />
+			<input type="hidden" name="config[]" value="ogp_title_entry_field_name" />
+			<input type="hidden" name="ogp_title_entry_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->タイトルで使われるカスタムフィールド名を設定します。このフィールドがない場合は、カテゴリー名が使われます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_category_field_name" value="{ogp_title_category_field_name}" class="acms-admin-form-width-small" placeholder="category_meta_title" />
+			<input type="hidden" name="config[]" value="ogp_title_category_field_name" />
+			<input type="hidden" name="ogp_title_category_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ブログのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->タイトルで使われるカスタムフィールド名を設定します。このフィールドがない場合は、ブログ名が使われます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_blog_field_name" value="{ogp_title_blog_field_name}" class="acms-admin-form-width-small" placeholder="blog_meta_title" />
+			<input type="hidden" name="config[]" value="ogp_title_blog_field_name" />
+			<input type="hidden" name="ogp_title_blog_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ページのフォーマット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページ番号を出力するテキストのフォーマットを設定します。ページ番号は&#123;page&#125;で表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_page_suffix" value="{ogp_title_page_suffix}" class="acms-admin-form-width-mini" placeholder="<!--T-->ページ<!--/T-->" />
+			<input type="hidden" name="config[]" value="ogp_title_page_suffix" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->タグの区切り文字<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->タグの区切り文字を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_tag_delimiter" value="{ogp_title_tag_delimiter}" class="acms-admin-form-width-mini" placeholder="・" />
+			<input type="hidden" name="config[]" value="ogp_title_tag_delimiter" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->日付の書式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->日付の書式を設定します。PHPのdateに準拠しています。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_date_format" value="{ogp_title_date_format}" class="acms-admin-form-width-mini" placeholder="Y-m-d" />
+			<input type="hidden" name="config[]" value="ogp_title_date_format" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->管理ページのタイトル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->管理ページのタイトルを設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_admin_label" value="{ogp_title_admin_label}" class="acms-admin-form-width-medium" placeholder="<!--T-->管理ページ<!--/T-->" />
+			<input type="hidden" name="config[]" value="ogp_title_admin_label" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->404のタイトル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->404時のタイトルを設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_title_404_label" value="{ogp_title_404_label}" class="acms-admin-form-width-medium" placeholder="<!--T-->お探しのページは見つかりませんでした<!--/T-->" />
+			<input type="hidden" name="config[]" value="ogp_title_404_label" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->画像設定<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>優先度</th>
+		<td>
+			<ol>
+				<li><!--T-->エントリーのカスタムフィールド画像<!--/T--></li>
+				<li><!--T-->エントリーのユニット画像<!--/T--></li>
+				<li><!--T-->カテゴリーのカスタムフィールド画像<!--/T--></li>
+				<li><!--T-->ブログのカスタムフィールド画像<!--/T--></li>
+				<li><!--T-->ルートブログのカスタムフィールド画像<!--/T--></li>
+			</ol>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの画像カスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_image_entry_field_name" value="{ogp_image_entry_field_name}" class="acms-admin-form-width-small" placeholder="entry_ogp_image" />
+			<input type="hidden" name="config[]" value="ogp_image_entry_field_name" />
+			<input type="hidden" name="ogp_image_entry_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T--カテゴリーの画像カスタムフィールド名を設定します。><!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_image_category_field_name" value="{ogp_image_category_field_name}" class="acms-admin-form-width-small" placeholder="category_ogp_image" />
+			<input type="hidden" name="config[]" value="ogp_image_category_field_name" />
+			<input type="hidden" name="ogp_image_category_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ブログのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログの画像カスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_image_blog_field_name" value="{ogp_image_blog_field_name}" class="acms-admin-form-width-small" placeholder="blog_ogp_image" />
+			<input type="hidden" name="config[]" value="ogp_image_blog_field_name" />
+			<input type="hidden" name="ogp_image_blog_field_name:convert" value="a" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->ディスクリプション設定<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>優先度</th>
+		<td>
+			<ol>
+				<li><!--T-->エントリーのカスタムフィールド<!--/T--></li>
+				<li><!--T-->エントリーのサマリー（フルテキスト）<!--/T--></li>
+				<li><!--T-->カテゴリーのカスタムフィールド<!--/T--></li>
+				<li><!--T-->ブログのカスタムフィールド<!--/T--></li>
+				<li><!--T-->ルートブログのカスタムフィールド<!--/T--></li>
+			</ol>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーのカスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_description_entry_field_name" value="{ogp_description_entry_field_name}" class="acms-admin-form-width-small" placeholder="entry_meta_description" />
+			<input type="hidden" name="config[]" value="ogp_description_entry_field_name" />
+			<input type="hidden" name="ogp_description_entry_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーのカスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_description_category_field_name" value="{ogp_description_category_field_name}" class="acms-admin-form-width-small" placeholder="category_meta_description" />
+			<input type="hidden" name="config[]" value="ogp_description_category_field_name" />
+			<input type="hidden" name="ogp_description_category_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ブログのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログのカスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_description_blog_field_name" value="{ogp_description_blog_field_name}" class="acms-admin-form-width-small" placeholder="blog_meta_description" />
+			<input type="hidden" name="config[]" value="ogp_description_blog_field_name" />
+			<input type="hidden" name="ogp_description_blog_field_name:convert" value="a" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->キーワード設定<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>優先度</th>
+		<td>
+			<ol>
+				<li><!--T-->エントリーのカスタムフィールド<!--/T--></li>
+				<li><!--T-->カテゴリーのカスタムフィールド<!--/T--></li>
+				<li><!--T-->ブログのカスタムフィールド<!--/T--></li>
+				<li><!--T-->ルートブログのカスタムフィールド<!--/T--></li>
+			</ol>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーのカスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_keywords_entry_field_name" value="{ogp_keywords_entry_field_name}" class="acms-admin-form-width-small" placeholder="entry_meta_keywords" />
+			<input type="hidden" name="config[]" value="ogp_keywords_entry_field_name" />
+			<input type="hidden" name="ogp_keywords_entry_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリーのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーのカスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_keywords_category_field_name" value="{ogp_keywords_category_field_name}" class="acms-admin-form-width-small" placeholder="category_meta_keywords" />
+			<input type="hidden" name="config[]" value="ogp_keywords_category_field_name" />
+			<input type="hidden" name="ogp_keywords_category_field_name:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ブログのカスタムフィールド名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログのカスタムフィールド名を設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="ogp_keywords_blog_field_name" value="{ogp_keywords_blog_field_name}" class="acms-admin-form-width-small" placeholder="blog_meta_keywords" />
+			<input type="hidden" name="config[]" value="ogp_keywords_blog_field_name" />
+			<input type="hidden" name="ogp_keywords_blog_field_name:convert" value="a" />
+		</td>
+	</tr>
+</table>
+
+<!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

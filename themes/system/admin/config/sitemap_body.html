@@ -1,0 +1,139 @@
+<h2 class="acms-admin-admin-title2"><!--T-->ブログ<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="sitemap_blog_order" class="js-select2">
+				<option value="code-asc"{sitemap_blog_order:selected#code-asc}><!--T-->コード名 ( 昇順 )<!--/T--></option>
+				<option value="code-desc"{sitemap_blog_order:selected#code-desc}><!--T-->コード名 ( 降順 )<!--/T--></option>
+				<option value="id-asc"{sitemap_blog_order:selected#id-asc}><!--T-->ID ( 昇順 )<!--/T--></option>
+				<option value="id-desc"{sitemap_blog_order:selected#id-desc}><!--T-->ID ( 降順 )<!--/T--></option>
+				<option value="sort-asc"{sitemap_blog_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{sitemap_blog_order:selected#sort-desc}><!--T-->表示順 ( 降順 )<!--/T--></option>
+				<option value="name-asc"{sitemap_blog_order:selected#name-asc}><!--T-->名前 ( 昇順 )<!--/T--></option>
+				<option value="name-desc"{sitemap_blog_order:selected#name-desc}><!--T-->名前 ( 降順 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="sitemap_blog_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないブログも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="sitemap_blog_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="sitemap_blog_indexing" value="on"{sitemap_blog_indexing:checked#on} id="input-checkbox-sitemap_blog_indexing" />
+				<label for="input-checkbox-sitemap_blog_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているブログのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="sitemap_blog_indexing" />
+		</td>
+	</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->カテゴリー<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="sitemap_category_order" class="js-select2">
+				<option value="sort-asc"{sitemap_category_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{sitemap_category_order:selected#sort-desc}><!--T-->表示順 ( 降順 )<!--/T--></option>
+				<option value="code-asc"{sitemap_category_order:selected#code-asc}><!--T-->コードネーム ( 昇順 )<!--/T--></option>
+				<option value="code-desc"{sitemap_category_order:selected#code-desc}><!--T-->コードネーム ( 降順 )<!--/T--></option>
+				<option value="id-asc"{sitemap_category_order:selected#id-asc}><!--T-->ID ( 昇順 )<!--/T--></option>
+				<option value="id-desc"{sitemap_category_order:selected#id-desc}><!--T-->ID ( 降順 )<!--/T--></option>
+				<option value="amount-asc"{sitemap_category_order:selected#amount-asc}><!--T-->エントリー数 ( 昇順 )<!--/T--></option>
+				<option value="amount-desc"{sitemap_category_order:selected#amount-desc}><!--T-->エントリー数 ( 降順 )<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="sitemap_category_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないカテゴリーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="sitemap_category_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="sitemap_category_indexing" value="on"{sitemap_category_indexing:checked#on} id="input-checkbox-sitemap_category_indexing" />
+				<label for="input-checkbox-sitemap_category_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているカテゴリーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="sitemap_category_indexing" />
+		</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2"><!--T-->エントリー<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="sitemap_entry_order" class="js-select2">
+				<option value="updated_datetime-asc"{sitemap_entry_order:selected#updated_datetime-asc}><!--T-->更新日時 ( 昇順 )<!--/T--></option>
+				<option value="updated_datetime-desc"{sitemap_entry_order:selected#updated_datetime-desc}><!--T-->更新日時 ( 降順 )<!--/T--></option>
+				<option value="datetime-asc"{sitemap_entry_order:selected#datetime-asc}><!--T-->日時 ( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{sitemap_entry_order:selected#datetime-desc}><!--T-->日時 ( 降順 )<!--/T--></option>
+				<option value="code-asc"{sitemap_entry_order:selected#code-asc}><!--T-->ファイル名 ( 昇順 )<!--/T--></option>
+				<option value="code-desc"{sitemap_entry_order:selected#code-desc}><!--T-->ファイル名 ( 降順 )<!--/T--></option>
+				<option value="id-asc"{sitemap_entry_order:selected#id-asc}><!--T-->ID ( 昇順 )<!--/T--></option>
+				<option value="id-desc"{sitemap_entry_order:selected#id-desc}><!--T-->ID ( 降順 )<!--/T--></option>
+				<option value="sort-asc"{sitemap_entry_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{sitemap_entry_order:selected#sort-desc}><!--T-->表示順 ( 降順 )<!--/T--></option>
+				<!--<option value="field-asc"{sitemap_entry_order:selected#field-asc}>フィールド ( 昇順 )</option>-->
+				<!--<option value="field-desc"{sitemap_entry_order:selected#field-desc}>フィールド ( 降順 )</option>-->
+				<!--<option value="intfield-asc"{sitemap_entry_order:selected#intfield-asc}>数値フィールド ( 昇順 )</option>-->
+				<!--<option value="intfield-desc"{sitemap_entry_order:selected#intfield-desc}>数値フィールド ( 降順 )</option>-->
+				<!--<option value="random"{sitemap_entry_order:selected#random}>ランダム</option>-->
+			</select>
+			<input type="hidden" name="config[]" value="sitemap_entry_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。空欄にすると全件を表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="sitemap_entry_limit" value="{sitemap_entry_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="sitemap_entry_limit" />
+			<input type="hidden" name="sitemap_entry_limit:convert" value="a" />
+			<input type="hidden" name="sitemap_entry_limit:validator#digits" id="validator-sitemap_entry_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-sitemap_entry_limit-digits" class="validator-result-{sitemap_entry_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないエントリーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="sitemap_entry_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="sitemap_entry_indexing" value="on"{sitemap_entry_indexing:checked#on} id="input-checkbox-sitemap_entry_indexing" />
+				<label for="input-checkbox-sitemap_entry_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているエントリーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="sitemap_entry_indexing" />
+		</td>
+	</tr>
+</table>
+<h2 class="acms-admin-admin-title2"><!--T-->フィルタ<!--/T--></h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->ブログ フィルタ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログのカスタムフィールドで絞り込む事が出来るようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="sitemap_blog_field" value="{sitemap_blog_field}" class="acms-admin-form-width-half" />
+			<input type="hidden" name="config[]" value="sitemap_blog_field" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カテゴリー フィルタ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリのカスタムフィールドで絞り込む事が出来るようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="sitemap_category_field" value="{sitemap_category_field}" class="acms-admin-form-width-half" />
+			<input type="hidden" name="config[]" value="sitemap_category_field" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリ フィルタ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリのカスタムフィールドで絞り込む事が出来るようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="sitemap_entry_field" value="{sitemap_entry_field}" class="acms-admin-form-width-half" />
+			<input type="hidden" name="config[]" value="sitemap_entry_field" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

@@ -1,0 +1,174 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title">
+			<i class="acms-admin-icon acms-admin-icon-exit"></i><!--T-->国際化<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Errors -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon-attention acms-admin-alert-icon-before"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>{error}</p>
+<!-- END_MODULE Admin_Errors -->
+
+<form action="" method="post" class="acms-admin-form">
+	<div class="acms-admin-form-group">
+		<input class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-margin-sp" type="submit" name="ACMS_POST_I18n_DownloadPot" value="<!--T-->POT ダウンロード<!--/T-->" />
+	</div>
+</form>
+
+<h2>国際化について</h2>
+<p>決められたルールでテンプレートを記述することで、指定した言語を別の言語に切り替えてページを表示できます。例えば英語圏のユーザには管理画面を英語で表示するといった用途があります。</p>
+
+<h2><!--T-->特定の文字列を翻訳可能にする方法<!--/T--></h2>
+<p><!--T-->a-blog cms で文字列を翻訳可能にするには元の文字列を以下のコメントで囲みます。<!--/T--></p>
+
+<pre class="code HTML">
+&lt;!-- TRANS --&gt;翻訳文字&lt;!-- /TRANS --&gt;
+</pre>
+<!--T-->または<!--/T-->
+<pre class="code HTML">
+&lt;!--T--&gt;翻訳文字&lt;!--/T--&gt;
+</pre>
+
+<h3><!--T-->変数の埋め込み<!--/T--></h3>
+<p><!--T-->翻訳対象の中に変数が入ってくる場合は以下のように変数を&lt;!--$1--&gt;で囲みます。変数の数によって$数値を増やしていってください。<!--/T--></p>
+
+<!--T-->テンプレート側の記述<!--/T-->
+<pre class="code HTML">
+&lt;!--T--&gt;こんにちは&lt;!--$1--&gt;{lastName}&lt;!--/$1--&gt; &lt;!--$2--&gt;{firstName}&lt;!--/$2--&gt;さん&lt;!--/T--&gt;
+</pre>
+
+<!--T-->その際に後ほど紹介するPOファイルには以下のように記述し、翻訳内容を切り替えます。<!--/T-->
+<pre class="code HTML">
+msgid "こんにちは$1 $2さん"
+msgstr "Hello, $2 $1"
+</pre>
+
+<h3><!--T-->文脈<!--/T--></h3>
+<p><!--T-->文字列としては同じでも、文脈により意味が異なるケースがあります。その場合は以下のように<strong>ctx=""</strong>を振ることで、別のものとして翻訳することができます。<!--/T--></p>
+
+<!--T-->ソース<!--/T-->
+<pre class="code HTML">
+&lt;!--T ctx="show"--&gt;表示&lt;!--/T--&gt;
+&lt;!--T ctx="display"--&gt;表示&lt;!--/T--&gt;
+</pre>
+
+<!--T-->POファイル<!--/T-->
+<pre class="code HTML">
+msgid "表示_CTX_show"
+msgstr "show"
+
+msgid "表示_CTX_display"
+msgstr "display"
+</pre>
+
+<h2>翻訳用ファイルの作成手順</h2>
+<p>翻訳用ファイル（MO）ファイル作成にはPOTファイル生成 → POファイル生成 → MOファイル生成という段階を踏む必要があります。その際に専用のソフトウェアである<a href="http://poedit.net/" target="_blank">Poedit</a>を使うと便利です。</p>
+
+<h3><!--T-->POTファイル<!--/T--></h3>
+
+<p><!--T-->各テーマのadmin以下のテンプレートでマークした文字列を抽出します。<!--/T-->
+<!--T--><strong>pot ダウンロード</strong>からPOTファイルをダウンロードして下さい。<!--/T--></p>
+
+
+<h3><!--T-->POファイル<!--/T--></h3>
+
+<p><!--T-->ダウンロードしたPOTファイルから各言語に翻訳してPOファイルを生成します。<!--/T--></p>
+<p><!--T-->例: 英語に翻訳<!--/T--></p>
+<pre class="code">
+#: themes/system/admin/top.html
+msgid "ダッシュボード"
+msgstr "Dashboard"
+</pre>
+
+<h3><!--T-->MOファイル<!--/T--></h3>
+
+<p><!--T-->POファイルからMOファイルを生成してください。<!--/T-->
+<!--T-->出来上がったMOファイルを以下の場所（デフォルト）に設置してください。<!--/T--></p>
+
+<pre class="code">
+例 : /lang/en_US/LC_MESSAGES/messages.mo
+
+<!--T-->/a-blogcms設置ディレクトリ/lang/[言語]_[地域]/LC_MESSAGES/messages.mo<!--/T-->
+</pre>
+
+<h4>言語と地域の例</h4>
+
+<table class="acms-admin-table" style="width:auto;">
+	<tr><td>説明（例）</td><td>言語</td><td>地域</td></tr>
+	<tr><td>日本語、日本</td><td>ja</td><td>JP</td></tr>
+	<tr><td>英語、米国</td><td>en</td><td>US</td></tr>
+	<tr><td>ロシア語、ロシア</td><td>ru</td><td>RU</td></tr>
+	<tr><td>韓国語、韓国</td><td>ko</td><td>KR</td></tr>
+</table>
+
+<h2>config.server.php</h2>
+
+<p><!--T--><strong>config.server.php</strong> で以下の設定ができます。<!--/T--></p>
+<pre class="code PHP">
+define('GETTEXT_TYPE', 'auto'); // fix|auto
+define('GETTEXT_APPLICATION_RANGE', 'admin'); // admin|login|all
+define('GETTEXT_DEFAULT_LOCALE', 'ja_JP.UTF-8');
+define('GETTEXT_DOMAIN', 'messages');
+define('GETTEXT_PATH', 'lang');
+</pre>
+
+<dl>
+	<dt>GETTEXT_TYPE</dt>
+	<dd>
+		<p>
+		<!--T-->fix: config.server.phpで指定した言語地域で固定します<!--/T--><br>
+		<!--T-->user: ユーザ毎に管理画面より言語地域を設定します。<!--/T--><br>
+		<!--T-->auto: ブラウザの言語地域の設定を反映します<!--/T--><br>
+		</p>
+
+		<p><!--T-->TYPEが"user"だった場合、ユーザ詳細ページのカスタマイズが必要になります。<!--/T--></p>
+
+<pre class="code PHP">
+&lt;!-- /独自テーマ/admin/user/field.html に用意 --&gt;
+&lt;tr&gt;
+	&lt;th&gt;ロケール&lt;i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="ユーザー毎のロケールを設定します。"&gt;&lt;/i&gt;&lt;/th&gt;
+	&lt;td&gt;
+		&lt;select name="locale"&gt;
+			&lt;option value="ja_JP.UTF-8"{locale:selected#ja_JP.UTF-8}&gt;日本語&lt;/option&gt;
+			&lt;option value="en_US.UTF-8"{locale:selected#en_US.UTF-8}&gt;English&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;input type="hidden" name="user[]" value="locale" /&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+	</dd>
+
+	<dt>GETTEXT_APPLICATION_RANGE</dt>
+	<dd>
+		<p>
+		<!--T-->admin: adminディレクトリ以下（管理ページ）のみ翻訳します<!--/T--><br>
+		<!--T-->login: ログインしている時のみ翻訳します<!--/T--><br>
+		<!--T-->all: すべてのページを翻訳対象にします<!--/T-->
+		</p>
+	</dd>
+
+	<dt>GETTEXT_DEFAULT_LOCALE</dt>
+	<dd>
+		<p>
+			<!--T-->基本の言語地域を設定します。GETTEXT_TYPEが固定だった場合やブラウザの言語地域のmoファイルが見つからない場合にこの言語地域が使用されます。<!--/T-->
+		</p>
+	</dd>
+
+	<dt>GETTEXT_DOMAIN</dt>
+	<dd>
+		<p>
+			<!--T-->gettextのグローバルドメインを設定します。（デフォルト: messages）<!--/T-->
+		</p>
+	</dd>
+
+	<dt>GETTEXT_PATH</dt>
+	<dd>
+		<p>
+			<!--T-->ドメインへのパスを設定します。（デフォルト: lang）<!--/T-->
+		</p>
+	</dd>
+</dl>

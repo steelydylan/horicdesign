@@ -1,0 +1,401 @@
+<h3 class="acms-admin-admin-title2"><!--T-->位置オプション<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->半径<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ここで指定した半径以内のエントリーで絞り込みます。0を指定した場合絞り込みません。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_within" value="{entry_geo-list_within}" size="4" class="acms-admin-form-width-mini"  /> km以内で絞り込む
+			<input type="hidden" name="config[]" value="entry_geo-list_within" />
+			<input type="hidden" name="entry_geo-list_within:convert" value="a" />
+			<input type="hidden" name="entry_geo-list_within:validator#digits" id="validator-entry_geo-list_within-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_within-digits" class="validator-result-{entry_geo-list_within:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->基準点<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->基準点の参照方法を指定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="entry_geo-list_reference_point" value="url_context"{entry_geo-list_reference_point:checked#url_context} id="input-raido-entry-geo-list-reference-point-url-context" />
+				<label for="input-raido-entry-geo-list-reference-point-url-context"><i class="acms-admin-ico-radio"></i>URLコンテキストのエントリー位置情報を参照</label>
+			</div>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="entry_geo-list_reference_point" value="url_query_string"{entry_geo-list_reference_point:checked#url_query_string} id="input-raido-entry-geo-list-reference-point-url-query-string" />
+				<label for="input-raido-entry-geo-list-reference-point-url-query-string"><i class="acms-admin-ico-radio"></i>URLクエリストリングの位置情報を参照（?lat=xxx&lng=xxx）</label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_reference_point" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->エントリー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_limit" value="{entry_geo-list_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_geo-list_limit" />
+			<input type="hidden" name="entry_geo-list_limit:convert" value="a" />
+			<input type="hidden" name="entry_geo-list_limit:validator#digits" id="validator-entry_geo-list_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_limit-digits" class="validator-result-{entry_geo-list_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->オフセット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示順で並び替えた後の先頭から数えて、設定した件数のエントリーを表示しなくします。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_offset" value="{entry_geo-list_offset}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_geo-list_offset" />
+			<input type="hidden" name="entry_geo-list_offset:convert" value="a" />
+			<input type="hidden" name="entry_geo-list_offset:validator#digits" id="validator-entry_geo-list_offset-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_offset-digits" class="validator-result-{entry_geo-list_offset:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->新着期間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの公開日時を基点に、ここで設定した期間中はnewブロックが出力されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_newtime" value="{entry_geo-list_newtime}" size="8" class="acms-admin-form-width-mini" /> <!--T-->秒<!--/T-->
+			<input type="hidden" name="config[]" value="entry_geo-list_newtime" />
+			<input type="hidden" name="entry_geo-list_newtime:convert" value="a" />
+			<input type="hidden" name="entry_geo-list_newtime:validator#digits" id="validator-entry_geo-list_newtime-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_newtime-digits" class="validator-result-{entry_geo-list_newtime:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないエントリーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_indexing" value="on"{entry_geo-list_indexing:checked#on} id="input-checkbox-entry_geo-list_indexing" />
+				<label for="input-checkbox-entry_geo-list_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているエントリーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_indexing" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->シークレットエントリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、ログインしていなくてもシークレットブログのエントリーが表示されます。<br />ステータスがシークレットの子ブログのエントリーを表示するためには、モジュールIDの設定でブログIDは指定せず、ブログの階層は下階層のブログを含めるようにしてください。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_secret" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_secret" value="on"{entry_geo-list_secret:checked#on} id="input-checkbox-entry_geo-list_secret" />
+				<label for="input-checkbox-entry_geo-list_secret"><i class="acms-admin-ico-checkbox"></i><!--T-->ログインしていなくてもシークレットブログのエントリーを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_secret" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ユニット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定した件数のエントリーごとに、unitブロックが表示されます。何件ごとに折り返すなどの指定に応用できます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_unit" value="{entry_geo-list_unit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_geo-list_unit" />
+			<input type="hidden" name="entry_geo-list_unit:validator#digits" id="validator-entry_geo-list_unit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_unit-digits" class="validator-result-{entry_geo-list_unit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをループブロック内に設定できます。例えばグリッドシステムのカラム数など設定してください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_loop_class" value="{entry_geo-list_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="entry_geo-list_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーがない場合の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックすると、指定条件でエントリーが見つからなかった場合にnotFoundブロックを出力します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="mo_entry_geo-list_notfound" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="mo_entry_geo-list_notfound" value="on"{mo_entry_geo-list_notfound:checked#on} id="input-checkbox-mo_entry_geo-list_notfound" />
+				<label for="input-checkbox-mo_entry_geo-list_notfound"><i class="acms-admin-ico-checkbox"></i><!--T-->指定された条件のエントリーが一つもない場合にnot foundを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="mo_entry_geo-list_notfound" />
+			<br /><!--T-->( チェックなしで何も表示しない )<!--/T-->
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーがない場合のHTTP応答<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このモジュールが表示すべきエントリー情報が0件のときに、リクエストされたページの応答を404 Not Foundとします。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_notfound_status_404" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_notfound_status_404" value="on"{entry_geo-list_notfound_status_404:checked#on} id="input-checkbox-entry_geo-list_notfound_status_404" />
+				<label for="input-checkbox-entry_geo-list_notfound_status_404"><i class="acms-admin-ico-checkbox"></i> <!--T-->リクエストに404 Not Foundとして応答する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_notfound_status_404" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->投稿日時・更新日時<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると投稿日時・更新日時を出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_date" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_date" value="on"{entry_geo-list_date:checked#on} id="input-checkbox-entry_geo-list_date" />
+				<label for="input-checkbox-entry_geo-list_date"><i class="acms-admin-ico-checkbox"></i><!--T-->投稿日時・更新日時を表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_date" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->サマリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとサマリー（テキストユニットの先頭から任意の文字量）を出力できます。サマリーの文字量はテンプレート側で指定します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_fulltext" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_fulltext" value="on"{entry_geo-list_fulltext:checked#on} id="input-checkbox-entry_geo-list_fulltext" />
+				<label for="input-checkbox-entry_geo-list_fulltext"><i class="acms-admin-ico-checkbox"></i><!--T-->サマリーを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_fulltext" />
+
+			<!--T-->文字数<!--/T-->:
+			<input type="text" name="entry_geo-list_fulltext_width" value="{entry_geo-list_fulltext_width}" />
+			<input type="hidden" name="config[]" value="entry_geo-list_fulltext_width" />
+
+			<!--T-->追加文字<!--/T-->:
+			<input type="text" name="entry_geo-list_fulltext_marker" value="{entry_geo-list_fulltext_marker}" />
+			<input type="hidden" name="config[]" value="entry_geo-list_fulltext_marker" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->タグ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとタグの情報を出力できるようになります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_tag" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_tag" value="on"{entry_geo-list_tag:checked#on} id="input-checkbox-entry_geo-list_tag" />
+				<label for="input-checkbox-entry_geo-list_tag"><i class="acms-admin-ico-checkbox"></i><!--T-->タグを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_tag" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->詳細のエントリー表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると詳細ページでそのページのエントリーを除いたものが出力されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_hidden_current_entry" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_hidden_current_entry" value="on"{entry_geo-list_hidden_current_entry:checked#on} id="input-checkbox-entry_geo-list_hidden_current_entry" />
+				<label for="input-checkbox-entry_geo-list_hidden_current_entry"><i class="acms-admin-ico-checkbox"></i><!--T-->現在表示されているエントリーを表示しない<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_hidden_current_entry" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->非公開記事の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->非公開記事を権限に関係なく表示しないように設定します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_hidden_private_entry" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_hidden_private_entry" value="on"{entry_geo-list_hidden_private_entry:checked#on} id="input-checkbox-entry_geo-list_hidden_private_entry" />
+				<label for="input-checkbox-entry_geo-list_hidden_private_entry"><i class="acms-admin-ico-checkbox"></i><!--T-->非公開記事を常に表示しない<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_hidden_private_entry" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->イメージ<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->メインイメージ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとメインイメージを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_image_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_image_on" value="on"{entry_geo-list_image_on:checked#on} class="switching-function-btn" id="input-checkbox-entry_geo-list_image_on" />
+				<label for="input-checkbox-entry_geo-list_image_on"><i class="acms-admin-ico-checkbox"></i><!--T-->メインイメージを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_image_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ノーイメージ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、画像がないエントリーを表示しなくなります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_noimage" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_noimage" value="on"{entry_geo-list_noimage:checked#on} id="input-checkbox-entry_geo-list_noimage" />
+				<label for="input-checkbox-entry_geo-list_noimage" class="acms-admin-form-checkbox"><i class="acms-admin-ico-checkbox"></i><!--T-->画像がないエントリーを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_noimage" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->サイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールで出力する画像のサイズを設定します。<!--/T-->"></i></th>
+		<td>
+			<!--T-->横<!--/T-->&nbsp;<input type="text" name="entry_geo-list_image_x" value="{entry_geo-list_image_x}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル x 縦<!--/T-->&nbsp;<input type="text" name="entry_geo-list_image_y" value="{entry_geo-list_image_y}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル<!--/T-->
+			<input type="hidden" name="config[]" value="entry_geo-list_image_x" />
+			<input type="hidden" name="config[]" value="entry_geo-list_image_y" />
+			<input type="hidden" name="entry_geo-list_image_x:convert" value="a" />
+			<input type="hidden" name="entry_geo-list_image_x:validator#digits" id="validator-entry_geo-list_image_x-digits" />
+			<input type="hidden" name="entry_geo-list_image_y:convert" value="a" />
+			<input type="hidden" name="entry_geo-list_image_y:validator#digits" id="validator-entry_geo-list_image_y-digits" />
+
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_image_x-digits" class="validator-result-{entry_geo-list_image_x:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+				<div data-validator-label="validator-entry_geo-list_image_y-digits" class="validator-result-{entry_geo-list_image_y:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->トリミング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイズで指定された大きさに、画像をトリミングして表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_image_trim" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_image_trim" value="on"{entry_geo-list_image_trim:checked#on} id="input-checkbox-entry_geo-list_image_trim" />
+				<label for="input-checkbox-entry_geo-list_image_trim"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズにトリミングする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_image_trim" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->拡大　( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像が指定されたサイズよりも小さいときに、指定されたサイズまで拡大します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_image_zoom" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_image_zoom" value="on"{entry_geo-list_image_zoom:checked#on} id="input-checkbox-entry_geo-list_image_zomm" />
+				<label for="input-checkbox-entry_geo-list_image_zomm"><i class="acms-admin-ico-checkbox"></i><!--T-->画像が指定されたサイズに満たない場合に拡大する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_image_zoom" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示位置 ( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像を指定されたサイズの中心に表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_image_center" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_image_center" value="on"{entry_geo-list_image_center:checked#on} id="input-checkbox-entry_geo-list_image_center" />
+				<label for="input-checkbox-entry_geo-list_image_center"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズの中心に表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_image_center" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->ページャー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->簡易ページャー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると簡易ページャー（前後ページへのリンク）機能に必要な情報を出力します。記事数が多く通常のページャーが重い場合はこちらのペジャーをお使いください。ページャー機能を使用するには、モジュールIDとしてこのモジュールを使用し、引数の「ページ」のURLコンテキストにチェックをしてください。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_simple_pager_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_simple_pager_on" value="on"{entry_geo-list_simple_pager_on:checked#on} id="input-checkbox-entry_geo-list_simple_pager_on" />
+				<label for="input-checkbox-entry_geo-list_simple_pager_on"><i class="acms-admin-ico-checkbox"></i><!--T-->簡易ページャーを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_simple_pager_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ページャー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとページャー（ページ送り）機能に必要な情報を出力します。ページャー機能を使用するには、モジュールIDとしてこのモジュールを使用し、引数の「ページ」のURLコンテキストにチェックをしてください。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_pager_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_pager_on" value="on"{entry_geo-list_pager_on:checked#on} class="switching-function-btn" id="input-checkbox-entry_geo-list_pager_on" />
+				<label for="input-checkbox-entry_geo-list_pager_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ページャーを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_pager_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->前後に表示するページ数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページを基点として、ここで設定した値の数だけページ番号が表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_pager_delta" value="{entry_geo-list_pager_delta}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_geo-list_pager_delta" />
+			<input type="hidden" name="entry_geo-list_pager_delta:validator#digits" id="validator-entry_geo-list_pager_delta-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-entry_geo-list_pager_delta-digits" class="validator-result-{entry_geo-list_pager_delta:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->現在のページの要素の属性<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページ番号に割り当てられる属性です。（変数名 : pageCurAttr）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_geo-list_pager_cur_attr" value="{entry_geo-list_pager_cur_attr}" size="20" />
+			<input type="hidden" name="config[]" value="entry_geo-list_pager_cur_attr" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->フィールド<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->フィールド基本設定<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドの基本設定（名前など）を出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_category_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_category_on" value="on"{entry_geo-list_category_on:checked#on} id="input-checkbox-entry_geo-list_category_on" />
+				<label for="input-checkbox-entry_geo-list_category_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリー情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_category_on" />
+			<br>
+
+			<input type="hidden" name="entry_geo-list_user_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_user_on" value="on"{entry_geo-list_user_on:checked#on} id="input-checkbox-entry_geo-list_user_on" />
+				<label for="input-checkbox-entry_geo-list_user_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザー情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_user_on" />
+			<br>
+
+			<input type="hidden" name="entry_geo-list_blog_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_blog_on" value="on"{entry_geo-list_blog_on:checked#on} id="input-checkbox-entry_geo-list_blog_on" />
+				<label for="input-checkbox-entry_geo-list_blog_on"><i class="acms-admin-ico-checkbox"></i><!--t-->ブログ情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_blog_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カスタムフィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドのカスタムフィールドを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_geo-list_entry_field" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_entry_field" value="on"{entry_geo-list_entry_field:checked#on} id="input-checkbox-entry_geo-list_entry_field" />
+				<label for="input-checkbox-entry_geo-list_entry_field"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_entry_field" />
+			<br>
+
+			<input type="hidden" name="entry_geo-list_category_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_category_field_on" value="on"{entry_geo-list_category_field_on:checked#on} id="input-checkbox-entry_geo-list_category_field_on" />
+				<label for="input-checkbox-entry_geo-list_category_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_category_field_on" />
+			<br>
+
+			<input type="hidden" name="entry_geo-list_user_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_user_field_on" value="on"{entry_geo-list_user_field_on:checked#on} id="input-checkbox-entry_geo-list_user_field_on" />
+				<label for="input-checkbox-entry_geo-list_user_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_geo-list_user_field_on" />
+			<br>
+
+			<input type="hidden" name="entry_geo-list_blog_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_geo-list_blog_field_on" value="on"{entry_geo-list_blog_field_on:checked#on} id="input-checkbox-entry_geo-list_blog_field_on" />
+				<label for="input-checkbox-entry_geo-list_blog_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ブログフィールド<!--/T--></label>
+			</div><br><!--T-->(エントリーフィールド以外のカスタムフィールドは各基本設定がonの時のみ有効)<!--/T-->
+			<input type="hidden" name="config[]" value="entry_geo-list_blog_field_on" />
+		</td>
+	</tr>
+</table>
+
+<!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

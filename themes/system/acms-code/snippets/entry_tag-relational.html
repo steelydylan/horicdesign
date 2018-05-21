@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Entry_TagRelational</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Entry_TagRelational --&gt;
+&lt;div class=&quot;acms-margin-bottom-medium&quot;&gt;
+&#64;include("/admin/module/setting.html")
+	&lt;div class=&quot;acms-grid&quot;&gt;
+		&lt;!-- BEGIN entry:loop --&gt;
+		&lt;div class=&quot;acms-col-md-4 js-autoheight-r&quot;&gt;
+			&lt;div class=&quot;acms-thumbnail&quot;&gt;
+			&lt;!-- BEGIN_IF [{path}/nem] --&gt;&lt;img src=&quot;&#x0025;{ROOT_DIR}{path}&quot; alt=&quot;{alt}&quot;&gt;&lt;!-- ELSE --&gt;&lt;img src=&quot;/images/default/noimage.gif&quot; alt=&quot;&quot; class=&quot;acms-img-responsive&quot; /&gt;&lt;!-- END_IF --&gt;
+				&lt;div&gt;
+					&lt;h3&gt;{title}&lt;/h3&gt;
+					&lt;p&gt;{summary}&lt;/p&gt;
+					&lt;p class=&quot;acms-text-muted&quot;&gt;関連度: {grade}&lt;/p&gt;
+					&lt;p&gt;&lt;a href=&quot;{url}&quot; class=&quot;acms-btn acms-btn-primary&quot; role=&quot;button&quot;&gt;詳細をみる&lt;/a&gt;&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;!-- END entry:loop --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- END_MODULE Entry_TagRelational --&gt;
+</textarea>
+</body>
+</html>

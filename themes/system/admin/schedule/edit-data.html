@@ -1,0 +1,86 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->スケジュール管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Schedule_Edit -->
+
+<!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->スケジュールのデータを保存しました<!--/T--></p><!-- END msg#update -->
+<div class="js-acms_fix_marker acms_fix_bg">
+	<div class="acms_fix_bg_index">
+		<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/schedule_index/" class="acms-admin-btn-admin acms-admin-margin-sp"><!--T-->一覧<!--/T--></a>
+		<div class="acms-admin-float-right"><!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<a href="/bid/%{BID}/admin/shortcut_edit/?scid=%{scid}&action=Schedule_DataUpdate&admin=schedule_edit-data&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-shortcut-btn"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+</div>
+
+<!-- BEGIN_MODULE Admin_Schedule_View --><!-- BEGIN unit:loop -->
+<div class="unit"><!-- BEGIN month:loop -->
+
+		<form action="" method="post" class="acms-admin-inline-btn">
+			<input type="submit" name="" value="&laquo; <!--T-->前月<!--/T-->( {prev} )" class="acms-admin-btn-admin" />
+			<input type="hidden" name="dateArgs" value="{prev}" />
+		</form>
+
+		<form action="" method="post" class="acms-admin-form acms-admin-inline-btn">
+			<select name="yearArg" class="js-select2"><!-- BEGIN yearSelect:loop -->
+				<option value="{sYear}"{selected}>{sYear}</option><!-- END yearSelect:loop -->
+			</select>
+			年
+			<select name="monthArg" class="js-select2"><!-- BEGIN monthSelect:loop -->
+				<option value="{sMonth}"{selected}>{sMonth}</option><!-- END monthSelect:loop -->
+			</select>
+			月
+			<input type="submit" name="" value="<!--T-->を編集する<!--/T-->" class="acms-admin-btn-admin" />
+		</form>
+
+		<form action="" method="post" class="acms-admin-inline-btn">
+			<input type="submit" name="" value="<!--T-->次月<!--/T-->( {next} ) &raquo;" class="acms-admin-btn-admin" />
+			<input type="hidden" name="dateArgs" value="{next}" />
+		</form>
+
+		<form action="" method="post" class="acms-admin-form">
+			<input type="submit" name="ACMS_POST_Schedule_EditData" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<h3 class="acms-admin-admin-title2">{year}<!--T-->年<!--/T--> {month}<!--T-->月<!--/T--></h3>
+			<table class="{mode} adminTable acms-admin-table-admin-edit"><!-- BEGIN week:loop -->
+				<tr class="week wr{weekRowNo}"><!-- BEGIN day:loop -->
+					<th class="day w{weekNo}"><!-- BEGIN day:veil -->{day} ( {week} )<!-- END day:veil --></th>
+					<td>
+						<table>
+							<!-- BEGIN plan -->
+							<tr>
+							<td>
+								<input type="text" name="item{no}[]" value="{item}" class="acms-admin-form-width-full" />
+								</td>
+								<td>
+								<select name="label{no}[]" class="js-select2">
+									<option value=""><!--T-->設定しない<!--/T--></option><!-- BEGIN label:loop -->
+									<option value="{key}"{selected}>{label}</option><!-- END label:loop -->
+								</select>
+							</td>
+							</tr>
+							<!-- END plan -->
+						</table>
+						<input type="hidden" name="schedule{id}[]" value="item{id}" />
+						<input type="hidden" name="schedule{id}[]" value="label{id}" />
+					</td>
+					<!-- END day:loop -->
+				</tr><!-- END week:loop -->
+			</table>
+			<input type="hidden" name="year" value="{_year}" />
+			<input type="hidden" name="schedule[]" value="year" />
+			<input type="hidden" name="month" value="{_month}" />
+			<input type="hidden" name="schedule[]" value="month" />
+	<!-- END month:loop -->
+	</div><!-- END unit:loop -->
+<!-- END_MODULE Admin_Schedule_View -->
+</form>
+<!-- END_MODULE Admin_Schedule_Edit -->
+@include("/admin/tooltip/module.html")

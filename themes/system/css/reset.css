@@ -1,0 +1,115 @@
+@charset "utf-8"; 
+
+/* ---------------
+reset.css
+要素の再定義をしています。
+--------------- */
+
+/* ---------------
+■■目次
+■マージン・余白のリセット
+■要素の再定義
+--------------- */
+
+/* ---------------
+マージン・余白のリセット
+--------------- */
+body, div,
+dl, dt, dd, ul, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, textarea, p, blockquote, th ,td {
+	margin: 0;
+	padding: 0;
+}
+
+ul{
+	list-style-type: none;
+	padding: 0.5em 0;
+}
+/* ---------------
+要素の再定義
+--------------- */
+
+/* elements of HTML5 */
+hgroup, aside, header, nav, section, footer, figure, figcaption, article {
+	display: block;
+}
+
+body  {
+	background-color: #FFFFFF;
+	_text-align: center;
+	font-family: Meiryo,'メイリオ','Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','ＭＳ Ｐゴシック','MS PGothic',Verdana,sans-serif;
+	font-size: 12px; /* モダンブラウザ向け */
+}
+
+table {
+	font-size: 12px; /* Dreamweaver cs4 デザインビュー向け bodyのフォントサイズに合わせる。 */
+}
+/* ie6 only */
+* html body {
+	font-size: 75%;
+	letter-spacing:0.1em;
+}
+/* ie7 only */
+*+html body  {
+	font-size: 75%;
+	letter-spacing:0.1em;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Meiryo,'メイリオ','Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','ＭＳ Ｐゴシック','MS PGothic',Verdana,sans-serif;
+	font-size: 1em;
+}
+textarea {
+	font-family: Meiryo,'メイリオ','Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','ＭＳ Ｐゴシック','MS PGothic',Verdana,sans-serif;
+	font-size: 1em;
+}
+textarea {
+	padding: 2px 4px;
+}
+blockquote {
+	margin: 1em;
+	padding: 0.5em 0 1em 1em;
+	border: #CCCCCC 1px solid;
+	background-color: #FDFDFD;
+	color: #888888;
+}
+img {
+	border: none;
+}
+address {
+	font-style:normal;
+	}
+
+
+pre {
+    overflow: scroll;
+}
+html > body pre {
+    overflow: auto;
+}
+*:first-child+html pre {
+    overflow: scroll;
+}
+
+
+/* リンクの設定 */
+a {
+	outline : 0;
+}
+a:link,a:visited,a:active {
+	border: none;
+	text-decoration: none;
+}
+a:hover {
+	border: none;
+	text-decoration: underline;
+}
+
+/* ブロックごとの再設定 */
+p,
+/* #main li , */
+#main dt ,
+#main dd ,
+blockquote {
+	line-height: 1.7;
+}

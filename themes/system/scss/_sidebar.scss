@@ -1,0 +1,82 @@
+/* ------------------------------
+ サイドバー
+------------------------------- */
+.acms-sidebar{
+	padding-bottom: 40px;
+	ul{
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+	}
+	dl{
+		margin-top: 0;
+	}
+	dd{
+		margin: 0;
+	}
+}
+
+/* タイトル */
+.acms-sidebar-title{
+	padding: 10px 20px;
+	@include font-size(14);
+	font-weight: 400;
+	background-color: #15141c;
+	color: #808080;
+
+	@media (min-width : $breakpoint-md-min){
+		padding: 5px 20px;
+		border-top: 1px solid #9e9e9e;
+		@include font-size(11);
+		background-color: inherit;
+	}
+}
+
+/* リンク */
+.acms-sidebar-link {
+	a{
+		display: block;
+		padding: 11px 20px;
+		line-height: 1.2;
+		 &:hover{
+			background-color: #FFF;
+		}
+	}
+	// 現在いるとき
+	.stay,
+	.stay a:hover {
+		background-color: #FFF;
+	}
+	.stay a {
+		color: $base-bg-primary;
+	}
+}
+
+.acms-sidebar-childlink {
+	background: #353438;
+}
+
+
+// ---------------
+// スマートフォンのとき
+// ---------------
+.acms-sidebar-sp{
+	display: block;
+	// 表示
+	@media (min-width : $breakpoint-md-min){
+		display: none;
+	}
+	p{
+		margin: 0;
+	}
+	li{
+		border-bottom: solid 1px #FFFFFF;
+	}
+	.acms-sidebar-box{
+		padding: 15px 20px;
+		border-bottom: solid 1px #FFFFFF;
+	}
+	.acms-dropdown a{
+		background: url('#{$acms-path-marker}arrow_white03.png') no-repeat 95% center;
+	}
+}

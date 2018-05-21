@@ -1,0 +1,151 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->メディア管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Media_Index -->
+<!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->メディア一覧を更新しました。<!--/T--></p><!-- END refresh --><!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->メディアがありません。アップロードして下さい。<!--/T--></p><!-- END index#notFound -->
+
+<div class="acms-admin-filter">
+	<form action="" method="post" class="filter form-inline acms-admin-form">
+		<div>
+			<!-- BEGIN_MODULE Admin_Blog_Select -->
+			<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+				<!--T-->絞り込み<!--/T-->:
+				<select class="input-sm js-select2" name="_bid">
+					<option value=""><!--T-->現在のブログ<!--/T--></option><!-- BEGIN loop -->
+					<option value="{value}"{selected}>{indent}[raw]{label}</option><!-- END loop -->
+				</select>
+				<input type="hidden" name="query[]" value="_bid" />
+			</div>
+			<!-- END_MODULE Admin_Blog_Select -->
+			<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+				<input type="hidden" name="axis" value="self" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="axis" value="descendant-or-self"{axis:checked#descendant-or-self} id="input-checkbox-axis-descendant-or-self" />
+					<label for="input-checkbox-axis-descendant-or-self">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->下階層のブログも表示<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="query[]" value="axis" />
+			</div>
+		</div>
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->ラベル<!--/T-->:
+			<!-- BEGIN_MODULE Admin_Media_Tag -->
+			<select name="tag" class="js-select2">
+				<option value=""><!--T-->ラベルを選択<!--/T--></option><!-- BEGIN tag:loop -->
+				<option value="{name}"{selected}>{name}<!--  ({amount}件) --></option><!-- END tag:loop -->
+			</select>
+			<!-- END_MODULE Admin_Media_Tag -->
+		</div>
+
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->ソート<!--/T-->:
+			<select class="input-sm js-select2" name="order">
+				<option value="upload_date-asc"{order:selected#upload_date-asc}><!--T-->日付<!--/T--> (<!--T-->昇順<!--/T-->)</option>
+				<option value="upload_date-desc"{order:selected#upload_date-desc}><!--T-->日付<!--/T--> (<!--T-->降順<!--/T-->)</option>
+				<option value="file_name-asc"{order:selected#file_name-asc}><!--T-->ファイル名<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="file_name-desc"{order:selected#file_name-desc}><!--T-->ファイル名<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="id-asc"{order:selected#id-asc}>ID（<!--T-->昇順<!--/T-->）</option>
+				<option value="id-desc"{order:selected#id-desc}>ID（<!--T-->降順<!--/T-->）</option>
+			</select>
+		</div>
+
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->表示数<!--/T-->:
+			<select class="input-sm js-select2" name="limit"><!-- BEGIN limit:loop -->
+				<option value="{limit}"{selected}>{limit}</option><!-- END limit:loop -->
+			</select>
+		</div>
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<input type="hidden" name="bid" value="%{BID}" />
+			<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+			<input type="hidden" name="admin" value="media_index" />
+		</div>
+
+	</form>
+</div>
+
+<form method="post" action="" class="acms-admin-float-right acms-admin-float-none-sp acms-admin-position-right acms-admin-fix-right">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="media_upload" />
+	<input type="submit" class="acms-admin-btn-admin" name="ACMS_POST_2GET" value="<!--T-->メディアアップロード<!--/T-->" />
+</form>
+
+<form method="post" action="" id="media-list-form">
+	<!-- BEGIN_MODULE Touch_Role_MediaEdit -->
+	<div class="acms-admin-form-group js-acms_fix_marker">
+		<input type="submit" class="acms-admin-btn-admin acms-admin-btn-admin-danger" name="ACMS_POST_Media_Index_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->この操作は取り消せません。\nよろしいですか？<!--/T-->');">
+	</div><!-- END_MODULE Touch_Role_MediaEdit -->
+
+	<!-- BEGIN index:veil -->
+	<div class="acms-admin-table-responsive">
+		<table role="presentation" class="acms-admin-table-admin acms-admin-table-hover">
+			<thead>
+				<th class="acms-admin-table-nowrap acms-admin-th-checkbox"><div class="acms-admin-form-checkbox acms-admin-ico-checkbox acms-admin-margin-none"><input type="checkbox" id="checkAll" class="checkAll" /><label for="checkAll"><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->すべてのメディアを選択する<!--/T--></span></label></div></th>
+				<th><!--T-->サムネイル<!--/T--></th>
+				<th>ID&nbsp;/&nbsp;<!--T-->ファイル名<!--/T-->&nbsp;/&nbsp;<!--T-->パス<!--/T--></th>
+				<th><!--T-->日時<!--/T--></th>
+				<th><!--t-->ラベル<!--/T--></th>
+				<th class="acms-admin-table-nowrap"><!--T-->アクション<!--/T--></th>
+			</thead>
+			<tbody class="files"><!-- BEGIN media:loop -->
+			<tr>
+				<td class="acms-admin-table-center acms-admin-td-checkbox">
+					<div class="acms-admin-form-checkbox acms-admin-margin-none">
+						<input type="checkbox" name="checks[]" value="{bid}:{mid}" id="input-checkbox-media-{bid}:{mid}" />
+						<label for="input-checkbox-media-{bid}:{mid}">
+							<i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->メディア名「{name}」を選択する<!--/T--></span>
+						</label>
+					</div>
+				</td>
+				<td>
+					<div class="preview">
+						<!-- BEGIN_IF [{type}/nem/] --><!-- BEGIN_IF [{type}/eq/image] -->
+						<img src="%{MEDIA_ARCHIVES_DIR}{path}" width="60" /><!-- ELSE_IF [{thumbnail}/nem/] -->
+						<img src="%{ARCHIVES_DIR}{thumbnail}" width="60" /><!-- ELSE -->
+						<img src="%{ROOT_DIR}{icon}" /><!-- END_IF --><!-- ELSE_IF [{icon}/em/] -->
+						<img src="%{MEDIA_ARCHIVES_DIR}{path}" width="60" /><!-- ELSE -->
+						<img src="%{ROOT_DIR}{icon}" /><!-- END_IF -->
+					</div>
+				</td>
+				<td>
+					<div class="acms-admin-form">
+						<p><span class="acms-admin-label label-default admin-eid-label">{mid}</span>&nbsp;{name}</p>
+						<input class="acms-admin-form-block acms-admin-form-width-full" type="text" value="{permalink}" readonly="readonly" />
+					</div>
+				</td>
+				<td>
+					<p>{datetime}[date('Y/m/d H:i')]</p>
+				</td>
+				<td><!-- BEGIN tag:loop -->{tag_name}<!-- BEGIN glue -->, <!-- END glue --><!-- END tag:loop --></td>
+				<td class="acms-admin-td-edit acms-admin-table-nowrap">
+					<div class="acms-admin-btn-group acms-admin-btn-group-entry admin-entry-dropdown-toggle">
+						<div class="js-acms-dropdown-toggle">
+							<button type="button" class="acms-admin-btn-admin" onclick="location.href='{editUrl}'"><!--T-->編集<!--/T--></button>
+						</div>
+					</div>
+				</td>
+			</tr><!-- END media:loop -->
+			</tbody>
+		</table>
+	</div>
+	<!-- END index:veil -->
+
+	<!-- BEGIN pager:veil -->
+	<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+		<li class="prev"><a href="{url}">&laquo;&nbsp;<!--T-->前へ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+		<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+		<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+		<li class="next"><a href="{url}"><!--T-->次へ<!--/T-->&nbsp;&raquo;</a></li><!-- END forwardLink -->
+	</ul><!-- END pager:veil -->
+
+</form>
+<!-- END_MODULE Admin_Media_Index -->

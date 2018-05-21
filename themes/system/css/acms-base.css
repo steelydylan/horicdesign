@@ -1,0 +1,509 @@
+@charset "UTF-8";
+/* ------------------------------
+ ユニットグループ
+------------------------------- */
+.clearHidden {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	margin: 0;
+	border: none;
+}
+
+/* ---------------
+ 動的フォーム
+--------------- */
+/* ---------------
+ エントリー内 主な要素
+--------------- */
+.acms-entry {
+	/* ユニットの要素の位置調整 */
+}
+.acms-entry [class*=acms-col-] {
+	padding: 0;
+}
+.acms-entry h2,
+.acms-entry h3,
+.acms-entry h4,
+.acms-entry h5,
+.acms-entry h6,
+.acms-entry dl {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.acms-entry p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.acms-entry .entry-container {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.acms-entry blockquote {
+	margin: 0 0 15px 0;
+	padding: 10px 20px;
+	border-left: solid 5px #CCC;
+}
+
+/* ---------------
+ 各コンテンツ(画像、地図、動画など)表示設定
+--------------- */
+/* 添付画像配置（おまかせ） */
+/* 添付画像配置（左） */
+.column-image-left,
+.column-media-left {
+	display: inline;
+	float: left;
+	margin-bottom: 10px;
+}
+
+/* 添付画像配置（右） */
+.column-image-right,
+.column-media-right {
+	display: inline;
+	float: right;
+	margin-bottom: 10px;
+}
+
+/* 添付画像配置（中央） */
+.column-image-center,
+.column-media-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+/* ファイル配置（おまかせ） */
+.column-file-auto {
+	margin-left: 10px;
+}
+.column-file-auto + .caption {
+	margin-left: 10px;
+}
+
+/* ファイル配置（左） */
+.column-file-left {
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.column-file-left + .caption {
+	text-align: left;
+}
+
+/* ファイル配置（右） */
+.column-file-right {
+	display: inline;
+	float: right;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.column-file-right + .caption {
+	text-align: right;
+}
+
+/* ファイル配置（中央） */
+.column-file-center {
+	float: none;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+	text-align: center;
+}
+.column-file-center + .caption {
+	text-align: center;
+}
+
+/* 地図配置（おまかせ） */
+.column-map-auto {
+	margin-bottom: 10px;
+}
+
+/* 地図配置（左） */
+.column-map-left {
+	float: left;
+	margin-bottom: 10px;
+}
+
+/* 地図配置（右） */
+.column-map-right {
+	float: right;
+	margin-bottom: 10px;
+}
+
+/* 地図配置（中央） */
+.column-map-center {
+	display: block;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+}
+
+/* yahoo地図配置（おまかせ） */
+.column-yolp-auto {
+	margin-bottom: 10px;
+}
+
+/* yahoo地図配置（左） */
+.column-yolp-left {
+	float: left;
+	margin-bottom: 10px;
+}
+
+/* yahoo地図配置（右） */
+.column-yolp-right {
+	float: right;
+	margin-bottom: 10px;
+}
+
+/* yahoo地図配置（中央） */
+.column-yolp-center {
+	display: block;
+	float: none;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+
+/* YouTube配置 (おまかせ) */
+/* YouTube配置 (左) */
+.column-youtube-left,
+.column-video-left {
+	display: inline;
+	float: left;
+}
+
+/* YouTube配置 (右) */
+.column-youtube-right,
+.column-video-right {
+	display: inline;
+	float: right;
+}
+
+/* YouTube配置 (中央) */
+.column-youtube-center,
+.column-video-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* 画像URL配置（おまかせ） */
+/* 画像URL配置（左） */
+.column-eximage-left {
+	display: inline;
+	float: left;
+}
+
+/* 画像URL配置（右） */
+.column-eximage-right {
+	display: inline;
+	float: right;
+}
+
+/* 画像URL配置（中央） */
+.column-eximage-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/* 引用配置（おまかせ） */
+/* 引用配置（左） */
+.column-quote-left {
+	float: left;
+}
+
+/* 引用配置（右） */
+.column-quote-right {
+	float: right;
+}
+
+.column-quote-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+[class*="column-quote-"] {
+	margin-left: 10px;
+	margin-right: 10px;
+	/* 引用ユニット画像 */
+	/* 引用ユニットテキスト */
+}
+[class*="column-quote-"] blockquote {
+	padding: 20px 10px 20px 20px;
+}
+[class*="column-quote-"] .quoteImageContainer {
+	position: relative;
+	float: left;
+	max-width: 154px;
+	margin-right: 25px;
+}
+[class*="column-quote-"] .quoteImage {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+[class*="column-quote-"] .quoteTitle {
+	margin: 0 0 5px 0;
+	padding: 0;
+	font-size: 18px;
+	line-height: 1.4;
+}
+[class*="column-quote-"] .quoteTitleLink {
+	color: #006CD8;
+}
+[class*="column-quote-"] .quoteSiteName {
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 11px;
+	color: #666;
+}
+[class*="column-quote-"] .quoteDescription {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	line-height: 1.6;
+	color: #333;
+}
+
+/* 画像の最大幅 */
+[class*="column-image-"],
+[class*="column-media-"] {
+	max-width: 100%;
+}
+
+/* メディア リンク */
+[class*="column-media-"] a {
+	display: block;
+	text-align: center;
+}
+
+/* ユニットのガターの間隔 */
+.acms-entry [class*="column-image-"],
+.acms-entry [class*="column-media-"],
+.acms-entry [class*="column-yolp-"],
+.acms-entry [class*="column-youtube-"],
+.acms-entry [class*="column-video-"],
+.acms-entry [class*="column-eximage-"] {
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+
+.acms-entry [class*="column-map-"] {
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+.acms-entry [class*="column-map-"] > div {
+	max-width: 100%;
+}
+
+.acms-entry [class*="column-image-"],
+.acms-entry [class*="column-media-"],
+.acms-entry [class*="column-eximage-"] {
+	display: block;
+	margin-bottom: 10px;
+}
+.acms-entry [class*="column-image-"] a,
+.acms-entry [class*="column-media-"] a,
+.acms-entry [class*="column-eximage-"] a {
+	display: block;
+}
+.acms-entry [class*="column-image-"] .caption,
+.acms-entry [class*="column-media-"] .caption,
+.acms-entry [class*="column-eximage-"] .caption {
+	padding: 0;
+}
+
+.acms-entry [class*="column-image-"].nocaption,
+.acms-entry [class*="column-media-"].nocaption,
+.acms-entry [class*="column-eximage-"].nocaption,
+.acms-entry [class*="column-yolp-"],
+.acms-entry [class*="column-youtube-"],
+.acms-entry [class*="column-video-"] {
+	margin-bottom: 20px;
+}
+
+.acms-entry .column-image-auto,
+.acms-entry .column-media-auto,
+.acms-entry .column-eximage-auto,
+.acms-entry .column-yolp-auto,
+.acms-entry .column-youtube-auto,
+.acms-entry .column-video-auto {
+	float: none;
+}
+
+[class*="column-image-"] img,
+[class*="column-media-"] img,
+[class*="column-eximage-"] img {
+	width: auto\9;
+	height: auto;
+	max-width: 100%;
+}
+
+/* 画像左寄せ */
+.column-image-left,
+.column-media-left,
+.column-eximage-left {
+	float: left;
+}
+
+/* スマートフォンのときのエントリー内スタイル */
+@media (max-width: 479px) {
+	/* エントリー内画像サイズ */
+	.acms-entry [class*="column-image-"],
+	.acms-entry [class*="column-media-"],
+	.acms-entry [class*="column-eximage-"] {
+		float: none;
+		padding-left: 10px;
+		padding-right: 10px;
+		width: auto !important;
+	}
+	.acms-entry [class*="column-image-"] img,
+	.acms-entry [class*="column-media-"] img,
+	.acms-entry [class*="column-eximage-"] img {
+		padding: 0;
+		box-sizing: border-box;
+	}
+	[class*="column-map-"],
+	[class*="column-yolp-"] {
+		width: auto !important;
+		max-width: 100%;
+	}
+	[class*="column-map-"] > div,
+	[class*="column-yolp-"] > div {
+		max-width: 100%;
+	}
+	[class*="column-yolp-"] > div {
+		width: 100% !important;
+	}
+	[class*="column-eximage-"] {
+		width: auto !important;
+	}
+	[class*="column-youtube-"],
+	[class*="column-video-"] {
+		display: block;
+		width: 100% !important;
+		max-width: 100%;
+	}
+}
+
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-image-"],
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-media-"],
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-map-"],
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-yolp-"],
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-eximage-"],
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-youtube-"],
+.acms-entry-unit-full:not(.acms-unit-size-inherit) [class*="column-video-"] {
+	width: auto !important;
+	max-width: 100%;
+}
+
+/* YouTube動画をレスポンシブ対応させるための記述 */
+.column-youtube,
+.column-iframe {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding-top: 30px;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+}
+.column-youtube iframe,
+.column-youtube object,
+.column-youtube embed,
+.column-iframe iframe,
+.column-iframe object,
+.column-iframe embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+[class*="column-map-"] > img,
+[class*="column-yolp-"] > img {
+	max-width: 100%;
+}
+
+/* 地図ユニットのアイコンの調整 */
+[class*="column-map-"] img,
+[class*="column-yolp-"] img {
+	width: auto;
+	height: auto;
+}
+
+/* Yahoo地図 */
+[class*="column-yolp-"] {
+	width: auto !important;
+}
+
+/* ---------------
+ 検索
+--------------- */
+/* 検索結果のハイライト
+---------------*/
+.highlight1 {
+	background-color: #FF6;
+	color: #000;
+}
+
+.highlight2 {
+	background-color: #A0FFFF;
+	color: #000;
+}
+
+.highlight3 {
+	background-color: #9F9;
+	color: #000;
+}
+
+.highlight4 {
+	background-color: #F99;
+	color: #000;
+}
+
+.highlight5 {
+	background-color: #F6F;
+	color: #000;
+}
+
+.highlight6 {
+	background-color: #800;
+	color: #000;
+}
+
+/* ユーティリティ */
+.acms-admin-clear {
+	clear: both;
+}
+
+/* フォームのバリデーター */
+.transaction-notice-,
+.validator-result-,
+.validator-result-1,
+.v-result-,
+.v-result-1 {
+	display: none;
+}
+
+/* 問題発生時には表示 */
+.transaction-notice-error,
+.validator-result-error,
+.validator-result-0,
+.v-result-error,
+.v-result-0 {
+	display: block;
+}

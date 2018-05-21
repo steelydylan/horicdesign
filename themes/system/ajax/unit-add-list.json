@@ -1,0 +1,4 @@
+<!-- BEGIN_MODULE Config -->{
+    "type": [<!-- BEGIN column_add_type:loop --><!-- BEGIN glue -->, <!-- END glue -->"{column_add_type}"<!-- END column_add_type:loop -->],
+    "label": [<!-- BEGIN column_add_type_label:loop --><!-- BEGIN glue -->, <!-- END glue -->"{column_add_type_label}"<!-- END column_add_type_label:loop -->]
+}<!-- END_MODULE Config -->

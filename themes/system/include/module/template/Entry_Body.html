@@ -1,0 +1,106 @@
+<!-- BEGIN_MODULE Entry_Body id="" -->
+<div>
+<!-- BEGIN notFound -->
+<p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+<!-- END notFound -->
+
+<!-- BEGIN serialNavi:veil -->
+<ul class="acms-admin-pager">
+	<li>
+		<!-- BEGIN prevNotFound -->prev not found<!-- END prevNotFound -->
+		<!-- BEGIN prevLink -->
+		<a href="{url}"><< {name}[trim(27, '...')|escape]</a>
+		<!-- END prevLink -->
+		&nbsp;</li>
+	<li><a href="{upperUrl}">一覧へ</a></li>
+	<li>&nbsp;
+		<!-- BEGIN nextNotFound -->next not found<!-- END nextNotFound -->
+		<!-- BEGIN nextLink -->
+		<a href="{url}">{name}[trim(27, '...')|escape] >> </a>
+		<!-- END nextLink -->
+	</li>
+</ul>
+<!-- END serialNavi:veil -->
+
+<!-- BEGIN entry:loop -->
+@include("/admin/entry/revision-info.html")
+
+<div class="{entry:loop.class}">
+	<div class="acms-admin-page-header">
+		<!-- BEGIN pageHubHeader:veil -->
+		<div>
+			<p><!-- BEGIN date:veil --><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日</time>
+			<!-- END date:veil --><!-- BEGIN category:loop -->
+				<span class="acms-admin-label"><a href="{url}">{name}</a></span>
+				<!-- BEGIN glue -->
+				&lt;
+				<!-- END glue -->
+				<!-- END category:loop --><!-- BEGIN new:touch -->
+			<span class="acms-admin-label acms-admin-label-warning">NEW</span>
+			<!-- END new:touch --></p>
+		</div><!-- END pageHubHeader:veil -->
+		@include("/admin/entry/title.html")
+		<!-- BEGIN title:veil -->
+			<h2><a href="{titleUrl}">{title}[raw]</a></h2>
+		<!-- END title:veil -->
+	</div>
+	<div>
+		<div>
+			<!-- BEGIN unit:veil -->
+			<div class="acms-admin-entry">
+				<div class="acms-admin-grid-r">
+				@include("/include/unit.html")
+				</div>
+			</div>
+			<hr class="clearHidden">
+			<!-- END unit:veil -->
+			<!-- BEGIN continueLink:veil -->
+			<p><a href="{continueUrl}" class="acms-admin-btn-flat"><span class="acms-admin-icon-arrow-right"></span>「{continueName}」の続きを読む</a></p>
+			<!-- END continueLink:veil -->
+
+			<!-- BEGIN formBody -->
+			@include("/include/form/unit.html")
+			<hr class="clearHidden">
+			<!-- END formBody -->
+
+			<!-- BEGIN adminEntryEdit -->
+			@include("/admin/entry/edit.html")
+			@include("/admin/entry/add.html")
+			<!-- END adminEntryEdit -->
+
+			<!-- BEGIN adminFormEdit -->
+			@include("/admin/form2/edit.html")
+			<!-- END adminFormEdit -->
+
+			<!-- BEGIN tag:veil -->
+			<p>タグ：<!-- BEGIN tag:loop --><a href="{url}" class="acms-admin-inline-space">{name}</a> <!-- END tag:loop --></p>
+			<!-- END tag:veil -->
+
+			@include("/admin/entry/action.html")
+		</div>
+		<!-- BEGIN footer:veil -->
+		<div>
+			<p class="acms-admin-text-info">Posted by {posterName} at {date#H}:{date#i}  <a href="{inheritUrl}#permalink">パーマリンク</a>
+				<!-- BEGIN commentAmount -->
+				<a href="{commentUrl}#comment">コメント ( {commentAmount} )</a>
+				<!-- END commentAmount -->
+			</p>
+		</div>
+		<!-- END footer:veil -->
+	</div>
+</div>
+<!-- END entry:loop -->
+
+<!-- BEGIN pager:veil -->
+<div class="acms-admin-text-center">
+	<ul class="acms-admin-pager">
+		<!-- BEGIN backLink --><li><a href="{url}">« 前の{backNum}件</a></li><!-- END backLink -->
+		<!-- BEGIN firstPage:veil --><li{pageCurAttr}[raw]><span><a href="{firstPageUrl}">{firstPage}</a></span></li><!-- END firstPage:veil -->
+		<!-- BEGIN page:loop --><!-- BEGIN glue --><!-- END glue --><li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop -->
+		<!-- BEGIN lastPage:veil --><li>...</li><li{pageCurAttr}[raw]><span><a href="{lastPageUrl}">{lastPage}</a></span></li><!-- END lastPage:veil -->
+		<!-- BEGIN forwardLink --><li><a href="{url}">次の{forwardNum}件 »</a></li><!-- END forwardLink -->
+	</ul>
+</div>
+<!-- END pager:veil -->
+</div>
+<!-- END_MODULE Entry_Body -->

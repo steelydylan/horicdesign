@@ -1,0 +1,264 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">お客様詳細</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Shop_Customer_Edit -->
+<!-- BEGIN step -->
+<!-- BEGIN headline --><!-- END headline -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>お客様を作成しました</p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>お客様を保存しました</p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>お客様を削除しました</p><!-- END msg#delete -->
+
+<h2 class="acms-admin-admin-title2">お客様情報</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>ユーザーネーム</th>
+		<td>{name}</td>
+	</tr><!-- BEGIN code:veil -->
+	<tr>
+		<th>コード</th>
+		<td>{code}</td>
+	</tr><!-- END code:veil --><!-- BEGIN request_date:veil -->
+	<tr>
+		<th>メールアドレス</th>
+		<td>{mail}</td>
+	</tr><!-- END request_date:veil --><!-- BEGIN request_time:veil -->
+	<tr>
+		<th>携帯メールアドレス</th>
+		<td>{mail_mobile}</td>
+	</tr><!-- END request_time:veil --><!-- BEGIN request_others:veil -->
+	<tr>
+		<th>登録日時</th>
+		<td>{generated_datetime}</td>
+	</tr><!-- END request_others:veil -->
+</table>
+
+<h2 class="acms-admin-admin-title2">登録住所</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+<tr>
+	<th>名前 ( ふりがな )</th>
+	<td>{address_name} ( {address_ruby} )</td>
+</tr><!-- BEGIN address_country:veil -->
+<tr>
+	<th>国</th>
+	<td>{address_country}</td>
+</tr><!-- END address_country:veil -->
+<tr>
+	<th>郵便番号</th>
+	<td>{address_zip}</td>
+</tr>
+<tr>
+	<th>住所</th>
+	<td>{address_prefecture}　{address_city}　{address_field_1}　{address_field_2}</td>
+</tr>
+<tr>
+	<th>電話番号</th>
+	<td>{address_telephone}</td>
+</tr>
+</table>
+
+<!-- BEGIN_MODULE Admin_Shop_Receipt_Index -->
+<!-- BEGIN notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>まだ受注はありません。</p><!-- END notFound --><!-- BEGIN index -->
+
+<!-- BEGIN takeover -->
+<form action="%{QOL}edit=update&step=reapply" method="post" class="adminBtn">
+	<input type="submit" name="ACMS_POST_Form_Chain" value="変更" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+	<input type="hidden" name="takeover" value="{takeover}" />
+</form>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<form action="" method="post" class="adminBtn">
+	<input type="hidden" name="edit" value="delete" />
+	<input type="hidden" name="step" value="" />
+	<input type="submit" name="ACMS_POST_Shop_Customer_Delete" value="削除" onclick="return confirm('この操作は取り消せません。\nよろしいですか？');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+	<input type="hidden" name="takeover" value="{takeover}" />
+</form><!-- END_MODULE Touch_SessionWithAdministration -->
+<!-- END takeover -->
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<form action="" method="post" class="adminBtn">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="shop_customer_index" />
+	<input type="submit" name="ACMS_POST_2GET" value="一覧" class="acms-admin-btn-admin" />
+</form><!-- END_MODULE Touch_SessionWithAdministration -->
+
+<h2 class="acms-admin-admin-title2">受注履歴</h2>
+<table class="adminTable acms-admin-table-admin acms-admin-table-heading acms-admin-table-hover">
+	<thead>
+	<tr>
+		<th>受注日時</th>
+		<th>伝票No</th>
+		<th>合計（小計）</th>
+		<th>支払方法</th>
+		<th>配送方法</th>
+		<th>詳細</th>
+	</tr>
+	</thead>
+	<tbody><!-- BEGIN receipt:loop -->
+	<tr>
+		<td>{datetime}[datetime(Y-m-d H:i)]</td>
+		<td>{code}</td>
+		<td>&yen;{total}[number_format]（&yen;{subtotal}[number_format]）</td>
+		<td>{payment}</td>
+		<td>{deliver}</td>
+		<td><a href="{editUrl}" class="acms-admin-btn-admin">詳細</a></td>
+	</tr><!-- END receipt:loop -->
+	</tbody>
+</table>
+
+<div class="acms-admin-grid">
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<!-- BEGIN pager:veil -->
+		<div class="acms-admin-pager-container">
+			<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+				<li class="prev"><a href="{url}">&laquo;&nbsp;前へ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+				<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+				<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+				<li class="next"><a href="{url}">次へ&nbsp;&raquo;</a></li><!-- END forwardLink -->
+			</ul>
+		</div>
+		<!-- END pager:veil -->
+	</div>
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<div class="acms-admin-itemsAmount-container">
+		<p>{itemsFrom}件 - {itemsTo}件 / 全{itemsAmount}件</p>
+		</div>
+	</div>
+</div><!-- /.acms-grid -->
+<!-- END index -->
+<!-- END_MODULE Admin_Shop_Receipt_Index -->
+
+<!-- END step -->
+<!-- BEGIN step#reapply -->
+
+<!-- BEGIN headline#insert -->
+<!-- END headline#insert --><!-- BEGIN headline#update -->
+<!-- END headline#update -->
+
+<p class="transaction-notice-{insert:validator} acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>カテゴリーを作成できませんでした。</p>
+<p class="transaction-notice-{update:validator} acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>カテゴリーを保存できませんでした。</p>
+
+<!-- BEGIN footer#insert -->
+<form action="" method="post">
+	<input type="hidden" name="bid" value="%{BID}" />
+	<input type="hidden" name="admin" value="shop_receipt_index" />
+	<input type="submit" name="ACMS_POST_2GET" value="一覧" class="acms-admin-btn-admin" />
+</form>
+<!-- END footer#insert -->
+
+<!-- BEGIN footer#update -->
+<form action="%{QOL}edit&step" method="post">
+	<input type="submit" name="ACMS_POST_Form_Chain" value="戻る" class="acms-admin-btn-admin" />
+</form>
+<!-- END footer#update -->
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form">
+
+<input type="hidden" name="step" value="" /><!-- BEGIN submit#insert -->
+<input type="submit" name="ACMS_POST_Shop_Customer_Insert" value="作成" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" /><!-- END submit#insert --><!-- BEGIN submit#update -->
+<input type="submit" name="ACMS_POST_Shop_Customer_Update" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" /><!-- END submit#update -->
+
+<!-- input要素を編集可能な属性に変更することで編集可能です -->
+<input type="hidden" name="charge_payment" value="{charge_payment}" />
+<input type="hidden" name="receipt[]" value="charge_payment" />
+<input type="hidden" name="charge_deliver" value="{charge_deliver}" />
+<input type="hidden" name="receipt[]" value="charge_deliver" />
+<input type="hidden" name="charge_others" value="{charge_others}" />
+<input type="hidden" name="receipt[]" value="charge_others" />
+<input type="hidden" name="subtotal" value="{subtotal}" />
+<input type="hidden" name="receipt[]" value="subtotal" />
+<input type="hidden" name="total" value="{total}" />
+<input type="hidden" name="receipt[]" value="total" />
+
+<h2 class="acms-admin-admin-title2">お客様情報</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>名前</th>
+		<td><input type="text" name="name" value="{name}" />
+		<input type="hidden" name="user[]" value="name" /></td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td><input type="text" name="mail" value="{mail}" />
+		<input type="hidden" name="user[]" value="mail" /></td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2">住所情報</h2>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>お届け先のお名前</th>
+		<td>
+		<input type="text" name="address_name" value="{address_name}" />
+		<input type="hidden" name="address[]" value="address_name" />
+		</td>
+	</tr>
+	<tr>
+		<th>ふりがな</th>
+		<td>
+		<input type="text" name="address_ruby" value="{address_ruby}" />
+		<input type="hidden" name="address[]" value="address_ruby" />
+		</td>
+	</tr><!-- BEGIN country:veil -->
+	<tr>
+		<th>国</th>
+		<td>
+		<input type="text" name="address_country" value="{address_country}" />
+		<input type="hidden" name="address[]" value="address_country" />
+		</td>
+	</tr><!-- END country:veil -->
+	<tr>
+		<th>郵便番号</th>
+		<td>
+		<input type="text" name="address_zip" value="{address_zip}" />
+		<input type="hidden" name="address[]" value="address_zip" />
+		</td>
+	</tr>
+	<tr>
+		<th>県</th>
+		<td>
+		<input type="text" name="address_prefecture" value="{address_prefecture}" />
+		<input type="hidden" name="address[]" value="address_prefecture" />
+		</td>
+	</tr>
+	<tr>
+		<th>市</th>
+		<td>
+		<input type="text" name="address_city" value="{address_city}" />
+		<input type="hidden" name="address[]" value="address_city" />
+		</td>
+	</tr>
+	<tr>
+		<th>フィールド1(丁・番地・字など)</th>
+		<td>
+		<input type="text" name="address_field_1" value="{address_field_1}" />
+		<input type="hidden" name="address[]" value="address_field_1" />
+		</td>
+	</tr><!-- BEGIN field_2:veil -->
+	<tr>
+		<th>フィールド2(建物名・部屋名など)</th>
+		<td>
+		<input type="text" name="address_field_2" value="{address_field_2}" />
+		<input type="hidden" name="address[]" value="address_field_2" />
+		</td>
+	</tr><!-- END field_2:veil -->
+	<tr>
+		<th>お届け先の電話番号</th>
+		<td>
+		<input type="text" name="address_telephone" value="{address_telephone}" />
+		<input type="hidden" name="address[]" value="address_telephone" />
+		</td>
+	</tr>
+</table>
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Shop_Customer_Edit -->
+@include("/admin/tooltip/category.html")

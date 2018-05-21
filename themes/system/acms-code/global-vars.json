@@ -1,0 +1,660 @@
+{
+  "title": "<!--T-->グローバル変数<!--/T-->",
+  "enTitle": "Global vars",
+  "items": [
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{RBID}",
+      "subtitle": "<!--T-->ルートブログID<!--/T-->",
+      "url": "%{RBID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PBID}",
+      "subtitle": "<!--T-->親ブログID<!--/T-->",
+      "url": "%{PBID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BID}",
+      "subtitle": "<!--T-->ブログID<!--/T-->",
+      "url": "%{BID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PCID}",
+      "subtitle": "<!--T-->親カテゴリーID<!--/T-->",
+      "url": "%{PCID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CID}",
+      "subtitle": "<!--T-->カテゴリーID<!--/T-->",
+      "url": "%{CID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{EID}",
+      "subtitle": "<!--T-->エントリーID<!--/T-->",
+      "url": "%{EID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{UID}",
+      "subtitle": "<!--T-->ユーザーID<!--/T-->",
+      "url": "%{UID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ALIAS_ID}",
+      "subtitle": "<!--T-->エイリアスID<!--/T-->",
+      "url": "%{ALIAS_ID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{RVID}",
+      "subtitle": "<!--T-->バージョンID<!--/T-->",
+      "url": "%{RVID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{UTID}",
+      "subtitle": "<!--T-->ユニットID<!--/T-->",
+      "url": "%{UTID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CMID}",
+      "subtitle": "<!--T-->コメントID<!--/T-->",
+      "url": "%{CMID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SESSION_USER_ID}",
+      "subtitle": "<!--T-->ログイン中のユーザーID<!--/T-->",
+      "url": "%{SESSION_USER_ID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SESSION_BLOG_ID}",
+      "subtitle": "<!--T-->ログイン中のブログID<!--/T-->",
+      "url": "%{SESSION_BLOG_ID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MID}",
+      "subtitle": "<!--T-->モジュール編集画面のモジュールID<!--/T-->",
+      "url": "%{MID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{RBCD}",
+      "subtitle": "<!--T-->ルートブログコード<!--/T-->",
+      "url": "%{RBCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PBCD}",
+      "subtitle": "<!--T-->親ブログコード<!--/T-->",
+      "url": "%{PBCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BCD}",
+      "subtitle": "<!--T-->ブログコード<!--/T-->",
+      "url": "%{BCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{RCCD}",
+      "subtitle": "<!--T-->ルートカテゴリーコード<!--/T-->",
+      "url": "%{RCCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PCCD}",
+      "subtitle": "<!--T-->親カテゴリーコード<!--/T-->",
+      "url": "%{PCCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CCD}",
+      "subtitle": "<!--T-->カテゴリーコード<!--/T-->",
+      "url": "%{CCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ECD}",
+      "subtitle": "<!--T-->エントリーコード<!--/T-->",
+      "url": "%{ECD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{UCD}",
+      "subtitle": "<!--T-->ユーザーコード<!--/T-->",
+      "url": "%{UCD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ALIAS_CODE}",
+      "subtitle": "<!--T-->エイリアスコード<!--/T-->",
+      "url": "%{ALIAS_CODE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MODULE_ID}",
+      "subtitle": "<!--T-->ログイン中のユーザーコード<!--/T-->",
+      "url": "%{MODULE_ID}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SESSION_USER_CODE}",
+      "subtitle": "<!--T-->モジュール編集画面でのID<!--/T-->",
+      "url": "%{SESSION_USER_CODE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ROOT_BLOG_NAME}",
+      "subtitle": "<!--T-->表示ページが属するルートブログの名前<!--/T-->",
+      "url": "%{ROOT_BLOG_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PARENT_BLOG_NAME}",
+      "subtitle": "<!--T-->表示ページが属する親ブログの名前<!--/T-->",
+      "url": "%{PARENT_BLOG_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BLOG_NAME}",
+      "subtitle": "<!--T-->表示ページが属するブログの名前<!--/T-->",
+      "url": "%{BLOG_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ROOT_CATEGORY_NAME}",
+      "subtitle": "<!--T-->表示ページが属するルートカテゴリーの名前<!--/T-->",
+      "url": "%{ROOT_CATEGORY_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PARENT_CATEGORY_NAME}",
+      "subtitle": "<!--T-->表示ページが属する親カテゴリーの名前<!--/T-->",
+      "url": "%{PARENT_CATEGORY_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CATEGORY_NAME}",
+      "subtitle": "<!--T-->表示ページが属するカテゴリーの名前<!--/T-->",
+      "url": "%{CATEGORY_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ENTRY_TITLE}",
+      "subtitle": "<!--T-->表示ページが属するエントリーの名前<!--/T-->",
+      "url": "%{ENTRY_TITLE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{USER_NAME}",
+      "subtitle": "<!--T-->ユーザーの名前<!--/T-->",
+      "url": "%{USER_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ALIAS_NAME}",
+      "subtitle": "<!--T-->エイリアスの名前<!--/T-->",
+      "url": "%{ALIAS_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SESSION_USER_NAME}",
+      "subtitle": "<!--T-->ログイン中のユーザーの名前<!--/T-->",
+      "url": "%{SESSION_USER_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MODULE_NAME}",
+      "subtitle": "<!--T-->モジュール編集画面でのモジュール名<!--/T-->",
+      "url": "%{MODULE_NAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{KEYWORD}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定されたキーワード<!--/T-->",
+      "url": "%{KEYWORD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{FIELD}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定されたフィールド<!--/T-->",
+      "url": "%{FIELD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{TAG}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定されたタグ<!--/T-->",
+      "url": "%{TAG}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PAGE}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定されたページ番号<!--/T-->",
+      "url": "%{PAGE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{DATE}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された日付<!--/T-->",
+      "url": "%{DATE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{DATE_YEAR}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された年<!--/T-->",
+      "url": "%{DATE_YEAR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{DATE_MONTH}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された月<!--/T-->",
+      "url": "%{DATE_MONTH}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{DATE_DAY}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された日<!--/T-->",
+      "url": "%{DATE_DAY}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{START}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された日付（始め）<!--/T-->",
+      "url": "%{START}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{END}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された日付（終わり）<!--/T-->",
+      "url": "%{END}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ORDER}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された並び順<!--/T-->",
+      "url": "%{ORDER}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{QUERY}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定されたクエリストリング<!--/T-->",
+      "url": "%{QUERY}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{QOL}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定されたクエリストリング<!--/T-->",
+      "url": "%{QOL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ADMIN}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された管理ページ<!--/T-->",
+      "url": "%{ADMIN}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ADMIN_PATH}",
+      "subtitle": "<!--T-->URLコンテキスト上で、指定された管理ページパス<!--/T-->",
+      "url": "%{ADMIN_PATH}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HOME_URL}",
+      "subtitle": "<!--T-->ルートブログのトップページのURL<!--/T-->",
+      "url": "%{HOME_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ROOT_BLOG_URL}",
+      "subtitle": "<!--T-->ルートブログのトップページのURL<!--/T-->",
+      "url": "%{ROOT_BLOG_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PARENT_BLOG_URL}",
+      "subtitle": "<!--T-->親ブログのトップページのURL<!--/T-->",
+      "url": "%{PARENT_BLOG_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BLOG_URL}",
+      "subtitle": "<!--T-->ブログのトップページのURL<!--/T-->",
+      "url": "%{BLOG_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ROOT_CATEGORY_URL}",
+      "subtitle": "<!--T-->ルートカテゴリーページのURL<!--/T-->",
+      "url": "%{ROOT_CATEGORY_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PARENT_CATEGORY_URL}",
+      "subtitle": "<!--T-->親カテゴリーページのURL<!--/T-->",
+      "url": "%{PARENT_CATEGORY_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CATEGORY_URL}",
+      "subtitle": "<!--T-->カテゴリーページのURL<!--/T-->",
+      "url": "%{CATEGORY_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BASE_URL}",
+      "subtitle": "<!--T-->基本となるURL<!--/T-->",
+      "url": "%{BASE_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HTTP_ROOT}",
+      "subtitle": "<!--T-->URLで表されるルートディレクトリ<!--/T-->",
+      "url": "%{HTTP_ROOT}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{INHERLINK}",
+      "subtitle": "<!--T-->現在のURLコンテキストを考慮したURL<!--/T-->",
+      "url": "%{INHERLINK}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CURRENT_URL}",
+      "subtitle": "<!--T-->表示中のURL<!--/T-->",
+      "url": "%{CURRENT_URL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PERMALINK}",
+      "subtitle": "<!--T-->表示中ページへのパーマリンク<!--/T-->",
+      "url": "%{PERMALINK}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ROOT_DIR}",
+      "subtitle": "<!--T-->ドキュメントルートからindex.phpのある場所までのパス<!--/T-->",
+      "url": "%{ROOT_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{IMAGES_DIR}",
+      "subtitle": "<!--T-->システムが使用する画像のあるディレクトリ( /images )のパス<!--/T-->",
+      "url": "%{IMAGES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ARCHIVES_DIR}",
+      "subtitle": "<!--T-->アーカイブディレクトリ( /archives )のパス<!--/T-->",
+      "url": "%{ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BID_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->ブログを考慮したアーカイブディレクトリ( /archives/001 )のパス<!--/T-->",
+      "url": "%{BID_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{YM_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->ブログの日付を考慮したアーカイブディレクトリ( /archives/001/201801 )のパス<!--/T-->",
+      "url": "%{YM_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HTTP_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->アーカイブディレクトリのURL<!--/T-->",
+      "url": "%{HTTP_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HTTP_THEMES_DIR}",
+      "subtitle": "<!--T-->テーマディレクトリのURL<!--/T-->",
+      "url": "%{HTTP_THEMES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HTTP_BID_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->ブログの日付を考慮したアーカイブディレクトリのURL<!--/T-->",
+      "url": "%{HTTP_BID_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HTTP_YM_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->ブログの日付を考慮したアーカイブディレクトリのURL<!--/T-->",
+      "url": "%{HTTP_YM_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MEDIA_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->メディアアーカイブディレクトリ( /media )のパス<!--/T-->",
+      "url": "%{MEDIA_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{HTTP_MEDIA_ARCHIVES_DIR}",
+      "subtitle": "<!--T-->ブログの日付を考慮したアーカイブディレクトリのURL<!--/T-->",
+      "url": "%{HTTP_MEDIA_ARCHIVES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{THEMES_DIR}",
+      "subtitle": "<!--T-->テーマディレクトリ ( /themes )のパス<!--/T-->",
+      "url": "%{THEMES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SYSTEM_THEMES_DIR}",
+      "subtitle": "<!--T-->システムテーマディレクトリ<!--/T-->",
+      "url": "%{SYSTEM_THEMES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CURRENT_THEMES_DIR}",
+      "subtitle": "<!--T-->表示中ページで使用されているテーマのパス<!--/T-->",
+      "url": "%{CURRENT_THEMES_DIR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SCRIPT_ROOT}",
+      "subtitle": "<!--T-->システムのメインスクリプトのパス<!--/T-->",
+      "url": "%{SCRIPT_ROOT}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{ALIAS_DOMAIN}",
+      "subtitle": "<!--T-->エイリアスのドメイン<!--/T-->",
+      "url": "%{ALIAS_DOMAIN}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BASE_ACMS_PATH}",
+      "subtitle": "<!--T-->基本となるacmsパス<!--/T-->",
+      "url": "%{BASE_ACMS_PATH}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{REQUEST_PATH}",
+      "subtitle": "<!--T-->表示URL中の、a-blog cms設置ディレクトリ以降のパス<!--/T-->",
+      "url": "%{REQUEST_PATH}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{REQUEST_DIRNAME}",
+      "subtitle": "<!--T-->表示URL中の、a-blog cms設置ディレクトリ以降のURL<!--/T-->",
+      "url": "%{REQUEST_DIRNAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{META_KEYWORDS}",
+      "subtitle": "<!--T-->コンフィグで指定したメタ情報のキーワード<!--/T-->",
+      "url": "%{META_KEYWORDS}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{META_DESCRIPTION}",
+      "subtitle": "<!--T-->コンフィグで指定したメタ情報のディスクリプション<!--/T-->",
+      "url": "%{META_DESCRIPTION}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SYSTEM_MAIL}",
+      "subtitle": "<!--T-->コンフィグで指定したシステムが使用するメールアドレス<!--/T-->",
+      "url": "%{SYSTEM_MAIL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CHARSET}",
+      "subtitle": "<!--T-->コンフィグで指定した出力文字コード<!--/T-->",
+      "url": "%{CHARSET}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{BLOG_THEME_COLOR}",
+      "subtitle": "<!--T-->コンフィグで指定したブログのテーマカラー<!--/T-->",
+      "url": "%{BLOG_THEME_COLOR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MAIL_SUBSCRIBE_ADMIN_FROM}",
+      "subtitle": "<!--T-->コンフィグで指定した管理者宛読者登録通知メールの送信元メールアドレス<!--/T-->",
+      "url": "%{MAIL_SUBSCRIBE_ADMIN_FROM}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MAIL_SUBSCRIBE_FROM}",
+      "subtitle": "<!--T-->コンフィグで指定した読者登録通知メールの送信元メールアドレス<!--/T-->",
+      "url": "%{MAIL_SUBSCRIBE_FROM}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MAIL_REMIND_FROM}",
+      "subtitle": "<!--T-->コンフィグで指定したパスワード再発行通知メールの送信元メールアドレス<!--/T-->",
+      "url": "%{MAIL_REMIND_FROM}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MAIL_COMMENT_FROM}",
+      "subtitle": "<!--T-->コンフィグで指定したコメント通知メールの送信元メールアドレス<!--/T-->",
+      "url": "%{MAIL_COMMENT_FROM}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{MAIL_MAGAZINE_FROM}",
+      "subtitle": "<!--T-->コンフィグで指定したメールマガジンの送信元メールアドレス<!--/T-->",
+      "url": "%{MAIL_MAGAZINE_FROM}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PHP_FILE_MAX_SIZE}",
+      "subtitle": "<!--T-->アップロード最大サイズ（upload_max_filesize）<!--/T-->",
+      "url": "%{PHP_FILE_MAX_SIZE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PHP_POST_MAX_SIZE}",
+      "subtitle": "<!--T-->ポスト最大サイズ（post_max_size）<!--/T-->",
+      "url": "%{PHP_POST_MAX_SIZE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{NOW_DATE}",
+      "subtitle": "<!--T-->表示した時点の日付<!--/T-->",
+      "url": "%{NOW_DATE}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{NOW_TIME}",
+      "subtitle": "<!--T-->表示した時点の時間<!--/T-->",
+      "url": "%{NOW_TIME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{Y}, \u0025{m}, \u0025{d}...",
+      "subtitle": "<!--T-->phpのdate関数に指定出来る日付文字列の書式<!--/T-->",
+      "url": "%{Y}, %{m}, %{d}..."
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{DOMAIN}",
+      "subtitle": "<!--T-->表示しているブログのドメイン名<!--/T-->",
+      "url": "%{DOMAIN}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SNAME}",
+      "subtitle": "<!--T-->動作中のa-blog cmsのセッション名<!--/T-->",
+      "url": "%{SNAME}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CATEGORY_EXISTS}",
+      "subtitle": "<!--T-->表示中のブログにカテゴリーが存在するか判定<!--/T-->",
+      "url": "%{CATEGORY_EXISTS}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{CATEGORY_LEVEL}",
+      "subtitle": "<!--T-->現在いるカテゴリー階層<!--/T-->",
+      "url": "%{CATEGORY_LEVEL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SEARCH_ENGINE_KEYWORD}",
+      "subtitle": "<!--T-->検索エンジンからのトラフィックだった場合のリファラーに含まれる検索キーワード（キャッシュ無効時のみ使用可）<!--/T-->",
+      "url": "%{SEARCH_ENGINE_KEYWORD}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{UA}",
+      "subtitle": "<!--T-->クライアントのユーザーエージェント情報<!--/T-->",
+      "url": "%{UA}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{UA_GROUP}",
+      "subtitle": "<!--T-->クライアントのユーザーエージェントの所属グループ情報<!--/T-->",
+      "url": "%{UA_GROUP}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{REMOTE_ADDR}",
+      "subtitle": "<!--T-->接続元リモートアドレス情報<!--/T-->",
+      "url": "%{REMOTE_ADDR}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{PROTOCOL}",
+      "subtitle": "<!--T-->プロトコル（http : https）<!--/T-->",
+      "url": "%{PROTOCOL}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{VIEW}",
+      "subtitle": "<!--T-->ページの表示状態（トップ・一覧・詳細）を示す文字列（top, index, entry）を出力する<!--/T-->",
+      "url": "%{VIEW}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SESSION_USER_AUTH}",
+      "subtitle": "<!--T-->ログイン中のユーザーの権限を示す文字列（administrator, editor, contributor, subscriber）を出力する<!--/T-->",
+      "url": "%{SESSION_USER_AUTH}"
+    },
+    {
+      "bid": "%{BID}",
+      "title": "\u0025{SESSION_USER_MAIL}",
+      "subtitle": "<!--T-->ログイン中のユーザーのメールアドレス<!--/T-->",
+      "url": "%{SESSION_USER_MAIL}"
+    }
+  ]
+}

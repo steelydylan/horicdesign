@@ -1,0 +1,66 @@
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="%{BASE_URL}rss2.xml" />
+<link href="/css/normalize.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/acms-admin.min.css" rel="stylesheet">
+<link href="/css/acms.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/blog2016.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://unpkg.com/smartphoto@0.5.9/css/smartphoto.min.css">
+<style>
+em{
+	display: inline-block;
+	background: #333333;
+	color: #FFFFFF;
+	padding: 2px 5px;
+	margin-right:5px;
+	margin-left:5px;
+}
+.entry-container .spread-table{
+	width:auto;
+}
+.entry-container .spread-table td,
+.entry-container .spread-table th{
+	padding:2px;
+	font-size:12px;
+}
+.entry-container .spread-table-menu{
+	padding:0;
+}
+.entry-container .spread-table-menu li:before{
+	display: none;
+}
+.entry-container .spread-table-menu li{
+	margin-bottom:0;
+}
+code{
+	margin:3px;
+	border-radius:2px;
+}
+</style>
+<!-- BEGIN_MODULE Blog_Field --><!-- BEGIN style:veil -->
+<style>
+.header-bg{
+	<!-- BEGIN background_color:veil -->
+	background-color:{background_color};<!-- END background_color:veil --><!-- BEGIN main_img:veil -->
+	background-position:center center;
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='%{ARCHIVES_DIR}{main_img@path}', sizingMethod='scale')";
+	background-image:url(%{ARCHIVES_DIR}{main_img@path});<!-- END main_img:veil --><!-- BEGIN font_color:veil -->
+	color:{font_color};<!-- END font_color:veil -->
+}
+.footer{
+	<!-- BEGIN background_color:veil -->
+	background-color:{background_color};<!-- END background_color:veil -->
+}
+</style><!-- END style:veil -->
+<!-- END_MODULE Blog_Field -->
+<!--#include file="/admin/template.html"-->
+<script src="https://unpkg.com/smartphoto@0.6.2/js/smartphoto.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+	[].forEach.call(document.querySelectorAll('.columnImage'),function(doc){
+		$(doc).wrap('<a href="'+doc.getAttribute('src')+'" class="js-smartPhoto"></a>');
+	});
+    new smartPhoto(".js-smartPhoto",{
+	    resizeStyle: 'fit',
+	    useOrientationApi: false
+    });
+});
+</script>

@@ -1,0 +1,44 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->シーケンス修正<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Fix -->
+<form method="post" action="" class="acms-admin-form">
+
+	<!-- BEGIN message#success -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->シーケンスを修正しました。<!--/T--></p><!-- END message#success -->
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<!-- BEGIN step -->
+			<input type="submit" name="ACMS_POST_Fix_Sequence" value="<!--T-->修正<!--/T-->" onclick="return confirm('<!--T-->シーケンスのデータを修正します。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+			<!-- END step -->
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-info">
+		<div class="acms-admin-panel-header">
+			<!--T-->概要<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->IDの発行に異常がある状態のシーケンスを修正しますIDの発行に異常がある状態のシーケンスを修正します。<!--/T-->
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-danger">
+		<div class="acms-admin-panel-header">
+			<!--T-->注意事項<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->現在、正しくIDが発行できている場合は、このツールを実行する必要はありません。<!--/T-->
+		</div>
+	</div>
+</form>
+<!-- END_MODULE Admin_Fix -->

@@ -1,0 +1,260 @@
+<!-- BEGIN_MODULE Admin_Form_Edit -->
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->フォーム管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->フォームIDを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->フォームIDを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->フォームIDを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN form:validator#operative -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END form:validator#operative -->
+
+<!-- BEGIN headline#insert --><!-- END headline#insert -->
+<!-- BEGIN headline#update --><!-- END headline#update -->
+<form method="post" action="" class="acms-admin-form">
+
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<!-- BEGIN footer#update -->
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/form_log/?fmid=%{fmid}" class="acms-admin-btn-admin"><!--T-->投稿データ<!--/T--></a>
+			<!-- END footer#update -->
+
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/form_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<!-- BEGIN submit#insert -->
+			<input type="submit" name="ACMS_POST_Form_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			<!-- END submit#insert -->
+
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_Form_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<input type="submit" name="ACMS_POST_Form_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->フォームIDに関連づけられたログも一緒に削除されます。\nこの操作は元に戻せません。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END submit#update -->
+		</div>
+	</div>
+
+
+	<h3 class="acms-admin-admin-title2"><!--T-->基本設定<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->フォームID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに付与するID名です。フォームのテンプレート側にもこのIDと同じ記述が必要になります。（半角英数字）<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="code" value="{code}" /><input type="hidden" name="form[]" value="code" /><!-- BEGIN code:validator#required -->
+				<p style="color:red;"><!--T-->フォームIDが入力されていません<!--/T--></p><!-- END code:validator#required --><!-- BEGIN code:validator#regex -->
+				<p style="color:red;"><!--T-->フォームIDに使用出来ない文字が含まれています<!--/T--></p><!-- END code:validator#regex --><!-- BEGIN code:validator#double -->
+				<p style="color:red;"><!--T-->フォームIDが既に使用されています<!--/T--></p><!-- END code:validator#double -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->フォーム名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームIDを管理するための名前です。（日本語可）<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="name" value="{name}" size="40" /><input type="hidden" name="form[]" value="name" /><!-- BEGIN name:validator#required -->
+				<p style="color:red;"><!--T-->フォーム名が入力されていません<!--/T--></p><!-- END name:validator#required -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->グローバル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このフォームIDが下の階層のブログでも使用できます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="scope" value="local" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="scope" value="global"{scope:checked#global} id="input-checkbox-scope" />
+					<label for="input-checkbox-scope">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->下の階層のブログが利用することを許可する<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="form[]" value="scope" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ログ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、データベースにログを取らないようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="log" value="1" />
+				<label for="input-checkbox-log" class="acms-admin-form-checkbox">
+					<input type="checkbox" name="log" value="0"{log:checked#0} id="input-checkbox-log" /><i class="acms-admin-ico-checkbox"></i><!--T-->ログを残さないようにする<!--/T-->
+				</label>
+				<input type="hidden" name="form[]" value="log" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->送信<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->メール送信をバックグランドで行います。フォーム送信者にはすぐレスポンスがくるのでパフォマンスが上がります。ただエラーが確認しにくくなりますので、開発中は外すことをおすすめします。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="Background" value="0" />
+				<label for="input-checkbox-Background" class="acms-admin-form-checkbox">
+					<input type="checkbox" name="Background" value="1"{Background:checked#1} id="input-checkbox-Background" /><i class="acms-admin-ico-checkbox"></i><!--T-->バックグランド送信する<!--/T-->
+				</label>
+				<input type="hidden" name="mail[]" value="Background" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->文字コード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームから送信されるメールの、文字コードの設定です。<!--/T-->"></i></th>
+			<td>
+				<select name="Charset" class="js-select2">
+					<option value="UTF-8"{Charset:selected#UTF-8}>UTF-8</option>
+					<option value="ISO-2022-JP"{Charset:selected#ISO-2022-JP}>ISO-2022-JP（JIS）</option>
+				</select>
+				<input type="hidden" name="mail[]" value="Charset" />
+			</td>
+		</tr>
+	</table>
+	<!-- BEGIN mail -->
+	<h3 class="acms-admin-admin-title2"><!--T-->一般メール設定<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>SubjectTpl<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールの題名に使うテンプレートファイルを指定します。使用しているテーマディレクトリのルートからパスを記述してください。<!--/T-->"></i></th>
+			<td><input type="text" name="SubjectTpl" value="{SubjectTpl}" size="40" />
+			<input type="hidden" name="mail[]" value="SubjectTpl" /></td>
+		</tr>
+		<tr>
+			<th>BodyTpl<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールの本文に使うテンプレートファイルを指定します。使用しているテーマディレクトリのルートからパスを記述してください。<!--/T-->"></i></th>
+			<td><input type="text" name="BodyTpl" value="{BodyTpl}" size="40" />
+			<input type="hidden" name="mail[]" value="BodyTpl" /></td>
+		</tr>
+		<tr>
+			<th>BodyHTMLTpl<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームにHTMLメールテンプレートを設定した場合、送信されるメールがHTMLメールになります。。HTMLメールを使用しているテーマディレクトリのルートからパスを記述してください。また、HTMLメールを送る場合にもBodyTpl（テキストメールテンプレート）は必須になります。<!--/T-->"></i></th>
+			<td><input type="text" name="BodyHTMLTpl" value="{BodyHTMLTpl}" size="40" />
+			<input type="hidden" name="mail[]" value="BodyHTMLTpl" /></td>
+		</tr>
+		<tr>
+			<th>To<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールの送信先（To）の設定です。通常はフォームで取得するメールアドレスを使用するためテンプレート側に記述します。<!--/T-->"></i></th>
+			<td><input type="text" name="To" value="{To}" size="60" />
+			<input type="hidden" name="mail[]" value="To" /></td>
+		</tr>
+		<tr>
+			<th>From<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールの送信元（From）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="From" value="{From}" size="60" />
+			<input type="hidden" name="mail[]" value="From" /></td>
+		</tr>
+		<tr>
+			<th>Cc<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールのカーボンコピー（Cc）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="Cc" value="{Cc}" size="60" />
+			<input type="hidden" name="mail[]" value="Cc" /></td>
+		</tr>
+		<tr>
+			<th>Bcc<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールのブラインドカーボンコピー（Bcc）の設定です<!--/T-->"></i></th>
+			<td><input type="text" name="Bcc" value="{Bcc}" size="60" />
+			<input type="hidden" name="mail[]" value="Bcc" /></td>
+		</tr>
+		<tr>
+			<th>Reply-To<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームに入力した方へ送信されるメールの返信先（Reply-to）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="Reply-To" value="{Reply-To}" size="60" />
+			<input type="hidden" name="mail[]" value="Reply-To" /></td>
+		</tr>
+	</table>
+	<p>※<!--T-->カンマ区切りで複数指定出来ます。<!--/T--></p>
+
+	<h3 class="acms-admin-admin-title2"><!--T-->管理者宛メール設定<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>AdminSubjectTpl<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールの題名に使うテンプレートファイルを指定します。使用しているテーマディレクトリのルートからパスを記述してください。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminSubjectTpl" value="{AdminSubjectTpl}" size="40" />
+			<input type="hidden" name="mail[]" value="AdminSubjectTpl" /></td>
+		</tr>
+		<tr>
+			<th>AdminBodyTpl<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールの本文に使うテンプレートファイルを指定します。使用しているテーマディレクトリのルートからパスを記述してください。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminBodyTpl" value="{AdminBodyTpl}" size="40" />
+			<input type="hidden" name="mail[]" value="AdminBodyTpl" /></td>
+		</tr>
+		<tr>
+			<th>AdminBodyHTMLTpl<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームにHTMLメールテンプレートを設定した場合、管理者宛へ送信されるメールがHTMLメールになります。。HTMLメールを使用しているテーマディレクトリのルートからパスを記述してください。また、HTMLメールを送る場合にもAdminBodyHTMLTpl（テキストメールテンプレート）は必須になります。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminBodyHTMLTpl" value="{AdminBodyHTMLTpl}" size="40" />
+			<input type="hidden" name="mail[]" value="AdminBodyHTMLTpl" /></td>
+		</tr>
+		<tr>
+			<th>AdminTo<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールの送信先（To）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminTo" value="{AdminTo}" size="60" />
+			<input type="hidden" name="mail[]" value="AdminTo" /></td>
+		</tr>
+		<tr>
+			<th>AdminFrom<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールの送信元（From）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminFrom" value="{AdminFrom}" size="60" />
+			<input type="hidden" name="mail[]" value="AdminFrom" /></td>
+		</tr>
+		<tr>
+			<th>AdminCc<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールのカーボンコピー（Cc）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminCc" value="{AdminCc}" size="60" />
+			<input type="hidden" name="mail[]" value="AdminCc" /></td>
+		</tr>
+		<tr>
+			<th>AdminBcc<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールのブラインドカーボンコピー（Bcc）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminBcc" value="{AdminBcc}" size="60" />
+			<input type="hidden" name="mail[]" value="AdminBcc" /></td>
+		</tr>
+		<tr>
+			<th>AdminReply-To<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このフォームの管理者宛へ送信されるメールの返信先（Reply-to）の設定です。<!--/T-->"></i></th>
+			<td><input type="text" name="AdminReply-To" value="{AdminReply-To}" size="60" />
+			<input type="hidden" name="mail[]" value="AdminReply-To" /></td>
+		</tr>
+		<tr>
+			<th><!--T-->ファイル添付<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->フォームからアップロードされたファイルをメールに添付して送る設定です。<!--/T-->"></i></th>
+			<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="AdminAttachment[]" value="on" id="input-AdminAttachment-on"{AdminAttachment:checked#on} />
+				<label for="input-AdminAttachment-on">
+					<i class="acms-admin-ico-checkbox"></i><!--T-->メールに添付する<!--/T-->
+				</label>
+			</div>
+			<input type="hidden" name="mail[]" value="AdminAttachment" />
+			</td>
+		</tr>
+	</table>
+	<p>※<!--T-->カンマ区切りで複数指定出来ます。管理者宛メールの文字コードは、一般メール設定の文字コードと同じになります。<!--/T--></p>
+	<!-- END mail -->
+
+	<h3 class="acms-admin-admin-title2"><!--T-->フォームオプション<!--/T--></h3>
+	<div class="acms-admin-table-responsive">
+		<table class="acms-admin-table-admin">
+			<thead>
+				<tr>
+					<th class="acms-admin-table-left"><!--T-->フィールド<!--/T--> ( <!--T-->必須<!--/T--> )<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックするカスタムフィールドの名前を入力します<!--/T-->"></i></th>
+					<th class="acms-admin-table-left"><!--T-->オプション<!--/T--> ( <!--T-->必須<!--/T--> )<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックする項目を選択します。<!--/T-->"></i></th>
+					<th class="acms-admin-table-left"><!--T-->値<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックする項目による値を設定します。（例:最大文字数など）<!--/T-->"></i></th>
+				</tr><!-- BEGIN option:loop -->
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" name="field[]" value="{field}" /></td>
+					<td>
+						<select name="method[]" class="js-select2">
+						<option value="">▼ <!--T-->オプションを選択<!--/T--></option>
+						<optgroup label="<!--T-->入力値の制限<!--/T-->">
+							<option value="required"{method:selected#required}><!--T-->必須<!--/T--> ( required )</option>
+							<option value="minLength"{method:selected#minLength}><!--T-->最小文字数<!--/T--> ( minLength )</option>
+							<option value="maxLength"{method:selected#maxLength}><!--T-->最大文字数<!--/T--> ( maxLength )</option>
+							<option value="min"{method:selected#min}><!--T-->下限値<!--/T--> ( min )</option>
+							<option value="max"{method:selected#max}><!--T-->上限値<!--/T--> ( max )</option>
+							<option value="filesize"{method:selected#filesize}><!--T-->ファイルサイズ上限値<!--/T--> ( filesize ) KBで指定</option>
+						</optgroup>
+						<optgroup label="<!--T-->形式チェック<!--/T-->">
+							<option value="digits"{method:selected#digits}><!--T-->数字チェック<!--/T--> ( digits )</option>
+							<option value="email"{method:selected#email}><!--T-->メールアドレスチェック<!--/T--> ( email )</option>
+							<option value="url"{method:selected#url}><!--T-->URLチェック<!--/T--> ( url )</option>
+							<option value="equalTo"{method:selected#equalTo}><!--T-->等価チェック<!--/T--> ( equalTo )</option>
+							<option value="dates"{method:selected#dates}><!--T-->日付チェック<!--/T--> ( dates )</option>
+							<option value="times"{method:selected#times}><!--T-->時間チェック<!--/T--> ( times )</option>
+							<option value="regex"{method:selected#regex}><!--T-->正規表現マッチ<!--/T--> ( regex )</option>
+						</optgroup>
+						<optgroup label="<!--T-->その他<!--/T-->">
+							<option value="converter"{method:selected#converter}><!--T-->入力の変換<!--/T--> ( converter )</option>
+							<option value="duplication"{method:selected#duplication}><!--T-->メールアドレスの重複禁止<!--/T--> ( duplication )</option>
+						</optgroup>
+						</select>
+					</td>
+					<td><input type="text" name="value[]" value="{value}"></td>
+				</tr><!-- END option:loop -->
+			</tbody>
+		</table>
+	</div>
+	<input type="hidden" name="option[]" value="field" />
+	<input type="hidden" name="option[]" value="method" />
+	<input type="hidden" name="option[]" value="value" />
+
+	<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-form" --><!-- END_MODULE Admin_InjectTemplate -->
+</form>
+<!-- END_MODULE Admin_Form_Edit -->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Entry_List</h1>
+	<var>indexUrl<span>エントリーの一覧URL</span></var>
+	<var>indexBlogName<span>ブログ名</span></var>
+	<var>indexCategoryName<span>カテゴリー名</span></var>
+		<fieldset class="loop">
+			<legend class="loop">entry:loop<span>エントリーのループ</span>
+				<var class="textLong">entryField<span>エントリーのカスタムフィールド</span></var>
+				<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>エントリーの日付</span></var>
+			</legend>
+			<var>url<span>エントリー詳細URL</span></var>
+			<var>permalink<span>パーマリンク</span></var>
+			<var>title<span>エントリータイトル</span></var>
+			<var>status<span>エントリーステータス</span></var>
+			<var>iNum<span>ページ内連番</span></var>
+			<var>sNum<span>ページをまたいだ連番</span></var>
+			<var>oddOrEven<span>奇数/偶数(odd/even)</span></var>
+			<var>eid<span>エントリーID</span></var>
+			<var>cid<span>カテゴリーID</span></var>
+			<var>uid<span>ユーザーID</span></var>
+			<var>bid<span>ブログID</span></var>
+			<var>geo_lat<span>緯度</span></var>
+			<var>geo_lng<span>経度</span></var>
+			<var>geo_zoom<span>マップのズームレベル</span></var>
+			<var>entry:loop.class (v2.5.1 later)<span>コンフィグで設定したクラス名</span></var>
+		</fieldset>
+</body>
+</html>

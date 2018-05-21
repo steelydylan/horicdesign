@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="{charset}"?>
+<response>
+	<error>{bool}</error><!-- BEGIN msg -->
+	<message>{msg}</msg><!-- END message --><!-- BEGIN extended -->
+	<title>{title}</title>
+	<excerpt>{excerpt}</excerpt>
+	<url>{url}</url>
+	<blog_name>{blogName}</blog_name><!-- END extended -->
+</response>

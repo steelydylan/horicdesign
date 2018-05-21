@@ -1,0 +1,32 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->インポート<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<!-- BEGIN_MODULE Admin_Import_Index -->
+<h2 class="acms-admin-admin-title2"><!--T-->各種インポート<!--/T--></h2>
+<table class="acms-admin-admin-mini-table">
+<thead>
+	<th><!--T-->項目<!--/T--></th>
+	<th class="acms-admin-admin-mini-table-import-action"><!--T-->アクション<!--/T--></th>
+</thead>
+<tbody>
+<!-- BEGIN type:loop -->
+<tr>
+	<td>{label}</td>
+	<td class="acms-admin-admin-mini-table-import-action">
+		<a href="{url}" class="acms-admin-btn-admin"><!--T-->インポート<!--/T--></a>
+	</td>
+</tr>
+<!-- END type:loop -->
+</tbody>
+</table>
+<!-- END_MODULE Admin_Import_Index -->
+<!-- END_MODULE Touch_SessionWithAdministration -->
+
+

@@ -1,0 +1,78 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">外部連携の設定</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<form action="/bid/%{BID}/admin/shop_menu/" method="post" class="acms-admin-form">
+	<p class="transaction-notice-{config:validator} acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>コンフィグを保存出来ませんでした。</p>
+
+	<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+	<a href="/bid/%{BID}/admin/shortcut_edit/?action=Shop_External&admin=%{ADMIN}&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-btn-small acms-admin-shortcut-btn"><i class="acms-admin-icon acms-admin-icon-shortcut"></i>ショートカットに追加</a><!-- END_MODULE Touch_SessionWithAdministration -->
+
+	<input type="submit" name="ACMS_POST_Config" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+	<h2 class="acms-admin-admin-title2">クロネコWebコレクトの設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+		<th>TRS_MAP<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-kuronekoTrs" class="tooltipIcon" /></th>
+		<td>
+		<input type="text" name="shop_order_payment_kuroneko_trs" value="{shop_order_payment_kuroneko_trs}" />
+		<input type="hidden" name="config[]" value="shop_order_payment_kuroneko_trs" />
+		</td>
+		</tr>
+		<tr>
+		<th>契約者コード<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-kuronekoCode" class="tooltipIcon" /></th>
+		<td>
+		<input type="text" name="shop_order_payment_kuroneko_code" value="{shop_order_payment_kuroneko_code}" />
+		<input type="hidden" name="config[]" value="shop_order_payment_kuroneko_code" />
+		</td>
+		</tr>
+		<tr>
+		<th>フォーム送信先<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-kuronekoAction" class="tooltipIcon" /></th>
+		<td>
+		<input type="text" name="shop_order_payment_kuroneko_aciton" value="{shop_order_payment_kuroneko_aciton}" size="50" />
+		<input type="hidden" name="config[]" value="shop_order_payment_kuroneko_aciton" />
+		</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2">SGペイメント（formタグ方式）の設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+		<th>SGペイメントID<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-sgpId" class="tooltipIcon" /></th>
+		<td>
+		<input type="text" name="shop_order_payment_sgp_id" value="{shop_order_payment_sgp_id}" />
+		<input type="hidden" name="config[]" value="shop_order_payment_sgp_id" />
+		</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2">PayPalの設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+		<th>PayPalアカウント<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-paypalBusiness" class="tooltipIcon" /></th>
+		<td>
+		<input type="text" name="shop_order_payment_paypal_business" value="{shop_order_payment_paypal_business}" />
+		<input type="hidden" name="config[]" value="shop_order_payment_paypal_business" />
+		</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2">Google Analytics</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+		<th>ECトラッキングコード<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-trackingCode" class="tooltipIcon" /><br />Shop_Order_Tracking</th>
+		<td>
+			<textarea name="shop_order_tracking_code" cols="60" rows="10">{shop_order_tracking_code}</textarea>
+			<input type="hidden" name="config[]" value="shop_order_tracking_code" />
+		</td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Config -->
+@include("/admin/tooltip/shop/setting/external.html")

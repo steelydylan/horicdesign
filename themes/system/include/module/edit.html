@@ -1,0 +1,422 @@
+<h3 class="acms-admin-admin-title2"><!--T-->ID情報<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit"><!-- BEGIN_IF [%{mid}/nem/] -->
+	<tr>
+		<th><!--T-->mid<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->モジュールIDの固有のIDです。<!--/T-->"></i>
+		</th>
+		<td>
+			<span class="acms-admin-label">%{mid}</span>
+		</td>
+	</tr><!-- END_IF -->
+	<tr>
+		<th><!--T-->ステータス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->モジュールIDのステータスを設定します。<!--/T-->"></i>
+		</th>
+		<td>
+			<input type="hidden" name="status" value="close" />
+			<div class="acms-admin-form-checkbox">
+				<!-- BEGIN_IF [<!-- BEGIN submit#update -->1<!-- END submit#update -->/eq/1] --><input type="checkbox" name="status" value="open"{status:checked#open} id="input-checkbox-status" /><!-- ELSE --><input type="checkbox" name="status" value="open" checked="checked" id="input-checkbox-status" /><!-- END_IF -->
+				<label for="input-checkbox-status"><!-- BEGIN_IF [<!-- BEGIN submit#update -->1<!-- END submit#update -->/eq/1] -->
+					<i class="acms-admin-ico-checkbox"></i><!--T-->有効<!--/T--><!-- ELSE -->
+					<i class="acms-admin-ico-checkbox"></i><!--T-->有効<!--/T--><!-- END_IF -->
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="status" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->モジュール<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->IDを付与する対象のモジュールです。テンプレート側では、ここで指定したモジュールの記述にIDを付与します。<!--/T-->"></i></th>
+		<td>
+			<select name="name" id="js-arg_guidance_name" class="js-select2">
+			@include("/admin/module/select.html")
+			</select>
+			<input type="hidden" name="module[]" value="name" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-identifier-name" class="validator-result-{name:validator#required}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->モジュールを選択してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th>id<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->モジュールに付与するID名です。これと同じ記述がテンプレート側にも必要になります。（半角英数字）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="identifier" value="{identifier}" class="acms-admin-form-width-full"/>
+			<input type="hidden" name="module[]" value="identifier" />
+			<input type="hidden" name="identifier:validator#required" id="validator-name-required" />
+			<input type="hidden" name="identifier:validator#double" value="%{mid}" id="validator-identifier-double" />
+			<label class="validator-result-{identifier:validator#required}"><!--T-->idを入力して下さい。<!--/T--></label>
+			<label class="validator-result-{identifier:validator#double}"><!--T-->idが重複しています。<!--/T--></label>
+
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->名前<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDを管理するための名前です。（日本語可）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="label" value="{label}" size="50" class="acms-admin-form-width-full" />
+			<input type="hidden" name="module[]" value="label" />
+			<input type="hidden" name="label:validator#required" id="validator-label-required" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-label-required" class="validator-result-{label:validator#required}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前を入力してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->説明<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDがどのような動作をするかなどのメモです。<!--/T-->"></i></th>
+		<td>
+			<textarea name="description" rows="5" style="width:100%;">{description}</textarea>
+			<input type="hidden" name="module[]" value="description" />
+		</td>
+	</tr>
+	<tr>
+		<th>グローバル<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このモジュールIDが下の階層のブログでも使用できます。<!--/T-->"></i></th>
+		<td>
+		<!-- BEGIN_MODULE Touch_BlogParent -->
+		<input type="hidden" name="scope" value="local" />
+		<div class="acms-admin-form-checkbox">
+			<input type="checkbox" name="scope" value="global"{scope:checked#global} id="input-checkbox-scope" />
+			<label for="input-checkbox-scope"><i class="acms-admin-ico-checkbox"></i><!--T-->下の階層のブログが利用することを許可する<!--/T--></label>
+		</div>
+		<input type="hidden" name="module[]" value="scope" />
+		<!-- END_MODULE Touch_BlogParent -->
+		<!-- BEGIN_MODULE Touch_NotBlogParent -->
+		<div class="acms-admin-form-checkbox">
+			<input type="checkbox" disabled="disable">
+			<label for="input-checkbox-scope"><i class="acms-admin-ico-checkbox"></i><!--T-->下の階層のブログが利用することを許可する ( 子ブログを持たないブログでは設定できません )<!--/T--></label>
+		</div>
+		<!-- END_MODULE Touch_NotBlogParent -->
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カスタムフィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このモジュールIDでフィールド情報を表示できるようになります<!--/T-->"></i></th>
+		<td>
+		<input type="hidden" name="custom_field" value="0" />
+		<div class="acms-admin-form-checkbox">
+			<!-- BEGIN_IF [<!-- BEGIN submit#update -->1<!-- END submit#update -->/eq/1] --><input type="checkbox" name="custom_field" value="1"{custom_field:checked#1} id="input-type-custom-field" /><!-- ELSE --><input type="checkbox" name="custom_field" value="1" checked="checked" id="input-type-custom-field" /><!-- END_IF -->
+			<label for="input-type-custom-field">
+				<i class="acms-admin-ico-checkbox"></i><!--T-->カスタムフィールドを表示<!--/T-->
+			</label>
+		</div>
+		<input type="hidden" name="module[]" value="custom_field" />
+		</td>
+	</tr>
+	<tr>
+		<th>レイアウト/ユニット<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このモジュールIDがレイアウトモジュールで選択できるようになります。<!--/T-->"></i></th>
+		<td>
+		<input type="hidden" name="layout_use" value="0" />
+		<div class="acms-admin-form-checkbox">
+			<!-- BEGIN_IF [<!-- BEGIN submit#update -->1<!-- END submit#update -->/eq/1] --><input type="checkbox" name="layout_use" value="1"{layout_use:checked#1} id="input-type-layout-use" /><!-- ELSE --><input type="checkbox" name="layout_use" value="1" checked="checked" id="input-type-layout-use" /><!-- END_IF -->
+			<label for="input-type-layout-use"><!-- BEGIN_IF [<!-- BEGIN submit#update -->1<!-- END submit#update -->/eq/1] -->
+				<i class="acms-admin-ico-checkbox"></i><!--T-->レイアウトモジュール、モジュールユニットで使用<!--/T--><!-- ELSE -->
+				<i class="acms-admin-ico-checkbox"></i><!--T-->レイアウトモジュールで使用<!--/T--><!-- END_IF -->
+			</label>
+		</div>
+		<input type="hidden" name="module[]" value="layout_use" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->引数（チェックするとURLコンテキストが優先されます）<!--/T--></h3>
+
+<div class="js-arg_reference_remove js-arg_reference_dummy acms-admin-label-group acms-admin-inline-space" data-arg="" style="display:none;">
+	<span class="acms-admin-label acms-admin-label-large"></span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+</div>
+
+<table class="adminTable acms-admin-table-admin-edit" id="js-arg_reference">
+	<tr id="js-arg_guidance_bid" class="js-arg_guidance">
+		<th><!--T-->ブログID（bid）<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、ブログの管理ID（番号）で指定します。<!--/T-->"></i></th>
+		<td>&nbsp;</td>
+		<td>
+			<button type="button" name="bid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+
+			<a href="#" class="js-arg_reference_toggle js-target_bid acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+
+			<input class="js-arg_guidance_edit argEdit" type="text" name="bid" value="{bid}" />
+			<input type="hidden" name="module[]" value="bid" />
+			<input type="hidden" name="bid:convert" value="a" />
+			<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN bid_arg:loop -->
+				<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{bid_arg_value}">
+					<span class="acms-admin-label acms-admin-label-large">{bid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+				</div><!-- END bid_arg:loop -->
+			</div>
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-bid-intOrGlobalVars" class="validator-result-{bid:validator#intOrGlobalVars}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字またはグローバル変数を入力してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_uid" class="js-arg_guidance">
+		<th>
+			<label for="input-checkbox-uid_scope"><!--T-->ユーザーID（uid）<!--/T--></label>
+			<input type="hidden" name="uid_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、ユーザーの管理ID（番号）で指定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="uid_scope" value="global"{uid_scope:checked#global} id="input-checkbox-uid_scope" />
+				<label for="input-checkbox-uid_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->UIDのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="uid_scope" />
+		</td>
+		<td>
+			<button type="button" name="uid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+
+			<a href="#" class="js-arg_reference_toggle js-target_uid acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+
+			<input class="js-arg_guidance_edit argEdit" type="text" name="uid" value="{uid}" />
+			<input type="hidden" name="module[]" value="uid" />
+			<input type="hidden" name="uid:convert" value="a" />
+			<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN uid_arg:loop -->
+				<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{uid_arg_value}">
+					<span class="acms-admin-label acms-admin-label-large">{uid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+				</div><!-- END uid_arg:loop -->
+			</div>
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-uid-intOrGlobalVars" class="validator-result-{uid:validator#intOrGlobalVars}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字またはグローバル変数を入力してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_cid" class="js-arg_guidance">
+		<th>
+			<label for="input-checkbox-cid_scope"><!--T-->カテゴリーID（cid）<!--/T--></label>
+			<input type="hidden" name="cid_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、カテゴリーの管理ID（番号）で指定します。<!--T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="cid_scope" value="global"{cid_scope:checked#global} id="input-checkbox-cid_scope" />
+				<label for="input-checkbox-cid_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->CIDのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="cid_scope" />
+		</td>
+		<td>
+			<button type="button" name="cid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+
+			<a href="#" class="js-arg_reference_toggle js-target_cid acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+
+			<input class="js-arg_guidance_edit argEdit" type="text" name="cid" value="{cid}" />
+			<input type="hidden" name="module[]" value="cid" />
+			<input type="hidden" name="cid:convert" value="a" />
+			<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN cid_arg:loop -->
+				<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{cid_arg_value}">
+					<span class="acms-admin-label acms-admin-label-large">{cid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+				</div><!-- END cid_arg:loop -->
+			</div>
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-cid-intOrGlobalVars" class="validator-result-{cid:validator#intOrGlobalVars}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字またはグローバル変数を入力してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_eid" class="js-arg_guidance">
+		<th>
+			<label for="input-checkbox-eid_scope"><!--T-->エントリーID（eid）<!--/T--></label>
+			<input type="hidden" name="eid_scope" value="local" />
+			<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、エントリーの管理ID（番号）で指定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="eid_scope" value="global"{eid_scope:checked#global} id="input-checkbox-eid_scope" />
+				<label for="input-checkbox-eid_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->EIDのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="eid_scope" />
+		</td>
+		<td>
+			<button type="button" name="eid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+
+			<a href="#" class="js-arg_reference_toggle js-target_eid acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+
+			<input class="js-arg_guidance_edit argEdit" type="text" name="eid" value="{eid}" />
+			<input type="hidden" name="module[]" value="eid" />
+			<input type="hidden" name="eid:convert" value="a" />
+
+			<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN eid_arg:loop -->
+				<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{eid_arg_value}"><span class="acms-admin-label acms-admin-label-large">{eid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a></div><!-- END eid_arg:loop -->
+			</div>
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-eid-intOrGlobalVars" class="validator-result-{eid:validator#intOrGlobalVars}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字またはグローバル変数を入力してください。<!--/T--></p>
+				</div>
+			</div>
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-eid-exists" class="validator-result-{eid:validator#exists}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->存在しないエントリーが指定されています。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_keyword">
+		<th>
+			<label for="input-checkbox-keyword_scope"><!--T-->キーワード（keyword）<!--/T--></label>
+			<input type="hidden" name="keyword_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、エントリーについてキーワードで指定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="keyword_scope" value="global"{keyword_scope:checked#global} id="input-checkbox-keyword_scope" />
+				<label for="input-checkbox-keyword_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->キーワードのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="keyword_scope" />
+		</td>
+		<td>
+			<input type="text" name="keyword" value="{keyword}" />
+			<input type="hidden" name="module[]" value="keyword" />
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_tag">
+		<th>
+			<label for="input-checkbox-tag_scope"><!--T-->タグ（tag）<!--/T--></label>
+			<input type="hidden" name="tag_scope" value="local" />
+			<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、エントリーについてタグで指定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="tag_scope" value="global"{tag_scope:checked#global} id="input-checkbox-tag_scope" />
+				<label for="input-checkbox-tag_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->タグのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="tag_scope" />
+		</td>
+		<td>
+			<input type="text" name="tag" value="{tag}" />
+			<input type="hidden" name="module[]" value="tag" />
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_field_">
+		<th>
+			<label for="input-checkbox-field_scope"><!--T-->フィールド（field）<!--/T--></label>
+			<input type="hidden" name="field_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、カスタムフィールドで指定します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="field_scope" value="global"{field_scope:checked#global} id="input-checkbox-field_scope" />
+				<label for="input-checkbox-field_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->フィールドのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="field_scope" />
+		</td>
+		<td>
+			<input type="text" name="field_" value="{field_}" />
+			<input type="hidden" name="module[]" value="field_" />
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_start">
+		<th>
+			<label for="input-checkbox-start_scope"><!--T-->開始日時（start）<!--/T--></label>
+			<input type="hidden" name="start_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの日時に対して表示期間を指定します。ここで指定した日時以降のエントリーが表示されます。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="start_scope" value="global"{start_scope:checked#global} id="input-checkbox-start_scope" />
+				<label for="input-checkbox-start_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->開始日時のURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="start_scope" />
+		</td>
+		<td>
+			<!--T-->日付<!--/T-->: <input type="text" name="start_date" value="{start_date}" /><input type="hidden" name="module[]" value="start_date" />
+			<!--T-->時刻<!--/T-->: <input type="text" name="start_time" value="{start_time}" /><input type="hidden" name="module[]" value="start_time" />
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_end">
+		<th>
+			<label for="input-checkbox-end_scope"><!--T-->終了日時（end）<!--/T--></label>
+			<input type="hidden" name="end_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの日時に対して表示期間を指定します。ここで指定した日時以前のエントリーが表示されます。<!--T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="end_scope" value="global"{end_scope:checked#global} id="input-checkbox-end_scope" />
+				<label for="input-checkbox-end_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->終了日時のURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="end_scope" />
+		</td>
+		<td>
+			<!--T-->日付<!--/T-->: <input type="text" name="end_date" value="{end_date}" /><input type="hidden" name="module[]" value="end_date" />
+			<!--T-->時刻<!--/T-->: <input type="text" name="end_time" value="{end_time}" /><input type="hidden" name="module[]" value="end_time" />
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_page">
+		<th>
+			<label for="input-checkbox-page_scope"><!--T-->ページ（page）<!--/T--></label>
+			<input type="hidden" name="page_scope" value="local" />
+		<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、ページ番号で指定します。ページャー（ページ送り）を使用する場合は、チェックをしてください。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="page_scope" value="global"{page_scope:checked#global} id="input-checkbox-page_scope" />
+				<label for="input-checkbox-page_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->ページャーのURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="page_scope" />
+		</td>
+		<td>
+			<input type="text" name="page" value="{page}" size="6" />
+			<input type="hidden" name="module[]" value="page" />
+			<input type="hidden" name="page:convert" value="a" />
+			<input type="hidden" name="page:validator#intOrGlobalVars" id="validator-page-intOrGlobalVars" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-page-intOrGlobalVars" class="validator-result-{page:validator#intOrGlobalVars}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字またはグローバル変数を入力してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr id="js-arg_guidance_order">
+		<th>
+			<label for="input-checkbox-order_scope"><!--T-->表示順（order）<!--/T--></label>
+			<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールIDの表示内容を、表示順で指定します。<!--/T-->"></i>
+		</th>
+		<td>
+			<input type="hidden" name="order_scope" value="local" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="order_scope" value="global"{order_scope:checked#global} id="input-checkbox-order_scope" />
+				<label for="input-checkbox-order_scope">
+					<i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->表示順のURLコンテキストを優先する<!--/T--></span>
+				</label>
+			</div>
+			<input type="hidden" name="module[]" value="order_scope" />
+		</td>
+		<td>
+			<input type="text" name="order" value="{order}" />
+			<input type="hidden" name="module[]" value="order" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->階層<!--/T--><!--T-->（引数に複数選択があるとここは自動的に self が設定されます）<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr id="js-axis_guidance_bid_axis">
+		<th><!--T-->ブログ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->下階層のブログを表示内容に含めるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="bid_axis" class="js-select2">
+				<option value="self"{bid_axis:selected#self}><!--T-->下階層のブログを含めない<!--/T--> ( self )</option>
+				<option value="descendant-or-self"{bid_axis:selected#descendant-or-self}><!--T-->下階層のブログも含める<!--/T--> ( descendant-or-self )</option>
+				<option value="descendant"{bid_axis:selected#descendant}><!--T-->下階層のブログのみを対象とする<!--/T--> ( descendant )</option>
+			</select>
+			<input type="hidden" name="module[]" value="bid_axis" />
+		</td>
+	</tr>
+	<tr id="js-axis_guidance_cid_axis">
+		<th><!--T-->カテゴリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->下階層のカテゴリーを表示内容に含めるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="cid_axis" class="js-select2">
+				<option value="self"{cid_axis:selected#self}><!--T-->下階層のカテゴリーを含めない ( self )<!--/T--></option>
+				<option value="descendant-or-self"{cid_axis:selected#descendant-or-self}><!--T-->下階層のカテゴリーも含める<!--/T--> ( descendant-or-self )</option>
+				<option value="descendant"{cid_axis:selected#descendant}><!--T-->下階層のカテゴリーのみを対象とする<!--/T--> ( descendant )</option>
+			</select>
+			<input type="hidden" name="module[]" value="cid_axis" />
+		</td>
+	</tr>
+</table>

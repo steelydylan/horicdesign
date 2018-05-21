@@ -1,0 +1,106 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。フィールド、数値フィールドはカスタムフィールドでの検索結果の表示時に利用します。<!--/T-->"></i></th>
+		<td>
+			<select name="entry_calendar_order" class="js-select2">
+				<option value="datetime-asc"{entry_calendar_order:selected#datetime-asc}><!--T-->日時 ( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{entry_calendar_order:selected#datetime-desc}><!--T-->日時 ( 降順 )<!--/T--></option>
+				<option value="code-asc"{entry_calendar_order:selected#code-asc}><!--T-->ファイル名 ( 昇順 )<!--/T--></option>
+				<option value="code-desc"{entry_calendar_order:selected#code-desc}><!--T-->ファイル名 ( 降順 )<!--/T--></option>
+				<option value="id-asc"{entry_calendar_order:selected#id-asc}><!--T-->ID ( 昇順 )<!--/T--></option>
+				<option value="id-desc"{entry_calendar_order:selected#id-desc}><!--T-->ID ( 降順 )<!--/T--></option>
+				<option value="sort-asc"{entry_calendar_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{entry_calendar_order:selected#sort-desc}><!--T-->表示順 ( 降順 )<!--/T--></option>
+				<option value="field-asc"{entry_calendar_order:selected#field-asc}><!--T-->フィールド ( 昇順 )<!--/T--></option>
+				<option value="field-desc"{entry_calendar_order:selected#field-desc}><!--T-->フィールド ( 降順 )<!--/T--></option>
+				<option value="intfield-asc"{entry_calendar_order:selected#intfield-asc}><!--T-->数値フィールド ( 昇順 )<!--/T--></option>
+				<option value="intfield-desc"{entry_calendar_order:selected#intfield-desc}><!--T-->数値フィールド ( 降順 )<!--/T--></option>
+				<option value="random"{entry_calendar_order:selected#random}><!--T-->ランダム<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="entry_calendar_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->週の始まり<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カレンダー中、週の始まりが何曜日になるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="entry_calendar_begin_week" class="js-select2">
+				<option value="0"{entry_calendar_begin_week:selected#0}><!--T-->日曜日<!--/T--></option>
+				<option value="1"{entry_calendar_begin_week:selected#1}><!--T-->月曜日<!--/T--></option>
+				<option value="2"{entry_calendar_begin_week:selected#2}><!--T-->火曜日<!--/T--></option>
+				<option value="3"{entry_calendar_begin_week:selected#3}><!--T-->水曜日<!--/T--></option>
+				<option value="4"{entry_calendar_begin_week:selected#4}><!--T-->木曜日<!--/T--></option>
+				<option value="5"{entry_calendar_begin_week:selected#5}><!--T-->金曜日<!--/T--></option>
+				<option value="6"{entry_calendar_begin_week:selected#6}><!--T-->土曜日<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="entry_calendar_begin_week" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->曜日のラベル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->各曜日をどのような文字列で表示するかの設定です。<!--/T-->"></i></th>
+		<td>
+			<div role="form">
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label[1]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label[2]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label[3]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label[4]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label[5]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="entry_calendar_week_label[]" value="{entry_calendar_week_label[6]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+			<input type="hidden" name="config[]" value="entry_calendar_week_label" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->今日の日付 class指定<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->今日の日付のclass指定です。テンプレート側での装飾時に使用します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_calendar_today" value="{entry_calendar_today}" size="10" />
+			<input type="hidden" name="config[]" value="entry_calendar_today" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->最大エントリー数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->リストに出すエントリーの最大数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_calendar_max_entry_count" value="{entry_calendar_max_entry_count}" size="2" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="entry_calendar_max_entry_count" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示モード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カレンダーの表示形式です。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="entry_calendar_mode" value="month" {entry_calendar_mode:checked#month} id="input-radio-entry-calendar-mode-month">
+				<label for="input-radio-entry-calendar-mode-month"><i class="acms-admin-ico-radio"></i> <!--T-->月表示<!--/T--></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="entry_calendar_mode" value="days" {entry_calendar_mode:checked#days} id="input-radio-entry-calendar-mode-days">
+				<label for="input-radio-entry-calendar-mode-days"><i class="acms-admin-ico-radio"></i> <!--T-->週表示(その日から)<!--/T--></label>
+			</div>&nbsp;
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="entry_calendar_mode" value="week" {entry_calendar_mode:checked#week} id="input-radio-entry-calendar-mode-week">
+				<label for="input-radio-entry-calendar-mode-week"><i class="acms-admin-ico-radio"></i> <!--T-->週表示(週の始まりから)<!--/T--></label>
+			</div>&nbsp;
+			<input type="hidden" name="config[]" value="entry_calendar_mode" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ページ送り数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->週表示の時、何日分ページを送るかを指定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="entry_calendar_pager_count" value="{entry_calendar_pager_count}" size="2" class="acms-admin-form-width-mini" />
+			<!--T-->日 &nbsp;週表示(その日から)で有効です。<!--/T-->
+			<input type="hidden" name="config[]" value="entry_calendar_pager_count" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->前後月のエントリー表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->月表示の時でチェックが入っている場合、前後月のエントリーを表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="entry_calendar_around" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="entry_calendar_around" value="on"{entry_calendar_around:checked#on} id="input-checkbox-entry_calendar_around" />
+				<label for="input-checkbox-entry_calendar_around" class="acms-admin-form-checkbox"><i class="acms-admin-ico-checkbox"></i><!--T-->月表示で有効です<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="entry_calendar_around" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="573px" height="361px" viewBox="0 0 573 361" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-1" sketch:type="MSArtboardGroup">
+            <rect id="Rectangle-7" fill="#EBBC3D" sketch:type="MSShapeGroup" x="211" y="212" width="65" height="51" rx="5"></rect>
+            <rect id="Rectangle-10" fill="#F1A09B" sketch:type="MSShapeGroup" x="133" y="296" width="14" height="34" rx="5"></rect>
+            <rect id="Rectangle-8" fill="#EF964F" sketch:type="MSShapeGroup" x="211" y="274" width="65" height="56" rx="5"></rect>
+            <text id="中国地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="216" y="244">中国地方</tspan>
+            </text>
+            <text id="四国地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="216" y="306">四国地方</tspan>
+            </text>
+            <rect id="Rectangle-4" fill="#6FBEC4" sketch:type="MSShapeGroup" x="345" y="196" width="65" height="116" rx="5"></rect>
+            <path d="M342,255.497564 L342,216.009979 C342,213.243492 339.764776,211 337.007488,211 L281.992512,211 C279.237447,211 277,213.243044 277,216.009979 L277,258.990021 C277,261.756508 279.235224,264 281.992512,264 L287,264 L287,324.994894 C287,327.758475 289.239589,330 292.002262,330 L336.997738,330 C339.758636,330 342,327.759138 342,324.994894 L342,255.497564 Z" id="Rectangle-5" fill="#ACCA4A" sketch:type="MSShapeGroup"></path>
+            <path d="M200,270.000374 L200,216.004358 C200,213.244221 197.757623,211 194.991511,211 L138.008489,211 C135.22921,211 133,213.240528 133,216.004358 L133,285.995642 C133,288.755779 135.242377,291 138.008489,291 L159,291 L159,326.994894 C159,329.758475 161.241663,332 164.006893,332 L194.993107,332 C197.766545,332 200,329.759138 200,326.994894 L200,270.000374 Z" id="Rectangle-9" fill="#F1A09B" sketch:type="MSShapeGroup"></path>
+            <text id="近畿地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="282" y="257">近畿地方</tspan>
+            </text>
+            <text id="九州地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="139" y="252">九州地方</tspan>
+            </text>
+            <text id="中部地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="349" y="265">中部地方</tspan>
+            </text>
+            <rect id="Rectangle-1" fill="#C58ED0" sketch:type="MSShapeGroup" x="377" y="14" width="101" height="85" rx="5"></rect>
+            <rect id="Rectangle-2" fill="#9698E5" sketch:type="MSShapeGroup" x="377" y="111" width="101" height="82" rx="5"></rect>
+            <rect id="Rectangle-3" fill="#87B6F0" sketch:type="MSShapeGroup" x="413" y="196" width="65" height="134" rx="5"></rect>
+            <text id="北海道-2" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="407" y="62">北海道</tspan>
+            </text>
+            <text id="東北地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="400" y="156">東北地方</tspan>
+            </text>
+            <text id="関東地方" sketch:type="MSTextLayer" font-family="Hiragino Kaku Gothic ProN" font-size="14" font-weight="313" fill="#FFFFFF">
+                <tspan x="418" y="265">関東地方</tspan>
+            </text>
+            <!-- BEGIN_IF [%{place}/lk/hokkaido] -->
+            <path d="M461.34157,38.7233519 C465.857175,36.4504995 469,31.3846216 469,25.5 C469,17.4918711 463.179702,11 456,11 C448.820298,11 443,17.4918711 443,25.5 C443,31.3846216 446.142825,36.4504995 450.65843,38.7233519 L456,50 L461.34157,38.7233519 Z" id="hokkaido" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [%{place}/lk/tohoku] -->
+            <path d="M419.34157,125.723352 C423.857175,123.450499 427,118.384622 427,112.5 C427,104.491871 421.179702,98 414,98 C406.820298,98 401,104.491871 401,112.5 C401,118.384622 404.142825,123.450499 408.65843,125.723352 L414,137 L419.34157,125.723352 Z" id="touhoku" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [%{place}/lk/chubu] -->
+            <path d="M358.34157,240.723352 C362.857175,238.450499 366,233.384622 366,227.5 C366,219.491871 360.179702,213 353,213 C345.820298,213 340,219.491871 340,227.5 C340,233.384622 343.142825,238.450499 347.65843,240.723352 L353,252 L358.34157,240.723352 Z" id="chubu" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [%{place}/lk/kinki] -->
+            <path d="M304.34157,229.723352 C308.857175,227.450499 312,222.384622 312,216.5 C312,208.491871 306.179702,202 299,202 C291.820298,202 286,208.491871 286,216.5 C286,222.384622 289.142825,227.450499 293.65843,229.723352 L299,241 L304.34157,229.723352 Z" id="kinki" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [%{place}/lk/chugoku] -->
+            <path d="M261.34157,220.723352 C265.857175,218.450499 269,213.384622 269,207.5 C269,199.491871 263.179702,193 256,193 C248.820298,193 243,199.491871 243,207.5 C243,213.384622 246.142825,218.450499 250.65843,220.723352 L256,232 L261.34157,220.723352 Z" id="chugoku" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [%{place}/lk/kyushu] -->
+             <path d="M458.34157,225.723352 C462.857175,223.450499 466,218.384622 466,212.5 C466,204.491871 460.179702,198 453,198 C445.820298,198 440,204.491871 440,212.5 C440,218.384622 443.142825,223.450499 447.65843,225.723352 L453,237 L458.34157,225.723352 Z" id="kyushu" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->  
+            <!-- BEGIN_IF [%{place}/lk/shikoku] -->
+            <path d="M268.34157,278.723352 C272.857175,276.450499 276,271.384622 276,265.5 C276,257.491871 270.179702,251 263,251 C255.820298,251 250,257.491871 250,265.5 C250,271.384622 253.142825,276.450499 257.65843,278.723352 L263,290 L268.34157,278.723352 Z" id="shikoku" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [%{place}/lk/kantou] -->
+            <path d="M193.34157,211.723352 C197.857175,209.450499 201,204.384622 201,198.5 C201,190.491871 195.179702,184 188,184 C180.820298,184 175,190.491871 175,198.5 C175,204.384622 178.142825,209.450499 182.65843,211.723352 L188,223 L193.34157,211.723352 Z" id="kantou" fill="#F75C50" sketch:type="MSShapeGroup"></path>
+            <!-- END_IF -->
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+<!-- BEGIN_MODULE Feed_ExList -->
+
+	<!-- BEGIN notFound -->
+	<p>フィードアイテムが見つかりません</p>
+	<!-- END notFound -->
+
+	<p><a href="{link}">{title}</a></p>
+
+	<dl>
+		<!-- BEGIN item:loop -->
+		<dt><a href="{link}">{title}[urldecode]</a> ( {date#Y}-{date#m}-{date#d} {date#H}:{date#i}:{date#s} )<!-- BEGIN new --><span class="acms-admin-label acms-admin-label-warning">New!</span><!-- END new --></dt>
+		<dd>{description}[urldecode]</dd>
+		<!-- END item:loop -->
+	</dl>
+
+<!-- END_MODULE Feed_ExList -->
+
+
+
+<!--
+
+ATOM1.0の場合は、以下のようになります。
+リンクのURLと要約文の変数名が異なります。
+
+<dt><a href="{link_href}">{title}</a> ( {date#Y}-{date#m}-{date#d} {date#H}:{date#i}:{date#s} )<!-- BEGIN new --><!--[NEW!]--><!-- END new --><!--</dt>
+<dd>{summary}</dd>
+
+-->

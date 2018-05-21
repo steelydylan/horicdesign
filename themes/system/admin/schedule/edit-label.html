@@ -1,0 +1,64 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->スケジュール管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Schedule_Edit -->
+
+<!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-info acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<!--T-->スケジュールのラベルを保存しました<!--/T--><button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END msg#update -->
+
+<form action="" method="post" id="sortableForm" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/schedule_index/" class="acms-admin-btn-admin acms-admin-margin-sp"><!--T-->一覧<!--/T--></a>
+			<input type="submit" name="ACMS_POST_Schedule_EditLabel" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash acms-admin-margin-sp" />
+			<div class="acms-admin-float-right"><!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+				<a href="/bid/%{BID}/admin/shortcut_edit/?scid=%{scid}&action=Schedule_LabelUpdate&admin=schedule_edit-label&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-inline-btn acms-admin-margin-sp"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+			</div>
+		</div>
+	</div>
+
+	<!-- BEGIN_MODULE Admin_Schedule_Labels -->
+	<table class="adminTable acms-admin-table-admin js-admin_table-sortable" data-sort-enable="on" data-sort-submit="ACMS_POST_Schedule_EditLabel" data-sort-target="#sortableForm">
+		<tr>
+			<th class="acms-admin-hide-sp"></th>
+			<th class="acms-admin-hide-sp"><!--T-->表示順<!--/T--></th>
+			<th class="acms-admin-show-sp"><!--T-->ラベル名<!--/T--> ( <!--T-->必須<!--/T--> )</th>
+			<th class="acms-admin-hide-sp"><!--T-->クラス<!--/T--> ( <!--T-->省略可<!--/T--> )</th>
+		</tr><!-- BEGIN label:loop -->
+		<tr data-sort-level="parallel" data-sort-name="schedule_label_sort">
+			<td class="item-handle acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+			<td class="acms-admin-show-sp acms-admin-width-sp">
+				<select name="schedule_label_sort[]" class="js-select2"><!-- BEGIN sort:loop -->
+					<option value="{i}"{selected}>{i}</option><!-- END sort:loop -->
+				</select>
+				<input type="hidden" name="sort[]" value="{raw}" />
+			</td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->ラベル名<!--/T--></span>
+				<input type="text" name="schedule_label_name[]" value="{name}" class="acms-admin-form-width-3quarters" />
+			</td>
+			<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				<span class="acms-admin-hide acms-admin-show-sp"><!--T-->クラス<!--/T--></span>
+				<input type="text" name="schedule_label_class[]" value="{class}" class="acms-admin-form-width-3quarters" />
+			</td>
+				<input type="hidden" name="schedule_label_key[]" value="{key}" />
+		</tr><!-- END label:loop -->
+	</table>
+	<input type="hidden" name="schedule[]" value="schedule_label_sort" />
+	<input type="hidden" name="schedule[]" value="schedule_label_name" />
+	<input type="hidden" name="schedule[]" value="schedule_label_class" />
+	<input type="hidden" name="schedule[]" value="schedule_label_key" />
+	<!-- END_MODULE Admin_Schedule_Labels -->
+</form>
+<!-- END_MODULE Admin_Schedule_Edit -->
+@include("/admin/tooltip/module.html")

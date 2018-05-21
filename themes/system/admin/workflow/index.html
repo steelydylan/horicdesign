@@ -1,0 +1,215 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ワークフロー管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Workflow_Index -->
+
+<!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ワークフローを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN workflow:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END workflow:validator#operable -->
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form">
+	<!-- BEGIN workflow:validator#operable -->
+	<p class="transaction-notice-error acms-admin-alert acms-admin-alert-danger"><!--T-->この操作は許可されていません。<!--/T--></p><!-- END workflow:validator#operable --><!-- BEGIN workflow:validator#unique -->
+	<p class="transaction-notice-error acms-admin-alert acms-admin-alert-danger"><!--T-->グループが重複しています。<!--/T--></p><!-- END workflow:validator#unique -->
+
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+		<input type="submit" name="ACMS_POST_Workflow_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash acms-admin-margin-sp" />
+		</div>
+	</div>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->基本<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->ワークフロー名<!--/T--><i data-acms-tooltip="<!--T-->ワークフロー名を設定します（日本語化）<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="text" name="name" value="{name}" />
+				<input type="hidden" name="workflow[]" value="name" />
+				<input type="hidden" name="name:validator#required" id="validator-name-required" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-name-required" class="validator-result-{name:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前が入力されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->説明<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このワークフローがどのような動作をするかなどのメモです。<!--/T-->"></i></th>
+			<td>
+				<textarea name="description" style="width:100%;" rows="3">{description}</textarea>
+				<input type="hidden" name="workflow[]" value="description" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ステータス<!--/T--><i data-acms-tooltip="<!--T-->ステータスを設定します。チェックをつけると、このブログで承認機能が有効になります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="hidden" name="status" value="close" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="status" value="open"{status:checked#open} id="input-checkbox-status" />
+					<label for="input-checkbox-status">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->有効（このブログで承認機能が有効になります）<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="workflow[]" value="status" />
+				<input type="hidden" name="status:validator#required" id="validator-status-required" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-status-required" class="validator-result-{status:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->ステータスが入力されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->承認タイプ<!--/T--><i data-acms-tooltip="<!--T-->直列、並列承認どちらを使用するか選択します<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="type" value="series"{type:checked#series} id="input-radio-type-series" />
+					<label for="input-radio-type-series">
+						<i class="acms-admin-ico-radio"></i>
+						<!--T-->直列承認<!--/T-->
+					</label>
+				</div>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="type" value="parallel"{type:checked#parallel} id="input-radio-type-parallel" />
+					<label for="input-radio-type-parallel">
+						<i class="acms-admin-ico-radio"></i>
+						<!--T-->並列承認<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="workflow[]" value="type" />
+				<input type="hidden" name="type:validator#required" id="validator-type-required" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-type-required" class="validator-result-{type:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->承認タイプが選択されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->承認グループ<!--/T--><i data-acms-tooltip="<!--T-->承認・承認依頼をするグループを設定します。上から下に承認フローが流れます。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<table class="js-fieldgroup-sortable adminTable">
+					<!-- BEGIN workflowGroup:loop -->
+					<tr class="sortable-item">
+						<td class="item-handle"><i class="acms-admin-icon-sort"></i></td>
+						<td><!-- BEGIN_MODULE Admin_Usergroup_Index -->
+							<select name="route_group[{i}]" class="js-select2">
+								<option value=""><!--T-->ユーザーグループを選択<!--/T--></option><!-- BEGIN usergroup:loop -->
+								<option value="{ugid}"\{route_group:selected#{ugid}\}>{name}（{point}）</option><!-- END usergroup:loop -->
+							</select><!-- END_MODULE Admin_Usergroup_Index -->
+						</td>
+						<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+					</tr><!-- END workflowGroup:loop -->
+					<tr class="sortable-item item-template">
+						<td class="item-handle"><i class="acms-admin-icon-sort"></i></td>
+						<td><!-- BEGIN_MODULE Admin_Usergroup_Index -->
+							<select name="route_group[]" class="js-select2">
+								<option value=""><!--T-->ユーザーグループを選択<!--/T--></option><!-- BEGIN usergroup:loop -->
+								<option value="{ugid}">{name}（{point}）</option><!-- END usergroup:loop -->
+							</select><!-- END_MODULE Admin_Usergroup_Index -->
+						</td>
+						<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+					</tr>
+					<tr>
+						<td colspan="4"><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" /></td>
+					</tr>
+				</table>
+				<input type="hidden" name="workflow[]" value="route_group" />
+				<input type="hidden" name="@workflowGroup[]" value="route_group" />
+				<input type="hidden" name="workflow[]" value="@workflowGroup" />
+
+				<!-- BEGIN route_group:validator#required -->
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-route_group-required" class="validator-result-{route_group:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->承認グループがセットされていません。<!--/T--></p>
+					</div>
+				</div>
+				<!-- END route_group:validator#required -->
+			</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->直列承認<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<!-- BEGIN_MODULE Admin_Config -->
+		<tr>
+			<th><!--T-->承認依頼<!--/T-->（<!--T-->記事作成<!--/T-->）<i data-acms-tooltip="<!--T-->承認依頼グループを設定します。一番最初に承認依頼をするグループになります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td><!-- BEGIN_MODULE Admin_Usergroup_Index -->
+				<select type="text" name="workflow_start_group[]" multiple class="js-select2">
+					<option value=""><!--T-->ユーザーグループを選択<!--/T--></option><!-- BEGIN usergroup:loop -->
+					<option value="{ugid}"\{workflow_start_group:selected#{ugid}\}>{name}</option><!-- END usergroup:loop -->
+				</select>
+				<input type="hidden" name="config[]" value="workflow_start_group" />
+				<!-- END_MODULE Admin_Usergroup_Index -->
+
+				<!-- BEGIN workflow_start_group:validator#required -->
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-workflow_start_group-required" class="validator-result-{workflow_start_group:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->承認依頼グループがセットされていません。<!--/T--></p>
+					</div>
+				</div>
+				<!-- END workflow_start_group:validator#required -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->最終承認<!--/T-->（<!--T-->記事公開<!--/T-->）<i data-acms-tooltip="<!--T-->最終承認ユーザーグループを設定します。ここで設定されたグループのユーザが最終承認をすることにより記事が公開されるようになります。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td><!-- BEGIN_MODULE Admin_Usergroup_Index -->
+				<select type="text" name="workflow_last_group[]" multiple class="js-select2">
+					<option value=""><!--T-->ユーザーグループを選択<!--/T--></option><!-- BEGIN usergroup:loop -->
+					<option value="{ugid}"\{workflow_last_group:selected#{ugid}\}>{name}</option><!-- END usergroup:loop -->
+				</select>
+				<input type="hidden" name="config[]" value="workflow_last_group" />
+
+				<!-- END_MODULE Admin_Usergroup_Index -->
+
+				<!-- BEGIN workflow_last_group:validator#required -->
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-start_group-required" class="validator-result-{workflow_last_group:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->最終承認グループがセットされていません。<!--/T--></p>
+					</div>
+				</div>
+				<!-- END workflow_last_group:validator#required -->
+			</td>
+		</tr>
+		<!-- END_MODULE Admin_Config -->
+	</table>
+
+	<h2 class="acms-admin-admin-title2"><!--T-->並列承認<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->公開ポイント<!--/T--><i data-acms-tooltip="<!--T-->公開ポイントを設定します。この値を合計承認ポイントが超えると記事が公開されます。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="text" name="public_point" value="{public_point}" />&nbsp;<!--T-->ポイント<!--/T-->
+				<input type="hidden" name="workflow[]" value="public_point" />
+
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-public_point-required" class="validator-result-{public_point:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->公開ポイントが設定されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->却下ポイント<!--/T--><i data-acms-tooltip="<!--T-->却下ポイントを設定します。この値を合計却下ポイントが超えると記事が却下されます。<!--/T-->" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+			<td>
+				<input type="text" name="reject_point" value="{reject_point}" />&nbsp;<!--T-->ポイント<!--/T-->
+				<input type="hidden" name="workflow[]" value="reject_point" />
+
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-reject_point-required" class="validator-result-{reject_point:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->却下ポイントが設定されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Workflow_Index -->
+@include("/admin/tooltip/workflow.html")

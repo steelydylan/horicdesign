@@ -1,0 +1,74 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->Movable Typeインポート<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<!-- BEGIN_MODULE Admin_Import_Message -->
+<!-- BEGIN message:veil -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!-- BEGIN_IF [{importMessage}/eq/0] -->
+	<!--T-->インポートに成功しました<!--/T-->
+	<!-- ELSE_IF [{importMessage}/eq/1/_or_/{importMessage}/eq/2] -->
+	<!--T-->ファイルサイズが大きすぎます<!--/T-->
+	<!-- ELSE_IF [{importMessage}/eq/4] -->
+	<!--T-->ファイルが選択されていません<!--/T-->
+	<!-- ELSE -->
+	<!--T-->エラーが発生しました [code={importMessage}]<!--/T-->
+	<!-- END_IF -->
+</p><!-- END message:veil --><!-- BEGIN import:data -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T--><!--$1-->{blog}<!--/$1--> ブログ <!--$2-->{category}<!--/$2--> に <!--$3-->{entry_count}<!--/$3-->件、インポートしました。<!--/T--></p><!-- END import:data -->
+<!-- END_MODULE Admin_Import_Message -->
+
+<div class="acms-admin-panel">
+	<div class="acms-admin-panel-header">
+		<p class="acms-admin-panel-title"><!--T-->Movable Typeのエクスポートデータ<strong>(txt形式)</strong>を、現在のブログにインポートします。<!--/T--></p>
+	</div>
+	<ul>
+		<li><!--T-->インポートされるデータは現在ログインしているユーザーでインポートされます<!--/T--></li>
+		<li><!--T-->カテゴリーコードは、<strong>category-[番号]</strong>という形でインポートされます。カテゴリー名はMovable Typeのものが反映されます。<!--/T--></li>
+	</ul>
+</div>
+
+
+<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form">
+	<input class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash acms-admin-margin-sp" type="submit" name="ACMS_POST_Import_MovableType" value="<!--T-->インポートを実行する<!--/T-->"/ onclick="return confirm('<!--T-->インポートを実行します。よろしいですか？<!--/T-->');">
+
+	<h2 class="acms-admin-admin-title2"><!--T-->Movable Typeからの移行<!--/T--></h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->インポート先ブログ<!--/T--></th>
+			<td>%{BLOG_NAME}（<!--T-->現在のブログ<!--/T-->）</td>
+		</tr>
+		<tr>
+			<th><!--T-->インポート先カテゴリー<!--/T--></th>
+			<td>
+				<select name="category_id" class="js-select2">
+					<option value="-1"><!--T-->MTのカテゴリーを使用<!--/T--></option>
+					<option value="0"><!--T-->なし<!--/T--></option><!-- BEGIN_MODULE Admin_Category_Select --><!-- BEGIN loop -->
+					<option value="{value}"{selected}>{indent}[raw]{label} ( {amount} )</option><!-- END loop --><!-- END_MODULE Admin_Category_Select -->
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->MTエクスポートデータ（txt形式）<!--/T--></th>
+			<td><input type="file" name="mt_import_file" ></td>
+		</tr>
+		<tr>
+			<th><!--T-->投稿データのインポート形式<!--/T--></th>
+			<td>
+				<select name="text_type" class="js-select2">
+					<option value="p"><!--T-->pタグで囲む<!--/T--></option>
+					<option value="wysiwyg"><!--T-->ウィジウィグ<!--/T--></option>
+					<option value="markdown"><!--T-->マークダウン<!--/T--></option>
+					<option value="none"><!--T-->自由入力<!--/T--></option>
+				</select>
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Touch_SessionWithAdministration -->

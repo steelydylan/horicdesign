@@ -1,0 +1,44 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name} </strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) </strong><!-- END_MODULE Admin_Module_Name --><!--T-->リセット<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<form action="" method="post" class="acms-admin-form">
+	<!-- BEGIN_MODULE Admin_Config_Message --><!-- BEGIN config:veil -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T--><!--$1-->{config_name}<!--/$1-->のコンフィグをリセットしました。<!--/T--></p><!-- END message:veil --><!-- END_MODULE Admin_Config_Message -->
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin">一覧</a>
+
+			<input class="acms-admin-btn-admin acms-admin-btn-admin-danger" type="submit" name="ACMS_POST_Config_Delete" value="<!--T-->リセット<!--/T-->" onclick="return confirm('<!--T-->リセットを実行します。よろしいですか？<!--/T-->');" />
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<!-- BEGIN_MODULE Admin_Rule_Name --><input type="hidden" name="rid" value="{rid}" />
+	<input type="hidden" name="rule_name" value="{name}" /><!-- END_MODULE Admin_Rule_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->
+
+<div class="acms-admin-panel acms-admin-panel-danger">
+	<div class="acms-admin-panel-header">
+		<!--T-->現在のコンフィグを破棄して、コンフィグをリセットします。<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<ul>
+			<li><!--T-->リセット後は、システムデフォルトのコンフィグ（private/config.system.yamlの設定値）を適用されます。<!--/T--></li>
+			<li><!--T-->ルール適用時のコンフィグがリセットされると、ブログの元々のコンフィグが適用されます。<!--/T--></li>
+		</ul>
+	</div>
+</div>

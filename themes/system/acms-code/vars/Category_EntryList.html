@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<title>Category_EntryList</title>
+</head>
+<body>
+	<h1>Category_EntryList</h1>
+	<fieldset class="loop"><legend class="loop">categoryEntryList:loop<span>カテゴリー階層のループ</span></legend>
+		<fieldset><legend>categoryUl#front<span>階層始まりのブロック</span></legend></fieldset>
+		<fieldset class="loop"><legend class="loop">category:loop <span>カテゴリーのループ</span><var class="textLong">categoryField<span>カテゴリーのカスタムフィールド</span></var></legend>
+			<var>categoryUrl<span>カテゴリーURL</span></var>
+			<var>categoryName<span>カテゴリーの名前</span></var>
+			<var>categoryLevel<span>カテゴリーの階層</span></var>
+			<var>categoryCode (v1.2.0 later)<span>カテゴリーコード</span></var>
+			<var>categoryId (v1.3.0 later)<span>カテゴリーID</span></var>
+			<var>categoryPid (v1.3.0 later)<span>親カテゴリーID</span></var>
+			<var>category:loop.class (v2.5.1 later)<span>コンフィグで設定したクラス名</span></var>
+
+			<fieldset><legend>entry:veil</legend>
+				<fieldset class="loop"><legend class="loop">entry:loop <span>エントリーループ</span><var class="textLong">entryField<span>エントリーのカスタムフィールド</span></var></legend>
+					<var>entryUrl<span>エントリーURL</span></var>
+					<var>entryTitle<span>エントリータイトル</span></var>
+					<var>entryLevel<span>カテゴリーの階層</span></var>
+					<var>entryCode (v1.2.0 later)<span>エントリーコード</span></var>
+					<var>entryId (v1.3.0 later)<span>エントリーID</span></var>
+					<var>entry:loop.class (v2.5.1 later)<span>コンフィグで設定したクラス名</span></var>
+				</fieldset>
+			</fieldset>
+		</fieldset>
+		<fieldset><legend>categoryLi#rear<span>カテゴリー毎の閉じブロック</span></legend></fieldset>
+		<fieldset><legend>categoryUl#rear<span>カテゴリーの階層毎の閉じブロック</span></legend></fieldset>
+	</fieldset>
+</body>
+</html>

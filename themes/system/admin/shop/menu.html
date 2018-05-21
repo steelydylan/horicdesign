@@ -1,0 +1,95 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">ショップ管理</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Shop_Menu -->
+<!-- BEGIN disable -->
+<form action="/bid/%{BID}/admin/shop_menu/" method="post" class="acms-admin-form">
+	<p>このブログで、注文フォームや受注・お客様の管理機能を利用する場合はショップ機能をONにしてください。</p>
+
+	<div class="acms-admin-form-group">
+		<input type="submit" name="ACMS_POST_Config" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+	</div>
+
+	<table class="acms-admin-table-admin-edit">
+		<tr>
+		<th>ショップ機能</th>
+		<td>
+		<div class="acms-admin-form-radio">
+			<input type="radio" name="shop" value="off" checked="checked" id="input-radio-shop-off" />
+			<label for="input-radio-shop-off"><i class="acms-admin-ico-radio"></i> OFF</label>
+		</div>
+		<div class="acms-admin-form-radio">
+			<input type="radio" name="shop" value="on" id="input-radio-shop-on" />
+			<label for="input-radio-shop-on"><i class="acms-admin-ico-radio"></i> ON</label>
+		</div>
+		<input type="hidden" name="config[]" value="shop" />
+		</td>
+		</tr>
+	</table>
+</form>
+<!-- END disable --><!-- BEGIN enable -->
+<div class="acms-admin-grid-r">
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<table class="acms-admin-admin-mini-table acms-admin-admin-config-table">
+			<thead>
+				<th colspan="2">設定管理</th>
+			</thead>
+			<tbody><!-- BEGIN shop_setting_misc -->
+				<tr>
+					<td><a href="{url}">基本の設定</a></td>
+				</tr><!-- END shop_setting_misc --><!-- BEGIN shop_setting_order -->
+				<tr>
+					<td><a href="{url}">注文画面の設定</a></td>
+				</tr><!-- END shop_setting_order --><!-- BEGIN shop_setting_shipping -->
+				<tr>
+					<td><a href="{url}">送料の設定</a></td>
+				</tr><!-- END shop_setting_shipping --><!-- BEGIN shop_setting_external -->
+				<tr>
+					<td><a href="{url}">外部連携の設定</a></td>
+				</tr><!-- END shop_setting_external -->
+			</tbody>
+		</table>
+	</div>
+	<div class="acms-admin-col-md-6 acms-admin-col-sm-12">
+		<table class="acms-admin-admin-mini-table acms-admin-admin-config-table">
+			<thead>
+				<th colspan="2">受注・お客様管理</th>
+			</thead>
+			<tbody><!-- BEGIN shop_receipt_index -->
+				<tr>
+					<td><a href="{url}">受注一覧</a></td>
+				</tr><!-- END shop_receipt_index --><!-- BEGIN shop_customer_index -->
+				<tr>
+					<td><a href="{url}">お客様一覧</a></td>
+				</tr><!-- END shop_customer_index -->
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<form action="/bid/%{BID}/admin/shop_menu/" method="post" class="acms-admin-form">
+	<p>このブログで、注文フォームや受注・お客様の管理機能を利用しない場合はショップ機能をOFFにしてください。</p>
+
+	<div class="acms-admin-form-group">
+		<input type="submit" name="ACMS_POST_Config" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+	</div>
+
+	<table class="acms-admin-table-admin-edit">
+		<tr>
+		<th>ショップ機能</th>
+		<td>
+		<label class="acms-admin-form-radio"><input type="radio" name="shop" value="off" /><i class="acms-admin-ico-radio"></i> OFF</label>
+		<label class="acms-admin-form-radio"><input type="radio" name="shop" value="on" checked="checked" /><i class="acms-admin-ico-radio"></i> ON</label>
+		<input type="hidden" name="config[]" value="shop" />
+		</td>
+		</tr>
+	</table>
+</form>
+<!-- END enable -->
+<!-- END_MODULE Admin_Shop_Menu -->

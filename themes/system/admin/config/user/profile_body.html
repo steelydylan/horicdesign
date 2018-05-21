@@ -1,0 +1,79 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="user_profile_order" class="js-select2">
+				<option value="code-asc"{user_profile_order:selected#code-asc}><!--T-->コード名 ( 昇順 )<!--/T--></option>
+				<option value="code-desc"{user_profile_order:selected#code-desc}><!--T-->コード名 ( 降順 )<!--/T--></option>
+				<option value="id-asc"{user_profile_order:selected#id-asc}><!--T-->ID ( 昇順 )<!--/T--></option>
+				<option value="id-desc"{user_profile_order:selected#id-desc}><!--T-->ID ( 降順 )<!--/T--></option>
+				<option value="updated_datetime-asc"{user_profile_order:selected#updated_datetime-asc}><!--T-->更新日時 ( 昇順 )<!--/T--></option>
+				<option value="updated_datetime-desc"{user_profile_order:selected#updated_datetime-desc}><!--T-->更新日時 ( 降順 )<!--/T--></option>
+				<option value="login_datetime-asc"{user_profile_order:selected#login_datetime-asc}><!--T-->最終ログイン日時 ( 昇順 )<!--/T--></option>
+				<option value="login_datetime-desc"{user_profile_order:selected#login_datetime-desc}><!--T-->最終ログイン日時 ( 降順 )<!--/T--></option>
+				<option value="sort-asc"{user_profile_order:selected#sort-asc}><!--T-->表示順 ( 昇順 )<!--/T--></option>
+				<option value="random"{user_profile_order:selected#random}><!--T-->ランダム<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="user_profile_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="user_profile_limit" value="{user_profile_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="user_profile_limit" />
+			<input type="hidden" name="user_profile_limit:convert" value="a" />
+			<input type="hidden" name="user_profile_limit:validator#digits" id="validator-user_profile_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-user_profile_limit-digits" class="validator-result-{user_profile_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->権限<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->選択した権限のユーザーが一覧の表示対象になります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="user_profile_administrator" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="user_profile_administrator" value="on"{user_profile_administrator:checked#on} id="input-checkbox-user_profile_administrator" />
+				<label for="input-checkbox-user_profile_administrator"><i class="acms-admin-ico-checkbox"></i><!--T-->管理者<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="user_profile_administrator" />
+			&nbsp;
+			<input type="hidden" name="user_profile_editor" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="user_profile_editor" value="on"{user_profile_editor:checked#on} id="input-checkbox-user_profile_editor" />
+				<label for="input-checkbox-user_profile_editor"><i class="acms-admin-ico-checkbox"></i><!--T-->編集者<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="user_profile_editor" />
+			&nbsp;
+			<input type="hidden" name="user_profile_contributor" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="user_profile_contributor" value="on"{user_profile_contributor:checked#on} id="input-checkbox-user_profile_contributor" />
+				<label for="input-checkbox-user_profile_contributor"><i class="acms-admin-ico-checkbox"></i><!--T-->投稿者<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="user_profile_contributor" />
+			&nbsp;
+			<input type="hidden" name="user_profile_subscriber" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="user_profile_subscriber" value="on"{user_profile_subscriber:checked#on} id="input-checkbox-user_profile_subscriber" />
+				<label for="input-checkbox-user_profile_subscriber"><i class="acms-admin-ico-checkbox"></i><!--T-->読者<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="user_profile_subscriber" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないユーザーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="user_profile_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="user_profile_indexing" value="on"{user_profile_indexing:checked#on} id="input-checkbox-user_profile_indexing" />
+				<label for="input-checkbox-user_profile_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているユーザーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="user_profile_indexing" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Entry_Body</h1>
+	<fieldset><legend>notFound<span>エントリーがない</span></legend></fieldset>
+
+	<fieldset class="veil"><legend class="veil">serialNavi:veil</legend>
+		<fieldset><legend>prevLink<span>前のエントリーブロック</span></legend>
+			<var>url<span>前のエントリーURL</span></var>
+			<var>name<span>前のエントリータイトル</span></var>
+		</fieldset>
+		<fieldset><legend>prevNotFound<span>前のエントリーがない</span></legend></fieldset>
+		<var>upperUrl</var>
+		<fieldset><legend>nextLink<span>次のエントリーブロック</span></legend>
+			<var>url<span>次のエントリーURL</span></var>
+			<var>name<span>次のエントリータイトル</span></var>
+		</fieldset>
+		<fieldset><legend>nextNotFound</legend></fieldset>
+	</fieldset>
+
+	<fieldset class="loop">
+		<legend class="loop">entry:loop<span>エントリーのループ</span>
+			<var class="textLong">entryField<span>エントリーのカスタムフィールド</span></var>
+			<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">date</a><span>日時</span></var>
+			<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">udate</a> (v1.2.1 later)<span>更新日時</span></var>
+			<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">pdate</a> (v1.2.1 later)<span>投稿日時</span></var>
+			<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">sdate</a> (v2.7.0 later)<span>公開日</span></var>
+			<var><a href="%{ADMIN_BASE_URL}acms-code/vars/date.html">edate</a> (v2.7.0 later)<span>掲載終了日</span></var>
+		</legend>
+		
+		<fieldset class="veil"><legend class="veil">title:veil</legend>
+			<var>titleUrl<span>エントリー詳細へのリンク</span></var>
+			<var>title<span>エントリータイトル</span></var>
+			<fieldset class="veil"><legend class="veil">category:veil</legend>
+				<fieldset class="loop"><legend class="loop">category:loop<span>カテゴリーのループ</span></legend>
+					<var>url<span>カテゴリーURL</span></var>
+					<var>name<span>カテゴリー名</span></var>
+					<var>code (v1.3.0 later)<span>カテゴリーコード</span></var>
+					<fieldset><legend>glue<span>カテゴリーループの接続ブロック</span></legend></fieldset>
+				</fieldset>
+			</fieldset>
+		</fieldset>
+		
+		<fieldset class="veil"><legend class="veil">categoryField:veil</legend>
+			<fieldset><legend class="textLong">categoryField<var>categoryField<span>カテゴリーのカスタムフィールド</span></var></legend>
+				<var>fieldCategoryName<span>カテゴリー名</span></var>
+				<var>fieldCategoryCode<span>カテゴリーコード</span></var>
+				<var>fieldCategoryId<span>カテゴリーID</span></var>
+				<var>fieldCategoryUrl<span>カテゴリーのURL</span></var>
+			</fieldset>
+		</fieldset>
+		
+		<fieldset class="veil"><legend class="veil">userField:veil</legend>
+			<fieldset><legend>userField<var class="textLong">userField<span>ユーザーのカスタムフィールド</span></var></legend>
+				<var>fieldUserName<span>ユーザー名</span></var>
+				<var>fieldUserCode<span>ユーザーコード</span></var>
+				<var>fieldUserStatus<span>ユーザーステータス</span></var>
+				<var>fieldUserMail<span>ユーザーのメールアドレス</span></var>
+				<var>fieldUserMailMobile<span>ユーザーのモバイルメールアドレス</span></var>
+				<var>fieldUserUrl<span>ユーザーのURL</span></var>
+				<var>fieldUserIcon<span>ユーザーのアイコン</span></var>
+				<var>fieldUserLargeIcon<span>ユーザーの大きいアイコン</span></var>
+			</fieldset>
+		</fieldset>
+		
+		<fieldset class="veil"><legend class="veil">blogField:veil</legend>
+			<fieldset><legend>blogField<var class="textLong">blogField<span>ブログのカスタムフィールド</span></var></legend>
+				<var>fieldBlogName<span>ブログ名</span></var>
+				<var>fieldBlogCode<span>ブログコード</span></var>
+				<var>fieldBlogUrl<span>ブログURL</span></var>
+			</fieldset>
+		</fieldset>
+		
+
+		<fieldset class="veil"><legend class="veil">unit:veil</legend>
+			<fieldset class="loop"><legend class="loop">unit:loop<span>ユニットのループ</span></legend>
+				<fieldset><legend>clear<span>floatの解除</span></legend></fieldset>
+
+				<fieldset><legend>unit#text<span>テキストユニット</span></legend>
+					<fieldset><legend>tag(設定値)<span>タグ要素</span></legend>
+						<var>text<span>テキスト</span></var>
+						<var>class<span>クラス</span></var>
+						<var>attr<span>属性</span></var>
+						<var>utid<span>ユニットID</span></var>
+						<var>extend_tag<span>拡張フィールド</span></var>
+					</fieldset>
+				</fieldset>
+
+				<fieldset><legend>unit#image<span>画像ユニット</span></legend>
+					<var>align<span>float</span></var>
+					<fieldset><legend>link#front<span>リンクブロック</span></legend>
+						<var>url<span>リンク先URL</span></var>
+						<var>viewer<span>ビューワー</span></var>
+					</fieldset>
+					<var>path<span>画像パス</span></var>
+					<var>alt<span>代替テキスト</span></var>
+					<var>x<span>画像の横幅</span></var>
+					<var>y<span>画像の高さ</span></var>
+					<fieldset><legend>link#rear<span>リンク閉じブロック</span></legend></fieldset>
+					<fieldset class="veil"><legend class="veil">caption<span></span></legend>
+						<var>caption<span>キャプション</span></var>
+					</fieldset>
+
+					<var>tinyPath<span>小さい画像パス</span></var>
+					<var>tinyX<span>小さい画像の横幅</span></var>
+					<var>tinyY<span>小さい画像の高さ</span></var>
+					<var>squarePath<span>正方形画像</span></var>
+					<var>squareX<span>正方形画像の横幅</span></var>
+					<var>squareY<span>正方形画像の高さ</span></var>
+					<var>attr<span>attr属性</span></var>
+					<var>utid<span>ユニットID</span></var>
+				</fieldset>
+
+				<fieldset><legend>unit#file<span>ファイルユニット</span></legend>
+					<var>align<span>float</span></var>
+					<var>path<span>ファイルパス</span></var>
+					<var>ico<span>ファイルアイコンパス</span>n</var>
+					<var>alt<span>alt属性</span></var>
+					<fieldset class="veil"><legend class="veil">caption</legend>
+						<var>caption<span>キャプション</span></var>
+					</fieldset>
+					<var>attr<span>attr属性</span></var>
+					<var>utid<span>ユニットID</span></var>
+				</fieldset>
+
+				<fieldset><legend>unit#map<span>地図ユニット</span></legend>
+					<var>align<span>float</span></var>
+					<var>lat<span>緯度</span></var>
+					<var>lng<span>経度</span></var>
+					<var>zoom<span>ズームレベル</span></var>
+					<var>x<span>マップサイズ横</span></var>
+					<var>y<span>マップサイズ縦</span></var>
+					<fieldset class="loop"><legend class="loop">marker:loop<span>マーカーのループ</span></legend>
+						<var>lat<span>緯度</span></var>
+						<var>lng<span>経度</span></var>
+						<fieldset><legend>glue<span>マーカーループの接続ブロック</span></legend></fieldset>
+					</fieldset>
+					<var>msg<span>メッセージ</span></var>
+					<var>msgRaw<span>メッセージ エスケープなし(html可)</span></var>
+					<var>attr<span>attr属性</span></var>
+					<var>utid<span>ユニットID</span></var>
+				</fieldset>
+
+				<fieldset><legend>unit#youtube<span>youtubeユニット</span></legend>
+					<var>attr<span>attr属性</span></var>
+					<var>x<span>横幅</span></var>
+					<var>y<span>高さ</span></var>
+					<var>youtubeId<span>youtubeID</span></var>
+					<var>utid<span>ユニットID</span></var>
+				</fieldset>
+
+				<fieldset><legend>unit#eximage<span>画像URLユニット</span></legend>
+					<var>attr<span>float</span></var>
+					<fieldset><legend>link#front<span>リンク開始ブロック</span></legend>
+						<var>url<span>リンク先URL</span></var>
+						<var>viewer<span>ビューワー</span></var>
+					</fieldset>
+					<var>normal<span>画像パス</span></var>
+					<var>alt<span>代替テキスト</span></var>
+					<var>x<span>表示サイズ　横</span></var>
+					<var>y<span>表示サイズ　縦</span></var>
+					<fieldset><legend>link#rear<span>リンク終了ブロック</span></legend></fieldset>
+					<fieldset class="veil"><legend class="veil">caption:veil</legend>
+						<var>caption<span>キャプション</span></var>
+					</fieldset>
+					<var>large<span>大きい画像パス</span></var>
+					<var>utid<span>ユニットID</span></var>
+				</fieldset>
+
+			</fieldset>
+		</fieldset>
+		<fieldset class="veil"><legend class="veil">continueLink:veil</legend>
+			<var>continueUrl<span>続きのリンク</span></var>
+			<var>continueName<span>続きの名前</span></var>
+		</fieldset>
+
+		<fieldset class="veil"><legend class="veil">footer:veil</legend>
+			<var>posterName<span>投稿者名</span></var>
+			<var>inheritUrl<span>エントリーURL</span></var>
+
+			<fieldset class="veil"><legend class="veil">commentAmount:veil</legend>
+				<var>commentUrl<span>コメントURL</span></var>
+				<var>commentAmount<span>コメント数</span></var>
+			</fieldset>
+		</fieldset>
+
+		<fieldset class="veil"><legend class="veil">tag:veil</legend>
+			<fieldset class="loop"><legend class="loop">tag:loop<span>タグのループ</span></legend>
+				<var>url<span>タグURL</span></var>
+				<var>name<span>タグの名前</span></var>
+				<fieldset><legend>glue<span>タグループの接続ブロック</span></legend></fieldset>
+			</fieldset>
+		</fieldset>
+
+		<fieldset><legend>mainImage<span>メインイメージ</span></legend>
+			<var>path<span>画像パス</span></var>
+			<var>imgX<span>画像横サイズ</span></var>
+			<var>imgY<span>画像縦サイズ</span></var>
+			<var>left<span>leftからの相対位置(中央寄せ)</span></var>
+			<var>top<span>topからの相対位置(中央寄せ)</span></var>
+			<var>tinyPath<span>小さい画像パス</span></var>
+			<var>tinyX<span>小さい画像横サイズ</span></var>
+			<var>tinyY<span>小さい画像縦サイズ</span></var>
+			<var>largePath<span>大きい画像パス</span></var>
+			<var>largeX<span>大きい画像横サイズ</span></var>
+			<var>largeY<span>大きい画像縦サイズ</span></var>
+			<var>squarePath<span>正方形画像パス</span></var>
+			<var>squareX<span>正方形画像横サイズ</span></var>
+			<var>squareY<span>正方形画像縦サイズ</span></var>
+		</fieldset>
+
+		<var>geo_lat<span>緯度</span></var>
+		<var>geo_lng<span>経度</span></var>
+		<var>geo_zoom<span>マップのズームレベル</span></var>
+		<var>status<span>エントリーのステータス</span></var>
+		<var>permalink<span>パーマリンク</span></var>
+		<var>link<span>エントリーのリンク</span></var>
+		<var>summary<span>テキストサマリー</span></var>
+		<var>iNum<span>ページ内連番</span></var>
+		<var>sNum<span>ページをまたいだ連番</span></var>
+		<var>oddOrEven<span>奇数/偶数(odd/even)</span></var>
+		<var>entry:loop.eid<span>エントリーID</span></var>
+		<var>entry:loop.cid<span>カテゴリーID</span></var>
+		<var>entry:loop.uid<span>ユーザーID</span></var>
+		<var>entry:loop.bid<span>ブログID</span></var>
+		<var>entry:loop.ecd<span>エントリーコード</span></var>
+		<var>entry:loop.ccd<span>カテゴリーコード</span></var>
+		<var>entry:loop.ucd<span>ユーザーコード</span></var>
+		<var>entry:loop.bcd<span>ブログコード</span></var>
+		<var>entry:loop.class (v2.5.1 later)<span>コンフィグで設定したクラス名</span></var>
+		<fieldset><legend>new:touch<span>新しいエントリーブロック</span></legend>
+		</fieldset>
+	</fieldset>
+
+	<fieldset class="veil"><legend class="veil">pager:veil</legend>
+		<var>itemsAmount<span>総エントリー数</span></var>
+		<var>itemsFrom<span>現在ページの開始エントリー件数</span></var>
+		<var>itemsTo<span>現在ページの終了エントリー件数</span></var>
+		<fieldset><legend>backLink<span>前のページブロック</span></legend>
+			<var>url<span>前ページURL</span></var>
+			<var>backNum<span>前ページのエントリー数</span></var>
+			<var>backPage<span>前ページ番号</span></var>
+		</fieldset>
+		<fieldset><legend>forwardLink<span>次ページブロック</span></legend>
+			<var>url<span>次ページURL</span></var>
+			<var>forwardNum<span>次ページのエントリー数</span></var>
+			<var>forwardPage<span>次ページ番号</span></var>
+		</fieldset>
+		<fieldset class="veil"><legend class="veil">firstPage:veil</legend>
+			<var>firstPageUrl<span>スタートページURL</span></var>
+			<var>firstPage<span>スタートページ番号</span></var>
+		</fieldset>
+		<fieldset class="loop"><legend class="loop">page:loop<span>ページのループ</span></legend>
+			<var>pageCurAttr<span>現在ページ</span></var>
+			<fieldset><legend>link#front<span>リンク開始ブロック</span></legend>
+				<var>url<span>ページURL</span></var>
+			</fieldset>
+			<var>page<span>ページ番号</span></var>
+			<fieldset><legend>link#rear<span>リンク終了ブロック</span></legend></fieldset>
+		</fieldset>
+		<fieldset class="veil"><legend class="veil">lastPage:veil</legend>
+			<var>lastPageUrl<span>ラストページURL</span></var>
+			<var>lastPage<span>ラストページ番号</span></var>
+		</fieldset>
+	</fieldset>
+
+	<fieldset class="veil"><legend class="veil">simplePager:veil</legend>
+		<fieldset><legend>prevPage<span>前ページ</span></legend>
+			<var>url<span>前ページのURL</span></var>
+		</fieldset>
+		<fieldset>
+			<legend>prevPageNotFound<span>前ページがない</span></legend>
+		</fieldset>
+		<fieldset><legend>nextPage<span>次ページ</span></legend>
+			<var>url<span>次ページのURL</span></var>
+		</fieldset>
+		<fieldset><legend>nextPageNotFound<span>次ページがない</legend></fieldset>
+	</fieldset>
+
+	<fieldset><legend>micropager<span>エントリ内ページャー</span></legend>
+		<var>itemsAmount<span>ページ数</span></var>
+		<fieldset><legend>backLink<span>前のページブロック</span></legend>
+			<var>url<span>前ページURL</span></var>
+			<var>backPage<span>前ページ番号</span></var>
+		</fieldset>
+		<fieldset><legend>forwardLink<span>次ページブロック</span></legend>
+			<var>url<span>次ページURL</span></var>
+			<var>forwardPage<span>次ページ番号</span></var>
+		</fieldset>
+		<fieldset class="veil"><legend class="veil">firstPage:veil</legend>
+			<var>firstPageUrl<span>スタートページURL</span></var>
+			<var>firstPage<span>スタートページ番号</span></var>
+		</fieldset>
+		<fieldset class="loop"><legend class="loop">page:loop<span>ページのループ</span></legend>
+			<var>pageCurAttr<span>現在ページ</span></var>
+			<fieldset><legend>link#front<span>リンク開始ブロック</span></legend>
+				<var>url<span>ページURL</span></var>
+			</fieldset>
+			<var>page<span>ページ番号</span></var>
+			<fieldset><legend>link#rear<span>リンク終了ブロック</span></legend></fieldset>
+		</fieldset>
+		<fieldset class="veil"><legend class="veil">lastPage:veil</legend>
+			<var>lastPageUrl<span>ラストページURL</span></var>
+			<var>lastPage<span>ラストページ番号</span></var>
+		</fieldset>
+	</fieldset>
+
+</body>
+</html>

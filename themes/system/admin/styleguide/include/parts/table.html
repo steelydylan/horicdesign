@@ -1,0 +1,580 @@
+<section id="table" class="sectionBox">
+	<h1 class="sectionTitle">テーブル</h1>
+
+	<ol>
+		<li>通常のテーブル</li>
+		<li>ボーダーなしテーブル</li>
+		<li>ボーダーありテーブル</li>
+		<li>thの色ありテーブル</li>
+		<li>ストライプのテーブル</li>
+		<li>hoverテーブル</li>
+		<li>レスポンシブのテーブル</li>
+		<li><a href="#admintable">管理画面用テーブル</a></li>
+		<li>管理画面用テーブル theadあり</li>
+		<li>管理画面用テーブル ストライプ</li>
+	</ol>
+	<p>エントリーではtbodyが自動的に入るが、thead、tfootは入らない</p>
+
+	<h2 class="sectionTitle2">通常のテーブル</h2>
+	<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-table</h3>
+
+	<table class="%{STYLEGUIDE_PAGE}-table">
+		<tbody>
+		<tr>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+		</tr>
+		<tr>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+		</tr>
+		<tr>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+		</tr>
+		</tbody>
+	</table>
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">ボーダーなしテーブル</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-table-none</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-none">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-none"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">ボーダーありテーブル</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-table-bordered</h3>
+
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">thの色ありテーブル</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-table-heading</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-heading">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-heading" style="margin-top:20px;">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-heading"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">ストライプテーブル</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-table-striped</h3>
+
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-striped">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-striped" style="margin-top:20px;">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-striped"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">trの中のtdにhoverした場合</h2>
+<h3 class="sectionTitle3">.%{STYLEGUIDE_PAGE}-table-hover</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-hover">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-hover" style="margin-top:20px">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-hover"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">trにhoverした場合</h2>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-hover-line">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-hover-line" style="margin-top:20px">
+	<tbody>
+	<tr>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+		<th>Table Heading</th>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	<tr>
+		<th>Table Heading</th>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+		<td>Table Data</td>
+	</tr>
+	</tbody>
+</table>
+
+<pre class="code HTML">
+&lt;table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-hover-line"&gt;
+...
+&lt;/table&gt;
+</pre>
+
+<h2 class="sectionTitle2">レスポンシブのテーブル</h2>
+<div class="%{STYLEGUIDE_PAGE}-table-responsive">
+	<table class="%{STYLEGUIDE_PAGE}-table">
+		<tbody>
+		<tr>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+			<th>Table Heading</th>
+		</tr>
+		<tr>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+		</tr>
+		<tr>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+			<td>Table Data</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<pre class="code HTML">
+&lt;div class="%{STYLEGUIDE_PAGE}-table-responsive"&gt;
+&lt;table class="%{STYLEGUIDE_PAGE}-table"&gt;
+...
+&lt;/table&gt;
+&lt;/div&gt;
+</pre>
+
+</section>

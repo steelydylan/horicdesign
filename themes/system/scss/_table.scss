@@ -1,0 +1,561 @@
+/* ------------------------------
+ テーブル
+------------------------------- */
+.acms-table {
+	width: 100%;
+	max-width: 100%;
+	border-top: $acms-table-border;
+	// データ
+	th,
+	td {
+		padding: $acms-table-cell-padding;
+		vertical-align: top;
+		border-bottom: $acms-table-border;
+	}
+	th {
+		vertical-align: top;
+		text-align: left;
+	}
+	// ボーダーなし 上
+	 &.acms-table-none {
+		border-top: 0;
+	}
+	// ボーダーなし 下
+	 &.acms-table-none th,
+	 &.acms-table-none td {
+		border-bottom: 0;
+	}
+}
+
+.panel-body .acms-table {
+	th,
+	td {
+		padding: 5px;
+	}
+	.acms-table-container{
+		padding: 10px 5px;
+	}
+}
+
+.acms-table,
+.acms-table:before,
+.acms-table:after,
+.acms-table-admin-edit,
+.acms-table-admin-edit th,
+.acms-table-admin-edit td,
+.acms-table-heading,
+.acms-table-heading th,
+.acms-table-heading td {
+	@include box-sizing(border-box);
+}
+
+
+
+
+// ---------------
+// テーブル 見出し
+// ---------------
+.acms-table-heading {
+	// データ
+	th,
+	td {
+		border-bottom: $acms-table-heading-border;
+	}
+	// 見出し
+	th {
+		color: $acms-table-heading-th-text-color;
+		background: $acms-table-heading-th-bg;
+	}
+}
+
+
+
+
+// ---------------
+// テーブル ボーダー
+// ---------------
+.acms-table-bordered {
+	border-top: $acms-table-bordered-border;
+	border-left: $acms-table-bordered-border;
+	th,
+	td {
+		border-bottom: $acms-table-bordered-border;
+		border-right: $acms-table-bordered-border;
+	}
+}
+
+
+
+
+// ---------------
+// テーブル striped
+// ---------------
+.acms-table-striped{
+	tr:nth-of-type(odd),
+	tr.odd {
+		background: $acms-table-border-odd;
+	}
+	tr:nth-of-type(even),
+	tr.even {
+		background: $acms-table-border-even;
+	}
+}
+
+
+
+
+// ---------------
+// テーブル hover
+// ---------------
+.acms-table-hover td,
+.acms-table-hover-line tr{
+	transition: .2s background-color;
+}
+.acms-table-hover tr:hover td,
+.acms-table-hover tr:focus-within td,
+.acms-table-hover tr.hover td {
+	background: $acms-table-hover-bg;
+	cursor: pointer;
+}
+
+.acms-table-hover-line tr:hover,
+.acms-table-hover-line tr:focus-within,
+.acms-table-hover tr.hover {
+	background: $acms-table-hover-line-bg;
+}
+
+
+
+
+// ------------------------------
+// テーブル 入力テーブル
+// ------------------------------
+.acms-table-edit{
+	border-top: none;
+	th,
+	td{
+		vertical-align: middle;
+	}
+	th{
+		text-align: right;
+	}
+}
+
+
+
+// ------------------------------
+// テーブル 入れ替え
+// ------------------------------
+.acms-table-sortable-active {
+	th,
+	td,
+	tr:nth-of-type(even) th,
+	tr:nth-of-type(even) td,
+	tr.even th,
+	tr.even td{
+		background-color: $acms-table-sortable-bg;
+	}
+}
+
+@media (max-width : $breakpoint-md-max) {
+	// ------------------------------
+	// テーブル レスポンシブ
+	// ------------------------------
+	.acms-table-responsive {
+		margin-bottom: 15px;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		border: 1px solid #dddddd;
+		-webkit-overflow-scrolling: touch;
+		th,td {
+			white-space: nowrap;
+		}
+	}
+
+	.acms-table-scrollable {
+		th,td {
+			white-space: nowrap;
+			display: table-cell !important;
+		}
+	}
+
+	// ------------------------------
+	// テーブル entry
+	// ------------------------------
+	.acms-table-entry{
+		th,
+		td{
+			display: block;
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+			@include box-sizing(border-box);
+		}
+		th{
+			padding-bottom: 0;
+			text-align: left;
+		}
+		td{
+			padding-top: 3px;
+		}
+		.detail-fade-body th,
+		.detail-fade-body td{
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+}
+
+
+
+@if $admin == true {
+
+	// ------------------------------
+	// テーブル 管理画面
+	// ------------------------------
+	.acms-table-admin {
+		width: 100%;
+		// 見出し
+		thead {
+			border-bottom: 1px solid #e8e8e8;
+		}
+		thead th {
+			padding: 5px;
+			@include font-size(13);
+			font-weight: bold;
+		}
+		th,
+		td {
+			padding: $acms-table-admin-cell;
+			border-bottom: $acms-table-admin-border;
+			line-height: 1.3;
+		}
+		th {
+			text-align: left;
+		}
+		td{
+			background-color: $acms-table-admin-td-bg;
+		}
+
+		@media screen and (max-width: $breakpoint-md-max) {
+			th,
+			td {
+				padding: 5px;
+			}
+		}
+	}
+
+
+
+	// ------------------------------
+	// テーブル 管理画面 striped
+	// ------------------------------
+	.acms-table-admin-striped{
+		tr:nth-of-type(odd),
+		tr.odd {
+			background: $acms-table-admin-border-odd;
+		}
+		tr:nth-of-type(even),
+		tr.even {
+			background: $acms-table-admin-border-even;
+		}
+	}
+
+
+
+
+	// ------------------------------
+	// テーブル 編集画面
+	// ------------------------------
+	.acms-table-admin-edit {
+		width: 100%;
+		border: $acms-table-admin-edit-border;
+		background: $acms-table-admin-edit-bg;
+		@include font-size(14);
+
+		th {
+			width: $acms-table-admin-edit-th-width;
+			color: #424242;
+			font-weight: normal;
+			text-align: right;
+			vertical-align: top;
+			&.acms-table-nowrap {
+				width: 1%;
+			}
+		}
+		td,
+		th {
+			padding: 5px;
+		}
+
+
+		// 下階層のtableは線なし
+		table {
+			width: 100%;
+		}
+
+		@media screen and (max-width: $breakpoint-md-max) {
+			thead,
+			tbody {
+				th,
+				td {
+					display: block;
+					width: 100% !important;
+					padding: 5px;
+				}
+			}
+
+			tbody {
+				th {
+					padding-top: 10px;
+					padding-bottom: 5px;
+					text-align: left;
+
+					& + td {
+						padding-bottom: 10px;
+					}
+				}
+			}
+
+		}
+
+		@media (min-width : $breakpoint-md-min) {
+			tr {
+				border-bottom: 0;
+			}
+
+			th,
+			td {
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+
+			tr {
+				&:first-child th,
+				&:first-child td {
+					padding: 10px 10px 5px;
+				}
+
+				&:last-child th,
+				&:last-child td {
+					padding: 5px 10px 10px;
+				}
+
+				&:only-child th,
+				&:only-child td {
+					padding: 10px 10px;
+				}
+			}
+		}
+	}
+
+	// タブの直下の編集画面テーブル
+	.acms-tabs-panel {
+		.acms-table-admin-edit {
+			border: 0;
+		}
+	}
+
+	.acms-table-admin-edit-bordered {
+		width: 100%;
+		@include font-size(14);
+
+		tr {
+			border: $acms-table-admin-edit-bordered-border;
+		}
+
+		th {
+			max-width: $acms-table-admin-edit-bordered-th-width;
+			padding: 10px;
+			font-weight: normal;
+			text-align: right;
+			vertical-align: top;
+		}
+
+		td,
+		th {
+			padding: 5px 10px;
+		}
+
+
+		// 下階層のtableは線なし
+		table {
+			tr {
+				border: none;
+			}
+		}
+
+		@media screen and (max-width: $breakpoint-md-max) {
+			th,
+			td {
+				display: block;
+				text-align: left;
+
+				th,
+				td {
+					padding-right: 0;
+					padding-left: 0;
+				}
+			}
+		}
+
+		@media (min-width : $breakpoint-md-min) {
+			tbody {
+				tr:first-child th,
+				tr:first-child td{
+					padding-top: 10px;
+					padding-bottom: 5px;
+				}
+				tr:last-child th,
+				tr:last-child td{
+					padding-top: 5px;
+					padding-bottom: 10px;
+				}
+			}
+
+		}
+	}
+
+
+
+
+
+	// ---------------
+	// テーブル ミニ
+	// ---------------
+	.acms-admin-mini-table {
+		width: 100%;
+		margin: 0;
+		border: 1px solid $acms-admin-mini-table-border;
+		box-sizing: border-box;
+
+		thead {
+			background: #FFF;
+			border-bottom: 1px solid $acms-admin-mini-table-border;
+		}
+
+		tr,
+		td,
+		th {
+			padding: 7px 10px;
+		}
+		th {
+			text-align: left;
+		}
+
+		tbody {
+			border-bottom: $acms-admin-mini-table-border;
+		}
+
+		+ p {
+			margin-top: -15px;
+		}
+
+		.acms-admin-mini-table-action{
+			width: 80px;
+		}
+
+		.acms-admin-mini-table-import-action{
+			width: 120px;
+		}
+
+		ul{
+			margin-bottom: 0;
+			padding-left: 1em;
+		}
+
+	}
+
+	.acms-table .acms-table-action{
+		width: 50px;
+	}
+}
+
+
+
+
+
+// ---------------
+// テーブル カラー
+// ---------------
+// info
+.acms-table-info {
+	 & th,
+	 & td,
+	 &,
+	.acms-table-hover  &:hover th,
+	.acms-table-hover  &:hover td,
+	.acms-table-hover  &:hover {
+		background: $acms-table-info-bg;
+	}
+}
+
+// success
+.acms-table-success {
+	 & th,
+	 & td,
+	 &,
+	.acms-table-hover  &:hover th,
+	.acms-table-hover  &:hover td,
+	.acms-table-hover  &:hover {
+		background: $acms-table-success-bg;
+	}
+}
+
+// warning
+.acms-table-warning {
+	 & th,
+	 & td,
+	 &,
+	.acms-table-hover  &:hover th,
+	.acms-table-hover  &:hover td,
+	.acms-table-hover  &:hover {
+		background: $acms-table-warning-bg;
+	}
+}
+
+// danger
+.acms-table-danger {
+	 & th,
+	 & td,
+	 &,
+	.acms-table-hover  &:hover th,
+	.acms-table-hover  &:hover td,
+	.acms-table-hover  &:hover {
+		background: $acms-table-danger-bg;
+	}
+}
+
+
+
+
+// ---------------
+// ユーティリティ
+// ---------------
+// 中央揃い
+.acms-table-center{
+	text-align: center;
+
+	.acms-table-admin-edit &,
+	.acms-table-admin-edit-bordered &,
+	.acms-table-admin & {
+		text-align: center;
+	}
+}
+
+// 左揃い
+.acms-table-left{
+	text-align: left;
+
+	.acms-table-admin-edit &,
+	.acms-table-admin-edit-bordered &,
+	.acms-table-admin & {
+		text-align: left;
+	}
+}
+
+// 折り返し禁止
+.acms-table-nowrap {
+	width: 1%;
+	white-space: nowrap;
+}

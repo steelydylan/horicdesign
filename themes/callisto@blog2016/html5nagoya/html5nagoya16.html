@@ -1,0 +1,380 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SVGのパスを解析してキャンバスに描画する</title>
+  <link rel="stylesheet" href="/css/talkie.min.css">
+  <link rel="stylesheet" href="/css/talkie-default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+</head>
+<body>
+<svg version="1.1" id="svgtest" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+   y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" width="100" height="100" style="display:none">
+<path fill="#FFFFFF" d="M54.9,15.3c2-0.2,4.6-2.5,5.1-4.7c-1.5,1.2-4.8,2.6-6.4,2.4c0,0,4.7-3.8,4.8-10.9
+  c-3.3,10.1-15.4,17.3-34.2,20.5C5.3,25.8,1.1,38,0.5,42.2l0,0c-1.1,6.6,2.6,13.1,8.7,14c3,0.4,4.3,0.3,6.1-0.2
+  c0.4-0.1,0.7-0.1,1.9-0.9c3-1.8,3.9-4.4,2.5-7.1c-1.4-2.7-4.2-2.3-4.2-2.3c-2.4,0-4.6,1.8-4.6,4.2c0,0,0,0,0,0c0,0.9,0.6,1.6,1,2
+  c1.4,1.2,3.1,0,3.1,0s-1-0.3-1-1.6c0-1.7,3.1-2.3,3.1,0.5c0,1.2-0.9,2.1-1.9,2.7c-0.2,0.1-0.4,0.2-0.6,0.3c-2.4,1.1-4.5,0.7-6.4-0.4
+  c-0.6-0.6-1.1-1.4-1.2-2.3c-0.2-2.5,1.5-3.9,1.5-3.9s-1.8,0.2-2.8,1.3c0.2-1.5,0.8-3.3,2.4-4.7c0,0-2.7,1-4.2,4c0-0.2,0-0.4-0.1-0.6
+  c0-1.4,0.3-4.5,2.2-6.6c2.6-2.7,6.4-4.1,7.8-1.8c1.3,2.3-2.7,3.2-2.3,0.5c0,0-2.4,0.9-1.3,3.5c1.1,2.6,6.4,1.6,7-0.8
+  c0,0,0.5,1.9,4.1,1.8c-2.2,5.3,2.5,7.9,4.9,6.7c2.5-1.2,1.2-2.7,1.2-2.7s0,0.7-1.2,0.7c-1.2,0-1.3-2.2,0-2.2c2.5,0,1.4,3,6.6,3
+  c5.2,0,5.8-5.1,5.8-5.1S37.7,46,34.7,46c-3,0-3.6-3.9-5.6-4.5c-0.8-0.2-1.5-0.2-2.2-0.1c1.2-1.3,1.8-2.8,1.8-3.6c0,0-1,1.4-2.7,0.8
+  c-1.7-0.6-0.9-3-3.5-4.8c-2.7-1.8-5.6,0.8-5.6,0.8s1.5-3-1.6-4.1c-0.5-0.2-1-0.2-1.7-0.2c0,0,0.1,0,0.1,0
+  c10.9-4.7,14.5,4.1,14.4,5.2c-0.1,1.3,0.7,1.7,0.7,1.7c0.1-1.9,1.8-1,1.8-1s-1.3,2.2,0.8,4.1c2.1,1.9,4.3,0.1,4.3,0.1
+  c-2.4-1.4,1.1-4.2,2.1-1.5c1,2.7-1.4,3-1.4,3c1.1,0.1,4.5-0.8,4.6-4.1c0.1-3.2-2.3-4.7-2.3-4.7c1.6-0.1,1.3-1.7,1.3-1.7
+  c-1.8,0.7-1.8-1-3-2.6c-0.8-1-1.9-1-2.6-0.9c0.6-0.4,0.5-1.5,0.5-1.5c-2.1,1.3-2.1-0.2-3.1-0.6c-1.1-0.4-1.8,0.8-1.8,0.8
+  s-1.4-1.8-3.8-1.8c-0.7,0-1.5,0-2.2,0.1c2.1-0.2,4.5-0.4,7-0.2c7.1,0.4,9.2,1.8,9.5,3.1c0.3,1.3-1.7,1.8-1.9,0.8
+  c0,0-0.5,0.9,0.6,1.6c1.1,0.7,4.4,0.4,3.9-3.1c0,0,2.2,0.6,3.1,3.9c0.9,3.3-3,3-2.1,1c0,0-1.9-0.1-1.9,2.1s5.8,4.3,7.2-0.6
+  c1.1-3.8-3-7.9-8.2-9.7c1.7,0.1,3,0.2,3.8,0.4c3.4,0.8,2.4,2.4,2.4,2.4c3.3-0.9,2.1-5.2,2.1-5.2c1.2,2.6,4,3.1,5.6,1.4
+  c1.6-1.7,0.8-4,0.8-4C52.7,21.7,50.1,16,54.9,15.3z"></path>
+</svg>
+<!-- put your slides -->
+
+<template layout="title" type="text/x-markdown">
+# SVGのパスを解析してキャンバスに描画する
+
+有限会社アップルップル　堀　悟大
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## 今回の発表の目的
+- SVGとキャンバスの二つの描画方法を比較
+- SVGとキャンバスの使い分けについて考察
+</template>
+
+<template layout="code" type="text/x-markdown">
+## SVGのパスをご存知ですか？
+</template>
+
+<template layout="code" type="text/x-markdown">
+## こういった要素です。
+今回はこの要素のd属性について解説します
+```html
+<path fill="#FFFFFF" d="M60,48.6H9.4c0,0-9.3-8.8-9.3-19.2c0-10,9.3-17.1,9.3-17.1H60c0,0-7.8,8.7-7.8,17.6
+    C52.2,38.8,60,48.6,60,48.6z"></path>
+```
+
+</template>
+
+<template layout="code" type="text/x-markdown">
+## ちなみにこれはこんな形です。
+```html
+<path fill="#FFFFFF" d="M60,48.6H9.4c0,0-9.3-8.8-9.3-19.2c0-10,9.3-17.1,9.3-17.1H60c0,0-7.8,8.7-7.8,17.6
+    C52.2,38.8,60,48.6,60,48.6z"></path>
+```
+<object data="base/base6.svg">
+
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+
+## パスに存在する16個のメソッド
+
+- quadraticCurveBy
+- quadraticCurveTo
+- lineBy
+- lineTo
+- moveBy
+- moveTo
+- bezierCurveBy
+- bezierCurveTo
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## パスに存在する16個のメソッド
+
+- horizontalBy
+- horizontalTo
+- verticalBy
+- verticalTo
+- bezierCurveShortBy
+- bezierCurveShortTo
+- quadraticCurveShortBy
+- quadraticCurveShortTo
+</template>
+
+<template layout="code" type="text/x-markdown">
+
+## Quadratic Curve
+
+<canvas id="myCanvas" width="578" height="200"></canvas>
+</template>
+
+<template layout="code" type="text/x-markdown">
+
+## Quadratic Curve
+
+```javascript
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+context.beginPath();
+context.moveTo(188, 150);
+context.quadraticCurveTo(288, 0, 388, 150);
+context.lineWidth = 10;
+
+// line color
+context.strokeStyle = 'black';
+context.stroke();
+```
+
+</template>
+
+
+<template layout="code" type="text/x-markdown">
+## Quadratic Curve
+SVGで書くとこうなります。
+
+```html
+<path d="M188,150 Q288,0 388,150z"></path>
+<!-- もしくは -->
+<path d="M188,150 q100,-150 200,0z"></path>
+```
+</template>
+
+
+
+
+<template layout="code" type="text/x-markdown">
+## bezierCurve
+<canvas id="myCanvas2" width="220" height="200"></canvas>
+</template>
+
+<template layout="code" type="text/x-markdown">
+## bezierCurve
+[http://www.sitepoint.com/html5-svg-cubic-curves/](http://www.sitepoint.com/html5-svg-cubic-curves/)
+</template>
+
+
+<template layout="code" type="text/x-markdown">
+## bezierCurve
+
+```javascript
+var canvas = document.getElementById('myCanvas2');
+var context = canvas.getContext('2d');
+context.strokeStyle = '#FFFFFF';
+context.beginPath();
+context.lineWidth = 10;
+// line color
+context.moveTo(20,20);
+context.bezierCurveTo(20,100,200,100,200,20);
+context.stroke();
+```
+</template>
+
+<template layout="code" type="text/x-markdown">
+## bezierCurve
+SVGで書くとこうなります。
+
+```html
+<path d="M20,20 C20,100 200,100 200,20z"></path>
+<!-- もしくは -->
+<path d="M20,20 C0,80 180,80 180,0z"></path>
+```
+</template>
+
+
+
+<template layout="code" type="text/x-markdown">
+## Line
+
+<canvas id="myCanvas3" width="220" height="200"></canvas>
+
+</template>
+
+<template layout="code" type="text/x-markdown">
+## Line
+
+```javascript
+var canvas = document.getElementById('myCanvas3');
+var context = canvas.getContext('2d');
+context.strokeStyle = '#FFFFFF';
+context.beginPath();
+context.lineWidth = 10;
+context.moveTo(0,100);
+context.lineTo(220,100);
+context.stroke();
+```
+</template>
+
+<template layout="code" type="text/x-markdown">
+## Line
+SVGで書くとこうなります。
+
+```html
+<path d="M0,100 L220,100z"></path>
+<!-- もしくは -->
+<path d="M0,100 l220,0z"></path>
+```
+</template>
+
+
+<template layout="code" type="text/x-markdown">
+## これらの描画方法の違いを押さえておけばキャンバスでもSVGを表示することが可能です。
+</template>
+
+
+<template layout="code" type="text/x-markdown">
+## どちらがキャンバスでどちらがSVGでしょう？
+[http://codepen.io/steelydylan/pen/XbwQpq](http://codepen.io/steelydylan/pen/XbwQpq)
+</template>
+
+<template layout="code" type="text/x-markdown">
+## CanvasでSVGを<br/>描画できるライブラリ
+  - [http://fabricjs.com/](http://fabricjs.com/)
+  - [http://paperjs.org/](http://paperjs.org/)
+</template>
+
+<template layout="code" type="text/x-markdown">
+## CanvasでSketchなどで<br/>作成したSVGなどを<br/>表示させることは可能
+</template>
+
+<template layout="code" type="text/x-markdown">
+## SVGとCanvasの比較
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## SVG
+
+- 図形を拡大しても綺麗に描画できる
+- 図形の表示にDOMを使用するためオブジェクトが増えるほどパフォーマンスに影響
+- 表示内容を制御するには中身のDOMを操作する必要があるため制御が複雑になりがち
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## Canvas
+
+- ラスター画像であるため拡大したりすれば図形の描画に少し粗が出る
+- 表示するピクセル数が増えるほど描画に時間がかかる
+- SVGよりは表示内容の制御が楽
+</template>
+
+<template layout="code" type="text/x-markdown">
+## 美しい描画を求められる場合はSVGがおすすめです。
+</template>
+
+<template layout="code" type="text/x-markdown">
+## ゲームを作りたい時は、<br/>パフォーマンスのいい<br/>Canvasがおすすめです!!
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## ゲーム作成に<br/>おすすめのライブラリ
+
+- enchant.js
+- tmlib.js
+- Atlas.js
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## 私が開発したゲームライブラリ、(Atlas.js)でもSVGを扱えますのでぜひ使ってみてください
+[http://steelydylan.github.io/Atlas.js/](http://steelydylan.github.io/Atlas.js/)
+</template>
+
+<template layout="code" type="text/x-markdown">
+## ありがとうございました!!
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script src="/js/talkie.min.js"></script>
+<script>
+var talkie = Talkie({wide: false});
+talkie.next.plug(talkie.control.keydown('s'));
+talkie.next.plug(talkie.control.keydown('n'));
+talkie.prev.plug(talkie.control.keydown('a'));
+talkie.prev.plug(talkie.control.keydown('p'));
+document.addEventListener('DOMContentLoaded', function() {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('[layout]'));
+
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      context.beginPath();
+      context.moveTo(188, 150);
+      context.quadraticCurveTo(288, 0, 388, 150);
+      context.lineWidth = 10;
+      // line color
+      context.strokeStyle = '#FFFFFF';
+      context.stroke();
+
+
+      context.beginPath();
+      context.lineWidth = 2;
+      context.moveTo(188,150);
+      context.lineTo(288,0);
+      context.stroke();
+
+      context.beginPath();
+      context.lineWidth = 2;
+      context.moveTo(288,0);
+      context.lineTo(388,150);
+      context.stroke();
+
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(188,150,5,Math.PI*2,false);
+      context.fill();
+
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(288,0,5,Math.PI*2,false);
+      context.fill();
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(388,150,5,Math.PI*2,false);
+      context.fill();
+
+
+      var canvas = document.getElementById('myCanvas2');
+      var context = canvas.getContext('2d');
+      context.strokeStyle = '#FFFFFF';
+      context.beginPath();
+      context.lineWidth = 10;
+      // line color
+      context.moveTo(20,20);
+      context.bezierCurveTo(20,100,200,100,200,20);
+      context.stroke();
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(20,20,5,Math.PI*2,false);
+      context.fill();
+
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(20,100,5,Math.PI*2,false);
+      context.fill();
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(200,100,5,Math.PI*2,false);
+      context.fill();
+
+      context.fillStyle = 'red';
+      context.beginPath();
+      context.arc(200,20,5,Math.PI*2,false);
+      context.fill();
+
+      var canvas = document.getElementById('myCanvas3');
+      var context = canvas.getContext('2d');
+      context.strokeStyle = '#FFFFFF';
+      context.beginPath();
+      context.lineWidth = 10;
+      context.moveTo(0,100);
+      context.lineTo(220,100);
+      context.stroke();
+
+      context.fillStyoe = 'red';
+      context.beginPath();
+      context.arc(0,100,5,Math.PI*2,false);
+      context.fill();
+
+      context.fillStyoe = 'red';
+      context.beginPath();
+      context.arc(220,100,5,Math.PI*2,false);
+      context.fill();
+
+});
+</script>
+</body>
+</html>

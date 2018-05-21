@@ -1,0 +1,87 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->フィードURL<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->取得するフィードのURLを入力します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_exlist_source" value="{feed_exlist_source}" size="30" />
+			<input type="hidden" name="config[]" value="feed_exlist_source" />
+			<input type="hidden" name="feed_exlist_source:convert" value="a" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->フィード形式<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したフィードの種類を選択します。<!--/T-->"></i></th>
+		<td>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="feed_exlist_kind" value="rss20"{feed_exlist_kind:checked#rss20} id="feed-exlist-kind-rss20" />
+				<label for="feed-exlist-kind-rss20"><i class="acms-admin-ico-radio"></i>RSS2.0</label>　
+			</div>
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="feed_exlist_kind" value="atom10"{feed_exlist_kind:checked#atom10} id="feed-exlist-kind-atom10" />
+				<label for="feed-exlist-kind-atom10"><i class="acms-admin-ico-radio"></i>Atom1.0</label>
+			</div>
+			<input type="hidden" name="config[]" value="feed_exlist_kind" />
+			<input type="hidden" name="feed_exlist_kind:convert" value="a" />
+			<input type="hidden" name="feed_exlist_kind:validator#required" id="validator-feed_exlist_kind-required" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-feed_exlist_kind-required" class="validator-result-{feed_exlist_kind:validator#required}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->フィード形式を選択して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->フィード配信時の件数です。（配信元のフィード件数が実際の表示上限になります）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_exlist_limit" value="{feed_exlist_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="feed_exlist_limit" />
+			<input type="hidden" name="feed_exlist_limit:convert" value="a" />
+			<input type="hidden" name="feed_exlist_limit:validator#digits" id="validator-feed_exlist_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-feed_exlist_limit-digits" class="validator-result-{feed_exlist_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->オフセット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示順で並び替えた後の先頭から数えて、設定した件数のフィードアイテムを表示しなくします。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_exlist_offset" value="{feed_exlist_offset}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="feed_exlist_offset" />
+			<input type="hidden" name="feed_exlist_offset:convert" value="a" />
+			<input type="hidden" name="feed_exlist_offset:validator#digits" id="validator-feed_exlist_offset-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-feed_exlist_offset-digits" class="validator-result-{feed_exlist_offset:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->新着期間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->フィードアイテムの公開日時を基点に、ここで設定した期間中はnewブロックが出力されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="feed_exlist_newtime" value="{feed_exlist_newtime}" size="8" class="acms-admin-form-width-mini" /> <!--T-->秒<!--/T-->
+			<input type="hidden" name="config[]" value="feed_exlist_newtime" />
+			<input type="hidden" name="feed_exlist_newtime:convert" value="a" />
+			<input type="hidden" name="feed_exlist_newtime:validator#digits" id="validator-feed_exlist_newtime-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-feed_exlist_newtime-digits" class="validator-result-{feed_exlist_newtime:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーがない場合の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックすると、フィードの取得に失敗した時などにnotFoundブロックを出力します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="mo_feed_exlist_notfound" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="mo_feed_exlist_notfound" value="on"{mo_feed_exlist_notfound:checked#on} id="input-checkbox-mo_feed_exlist_notfound" />
+				<label for="input-checkbox-mo_feed_exlist_notfound"><i class="acms-admin-ico-checkbox"></i><!--T-->指定された条件のエントリーが一つもない場合にnot foundを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="mo_feed_exlist_notfound" />
+			<br /><!--T-->( チェックなしで何も表示しない )<!--/T-->
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

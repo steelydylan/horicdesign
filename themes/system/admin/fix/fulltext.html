@@ -1,0 +1,95 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->フルテキスト修正<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Fix -->
+<form method="post" action="" class="acms-admin-form">
+	<!-- BEGIN message#success -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->フルテキストのデータを修正しました。<!--/T--></p><!-- END message#success -->
+
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-info">
+		<div class="acms-admin-panel-header">
+			<!--T-->概要<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->ブログ、カテゴリー、エントリーのフルテキストを再生成します。 ver2.1.0正式版以前のデータですと、KEYWORDコンテキストを利用したブログ、カテゴリーの全文検索時に検索対象に含まれていないので修正を行って下さい。<!--/T-->
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-danger">
+		<div class="acms-admin-panel-header">
+			<!--T-->注意事項<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->現在、正しく検索できている場合は実行する必要がありません。<!--/T-->
+		</div>
+	</div>
+
+	<!-- BEGIN step -->
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->ターゲット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="フルテキストを修正する対象の項目を選択してください。"></i></th>
+			<td>
+				<ul class="acms-admin-list-nostyle">
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="fix_fulltext_targeet" value="blog"{fix_fulltext_targeet:checked#blog} id="input-radio-fix-fulltext-target-blog">
+						<label for="input-radio-fix-fulltext-target-blog">
+							<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->ブログ<!--/T-->
+						</label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="fix_fulltext_targeet" value="category"{fix_fulltext_targeet:checked#category} id="input-radio-fix-fulltext-target-category">
+						<label for="input-radio-fix-fulltext-target-category">
+							<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->カテゴリー<!--/T-->
+						</label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="fix_fulltext_targeet" value="user"{fix_fulltext_targeet:checked#user} id="input-radio-fix-fulltext-target-user">
+						<label for="input-radio-fix-fulltext-target-user">
+							<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->ユーザー<!--/T-->
+						</label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="fix_fulltext_targeet" value="entry"{fix_fulltext_targeet:checked#entry} id="input-radio-fix-fulltext-target-entry">
+						<label for="input-radio-fix-fulltext-target-entry">
+							<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->エントリー<!--/T-->
+						</label>
+					</div>
+				</li>
+				</ul>
+
+				<input type="hidden" name="fix[]" value="fix_fulltext_targeet" />
+				<input type="hidden" name="fix_fulltext_targeet:validator#required" />
+				<!-- BEGIN fix_fulltext_targeet:v#required -->
+				<label class="validator-result-0"><!--T-->ターゲットを選択して下さい<!--/T--></label>
+				<!-- END fix_fulltext_targeet:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="submit" name="ACMS_POST_Fix_Fulltext" value="<!--T-->修正<!--/T-->" onclick="return confirm('<!--T-->フルテキストのデータを修正します。よろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+			</td>
+		</tr>
+	</table>
+	<!-- END step -->
+</form>
+<!-- END_MODULE Admin_Fix -->

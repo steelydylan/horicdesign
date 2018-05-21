@@ -1,0 +1,41 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->週の始まり<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カレンダー中、週の始まりが何曜日になるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="calendar_year_begin_week" class="js-select2">
+				<option value="0"{calendar_year_begin_week:selected#0}><!--T-->日曜日<!--/T--></option>
+				<option value="1"{calendar_year_begin_week:selected#1}><!--T-->月曜日<!--/T--></option>
+				<option value="2"{calendar_year_begin_week:selected#2}><!--T-->火曜日<!--/T--></option>
+				<option value="3"{calendar_year_begin_week:selected#3}><!--T-->水曜日<!--/T--></option>
+				<option value="4"{calendar_year_begin_week:selected#4}><!--T-->木曜日<!--/T--></option>
+				<option value="5"{calendar_year_begin_week:selected#5}><!--T-->金曜日<!--/T--></option>
+				<option value="6"{calendar_year_begin_week:selected#6}><!--T-->土曜日<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="calendar_year_begin_week" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->曜日のラベル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->各曜日をどのような文字列で表示するかの設定です。<!--/T-->"></i></th>
+		<td>
+			<div role="form">
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label[1]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label[2]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label[3]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label[4]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label[5]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+				<input type="text" name="calendar_year_week_label[]" value="{calendar_year_week_label[6]}" size="3" class="acms-admin-form-width-mini acms-admin-margin-bottom-mini" />
+			<input type="hidden" name="config[]" value="calendar_year_week_label" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ユニット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定した件数の月ごとに、unitブロックが表示されます。何月ごとに折り返すなどの指定に応用できます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="calendar_year_unit" value="{calendar_year_unit}" />
+			<input type="hidden" name="config[]" value="calendar_year_unit" />
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

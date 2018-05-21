@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topicpath</title>
+<link rel="stylesheet" href="css/vars.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+	<h1>Topicpath</h1>
+	<fieldset class="loop">
+		<legend>blog:loop<span>ブログループ</span>
+			<var class="textLong">blogField<span>ブログのカスタムフィールド</span>
+		</legend>
+		<fieldset><legend>glue<span>ブログループの接続ブロック</span></legend></fieldset>
+		<var>url<span>ブログURLリンク</span></var>
+		<var>name<span>ブログ名</span></var>
+		<var>sNum<span>ブログ、カテゴリ、エントリーを通した連続番号</span></var>
+	</fieldset>
+	<fieldset class="loop">
+		<legend>category:loop<span>カテゴリーループ</span>
+			<var class="textLong">categoryField<span>カテゴリのカスタムフィールド</span>
+		</legend>
+		<fieldset><legend>glue<span>カテゴリーループの接続ブロック</span></legend></fieldset>
+		<var>url<span>カテゴリーURLリンク</span></var>
+		<var>name<span>カテゴリー名</span></var>
+		<var>sNum<span>ブログ、カテゴリ、エントリーを通した連続番号</span></var>
+	</fieldset>
+	<fieldset>
+		<legend>entry<span>エントリーブロック</span>
+			<var class="textLong">entryField<span>エントリーのカスタムフィールド</span>
+		</legend>
+		<fieldset><legend>glue<span>エントリー接続ブロック</span></legend></fieldset>
+		<var>url<span>エントリーURLリンク</span></var>
+		<var>title<span>エントリータイトル</span></var>
+		<var>sNum<span>ブログ、カテゴリ、エントリーを通した連続番号</span></var>
+	</fieldset>
+</body>
+</html>

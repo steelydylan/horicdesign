@@ -1,0 +1,39 @@
+<!-- BEGIN_MODULE Calendar_Year -->
+<div>
+	<ul class="acms-admin-text-center acms-admin-list-inline">
+		<!-- BEGIN prevLink --><li><a href="{prevUrl}" class="acms-admin-btn-flat" title="前月へ">«</a></li><!-- END prevLink -->
+		<li><a href="{yearUrl}" class="acms-admin-btn-flat" title="年間カレンダーへ">{year}</a></li>
+		<!-- BEGIN nextLink --><li><a href="{nextUrl}" class="acms-admin-btn-flat" title="次月へ">»</a></li><!-- END nextLink -->
+	</ul>
+</div>
+<table class="acms-admin-table acms-admin-table-bordered">
+	<!-- BEGIN unit:loop -->
+	<tr><!-- BEGIN month:loop -->
+		<td class="monthTd acms-admin-show-pc-max acms-admin-text-center">
+			<a href="{monthUrl}">{monthDate}[date('F')]</a>
+			<table class="acms-admin-table acms-admin-table-bordered">
+				<tr>
+					<!-- BEGIN weekLabel:loop -->
+					<td>{label}</td>
+					<!-- END weekLabel:loop -->
+				</tr>
+				<!-- BEGIN week:loop -->
+				<tr>
+					<!-- BEGIN day:loop -->
+					<!-- BEGIN spacer -->
+					<td> </td>
+					<!-- END spacer -->
+					<!-- BEGIN none -->
+					<td>{day}</td>
+					<!-- END none -->
+					<!-- BEGIN link -->
+					<td class="success"><a href="{url}">{day}</a></td>
+					<!-- END link -->
+					<!-- END day:loop -->
+				</tr>
+				<!-- END week:loop -->
+			</table>
+		</td><!-- END month:loop -->
+	</tr><!-- END unit:loop -->
+</table>
+<!-- END_MODULE Calendar_Year -->

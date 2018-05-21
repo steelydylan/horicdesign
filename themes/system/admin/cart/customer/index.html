@@ -1,0 +1,85 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">受注一覧</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Shop_Customer_Index -->
+<div class="acms-admin-filter">
+<form action="" method="post" class="acms-admin-form">
+	ソート:
+	<select name="order" class="js-select2">
+<!--
+		<option value="lastest_datetime-asc"{order:selected#lastest_datetime-asc}>更新順（昇順）</option>
+		<option value="lastest_datetime-desc"{order:selected#lastest_datetime-desc}>更新順（降順）</option>
+-->
+		<option value="generated_datetime-asc"{order:selected#generated_datetime-asc}>登録順（昇順）</option>
+		<option value="generated_datetime-desc"{order:selected#generated_datetime-desc}>登録順（降順）</option>
+		<option value="code-asc"{order:selected#code-asc}>コードネーム（昇順）</option>
+		<option value="code-desc"{order:selected#code-desc}>コードネーム（降順）</option>
+	</select>
+	フリーワード検索:
+	<input type="text" name="keyword" value="%{KEYWORD}" />
+	<input type="submit" name="ACMS_POST_2GET" value="表示" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+	<input type="hidden" name="pid" value="{pid}" />
+	<input type="hidden" name="admin" value="shop_customer_index" />
+</form>
+</div>
+
+<form method="post" action="" class="acms-admin-form"><!-- BEGIN refresh -->
+	<p>お客様一覧を更新しました。</p><!-- END refresh --><!-- BEGIN notFound -->
+	<p>指定条件でのお客様の登録はありません。</p><!-- END notFound --><!-- BEGIN index --><!-- BEGIN_MODULE Touch_Keyword -->
+	<p>[ %{KEYWORD} ] での検索結果</p><!-- END_MODULE Touch_Keyword -->
+
+	<table class="adminTable acms-admin-table-admin acms-admin-table-heading js-admin_table-sortable acms-admin-table-hover">
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="checkAll" /></th>
+                <th>ID</th>
+                <!-- <th>CODE</th> -->
+                <th>名前</th>
+                <th>メールアドレス</th>
+                <th>登録日</th>
+                <th>最終の注文日</th>
+                <th>詳細</th>
+			</tr>
+		</thead>
+		<tbody><!-- BEGIN customer:loop -->
+            <tr>
+                <td><input type="checkbox" name="checks[]" value="{code}" /></td>
+                <td>{id}</td>
+                <!-- <td>{code}</td> -->
+                <td>{name}</td>
+                <td>{mail}</td>
+                <td>{generated_datetime}</td>
+                <td>{lastest_datetime}<!-- BEGIN notYet -->未注文<!-- END notYet --></td>
+                <td><a href="{editUrl}">詳細</a></td>
+            </tr><!-- END customer:loop -->
+        </tbody>
+	</table>
+
+	<div class="acms-admin-grid">
+		<div class="acms-admin-col-md-6">
+			<!-- BEGIN pager:veil -->
+			<div class="acms-admin-pager-container">
+				<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+					<li class="prev"><a href="{url}">&laquo;&nbsp;前へ</a></li><!-- END backLink --><!-- BEGIN page:loop -->
+					<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+					<li class="last"><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+					<li class="next"><a href="{url}">次へ&nbsp;&raquo;</a></li><!-- END forwardLink -->
+				</ul>
+			</div>
+			<!-- END pager:veil -->
+		</div>
+		<div class="acms-admin-col-md-6">
+			<div class="acms-admin-itemsAmount-container">
+				<p>{itemsFrom}件 - {itemsTo}件 / 全{itemsAmount}件</p>
+			</div>
+		</div>
+	</div><!-- /.acms-grid -->
+
+</form><!-- END index -->
+<!-- END_MODULE Admin_Shop_Customer_Index -->

@@ -1,0 +1,73 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ユーザーグループ一覧<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Usergroup_Index -->
+
+<!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザーグループ一覧を更新しました。<!--/T--></p><!-- END refresh --><!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザーグループがありません。<!--/T--></p><!-- END index#notFound -->
+
+<div class="acms-admin-filter">
+	<form action="" method="post" class="filter acms-admin-form">
+		<!--T-->ソート<!--/T-->:
+		<select name="order" class="js-select2">
+			<option value="id-asc"{order:selected#id-asc}>ID（<!--T-->昇順<!--/T-->）</option>
+			<option value="id-desc"{order:selected#id-desc}>ID（<!--T-->降順<!--/T-->）</option>
+			<option value="name-asc"{order:selected#name-asc}><!--T-->名前順<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+			<option value="name-desc"{order:selected#name-desc}><!--T-->名前順<!--/T-->（<!--T-->降順<!--/T-->）</option>
+		</select>
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="admin" value="usergroup_index" />
+	</form>
+</div>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<form action="" method="post" class="acms-admin-float-right acms-admin-float-none-sp acms-admin-margin-sp">
+	<input type="hidden" name="bid" value="1" />
+	<input type="hidden" name="admin" value="usergroup_edit" />
+	<input type="hidden" name="edit" value="insert" />
+	<input type="hidden" name="query[]" value="edit" />
+	<input type="submit" name="ACMS_POST_2GET" value="<!--T-->ユーザーグループの作成<!--/T-->" class="acms-admin-btn-admin" />
+</form>
+<!-- END_MODULE Touch_SessionWithAdministration -->
+
+
+<!-- BEGIN index -->
+<form method="post" action="" id="sortableForm" class="acms-admin-form">
+	<div class="js-acms-tab-select clearfix">
+
+	</div>
+
+	<table class="adminTable acms-admin-table-admin acms-admin-table-heading acms-admin-form">
+		<thead>
+			<tr>
+				<th class="acms-admin-hide-sp">ID</th>
+				<th class="acms-admin-show-sp"><!--T-->ユーザーグループ名<!--/T--></th>
+				<th class="acms-admin-show-sp"><!--T-->説明<!--/T--></th>
+				<th class="acms-admin-hide-sp"><!--T-->ロール<!--/T--></th>
+				<th class="acms-admin-hide-sp"><!--T-->登録ユーザー数<!--/T--></th>
+				<th class="acms-admin-hide-sp"><!--T-->アクション<!--/T--></th>
+			</tr>
+		</thead>
+		<tbody><!-- BEGIN usergroup:loop -->
+			<tr>
+				<td><span class="acms-admin-label">{ugid}</span></td>
+				<td>{name}</td>
+				<td>{description}</td>
+				<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-title-sp">{role_name} ( id:{role_id} )</td>
+				<td>{user_amount}<!-- BEGIN_IF [{user_amount}/em/] --><!--T-->存在しません<!--/T--><!-- END_IF --></td>
+				<td class="acms-admin-show-sp acms-admin-width-sp acms-admin-border-bottom-sp">
+				   <a href="{itemUrl}?edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a>
+				</td>
+			</tr>
+		<!-- END usergroup:loop --></tbody>
+	</table>
+</form><!-- END index -->
+
+<!-- END_MODULE Admin_Usergroup_Index -->

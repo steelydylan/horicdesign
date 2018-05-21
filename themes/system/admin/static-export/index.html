@@ -1,0 +1,270 @@
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<style>
+	.acms-admin-progress {
+		position: relative;
+	}
+
+	.acms-admin-progress span {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		left: 0;
+		margin: -10px 0 0 0;
+		color: #000;
+	}
+</style>
+
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">
+			静的書き出し
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->設定を保存しました。<!--/T--></p><!-- END_IF -->
+
+<div class="acms-admin-tabs">
+	<ul class="js-acms_admin_tabs">
+		<li>
+			<a href="#exec">書き出し</a>
+		</li>
+		<li>
+			<a href="#config">設定</a>
+		</li>
+	</ul>
+
+	<!-- 書き出し -->
+	<!-- BEGIN_MODULE Admin_StaticExport -->
+	<div id="exec" class="acms-admin-tabs-panel">
+		<!-- BEGIN_IF [{processing}/eq/1] -->
+		<!-- --------------------- 実行中 --------------------- -->
+
+		<form action="" method="post" class="acms-admin-form" id="js-publish_forced_termination" style="margin-bottom: 20px;">
+			<input type="submit" name="ACMS_POST_StaticExport_Terminate" value="<!--T-->強制終了<!--/T-->"
+				   onclick="return confirm('強制終了してもいいですか？');"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-danger"/>
+		</form>
+
+		<script id="js-publish_progress_tpl" type="text/template">
+			<%- inProcess %> <%- percentage %>% ( <%- count %>/<%- max %> )
+		</script>
+		<div id="js-publish_progress" class="acms-admin-progress acms-admin-progress-striped acms-admin-active">
+			<div class="acms-admin-progress-bar acms-admin-progress-bar-info">
+				<span></span>
+			</div>
+		</div>
+
+		<script id="js-publish_result_tpl" type="text/template">
+			<h3><!--T-->書き出し状況<!--/T--></h3>
+			<ul><% _.each( processList, function( process ) { %>
+				<li><%- process.message %></li>
+				<% }); %>
+			</ul>
+		</script>
+		<div id="js-result"></div>
+
+		<script id="js-publish_error_tpl" type="text/template">
+			<% if ( errorList.length > 0 ) {%>
+			<h3><!--T-->エラーの一覧<!--/T--></h3>
+			<ul class="acms-admin-text-danger"><% _.each( errorList.reverse(), function( error ) { %>
+				<li><%- error.message %> [<%- error.code %>] (<%- error.path %>)</li>
+				<% }); %>
+			</ul>
+			<% } %>
+		</script>
+		<div id="js-error"></div>
+
+		<!-- ELSE -->
+		<!-- --------------------- 非実行 --------------------- -->
+		<form action="" method="post" class="acms-admin-form">
+			<input type="submit" name="ACMS_POST_StaticExport_Generate" value="<!--T-->書き出し開始<!--/T-->"
+				   onclick="return confirm('書き出しを開始してよろしいですか？');"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-primary"/>
+		</form>
+		<!-- END_IF -->
+	</div>
+	<!-- END_MODULE Admin_StaticExport -->
+
+
+	<!-- 設定 -->
+	<div id="config" class="acms-admin-tabs-panel">
+		<form action="" method="post" class="acms-admin-form">
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"/>
+
+			<h2 class="acms-admin-admin-title2">書き出し設定</h2>
+			<table class="acms-admin-table-admin-edit">
+				<tr>
+					<th>同時ページ生成数<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+								   data-acms-tooltip="同時に書き出すページ数の指定です。数値を大きくすると書き出しスピードが上がりますが、大きすぎるとサーバーに負荷がかかり遅くなる可能性があります。"></i>
+					</th>
+					<td>
+						<input type="text" name="static_max_publish" value="{static_max_publish}"
+							   class="acms-admin-form-width-mini"/> ページ
+						<input type="hidden" name="config[]" value="static_max_publish"/>
+						<input type="hidden" name="static_max_publish:v#required"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-name-required" class="validator-result-{static_max_publish:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->必須項目です。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>書き出し先ドキュメントルート<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+										 data-acms-tooltip="書き出し先のドキュメントルートを指定します。"></i></th>
+					<td>
+						<input type="text" name="static_dest_document_root" value="{static_dest_document_root}"
+							   class="acms-admin-form-width-medium"/>
+						<input type="hidden" name="config[]" value="static_dest_document_root"/>
+						<input type="hidden" name="static_dest_document_root:v#required"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-name-required" class="validator-result-{static_dest_document_root:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->必須項目です。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>オフセットディレクトリ<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+									  data-acms-tooltip="ドキュメントルート直下ではなく、ディレクトリの中に設置したい場合は設定します。"></i></th>
+					<td>
+						<input type="text" name="static_dest_offset_dir" value="{static_dest_offset_dir}"
+							   class="acms-admin-form-width-medium"/>
+						<input type="hidden" name="config[]" value="static_dest_offset_dir"/>
+					</td>
+				</tr>
+				<tr>
+					<th>書き出し先ドメイン<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+									data-acms-tooltip="書き出し先のドメインを指定します。"></i></th>
+					<td>
+						<input type="text" name="static_dest_domain" value="{static_dest_domain}"
+							   class="acms-admin-form-width-medium"/>
+						<input type="hidden" name="config[]" value="static_dest_domain"/>
+						<input type="hidden" name="static_dest_domain:v#required"/>
+						<div role="alert" aria-live="assertive">
+							<div data-validator-label="validator-name-required" class="validator-result-{static_dest_domain:validator#required}">
+								<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->必須項目です。<!--/T--></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<h2 class="acms-admin-admin-title2">ページ書き出しカテゴリー</h2>
+			<div class="acms-admin-table-responsive acms-admin-margin-bottom-large">
+				<table class="js-fieldgroup-sortable acms-admin-table-admin">
+					<thead>
+					<tr>
+						<th class="acms-admin-table-left acms-admin-admin-config-table-item-handle">&nbsp;</th>
+						<th class="acms-admin-table-left">カテゴリーID<i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="ページを書き出すカテゴリーIDを指定"></i></th>
+						<th class="acms-admin-table-left">MAXページ<i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="書き出すページ数のMAXを指定"></i></th>
+						<th class="acms-admin-table-left acms-admin-admin-config-table-action acms-admin-table-nowrap">削除</th>
+					</tr>
+					</thead>
+					<tbody>
+					<!-- BEGIN static_page_category:loop -->
+					<tr class="sortable-item">
+						<td class="item-handle"><i class="acms-admin-icon-sort"></i></td>
+						<td>
+							<input type="text" name="static_page_cid[{i}]" value="{static_page_cid}" class="acms-admin-form-width-mini"/>
+						</td>
+						<td>
+							<input type="text" name="static_page_max[{i}]" value="{static_page_max}" class="acms-admin-form-width-mini"/>
+						</td>
+						<td class="acms-admin-table-nowrap"><input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除"/></td>
+					</tr>
+					<!-- END static_page_category:loop -->
+					<tr class="sortable-item item-template">
+						<td class="item-handle"><i class="acms-admin-icon-sort"></i></td>
+						<td>
+							<input type="text" name="static_page_cid[]" value="" class="acms-admin-form-width-mini"/>
+						</td>
+						<td>
+							<input type="text" name="static_page_max[]" value="" class="acms-admin-form-width-mini"/>
+						</td>
+						<td class="acms-admin-table-nowrap"><input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除"/></td>
+					</tr>
+					</tbody>
+					<tfoot>
+					<tr>
+						<td colspan="5"><input type="button" class="item-insert acms-admin-btn-admin" value="追加"/></td>
+					</tr>
+					</tfoot>
+				</table>
+			</div>
+			<input type="hidden" name="@static_page_category[]" value="form_check"/>
+			<input type="hidden" name="config[]" value="form_check"/>
+			<input type="hidden" name="@static_page_category[]" value="static_page_cid"/>
+			<input type="hidden" name="config[]" value="static_page_cid"/>
+			<input type="hidden" name="@static_page_category[]" value="static_page_max"/>
+			<input type="hidden" name="config[]" value="static_page_max"/>
+			<input type="hidden" name="config[]" value="@static_page_category"/>
+
+			<h2 class="acms-admin-admin-title2">アーカイブ書き出しカテゴリー</h2>
+			<div class="acms-admin-table-responsive acms-admin-margin-bottom-large">
+				<table class="js-fieldgroup-sortable acms-admin-table-admin">
+					<thead>
+						<tr>
+							<th class="acms-admin-table-left acms-admin-admin-config-table-item-handle">&nbsp;</th>
+							<th class="acms-admin-table-left">カテゴリーID<i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="書き出すアーカイブのカテゴリーIDを指定"></i></th>
+							<th class="acms-admin-table-left">開始月<i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="書き出すアーカイブの開始年月を指定"></i></th>
+							<th class="acms-admin-table-left">MAXページ<i class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-left-mini" data-acms-tooltip="書き出すページ数のMAXを指定"></i></th>
+							<th class="acms-admin-table-left acms-admin-admin-config-table-action acms-admin-table-nowrap">削除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- BEGIN static_archive_category:loop -->
+						<tr class="sortable-item">
+							<td class="item-handle"><i class="acms-admin-icon-sort"></i></td>
+							<td>
+								<input type="text" name="static_archive_cid[{i}]" value="{static_archive_cid}" class="acms-admin-form-width-mini"/>
+							</td>
+							<td>
+								<input type="text" name="static_archive_start[{i}]" value="{static_archive_start}" class="acms-admin-form-width-mini js-datepicker"/>
+							</td>
+							<td>
+								<input type="text" name="static_archive_max[{i}]" value="{static_archive_max}" class="acms-admin-form-width-mini"/>
+							</td>
+							<td class="acms-admin-table-nowrap"><input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除"/></td>
+						</tr>
+						<!-- END static_archive_category:loop -->
+						<tr class="sortable-item item-template">
+							<td class="item-handle"><i class="acms-admin-icon-sort"></i></td>
+							<td>
+								<input type="text" name="static_archive_cid[]" value="" class="acms-admin-form-width-mini"/>
+							</td>
+							<td>
+								<input type="text" name="static_archive_start[]" value="" class="acms-admin-form-width-mini js-datepicker"/>
+							</td>
+							<td>
+								<input type="text" name="static_archive_max[]" value="" class="acms-admin-form-width-mini"/>
+							</td>
+							<td class="acms-admin-table-nowrap"><input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除"/></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5"><input type="button" class="item-insert acms-admin-btn-admin" value="追加"/></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<input type="hidden" name="@static_archive_category[]" value="static_archive_cid"/>
+			<input type="hidden" name="config[]" value="static_archive_cid"/>
+			<input type="hidden" name="@static_archive_category[]" value="static_archive_start"/>
+			<input type="hidden" name="config[]" value="static_archive_start"/>
+			<input type="hidden" name="@static_archive_category[]" value="static_archive_max"/>
+			<input type="hidden" name="config[]" value="static_archive_max"/>
+			<input type="hidden" name="config[]" value="@static_archive_category"/>
+		</form>
+	</div>
+</div>
+<!-- END_MODULE Admin_Config -->
+<!-- END_MODULE Touch_SessionWithAdministration -->

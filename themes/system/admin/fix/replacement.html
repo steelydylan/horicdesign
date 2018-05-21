@@ -1,0 +1,184 @@
+<script>
+$(function(){
+$('.js-replacement_target').change(function(){
+	var $self 		= $(this),
+		$filter 	= $('.js-replacement_target_cf_filter');
+
+	if ( $self.val() === 'field' && $self.prop('checked') ) {
+		$filter.show();
+	} else {
+		$filter.hide();
+	}
+}).change();
+});
+</script>
+
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->テキスト置換<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Fix -->
+<form method="post" action="" class="acms-admin-form">
+	<!-- BEGIN message#success -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T--><!--$1-->{updated}<!--/$1-->件のデータを置換しました。<!--/T--></p><!-- END message#success -->
+
+	<!-- BEGIN_IF [<!-- BEGIN step -->1<!-- END step -->/eq/1] -->
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+		</div>
+	</div>
+	<!-- END_IF -->
+
+	<!-- BEGIN step -->
+	<div class="acms-admin-panel acms-admin-panel-info">
+		<div class="acms-admin-panel-header">
+			<!--T-->概要<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->エントリータイトル、テキストユニット、カスタムフィールドで指定した文字を一括で変更します。<!--/T-->
+		</div>
+	</div>
+
+	<div class="acms-admin-panel acms-admin-panel-danger">
+		<div class="acms-admin-panel-header">
+			<!--T-->注意事項<!--/T-->
+		</div>
+		<div class="acms-admin-panel-body">
+			<!--T-->一括置換後は元に戻せませんので注意して実行ください。<!--/T-->
+		</div>
+	</div>
+
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->対象フィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->置換を実行したいフィールド項目を選択してください。<!--/T-->"></i></th>
+			<td>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="fix_replacement_target" value="title"{fix_replacement_target:checked#title} id="input-radio-fix-replacement-target-title" class="js-replacement_target">
+					<label for="input-radio-fix-replacement-target-title">
+						<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->タイトル<!--/T-->
+					</label>
+				</div>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="fix_replacement_target" value="unit"{fix_replacement_target:checked#unit} id="input-radio-fix-replacement-target-unit" class="js-replacement_target">
+					<label for="input-radio-fix-replacement-target-unit">
+						<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->ユニット<!--/T-->
+					</label>
+				</div>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="fix_replacement_target" value="field"{fix_replacement_target:checked#field} id="input-radio-fix-replacement-target-field" class="js-replacement_target">
+					<label for="input-radio-fix-replacement-target-field">
+						<i class="acms-admin-ico-radio"></i>&nbsp;<!--T-->カスタムフィールド<!--/T-->
+					</label>
+				</div>
+
+				<input type="hidden" name="fix[]" value="fix_replacement_target" />
+				<input type="hidden" name="fix_replacement_target:validator#required" />
+				<!-- BEGIN fix_replacement_target:v#required -->
+				<label class="validator-result-0"><!--T-->対象フィールドを選択して下さい<!--/T--></label>
+				<!-- END fix_replacement_target:v#required -->
+			</td>
+		</tr>
+		<tr class="js-replacement_target_cf_filter">
+			<th><!--T-->フィールド指定<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->対象がカスタムフィールドの場合、ここにカスタムフィールド名を指定することで置換するフィールドを限定できます。空の場合は全フィールドが対象となります。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="fix_replacement_target_cf_filter" value="{fix_replacement_target_cf_filter}" class="acms-admin-form-width-small" placeholder="<!--T-->カスタムフィールド<!--/T-->" />
+				<input type="hidden" name="fix[]" value="fix_replacement_target_cf_filter" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->対象文字 / 置換文字<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->置換対象の文字と置き換え文字を指定します。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="fix_replacement_pattern" value="{fix_replacement_pattern}" placeholder="<!--T-->対象文字<!--/T-->">
+				<input type="hidden" name="fix[]" value="fix_replacement_pattern" />
+				<input type="hidden" name="fix_replacemnet_pattern:validator#required" />
+				<!-- BEGIN fix_replacement_pattern:v#required -->
+				<label class="validator-result-0"><!--T-->対象文字を入力してください<!--/T--></label>
+				<!-- END fix_replacement_pattern:v#required -->
+
+				&nbsp;
+				<span class="acms-admin-icon acms-admin-icon-right"></span>
+
+				<input type="text" name="fix_replacement_replacement" value="{fix_replacement_replacement}" placeholder="<!--T-->変換文字<!--/T-->">
+				<input type="hidden" name="fix[]" value="fix_replacement_replacement" />
+				<input type="hidden" name="fix_replacement_replacement:validator#required" />
+				<!-- BEGIN fix_replacement_replacement:v#required -->
+				<label class="validator-result-0"><!--T-->変換文字を入力してください<!--/T--></label>
+				<!-- END fix_replacement_replacement:v#required -->
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="submit" name="ACMS_POST_Fix_Replacement_Confirm" value="<!--T-->チェック<!--/T-->" onclick="return confirm('<!--T-->変更箇所の確認を行います。最大100件表示されます。確認後,置換を実行してください。<!--/T-->');" class="acms-admin-btn-admin">
+
+				<input type="submit" name="ACMS_POST_Fix_Replacement_All" value="<!--T-->確認を行わず置換<!--/T-->" onclick="return confirm('<!--T-->データを置換します。この作業は元に戻せません。本当によろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger">
+			</td>
+		</tr>
+	</table>
+	<!-- END step -->
+
+	<!-- BEGIN step#confirm -->
+
+	<!-- BEGIN_MODULE Admin_Fix_Replacement_Confirm -->
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="/bid/%{BID}/admin/fix_replacement/" class="acms-admin-btn-admin"><!--T-->キャンセル<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Fix_Replacement_Select" value="<!--T-->チェックをつけたものを置換<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary">
+		</div>
+	</div>
+
+	<!-- BEGIN notFound -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->対象文字が見つかりませんでした。<!--/T-->
+	<!-- END notFound -->
+
+	<!-- BEGIN list:veil -->
+	<table class="adminTable acms-admin-table-admin acms-admin-table-hover">
+	<thead>
+		<tr>
+			<th class="acms-admin-table-center acms-admin-th-checkbox acms-admin-table-nowrap"><div class="acms-admin-form-checkbox acms-admin-margin-none"><label for="checkAll"><input type="checkbox" id="checkAll" /><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->すべての置き換え対象を選択する<!--/T--></span></label></div></th><!-- BEGIN field_name -->
+			<th><!--T-->フィールド名<!--/T--></th><!-- END field_name -->
+			<th><!--T-->置換対象<!--/T--></th>
+			<th class="acms-admin-table-nowrap"><!--T-->リンク<!--/T--></th>
+		</tr>
+	</thead>
+	<tbody><!-- BEGIN found:loop -->
+		<tr>
+			<td class="acms-admin-table-center acms-admin-td-checkbox acms-admin-table-nowrap">
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="checks[]" value="{id}" id="input-checkxobx-replacement{id}" />
+					<label for="input-checkxobx-replacement{id}"><i class="acms-admin-ico-checkbox"></i><span class="acms-admin-hide-visually"><!--T-->この置き換え対象を選択する<!--/T--></span></label>
+				</div>
+			</td><!-- BEGIN key:veil -->
+			<td>{key}</td><!-- END key:veil -->
+			<td>{text}[raw]</td>
+			<td class="acms-admin-table-nowrap">
+				<a href="{url}" class="acms-admin-btn-admin" target="_blank"><!--T-->確認<!--/T--></a>
+			</td>
+		</tr><!-- END found:loop -->
+	</tbody>
+	</table>
+	<!-- END list:veil -->
+	<!-- END_MODULE Admin_Fix_Replacement_Confirm -->
+
+	<input type="hidden" name="fix_replacement_target" value="{fix_replacement_target}">
+	<input type="hidden" name="fix[]" value="fix_replacement_target">
+
+	<input type="hidden" name="fix_replacement_pattern" value="{fix_replacement_pattern}">
+	<input type="hidden" name="fix[]" value="fix_replacement_pattern">
+
+	<input type="hidden" name="fix_replacement_replacement" value="{fix_replacement_replacement}">
+	<input type="hidden" name="fix[]" value="fix_replacement_replacement">
+
+	<!-- END step#confirm -->
+
+	<input type="hidden" name="fix_replacement_limit" value="50">
+	<input type="hidden" name="fix[]" value="fix_replacement_limit">
+</form>
+<!-- END_MODULE Admin_Fix -->

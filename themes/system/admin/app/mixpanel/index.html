@@ -1,0 +1,128 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">Mixpanel
+		</h1>
+	</div>
+	<div class="acms-admin-col-md-6"></div>
+</header>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<!-- BEGIN_MODULE Admin_Config -->
+<form action="" method="post" class="js-adminSave acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms-admin-form-group acms_fix_bg_index">
+			<input type="submit" name="ACMS_POST_Config" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+		</div>
+	</div>
+
+	<h3 class="acms-admin-admin-title2">Mixpanel JavaScript library</h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>code<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="mixpanelで入手できるトラッキングコードをここに貼り付けてください。"></i></th>
+			<td>
+				<textarea name="mixpanel_tracking_code" rows="5" class="acms-admin-form-width-full">{mixpanel_tracking_code}</textarea>
+				<input type="hidden" name="config[]" value="mixpanel_tracking_code" />
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="acms-admin-admin-title2">例）a-blog cmsのユーザをそのままmixpanelに適応する場合</h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<td>
+				<pre class="code HTML">
+&lt;!-- トラッキングコードの読み込み --&gt;
+&lt;!-- BEGIN_MODULE MixpanelLib --&gt;
+\{code\}[raw]
+&lt;!-- END_MODULE MixpanelLib --&gt;
+
+&lt;!-- ユーザーの識別 --&gt;
+&lt;!-- BEGIN_MODULE Mixpanel --&gt;
+&lt;script type="text/javascript"&gt;
+&lt;!-- BEGIN unregistered  --&gt;
+mixpanel.people.set(\\{
+    "$name": "%\{SESSION_USER_NAME\}",
+    "$email": "%\{SESSION_USER_MAIL\}",
+    "$created": new Date()
+\\});
+mixpanel.alias("\{distinct_id\}");
+&lt;!-- END unregistered --&gt;
+
+ACMS.Ready(function() {
+    var id = $.cookie('mixpanel_distinct_id');
+    if ( id ) \{ mixpanel.identify(id); \}
+});
+&lt;/script&gt;
+&lt;!-- END_MODULE Mixpanel --&gt;
+
+&lt;!-- 例) カテゴリーをカウント --&gt;
+&lt;!-- BEGIN_IF [%\{CID\}/nem/] --&gt;
+&lt;script type="text/javascript"&gt;
+mixpanel.people.increment({
+    %\{CATEGORY_NAME\}: 1
+});
+&lt;/script&gt;
+&lt;!-- END_IF --&gt;
+				</pre>
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="acms-admin-admin-title2">例）a-blog cmsのフォーム機能をユーザ特定に使用する場合</h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<td>
+				<pre class="code HTML">
+&lt;!-- &lt;head&gt;&lt;/head&gt;内: トラッキングコードの読み込み --&gt;
+&lt;!-- BEGIN_MODULE MixpanelLib --&gt;
+\{code\}[raw]
+&lt;!-- END_MODULE MixpanelLib --&gt;
+
+&lt;script type="text/javascript"&gt;
+ACMS.Ready(function() {
+    var id = $.cookie('mixpanel_distinct_id');
+    if ( id ) \{ mixpanel.identify(id); \}
+});
+&lt;/script&gt;
+
+&lt;!-- フォーム内 --&gt;
+&lt;!-- form step#confirm内 --&gt;
+&lt;!-- BEGIN step#confirm --&gt;
+&lt;form&gt;
+...
+&lt;input type="submit" name="ACMS_POST_Form_Submit" value="送信する" /&gt;
+&lt;input type="hidden" name="mixpanel_mode" value="form" /&gt;
+&lt;input type="hidden" name="mixpanel_id" value="\{email\}[md5]" /&gt;
+&lt;/form&gt;
+&lt;!-- END step#confirm --&gt;
+
+&lt;!-- form step#result内 --&gt;
+&lt;!-- form step#result --&gt;
+...
+&lt;!-- BEGIN_MODULE Mixpanel --&gt;
+&lt;script type="text/javascript"&gt;
+&lt;!-- BEGIN unregistered  --&gt;
+mixpanel.people.set(\\{
+    "$name": "\\{name\\}",
+    "$email": "\\{email\\}",
+    "$created": new Date()
+\\});
+mixpanel.alias("\{distinct_id\}");
+&lt;!-- END unregistered --&gt;
+
+&lt;!-- BEGIN registered --&gt;
+mixpanel.identify("\{distinct_id\}");
+&lt;!-- END registered --&gt;
+&lt;/script&gt;
+&lt;!-- END_MODULE Mixpanel --&gt;
+&lt;!-- END step#result --&gt;
+				</pre>
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Config -->
+<!-- END_MODULE Touch_SessionWithAdministration -->

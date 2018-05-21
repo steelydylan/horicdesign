@@ -1,0 +1,17 @@
+<!-- BEGIN_MODULE Admin_Module_Edit -->{
+	"mid" : %{mid},
+	"name" : "{label}",
+	"discription" : "{description}[escape|nl2br|delnl]",
+	"template" : "%{tpl}",
+	"scope" : "{scope}",
+	"module" : "{name}",
+	"moduleID" : "{identifier}",
+	"preview" : "<!-- BEGIN_MODULE Module_Preview -->{html}[urlencode]<!-- END_MODULE Module_Preview -->"<!-- BEGIN_MODULE Admin_Module_Template -->,
+	"tpl_type" : "{type}",
+	"tpl_list" : [<!-- BEGIN template:loop -->
+		{
+			"tpl" : "{template}",
+			"label"	: "{tplLabel}"
+		}<!-- BEGIN glue -->,<!-- END glue --><!-- END template:loop -->
+	]<!-- END_MODULE Admin_Module_Template -->
+}<!-- END_MODULE Admin_Module_Edit -->

@@ -1,0 +1,127 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title">基本の設定</h1>
+	</div>
+</header>
+<!-- BEGIN_MODULE Admin_Config -->
+<form action="/bid/%{BID}/admin/shop_menu/" method="post" class="acms-admin-form">
+	<p class="transaction-notice-{config:validator} acms-admin-alert acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><button class="js-acms-alert-close">×</button><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>コンフィグを保存出来ませんでした。</p>
+
+	<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+	<a href="/bid/%{BID}/admin/shortcut_edit/?action=Shop_Misc&admin=%{ADMIN}&edit=add&step=reapply" class="acms-admin-btn-admin acms-admin-shortcut-btn"><i class="acms-admin-icon acms-admin-icon-shortcut"></i>ショートカットに追加</a><!-- END_MODULE Touch_SessionWithAdministration -->
+
+	<input type="submit" name="ACMS_POST_Config" value="保存" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+	<h2 class="acms-admin-admin-title2">ショップの動作設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>注文時のログインおよび会員登録<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-orderLogin" class="tooltipIcon" /></th>
+			<td>
+
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="shop_order_login" value="without"{shop_order_login:checked#without} id="input-radio-shop-order-login-without" />
+				<label for="input-radio-shop-order-login-without"><i class="acms-admin-ico-radio"></i> 不要</label>
+			</div>｜
+
+			<div class="acms-admin-form-radio">
+				<input type="radio" name="shop_order_login" value="required"{shop_order_login:checked#required} id="input-radio-shop-order-login-required" />
+				<label for="input-radio-shop-order-login-required"><i class="acms-admin-ico-radio"></i> 必須</label>
+			</div>
+			<input type="hidden" name="config[]" value="shop_order_login" />
+			</td>
+			</tr>
+			<tr>
+			<th>カートに商品を追加した後の移動先<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-itemAdded" class="tooltipIcon" /></th>
+			<td>
+			<input type="text" name="shop_tpl_added" value="{shop_tpl_added}" />
+			<input type="hidden" name="config[]" value="shop_tpl_added" />
+			</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2">税金の設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>税率の設定<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-taxRate" class="tooltipIcon" /></th>
+			<td>
+			<input type="text" name="shop_tax_rate" value="{shop_tax_rate}" size="5" />
+			<input type="hidden" name="config[]" value="shop_tax_rate" />
+			</td>
+			</tr>
+			<tr>
+			<th>税換算の設定<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-taxCalc" class="tooltipIcon" /></th>
+			<td>
+				<select name="shop_tax_calculate" class="js-select2">
+				<option value="intax"{shop_tax_calculate:selected#intax}>内税</option>
+				<option value="extax"{shop_tax_calculate:selected#extax}>外税</option>
+				</select>方式
+				<input type="hidden" name="config[]" value="shop_tax_calculate" />
+			</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2">合計算出の設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>合計金額( total )に含める項目<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-totalInvolve" class="tooltipIcon" /></th>
+			<td>
+			<ul class="acms-admin-list-nostyle">
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="shop_total_involve[]" value="deliver"{shop_total_involve:checked#deliver} id="input-radio-shop-total-involve-deliver"/>
+						<label for="input-radio-shop-total-involve-deliver"><i class="acms-admin-ico-radio"></i> 配送手数料</label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="shop_total_involve[]" value="deliver-others"{shop_total_involve:checked#deliver-others} id="input-radio-shop-total-involve-deliver-others"/>
+						<label for="input-radio-shop-total-involve-deliver-others"><i class="acms-admin-ico-radio"></i> 配送手数料＋オプション手数料</label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-radio">
+						<input type="radio" name="shop_total_involve[]" value="deliver-others-payment"{shop_total_involve:checked#deliver-others-payment} id="input-radio-shop-total-involve-deliverothers-payment"/>
+						<label for="input-radio-shop-total-involve-deliverothers-payment"><i class="acms-admin-ico-radio"></i> 配送手数料＋オプション手数料＋支払い手数料</label>
+					</div>
+				</li>
+				</ul>
+			<input type="hidden" name="config[]" value="shop_total_involve" />
+			<p>※過去に記録された合計( total )は書き換わりません</p>
+			</td>
+		</tr>
+	</table>
+
+	<h2 class="acms-admin-admin-title2">受注ステータスの設定</h2>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th>ステータス候補<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-status" class="tooltipIcon" /></th>
+		<td>
+			<table>
+				<tr class="thX"><th>ステータス</th></tr>
+				<tr>
+				<td><input type="text" name="shop_receipt_status[]" value="{shop_receipt_status}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_receipt_status[]" value="{shop_receipt_status[1]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_receipt_status[]" value="{shop_receipt_status[2]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_receipt_status[]" value="{shop_receipt_status[3]}" /></td>
+				</tr>
+				<tr>
+				<td><input type="text" name="shop_receipt_status[]" value="{shop_receipt_status[4]}" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="config[]" value="shop_receipt_status" />
+			<p>※過去に登録したステータスは書き換わりません</p>
+		</td>
+		</tr>
+	</table>
+</form>
+<!-- END_MODULE Admin_Config -->
+@include("/admin/tooltip/shop/setting/misc.html")

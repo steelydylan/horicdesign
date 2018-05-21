@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Calendar_Month</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Calendar_Month --&gt;
+&lt;div&gt;
+	&lt;div&gt;
+		&lt;h3 class="acms-text-center"&gt;&lt;a href="{monthUrl}"&gt;{month}月&lt;/a&gt;&lt;/h3&gt;
+		&lt;ul class="acms-text-center acms-list-inline"&gt;
+			&lt;li&gt;&lt;a href="{prevUrl}" class="acms-btn-flat" title="前月へ"&gt;«&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="{yearUrl}" class="acms-btn-flat" title="年間カレンダーへ"&gt;{year}&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="{nextUrl}" class="acms-btn-flat" title="次月へ"&gt;»&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;table class="acms-table acms-table-bordered"&gt;
+	&lt;thead&gt;
+		&lt;tr class="acms-text-center"&gt;
+			&lt;!-- BEGIN weekLabel:loop --&gt;
+			&lt;td &gt;{label}&lt;/td&gt;
+			&lt;!-- END weekLabel:loop --&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;!-- BEGIN week:loop --&gt;
+		&lt;tr class="acms-text-center"&gt;
+			&lt;!-- BEGIN day:loop --&gt;
+			&lt;!-- BEGIN spacer --&gt;
+			&lt;td&gt; &lt;/td&gt;
+			&lt;!-- END spacer --&gt;
+			&lt;!-- BEGIN none --&gt;
+			&lt;td&gt;{day}&lt;/td&gt;
+			&lt;!-- END none --&gt;
+			&lt;!-- BEGIN link --&gt;
+			&lt;td class="success"&gt;&lt;a href="{url}"&gt;{day}&lt;/a&gt;&lt;/td&gt;
+			&lt;!-- END link --&gt;
+			&lt;!-- END day:loop --&gt;
+		&lt;/tr&gt;
+		&lt;!-- END week:loop --&gt;
+	&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;
+&lt;!-- END_MODULE Calendar_Month --&gt;
+
+</textarea>
+</body>
+</html>

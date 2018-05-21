@@ -1,0 +1,333 @@
+<h3 class="acms-admin-admin-title2"><!--T-->カテゴリー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="どのようなルールに従って表示されるかの設定です。"></i></th>
+		<td>
+			<select name="category_entry_summary_category_order" class="js-select2">
+				<option value="sort-asc"{category_entry_summary_category_order:selected#sort-asc}><!--T-->表示順<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{category_entry_summary_category_order:selected#sort-desc}><!--T-->表示順<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="code-asc"{category_entry_summary_category_order:selected#code-asc}><!--T-->コードネーム<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="code-desc"{category_entry_summary_category_order:selected#code-desc}><!--T-->コードネーム<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="id-asc"{category_entry_summary_category_order:selected#id-asc}>ID <!--T-->( 昇順 )<!--/T--></option>
+				<option value="id-desc"{category_entry_summary_category_order:selected#id-desc}>ID <!--T-->( 降順 )<!--/T--></option>
+				<!--<option value="amount-asc"{category_entry_summary_category_order:selected#amount-asc}>エントリー数 ( 昇順 )</option>-->
+				<!--<option value="amount-desc"{category_entry_summary_category_order:selected#amount-desc}>エントリー数 ( 降順 )</option>-->
+			</select>
+			<input type="hidden" name="config[]" value="category_entry_summary_category_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないカテゴリーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_category_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_category_indexing" value="on"{category_entry_summary_category_indexing:checked#on} id="input-checkbox-category_entry_summary_category_indexing" />
+				<label for="input-checkbox-category_entry_summary_category_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているカテゴリーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_category_indexing" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->階層<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示するカテゴリーの階層の深さの設定です。数値で指定します。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_level" value="{category_entry_summary_level}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="category_entry_summary_level" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをカテゴリのループブロック内に設定できます。例えばグリッドシステムのカラム数設定などにご利用ください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_category_loop_class" value="{category_entry_summary_category_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="category_entry_summary_category_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->フィールド検索<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->絞り込むフィールドを選択します。<!--/T-->"></i></th>
+		<td>
+			<select name="category_entry_summary_field_search" class="js-select2">
+				<option value="entry"{category_entry_summary_field_search:selected#entry}><!--T-->エントリー<!--/T--></option>
+				<option value="category"{category_entry_summary_field_search:selected#category}><!--T-->カテゴリー<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="category_entry_summary_field_search" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーの有無<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すとエントリーが登録されていないカテゴリーが表示されなくなります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_entry_amount_zero" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_entry_amount_zero" value="on"{category_entry_summary_entry_amount_zero:checked#on} id="input-checkbox-category_entry_summary_entry_amount_zero" />
+				<label for="input-checkbox-category_entry_summary_entry_amount_zero"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーが登録されていないカテゴリーも表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_entry_amount_zero" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->エントリー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。フィールド、数値フィールドはカスタムフィールドでの検索結果の表示時に利用します。<!--/T-->"></i></th>
+		<td>
+			<select name="category_entry_summary_order" class="js-select2">
+				<option value="datetime-asc"{category_entry_summary_order:selected#datetime-asc}><!--T-->日時<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{category_entry_summary_order:selected#datetime-desc}><!--T-->日時<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="updated_datetime-asc"{category_entry_summary_order:selected#updated_datetime-asc}><!--T-->更新日<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="updated_datetime-desc"{category_entry_summary_order:selected#updated_datetime-desc}><!--T-->更新日<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="posted_datetime-asc"{category_entry_summary_order:selected#updated_datetime-asc}><!--T-->作成日<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="posted_datetime-desc"{category_entry_summary_order:selected#updated_datetime-desc}><!--T-->作成日<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="code-asc"{category_entry_summary_order:selected#code-asc}><!--T-->ファイル名<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="code-desc"{category_entry_summary_order:selected#code-desc}><!--T-->ファイル名<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="id-asc"{category_entry_summary_order:selected#id-asc}>ID <!--T-->( 昇順 )<!--/T--></option>
+				<option value="id-desc"{category_entry_summary_order:selected#id-desc}>ID <!--T-->( 降順 )<!--/T--></option>
+				<option value="sort-asc"{category_entry_summary_order:selected#sort-asc}><!--T-->表示順<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="sort-desc"{category_entry_summary_order:selected#sort-desc}><!--T-->表示順<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="field-asc"{category_entry_summary_order:selected#field-asc}><!--T-->フィールド<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="field-desc"{category_entry_summary_order:selected#field-desc}><!--T-->フィールド<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="intfield-asc"{category_entry_summary_order:selected#intfield-asc}><!--T-->数値フィールド<!--/T--> <!--T-->( 昇順 )<!--/T--></option>
+				<option value="intfield-desc"{category_entry_summary_order:selected#intfield-desc}><!--T-->数値フィールド<!--/T--> <!--T-->( 降順 )<!--/T--></option>
+				<option value="random"{category_entry_summary_order:selected#random}><!--T-->ランダム<!--/T--></option>
+			</select>
+			<input type="hidden" name="config[]" value="category_entry_summary_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_limit" value="{category_entry_summary_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="category_entry_summary_limit" />
+			<input type="hidden" name="category_entry_summary_limit:convert" value="a" />
+			<input type="hidden" name="category_entry_summary_limit:validator#digits" id="validator-category_entry_summary_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-category_entry_summary_limit-digits" class="validator-result-{category_entry_summary_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->オフセット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示順で並び替えた後の先頭から数えて、設定した件数のエントリーを表示しなくします。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_offset" value="{category_entry_summary_offset}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="category_entry_summary_offset" />
+			<input type="hidden" name="category_entry_summary_offset:convert" value="a" />
+			<input type="hidden" name="category_entry_summary_offset:validator#digits" id="validator-category_entry_summary_offset-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-category_entry_summary_offset-digits" class="validator-result-{category_entry_summary_offset:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをエントリーのループブロック内に設定できます。例えばグリッドシステムのカラム数設定などにご利用ください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_entry_loop_class" value="{category_entry_summary_entry_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="category_entry_summary_entry_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->新着期間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの公開日時を基点に、ここで設定した期間中はnewブロックが出力されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_newtime" value="{category_entry_summary_newtime}" size="8" class="acms-admin-form-width-mini" /> <!--T-->秒<!--/T-->
+			<input type="hidden" name="config[]" value="category_entry_summary_newtime" />
+			<input type="hidden" name="category_entry_summary_newtime:convert" value="a" />
+			<input type="hidden" name="category_entry_summary_newtime:validator#digits" id="validator-category_entry_summary_newtime-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-category_entry_summary_newtime-digits" class="validator-result-{category_entry_summary_newtime:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、インデキシングされていないエントリーも表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_indexing" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_indexing" value="on"{category_entry_summary_indexing:checked#on} id="input-checkbox-category_entry_summary_indexing" />
+				<label for="input-checkbox-category_entry_summary_indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->インデキシングされているエントリーのみ表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_indexing" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->シークレットエントリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、ログインしていなくてもシークレットブログのエントリーが表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_secret" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_secret" value="on"{category_entry_summary_secret:checked#on} id="input-checkbox-category_entry_summary_secret" />
+				<label for="input-checkbox-category_entry_summary_secret"><i class="acms-admin-ico-checkbox"></i><!--T-->ログインしていなくてもシークレットブログのエントリーを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_secret" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ユニット<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定した件数のエントリーごとに、unitブロックが表示されます。何件ごとに折り返すなどの指定に応用できます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="category_entry_summary_unit" value="{category_entry_summary_unit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="category_entry_summary_unit" />
+			<input type="hidden" name="category_entry_summary_unit:validator#digits" id="validator-category_entry_summary_unit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-category_entry_summary_unit-digits" class="validator-result-{category_entry_summary_unit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力してください。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->サマリー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->テキストユニットの先頭から任意の文字量を出力できます。<!--/T-->"></i></th>
+		<td>
+			<!--T-->文字数<!--/T-->:
+			<input type="text" name="category_entry_summary_fulltext_width" value="{category_entry_summary_fulltext_width}" />
+			<input type="hidden" name="config[]" value="category_entry_summary_fulltext_width" />
+
+			<!--T-->追加文字<!--/T-->:
+			<input type="text" name="category_entry_summary_fulltext_marker" value="{category_entry_summary_fulltext_marker}" />
+			<input type="hidden" name="config[]" value="category_entry_summary_fulltext_marker" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->エントリーがない場合の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックすると、指定条件でエントリーが見つからなかった場合にnotFoundブロックを出力します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="mo_category_entry_summary_notfound" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="mo_category_entry_summary_notfound" value="on"{mo_category_entry_summary_notfound:checked#on} id="input-checkbox-mo_category_entry_summary_notfound" />
+				<label for="input-checkbox-mo_category_entry_summary_notfound"><i class="acms-admin-ico-checkbox"></i><!--T-->指定された条件のエントリーが一つもない場合にnot foundを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="mo_category_entry_summary_notfound" />
+			<br /><!--T-->( チェックなしで何も表示しない )<!--/T-->
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->フィールド<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->カスタムフィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドのカスタムフィールドを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_entry_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_entry_field_on" value="on"{category_entry_summary_entry_field_on:checked#on} id="input-checkbox-category_entry_summary_entry_field_on" />
+				<label for="input-checkbox-category_entry_summary_entry_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_entry_field_on" />
+			<br>
+
+			<input type="hidden" name="category_entry_summary_category_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_category_field_on" value="on"{category_entry_summary_category_field_on:checked#on} id="input-checkbox-category_entry_summary_category_field_on" />
+				<label for="input-checkbox-category_entry_summary_category_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_category_field_on" />
+			<br>
+
+			<input type="hidden" name="category_entry_summary_user_field_on" value="off" />
+
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_user_field_on" value="on"{category_entry_summary_user_field_on:checked#on} id="input-checkbox-category_entry_summary_user_field_on" />
+				<label for="input-checkbox-category_entry_summary_user_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザーフィールド<!--/T--></label>
+			</div>
+
+			<input type="hidden" name="config[]" value="category_entry_summary_user_field_on" />
+			<br>
+
+			<input type="hidden" name="category_entry_summary_blog_field_on" value="off" />
+
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_blog_field_on" value="on"{category_entry_summary_blog_field_on:checked#on} id="input-checkbox-category_entry_summary_blog_field_on" />
+				<label for="input-checkbox-category_entry_summary_blog_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ブログフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_blog_field_on" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->イメージ<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+		<th><!--T-->メインイメージ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、メインイメージが表示できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_image_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_image_on" value="on"{category_entry_summary_image_on:checked#on} class="switching-function-btn" id="input-checkbox-category_entry_summary_image_on" />
+				<label for="input-checkbox-category_entry_summary_image_on"><i class="acms-admin-ico-checkbox"></i><!--T-->メインイメージを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_image_on" />
+		</td>
+	</tr>
+</table>
+<div>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->ノーイメージ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックを外すと、画像がないエントリーを表示しなくなります。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_noimage" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_noimage" value="on"{category_entry_summary_noimage:checked#on} id="input-checkbox-category_entry_summary_noimage" />
+				<label for="input-checkbox-category_entry_summary_noimage"><i class="acms-admin-ico-checkbox"></i><!--T-->画像がないエントリーを表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_noimage" />
+		</td>
+	</tr>
+
+	<tr>
+		<th><!--T-->サイズ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このモジュールで出力する画像のサイズを設定します。<!--/T-->"></i></th>
+		<td>
+			<!--T-->横<!--/T-->&nbsp;<input type="text" name="category_entry_summary_image_x" value="{category_entry_summary_image_x}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル x 縦<!--/T-->&nbsp;<input type="text" name="category_entry_summary_image_y" value="{category_entry_summary_image_y}" size="8" class="acms-admin-form-width-mini" /><!--T-->ピクセル<!--/T-->
+			<input type="hidden" name="config[]" value="category_entry_summary_image_x" />
+			<input type="hidden" name="config[]" value="category_entry_summary_image_y" />
+			<input type="hidden" name="category_entry_summary_image_x:convert" value="a" />
+			<input type="hidden" name="category_entry_summary_image_x:validator#digits" id="validator-category_entry_summary_image_x-digits" />
+			<input type="hidden" name="category_entry_summary_image_y:convert" value="a" />
+			<input type="hidden" name="category_entry_summary_image_y:validator#digits" id="validator-category_entry_summary_image_y-digits" />
+
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-category_entry_summary_image_x-digits" class="validator-result-{category_entry_summary_image_x:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+				<div data-validator-label="validator-category_entry_summary_image_y-digits" class="validator-result-{category_entry_summary_image_y:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->トリミング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイズで指定された大きさに、画像をトリミングして表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_image_trim" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_image_trim" value="on"{category_entry_summary_image_trim:checked#on} id="input-checkbox-category_entry_summary_image_trim" />
+				<label for="input-checkbox-category_entry_summary_image_trim"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズにトリミングする<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_image_trim" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->拡大　( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像が指定されたサイズよりも小さいときに、指定されたサイズまで拡大します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_image_zoom" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_image_zoom" value="on"{category_entry_summary_image_zoom:checked#on} id="input-checkbox-category_entry_summary_image_zomm" />
+				<label for="input-checkbox-category_entry_summary_image_zomm"><i class="acms-admin-ico-checkbox"></i><!--T-->画像が指定されたサイズに満たない場合に拡大する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_image_zoom" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示位置 ( トリミングがoffの場合のみ )<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->画像を指定されたサイズの中心に表示します。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="category_entry_summary_image_center" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="category_entry_summary_image_center" value="on"{category_entry_summary_image_center:checked#on} id="input-checkbox-category_entry_summary_image_center" />
+				<label for="input-checkbox-category_entry_summary_image_center"><i class="acms-admin-ico-checkbox"></i><!--T-->画像を指定されたサイズの中心に表示する<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="category_entry_summary_image_center" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->

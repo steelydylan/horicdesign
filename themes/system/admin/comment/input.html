@@ -1,0 +1,67 @@
+<table class="acms-table comment-table">
+	<tr>
+	  <th>お名前
+		<span class="base-required-label">必須</span>
+	  </th>
+	  <td>
+		<input type="text" name="name" value="{name}" class="formSizeL" placeholder="例）CMS太郎"/>
+		<input type="hidden" name="comment[]" value="name" />
+		<input type="hidden" name="name:validator#required" id="validator-name-required" />
+		<p class="validator-result-{name:validator#required}">名前を入力してください。</p></td>
+	</tr>
+	<tr>
+	<th>メールアドレス</th>
+	<td>
+		<input type="text" name="mail" value="{mail}" class="formSizeS" placeholder="mail@example.com" />
+		<input type="hidden" name="comment[]" value="mail" />
+		<input type="hidden" name="mail:validator#email" id="validator-mail-email" />
+		<p class="validator-result-{mail:validator#email}">正しいメールアドレスを入力してください。</p></td>
+	</tr>
+	<tr>
+	<th>URL</th>
+	<td>
+		<input type="text" name="url" value="{url}" class="formSizeS" />
+		<input type="hidden" name="comment[]" value="url" />
+		<input type="hidden" name="url:validator#url" id="validator-url-url" />
+		<p class="validator-result-{url:validator#url}">正しいURLを入力してください。</p></td></tr>
+	<tr>
+	  <th>タイトル</th>
+	  <td>
+		<input type="text" name="title" value="Re:{title}" class="formSizeL" />
+		<input type="hidden" name="comment[]" value="title" />
+		<input type="hidden" name="title:validator#required" id="validator-title-required" />
+		<input type="hidden" name="title:validator#blackList" id="validator-title-blackList" />
+		<p class="validator-result-{title:validator#required}">タイトルを入力してください。</p>
+		<p class="validator-result-{title:validator#blackList}">タイトルに不適切な言葉が含まれています。</p>
+	</td></tr>
+	<tr>
+	  <th>コメント<span class="base-required-label">必須</span></th>
+	  <td>
+		<textarea name="body" rows="3" class="formSizeL" placeholder="ここにコメントをご入力ください">{body}</textarea>
+		<input type="hidden" name="comment[]" value="body" />
+		<input type="hidden" name="body:validator#required" id="validator-body-required" />
+		<input type="hidden" name="body:validator#blackList" id="validator-body-blackList" />
+		<p class="validator-result-{body:validator#required}">コメントを入力してください。</p>
+		<p class="validator-result-{body:validator#blackList}">コメントに不適切な言葉が含まれています</p>
+	</td></tr>
+	<tr>
+	<th>パスワード<span class="base-required-label">必須</span></th>
+	<td>
+		<input type="password" name="pass" value="{pass}" class="formSizeS" />
+		<input type="hidden" name="comment[]" value="pass" />
+		<input type="hidden" name="pass:validator#required" id="validator-pass-required" />
+		<input type="hidden" name="pass:validator#regexp" value="^[0-9a-z]+$" id="validator-pass-regexp" />
+		<p class="validator-result-{pass:validator#required}">パスワードを入力してください。</p>
+		<p class="validator-result-{pass:validator#regexp}">パスワードは半角小文字英数字で入力してください。</p>
+	</td>
+    </tr>
+	<tr>
+	<th>Cookie</th>
+	<td>
+		<input type="hidden" name="persistent" value="off" />
+		<label for="input-checkbox-persistent" class="acms-form-checkbox">
+		<input type="checkbox" name="persistent" value="on" id="input-checkbox-persistent" />
+		<i class="acms-ico-checkbox"></i>次回から名前などを自動入力</label>
+		<input type="hidden" name="comment[]" value="persistent" />
+	</td></tr>
+</table>

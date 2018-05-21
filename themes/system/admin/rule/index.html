@@ -1,0 +1,106 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ルール管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Rule_Index -->
+
+<!-- BEGIN refresh -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ルールの一覧を更新しました。<!--/T--></p><!-- END refresh --><!-- BEGIN index#notFound -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ルールがありません。<!--/T--></p><!-- END index#notFound -->
+
+<div class="acms-admin-float-right acms-admin-float-none-sp acms-admin-position-right acms-admin-fix-right">
+	<form action="" method="post" class="js-acms_fix_marker">
+		<input type="hidden" name="bid" value="%{BID}" />
+		<input type="hidden" name="admin" value="rule_edit" />
+		<input type="hidden" name="edit" value="insert" />
+		<input type="hidden" name="query[]" value="edit" />
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->ルールを作成<!--/T-->" class="acms-admin-btn-admin" />
+	</form>
+</div>
+
+<!-- BEGIN index:veil -->
+<form method="post" action="" class="acms-admin-form">
+	<div class="js-acms-tab-select clearfix js-acms_fix_marker">
+		<select name="action-rule" class="js-acms-tab-select-value acms-admin-float-left acms-admin-select-large">
+			<option value="action-sort"{action-rule:selected#action-sort}><!--T-->優先順位<!--/T--></option>
+			<option value="action-status"{action-rule:selected#action-status}><!--T-->ステータス<!--/T--></option>
+		</select>
+
+		<div id="action-sort" class="js-acms-tab-select-panel js-acms-tab-select-active acms-admin-float-left">
+			<input type="submit" name="ACMS_POST_Rule_Index_Sort" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</div>
+
+		<div id="action-status" class="js-acms-tab-select-panel acms-admin-float-left">
+			<select name="status" class="js-select2">
+				<option value="open"><!--T-->有効<!--/T--></option>
+				<option value="close"><!--T-->無効<!--/T--></option>
+			</select>
+
+			<input type="submit" name="ACMS_POST_Rule_Index_Status" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</div>
+	</div>
+
+
+	<div class="acms-admin-table-responsive">
+		<table class="acms-admin-table-admin acms-admin-table-hover">
+			<thead>
+				<tr>
+					<th class="acms-admin-table-nowrapacms-admin-th-checkbox"><div class="acms-admin-form-checkbox acms-admin-margin-none"><input type="checkbox" id="checkAll" /><label for="checkAll"><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->すべてのルールを選択する<!--/T--></span></label></div></th>
+					<th><!--T-->優先順位<!--/T--></th>
+					<th><!--T-->ルール名<!--/T--></th>
+					<th><!--T-->ステータス<!--/T--></th>
+					<th><!--T-->グローバル<!--/T--></th>
+					<th><!--T-->アクション<!--/T--></th>
+				</tr>
+			</thead>
+			<tbody><!-- BEGIN rule:loop -->
+				<tr>
+					<td class="acms-admin-table-nowrap">
+						<div class="acms-admin-form-checkbox acms-admin-margin-none">
+							<input type="checkbox" name="checks[]" value="{rid}"{disabled} id="input-checkbox-rule{rid}" />
+							<label for="input-checkbox-rule{rid}"><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->ルール名「{name}」を選択する<!--/T--></span></label>
+						</div>
+					</td>
+					<td>
+						<input type="hidden" name="_rid[]" value="{rid}" />
+						<input type="hidden" name="_sort[]" value="{sort}" />
+						<input type="hidden" name="sort-current{rid}" value="{sort}" />
+						<select class="form-cntrol js-select2" name="sort-{rid}"{disabled}><!-- BEGIN sort:loop -->
+							<option value="{value}"{selected}>{label}</option><!-- END sort:loop -->
+						</select>
+					</td>
+					<td class="acms-admin-title-sp">{name}</td>
+					<td>
+						<span class="acms-admin-hide-pc acms-admin-show-inline-sp"><!--T-->ステータス<!--/T--></span><!-- BEGIN status#open -->
+						<span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->有効<!--/T--></span><!-- END status#open --><!-- BEGIN status#close -->
+						<span class="acms-admin-label label-default"><!--T-->無効<!--/T--></span><!-- END status#close -->
+					</td>
+					<td>
+					<!-- BEGIN scope:touch#global --><span class="acms-admin-label acms-admin-label-info admin-status-label"><!--T-->グローバル<!--/T--></span><!-- END scope:touch#global -->
+					<!-- BEGIN scope:touch#local --> - <!-- END scope:touch#local -->
+					<!-- BEGIN scope:touch#parental --> <!--T-->親に所属<!--/T-->  <!-- END scope:touch#parental -->
+					</td>
+					<td>
+						<!-- BEGIN mine -->
+						<a href="{itemUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a>
+						<a href="{configUrl}" class="acms-admin-btn-admin"><!--T-->コンフィグ<!--/T--></a>
+						<a href="{moduleUrl}" class="acms-admin-btn-admin"><!--T-->モジュールID<!--/T--></a>
+						&nbsp;<!-- END mine --><!-- BEGIN notMinePermit -->
+						<a href="{itemUrl}&edit=update" class="acms-admin-btn-admin"><!--T-->変更<!--/T--></a>
+						<a href="{configUrl}" class="acms-admin-btn-admin"><!--T-->コンフィグ<!--/T--></a>
+						<a href="{moduleUrl}" class="acms-admin-btn-admin"><!--T-->モジュールID<!--/T--></a>
+						<!-- END notMinePermit --><!-- BEGIN notMine -->
+						<!--T-->親ブログに所属<!--/T--><!-- END notMine -->
+					</td>
+				</tr>
+			<!-- END rule:loop --></tbody>
+		</table>
+	</div>
+	<!-- END index:veil -->
+</form>
+<!-- END_MODULE Admin_Rule_Index -->

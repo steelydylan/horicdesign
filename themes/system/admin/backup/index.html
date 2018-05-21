@@ -1,0 +1,168 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->バックアップ<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Touch_Role_BackupIndex -->
+
+<!-- BEGIN_MODULE Admin_Backup_Message -->
+<!-- BEGIN_IF [{importMessage}{exportMessage}{archiveMessage}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<!-- BEGIN_IF [{importMessage}/nem/] -->
+	{importMessage}
+	<!-- END_IF -->
+	<!-- BEGIN_IF [{exportMessage}/nem/] -->
+	{exportMessage}
+	<!-- END_IF -->
+	<!-- BEGIn_IF [{archiveMessage}/nem/] -->
+	{archiveMessage}
+	<!-- END_IF -->
+</p>
+<!-- END_IF -->
+<!-- END_MODULE Admin_Backup_Message -->
+
+<div class="acms-admin-panel acms-admin-panel-danger">
+	<div class="acms-admin-panel-header">
+		<!--T-->注意事項<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<ul>
+			<li><!--T-->CMS全体のデータベースとアーカイブのデータを置き換える際に利用します。<!--/T--></li>
+			<li><!--T-->リストア実行時にドメイン変更を自動的に行います。<!--/T--></li>
+			<li><!--T-->ユーザー情報などすべてのデータがリストアするデータに置きかわりますのでご注意ください。<!--/T--></li>
+		</ul>
+	</div>
+</div>
+
+<div class="acms-admin-tabs">
+	<ul class="js-acms_admin_tabs">
+		<li><a href="#backup"><!--T-->バックアップ<!--/T--></a></li>
+		<li><a href="#restor"><!--T-->リストア<!--/T--></a></li>
+	</ul>
+
+	<div id="backup" class="acms-admin-tabs-panel">
+		<!-- BEGIN_MODULE Touch_Role_BackupExport -->
+		<h3 class="acms-admin-admin-title2"><!--T-->データベースのバックアップ<!--/T--></h3>
+		<table class="adminTable acms-admin-table-admin-edit">
+			<tr>
+				<td><!--T-->アクセスログとキャッシュ以外のテーブルをzip形式でダウンロードします。解凍はしないでください。<!--/T--></td>
+				<td class="acms-admin-text-right">
+					<form action="" method="post">
+						<p><input type="submit" name="ACMS_POST_Backup_Export" value="<!--T-->バックアップ<!--/T-->"
+								  onclick="return confirm('<!--T-->データベースのデータを一括ダウンロードします。よろしいですか？<!--/T-->');"
+								  class="acms-admin-btn-admin acms-admin-btn-admin-primary"/>
+					</form>
+				</td>
+			</tr>
+		</table>
+
+		<h3 class="acms-admin-admin-title2"><!--T-->アーカイブのバックアップ<!--/T--></h3>
+		<table class="adminTable acms-admin-table-admin-edit">
+			<tr>
+				<td><!--T-->archives ディレクトリのデータをzip形式でダウンロードします。<!--/T--></td>
+				<td class="acms-admin-text-right">
+					<form action="" method="post">
+						<p><input type="submit" name="ACMS_POST_Backup_ArchiveExport" value="<!--T-->バックアップ<!--/T-->"
+								  onclick="return confirm('<!--T-->全てのarchivesディレクトリを一括ダウンロードします。データが大きい場合にはサーバに負荷がかかります。よろしいですか？<!--/T-->');"
+								  class="acms-admin-btn-admin acms-admin-btn-admin-primary"/>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<!-- END_MODULE Touch_Role_BackupExport -->
+	</div>
+
+	<div id="restor" class="acms-admin-tabs-panel">
+		<!-- BEGIN_MODULE Touch_Role_BackupImport -->
+		<!-- BEGIN_MODULE Admin_Backup_ArchiveZipList -->
+		<h3 class="acms-admin-admin-title2"><!--T-->データベースのリストア<!--/T--></h3>
+		<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form">
+			<table class="adminTable acms-admin-table-admin-edit">
+				<tr>
+					<th style="width: 25%;"><!--T-->元のデータベースについて<!--/T-->
+						<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+						   data-acms-tooltip="<!--T-->BACKUP_ACMS_(元のテーブル名) としてバックアップされます。万が一処理に失敗した場合は、テーブルを元の名前に戻して復旧してください<!--/T-->"></i>
+					</th>
+					<td width="10">
+						<select name="drop_table" class="js-select2">
+							<option value="off"><!--T-->元のテーブルをリネームして残しておく<!--/T--></option>
+							<option value="on"><!--T-->インポート後に元のデータベーステーブルを自動で削除する<!--/T--></option>
+						</select>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th><!--T-->バージョンチェック<!--/T-->
+						<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+						   data-acms-tooltip="<!--T-->バージョン照合を行わないとバージョン間の差異によって、正常に動作しない可能性があります。<!--/T-->"></i>
+					</th>
+					<td>
+						<select name="version_check" class="js-select2">
+							<option value="on"><!--T-->バックアップファイルと現在のシステムをバージョン照合する<!--/T--></option>
+							<option value="off"><!--T-->バージョンの照合を省略します<!--/T--></option>
+						</select>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th><!--T-->バックアップファイル<!--/T-->
+						<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+						   data-acms-tooltip="<!--T-->エクスポートしたZIPファイルを、FTPなどでprivate/backup_database/ディレクトリにアップロードしてください。テーマファイルはFTP等で別途アップロードしてください。<!--/T-->"></i>
+					</th>
+					<td>
+						<!--T-->参照先<!--/T-->：/private/backup_database/
+						<!-- BEGIN sql:veil -->
+						<select name="sqlfile" class="js-select2"><!-- BEGIN sql:loop -->
+							<option value="{sqlfile}">{sqlfile}</option><!-- END sql:loop --><!-- END sql:veil -->
+						</select>
+					</td>
+					<td class="acms-admin-text-right">
+						<!-- BEGIN foundSql -->
+						<input type="submit" name="ACMS_POST_Backup_Import" value="<!--T-->リストア<!--/T-->"
+							   onclick="return confirm('<!--T-->リストア処理を行います。よろしいですか？<!--/T-->');"
+							   class="acms-admin-btn-admin acms-admin-btn-admin-primary"/>
+						<!-- END foundSql -->
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form">
+			<h3 class="acms-admin-admin-title2"><!--T-->アーカイブのリストア<!--/T--></h3>
+			<table class="adminTable acms-admin-table-admin-edit">
+				<tr>
+					<th style="width: 25%;"><!--T-->バックアップファイル<!--/T-->
+						<i class="acms-admin-icon-tooltip js-acms-tooltip-hover"
+						   data-acms-tooltip="<!--T-->エクスポートしたZIPアーカイブファイルを、private/backup_archives/ディレクトリにアップロードしてください。<!--/T-->"></i>
+					</th>
+					<td>
+						<!--T-->参照先<!--/T-->：/private/backup_archives/
+						<!-- BEGIN zip:veil -->
+						<select name="zipfile" class="js-select2">
+							<!-- BEGIN zip:loop -->
+							<option value="{zipfile}">{zipfile}</option><!-- END zip:loop --><!-- END zip:veil -->
+						</select>
+					</td>
+					<td class="acms-admin-text-right">
+						<!-- BEGIN foundZip -->
+						<input type="submit" name="ACMS_POST_Backup_ArchiveImport"
+							   value="<!--T-->リストア<!--/T-->"
+							   onclick="return confirm('<!--T-->前のアーカイブディレクトリを削除しリストア処理を行います。よろしいですか？<!--/T-->');"
+							   class="acms-admin-btn-admin acms-admin-btn-admin-primary"/>
+						<!-- END foundZip -->
+					</td>
+				</tr>
+			</table>
+		</form>
+		<!-- END_MODULE Admin_Backup_ArchiveZipList -->
+		<!-- END_MODULE Touch_Role_BackupImport -->
+
+	</div>
+</div>
+
+

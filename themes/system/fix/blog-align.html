@@ -1,0 +1,87 @@
+<!-- BEGIN_MODULE Admin_Blog_Fix -->
+<html>
+<head>
+<title>ブログ構造の修復</title>
+</head>
+<body>
+<h1>ブログ構造の修復</h1>
+<p>
+	ブログ構造を修復します。
+</p>
+
+
+<!-- BEGIN error -->
+<p style="color:red;">ブログの修復に失敗しました。</p><!-- END error --><!-- BEGIN delete#success -->
+<p style="color:blue;">ブログの重複を解消しました。<p><!-- END delete#success --><!-- BEGIN align#success -->
+<p style="color:blue;">ブログの親子構造を修復しました。</p><!-- END align#success -->
+
+<!-- BEGIN delete -->
+<form action="" method="post">
+<p>
+	ブログレコードの重複を検出しました
+	<br />インストールやコンバートが予期せぬ理由で途中終了した場合等、
+	<br />正しくないデータが残ったままになることがあります。
+	<br />この状態で運用するとエントリーが二つずつ表示されたりすることがあります。
+</p>
+<p>
+	下にあるブログの一覧から<strong>正しいデータ</strong>を選んで下さい。
+	<br />選択したものだけ残して、選択したもの<strong>以外のデータを削除</strong>します。
+</p>
+<table border="1">
+	<tr>
+		<th>選択</th>
+		<th>ID</th>
+		<th>ステータス</th>
+		<th>名前</th>
+		<th>ドメイン</th>
+		<th>コードネーム</th>
+		<th>インデキシング</th>
+	</tr><!-- BEGIN blog:loop -->
+	<tr>
+		<td>
+			<input type="radio" name="i" value="{i}" />
+			<input type="hidden" name="count[]" value="1" />
+			<input type="hidden" name="bid_{i}" value="{bid}" />
+			<input type="hidden" name="code_{i}" value="{code}" />
+			<input type="hidden" name="status_{i}" value="{status}" />
+			<input type="hidden" name="parent_{i}" value="{parent}" />
+			<input type="hidden" name="sort_{i}" value="{sort}" />
+			<input type="hidden" name="left_{i}" value="{left}" />
+			<input type="hidden" name="right_{i}" value="{right}" />
+			<input type="hidden" name="name_{i}" value="{name}" />
+			<input type="hidden" name="domain_{i}" value="{domain}" />
+			<input type="hidden" name="indexing_{i}" value="{indexing}" />
+		</td>
+		<td>{bid}</td>
+		<td><!-- BEGIN status:touch#open -->
+			公開<!-- END status:touch#open --><!-- BEGIN status:touch#close -->
+			非公開<!-- END status:touch#close --><!-- BEGIN status:touch#secret -->
+			シークレット<!-- END status:touch#secret -->
+		</td>
+		<td>{name}</td>
+		<td>{domain}</td>
+		<td>{code}</td>
+		<td><!-- BEGIN indexing:touch#on -->
+			リストに出す<!-- END indexing:touch#on --><!-- BEGIN indexing:touch#off -->
+			リストに出さない<!-- END indexing:touch#off -->
+		</td>
+	</tr><!-- END blog:loop -->
+</table>
+<input type="submit" name="ACMS_POST_Fix_BlogDelete" value="選択したデータ以外を削除" onclick="return confirm('選択したもの以外のデータを削除します。\nこの操作は取り消せません。\nよろしいですか？');" />
+</form>
+<!-- END delete -->
+<!-- BEGIN align -->
+<p>
+	ブログの親子構造を修復します。
+	<br />データベースの操作中にサーバのエラーなどでスクリプトが途中終了してしまった場合に
+	<br />ブログの親子構造が壊れてしまうことがあります。
+	<br />この状態のまま運用するとトピックパス等が正しく表示されないことがあります。
+</p>
+
+<form action="" method="post">
+<input type="submit" name="ACMS_POST_Fix_BlogAlign" value="ブログの親子構造を修復する" />
+</form>
+<!-- END align -->
+</body>
+</html>
+<!-- END_MODULE Admin_Blog_Fix -->

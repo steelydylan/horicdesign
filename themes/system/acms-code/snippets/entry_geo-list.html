@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Entry_GeoList</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Entry_GeoList --&gt;
+&lt;div class="acms-margin-bottom-medium"&gt;
+&#64;include("/admin/module/setting.html")
+&lt;!-- BEGIN notFoundGeolocation --&gt;
+&lt;p&gt;現在位置を取得できませんでした。&lt;/p&gt;
+&lt;!-- END notFoundGeolocation --&gt;
+
+&lt;!-- BEGIN notFound --&gt;
+&lt;p&gt;近くの記事はありませんでした。&lt;/p&gt;
+&lt;!-- END notFound --&gt;
+
+&lt;div class="acms-grid"&gt;
+	&lt;!-- BEGIN unit:loop --&gt;
+	&lt;!-- BEGIN entry:loop --&gt;
+	&lt;div class="acms-col-md-4 js-autoheight-r"&gt;
+		&lt;div class="acms-summary"&gt;
+			&lt;div class="acms-summary-image"&gt;&lt;!-- BEGIN image:veil --&gt;
+				&lt;img src="&#x0025;{ROOT_DIR}{path}[resizeImg(100,100)]" alt="{alt}" width="100" height="100" &gt;&lt;!-- END image:veil --&gt;&lt;!-- BEGIN noimage --&gt;&lt;img src="/images/default/noimage.gif" alt="" width="{noImgX}"&gt;&lt;!-- END noimage --&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;acms-summary-body&quot;&gt;
+				&lt;h3&gt;{title}&lt;/h3&gt;
+				&lt;p&gt;{summary}&lt;/p&gt;
+				&lt;p&gt;{geo_distance}[number_format]m&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;{url}&quot; class=&quot;acms-btn&quot;&gt;詳細をみる&lt;/a&gt;&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- END entry:loop --&gt;
+	&lt;!-- END unit:loop --&gt;
+&lt;/div&gt;
+
+&lt;!-- BEGIN pager:veil --&gt;
+&lt;div class="acms-text-center"&gt;
+	&lt;ul class="acms-pager"&gt;
+		&lt;!-- BEGIN backLink --&gt;&lt;li&gt;&lt;a href="{url}"&gt;« 前の{backNum}件&lt;/a&gt;&lt;/li&gt;&lt;!-- END backLink --&gt;
+		&lt;!-- BEGIN page:loop --&gt;&lt;li{pageCurAttr}[raw]&gt;&lt;span&gt;&lt;!-- BEGIN link#front --&gt;&lt;a href="{url}"&gt;&lt;!-- END link#front --&gt;{page}&lt;!-- BEGIN link#rear --&gt;&lt;/a&gt;&lt;!-- END link#rear --&gt;&lt;/span&gt;&lt;/li&gt;&lt;!-- END page:loop --&gt;
+		&lt;!-- BEGIN lastPage:veil --&gt;&lt;li&gt;&lt;span&gt;...&lt;/span&gt;&lt;/li&gt;&lt;li{pageCurAttr}[raw]&gt;&lt;span&gt;&lt;a href="{lastPageUrl}"&gt;{lastPage}&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;!-- END lastPage:veil --&gt;
+		&lt;!-- BEGIN forwardLink --&gt;&lt;li&gt;&lt;a href="{url}"&gt;次の{forwardNum}件 »&lt;/a&gt;&lt;/li&gt;&lt;!-- END forwardLink --&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;
+&lt;!-- END pager:veil --&gt;
+&lt;/div&gt;
+&lt;!-- END_MODULE Entry_GeoList --&gt;
+</textarea>
+</body>
+</html>

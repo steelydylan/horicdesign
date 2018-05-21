@@ -1,0 +1,36 @@
+<!-- BEGIN_MODULE Entry_Summary -->
+<div class="acms-admin-margin-bottom-medium">
+@include("/admin/module/setting.html")
+<!-- BEGIN notFound -->
+<p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+<!-- END notFound -->
+
+<div class="acms-admin-grid-r">
+	<!-- BEGIN unit:loop -->
+	<!-- BEGIN entry:loop -->
+	<div class="{entry:loop.class}">
+		<div class="acms-admin-thumbnail">
+		<!-- BEGIN_IF [{path}/nem/] --><img src="%{ROOT_DIR}{path}" alt="{alt}" class="acms-admin-img-responsive"><!-- ELSE --><img src="/images/default/noimage.gif" alt="" class="acms-admin-img-responsive"><!-- END_IF -->
+			<div>
+				<h3>{title}</h3>
+				<p>{summary}[trim(151, '...')]</p>
+				<p><a href="{url}" class="acms-admin-btn acms-admin-btn-primary" role="button">詳細をみる</a></p>
+			</div>
+		</div>
+	</div>
+	<!-- END entry:loop -->
+	<!-- END unit:loop -->
+</div>
+
+<!-- BEGIN pager:veil -->
+<div class="acms-admin-text-center">
+	<ul class="acms-admin-pager">
+		<!-- BEGIN backLink --><li><a href="{url}">&laquo; 前の{backNum}件</a></li><!-- END backLink -->
+		<!-- BEGIN page:loop --><li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop -->
+		<!-- BEGIN lastPage:veil --><li><span>...</span></li><li{pageCurAttr}[raw]><span><a href="{lastPageUrl}">{lastPage}</a></span></li><!-- END lastPage:veil -->
+		<!-- BEGIN forwardLink --><li><a href="{url}">次の{forwardNum}件 &raquo;</a></li><!-- END forwardLink -->
+	</ul>
+</div>
+<!-- END pager:veil -->
+</div>
+<!-- END_MODULE Entry_Summary -->

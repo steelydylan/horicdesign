@@ -1,0 +1,63 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<div class="acms-admin-admin-title acms-admin-module-title-wrapper">
+			<div class="acms-admin-module-title">
+				<h1 class="js-dialog-title"><!--T-->キャッシュ生成リスト<!--/T--></h1>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+<!-- BEGIN_MODULE Touch_RootBlog -->
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->キャッシュ生成リストを保存しました<!--/T--></p><!-- END_IF -->
+
+<form action="" method="post" class="acms-admin-form js-dialog-body">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms-admin-form-group acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/1/admin/top/" class="acms-admin-btn-admin"><!--T-->ダッシュボード<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration --><a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right acms-admin-float-none-sp"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<table class="js-fieldgroup-sortable adminTable acms-admin-table-admin-edit">
+		<tr class="acms-admin-hide-sp">
+			<th class="acms-admin-admin-config-table-item-handle acms-admin-form-width-mini"></th>
+			<th class="acms-admin-table-left">URL<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->キャッシュを手動or自動で即時生成をするリストです。URLを指定してください。<!--/T-->"></i></th>
+			<th class="acms-admin-admin-config-table-action acms-admin-form-width-mini"></th>
+		</tr><!-- BEGIN create_cache_list:loop -->
+		<tr class="sortable-item">
+			<td class="item-handle acms-admin-hide-sp"><i class="acms-admin-icon-sort"></i></td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp">URL</span>
+				<input type="text" name="create_cache_url[{i}]" value="{create_cache_url}" class="acms-admin-form-width-full" />
+			</td>
+			<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+		</tr><!-- END create_cache_list:loop -->
+		<tr class="sortable-item item-template">
+			<td class="item-handle acms-admin-hide-sp"><i class="acms-admin-icon-sort"></i></td>
+			<td>
+				<span class="acms-admin-hide acms-admin-show-sp">URL</span>
+				<input type="text" name="create_cache_url[]" value="" class="acms-admin-form-width-full" />
+			</td>
+			<td><input type="button" value="<!--T-->削除<!--/T-->" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" /></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input type="button" value="<!--T-->追加<!--/T-->" class="item-insert acms-admin-btn-admin" /></td>
+		</tr>
+	</table>
+	<input type="hidden" name="@create_cache_list[]" value="create_cache_url" />
+	<input type="hidden" name="config[]" value="create_cache_url" />
+	<input type="hidden" name="config[]" value="@create_cache_list" />
+</form>
+<!-- END_MODULE Admin_Config -->
+<!-- END_MODULE Touch_RootBlog -->
+<!-- END_MODULE Touch_SessionWithAdministration -->

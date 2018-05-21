@@ -1,0 +1,8 @@
+[
+     <!-- BEGIN_MODULE Entry_Summary id="jsonEntrySummary" -->
+          <!-- BEGIN entry:loop -->
+               \{"title":"{title}","url":"{url}"\}
+               <!-- BEGIN glue -->,<!-- END glue -->
+          <!-- END entry:loop -->
+     <!-- END_MODULE Entry_Summary -->
+]

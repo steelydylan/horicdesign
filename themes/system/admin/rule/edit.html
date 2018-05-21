@@ -1,0 +1,423 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->ルール管理<!--/T--></h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Rule_Edit -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ルールを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ルールを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ルールを削除しました<!--/T--></p><!-- END msg#delete -->
+
+<!-- BEGIN headline#insert --><!-- END headline#insert -->
+<!-- BEGIN headline#update --><!-- END headline#update -->
+
+<form method="post" action="" class="acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index">
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/rule_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<!-- BEGIN submit#insert -->
+			<input type="submit" name="ACMS_POST_Rule_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			<!-- END submit#insert -->
+
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_Rule_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<input type="submit" name="ACMS_POST_Rule_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->ルールに関連づけられたコンフィグも一緒に削除されます。\nよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END submit#update -->
+		</div>
+	</div>
+
+	<div>
+		<h3 class="acms-admin-admin-title2"><!--T-->基本設定<!--/T--></h3>
+		<table class="adminTable acms-admin-table-admin-edit">
+			<tr>
+				<th><!--T-->ルール名<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このルールを管理するための名前です。（日本語可）<!--/T-->"></i></th>
+				<td>
+					<input type="text" name="name" value="{name}" size="50" />
+					<input type="hidden" name="rule[]" value="name" />
+					<input type="hidden" name="name:validator#required" id="input-text-name" />
+					<label for="input-text-name" class="validator-result-{name:validator#required}"> <!--T-->名前が入力されていません。<!--/T--></label>
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->ステータス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このルールが有効か無効かの設定です。<!--/T-->"></i></th>
+				<td>
+					<select name="status" class="js-select2">
+						<option value="open"{status:selected#open}><!--T-->有効<!--/T--></option>
+						<option value="close"{status:selected#close}><!--T-->無効<!--/T--></option>
+					</select>
+					<input type="hidden" name="rule[]" value="status" />
+					<input type="hidden" name="status:validator#required" />
+					<label for="select-status" class="validator-result-{status:validator#required}"></label>
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->説明<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->このルールがどのような動作をするかなどのメモです。<!--/T-->"></i></th>
+				<td>
+					<textarea name="description" style="width:100%;" rows="3">{description}</textarea>
+					<input type="hidden" name="rule[]" value="description" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->グローバル<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このルールが下の階層のブログでも使用できます。<!--/T-->"></i></th>
+				<td>
+					 <!-- BEGIN_MODULE Touch_BlogParent -->
+					<input type="hidden" name="scope" value="local" />
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="scope" value="global"{scope:checked#global} id="input-checkbox-scope" />
+						<label for="input-checkbox-scope">
+							<i class="acms-admin-ico-checkbox"></i><!--T-->下の階層のブログが利用することを許可する<!--/T-->
+						</label>
+					</div>
+					<input type="hidden" name="rule[]" value="scope" />
+					 <!-- END_MODULE Touch_BlogParent -->
+					 <!-- BEGIN_MODULE Touch_NotBlogParent -->
+					 <input type="checkbox" disabled="disable"> <!--T-->下の階層のブログが利用することを許可する ( 子ブログを持たないブログでは設定できません )<!--/T-->
+					 <!-- END_MODULE Touch_NotBlogParent -->
+				</td>
+			</tr>
+		</table>
+
+		<h3 class="acms-admin-admin-title2"><!--T-->詳細情報<!--/T--></h3>
+
+		<div class="js-arg_reference_remove js-arg_reference_dummy acms-admin-label-group acms-admin-inline-space" data-arg="" style="display:none;">
+			<span class="acms-admin-label acms-admin-label-large"></span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+		</div>
+
+		<table class="adminTable acms-admin-table-admin-edit" id="js-arg_reference">
+			<tr>
+				<th><!--T-->エイリアスID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エイリアスの管理ID（番号）を指定します。<!--/T-->"></i></th>
+				<td>aid</td>
+				<td>
+					<select name="aid_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{aid_case:selected#=}>=</option>
+						<option value="!="{aid_case:selected#!=}>!=</option>
+						<option value=">"{aid_case:selected#>}>&gt;</option>
+						<option value=">="{aid_case:selected#>=}>&gt;=</option>
+						<option value="<"{aid_case:selected#<}>&lt;</option>
+						<option value="<="{aid_case:selected#<=}>&lt;=</option>
+						<option value="IS NULL"{aid_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{aid_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="aid_case" />
+				</td>
+				<td>
+					<input type="text" name="aid" value="{aid}" id="input-text-aid" size="6" />
+					<input type="hidden" name="rule[]" value="aid" />
+					<input type="hidden" name="aid:validator#digits" />
+					<label for="input-text-aid" class="validator-result-{aid:validator#digits}"><!--T-->数値を入力して下さい。<!--/T--></label>
+				</td>
+			</tr>
+			<tr id="js-arg_guidance_uid" class="js-arg_guidance">
+				<th><!--T-->ユーザーID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーの管理ID（番号）を指定します。<!--/T-->"></i></th>
+				<td>uid</td>
+				<td>
+					<select name="uid_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{uid_case:selected#=}>=</option>
+						<option value="!="{uid_case:selected#!=}>!=</option>
+						<option value=">"{uid_case:selected#>}>&gt;</option>
+						<option value=">="{uid_case:selected#>=}>&gt;=</option>
+						<option value="<"{uid_case:selected#<}>&lt;</option>
+						<option value="<="{uid_case:selected#<=}>&lt;=</option>
+						<option value="IS NULL"{uid_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{uid_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="uid_case" />
+				</td>
+				<td>
+					<button name="uid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+					<a href="#" class="js-arg_reference_toggle acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+					<input class="js-arg_guidance_edit argEdit" type="text" name="uid" value="{uid}" />
+
+					<input type="hidden" name="rule[]" value="uid" />
+					<input type="hidden" name="uid:validator#digits" />
+					<label for="input-text-uid" class="validator-result-{uid:validator#digits}"><!--T-->数値を入力してください。<!--/T--></label>
+
+					<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN uid_arg:loop -->
+					<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{uid_arg_value}">
+						<span class="acms-admin-label acms-admin-label-large">{uid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+					</div><!-- END uid_arg:loop -->
+				</div>
+				</td>
+			</tr>
+			<tr id="js-arg_guidance_cid" class="js-arg_guidance">
+				<th><!--T-->カテゴリーID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーの管理ID（番号）を指定します。<!--/T-->"></i></th>
+				<td>cid</td>
+				<td>
+					<select name="cid_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{cid_case:selected#=}>=</option>
+						<option value="!="{cid_case:selected#!=}>!=</option>
+						<option value=">"{cid_case:selected#>}>&gt;</option>
+						<option value=">="{cid_case:selected#>=}>&gt;=</option>
+						<option value="<"{cid_case:selected#<}>&lt;</option>
+						<option value="<="{cid_case:selected#<=}>&lt;=</option>
+						<option value="IS NULL"{cid_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{cid_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="cid_case" />
+				</td>
+				<td>
+					<button name="cid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+					<a href="#" class="js-arg_reference_toggle acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+					<input class="js-arg_guidance_edit argEdit" type="text" name="cid" value="{cid}" />
+
+					<input type="hidden" name="rule[]" value="cid" />
+					<input type="hidden" name="cid:validator#digits" />
+					<label for="input-text-cid" class="validator-result-{cid:validator#digits}"><!--T-->数値を入力してください。<!--/T--></label>
+
+					<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN cid_arg:loop -->
+						<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{cid_arg_value}">
+							<span class="acms-admin-label acms-admin-label-large">{cid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a>
+						</div><!-- END cid_arg:loop -->
+					</div>
+				</td>
+			</tr>
+			<tr id="js-arg_guidance_eid" class="js-arg_guidance">
+				<th><!--T-->エントリーID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの管理ID（番号）を指定します。<!--/T-->"></i></th>
+				<td>eid</td>
+				<td>
+					<select name="eid_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{eid_case:selected#=}>=</option>
+						<option value="!="{eid_case:selected#!=}>!=</option>
+						<option value=">"{eid_case:selected#>}>&gt;</option>
+						<option value=">="{eid_case:selected#>=}>&gt;=</option>
+						<option value="<"{eid_case:selected#<}>&lt;</option>
+						<option value="<="{eid_case:selected#<=}>&lt;=</option>
+						<option value="IS NULL"{eid_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{eid_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="eid_case" />
+				</td>
+				<td>
+					<button name="eid" class="js-arg_reference_trigger acms-admin-btn acms-admin-btn-info acms-admin-inline-space"><!--T-->ID参照<!--/T--></button>
+					<a href="#" class="js-arg_reference_toggle acms-admin-inline-space"><span class="acms-admin-icon-control-edit"></span></a>
+					<input class="js-arg_guidance_edit argEdit" type="text" name="eid" value="{eid}" />
+
+					<input type="hidden" name="rule[]" value="eid" />
+					<input type="hidden" name="eid:validator#digits" />
+					<label for="input-text-eid" class="validator-result-{eid:validator#digits}"><!--T-->数値を入力してください。<!--/T--></label>
+
+					<div class="acms-admin-inline js-arg_guidance_label"><!-- BEGIN eid_arg:loop -->
+						<div class="js-arg_reference_remove acms-admin-label-group acms-admin-inline-space" data-arg="{eid_arg_value}">
+							<span class="acms-admin-label acms-admin-label-large">{eid_arg_label}</span><a class="acms-admin-label acms-admin-label-large acms-admin-label-side">x</a></div><!-- END eid_arg:loop -->
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->ユーザーコード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーの管理名（英数）を指定します。<!--/T-->"></i></th>
+				<td>ucd</td>
+				<td>
+					<select name="ucd_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{ucd_case:selected#=}>=</option>
+						<option value="!="{ucd_case:selected#!=}>!=</option>
+						<option value="LIKE"{ucd_case:selected#LIKE}>LIKE</option>
+						<option value="NOT LIKE"{ucd_case:selected#NOT LIKE}>NOT LIKE</option>
+						<option value="REGEXP"{ucd_case:selected#REGEXP}>REGEXP</option>
+						<option value="NOT REGEXP"{ucd_case:selected#NOT REGEXP}>NOT REGEXP</option>
+						<option value="IS NULL"{ucd_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{ucd_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="ucd_case" />
+				</td>
+				<td>
+					<input type="text" name="ucd" value="{ucd}" />
+					<input type="hidden" name="rule[]" value="ucd" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->カテゴリーコード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->カテゴリーの管理名（英数）を指定します。<!--/T-->"></i></th>
+				<td>ccd</td>
+				<td>
+					<select name="ccd_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{ccd_case:selected#=}>=</option>
+						<option value="!="{ccd_case:selected#!=}>!=</option>
+						<option value="LIKE"{ccd_case:selected#LIKE}>LIKE</option>
+						<option value="NOT LIKE"{ccd_case:selected#NOT LIKE}>NOT LIKE</option>
+						<option value="REGEXP"{ccd_case:selected#REGEXP}>REGEXP</option>
+						<option value="NOT REGEXP"{ccd_case:selected#NOT REGEXP}>NOT REGEXP</option>
+						<option value="IS NULL"{ccd_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{ccd_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="ccd_case" />
+				</td>
+				<td>
+					<input type="text" name="ccd" value="{ccd}" />
+					<input type="hidden" name="rule[]" value="ccd" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->エントリーコード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーの管理名（英数）を指定します。<!--/T-->"></i></th>
+				<td>ecd</td>
+				<td>
+					<select name="ecd_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{ecd_case:selected#=}>=</option>
+						<option value="!="{ecd_case:selected#!=}>!=</option>
+						<option value="LIKE"{ecd_case:selected#LIKE}>LIKE</option>
+						<option value="NOT LIKE"{ecd_case:selected#NOT LIKE}>NOT LIKE</option>
+						<option value="REGEXP"{ecd_case:selected#REGEXP}>REGEXP</option>
+						<option value="NOT REGEXP"{ecd_case:selected#NOT REGEXP}>NOT REGEXP</option>
+						<option value="IS NULL"{ecd_case:selected#IS NULL}>IS NULL</option>
+						<option value="IS NOT NULL"{ecd_case:selected#IS NOT NULL}>IS NOT NULL</option>
+					</select>
+					<input type="hidden" name="rule[]" value="ecd_case" />
+				</td>
+				<td>
+					<input type="text" name="ecd" value="{ecd}" />
+					<input type="hidden" name="rule[]" value="ecd" />
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->ユーザーエージェント<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイトを表示する機器、ブラウザーなどを指定します。<!--/T-->"></i></th>
+				<td>ua</td>
+				<td>
+					<select name="ua_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{ua_case:selected#=}>=</option>
+						<option value="!="{ua_case:selected#!=}>!=</option>
+					</select>
+					<input type="hidden" name="rule[]" value="ua_case" />
+				</td>
+				<td>
+					<select name="ua" class="js-select2"><!-- BEGIN uaoption:loop -->
+						<option value="{value}"{selected}><!--T-->{label}[raw]<!--/T--></option><!-- END uaoption:loop -->
+					</select>
+					<input type="hidden" name="rule[]" value="ua" />
+				</td>
+			</tr>
+			<tr>
+				<th>Cookie<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->判定に使用するcookieのキーと値を設定します。<!--/T-->"></i></th>
+				<td>
+					<input type="text" name="cookie_key" value="{cookie_key}">
+					<input type="hidden" name="rule[]" value="cookie_key">
+				</td>
+				<td>
+					<select name="cookie_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="="{cookie_case:selected#=}>=</option>
+						<option value="!="{cookie_case:selected#!=}>!=</option>
+						<option value=">"{cookie_case:selected#>}>&gt;</option>
+						<option value=">="{cookie_case:selected#>=}>&gt;=</option>
+						<option value="<"{cookie_case:selected#<}>&lt;</option>
+						<option value="<="{cookie_case:selected#<=}>&lt;=</option>
+						<option value="REGEXP"{cookie_case:selected#REGEXP}>REGEXP</option>
+						<option value="NOT REGEXP"{cookie_case:selected#NOT REGEXP}>NOT REGEXP</option>
+					</select>
+					<input type="hidden" name="rule[]" value="cookie_case">
+				</td>
+				<td>
+					<input type="text" name="cookie_val" value="{cookie_val}">
+					<input type="hidden" name="rule[]" value="cookie_val">
+				</td>
+			</tr>
+			<tr>
+				<th><!--T-->期間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->期間を指定します。<!--/T-->"></i></th>
+				<td></td>
+				<td>
+					<select name="term_case" class="js-select2">
+						<option value=""><!--T-->指定しない<!--/T--></option>
+						<option value="BETWEEN"{term_case:selected#BETWEEN}>BETWEEN</option>
+					</select>
+					<input type="hidden" name="rule[]" value="term_case" />
+				</td>
+				<td>
+					<select class="js-rule_term_type js-select2" name="term_type[]">
+						<option value=""><!--T-->定期<!--/T--></option>
+						<option value="fix"{term_type:selected#fix}><!--T-->固定<!--/T--></option>
+					</select>
+					or <!--T-->毎月<!--/T-->
+					<select class="js-radio_type js-select2" name="term_type[]">
+						<option value=""> - </option>
+						<option value="everymonth-01"{term_type:selected#everymonth-01}>1<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-02"{term_type:selected#everymonth-02}>2<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-03"{term_type:selected#everymonth-03}>3<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-04"{term_type:selected#everymonth-04}>4<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-05"{term_type:selected#everymonth-05}>5<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-06"{term_type:selected#everymonth-06}>6<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-07"{term_type:selected#everymonth-07}>7<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-08"{term_type:selected#everymonth-08}>8<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-09"{term_type:selected#everymonth-09}>9<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-10"{term_type:selected#everymonth-10}>10<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-11"{term_type:selected#everymonth-11}>11<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-12"{term_type:selected#everymonth-12}>12<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-13"{term_type:selected#everymonth-13}>13<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-14"{term_type:selected#everymonth-14}>14<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-15"{term_type:selected#everymonth-15}>15<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-16"{term_type:selected#everymonth-16}>16<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-17"{term_type:selected#everymonth-17}>17<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-18"{term_type:selected#everymonth-18}>18<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-19"{term_type:selected#everymonth-19}>19<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-20"{term_type:selected#everymonth-20}>20<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-21"{term_type:selected#everymonth-21}>21<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-22"{term_type:selected#everymonth-22}>22<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-23"{term_type:selected#everymonth-23}>23<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-24"{term_type:selected#everymonth-24}>24<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-25"{term_type:selected#everymonth-25}>25<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-26"{term_type:selected#everymonth-26}>26<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-27"{term_type:selected#everymonth-27}>27<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-28"{term_type:selected#everymonth-28}>28<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-29"{term_type:selected#everymonth-29}>29<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-30"{term_type:selected#everymonth-30}>30<!--T ctx="date"-->日<!--/T--></option>
+						<option value="everymonth-31"{term_type:selected#everymonth-31}>31<!--T ctx="date"-->日<!--/T--></option>
+					</select>
+					or
+					<select class="js-radio_type js-select2" name="term_type[]">
+						<option value=""> - </option>
+						<option value="everyday"{term_type:selected#everyday}><!--T-->毎日<!--/T--></option>
+						<option value="week-0"{term_type:selected#week-0}><!--T ctx="week"-->日<!--/T--></option>
+						<option value="week-1"{term_type:selected#week-1}><!--T-->月<!--/T--></option>
+						<option value="week-2"{term_type:selected#week-2}><!--T-->火<!--/T--></option>
+						<option value="week-3"{term_type:selected#week-3}><!--T-->水<!--/T--></option>
+						<option value="week-4"{term_type:selected#week-4}><!--T-->木<!--/T--></option>
+						<option value="week-5"{term_type:selected#week-5}><!--T-->金<!--/T--></option>
+						<option value="week-6"{term_type:selected#week-6}><!--T-->土<!--/T--></option>
+					</select>
+
+					<input type="hidden" name="rule[]" value="term_type">
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td colspan="2"></td>
+				<td>
+					<a href="#" class="updateDate" rel="entryStartDate"><!--T-->日付<!--/T--></a>
+					<input type="text" name="term_start_date" value="{term_start_date}" placeholder="1000-01-01" size="15" class="js-rule_term_start_date" id="entryStartDate" />
+					<a href="#" class="updateTime" rel="entryStartTime"><!--T-->時刻<!--/T--></a>
+
+					<input type="text" name="term_start_time" value="{term_start_time}" placeholder="00:00:00" size="12" id="entryStartTime" />
+					<input type="hidden" name="rule[]" value="term_start_date" />
+					<input type="hidden" name="rule[]" value="term_start_time" />
+					〜
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td colspan="2"></td>
+				<td>
+					<a href="#" class="updateDate" rel="entryEndDate"><!--T-->日付<!--/T--></a>
+					<input type="text" name="term_end_date" value="{term_end_date}" placeholder="9999-12-31" size="15" class="js-rule_term_end_date" / id="entryEndDate">
+					<a href="#" class="updateTime" rel="entryEndTime"><!--T-->時刻<!--/T--></a>
+
+					<input type="text" name="term_end_time" value="{term_end_time}" placeholder="23:59:59" size="12" id="entryEndTime" />
+					<input type="hidden" name="rule[]" value="term_end_date" />
+					<input type="hidden" name="rule[]" value="term_end_time" /></td>
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
+<!-- END_MODULE Admin_Rule_Edit -->

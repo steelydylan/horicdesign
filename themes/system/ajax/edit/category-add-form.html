@@ -1,0 +1,72 @@
+<form class="acms-admin-form">
+	<input type="hidden" name="category[]" value="name" />
+	<input type="hidden" name="category[]" value="code" />
+	<input type="hidden" name="category[]" value="parent" />
+	<input type="hidden" name="category[]" value="scope" />
+	<input type="hidden" name="category[]" value="status" />
+	<input type="hidden" name="category[]" value="indexing" />
+
+	<input type="hidden" name="name:validator#required" id="validator-name-required" />
+	<input type="hidden" name="code:validator#required" id="validator-code-required" />
+	<input type="hidden" name="code:validator#double" id="validator-code-double" />
+	<input type="hidden" name="code:validator#reserved" id="validator-code-reserved" />
+	<input type="hidden" name="scope:validator#required" id="validator-scope-required" />
+	<!--<input type="hidden" name="scope:validator#tree" id="validator-scope-tree" />-->
+
+	<input type="hidden" name="status" value="open" />
+	<input type="hidden" name="indexing" value="on" />
+	<input type="hidden" name="ACMS_POST_Category_Insert" />
+
+	<div class="acms-admin-form-group">
+		<label><!-- T -->カテゴリー名<!-- /T --></label>
+		<input type="text" name="name" value="" class="acms-admin-form-width-full" />
+		<div role="alert" aria-live="assertive">
+			<div data-validator-label="validator-name-required" class="validator-result-">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!-- T -->名前が入力されていません。<!-- /T --></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="acms-admin-form-group">
+		<label><!-- T -->コードネーム<!-- /T --></label>
+		<input type="text" name="code" value="" class="acms-admin-admin-form-width-full" />
+		<div role="alert" aria-live="assertive">
+			<div data-validator-label="validator-code-required" class="validator-result-">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->コードネームが入力されていません。<!--/T--></p>
+			</div>
+			<div data-validator-label="validator-code-double" class="validator-result-">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->既に使用されているコードネームです。<!--/T--></p>
+			</div>
+			<div data-validator-label="validator-code-reserved" class="validator-result-">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->システムで予約されているキーワードです。<!--/T--></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="acms-admin-form-group">
+		<label><!-- T -->親カテゴリー<!-- /T --></label>
+		<select name="parent" class="acms-admin-form-width-full js-select2">
+			<option value="0">なし</option><!-- BEGIN_MODULE Admin_Category_Select --><!-- BEGIN loop -->
+			<option value="{value}">{indent}[raw]{label} ( {amount} )</option><!-- END loop --><!-- END_MODULE Admin_Category_Select -->
+		</select>
+	</div>
+
+	<div class="acms-admin-form-group">
+		<label><!-- T -->スコープ<!-- /T --></label>
+		<input type="hidden" name="scope" value="local" />
+		<div class="acms-admin-form-checkbox">
+			<input type="checkbox" name="scope" value="global" id="input-checkbox-global" />
+			<label for="input-checkbox-global">
+				<i class="acms-admin-ico-checkbox"></i><!-- T -->下の階層のブログと共有する<!-- /T -->
+			</label>
+		</div>
+		<div role="alert" aria-live="assertive">
+			<div data-validator-label="validator-scope-required" class="validator-result-">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->コードネームが入力されていません。<!--/T--></p>
+			</div>
+			<div data-validator-label="validator-scope-tree" class="validator-result-">
+				<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->親カテゴリーと異なる共有設定にすることはできません。<!--/T--></p>
+			</div>
+		</div>
+	</div>
+</form>

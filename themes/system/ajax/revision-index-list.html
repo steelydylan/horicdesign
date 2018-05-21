@@ -1,0 +1,124 @@
+<!-- BEGIN_MODULE Admin_Entry_Revision_Index -->
+<!-- BEGIN revision#notFound -->
+<p><!--T-->バージョンがありません。<!--/T--></p>
+<!-- END revision#notFound -->
+
+<div class="revison_box">
+	<form action="" method="post">
+
+		<div class="revision-header"><!-- BEGIN tmpVersion:veil -->
+			<h3 class="acms-admin-title"><!--T-->作業領域<!--/T--><!-- BEGIN_MODULE Touch_Approval -->（<!--T-->作業領域からバージョンを作成する事ができます<!--/T-->）
+			<!-- END_MODULE Touch_Approval --></h3>
+		</div>
+
+		<div class="acms-admin-table-responsive">
+			<table class="acms-admin-table-admin acms-admin-table-admin-striped acms-admin-table-hover acms-admin-table-revison acms-admin-table-workarea acms-admin-margin-bottom-large">
+				<thead>
+					<tr>
+						<th class="th1">ID</th>
+						<th><!--T-->バージョン名<!--/T--></th>
+						<th><!--T-->作成者<!--/T--></th>
+						<th><!--T-->作成日時<!--/T--></th>
+						<th class="th5"><!--T-->確認<!--/T--></th><!-- BEGIN_MODULE Touch_Approval -->
+						<th><!--T-->承認ステータス<!--/T--></th><!-- END_MODULE Touch_Approval -->
+						<th class="th7 acms-admin-table-nowrap"><!--T-->別バージョン<!--/T--></th><!-- BEGIN_MODULE Touch_RevisionAdministrator -->
+						<th class="th8"></th><!-- END_MODULE Touch_RevisionAdministrator -->
+					</tr>
+				</thead>
+				<tbody><!-- BEGIN revisionTmp -->
+					<tr{current}[raw]>
+						<td class="th1">
+							<div class="acms-admin-form-radio">
+								<input type="radio" name="revision" id="input-radio-{rvid}" value="{rvid}"{checked} id="input-radio-{rvid}" />
+								<label for="input-radio-{rvid}" for="input-radio-{rvid}">
+									<i class="acms-admin-ico-radio"></i><!--T--><span class="acms-admin-hide-visually">バージョンID</span>{rvid}<span class="acms-admin-hide-visually">を選択する</span><!--/T-->
+								</label>
+							</div>
+						</td>
+						<td><span class="acms-admin-table-revison-title">{memo}</span><!-- BEGIN touch:status#open --><!-- END touch:status#open --><!-- BEGIN touch:status#close -->（<!--T-->非公開<!--/T-->）<!-- END touch:status#close --><!-- BEGIN touch:status#draft -->（<!--T-->下書き<!--/T-->）<!-- END touch:status#draft --><!-- BEGIN touch:status#trash -->（<!--T-->ゴミ箱<!--/T-->）<!-- END touch:status#trash --></td>
+						<td><img src="%{ARCHIVES_DIR}{icon}" width="28" height="28" alt="" class="acms-admin-user acms-admin-margin-right-small">{author}</td>
+						<td>{datetime}[date('Y/m/d H:i:s')]</td>
+						<td class="th5">
+							<a href="{confirmUrl}" class="js-get_revision_preview acms-admin-btn-admin"><!--T-->確認<!--/T--></a>
+						</td><!-- BEGIN_MODULE Touch_Approval -->
+						<td>
+							<span class="acms-admin-label"><!--T-->作業領域<!--/T--></span>
+						</td><!-- END_MODULE Touch_Approval -->
+						<td class="th7">
+							<a href="{dupEditUrl}" class="acms-admin-btn-admin"><!--T-->作成<!--/T--></a>
+						</td><!-- BEGIN_MODULE Touch_RevisionAdministrator -->
+						<td class="th8"></td><!-- END_MODULE Touch_RevisionAdministrator -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- END revisionTmp --><!-- END tmpVersion:veil -->
+
+		<!-- BEGIN index:veil -->
+
+		<div class="revision-header">
+			<!-- BEGIN_MODULE Touch_RevisionAdministrator -->
+			<input type="submit" name="ACMS_POST_Revision_Change" value="<!--T-->選択したバージョンを公開<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-margin-bottom-mini acms-admin-float-right" onclick="return confirm('<!--T-->選択したバージョンを公開してもよろしいですか？<!--/T-->');" />
+			<!-- END_MODULE Touch_RevisionAdministrator -->
+
+			<h3 class="acms-admin-title"><!--T-->バージョン一覧<!--/T--><!-- BEGIN_MODULE Touch_Approval -->（<!--T-->バージョンの確認画面から承認依頼をする事ができます<!--/T-->）<!-- END_MODULE Touch_Approval --></h3>
+		</div>
+		<hr class="clearHidden" />
+
+		<div class="acms-admin-table-revison-scroll">
+			<table class="acms-admin-table-admin acms-admin-table-admin-striped acms-admin-table-hover acms-admin-table-revison">
+				<thead>
+					<tr>
+						<th class="th1">ID</th>
+						<th><!--T-->バージョン名<!--/T--></th>
+						<th><!--T-->作成者<!--/T--></th>
+						<th><!--T-->作成日時<!--/T--></th>
+						<th class="th5"><!--T-->確認<!--/T--></th><!-- BEGIN_MODULE Touch_Approval -->
+						<th><!--T-->承認ステータス<!--/T--></th><!-- END_MODULE Touch_Approval -->
+						<th class="th7 acms-admin-table-nowrap"><!--T-->別バージョン<!--/T--></th><!-- BEGIN_MODULE Touch_RevisionAdministrator -->
+						<th class="th8"></th><!-- END_MODULE Touch_RevisionAdministrator -->
+					</tr>
+				</thead>
+				<tbody><!-- BEGIN revision:loop -->
+					<tr{current}[raw]>
+						<td class="th1">
+							<div class="acms-admin-form-radio">
+								<input type="radio" name="revision" id="input-radio-{rvid}" value="{rvid}"{checked} />
+								<label for="input-radio-{rvid}">
+									<i class="acms-admin-ico-radio"></i><!--T--><span class="acms-admin-hide-visually">バージョンID</span>{rvid}<span class="acms-admin-hide-visually">を選択する</span><!--/T-->
+								</label>
+							</div>
+						</td>
+						<td><span class="acms-admin-table-revison-title">{memo}</span><!-- BEGIN touch:status#open --><!-- END touch:status#open --><!-- BEGIN touch:status#close -->（<!--T-->非公開<!--/T-->）<!-- END touch:status#close --><!-- BEGIN touch:status#draft -->（<!--T-->下書き<!--/T-->）<!-- END touch:status#draft --><!-- BEGIN touch:status#trash -->（<!--T-->ゴミ箱<!--/T-->）<!-- END touch:status#trash --></td>
+						<td><img src="%{ARCHIVES_DIR}{icon}" width="28" height="28" class="acms-admin-user acms-admin-margin-right-small" alt="">{author}</td>
+						<td>{datetime}[date('Y/m/d H:i:s')]</td>
+						<td class="th5">
+							<a href="{confirmUrl}" class="js-get_revision_preview acms-admin-btn-admin"><!--T-->確認<!--/T--></a>
+						</td><!-- BEGIN_MODULE Touch_Approval -->
+						<td>
+							<!-- BEGIN_IF [{rvid}/neq/1] -->
+							<!-- BEGIN touch:rev_status#approved -->
+							<span class="acms-admin-label acms-admin-label-info"><!--T-->承認済<!--/T--></span><!-- END touch:rev_status#approved --><!-- BEGIN touch:rev_status#in_review -->
+							<span class="acms-admin-label acms-admin-label-warning"><!--T-->承認中<!--/T--></span><!-- END touch:rev_status#in_review --><!-- BEGIN touch:rev_status#reject -->
+							<span class="acms-admin-label acms-admin-label-danger"><!--T-->却下<!--/T--></span><!-- END touch:rev_status#reject --><!-- BEGIN touch:rev_status#reject -->
+							<span class="acms-admin-label acms-admin-label-danger"><!--T-->却下<!--/T--></span><!-- END touch:rev_status#reject --><!-- BEGIN touch:rev_status#trash -->
+							<span class="acms-admin-label acms-admin-label-danger"><!--T-->削除依頼<!--/T--></span><!-- END touch:rev_status#trash --><!-- BEGIN touch:rev_status#none -->
+							<span class="acms-admin-label"><!--T-->承認前<!--/T--></span><!-- END touch:rev_status#none -->
+							<!-- ELSE -->
+							<span class="acms-admin-label"><!--T-->作業領域<!--/T--></span>
+							<!-- END_IF -->
+						</td><!-- END_MODULE Touch_Approval -->
+						<td class="th7">
+							<a href="{dupEditUrl}" class="acms-admin-btn-admin"><!--T-->作成<!--/T--></a>
+						</td><!-- BEGIN_MODULE Touch_RevisionAdministrator -->
+						<td class="th8"><!-- BEGIN delete -->
+							<input id="%{BID}-%{EID}-{_rvid}" type="button" class="js-revision_delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="<!--T-->削除<!--/T-->" /><!-- END delete -->
+						</td><!-- END_MODULE Touch_RevisionAdministrator -->
+					</tr><!-- END revision:loop -->
+				</tbody>
+			</table>
+		</div>
+	</form>
+</div>
+<!-- END index:veil -->
+<!-- END_MODULE Admin_Entry_Revision_Index -->

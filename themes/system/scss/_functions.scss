@@ -1,0 +1,50 @@
+$z-map-offset: 10;
+$z-map: (
+        js-acms_fix_marker: true,
+        acms-fix-right: true,
+        acms_fix_bg: true,
+        fixed: true,
+        js-acms-drop-down-menu: true,
+        acms-nav: true,
+        acms-main: true,
+        acms-navbar-deep: true,
+        acms-navbar: true,
+        acms-navbar-admin: true,
+        outer-wrap-top: true,
+        acms_fix_bg_index: true,
+        ui-dialog: true,
+        acms-layout-menu: true,
+        acms-drop-area-before: true,
+        acms-drop-area-inner: true,
+        acms-drop-area: true,
+        js-acms-offcanvas-sidebar: true,
+        js-acms-offcanvas-active: true,
+        acms-preview-iframe-wrapper: true,
+        acms-modal: true,
+        select2-container: true,
+        js-edit_inplace-sort_label: true,
+        js-edit_inplace-sort_close: true,
+        js-edit_sort-control-move: true,
+        js-edit_inplace-detail: true,
+        js-edit_inplace-below_control: true,
+        js-edit_inplace-title: true,
+        js-edit_inplace-sort_selection: true,
+        js-edit_inplace-box: true,
+        preview-container: true,
+        js-dragAdminBox: true,
+        js-entry_saving_progress: true,
+        js-loading_splash: true,
+        js-media_view: true,
+        acms-module-edit: true,
+        acms-tooltip: true,
+        smartphoto: true
+);
+
+// z-index
+@function zIndex($name, $childname: 0) {
+  $getkey: map-get($z-map, $name);
+  @if $childname != 0 {
+    @return index($getkey, $childname) + $z-map-offset;
+  }
+  @return inspect(index($z-map, ($name $getkey) )) + $z-map-offset;
+}

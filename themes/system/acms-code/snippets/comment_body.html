@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Comment_Body</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Comment_Body --&gt;
+&lt;!-- BEGIN position:veil --&gt;
+&lt;p&gt;全{amount}件中 {from}件〜{to}件を表示&lt;/p&gt;
+&lt;!-- END position:veil --&gt;
+&lt;!-- BEGIN relation:vail --&gt;
+&lt;div&gt;
+	&lt;!-- BEGIN comment:loop --&gt;
+	&lt;!-- BEGIN div#front --&gt;
+	&lt;div&gt;
+		&lt;!-- END div#front --&gt;
+		&lt;!-- BEGIN body:veil --&gt;
+		&lt;p&gt;&lt;a name="comment-{cmid}"&gt;{title}&lt;!-- BEGIN awaiting#header --&gt;承認待ち&lt;!-- END awaiting#header --&gt;&lt;/a&gt;&lt;/p&gt;
+		&lt;!-- BEGIN replyLink:veil --&gt;
+		&lt;p&gt;&lt;a href="{replyUrl}#comment"&gt;返信&lt;/a&gt;&lt;/p&gt;
+		&lt;!-- END replyLink:veil --&gt;
+		&lt;p&gt;{body}&lt;!-- BEGIN awaiting#body --&gt;このコメントは承認待ちです。&lt;!-- END awaiting#body --&gt;&lt;/p&gt;
+		&lt;p&gt;
+			&lt;!-- BEGIN posterLink#front --&gt;
+			&lt;a href="{url}"&gt;
+			&lt;!-- END posterLink#front --&gt;
+			&lt;!-- BEGIN posterName:veil --&gt;
+			{posterName}
+			&lt;!-- END posterName:veil --&gt;
+			&lt;!-- BEGIN posterLink#rear --&gt;
+			&lt;/a&gt;
+			&lt;!-- END posterLink#rear --&gt;
+			{year}年{month}月{day}日 {hour}時{min}分{sec}秒 ( {week} )
+			&#64;include("/admin/comment/action.html")
+		&lt;/p&gt;
+		&lt;!-- END body:veil --&gt;
+		&lt;!-- BEGIN div#rear --&gt;
+	&lt;/div&gt;
+	&lt;!-- END div#rear --&gt;
+	&lt;!-- END comment:loop --&gt;
+	&lt;!-- BEGIN backLink --&gt;
+	&lt;p&gt;&lt;a href="{url}"&gt;前のコメント&lt;/a&gt;&lt;/p&gt;
+	&lt;!-- END backLink --&gt;
+	&nbsp;
+	&lt;!-- BEGIN forwardLink --&gt;
+	&lt;p&gt;&lt;a href="{url}"&gt;次のコメント&lt;/a&gt;&lt;/p&gt;
+	&lt;!-- END forwardLink --&gt;
+&lt;/div&gt;
+&lt;!-- END relation:vail --&gt;
+&lt;!-- END_MODULE Comment_Body --&gt;
+&#64;include("/admin/comment/edit.html")
+</textarea>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<style type="text/css" media="screen">
+.argRefLeft strong,
+.argRefCenter strong,
+.argRefRight strong {
+  display: block;
+}
+.argRefLeft {
+  float: left;
+  width: 40%;
+  height: 100%;
+}
+.argRefLeft .js-acms_tabs {
+  height: 90%;
+  list-style: none;
+  overflow-y: auto;
+  padding: 0;
+}
+.argRefLeft ul {
+  border: 1px solid silver;
+  border-top: none;
+  border-right: none;
+  padding: 6px 0 0 0;
+}
+.argRefLeft ul li {
+  border-top: 1px solid silver;
+  list-style: none;
+}
+.argRefLeft ul li a {
+  display: block;
+  padding: 5px;
+  color: #4682B4;
+}
+.argRefLeft .js-acms_tab-active {
+  background-color: #4682B4;
+  color: #FFFFFF;
+}
+.argRefCenter {
+  margin: 0 auto;
+  height: 100%;
+}
+.argRefRight {
+  float: left;
+  text-align: left;
+  width: 60%;
+  height: 100%;
+}
+.argRefCenter ul,
+.argRefRight ul {
+  border: 1px solid silver;
+  border-left: none;
+  border-top: none;
+  overflow-y: auto;
+  padding-left: 0;
+}
+.argRefCenter ul {
+  border-left: 1px solid silver;
+}
+.argRefCenter ul li,
+.argRefRight ul li {
+  border-top: 1px solid silver;
+  list-style: none;
+}
+.argRefCenter ul li a,
+.argRefRight ul li a {
+  display: block;
+  padding: 5px;
+  background-color: #FFFFFF;
+  color: #4682B4;
+}
+.argRefCenter ul li a:hover,
+.argRefRight ul li a:hover {
+  background-color: #708090;
+  color: white;
+}
+.argRefCenter ul li a.active,
+.argRefLeft ul li a.active {
+  background: #4682B4;
+  color: #FFFFFF;
+}
+.argRefRight:not(:target) {
+  width: 260px\9;
+  /* IE9・IE10 */
+}
+</style>
+
+<!-- BEGIN_MODULE Ajax_ArgReference -->
+
+<!-- BEGIN bid:touch -->
+    <div class="argRefCenter">
+        <ul><!-- BEGIN blog:loop -->
+            <li><a class="js-arg_reference_anchor" data-id="{value}" data-label="{label}（bid:{value}）">{indent}[raw]{label}</a></li><!-- END blog:loop -->
+        </table>
+    </div>
+<!-- END bid:touch -->
+
+<!-- BEGIN cid:touch -->
+    <div class="argRefLeft">
+    <strong>ブログ</strong>
+        <ul class="js-acms_tabs">
+        <!-- BEGIN blog:loop -->
+            <li><a href="#category_id-group{blog_id}">{blog_name}<!-- ( bid:{blog_id} )--></a></li>
+        <!-- END blog:loop -->
+        </ul>
+    </div>
+    <div class="argRefRight">
+    <strong>カテゴリー</strong>
+        <!-- BEGIN lineage:loop -->
+        <ul id="category_id-group{bid}">
+            <!-- BEGIN category:loop -->
+            <li><a class="js-arg_reference_anchor" data-id="{value}" data-label="{label} ( cid:{value} )">{indent}[raw]{label} ( cid:{value} )</a></li>
+            <!-- END category:loop -->
+        </ul>
+        <!-- END lineage:loop -->
+    </div>
+<!-- END cid:touch -->
+
+<!-- BEGIN ccd:touch -->
+    <div class="argRefLeft">
+    <strong>ブログ</strong>
+        <ul class="js-acms_tabs">
+        <!-- BEGIN blog:loop -->
+            <li><a href="#category_code-group{blog_id}">{blog_name}<!-- ( bid:{blog_id} )--></a></li>
+        <!-- END blog:loop -->
+        </ul>
+    </div>
+    <div class="argRefRight">
+    <strong>カテゴリー</strong>
+        <!-- BEGIN lineage:loop -->
+        <ul id="category_code-group{bid}">
+            <!-- BEGIN category:loop -->
+            <li><a href="{code}" class="js-arg_reference_anchor">{indent}[raw]{label} ( {code} )</a></li>
+            <!-- END category:loop -->
+        </ul>
+        <!-- END lineage:loop -->
+    </div>
+<!-- END ccd:touch -->
+
+<!-- BEGIN eid:touch -->
+%{scope}
+<!-- END eid:touch -->
+
+<!-- BEGIN ecd:touch -->
+%{scope}
+<!-- END ecd:touch -->
+
+<!-- BEGIN uid:touch -->
+    <div class="argRefLeft">
+    <strong>ブログ</strong>
+        <ul class="js-acms_tabs">
+        <!-- BEGIN blog:loop -->
+            <li><a href="#user_id-group{blog_id}">{blog_name}<!-- ( bid:{blog_id} )--></a></li>
+        <!-- END blog:loop -->
+        </ul>
+    </div>
+    <div class="argRefRight">
+    <strong>ユーザー</strong>
+        <!-- BEGIN lineage:loop -->
+        <ul id="user_id-group{blog_id}">
+            <!-- BEGIN user:loop -->
+            <li><a class="js-arg_reference_anchor" data-id="{user_id}" data-label="{user_name} ( uid:{user_id} )">{user_name} ( uid:{user_id} )</a></li>
+            <!-- END user:loop -->
+        </ul>
+        <!-- END lineage:loop -->
+    </div>
+<!-- END uid:touch -->
+
+<!-- BEGIN ucd:touch -->
+    <div class="argRefLeft">
+    <strong>ブログ</strong>
+        <ul class="js-acms_tabs">
+        <!-- BEGIN blog:loop -->
+            <li><a href="#user_code-group{blog_id}">{blog_name}<!-- ( bid:{blog_id} )--></a></li>
+        <!-- END blog:loop -->
+        </ul>
+    </div>
+    <div class="argRefRight">
+    <strong>ユーザー</strong>
+        <!-- BEGIN lineage:loop -->
+        <ul id="user_code-group{blog_id}">
+            <!-- BEGIN user:loop -->
+            <li><a href="{user_code}" class="js-arg_reference_anchor">{user_name}<!-- BEGIN user_code:veil --> ( {user_code} )<!-- END user_code:veil --></a></li>
+            <!-- END user:loop -->
+        </ul>
+        <!-- END lineage:loop -->
+    </div>
+<!-- END ucd:touch -->
+
+<!-- END_MODULE Ajax_ArgReference -->

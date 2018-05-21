@@ -1,0 +1,63 @@
+<style>
+.alert{
+	position:relative;
+	background-color: #007bff;
+	padding:10px;
+	color:#FFFFFF;
+}
+.alert:before{
+    content:"";
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 8px 10px 8px;
+	border-color: transparent transparent #007bff transparent;
+	position:absolute;
+	top:-10px;
+	left:20px;
+}
+</style>
+<!-- BEGIN_MODULE Form -->
+						
+<!-- BEGIN step -->
+<form action="?step=reapply" method="post">
+	<input type="text" name="zip1" value="{zip1}" />
+	<input type="hidden" name="field[]" value="zip1" /> -
+	<input type="text" name="zip2" value="{zip2}" />
+	<input type="hidden" name="field[]" value="zip2" />
+	<input type="hidden" name="zip1:v#required" />
+	<input type="hidden" name="zip2:v#required" />
+	<!-- BEGIN_IF [<!-- BEGIN zip1:validator -->error<!-- END zip1:validator--><!-- BEGIN zip2:validator -->error<!-- END zip2:validator -->/nem/] -->
+	    <p class="alert">郵便番号が完全に入力されていません。</p>
+	<!-- END_IF -->
+	<p>
+	<input type="hidden" name="step" value="confirm">
+	<input type="hidden" name="id" value="contactForm">
+	<input type="submit" name="ACMS_POST_Form_Confirm" value="入力内容の確認" id="btnConfirm" class="cs-btn"></p>
+</form>
+<!-- END step -->
+
+<!-- BEGIN step#reapply -->
+<!-- フォームステップ：修正・エラー -->
+<form action="?step=reapply" method="post">
+	<input type="text" name="zip1" value="{zip1}" />
+	<input type="hidden" name="field[]" value="zip1" /> -
+	<input type="text" name="zip2" value="{zip2}" />
+	<input type="hidden" name="field[]" value="zip2" />
+	<input type="hidden" name="zip1:v#required" />
+	<input type="hidden" name="zip2:v#required" />
+	<!-- BEGIN_IF [<!-- BEGIN zip1:validator -->error<!-- END zip1:validator--><!-- BEGIN zip2:validator -->error<!-- END zip2:validator -->/nem/] -->
+	    <p class="alert">郵便番号が完全に入力されていません。</p>
+	<!-- END_IF -->
+	<p>
+	<input type="hidden" name="step" value="confirm">
+	<input type="hidden" name="id" value="contactForm">
+	<input type="submit" name="ACMS_POST_Form_Confirm" value="入力内容の確認" id="btnConfirm" class="cs-btn"></p>
+</form>
+<!-- END step#reapply -->
+
+<!-- BEGIN step#confirm -->
+<p class="alert">あなたの入力した郵便番号は、{zip1} - {zip2}です</p>
+<!-- END step#confirm -->
+
+<!-- END_MODULE Form -->

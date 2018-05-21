@@ -1,0 +1,8 @@
+「%{ENTRY_TITLE} | %{BLOG_NAME}」に
+新しいコメントが追加されました。
+{commentUrl}
+
+名前 : {name}[raw]
+URL  : {url}
+
+{body}[raw]

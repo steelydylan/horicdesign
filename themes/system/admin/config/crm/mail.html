@@ -1,0 +1,139 @@
+<h1>プラグイン用　コンフィグ管理</h1>
+@include("/admin/crm/topicpath.html")
+<!-- BEGIN_MODULE Admin_Config -->
+<div class="titleWrapper">
+	<h2>メール設定</h2><!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+	<a href="{shortcutUrl}" class="shortcutBtn">ショートカットに追加</a><!-- END_MODULE Touch_SessionWithAdministration -->
+</div>
+<div class="contents">
+
+<form action="" method="post">
+	<p class="transaction-notice-{config:validator}">コンフィグを保存出来ませんでした。</p>
+
+    <h3>SMTPサーバ</h3>
+    <table class="adminTable adminTableY">
+        <tr>
+            <th>ホスト名 <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmSmtpHost" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_smtp-host" value="{crm_smtp-host}" size="40" />
+                <input type="hidden" name="config[]" value="crm_smtp-host" />
+            </td>
+        </tr>
+        <tr>
+            <th>ポート <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmSmtpPort" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_smtp-port" value="{crm_smtp-port}" size="4" />
+                <input type="hidden" name="config[]" value="crm_smtp-port" />
+            </td>
+        </tr>
+        <tr>
+            <th>メールアドレス <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmSmtpUser" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_smtp-user" value="" style="display:none;" />
+                <input type="text" name="crm_smtp-user" value="{crm_smtp-user}" size="20" autocomplete="off" />
+                <input type="hidden" name="config[]" value="crm_smtp-user" />
+            </td>
+        </tr>
+        <tr>
+            <th>パスワード <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmSmtpPass" class="tooltipIcon" /></th>
+            <td>
+                <input type="password" name="crm_smtp-pass" value="" style="display:none;" />
+                <input type="password" name="crm_smtp-pass" value="{crm_smtp-pass}" size="20" autocomplete="off" />
+                <input type="hidden" name="config[]" value="crm_smtp-pass" />
+            </td>
+        </tr>
+    </table>
+    
+    <h3>sendmail設定</h3>
+    <p>sendmailを利用される場合は、上記のSMTPサーバ設定を空欄にしてください</p>
+    <table class="adminTable adminTableY">
+        <tr>
+            <th>ユーザー名 <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmSendmailUser" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_sendmail-user" value="" style="display:none;" />
+                <input type="text" name="crm_sendmail-user" value="{crm_sendmail-user}" size="20" autocomplete="off" />
+                <input type="hidden" name="config[]" value="crm_sendmail-user" />
+            </td>
+        </tr>
+        <tr>
+            <th>メールアドレス <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmSendmailAddress" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_sendmail-address" value="" style="display:none;" />
+                <input type="text" name="crm_sendmail-address" value="{crm_sendmail-address}" size="20" autocomplete="off" />
+                <input type="hidden" name="config[]" value="crm_sendmail-address" />
+            </td>
+        </tr>
+    </table>
+    
+    <h3>POPサーバ</h3>
+    <table class="adminTable adminTableY">
+        <tr>
+            <th>ホスト名 <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmPopHost" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_pop-host" value="{crm_pop-host}" size="40" />
+                <input type="hidden" name="config[]" value="crm_pop-host" />
+            </td>
+        </tr>
+        <tr>
+            <th>ポート <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmPopPort" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_pop-port" value="{crm_pop-port}" size="4" />
+                <input type="hidden" name="config[]" value="crm_pop-port" />
+            </td>
+        </tr>
+        <tr>
+            <th>メールアドレス <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmPopUser" class="tooltipIcon" /></th>
+            <td>
+                <input type="text" name="crm_pop-user" value="" style="display:none;" />
+                <input type="text" name="crm_pop-user" value="{crm_pop-user}" size="20" autocomplete="off" />
+                <input type="hidden" name="config[]" value="crm_pop-user" />
+            </td>
+        </tr>
+        <tr>
+            <th>パスワード <img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-crmPopPass" class="tooltipIcon" /></th>
+            <td>
+                <input type="password" name="crm_pop-pass" value="" style="display:none;" />
+                <input type="password" name="crm_pop-pass" value="{crm_pop-pass}" size="20" autocomplete="off" />
+                <input type="hidden" name="config[]" value="crm_pop-pass" />
+            </td>
+        </tr>
+    </table>
+    
+    <h3>受信拒否ドメイン設定</h3>
+		<table class="adminTable js-fieldgroup-sortable">
+			<tr>
+				<th>ドメイン<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-denyDomain" class="tooltipIcon" /></th>
+                <th></th>
+			</tr><!-- BEGIN crm_denydomain:loop -->
+            <tr class="sortable-item">
+                <td><input type="text" name="crm_denydomain_label[{i}]" value="{crm_denydomain_label}" size="80" /></td>
+                <td><input type="button" value="削除" class="item-delete" /></td>
+            </tr><!-- END crm_denydomain:loop -->
+            <tr class="sortable-item item-template">
+                <td><input type="text" name="crm_denydomain_label[]" value="" size="80"  /></td>
+                <td><input type="button" value="削除" class="item-delete" /></td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="button" value="追加" class="item-insert" /></td>
+            </tr>
+		</table>
+        <input type="hidden" name="@crm_denydomain[]" value="crm_denydomain_label" />
+		<input type="hidden" name="config[]" value="crm_denydomain_label" />
+        <input type="hidden" name="config[]" value="@crm_denydomain" />
+    
+	<!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+
+	<table class="adminTable">
+		<tr>
+			<td class="systemBtn">
+				<input type="submit" name="ACMS_POST_Pluginconf" value="保存" />
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
+<!-- END_MODULE Admin_Config -->
+
+@include("/admin/config/crm/tooltip/mail.html")

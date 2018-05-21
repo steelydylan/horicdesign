@@ -1,0 +1,45 @@
+
+.sample_headerWrapper{
+	background-color: #FFF;
+	border-bottom: 1px solid #333333;
+}
+.sample_header{
+	max-width: 940px;
+	margin: 0 auto;
+}
+.sample_header li{
+	display: inline-block;
+	padding: 15px;
+	list-style-type: none;
+	position: relative;
+}
+.sample_header a{
+	display: block;
+	padding: 15px;
+	margin: -15px;
+}
+.sample_header a,
+.sample_header :link,
+.sample_header :hover,
+.sample_header :visited{
+	text-decoration: none;
+	color: #008CBA;
+}
+.sample_header li:after{
+	content: "";
+	position: absolute;	
+	height: 4px;
+	background-color: #008CBA;
+	bottom:-2px;
+	width: 0;
+	left: 50%;
+	-webkit-transition: all ease-out 0.2s;
+	   -moz-transition: all ease-out 0.2s;
+	    -ms-transition: all ease-out 0.2s;
+	     -o-transition: all ease-out 0.2s;
+	        transition: all ease-out 0.2s;
+}
+.sample_header li:hover:after{
+	left: 0;
+	width: 100%;
+}

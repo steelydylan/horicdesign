@@ -1,0 +1,49 @@
+<section id="at-first" class="sectionBox">
+
+<h1 class="sectionTitle">まず始めに</h1>
+
+<h2 class="sectionTitle2">同梱されているもの</h2>
+<div>
+	<ul>
+		<li>acms.css</li>
+		<li>acms.min.css</li>
+		<li>acms-admin.css</li>
+		<li>acms-admin.min.css</li>
+	</ul>
+</div>
+
+<p class="%{STYLEGUIDE_PAGE}-text-danger">※Ver.1.1.0よりacms-lite.cssがなくなりました</p>
+
+<!-- BEGIN_IF [%{STYLEGUIDE_PAGE}/eq/acms] -->
+<p>このスタイルガイドのページではCSSフレームワークとしてご利用いただける acms.css の記述でご紹介しています。</p>
+<!-- ELSE_IF [%{STYLEGUIDE_PAGE}/eq/acms-admin] -->
+<p>このスタイルガイドのページでは管理画面でご利用いただける acms-admin.css の記述でご紹介しています。</p>
+<!-- END_IF -->
+
+<h3 class="sectionTitle3">acms.cssとacms-admin.cssの違い</h3>
+<table class="%{STYLEGUIDE_PAGE}-table %{STYLEGUIDE_PAGE}-table-bordered">
+	<tr>
+		<th>CSSファイル名</th>
+		<th>クラス名の接頭辞</th>
+		<th>主な使用場所</th>
+	</tr>
+	<tr>
+		<td>acms.css</td>
+		<td><code class="%{STYLEGUIDE_PAGE}-code">.acms-</code></td>
+		<td>公式テーマ、一部管理画面内（スタイルガイド）</td>
+	</tr>
+	<tr>
+		<td>acms-admin.css</td>
+		<td><code class="%{STYLEGUIDE_PAGE}-code">.acms-admin-</code></td>
+		<td>公式テーマ、管理画面</td>
+	</tr>
+</table>
+
+<p class="%{STYLEGUIDE_PAGE}-text-danger">※ a-blog cms Ver.2.5より、CMSのバージョンと一緒にCSSファイルのバージョンも上げないようにするため、管理画面で使っているCSSファイルと、CSSフレームワークとして使うCSSファイルを分けることになりました。</p>
+
+<p>スタイルガイドのスタイルを管理画面以外で使う場合には、acms.cssを読み込んでお使いください。</p>
+
+<h2 class="sectionTitle2">CMSのアップデートをするときは</h2>
+<p>CMSのアップデートをするときは、acms-admin.cssはCMSと一緒にアップデートし、acms.cssはカスタマイズしているテーマ内で使用してください。</p>
+
+</section>

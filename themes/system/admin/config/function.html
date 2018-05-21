@@ -1,0 +1,557 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!-- BEGIN_MODULE Admin_Rule_Name -->
+				<strong><!--T-->ルール<!--/T--> : {name} の</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+				<strong><!--T-->モジュールID<!--/T--> : {label} ( {identifier} ) の</strong><!-- END_MODULE Admin_Module_Name --><!--T-->機能設定<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config -->
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->機能設定を保存しました<!--/T--></p><!-- END_IF -->
+
+<p class="transaction-notice-{config:validator} acms-admin-alert acms-admin-alert-danger"><!--T-->コンフィグを保存出来ませんでした。<!--/T--></p>
+
+<form action="" method="post" class="js-adminSave acms-admin-form">
+	<div class="js-acms_fix_marker acms_fix_bg">
+		<div class="acms-admin-form-group acms_fix_bg_index">
+			<a href="{indexUrl}" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+			<input type="submit" name="ACMS_POST_Config" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<div class="acms-admin-float-right">
+				<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_import-part/?rid=%{rid}" class="acms-admin-btn-admin"><!--T-->インポート<!--/T--></a>
+				<input type="submit" name="ACMS_POST_Config_PartExport" class="acms-admin-btn-admin" value="<!--T-->エクスポート<!--/T-->"/>
+				<a href="{shortcutUrl}" class="acms-admin-btn-admin"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a>
+			</div>
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+		</div>
+	</div>
+
+	<h3 class="acms-admin-admin-title2"><!--T-->基本<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->キャッシュ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->キャッシュ機能の設定状態です。チェックが外された場合、キャッシュ機能は動作しません。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="cache" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="cache" value="on"{cache:checked#on} id="input-checkbox-cache" />
+					<label for="input-checkbox-cache"><i class="acms-admin-ico-checkbox"></i><!--T-->有効<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="cache" />
+			</td>
+		</tr><!-- BEGIN_MODULE Touch_RootBlog -->
+		<tr>
+			<th><!--T-->キャッシュ自動生成<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->キャッシュクリア後に自動的にキャッシュ生成リストにあるページをキャッシュします。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="cache_auto_generate" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="cache_auto_generate" value="on"{cache_auto_generate:checked#on} id="input-checkbox-cache-auto-generate" />
+					<label for="input-checkbox-cache-auto-generate"><i class="acms-admin-ico-checkbox"></i><!--T-->有効<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="cache_auto_generate" />
+			</td>
+		</tr><!-- END_MODULE Touch_RootBlog -->
+		<tr>
+			<th><!--T-->キャッシュ有効時間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->キャッシュが有効な時間です。この時間内で同じデータに複数回アクセスがあった場合、2回目以降はキャッシュファイルが表示されます。<!--/T-->"></i></th>
+			<td>
+				<input class="acms-admin-form-width-mini" type="text" name="cache_expire" value="{cache_expire}" size="8" /> <!--T-->秒<!--/T-->
+				<input type="hidden" name="config[]" value="cache_expire" />
+				<input type="hidden" name="cache_expire:validator#digits" id="validator-cache_expire-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-cache_expire-digits" class="validator-result-{cache_expire:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->キャッシュの感度<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックすると、下位または上位ブログが更新された場合にもキャッシュのリフレッシュ（現在存在するキャッシュの有効期限を終了）を行うようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="cache_sensitivity" value="low" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="cache_sensitivity" value="high"{cache_sensitivity:checked#high} id="input-checkbox-cache_sensitivity" />
+					<label for="input-checkbox-cache_sensitivity">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->祖先ブログまたは子孫ブログが更新されたときにもキャッシュをリフレッシュする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="cache_sensitivity" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->クライアントのキャッシュ有効時間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->サイトを閲覧している端末のクライアント（ブラウザ）のキャッシュの有効時間です。この時間内はクライアント側のキャッシュが使用されサーバにアクセスしません。そのためページが更新された場合にも反映されないことがあります。ブラウザの再読込ボタンを押したり、キャッシュを消去しないとページが切り替わらないことがあります。<!--/T-->"></i></th>
+			<td>
+				<input class="acms-admin-form-width-mini" type="text" name="cache_expire_client" value="{cache_expire_client}" size="4" /> <!--T-->秒<!--/T-->
+				<input type="hidden" name="config[]" value="cache_expire_client" />
+				<input type="hidden" name="cache_expire_client:validator#digits" id="validator-cache_expire_client-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-cache_expire_client-digits" class="validator-result-{cache_expire_client:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->アクセスログ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->アクセスに関するログを記録してデータベースに記録します。取得しないという選択肢もあります。保存期間を越えたログは自動的に削除されます。また、ここで取得したログは「その他管理」内の「バックアップ」からCSVデータとしてダウンロードできます。<!--/T-->"></i></th>
+			<td>
+				<select type="text" name="log_access" class="js-select2">
+					<option value="off"{log_access:selected#off}><!--T-->取得しない<!--/T--></option>
+					<option value="post"{log_access:selected#post}><!--T-->POSTのみ取得<!--/T--></option>
+					<option value="on"{log_access:selected#on}><!--T-->全て取得<!--/T--></option>
+				</select>
+				<input type="hidden" name="config[]" value="log_access" />
+				<!-- BEGIN_MODULE Touch_RootBlog -->
+				<!--T-->保存期間<!--/T-->
+				<select type="text" name="log_access_save_period" class="js-select2">
+					<option value="7"{log_access_save_period:selected#7}>7<!--T-->日間<!--/T--></option>
+					<option value="30"{log_access_save_period:selected#30}>30<!--T-->日間<!--/T--></option>
+					<option value="90"{log_access_save_period:selected#90}>90<!--T-->日間<!--/T--></option>
+					<option value="365"{log_access_save_period:selected#365}>1<!--T-->年間<!--/T--></option>
+				</select>
+				<input type="hidden" name="config[]" value="log_access_save_period" />
+				<!-- END_MODULE Touch_RootBlog --><!-- BEGIN_MODULE Touch_NotRootBlog -->
+				<!--T-->保存期間 {log_access_save_period}日間 (保存期間はルートブログで設定できます)<!--/T-->
+				<!-- END_MODULE Touch_NotRootBlog -->
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->RSS,Sitemap.xml 出力なし<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをつけると、このブログをRSSとSitemap.xmlに出力をしないように設定<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="feed_output_disable" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="feed_output_disable" value="on"{feed_output_disable:checked#on} id="input-checkbox-feed-output-disable" />
+					<label for="input-checkbox-feed-output-disable">
+						<i class="acms-admin-ico-checkbox"></i>
+						<!--T-->このブログをRSS, Sitemap.xmlに出力しない<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="feed_output_disable" />
+
+
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->メールマガジン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーを、ブログの登録ユーザー（メールマガジン配信希望者）にメールとして配信できるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="mailmagazine" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="mailmagazine" value="on"{mailmagazine:checked#on} id="input-checkbox-mailmagazine" />
+					<label for="input-checkbox-mailmagazine">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->メールマガジンを発行する<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="mailmagazine" />
+
+
+			</td>
+		</tr><!-- BEGIN_MODULE Touch_EditionIsProfessional -->
+		<tr>
+			<th><!--T-->承認機能<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとエントリーで承認機能が利用できるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="manage_approval" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="manage_approval" value="on"{manage_approval:checked#on} id="input-checkbox-manage-approval" />
+					<label for="input-checkbox-manage-approval">
+						<i class="acms-admin-ico-checkbox"></i>
+						<!--T-->承認機能を利用可能にする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="manage_approval" />
+			</td>
+		</tr><!-- BEGIN_IF [%{BID}/neq/1] -->
+		<tr>
+			<th><!--T-->承認ブログ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると祖先ブログの管理者・編集者でも承認できるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="blog_manage_approval" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="blog_manage_approval" value="on"{blog_manage_approval:checked#on} id="input-checkbox-blog-manage-approval" />
+					<label for="input-checkbox-blog-manage-approval"><i class="acms-admin-ico-checkbox"></i><!--T-->上の階層ブログの管理者・編集も承認可能にする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="blog_manage_approval" />
+			</td>
+		</tr><!-- END_IF -->
+		<tr><!-- END_MODULE Touch_EditionIsProfessional -->
+			<th><!--T-->バージョン管理<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとエントリーのバージョン管理ができるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="manage_revisions" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="manage_revisions" value="on"{manage_revisions:checked#on} id="input-checkbox-manage-revisions" />
+					<label for="input-checkbox-manage-revisions"><i class="acms-admin-ico-checkbox"></i><!--T-->バージョン管理を利用可能にする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="manage_revisions" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->動的フォーム<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとエントリー毎にフォームの作成ができるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="form_edit_action_direct" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="form_edit_action_direct" value="on"{form_edit_action_direct:checked#on} id="input-checkbox-form-edit-action-direct" />
+					<label for="input-checkbox-form-edit-action-direct">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->動的フォームを利用可能にする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="form_edit_action_direct" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->メディア管理<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとメディア（アップロードした画像）の管理ができるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="media_library" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="media_library" value="on"{media_library:checked#on} id="input-checkbox-media-library" />
+					<label for="input-checkbox-media-library">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->メディア管理を利用可能にする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="media_library" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->レイアウト表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとブログ間でレイアウトを共有できるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="layout_blog_free" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="layout_blog_free" value="on"{layout_blog_free:checked#on} id="input-checkbox-layout-blog-free" />
+					<label for="input-checkbox-layout-blog-free">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->ブログ間でレイアウトを共有できるようにする<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="layout_blog_free" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->オンラインアップデート<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->システムの更新でのバージョンチェックでチェックする範囲を指定します。<!--/T-->"></i></th>
+			<td>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="system_update_range" value="patch"{system_update_range:checked#patch} id="input-radio-system_update_range_patch" />
+					<label for="input-radio-system_update_range_patch">
+						<i class="acms-admin-ico-radio"></i><!--T-->パッチバージョンのみ<!--/T-->
+					</label>
+				</div>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="system_update_range" value="minor"{system_update_range:checked#minor} id="input-radio-system_update_range_minor" />
+					<label for="input-radio-system_update_range_minor">
+						<i class="acms-admin-ico-radio"></i><!--T-->マイナーバージョンも含める<!--/T-->
+					</label>
+				</div>
+				<div class="acms-admin-form-radio">
+					<input type="radio" name="system_update_range" value="none"{system_update_range:checked#none} id="input-radio-system_update_range_none" />
+					<label for="input-radio-system_update_range_none">
+						<i class="acms-admin-ico-radio"></i><!--T-->更新メニューを非表示<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="system_update_range" />
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="acms-admin-admin-title2"><!--T-->パスワードポリシー<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->最小文字数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->最小文字数を設定します<!--/T-->"></i></th>
+			<td>
+				<input  type="text" name="password_validator_min" value="{password_validator_min}" size="3" /> <!--T-->文字<!--/T-->
+				<input type="hidden" name="config[]" value="password_validator_min" />
+				<input type="hidden" name="password_validator_min:validator#digits" id="validator-password_validator_min-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-password_validator_min-digits" class="validator-result-{password_validator_min:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->最大文字数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->最大文字数を設定します<!--/T-->"></i></th>
+			<td>
+				<input  type="text" name="password_validator_max" value="{password_validator_max}" size="3" /> <!--T-->文字<!--/T-->
+				<input type="hidden" name="config[]" value="password_validator_max" />
+				<input type="hidden" name="password_validator_max:validator#digits" id="validator-password_validator_max-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-password_validator_max-digits" class="validator-result-{password_validator_max:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->大文字<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->半角大文字を１つ以上含めるか設定します<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="password_validator_uppercase" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="password_validator_uppercase" value="on"{password_validator_uppercase:checked#on} id="input-checkbox-password_validator_uppercase" />
+					<label for="input-checkbox-password_validator_uppercase"><i class="acms-admin-ico-checkbox"></i><!--T-->１つ以上含める<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="password_validator_uppercase" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->小文字<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->半角小文字を１つ以上含めるか設定します<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="password_validator_lowercase" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="password_validator_lowercase" value="on"{password_validator_lowercase:checked#on} id="input-checkbox-password_validator_lowercase" />
+					<label for="input-checkbox-password_validator_lowercase"><i class="acms-admin-ico-checkbox"></i><!--T-->１つ以上含める<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="password_validator_lowercase" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->数値<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->半角数値を１つ以上含めるか設定します<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="password_validator_digits" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="password_validator_digits" value="on"{password_validator_digits:checked#on} id="input-checkbox-password_validator_digits" />
+					<label for="input-checkbox-password_validator_digits"><i class="acms-admin-ico-checkbox"></i><!--T-->１つ以上含める<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="password_validator_digits" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->記号<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->半角記号を１つ以上含めるか設定します<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="password_validator_symbols" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="password_validator_symbols" value="on"{password_validator_symbols:checked#on} id="input-checkbox-password_validator_symbols" />
+					<label for="input-checkbox-password_validator_symbols"><i class="acms-admin-ico-checkbox"></i><!--T-->１つ以上含める<!--/T--> ( ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [  ] ^ _ ` { | } ~ )</label>
+				</div>
+				<input type="hidden" name="config[]" value="password_validator_symbols" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->種類<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->大文字、小文字、数値、記号のうち３種類以上使用の判定を設定します<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="password_validator_3type" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="password_validator_3type" value="on"{password_validator_3type:checked#on} id="input-checkbox-password_validator_3type" />
+					<label for="input-checkbox-password_validator_3type"><i class="acms-admin-ico-checkbox"></i><!--T-->大文字、小文字、数値、記号のうち、３種類を含む<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="password_validator_3type" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ブラックリスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->パスワードで使うNGワードの設定です。カンマ、スペース、改行のいずれかで単語が区切れます。<!--/T-->"></i></th>
+			<td>
+				<textarea name="password_validator_blacklist" cols="60" rows="5" placeholder="Passw0rd,Password123,password,pass">{password_validator_blacklist}</textarea>
+				<input type="hidden" name="config[]" value="password_validator_blacklist" />
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="acms-admin-admin-title2"><!--T-->ログイン<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->ログインクッキー有効時間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ログイン画面で「パスワードを保存」のチェックボックスにチェックした場合、この有効時間内はログイン状態を保持できます。<!--/T-->"></i></th>
+			<td>
+				<input class="acms-admin-form-width-mini" type="text" name="login_cookie_lifetime" value="{login_cookie_lifetime}" size="8" /> <!--T-->秒<!--/T-->
+				<input type="hidden" name="config[]" value="login_cookie_lifetime" />
+				<input type="hidden" name="login_cookie_lifetime:validator#digits" id="validator-login_cookie_lifetime-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-login_cookie_lifetime-digits" class="validator-result-{login_cookie_lifetime:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->現在のURLでログイン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ログイン後にリダイレクトされずに、そのままのページでログインします。<!--/T-->"></i></th>
+			<td>
+				<div class="acms-admin-form-checkbox">
+					<input id="input-checkbox-login_auto_redirect" type="checkbox" name="login_auto_redirect" value="on"{login_auto_redirect:checked#on} />
+					<label for="input-checkbox-login_auto_redirect"><i class="acms-admin-ico-checkbox"></i><!--T-->現在のURLでログイン ※チェックされている場合、管理ページへのリダイレクトは無効になります。<!--/T--></label>
+				</div><br />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ログイン後ページの指定<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ログイン後に表示したい管理ページのacmsパスを指定できます。<!--/T-->"></i></th>
+			<td>
+				admin/<input type="text" name="login_admin_path" value="{login_admin_path}" size="20" />
+				<input type="hidden" name="config[]" value="login_auto_redirect" />
+				<input type="hidden" name="config[]" value="login_admin_path" />
+				<!--T-->※ログイン後に表示したい管理ページのacmsパスを指定できます。<!--/T-->
+			</td>
+		</tr>
+		<!-- BEGIN_MODULE Touch_SslEnable -->
+		<tr>
+			<th><!--T-->ログイン後ページのSSL<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ログイン後に表示するページでSSLを使用します。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="login_ssl" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="login_ssl" value="on"{login_ssl:checked#on} id="input-checkbox-login_ssl" />
+					<label for="input-checkbox-login_ssl">
+						<i class="acms-admin-ico-checkbox"></i>
+						<!--T-->ログイン後に表示するページでSSLを使用する。<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="login_ssl" />
+			</td>
+		</tr><!-- END_MODULE Touch_SslEnable -->
+		<tr>
+			<th><!--T-->ユーザー登録の外部申請<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると読者登録の受付ができるようになります。ログインページ内に読者登録ページへのリンクが表示されます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="subscribe" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="subscribe" value="on"{subscribe:checked#on} id="input-checkbox-subscribe" />
+					<label for="input-checkbox-subscribe"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザー登録の外部申請を受け付ける<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="subscribe" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->外部申請時のアクティベーション<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、読者登録フォームに入力された内容で、即座に有効なユーザーが作成されます。チェックをしない場合は仮ユーザーとして作成し、登録者宛メールに記載されているパスワードを使って最初にログインした時点で有効なユーザーとして登録されます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="subscribe_activation" value="on" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="subscribe_activation" value="off"{subscribe_activation:checked#off} id="input-checkbox-subscribe_activation" />
+					<label for="input-checkbox-subscribe_activation"><i class="acms-admin-ico-checkbox"></i><!--T-->メールアドレスの有効性とパスワード認証を行わない<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="subscribe_activation" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->外部申請「どこでもログイン」<!--/T--><i class="acms-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると読者登録ユーザの「どこでもログイン」の初期値が「ON」に設定されます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="subscribe_login_anywhere" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="subscribe_login_anywhere" value="on"{subscribe_login_anywhere:checked#on} id="input-checkbox-subscribe_login_anywhere" />
+					<label for="input-checkbox-subscribe_login_anywhere"><i class="acms-admin-ico-checkbox"></i><!--T-->購読者を「どこでもログイン」を有効で作成する<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="subscribe_login_anywhere" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->外部申請時の権限<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->外部申請で登録されるユーザーの権限を設定します。<!--/T-->"></i></th>
+			<td>
+				<select type="text" name="subscribe_auth" class="js-select2">
+					<option value="subscriber"{subscribe_auth:selected#subscriber}><!--T-->読者<!--/T--></option>
+					<option value="contributor"{subscribe_auth:selected#contributor}><!--T-->投稿者<!--/T--></option>
+					<option value="editor"{subscribe_auth:selected#editor}><!--T-->編集者<!--/T--></option>
+					<!--<option value="administrator"{subscribe_auth:selected#administrator}>管理者</option>-->
+				</select> <!--T-->でユーザーを登録する<!--/T-->
+				<input type="hidden" name="config[]" value="subscribe_auth" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ログイン中の投稿者<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると投稿者権限ユーザーがログインしている場合、自身が投稿したエントリーのみ表示されるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="session_contributor_only_own_entry" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="session_contributor_only_own_entry" value="on"{session_contributor_only_own_entry:checked#on} id="input-checkbox-session_contributor_only_own_entry" />
+					<label for="input-checkbox-session_contributor_only_own_entry">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->ログイン中の投稿者には、自分が投稿したエントリーのみ表示する<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="session_contributor_only_own_entry" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->編集、管理ページ以外の表示<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると投稿者以上の権限であっても管理画面、編集画面以外は、購読者（閲覧者）と同じ条件で表示するようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="session_contributor_only_own_entry" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="subscriber_view_mode" value="on"{subscriber_view_mode:checked#on} id="input-checkbox-subscriber_view_mode" />
+					<label for="input-checkbox-subscriber_view_mode">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->投稿者以上の権限であっても管理画面、編集画面以外は、購読者（閲覧者）と同じ条件で表示する<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="config[]" value="subscriber_view_mode" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->SNSログイン機能<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとSNSログインができるようになります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="snslogin" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="snslogin" value="on"{snslogin:checked#on} id="input-checkbox-snslogin" />
+					<label for="input-checkbox-snslogin"><i class="acms-admin-ico-checkbox"></i><!--T-->SNSログインを利用可能にする<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="snslogin" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->SNSログイン使用権限<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->SNSログイン機能を使えるユーザー権限を設定します。<!--/T-->"></i></th>
+			<td>
+				<select name="snslogin_auth" class="js-select2">
+					<option value="subscriber"{snslogin_auth:selected#subscriber}><!--T-->読者のみ<!--/T--></option>
+					<option value="contributor"{snslogin_auth:selected#contributor}><!--T-->投稿者以下<!--/T--></option>
+					<option value="editor"{snslogin_auth:selected#editor}><!--T-->編集者以下<!--/T--></option>
+					<option value="administrator"{snslogin_auth:selected#administrator}><!--T-->全ての権限<!--/T--></option>
+				</select> <!--T-->でSNSログインを使用する。<!--/T-->
+				<input type="hidden" name="config[]" value="snslogin_auth" />
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="acms-admin-admin-title2"><!--T-->コメント<!--/T--></h3>
+	<table class="adminTable acms-admin-table-admin-edit">
+		<tr>
+			<th><!--T-->コメント機能<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->エントリーのコメントを受け取るか／受け取らないかの設定状態です。コメントフォームはテンプレート内のentry_bodyモジュールに記述されている必要があります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="comment" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="comment" value="on"{comment:checked#on} id="input-checkbox-comment" />
+					<label for="input-checkbox-comment"><i class="acms-admin-ico-checkbox"></i><!--T-->コメントを受け取る<!--/T--></label>
+				</div>
+				<input type="hidden" name="config[]" value="comment" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->コメント受信時の初期状態<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->投稿されたコメントが「承認待ち」「公開」「非公開」のどの状態になるか選択します。「公開」以外の場合は、編集者以上の権限を持つユーザーが個別に公開するものになります。<!--/T-->"></i></th>
+			<td>
+				<select type="text" name="comment_status" class="js-select2">
+					<option value="awaiting"{comment_status:selected#awaiting}><!--T-->承認待ち<!--/T--></option>
+					<option value="open"{comment_status:selected#open}><!--T-->公開<!--/T--></option>
+					<option value="close"{comment_status:selected#close}><!--T-->非公開<!--/T--></option>
+				</select>
+				<input type="hidden" name="config[]" value="comment_status" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ブラックリスト<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->コメントに対するNGワードの設定です。カンマ、スペース、改行のいずれかで単語が区切れます。<!--/T-->"></i></th>
+			<td>
+				<textarea name="comment_black_list" cols="60" rows="5">{comment_black_list}</textarea>
+				<input type="hidden" name="config[]" value="comment_black_list" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->コメントクッキー有効時間<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->コメント欄で「Cookieに保存」のチェックボックスにチェックした場合、この有効時間内は名前などの情報がコメントした人のブラウザに保持されます。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="comment_cookie_lifetime" value="{comment_cookie_lifetime}" size="8" /> <!--T-->秒<!--/T-->
+				<input type="hidden" name="config[]" value="comment_cookie_lifetime" />
+				<input type="hidden" name="comment_cookie_lifetime:validator#digits" id="validator-comment_cookie_lifetime-digits" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-comment_cookie_lifetime-digits" class="validator-result-{comment_cookie_lifetime:validator#digits}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<!--<h3 class="acms-admin-admin-title2 ">その他</h3>-->
+	<!--<table class="adminTable acms-admin-table-admin-edit">-->
+		<!--<tr>-->
+			<!--<th>バンドルjQueryのバージョン<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="a-blog cmsが使用するjQueryのバージョンを指定します。"></i></th>-->
+			<!--<td>-->
+				<!--<select type="text" name="jquery_version">-->
+					<!--<option value="1.6.4"{jquery_version:selected#1.6.4}>1.6.4</option>-->
+					<!--<option value="1.7.2"{jquery_version:selected#1.7.2}>1.7.2</option>-->
+					<!--<option value="1.9.0"{jquery_version:selected#1.9.0}>1.8.3</option>-->
+				<!--</select>-->
+				<!--<input type="hidden" name="config[]" value="jquery_version" />-->
+			<!--</td>-->
+		<!--</tr>-->
+	<!--</table>-->
+
+	<!-- BEGIN_MODULE Admin_Rule_Name -->
+	<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+</form>
+<!-- END_MODULE Admin_Config -->

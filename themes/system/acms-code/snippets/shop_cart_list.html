@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="src/snippets.css" />
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="src/snippets.js" charset="UTF-8"></script>
+</head>
+<body>
+<h1>Shop_Cart_List</h1>
+<textarea>
+&lt;!-- BEGIN_MODULE Shop_Cart_List --&gt;
+
+&lt;!-- BEGIN notFound --&gt;
+&lt;p&gt;カート内に商品がありません&lt;/p&gt;
+&lt;!-- END notFound --&gt;
+
+&lt;!-- BEGIN contents --&gt;
+&lt;table&gt;
+	&lt;tr&gt;
+		&lt;th&gt;No&lt;/th&gt;
+		&lt;th&gt;写真&lt;/th&gt;
+		&lt;th&gt;商品名&lt;/th&gt;
+		&lt;th&gt;単価&lt;/th&gt;
+		&lt;th&gt;数量&lt;/th&gt;
+		&lt;th&gt;小計&lt;/th&gt;
+		&lt;th&gt;削除&lt;/th&gt;
+	&lt;/tr&gt;&lt;!-- BEGIN item:loop --&gt;
+	&lt;tr&gt;
+		&lt;td&gt;{item_id}&lt;/td&gt;
+		&lt;td&gt;
+			&lt;!-- BEGIN image:veil --&gt;
+			&lt;img src=&quot;&#x0025;{ROOT_DIR}{path}&quot; width=&quot;{imgX}&quot; height=&quot;{imgY}&quot; class=&quot;acms-img-responsive&quot;&gt;&lt;!-- END image:veil --&gt;&lt;!-- BEGIN noimage --&gt;
+			noimage&lt;!-- END noimage --&gt;
+		&lt;/td&gt;
+		&lt;td&gt;&lt;a href=&quot;{url}&quot;&gt;{item_name}&lt;/a&gt;&lt;/td&gt;
+		&lt;td&gt;¥{item_price}[number_format] (税{item_price#tax})&lt;/td&gt;
+		&lt;td&gt;{item_quantity}&lt;/td&gt;
+		&lt;td&gt;¥{item_price#sum}[number_format]&lt;/td&gt;
+		&lt;td&gt;&lt;a href=&quot;?delete={item_id}&quot;&gt;削除&lt;/a&gt;&lt;/td&gt;
+	&lt;/tr&gt;&lt;!-- END item:loop --&gt;
+	&lt;tr&gt;
+		&lt;th colspan=&quot;7&quot;&gt;カート内 商品{amount}点&lt;/th&gt;
+		&lt;th colspan=&quot;7&quot;&gt;税抜{tax-omit} : 税計{tax-only}&lt;/th&gt;
+		&lt;th colspan=&quot;7&quot;&gt;お会計の合計¥{subtotal}[number_format]&lt;/th&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- END contents --&gt;
+&lt;!-- END_MODULE Shop_Cart_List --&gt;
+</textarea>
+</body>
+</html>

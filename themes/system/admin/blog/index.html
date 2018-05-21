@@ -1,0 +1,163 @@
+<!-- BEGIN_MODULE Admin_Blog_Index -->
+
+<!-- BEGIN filter:veil -->
+<div class="acms-admin-filter">
+	<form action="" method="post" class="acms-admin-form">
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->ソート<!--/T-->:
+			<select name="order" class="js-select2">
+				<option value="sort-asc"{order:selected#sort-asc}><!--T-->表示順<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="sort-desc"{order:selected#sort-desc}><!--T-->表示順<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="code-asc"{order:selected#code-asc}><!--T-->コードネーム<!--/T-->（<!--T-->昇順<!--/T-->）</option>
+				<option value="code-desc"{order:selected#code-desc}><!--T-->コードネーム<!--/T-->（<!--T-->降順<!--/T-->）</option>
+				<option value="id-asc"{order:selected#id-asc}>ID（<!--T-->昇順<!--/T-->）</option>
+				<option value="id-desc"{order:selected#id-desc}>ID（<!--T-->降順<!--/T-->）</option>
+			</select>
+		</div>
+		<div class="acms-admin-inline-block acms-admin-margin-bottom-mini">
+			<!--T-->表示数<!--/T-->:
+			<select name="limit" class="js-select2"><!-- BEGIN limit:loop -->
+				<option value="{value}"{selected}>{label}</option><!-- END limit:loop -->
+			</select>
+		</div>
+		<input type="submit" name="ACMS_POST_2GET" value="<!--T-->表示<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-info acms-admin-width-sp" />
+		<input type="hidden" name="admin" value="blog_index" />
+	</form>
+</div>
+<!-- END filter:veil -->
+
+<form method="post" action="" id="sortableForm" class="acms-admin-form">
+	<!-- BEGIN index:veil -->
+	<div class="js-acms-tab-select clearfix acms-admin-margin-sp">
+		<select name="action-blog" class="js-acms-tab-select-value acms-admin-float-left acms-admin-select-large">
+			<option value="action-order"{action-blog:selected#action-order}><!--T-->表示順<!--/T--></option>
+			<option value="action-status"{action-blog:selected#action-status}><!--T-->ステータス<!--/T--></option>
+			<option value="action-parent"{action-blog:selected#action-parent}><!--T-->親ブログを<!--/T--></option>
+			<option value="action-config"{action-blog:selected#action-config}><!--T-->コンフィグの複製<!--/T--></option>
+		</select>
+
+		<div id="action-order" class="js-acms-tab-select-panel js-acms-tab-select-active acms-admin-float-left">
+			<input type="submit" name="ACMS_POST_Blog_Index_Sort" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</div>
+
+		<div id="action-status" class="js-acms-tab-select-panel acms-admin-float-left">
+			<select name="batchStatus" class="js-select2">
+				<option value="open"><!--T-->公開<!--/T--></option>
+				<option value="close"><!--T-->非公開<!--/T--></option>
+				<option value="secret"><!--T-->シークレット<!--/T--></option>
+			</select>
+			<input type="submit" name="ACMS_POST_Blog_Index_Status" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</div>
+
+		<div id="action-parent" class="js-acms-tab-select-panel acms-admin-float-left">
+			<input type="text" name="parent" value="%{BLOG_ID}" size="4" />
+			<input type="submit" name="ACMS_POST_Blog_Index_Parent" value="<!--T-->変更<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+		</div>
+
+		<div id="action-config" class="js-acms-tab-select-panel acms-admin-float-left">
+			<!--T-->このブログのコンフィグを選択したブログに複製<!--/T-->
+			<input type="submit" name="ACMS_POST_Blog_Index_Config" value="<!--T-->実行<!--/T-->" onclick="return confirm('<!--T-->複製先のブログの元々のコンフィグは削除されます。\n実行してよろしいですか？<!--/T-->');" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+				<br /><span class="acms-admin-tab-text">※<!--T-->選択したブログの元々のコンフィグを削除した後に、現在ブログの複製されたコンフィグが適用されます<!--/T--></span>
+		</div>
+	</div>
+
+	<!-- BEGIN_IF [{success}/eq/status] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon-news acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->選択したブログのステータスを変更しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{success}/eq/sort] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon-news acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->選択したブログの表示順を変更しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{success}/eq/parent] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon-news acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->選択したブログの親を変更しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{success}/eq/config] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon-news acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->選択したブログにこのブログのコンフィグを複製しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{error}/eq/status_1] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon-attention acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->ステータスの変更に失敗しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{error}/eq/sort_1] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon-attention acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->並び順の変更に失敗しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{error}/eq/parent_1] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon-attention acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->親ブログの変更に失敗しました。<!--/T-->
+	</p>
+	<!-- END_IF --><!-- BEGIN_IF [{error}/eq/config_1] -->
+	<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon-attention acms-admin-alert-icon-before"></span>
+		<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+		<!--T-->コンフィグの複製に失敗しました。<!--/T-->
+	</p>
+	<!-- END_IF -->
+
+	<div class="acms-admin-table-responsive">
+		<table class="js-admin_table-sortable acms-admin-table-admin acms-admin-table-hover" data-sort-enable="{sortable}" data-sort-order="%{ORDER}" data-sort-submit="ACMS_POST_Blog_Index_Sort" data-sort-target="#sortableForm">
+			<thead>
+				<tr>
+					<th class="item-handle acms-admin-table-nowrap acms-admin-hide-sp"></th>
+					<th class="acms-admin-table-center acms-admin-th-checkbox acms-admin-table-nowrap">
+						<div class="acms-admin-form-checkbox acms-admin-margin-none">
+							<input type="checkbox" id="checkAll" />
+							<label for="checkAll"><i class="acms-admin-ico-checkbox acms-admin-margin-none"></i><span class="acms-admin-hide-visually"><!--T-->すべてのブログを選択する<!--/T--></span></label>
+						</div>
+					</th>
+					<th class="acms-admin-table-nowrap"><!--T-->表示順<!--/T--></th>
+					<th class="acms-admin-table-nowrap">bid</th>
+					<th class="acms-admin-table-nowrap acms-admin-text-center">ステータス</th>
+					<th><!--T-->名前<!--/T--></th>
+					<th>URL</th>
+					<th class="acms-admin-table-nowrap"><!--T-->アクション<!--/T--></th>
+				</tr>
+			</thead>
+			<tbody><!-- BEGIN blog:loop -->
+				<tr data-sort-level="parallel" data-sort-name="sort-{bid}">
+					<td class="item-handle acms-admin-hide-sp" style="cursor: move;"><i class="acms-admin-icon-sort"></i></td>
+					<td class="acms-admin-table-center">
+						<div class="acms-admin-form-checkbox acms-admin-margin-none">
+							<input type="checkbox" name="checks[]" value="{bid}" id="check-blog{bid}" />
+							<label for="check-blog{bid}"><i class="acms-admin-ico-checkbox acms-admin-margin-non"></i><span class="acms-admin-hide-visually"><!--T-->ブログ名を{name}を選択する<!--/T--></span></label>
+						</div>
+					</td>
+					<td class="acms-admin-table-nowrap"><input type="text" class="sort-number" name="sort-{bid}" value="{sort}" size="4" /></td>
+					<td><span class="acms-admin-label label-default admin-eid-label">{bid}</span></td>
+					<td class="acms-admin-table-nowrap"><!-- BEGIN status#open -->
+						<span class="acms-admin-label acms-admin-label-info"><!--T-->公開<!--/T--></span><!-- END status#open --><!-- BEGIN status#close -->
+						<span class="acms-admin-label acms-admin-label-danger"><!--T-->非公開<!--/T--></span><!-- END status#close --><!-- BEGIN status#secret -->
+						<span class="acms-admin-label acms-admin-label-warning"><!--T-->シークレット<!--/T--></span><!-- END status#secret --></td>
+					<td>
+						<p class="acms-admin-title-sp"><strong>{name}</strong><!-- BEGIN branch -->&nbsp;<i class="acms-admin-icon acms-admin-icon-blog-children acms-admin-icon-admin-blog-children"></i><!-- END branch --></p>
+					</td>
+					<td>
+						<p class="acms-admin-blog-index-url"><a href="{urlValue}">{urlLabel}</a></p>
+					</td>
+					<td>
+						<a href="{itemLink}?edit=update" class="acms-admin-btn-admin"><!--T-->移動<!--/T-->&nbsp;</a>
+					</td>
+				</tr>
+			<!-- END blog:loop --></tbody>
+		</table>
+	</div>
+	<!-- END index:veil -->
+
+	<!-- BEGIN pager:veil -->
+	<ul class="acms-admin-pager"><!-- BEGIN backLink -->
+		<li><a href="{url}">&laquo;&nbsp;<!--T-->前のページ<!--/T--></a></li><!-- END backLink --><!-- BEGIN page:loop -->
+		<li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --></span></li><!-- END page:loop --><!-- BEGIN lastPage:veil -->
+		<li><a href="{lastPageUrl}">...{lastPage}</a></li><!-- END lastPage:veil --><!-- BEGIN forwardLink -->
+		<li><a href="{url}"><!--T-->次のページ<!--/T--> &raquo;</a></li><!-- END forwardLink -->
+	</ul><!-- END pager:veil -->
+</form>
+<!-- END_MODULE Admin_Blog_Index -->

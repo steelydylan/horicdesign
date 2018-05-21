@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="is-admin-page no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"> <![endif]--><!--[if IE 7]>
+<html class="is-admin-page no-js lt-ie9 lt-ie8" lang="ja"> <![endif]--><!--[if IE 8]>
+<html class="is-admin-page no-js lt-ie9" lang="ja"> <![endif]--><!--[if gt IE 8]><!-->
+<html class="is-admin-page no-js" lang="ja"><!--<![endif]-->
+<head>
+	@section("admin-meta")
+	@include("/include/head/admin-meta.html")
+	<meta name="viewport" content="width=device-width,  user-scalable=no, initial-scale=1.0, viewport-fit=cover">
+	@endsection
+
+	@section("admin-title")
+	<!-- BEGIN_MODULE Ogp -->
+	<title>{title}</title>
+	<!-- END_MODULE Ogp -->
+	@endsection
+
+	@section("admin-css")
+	@include("/include/head/admin-css.html")
+	@endsection
+
+	@section("admin-js")
+	@include("/include/head/admin-js.html")
+	@endsection
+</head>
+<body id="top">
+
+<div class="acms-admin-nav">
+	<!-- BEGIN_MODULE Admin_Menu -->
+	<header class="acms-admin-navbar-system">
+		<nav class="acms-admin-navbar-admin">
+			<a class="nav-btn acms-admin-btn js-offcanvas-btn js-offcanvas-btn-l" id="nav-open-btn" href="#nav"><i class="acms-admin-icon-sort acms-admin-bg-black"></i><span class="acms-admin-hide-visually"><!--T-->メニュー<!--/T--></span></a>
+			<div class="acms-admin-list-blog acms-admin-hide-sp"><!-- BEGIN dashboard -->
+				<p class="acms-admin-title-cms"><a href="{url}"><i class="acms-admin-icon acms-admin-icon-logo acms-admin-blog-color"></i><span class="acms-admin-hide-visually">a-blog cms ダッシュボードへ</span></a></p><!-- END dashboard -->
+			</div>
+			<div class="acms-admin-list-blog-sp">
+				<button type="button" class="js-search-everything acms-admin-btn-unstyled acms-admin-header-btn"><i class="acms-admin-icon-search" aria-hidden="true"></i><span class="acms-admin-hide-visually"><!--T-->検索<!--/T--></span></button>
+			</div>
+
+			<div class="acms-admin-navbar-admin-right acms-admin-hide-sp">
+				<ul class="acms-admin-navbar-admin-nav">
+					<li><a href="%{BLOG_URL}"><i class="acms-admin-icon acms-admin-icon-exit js-acms-tooltip-hover" aria-hidden="true" data-acms-position="right" data-acms-tooltip="サイトを表示"></i><span class="acms-admin-hide-visually"><!--T-->サイトを表示<!--/T--></span></a></li>
+					<li>
+						<button type="button" class="js-search-everything"><i class="acms-admin-icon acms-admin-icon-search js-acms-tooltip-hover" data-acms-position="right" aria-hidden="true" data-acms-tooltip="検索"></i><span class="acms-admin-hide-visually"><!--T-->検索<!--/T--></span></button>
+					</li>
+					<!-- BEGIN user#profile -->
+					<li class="js-acms-dropdown-toggle acms-admin-dropdown-right acms-admin-dropdown-toggle-sp">
+						<a href="#" class="js-acms-dropdown-btn"><img src="%{ARCHIVES_DIR}{icon}" width="26" height="26" alt="%{SESSION_USER_NAME}" class="acms-admin-user-profile"></a>
+						<ul class="js-acms-dropdown-menu acms-admin-navbar-admin-nav-dropdown-menu">
+							<li><a href="{url}"><!--T-->プロフィール変更<!--/T--></a></li>
+							<li><a href="#" class="js-admin_action_toggle"><!--T-->管理ボックス<!--/T--></a></li>
+							<li id="submit_logout"><a href="#"><!--T-->ログアウト<!--/T--></a></li>
+						</ul>
+					</li><!-- END user#profile -->
+					<li class="js-acms-dropdown-toggle acms-admin-dropdown-right acms-admin-dropdown-toggle-sp">
+						<a href="#" class="js-acms-dropdown-btn"><i class="acms-admin-icon acms-admin-icon-tooltip" aria-hidden="true"></i><span class="acms-admin-hide-visually"><!--T-->ヘルプ<!--/T--></span></a>
+						<ul class="js-acms-dropdown-menu acms-admin-navbar-admin-nav-dropdown-menu">
+							<li><a href="%{BLOG_URL}"><!--T-->サイトを表示<!--/T--></a></li>
+							<li><a href="https://developer.a-blogcms.jp/document/introduction.html"><!--T-->ドキュメント<!--/T--></a></li>
+							<li><a href="https://www.a-blogcms.jp/manual/"><!--T-->運用マニュアル<!--/T--></a></li>
+							<li><a href="https://www.a-blogcms.jp/support/"><!--T-->サポート<!--/T--></a></li>
+							<li><a href="https://developer.a-blogcms.jp/forum.html"><!--T-->フォーラム<!--/T--></a></li>
+							<li><a href="https://mypage.a-blogcms.jp"><!--T-->ライセンス購入<!--/T--></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<form action="" method="post" class="js-external_submit" target="#submit_logout">
+				<input type="hidden" name="ACMS_POST_Logout" value="Logout"/>
+			</form>
+		</nav>
+	</header>
+
+	<div id="nav" class="js-offcanvas">
+		<div id="sidebar">
+			<div class="sidebar-container">
+
+				<nav class="acms-admin-sidebar">
+					<div class="acms-admin-sidebar-header js-scroll-fixed">
+						<div class="acms-admin-sidebar-sp">
+							<ul class="acms-admin-sidebar-sp-list">
+								<li class="acms-admin-sidebar-sp-list-item"><a href="%{BLOG_URL}"><i class="acms-admin-icon acms-admin-icon-exit"></i><span class="acms-admin-sidebar-sp-list-text"><!--T-->サイトを表示<!--/T--></span></a></li>
+								<!-- BEGIN user#profile -->
+								<li class="acms-admin-sidebar-sp-list-item"><a href="/bid/%{SBID}/uid/%{SUID}/admin/user_edit/"><img src="%{ARCHIVES_DIR}{icon}" width="26" height="26" alt="%{SESSION_USER_NAME}" class="acms-admin-user-profile"><span class="acms-admin-text-ellipsis-container"><span class="acms-admin-sidebar-sp-list-text acms-admin-text-ellipsis">%{SESSION_USER_NAME}</span></span></a>
+								</li><!-- END user#profile -->
+								<li class="acms-admin-sidebar-sp-list-item">
+									<a href="#" id="submit_logout_sp"><i class="acms-admin-icon acms-admin-icon-logout"></i><span class="acms-admin-sidebar-sp-list-text"><!--T-->ログアウト<!--/T--></span></a>
+								</li>
+							</ul>
+							<!--<p class="acms-admin-sidebar-box"><a href="#" id="submit_logout_sp" class="acms-admin-btn-admin block-level large acms-admin-btn-login">ログアウト</a></p> -->
+							<form action="" method="post" class="js-external_submit" target="#submit_logout_sp">
+								<input type="hidden" name="ACMS_POST_Logout" value="Logout"/>
+							</form>
+						</div>
+						<div class="js-acms-dropdown-toggle acms-admin-dropdown-right acms-admin-dropdown-toggle-sp">
+							<h1 class="acms-admin-title-blog"><a href="#" class="js-acms-dropdown-btn" aria-haspopup="true">%{BLOG_NAME}<span class="acms-admin-arrow-bottom"></span></a></h1>
+							<!-- BEGIN_MODULE Admin_Blog_SelectGlobal -->
+							<ul class="js-acms-dropdown-menu acms-admin-list-scroll"><!-- BEGIN loop -->
+								<li><a href="{adminUrl2}">{indent}[raw]{label}</a></li><!-- END loop -->
+							</ul><!-- END_MODULE Admin_Blog_SelectGlobal -->
+						</div>
+						<!-- BEGIN_MODULE Admin_Rule_SelectGlobal -->
+						<div class="js-acms-dropdown-toggle acms-admin-dropdown-right acms-admin-dropdown-toggle-sp">
+							<p class="acms-admin-title-rule"><a href="#" class="js-acms-dropdown-btn"><!-- BEGIN_IF [{currentRule}/nem] -->{currentRule}<!-- ELSE --><!--T-->ルールなし<!--/T--><!-- END_IF --><span class="acms-admin-arrow-bottom"></span></a></p>
+							<ul class="js-acms-dropdown-menu acms-admin-list-scroll">
+								<li><a href="{defaultUrl}">ルールなし</a></li><!-- BEGIN rule:loop -->
+								<li><a href="{url}">{rid}: {label}</a></li><!-- END rule:loop -->
+							</ul>
+						</div><!-- END_MODULE Admin_Rule_SelectGlobal -->
+						<!-- BEGIN_IF [%{IS_DEVELOPMENT}/eq/on] -->
+						<p class="acms-admin-sidebar-alert" role="alert"><!--T-->開発ライセンス適用中<!--/T--><span class="acms-admin-icon-tooltip js-acms-tooltip-hover acms-admin-margin-right-mini" data-acms-tooltip="<!--T-->本番運用の場合、<a href='https://mypage.a-blogcms.jp' target='_blank'>こちら</a>よりライセンスをご購入ください<!--/T--><!--T-->（検索エンジンにインデックスされません）<!--/T-->" data-acms-position="bottom"></span></p><!-- END_IF -->
+					</div>
+
+					<div class="acms-admin-sidebar-main js-scroll-contents">
+						@section("admin-menu")
+						<div class="acms-admin-sidebar-link">
+							<ul><!-- BEGIN dashboard -->
+								<li
+								{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-dashboard"></i><!--T-->ダッシュボード<!--/T--></a></li><!-- END dashboard --><!-- BEGIN update -->
+								<li
+								{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-publish"></i><!--T-->更新<!--/T-->
+									<!-- BEGIN_IF [{update}/eq/1] -->&nbsp;&nbsp;&nbsp;<span class="acms-admin-badge acms-admin-badge-approval">{update}</span><!-- END_IF -->
+								</a></li><!-- END update -->
+							</ul>
+						</div>
+						<dl>
+							<!-- BEGIN post:veil -->
+							<dt class="acms-admin-sidebar-title"><!--T-->投稿管理<!--/T--></dt>
+							<dd class="acms-admin-sidebar-link">
+								<ul><!-- BEGIN entry#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-entry"></i><!--T-->エントリー<!--/T--></a></li><!-- END entry#index --><!-- BEGIN entry#trash -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-trash"></i><!--T-->ゴミ箱<!--/T--></a></li><!-- END entry#trash --><!-- BEGIN category#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-category"></i><!--T-->カテゴリー<!--/T--></a></li><!-- END category#index --><!-- BEGIN tag -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-tag"></i><!--T-->タグ<!--/T--></a></li><!-- END tag --><!-- BEGIN approval#notification -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-checklist"></i><!--T-->承認通知<!--/T--><!-- BEGIN badge:veil -->&nbsp;<span class="acms-admin-badge acms-admin-badge-approval">{badge}</span><!-- END badge:veil --></a></li><!-- END approval#notification -->
+								</ul>
+							</dd>
+							<!-- END post:veil -->
+
+							<!-- BEGIN management:veil -->
+							<dt class="acms-admin-sidebar-title"><!--T-->サイト管理<!--/T--></dt>
+							<dd class="acms-admin-sidebar-link">
+								<ul><!-- BEGIN blog#edit -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-blog"></i><!--T-->ブログ<!--/T--></a></li><!-- END blog#edit --><!-- BEGIN user#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-user"></i><!--T-->ユーザー<!--/T--></a></li><!-- END user#index --><!-- BEGIN form#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-form"></i><!--T-->フォーム<!--/T--></a></li><!-- END form#index --><!-- BEGIN comment -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-comment"></i><!--T-->コメント<!--/T--></a></li><!-- END comment --><!-- BEGIN media#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-media"></i><!--T-->メディア<!--/T--></a></li><!-- END media#index --><!-- BEGIN role#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-role"></i><!--T-->ロール<!--/T--></a></li><!-- END role#index --><!-- BEGIN usergroup#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-user-group"></i><!--T-->ユーザーグループ<!--/T--></a></li><!-- END usergroup#index --><!-- BEGIN workflow#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-checklist"></i><!--T-->ワークフロー<!--/T--></a></li><!-- END workflow#index --><!-- BEGIN approval#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-checklist"></i><!--T-->承認履歴一覧<!--/T--></a></li><!-- END approval#index --><!-- BEGIN schedule#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-schedule"></i><!--T-->スケジュール<!--/T--></a></li><!-- END schedule#index --><!-- BEGIN shop#menu -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-shop"></i><!--T-->ショップ<!--/T--></a></li><!-- END shop#menu --><!-- BEGIN cart#menu -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-cart"></i><!--T-->カート<!--/T--></a></li><!-- END cart#menu -->
+								</ul>
+							</dd>
+							<!-- END management:veil -->
+
+							<!-- BEGIN customize:veil -->
+							<dt class="acms-admin-sidebar-title"><!--T-->カスタマイズ管理<!--/T--></dt>
+							<dd class="acms-admin-sidebar-link">
+								<ul><!-- BEGIN config#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-config"></i><!--T-->コンフィグ<!--/T--></a></li><!-- END config#index --><!-- BEGIN rule#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-rule"></i><!--T-->ルール<!--/T--></a></li><!-- END rule#index --><!-- BEGIN module#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-module"></i><!--T-->モジュールID<!--/T--></a></li><!-- END module#index --><!-- BEGIN moduleDefault#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-module"></i><!--T-->モジュール<!--/T--></a></li><!-- END moduleDefault#index -->
+								</ul>
+							</dd>
+							<!-- END customize:veil -->
+
+							<!-- BEGIN dashboard:veil -->
+							<dt class="acms-admin-sidebar-title"><!--T-->その他管理<!--/T--></dt>
+							<dd class="acms-admin-sidebar-link">
+								<ul><!-- BEGIN checklist -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-checklist"></i><!--T-->チェックリスト<!--/T--></a></li><!-- END checklist --><!-- BEGIN shortcut#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカット<!--/T--></a></li><!-- END shortcut#index --><!-- BEGIN alias#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-alias"></i><!--T-->エイリアス<!--/T--></a></li><!-- END alias#index --><!-- BEGIN publish#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-publish"></i><!--T-->テンプレート書出し<!--/T--></a></li><!-- END publish#index --><!-- BEGIN fix#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-config_function"></i><!--T-->データ修正<!--/T--></a></li><!-- END fix#index --><!-- BEGIN backup#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-backup"></i><!--T-->バックアップ<!--/T--></a></li><!-- END backup#index --><!-- BEGIN import#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-import"></i><!--T-->インポート<!--/T--></a></li><!-- END import#index --><!-- BEGIN static_export#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-publish"></i><!--T-->静的書き出し<!--/T--></a></li><!-- END static_export#index --><!-- BEGIN app#index -->
+									<li
+									{stay}[raw]><a href="{url}"><i class="acms-admin-icon acms-admin-icon-app"></i><!--T-->拡張アプリ<!--/T--></a></li><!-- END app#index -->
+								</ul>
+							</dd>
+							<!-- END dashboard:veil -->
+
+							<!-- BEGIN_MODULE Admin_App_Menu --><!-- BEGIN app:veil -->
+							<dt class="acms-admin-sidebar-title"><!--T-->拡張メニュー<!--/T--></dt>
+							<dd class="acms-admin-sidebar-link">
+								<ul><!-- BEGIN app:loop -->
+									<li
+									{stay}[raw]><a href="{url}"><span class="acms-admin-icon acms-admin-icon-app"></span>{name}</a></li><!-- END app:loop -->
+								</ul>
+							</dd><!-- END app:veil -->
+							<!-- END_MODULE Admin_App_Menu -->
+						</dl>
+						@endsection
+					</div>
+				</nav>
+				<a class="js-offcanvas-close" href="#"><span class="acms-admin-hide-visually">コンテンツに戻る</span></a>
+			</div>
+		</div>
+	</div>
+	<!-- END_MODULE Admin_Menu -->
+</div>
+
+<div id="acms-admin-main">
+	<main id="main" role="main">
+		@section("admin-action-box")
+		<div id="js-admin_action_box"<!-- BEGIN_MODULE Touch_NotAdminActionBox --> style="display: none;"<!-- END_MODULE Touch_NotAdminActionBox -->>
+		@include("/admin/action.html")
+		</div>
+		@endsection
+
+		@section("admin-error")
+		<!-- BEGIN_MODULE SystemError -->
+		<!-- BEGIN IllegalPostData -->
+		<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span>
+			<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->送信データが不完全です。<!--/T--></p>
+		<!-- END IllegalPostData -->
+		<!-- BEGIN IllegalCsrfToken -->
+		<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span>
+			<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->連続送信は禁止されています。<!--/T--></p>
+		<!-- END IllegalCsrfToken -->
+		<!-- BEGIN IllegalAccess -->
+		<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span>
+			<button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->不正なアクセスです。<!--/T--></p>
+		<!-- END IllegalAccess -->
+		<!-- END_MODULE SystemError -->
+		@endsection
+
+		@section("admin-main")
+		@include("/admin/%{ADMIN_PATH}.html")
+		<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-main" --><!-- END_MODULE Admin_InjectTemplate -->
+		@endsection
+
+	</main><!-- /#main -->
+</div>
+</body>
+</html>

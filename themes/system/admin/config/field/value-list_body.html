@@ -1,0 +1,29 @@
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="field_value-list_order" class="js-select2">
+				<option value="asc"{field_value-list_order:selected#asc}><!--T-->フィールドの値 ( 昇順 )<!--/T--></option>
+				<option value="desc"{field_value-list_order:selected#desc}><!--T-->フィールドの値 ( 降順 )<!--/T--></option>
+				</select>
+			<input type="hidden" name="config[]" value="field_value-list_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="field_value-list_limit" value="{field_value-list_limit}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="field_value-list_limit" />
+			<input type="hidden" name="field_value-list_limit:convert" value="a" />
+			<input type="hidden" name="field_value-list_limit:validator#digits" id="validator-field_value-list_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-field_value-list_limit-digits" class="validator-result-{field_value-list_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table><!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+<input type="hidden" name="%{SNAME}" value="%{SID}" />

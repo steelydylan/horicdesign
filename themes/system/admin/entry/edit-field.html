@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+@include("/include/head/admin-meta.html")
+<meta name="viewport" content="width=device-width,  user-scalable=no, initial-scale=1.0">
+<link href="/css/normalize.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/acms-admin.css" rel="stylesheet" type="text/css" media="all">
+
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script>
+<![endif]--><!-- BEGIN_MODULE Js -->
+<script type="text/javascript" src="/acms.js{arguments}" charset="UTF-8" id="acms-js"></script><!-- END_MODULE Js -->
+
+</head>
+<body>
+
+<!-- BEGIN_MODULE Admin_Entry_Edit -->
+<!-- BEGIN step#reapply -->
+<!-- BEGIN message -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->カスタムフィールドを保存しました<!--/T--></p><!-- END message -->
+
+<form action="" method="post" enctype="multipart/form-data" id="entryForm" class="acms-admin-form acms-admin-form-edit">
+	<div class="entryFormWrapper">
+		@include("/admin/entry/field.html")
+		@include("/admin/entry/field_foot.html")
+	</div>
+	<div class="comPost">
+		<div class="comPostInner">
+			<div class="comPostFull">
+				<input type="submit" name="ACMS_POST_Ios_EntryUpdateField" value="<!--T-->カスタムフィールドを保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+				<input type="hidden" name="bid" value="%{BID}" />
+				<input type="hidden" name="cid" value="%{CID}" />
+				<input type="hidden" name="eid" value="%{EID}" />
+				<input type="hidden" name="arg[]" value="bid" />
+				<input type="hidden" name="arg[]" value="cid" />
+				<input type="hidden" name="arg[]" value="eid" />
+			</div>
+		</div>
+	</div>
+</form>
+<!-- END step#reapply -->
+<!-- END_MODULE Admin_Entry_Edit -->
+
+</body>
+</html>

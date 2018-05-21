@@ -1,0 +1,12 @@
+$(function(){
+	/*
+Pace.on("done",function(){
+		$(".landLoadingBg")
+		.addClass("done")
+		.delay(300)
+		.queue(function(){
+			$(this).remove();
+		});
+	})
+*/
+});

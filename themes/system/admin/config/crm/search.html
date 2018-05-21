@@ -1,0 +1,51 @@
+<h1><!-- BEGIN_MODULE Admin_Rule_Name -->
+	<strong>ルール : {name} の</strong><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+	<strong>モジュールID : {label} ( {identifier} ) の</strong><!-- END_MODULE Admin_Module_Name -->コンフィグ管理
+</h1>
+@include("/admin/topicpath.html")
+<!-- BEGIN_MODULE Admin_Config -->
+<div class="titleWrapper">
+	<h2>顧客検索</h2>
+</div>
+<div class="contents">
+	<form action="" method="post">
+		<table class="adminTable js-fieldgroup-sortable">
+			<tr>
+                <th></th>
+				<th>ラベル<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-customerSearchLabel" class="tooltipIcon" /></th>
+				<th>フィールドキー<img src="/images/tooltip.gif" alt="ヘルプ" width="12" height="12" id="tooltip-customerSearchKey" class="tooltipIcon" /></th>
+                <th></th>
+			</tr><!-- BEGIN customer_search:loop -->
+            <tr class="sortable-item">
+                <td class="item-handle"><img src="/images/admin_arrow_vertical.gif" width="17" height="17" class="arrowHandle" /></td>
+                <td><input type="text" name="customer_search_label[{i}]" value="{customer_search_label}" /></td>
+                <td><input type="text" name="customer_search_key[{i}]" value="{customer_search_key}" /></td>
+                <td><input type="button" value="削除" class="item-delete" /></td>
+            </tr><!-- END customer_search:loop -->
+            <tr class="sortable-item item-template">
+                <td class="item-handle"><img src="/images/admin_arrow_vertical.gif" width="17" height="17" class="arrowHandle" /></td>
+                <td><input type="text" name="customer_search_label[]" value="" /></td>
+                <td><input type="text" name="customer_search_key[]" value="" /></td>
+                <td><input type="button" value="削除" class="item-delete" /></td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="button" value="追加" class="item-insert" /></td>
+            </tr>
+		</table>
+        <input type="hidden" name="@customer_search[]" value="customer_search_label" />
+        <input type="hidden" name="@customer_search[]" value="customer_search_key" />
+		<input type="hidden" name="config[]" value="customer_search_label" />
+		<input type="hidden" name="config[]" value="customer_search_key" />
+        <input type="hidden" name="config[]" value="@customer_search" /><!-- BEGIN_MODULE Admin_Rule_Name -->
+		<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+		<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
+		<table class="adminTable">
+			<tr>
+				<td class="systemBtn">
+					<input type="submit" name="ACMS_POST_Pluginconf" value="保存" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div><!-- END_MODULE Admin_Config -->
+@include("/admin/config/crm/tooltip/customer-search.html")

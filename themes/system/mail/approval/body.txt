@@ -1,0 +1,18 @@
+{request_user}[raw]さんから<!-- BEGIN_IF [{approval}/eq/request] -->承認依頼されました。<!-- ELSE_IF [{approval}/eq/reject] -->申請が却下されました。<!-- ELSE_IF [{approval}/eq/public] -->最終承認されました<!-- END_IF -->
+<!-- BEGIN_IF [{approvalType}/eq/parallel] -->
+あと{approvalPoint}ポイントで公開されます。 {currentPoint}/{workflowPoint}ポイント<!-- END_IF -->
+
+エントリータイトル : {entryTitle}[raw]
+バージョン名 : {version}[raw]
+ブログ名 : %{BLOG_NAME}
+<!-- BEGIN deadline_date:veil -->
+期限日 : {deadline_date}<!-- END deadline:veil -->
+コメント : {request_comment}[raw]
+<!-- BEGIN_IF [{approval}/eq/request] -->
+以下のリンクより、内容を確認して承認をお願いします。
+<!-- ELSE_IF [{approval}/eq/reject] -->
+申請が却下されました。以下のリンクより内容を確認し、「変更」ボタンを押して再度承認依頼して下さい。
+<!-- ELSE_IF [{approval}/eq/public] -->
+以下のリンクより内容をご確認ください。
+<!-- END_IF -->
+{revisionUrl}

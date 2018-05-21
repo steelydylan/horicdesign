@@ -1,0 +1,68 @@
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T-->コンフィグの部分インポート<!--/T-->
+		</h1>
+	</div>
+</header>
+
+<!-- BEGIN_MODULE Admin_Config_Import -->
+<div class="js-acms_fix_marker acms_fix_bg">
+	<div class="acms_fix_bg_index">
+		<a href="%{ADMIN_BASE_URL}bid/%{BID}/admin/config_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a>
+
+		<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+		<a href="{shortcutUrl}" class="acms-admin-btn-admin acms-admin-float-right"><i
+			class="acms-admin-icon acms-admin-icon-shortcut"></i><!--T-->ショートカットに追加<!--/T--></a>
+		<!-- END_MODULE Touch_SessionWithAdministration -->
+	</div>
+</div>
+
+<div class="acms-admin-panel acms-admin-panel-danger">
+	<div class="acms-admin-panel-header">
+		<!--T-->部分的なコンフィグのインポート<!--/T-->
+	</div>
+	<div class="acms-admin-panel-body">
+		<form action="" method="post" enctype="multipart/form-data" class="acms-admin-form js-dialog-body">
+			<input type="file" name="file"/>
+
+			<span>ルール: </span>
+			<!-- BEGIN_MODULE Admin_Rule_SelectGlobal -->
+			<select name="rid">
+				<option value=""><!--T-->指定なし<!--/T--></option><!-- BEGIN rule:loop -->
+				<option value="{rid}"<!-- BEGIN_IF [%{rid}/eq/{rid}] --> selected<!-- END_IF -->>{label}</option><!-- END rule:loop -->
+			</select>
+			<!-- END_MODULE Admin_Rule_SelectGlobal -->
+			&nbsp;
+			<input type="submit" name="ACMS_POST_Config_PartImport" value="<!--T-->インポート<!--/T-->"
+				   class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash"
+				   onclick="return confirm('<!--T-->インポートを実行します。よろしいですか？<!--/T-->');"/>
+		</form>
+		<p>
+			<!--T-->部分的なコンフィグのインポートを行います。<!--/T-->
+		</p>
+		<p>
+			<!--T-->インポートデータ（yaml）にあるキーのデータだけ上書きしてインポートデータにないデータはそのまま残ります。<!--/T-->
+		</p>
+	</div>
+</div>
+</form>
+
+<!-- BEGIN_MODULE Admin_Errors -->
+<p class="acms-admin-alert acms-admin-alert-danger acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	{error}
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END_MODULE Admin_Errors -->
+
+<!-- BEGIN success -->
+<p class="acms-admin-alert acms-admin-alert-info acms-admin-alert-icon">
+	<span class="acms-admin-alert-icon-before acms-admin-icon-news"></span>
+	<!--T-->インポートが完了しました。<!--/T-->
+	<button class="js-acms-alert-close acms-admin-alert-icon-after acms-admin-margin-right-mini">×</button>
+</p>
+<!-- END success -->
+<!-- END_MODULE Admin_Config_Import -->

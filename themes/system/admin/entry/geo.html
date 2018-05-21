@@ -1,0 +1,58 @@
+<!-- BEGIN_MODULE Touch_GeolocationEntryFunction -->
+<div class="acms-admin-accordion">
+	<h3 class="acms-admin-accordion-title">
+		<a href="#geometry" class="js-fader acms-admin-accordion-title-link"><!--T-->位置情報<!--/T-->
+			<span class="acms-admin-icon-arrow-small-down acms-admin-margin-left-mini"></span>
+		</a>
+	</h3>
+
+	<div id="geometry" class="js-map-editable acms-admin-accordion-inner clearfix<!-- BEGIN_IF [{geo_lat}/nem/_and_/{geo_lng}/nem/] --> js-ready-fader<!-- END_IF -->">
+		<div class="acms-admin-form-group">
+			<!-- BEGIN_IF [{geo_lat}/nem/_and_/{geo_lng}/nem/] -->
+			<input class="js-geo_input acms-admin-btn" type="button" data-type="delete"/>
+			<!-- ELSE -->
+			<input class="js-geo_input acms-admin-btn" type="button" data-type="add"/>
+			<!-- END_IF -->
+		</div>
+
+		<div class="js-geo_form" style="display:none;">
+			<div class="acms-admin-grid">
+				<div class="acms-admin-col-md-6">
+					<div class="entryFormGeoMap">
+						<img class="js-map_editable-container acms-admin-margin-bottom-small" src="http://maps.google.com/maps/api/staticmap?center={geo_lat},{geo_lng}&zoom={geo_zoom}&size=400x300&maptype=roadmap&markers={geo_lat},{geo_lng}&sensor=false" width="400" height="300" style="display:block;"/>
+					</div>
+				</div>
+				<div class="entryFormGeoControl acms-admin-col-md-6">
+					<div class="acms-admin-margin-bottom-small">
+						<label for="input-map-search-text" class="acms-admin-hide-visually"><!--T-->住所で検索する<!--/T--></label>
+						<div class="acms-admin-form-action acms-admin-form-action-separate">
+							<input type="text" name="" value="" id="input-map-search-text" class="js-editable_map-search_text acms-admin-form-width-full" disabled="disabled" size="40">
+							<span class="acms-admin-form-side-btn">
+								<input type="button" name="" value="検索" class="js-editable_map-search_button acms-admin-btn" disabled="disabled">
+							</span>
+						</div>
+					</div>
+					<table class="entryFormGeoControlDetail">
+						<tr>
+							<th><label for="input-geo-lat"><!--T-->緯度<!--/T--></label></th>
+							<td><input type="text" name="geo_lat" value="{geo_lat}" size="12" id="input-geo-lat" class="js-map_editable-lat acms-admin-form-width-mini"/></td>
+						</tr>
+						<tr>
+							<th><label for="input-geo-lng"><!--T-->経度<!--/T--></label></th>
+							<td><input type="text" name="geo_lng" value="{geo_lng}" size="12" id="input-geo-lng" class="js-map_editable-lng acms-admin-form-width-mini"/></td>
+						</tr>
+						<tr>
+							<th><label for="input-geo-zoom"><!--T-->ズーム<!--/T--></label></th>
+							<td><input type="text" name="geo_zoom" value="{geo_zoom}" size="10" id="input-geo-zoom" class="js-map_editable-zoom acms-admin-form-width-mini"/></td>
+						</tr>
+					</table>
+					<input type="hidden" name="geometry[]" value="geo_lat"/>
+					<input type="hidden" name="geometry[]" value="geo_lng"/>
+					<input type="hidden" name="geometry[]" value="geo_zoom"/>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- END_MODULE Touch_GeolocationEntryFunction -->

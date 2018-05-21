@@ -1,0 +1,369 @@
+<script type="text/javascript">
+if (window.location.hash && window.location.hash == '#_=_') {
+	window.location.hash = '';
+}
+</script>
+
+<header>
+	<div>
+		@include("/admin/topicpath.html")
+	</div>
+	<div>
+		<h1 class="acms-admin-admin-title js-dialog-title"><!--T--><span class="js-dialog-title">ユーザー管理</span><!--/T--></h1>
+	</div>
+</header>
+<!-- BEGIN_MODULE Admin_User_Edit -->
+
+<!-- BEGIN msg#insert -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザーを作成しました<!--/T--></p><!-- END msg#insert --><!-- BEGIN msg#update -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info"><span class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザーを保存しました<!--/T--></p><!-- END msg#update --><!-- BEGIN msg#delete -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->ユーザーを削除しました<!--/T--></p><!-- END msg#delete --><!-- BEGIN user:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button><!--T-->この操作は許可されていません。<!--/T--></p><!-- END user:validator#operable --><!-- BEGIN user:validator#operable -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->ユーザーを削除できませんでした。<!--/T-->
+	<!--T-->自分自身は削除出来ません。<!--/T-->
+</p>
+<!-- END user:validator#operable --><!-- BEGIN user:validator#entryExists -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->ユーザーを削除できませんでした。<!--/T--><br />
+	<!--T-->エントリーが登録されているユーザーは削除できません。<!--/T--><br />
+</p><!-- END user:validator#entryExists -->
+<!-- BEGIN user:validator#limit -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->ユーザー作成数の上限に達しているため、現在お使いのライセンスでは以下の操作を行えません。<!--/T--><br />
+	<!--T-->・新規ユーザーの作成（読者以外）<!--/T--><br />
+	<!--T-->・読者ユーザーの権限昇格<!--/T--><br />
+	<!--T-->登録済みのユーザーを削除するか、<a href="http://www.a-blogcms.jp/license/" target="_blank">無制限ユーザーライセンス</a>の新規購入をご検討ください。<!--/T-->
+</p><!-- END user:validator#limit -->
+
+<!-- BEGIN_IF [%{login}/eq/failed] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->ログインに失敗しました<!--/T-->
+</p><!-- ELSE_IF [%{auth}/eq/failed] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->認証に失敗しました<!--/T-->
+</p><!-- ELSE_IF [%{auth}/eq/double] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger"><span class="acms-admin-icon acms-admin-icon-attention acms-admin-alert-icon-before" aria-hidden="true"></span><button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+	<!--T-->アカウントが既に存在します<!--/T-->
+</p><!-- END_IF -->
+
+<!-- BEGIN headline#insert --><!-- END headline#insert -->
+<!-- BEGIN headline#update --><!-- END headline#update -->
+<form method="post" action="" enctype="multipart/form-data" class="acms-admin-form js-dialog-body">
+	<div class="acms-admin-form-group js-acms_fix_marker acms_fix_bg">
+		<div class="acms_fix_bg_index"><!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<a href="%{SCRIPT_ROOT}bid/%{BID}/admin/user_index/" class="acms-admin-btn-admin"><!--T-->一覧<!--/T--></a><!-- END_MODULE Touch_SessionWithAdministration -->
+
+			<!-- BEGIN submit#insert -->
+			<input type="submit" name="ACMS_POST_User_Insert" value="<!--T-->作成<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+			<!-- END submit#insert -->
+
+			<!-- BEGIN submit#update -->
+			<input type="submit" name="ACMS_POST_User_Update" value="<!--T-->保存<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save js-saving-splash" />
+
+			<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+			<input type="submit" name="ACMS_POST_User_Delete" value="<!--T-->削除<!--/T-->" onclick="return confirm('<!--T-->ユーザーを削除します。\nこの操作は取り消せません、よろしいですか？<!--/T-->');" / class="acms-admin-btn-admin acms-admin-btn-admin-danger">
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<!-- END_MODULE Touch_SessionWithAdministration -->
+			<!-- END submit#update -->
+		</div>
+	</div>
+
+	<div class="acms-admin-tabs">
+	<ul class="js-acms_admin_tabs">
+		<li><a href="#acms_basic"><!--T-->基本設定<!--/T--></a></li>
+		<li><a href="#acms_custom"><!--T-->カスタム設定<!--/T--></a></li>
+	</ul>
+	<div id="acms_basic" class="acms-admin-tabs-panel">
+
+	<table class="adminTable acms-admin-table-admin-edit"><!-- BEGIN status:checked#close -->
+		<tr>
+			<th><!--T-->ステータス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ブログの公開状態です。シークレットを選択した場合、ログインしたユーザーにのみブログが公開されます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="status" value="close" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="status" value="open"{status:checked#open} id="input-checkbox-status" />
+					<label for="input-checkbox-status">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->有効<!--/T-->
+					</label>
+				</div>
+				<label for="input-login_expire"><!--T-->有効期限：<!--/T--></label>
+				<input type="hidden" name="user[]" value="status" />
+				<input type="text" name="login_expire" id="input-login_expire" value="{login_expire}" class="js-datepicker" size="20" />
+				<input type="hidden" name="user[]" value="login_expire" />
+				<input type="hidden" name="login_expire:validator#regex" value="@\d\d\d\d-\d\d-\d\d@" id="validator-login_expire-regex" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-login_expire-regex" class="validator-result-{login_expire:validator#regex}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->日付の形式が不正です<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr><!-- END status:checked#close -->
+		<tr>
+			<th><!--T-->名前<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーの名前です。（日本語可）<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="name" value="{name}" size="20" id="input-text-name" /><!--T--> (日本語可)<!--/T-->
+				<input type="hidden" name="user[]" value="name" />
+				<input type="hidden" name="name:validator#required" id="validator-name-required" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-name-required" class="validator-result-{name:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->名前が入力されていません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->ユーザーID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーがログイン時に入力するID名です。半角英数字で設定します。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="code" value="{code}" size="20" id="input-text-code" /> <!--T--> (英数字)<!--/T-->
+				<input type="hidden" name="user[]" value="code" />
+				<input type="hidden" name="code:validator#regex" value="%{REGEX_VALID_ID}" id="validator-code-regex" />
+				<input type="hidden" name="code:validator#doubleCode" value="%{USER_ID}" id="validator-code-doubleCode" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-code-regex" class="validator-result-{code:validator#regex}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->無効なユーザーIDです。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-code-doubleCode" class="validator-result-{code:validator#doubleCode}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->既に使用されているユーザーIDです。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-code-string" class="validator-result-{code:validator#string}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->不正な文字が含まれています。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+		<th><!--T-->アイコン画像<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーがログイン時に入力するID名です。半角英数字で設定します。アップロードされた画像は64ピクセル四方の画像にリサイズ、トリミングされます。<!--/T-->"></i></th>
+			<td>
+				<!-- BEGIN icon@path:veil -->
+				<img src="%{ARCHIVES_DIR}{icon}" />
+				<input type="hidden" name="icon@old" value="{icon}" /><br />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="icon@edit" value="delete" id="input-checkbox-icon" />
+					<label for="input-checkbox-icon"><i class="acms-admin-ico-checkbox"></i><!--T-->削除<!--/T--></label>
+				</div><!-- END icon@path:veil -->
+				<input type="file" name="icon" size="20" />
+				<input type="hidden" name="icon:extension" value="image" />
+				<input type="hidden" name="icon@squareWidth" value="220" />
+				<input type="hidden" name="user[]" value="icon" />
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->メールアドレス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーのEメールアドレスです。「メールマガジンを受け取る」がチェックされているユーザーにはHTML形式のメールマガジンを送信できます。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="mail" value="{mail}" size="30" id="input-text-mail" />
+				<input type="hidden" name="user[]" value="mail" />
+				<input type="hidden" name="mail:validator#required" id="validator-mail-required" />
+				<input type="hidden" name="mail:validator#email" id="validator-mail-email" />
+				<input type="hidden" name="mail:validator#doubleMail" value="%{USER_ID}" id="validator-mail-doubleMail" />
+				<!-- BEGIN mail_magazine:checked#off -->
+				<input type="hidden" name="mail_magazine" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="mail_magazine" value="on"{mail_magazine:checked#on} id="input-checkbox-mail-magazine" />
+					<label for="input-checkbox-mail-magazine">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->メールマガジンを受け取る<!--/T--> ( HTML )
+					</label>
+				</div>
+				<input type="hidden" name="user[]" value="mail_magazine" /><!-- END mail_magazine:checked#off -->
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-mail-required" class="validator-result-{mail:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->メールアドレスが入力されていません。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-mail-email" class="validator-result-{mail:validator#email}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->無効なメールアドレスです。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-mail-doubleMail" class="validator-result-{mail:validator#doubleMail}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->既に使用されているメールアドレスです。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		@include("/admin/user/mobile-mail-address.html")
+		<tr>
+			<th>URL<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザーがwebサイトを持っている場合のURLです。<!--/T-->"></i></th>
+			<td>
+				<input type="text" name="url" value="" style="display:none;" />
+				<input type="text" name="url" value="{url}" size="35" autocomplete="off" />
+				<input type="hidden" name="user[]" value="url" />
+				<input type="hidden" name="url:validator#url" id="validator-url-url" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-url-url" class="validator-result-{url:validator#url}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->無効なURLです。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->新しいパスワード<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!-- BEGIN_MODULE PasswordPolicy -->
+				<!--T-->ログイン用のパスワードです。<!--/T--><!-- BEGIN policy:veil -->
+				<ul>
+					<!-- BEGIN min -->
+					<li>
+						{num}<!--T-->文字以上<!--/T-->
+					</li><!-- END min --><!-- BEGIN max -->
+					<li>
+						{num}<!--T-->文字以内<!--/T-->
+					</li><!-- END max --><!-- BEGIN uppsercase -->
+					<li>
+						<!--T-->大文字を１つ以上含む<!--/T-->
+					</li><!-- END uppsercase --><!-- BEGIN lowercase -->
+					<li>
+						<!--T-->小文字を１つ以上含む<!--/T-->
+					</li><!-- END lowercase --><!-- BEGIN digits -->
+					<li>
+						<!--T-->数値を１つ以上含む<!--/T-->
+					</li><!-- END digits --><!-- BEGIN symbols -->
+					<li>
+						<!--T-->記号を１つ以上含む<!--/T-->
+					</li><!-- END symbols --><!-- BEGIN type3 -->
+					<li>
+						<!--T-->英文字 （ 大文字、小文字 ）、数字、記号の内、3種類以上<!--/T-->
+					</li><!-- END type3 -->
+				</ul><!-- END policy:veil -->
+				<!-- END_MODULE PasswordPolicy -->"></i></th>
+			<td class="js-password_strength">
+				<input type="password" name="pass" value="" style="display:none;" />
+				<input type="password" name="pass" value="{pass}" class="js-input acms-admin-form-width-small acms-admin-margin-right-mini" id="input-text-pass" autocomplete="off" />
+				<input type="hidden" name="user[]" value="pass" /><!-- BEGIN pass:validator#required -->
+				<input type="hidden" name="pass:validator#required" id="validator-pass-required" /><!-- END pass:validator#required -->
+
+				<span class="js-label acms-admin-password-strength-label" aria-live="assertive"></span>
+				<div>
+					<div class="js-meter acms-admin-password-strength-meter acms-admin-form-width-small"></div>
+				</div>
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-pass-required" class="validator-result-{pass:validator#required}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->パスワードが入力されていません。<!--/T--></p>
+					</div>
+					<div data-validator-label="validator-pass-password" class="validator-result-{pass:validator#password}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->無効なパスワードです。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><!--T-->新しいパスワード<!--/T--> ( <!--T-->確認<!--/T--> )<i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ログイン用のパスワードの確認です。コピー＆ペーストを使用せず手入力で確認してください。<!--/T-->"></i></th>
+			<td>
+				<input type="password" name="retype_pass" value="" style="display:none;" />
+				<input type="password" name="retype_pass" value="{retype_pass}" class="acms-admin-form-width-small" id="input-text-retype-pass" autocomplete="off" />
+				<input type="hidden" name="user[]" value="retype_pass" />
+				<input type="hidden" name="retype_pass:validator#equalTo" value="pass" id="validator-retype_pass-equalTo" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-retype_pass-equalTo" class="validator-result-{retype_pass:validator#equalTo}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->パスワードの確認ができません。<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr><!-- BEGIN_MODULE Admin_User_Sns --><!-- BEGIN google -->
+		<tr>
+			<th><!--T-->Googleログイン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->Googleにログインした状態で「認証」を行うと、ログイン情報とこのユーザーが関連づけされます。<!--/T-->"></i></th>
+			<td><!-- BEGIN google_notVerified -->
+				<input type="submit" name="ACMS_POST_Api_Google_OAuth_Login" value="<!--T-->認証<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+				<input type="hidden" name="type" value="addition" /><!-- END google_notVerified --><!-- BEGIN google_verified -->
+				<input type="submit" name="ACMS_POST_Api_Google_OAuth_Deauthorize" value="<!--T-->認証解除<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />&nbsp; id: {googleid}<!-- END google_verified -->
+			</td>
+		</tr><!-- END google --><!-- BEGIN twitter -->
+		<tr>
+			<th><!--T-->Twitterログイン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->Twitterにログインした状態で「認証」を行うと、ログイン情報とこのユーザーが関連づけされます。<!--/T-->"></i></th>
+			<td><!-- BEGIN tw_notVerified -->
+				<input type="submit" name="ACMS_POST_Api_Twitter_OAuth_Login" value="<!--T-->認証<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+				<input type="hidden" name="type" value="addition" /><!-- END tw_notVerified --><!-- BEGIN tw_verified -->
+				<input type="submit" name="ACMS_POST_Api_Twitter_OAuth_Deauthorize" value="<!--T-->認証解除<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />&nbsp; id: {twid}<!-- END tw_verified -->
+			</td>
+		</tr><!-- END twitter --><!-- BEGIN facebook -->
+		<tr>
+			<th><!--T-->Facebookログイン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->Facebookにログインした状態で「認証」を行うと、ログイン情報とこのユーザーが関連づけされます。<!--/T-->"></i></th>
+			<td><!-- BEGIN fb_notVerified -->
+				<input type="submit" name="ACMS_POST_Api_Facebook_OAuth_Login" value="<!--T-->認証<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-primary" />
+				<input type="hidden" name="type" value="addition" /><!-- END fb_notVerified --><!-- BEGIN fb_verified -->
+				<input type="submit" name="ACMS_POST_Api_Facebook_OAuth_Deauthorize" value="<!--T-->認証解除<!--/T-->" class="acms-admin-btn-admin acms-admin-btn-admin-danger" />&nbsp; id: {fbid}<!-- END fb_verified -->
+			</td>
+		</tr><!-- END facebook --><!-- END_MODULE Admin_User_Sns --><!-- BEGIN auth:veil -->
+		<tr>
+			<th><!--T-->権限<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->「管理者」「編集者」「投稿者」「読者」を選ぶことができます。<!--/T-->"></i></th>
+			<td>
+				<select name="auth" class="js-select2">
+					<option value="administrator"{auth:selected#administrator}><!--T-->管理者<!--/T--></option>
+					<option value="editor"{auth:selected#editor}><!--T-->編集者<!--/T--></option>
+					<option value="contributor"{auth:selected#contributor}><!--T-->投稿者<!--/T--></option>
+					<option value="subscriber"{auth:selected#subscriber}><!--T-->読者<!--/T--></option>
+				</select>
+				<input type="hidden" name="user[]" value="auth" />
+			</td>
+		</tr><!-- END auth:veil --><!-- BEGIN indexing:touch#off -->
+		<tr>
+			<th><!--T-->インデキシング<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックが外されたユーザーはユーザー一覧に表示されなくなります。しかし「非表示」ではないのでURLを入力するとユーザーを表示できます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="indexing" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="indexing" value="on"{indexing:checked#on} id="input-checkbox-indexing" />
+					<label for="input-checkbox-indexing"><i class="acms-admin-ico-checkbox"></i><!--T-->リストに出す<!--/T--></label>
+				</div>
+				<input type="hidden" name="user[]" value="indexing" />
+
+			</td>
+		</tr><!-- END indexing:touch#off --><!-- BEGIN login_anywhere:touch#off -->
+		<tr>
+			<th><!--T-->どこでもログイン<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このユーザーが所属するブログ以下のどのブログでもログインできるようになり、このユーザーと同じメールアドレス、ユーザーIDは全てのブログで使用出来なくなります。チェックがはずされた場合には、このユーザーが所属するブログでしかログインできません。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="login_anywhere" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="login_anywhere" value="on"{login_anywhere:checked#on} id="input-checkbox-login-anywhere" />
+					<label for="input-checkbox-login-anywhere">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->他のブログからログイン<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="user[]" value="login_anywhere" />
+				<input type="hidden" name="login_anywhere:validator#anywhere" id="validator-login_anywhere-anywhere" />
+				<div role="alert" aria-live="assertive">
+					<div data-validator-label="validator-login_anywhere-anywhere" class="validator-result-{login_anywhere:validator#anywhere}">
+						<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->他のブログのユーザーとユーザーIDまたはメールアドレスが重複しています<!--/T--></p>
+					</div>
+				</div>
+			</td>
+		</tr><!-- END login_anywhere:touch#off --><!-- BEGIN_MODULE Touch_SessionWithAdministration --><!-- BEGIN_IF [{auth}/neq/admin] -->
+		<tr>
+		<th><!--T-->ログイン制限<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックがされたユーザーはが許可された端末からしかログイン出来なくなります。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="login_terminal_restriction" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="login_terminal_restriction" value="on"{login_terminal_restriction:checked#on} id="input-checkbox-login_terminal_restriction" />
+					<label for="input-checkbox-login_terminal_restriction">
+					<i class="acms-admin-ico-checkbox"></i><!--T-->許可された端末からのみログインを許可<!--/T--></label>
+				</div>
+				<input type="hidden" name="user[]" value="login_terminal_restriction" />
+
+			</td>
+		</tr><!-- END_IF --><!-- END_MODULE Touch_SessionWithAdministration --><!-- BEGIN_IF [%{GETTEXT_TYPE}/eq/user] -->
+		<tr>
+			<th><!--T-->ロケール<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ユーザー毎のロケールを設定します。<!--/T-->"></i></th>
+			<td>
+				<select name="locale" class="js-select2">
+					<option value="ja_JP.UTF-8"{locale:selected#ja_JP.UTF-8}>日本語 (ja_JP.UTF-8)</option>
+					<option value="en_US.UTF-8"{locale:selected#en_US.UTF-8}>English (en_US.UTF-8)</option>
+				</select>
+				<input type="hidden" name="user[]" value="locale" />
+			</td>
+		</tr><!-- END_IF --><!-- BEGIN_IF [{global_auth}/nem/] -->
+		<tr>
+			<th><!--T-->子ブログへの権限<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると、このユーザーに子ブログへの権限を与えます。<!--/T-->"></i></th>
+			<td>
+				<input type="hidden" name="global_auth" value="off" />
+				<div class="acms-admin-form-checkbox">
+					<input type="checkbox" name="global_auth" value="on"{global_auth:checked#on} id="input-checkbox-global_auth" />
+					<label for="input-checkbox-global_auth">
+						<i class="acms-admin-ico-checkbox"></i><!--T-->子ブログにも権限を与える<!--/T-->
+					</label>
+				</div>
+				<input type="hidden" name="user[]" value="global_auth" />
+			</td>
+		</tr><!-- END_IF -->
+	</table>
+	</div>
+	<div id="acms_custom" class="acms-admin-tabs-panel">
+		@include("/admin/user/field.html")
+		<!-- BEGIN_MODULE Admin_InjectTemplate id="admin-user-field" --><!-- END_MODULE Admin_InjectTemplate -->
+	</div>
+</div>
+</form>
+<!-- END_MODULE Admin_User_Edit -->

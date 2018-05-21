@@ -1,0 +1,14 @@
+<!-- BEGIN_MODULE Entry_Headline id="" -->
+<div class="acms-admin-margin-bottom-medium">
+@include("/admin/module/setting.html")
+<div class="clearfix">
+	<p class="acms-admin-float-right">
+		<a href="{indexUrl}" class="acms-admin-btn-flat acms-admin-btn-flat-default acms-admin-btn-flat-small">一覧へ</a>
+		<a href="{indexUrl}rss2.xml" class="acms-admin-btn-flat acms-admin-btn-flat-default acms-admin-btn-flat-small"><span class="acms-admin-icon-config_feed_rss2"></span><span class="acms-admin-hide-visually">RSS</span></a>
+	</p>
+</div>
+<ul class="acms-admin-list-group"><!-- BEGIN entry:loop -->
+	<li class="acms-admin-list-group-item {entry:loop.class}"><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日</time><!-- BEGIN category:veil --> <span class="acms-admin-label acms-admin-label-default">{categoryName}</span><!-- END category:veil --><!-- BEGIN url#front --><a href="{url}" class="acms-admin-list-group-title-link"><!-- END url#front -->{title}<!-- BEGIN url#rear --></a><!-- END url#rear --><!-- BEGIN new --><span class="acms-admin-label acms-admin-label-warning">New!</span><!-- END new --></li><!-- END entry:loop -->
+</ul>
+</div>
+<!-- END_MODULE Entry_Headline -->

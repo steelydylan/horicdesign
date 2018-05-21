@@ -1,0 +1,31 @@
+<!-- BEGIN_MODULE Admin_Blog_Select -->
+<div class="js-ajax_load_link_delegate">
+<div class="js-ajax_load_replace">
+	<table class="acms-admin-table acms-admin-table-heading acms-admin-table-hover">
+		<!-- <thead class="acms-admin-table-admin-title"> -->
+		<thead>
+			<tr>
+				<th class="acms-admin-hide-sp">bid</th>
+				<th class="acms-admin-show-sp">ブログ名</th>
+				<th class="acms-admin-show-sp">コード</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN loop -->
+			<tr class="js-arg_reference_anchor" data-id="{value}" data-label="{label}（bid:{value}）">
+				<td class="acms-admin-td-id">
+					<span class="acms-admin-label label-default">{value}</span>
+				</td>
+				<td>
+					{indent}[raw]{label}
+				</td>
+				<td>
+					{code}
+				</td>
+			</tr>
+			<!-- END loop -->
+		</tbody>
+	</table>
+</div>
+</div>
+<!-- END_MODULE Admin_Blog_Select -->

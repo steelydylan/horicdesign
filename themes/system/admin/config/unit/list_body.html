@@ -1,0 +1,234 @@
+<h3 class="acms-admin-admin-title2"><!--T-->ユニット<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->表示数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="column_list_limit" size="4" value="{column_list_limit}" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="column_list_limit" />
+			<input type="hidden" name="column_list_limit:convert" value="a" />
+			<input type="hidden" name="column_list_limit:validator#digits" id="validator-column_list_limit-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-column_list_limit-digits" class="validator-result-{column_list_limit:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->表示順<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->どのようなルールに従って表示されるかの設定です。<!--/T-->"></i></th>
+		<td>
+			<select name="column_list_order" class="js-select2">
+				<option value="datetime-asc"{column_list_order:selected#datetime-asc}><!--T-->日付 ( 昇順 )<!--/T--></option>
+				<option value="datetime-desc"{column_list_order:selected#datetime-desc}><!--T-->日付 ( 降順 )<!--/T--></option>
+				<option value="random"{column_list_order:selected#random}>ランダム</option>
+			</select>
+			<input type="hidden" name="config[]" value="column_list_order" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ループ内クラス<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->指定したクラスをループブロック内に設定できます。例えばグリッドシステムのカラム数設定などにご利用ください。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="column_list_loop_class" value="{column_list_loop_class}" size="4" class="acms-admin-form-width-medium" />
+			<input type="hidden" name="config[]" value="column_list_loop_class" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->ユニットタイプ<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->表示に含めるユニットのタイプの設定です。ここで選択していないタイプのユニットは表示されません。<!--/T-->"></i></th>
+		<td>
+			<ul class="acms-admin-list-nostyle">
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="text"{column_list_type:checked#text} id="input-checkbox-column_list_type-text" />
+						<label for="input-checkbox-column_list_type-text"><i class="acms-admin-ico-checkbox"></i><!--T-->テキスト<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="image"{column_list_type:checked#image} id="input-checkbox-column_list_type-image" />
+						<label for="input-checkbox-column_list_type-image"><i class="acms-admin-ico-checkbox"></i><!--T-->画像<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="table"{column_list_type:checked#table} id="input-checkbox-column_list_type-table" />
+						<label for="input-checkbox-column_list_type-table"><i class="acms-admin-ico-checkbox"></i><!--T-->テーブル<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="file"{column_list_type:checked#file} id="input-checkbox-column_list_type-file" />
+						<label for="input-checkbox-column_list_type-file"><i class="acms-admin-ico-checkbox"></i><!--T-->ファイル<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="map"{column_list_type:checked#map} id="input-checkbox-column_list_type-map" />
+						<label for="input-checkbox-column_list_type-map"><i class="acms-admin-ico-checkbox"></i><!--T-->マップ<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="yolp"{column_list_type:checked#yolp} id="input-checkbox-column_list_type-yolp" />
+						<label for="input-checkbox-column_list_type-yolp"><i class="acms-admin-ico-checkbox"></i><!--T-->Yahoo!地図<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="video"{column_list_type:checked#video} id="input-checkbox-column_list_type-video" />
+						<label for="input-checkbox-column_list_type-video"><i class="acms-admin-ico-checkbox"></i><!--T-->ビデオ<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="eximage"{column_list_type:checked#eximage} id="input-checkbox-column_list_type-eximage" />
+						<label for="input-checkbox-column_list_type-eximage"><i class="acms-admin-ico-checkbox"></i><!--T-->画像URL<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="quote"{column_list_type:checked#quote} id="input-checkbox-column_list_type-quote" />
+						<label for="input-checkbox-column_list_type-quote"><i class="acms-admin-ico-checkbox"></i><!--T-->引用<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="media"{column_list_type:checked#media} id="input-checkbox-column_list_type-media" />
+						<label for="input-checkbox-column_list_type-media"><i class="acms-admin-ico-checkbox"></i><!--T-->メディア<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="module"{column_list_type:checked#module} id="input-checkbox-column_list_type-module" />
+						<label for="input-checkbox-column_list_type-module"><i class="acms-admin-ico-checkbox"></i><!--T-->モジュール<!--/T--></label>
+					</div>
+				</li>
+				<li>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="column_list_type[]" value="custom"{column_list_type:checked#custom} id="input-checkbox-column_list_type-custom" />
+						<label for="input-checkbox-column_list_type-custom"><i class="acms-admin-ico-checkbox"></i><!--T-->カスタム<!--/T--></label>
+					</div>
+				</li>
+			</ul>
+			<input type="hidden" name="config[]" value="column_list_type" />
+			<input type="hidden" name="column_list_type:validator#required" value="1" id="validator-column_list_type-required" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-column_list_type-required" class="validator-result-{column_list_type:validator#required}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->ユニットタイプが選択されていません。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->ページャー<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->ページャー<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをするとページャー（ページ送り）機能に必要な情報を出力します。ページャー機能を使用するには、モジュールIDとしてこのモジュールを使用し、引数の「ページ」のURLコンテキストにチェックをしてください。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="column_list_pager_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_pager_on" value="on"{column_list_pager_on:checked#on} class="switching-function-btn" id="input-checkbox-column_list_pager_on" />
+				<label for="input-checkbox-column_list_pager_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ページャーを表示できるようにする。<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_pager_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->前後に表示するページ数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページを基点として、ここで設定した値の数だけページ番号が表示されます。<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="column_list_pager_delta" value="{column_list_pager_delta}" size="4" class="acms-admin-form-width-mini" />
+			<input type="hidden" name="config[]" value="column_list_pager_delta" />
+			<input type="hidden" name="column_list_pager_delta:validator#digits" id="validator-column_list_pager_delta-digits" />
+			<div role="alert" aria-live="assertive">
+				<div data-validator-label="validator-column_list_pager_delta-digits" class="validator-result-{column_list_pager_delta:validator#digits}">
+					<p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->現在のページの要素の属性<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ページャーの設定です。表示中のページ番号に割り当てられる属性です。（変数名 : pageCurAttr）<!--/T-->"></i></th>
+		<td>
+			<input type="text" name="column_list_pager_cur_attr" value="{column_list_pager_cur_attr}" size="20" />
+			<input type="hidden" name="config[]" value="column_list_pager_cur_attr" />
+		</td>
+	</tr>
+</table>
+
+<h3 class="acms-admin-admin-title2"><!--T-->フィールド<!--/T--></h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th><!--T-->フィールド基本設定<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドの基本設定（名前など）を出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="column_list_entry_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_entry_on" value="on"{column_list_entry_on:checked#on} id="input-checkbox-column_list_entry_on" />
+				<label for="input-checkbox-column_list_entry_on"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリー情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_entry_on" />
+			<br>
+
+			<input type="hidden" name="column_list_category_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_category_on" value="on"{column_list_category_on:checked#on} id="input-checkbox-column_list_category_on" />
+				<label for="input-checkbox-column_list_category_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリー情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_category_on" />
+			<br>
+
+			<input type="hidden" name="column_list_user_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_user_on" value="on"{column_list_user_on:checked#on} id="input-checkbox-column_list_user_on" />
+				<label for="input-checkbox-column_list_user_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザー情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_user_on" />
+			<br>
+
+			<input type="hidden" name="column_list_blog_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_blog_on" value="on"{column_list_blog_on:checked#on} id="input-checkbox-column_list_blog_on" />
+				<label for="input-checkbox-column_list_blog_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ブログ情報<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_blog_on" />
+		</td>
+	</tr>
+	<tr>
+		<th><!--T-->カスタムフィールド<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->チェックをすると各フィールドのカスタムフィールドを出力できます。<!--/T-->"></i></th>
+		<td>
+			<input type="hidden" name="column_list_entry_field" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_entry_field" value="on"{column_list_entry_field:checked#on} id="input-checkbox-column_list_entry_field" />
+				<label for="input-checkbox-column_list_entry_field"><i class="acms-admin-ico-checkbox"></i><!--T-->エントリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_entry_field" />
+			<br>
+
+			<input type="hidden" name="column_list_category_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_category_field_on" value="on"{column_list_category_field_on:checked#on} id="input-checkbox-column_list_category_field_on" />
+				<label for="input-checkbox-column_list_category_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->カテゴリーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_category_field_on" />
+			<br>
+
+			<input type="hidden" name="column_list_user_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_user_field_on" value="on"{column_list_user_field_on:checked#on} id="input-checkbox-column_list_user_field_on" />
+				<label for="input-checkbox-column_list_user_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ユーザーフィールド<!--/T--></label>
+			</div>
+			<input type="hidden" name="config[]" value="column_list_user_field_on" />
+			<br>
+
+			<input type="hidden" name="column_list_blog_field_on" value="off" />
+			<div class="acms-admin-form-checkbox">
+				<input type="checkbox" name="column_list_blog_field_on" value="on"{column_list_blog_field_on:checked#on} id="input-checkbox-column_list_blog_field_on" />
+				<label for="input-checkbox-column_list_blog_field_on"><i class="acms-admin-ico-checkbox"></i><!--T-->ブログフィールド<!--/T--></label>
+			</div><br><!--T-->(カスタムフィールドは各基本設定がonの時のみ有効)<!--/T-->
+			<input type="hidden" name="config[]" value="column_list_blog_field_on" />
+		</td>
+	</tr>
+</table>
+
+<!-- BEGIN_MODULE Admin_Rule_Name -->
+<input type="hidden" name="rid" value="{rid}" /><!-- END_MODULE Admin_Rule_Name --><!-- BEGIN_MODULE Admin_Module_Name -->
+<input type="hidden" name="mid" value="{mid}" /><!-- END_MODULE Admin_Module_Name -->
