@@ -1,0 +1,51 @@
+/* ------------------------------
+　　エントリーサマリー（リスト表示）
+------------------------------ */
+.entry-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 20px 0;
+	border-top: 1px solid #979797;
+}
+
+.entry-list .acms-admin-label {
+	display: inline-block;
+}
+
+.entry-list li {
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid #979797;
+	color: #333333;
+}
+
+.entry-list a {
+	display: block;
+	margin: -10px;
+	padding: 10px;
+	@include link-color(#333333);
+	@include text-decoration-none();
+	@include roll-over(transparent, #EEEEEE, .2s);
+}
+
+.entry-list-date {
+	color: #888888;
+	font-weight: bold;
+	font-size: 12px;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+.entry-list-category {
+	color: #007ab7;
+	font-weight: bold;
+	font-size: 12px;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+.entry-list-title {
+	font-size: 14px;
+	display: block;
+	font-weight: bold;
+}

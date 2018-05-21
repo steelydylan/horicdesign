@@ -1,0 +1,66 @@
+<script>
+(function(w,d,s,g,js,fs){
+  g=w.gapi||(w.gapi=\{\});g.analytics={q:[],ready:function(f)\{this.q.push(f);\}\};
+  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fs.parentNode.insertBefore(js,fs);js.onload=function()\{g.load('analytics');\};
+}(window,document,'script'));
+</script>
+
+<script>
+gapi.analytics.ready(function() {
+
+  /**
+   * Authorize the user immediately if the user has already granted access.
+   * If no access has been created, render an authorize button inside the
+   * element with the ID "embed-api-auth-container".
+   */
+  gapi.analytics.auth.authorize({
+    container: 'embed-api-auth-container',
+    clientid: '821009669335-m1v0fbmbcs67bvo59j3i33taa462in5c.apps.googleusercontent.com'
+  });
+
+  /**
+   * Create a new DataChart instance with the given query parameters
+   * and Google chart options. It will be rendered inside an element
+   * with the id "chart-container".
+   */
+  var dataChart = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      metrics: 'ga:sessions',
+      dimensions: 'ga:date',
+      ids: 'ga:86948963',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday'
+    },
+    chart: {
+      container: 'chart-container',
+      type: 'LINE',
+      options: {
+        width: '100%'
+      }
+    }
+  }).execute();
+});
+</script>
+
+<h2 class="acms-admin-admin-title2"><!--T-->Google Analytics<!--/T--></h2>
+<div id="embed-api-auth-container"></div>
+<div id="chart-container"></div>
+
+<!-- BEGIN_MODULE Links id="adminLink" -->
+<h2 class="acms-admin-title2">リンク集</h2>
+<!--#include file="/admin/module/setting.html"-->
+<table class="acms-admin-mini-table acms-admin-icon-table">
+	<thead><th>項目</th></thead>
+	<tbody>
+	<!-- BEGIN loop -->
+	<tr>
+		<td class="acms-config-name">
+		<a href="{url}"><i class="acms-icon acms-icon-config_links"></i>{name}</a>
+		</td>
+	</tr>
+	<!-- END loop -->
+	</tbody>
+</table>
+<!-- END_MODULE Links -->

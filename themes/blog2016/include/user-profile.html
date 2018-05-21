@@ -1,0 +1,31 @@
+<!-- BEGIN_MODULE User_Profile id="" -->
+<!-- BEGIN user:loop -->
+<section class="profile">
+	<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+	<p class="acms-admin-module-edit"><a href="/bid/%{BID}/uid/{id}/admin/user_edit/?edit=update#acms_custom" class="js-dialog-btn js-link_no_rewrite">編集</a></p>
+	<!-- END_MODULE Touch_SessionWithAdministration -->
+	<!-- BEGIN image:veil -->
+	<img src="%{ARCHIVES_DIR}{image@path}" class="profile-img" width="{image@x}" height="{image@y}" alt="{image@alt}" />
+	<!-- END image:veil -->
+	<!-- BEGIN name:veil -->
+	<h2 class="profile-name">{name}</h2>
+	<!-- END name:veil -->
+	<!-- BEGIN_IF [{position}/nem/_or_/{title}/nem/] -->
+	<p class="profile-position">
+		<!-- BEGIN position:veil -->{position}<!-- END position:veil -->
+		<!-- BEGIN_IF [{position}/nem/_and_/{title}/nem/] -->・<!-- END_IF -->
+		<!-- BEGIN title:veil -->{title}<!-- END title:veil -->
+	</p>
+	<!-- END_IF -->
+	<!-- BEGIN profile:veil -->
+	<p class="profile-text">{profile}[nl2br]</p>
+	<!-- END profile:veil -->
+
+	<div class="profile-icon-list">
+		<!-- BEGIN twitter:veil -->
+		<a href="{twitter}" class="social-icon social-icon-twitter"><i class="acms-icon-twitter"></i></a><!-- END twitter:veil --><!-- BEGIN facebook:veil --><a href="{facebook}" class="social-icon social-icon-facebook"><i class="acms-icon-facebook"></i></a><!-- END facebook:veil --><!-- BEGIN gplus:veil --><a href="{googlePlus}" class="social-icon social-icon-gplus"><i class="acms-icon-gplus"></i></a><!-- END gplus:veil --><!-- BEGIN profile_link:veil --><a href="{profile_link}" class="social-icon"><i class="acms-icon-user"></i></a><!-- END profile_link:veil -->
+	</div>
+
+</section>
+<!-- END user:loop -->
+<!-- END_MODULE User_Profile -->

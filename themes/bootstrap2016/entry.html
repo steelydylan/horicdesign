@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja"> <!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<!--#include file="/include/head/meta.html" -->
+<!--#include file="/include/head/link.html" -->
+<!--#include file="/include/head/js.html" -->
+</head>
+
+<body>
+	<!-- #include file="/include/body_start.html" -->
+
+	<!-- ヘッダー -->
+	<!--#include file="/include/header.html" -->
+
+	<!-- ページタイトル -->
+	<!--#include file="/include/header/pageTitle.html" -->
+	<!-- トピックパス -->
+	<!--#include file="/include/header/topicpath.html" -->
+
+	<div class="container sp-container">
+
+		<!-- ※管理用パーツ -->
+		<!--#include file="/admin/action.html"-->
+
+		<div class="row">
+
+			<!-- メイン -->
+			<main class="col-md-9 main">
+
+				<!-- タグフィルター -->
+				<!-- GET_Template id="tagfilter" -->
+
+				<!-- エントリーボディ（日付無し） -->
+				<!-- GET_Template id="body_default" module_id="body_no_date" -->
+
+				<!-- 確認用テンプレート -->
+				<!--#include file="/include/check-seo.html" -->
+			</main>
+
+			<div class="col-md-3 sub">
+
+				<!-- エントリーリスト -->
+				<!-- GET_Template id="entry_list" module_id="entry_list" -->
+
+				<!-- カテゴリーリスト -->
+				<!-- GET_Template id="category_list" module_id="category_list" -->
+
+				<div id="offcanvas" class="js-offcanvas offcanvas-bar">
+					<div class="visible-xs-block visible-sm-block">
+						<!-- スマートフォン用 グローバルナビ -->
+						<!--#include file="/include/header/spGlobalNavi.html" -->
+					</div>
+
+					<!-- 検索フォーム -->
+					<!--#include file="/include/parts/search.html" -->
+
+					<!-- ピックアップリスト -->
+					<!-- GET_Template id="entry_list_pickup" -->
+
+					<!-- バナー -->
+					<!-- GET_Template id="banner" module_id="banner" -->
+
+					<!-- リンクリスト -->
+					<!-- GET_Template id="link_list" module_id="link_list" -->
+
+					<a class="js-offcanvas-close close-btn" id="nav-close-btn" href="#top">コンテンツに戻る</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- お問い合わせ -->
+	<!--#include file="/include/footer/suggest.html" -->
+	<!-- フッター -->
+	<!--#include file="/include/footer.html" -->
+</body>
+</html>

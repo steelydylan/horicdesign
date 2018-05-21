@@ -1,0 +1,272 @@
+/* ------------------------------
+　　ナビゲーション
+------------------------------ */
+.nav {
+	background-color: $nav-bg-color;
+}
+
+.nav-list {
+	@include container();
+	@include clearfix();
+
+	li {
+		padding: 13px 20px;
+		float: left;
+		display: block;
+		list-style-type: none;
+		border-left: 1px solid #000000;
+
+		&:last-child {
+			border-right: 1px solid $nav-border-color;
+
+			& a {
+				border-right: 1px solid #000000;
+			}
+		}
+	}
+
+	a {
+		display: block;
+		margin: -13px -20px;
+		padding: 13px 20px;
+		border-left: 1px solid $nav-border-color;
+		@include link-color();
+		@include text-decoration-none();
+		@include roll-over($nav-bg-color, $nav-bg-color-on-hover, .2s);
+	}
+}
+
+#nav-list-wrap {
+	display: inline;
+}
+
+.nav-title {
+	display: none;
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 10px;
+	margin: 0;
+	background-color: $nav-bg-color;
+}
+
+/* パターン2 */
+.links {
+	padding: 20px 0;
+}
+
+.links-list {
+	@include container();
+	font-size: 16px;
+	list-style-type: none;
+
+	li {
+		margin-bottom: 20px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		@include link-color(#333333);
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&:before {
+			content: "";
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			border-radius: 3px;
+			margin-right: 10px;
+			background-color: #cacaca;
+			vertical-align: middle;
+		}
+	}
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.nav-title {
+		display: block;
+
+		& i {
+			float: right;
+		}
+	}
+
+	.js-toggle-heading {
+		cursor: pointer;
+	}
+
+	#nav-list-wrap {
+		display: block;
+		height: 0;
+		overflow: hidden;
+		-webkit-transition: height .2s;
+		-moz-transition: height .2s;
+		-ms-transition: height .2s;
+		-o-transition: height .2s;
+		transition: height .2s;
+	}
+
+	.nav-list {
+		-webkit-transition: height .2s;
+		-moz-transition: height .2s;
+		-ms-transition: height .2s;
+		-o-transition: height .2s;
+		transition: height .2s;
+		-ms-overflow-y: hidden;
+		overflow-y: hidden;
+		padding: 0;
+		color: #333333;
+		background-color: #ffffff;
+
+		li {
+			float: none;
+			font-weight: bold;
+			border-left: none;
+
+			&:last-child {
+				border-right: none;
+
+				& a {
+					border-right: none;
+				}
+			}
+		}
+
+		a {
+			@include link-color(#333333);
+			@include roll-over(#FFFFFF, #EEEEEE, .2s);
+			border-left: none;
+			border-bottom: 1px solid #9b9b9b;
+		}
+	}
+}
+
+/* ----------------
+シリアルナビ
+------------------ */
+.serial-nav {
+	position: relative;
+	height: 35px;
+	margin-bottom: 30px;
+	font-size: 14px;
+
+	& ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	& li {
+		list-style-type: none;
+		display: block;
+	}
+
+	& a {
+		display: block;
+		width: 100%;
+		color: #ffffff;
+		text-decoration: none;
+		overflow: hidden;
+		white-space: nowrap;
+		border-radius: 5px;
+		-ms-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		@include link-color(#FFFFFF);
+		@include text-decoration-none();
+		@include roll-over(#007AB7, #02476A, .2s);
+	}
+}
+
+.serial-nav-prev {
+	max-width: 290px;
+	float: left;
+
+	& a {
+		position: relative;
+		padding: 5px 10px 5px 25px;
+	}
+}
+
+.serial-nav-prev-icon {
+	position: absolute;
+	top: 8px;
+	left: 5px;
+}
+
+.serial-nav-index {
+	width: 60px;
+	top: 0;
+	left: 50%;
+	margin-left: -30px;
+	position: absolute;
+	text-align: center;
+
+	a {
+		padding: 5px 0;
+	}
+}
+
+.serial-nav-next {
+	max-width: 290px;
+	text-align: right;
+	float: right;
+
+	& a {
+		position: relative;
+		padding: 5px 25px 5px 10px;
+	}
+}
+
+.serial-nav-next-icon {
+	position: absolute;
+	top: 8px;
+	right: 5px;
+}
+
+@media screen and (max-width: 970px) {
+	.serial-nav-next,
+	.serial-nav-prev {
+		max-width: 200px;
+	}
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.serial-nav {
+		height: auto;
+
+		& ul {
+			position: static;
+			padding: 5px 10px;
+		}
+
+		& li {
+			position: static;
+			padding: 5px 10px;
+		}
+	}
+
+	.serial-nav-prev {
+		max-width: 100%;
+		float: left;
+		width: 50%;
+	}
+
+	.serial-nav-next {
+		max-width: 100%;
+		float: right;
+		width: 50%;
+	}
+
+	.serial-nav-index {
+		width: 100%;
+		clear: both;
+		margin: 10px 0 0 0;
+		max-width: 100%;
+	}
+}

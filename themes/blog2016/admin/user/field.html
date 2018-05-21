@@ -1,0 +1,71 @@
+<h3 class="acms-admin-admin-title2">プロフィール</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>所属<i data-acms-tooltip="ユーザーが所属する部署などです。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="position" value="{position}" size="30" />
+			<input type="hidden" name="field[]" value="position" />
+		</td>
+	</tr>
+	<tr>
+		<th>肩書き<i data-acms-tooltip="ユーザーの肩書きです。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="title" value="{title}" size="30" />
+			<input type="hidden" name="field[]" value="title" />
+		</td>
+	</tr>
+	<tr>
+		<th>自己紹介文<i data-acms-tooltip="ユーザーの詳細プロフィールです。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<textarea name="profile" rows="5" cols="50">{profile}</textarea>
+			<input type="hidden" name="field[]" value="profile" />
+		</td>
+	</tr>
+	<tr>
+		<th>画像<i data-acms-tooltip="ユーザーの画像です。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td><!-- BEGIN image@path:veil -->
+			<input type="hidden" name="image@old" value="{image@path}" />
+			<input type="hidden" name="image@secret" value="{image@secret}" />
+			<label for="input-checkbox-image@edit" class="acms-admin-form-checkbox" >
+			<input type="checkbox" name="image@edit" value="delete" id="input-checkbox-image@edit" />
+			<i class="acms-admin-ico-checkbox"></i> 削除</label><br />
+			<img src="%{ARCHIVES_DIR}{image@path}" width="{image@x}" height="{image@y}" /><br /><!-- END image@path:veil -->
+			<input type="file" name="image" size="20" />
+			<input type="hidden" name="field[]" value="image" />
+			<input type="hidden" name="image:extension" value="image" />
+			<input type="hidden" name="image@size" value="220" />
+		</td>
+	</tr>
+	<tr>
+		<th>代替テキスト<i data-acms-tooltip="ユーザーが登録した画像にキャプションをつけることができます。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td><input type="text" name="image@alt" value="{image@alt}" size="30" /></td>
+	</tr>
+	<tr>
+		<th>Twitter<i data-acms-tooltip="twitterのユーザページのURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="twitter" value="{twitter}" size="50" />
+			<input type="hidden" name="field[]" value="twitter" />
+		</td>
+	</tr>
+	<tr>
+		<th>Facebook<i data-acms-tooltip="facebookのユーザページのURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="facebook" value="{facebook}" size="50" />
+			<input type="hidden" name="field[]" value="facebook" />
+		</td>
+	</tr>
+	<tr>
+		<th>Google+<i data-acms-tooltip="google+のユーザページのURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="googlePlus" value="{googlePlus}" size="50" />
+			<input type="hidden" name="field[]" value="googlePlus" />
+		</td>
+	</tr>
+	<tr>
+		<th>プロフィール<i data-acms-tooltip="プロフィール用のページなど任意のURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="profile_link" value="{profile_link}" size="50" />
+			<input type="hidden" name="field[]" value="profile_link" />
+		</td>
+	</tr>
+</table>

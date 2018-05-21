@@ -1,0 +1,32 @@
+/* ------------------------------
+　　トピックパス
+------------------------------ */
+.topicpath {
+	margin: 0;
+	padding: 15px 0;
+	list-style-type: none;
+	font-size: 12px;
+}
+
+.topicpath-wrap {
+	min-height: 48px;
+}
+
+.topicpath li {
+	margin-left: 20px;
+	display: inline-block;
+
+	&:after {
+		content: ">";
+		display: inline-block;
+		margin-left: 20px;
+	}
+
+	&:first-child {
+		margin-left: 0;
+	}
+
+	&:last-child:after {
+		display: none;
+	}
+}

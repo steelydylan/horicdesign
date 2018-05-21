@@ -1,0 +1,15 @@
+<!-- BEGIN_MODULE Banner id="" -->
+<div>
+<!--#include file="/admin/module/setting.html"-->
+<ul class="banner">
+	<!-- BEGIN banner:loop -->
+	<!-- BEGIN banner#src -->
+	<li>{src}[raw]</li>
+	<!-- END banner#src -->
+	<!-- BEGIN banner#img -->
+	<li{attr1}[raw]><a href="{url}" target="{target}"><img src="%{ARCHIVES_DIR}{img}" width="{x}" height="{y}" class="acms-img-responsive" alt="{alt}" /></a></li>
+	<!-- END banner#img -->
+	<!-- END banner:loop -->
+</ul>
+</div>
+<!-- END_MODULE Banner -->

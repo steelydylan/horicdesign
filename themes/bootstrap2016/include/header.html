@@ -1,0 +1,33 @@
+<!-- 公式SNSボタンを有効にするために必要なJS -->
+<!-- ##include file="/include/header/js-sns.html" -->
+
+<header>
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<!-- BEGIN_MODULE Blog_Field id="global" -->
+			<div class="navbar-header">
+
+
+				<a id="nav-open-btn" href="#offcanvas" data-target="#offcanvas" class="navbar-toggle collapsed pull-left js-offcanvas-btn js-offcanvas-btn-l" tabindex="-1">
+					<span class="sr-only">メニューを開閉する</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<!-- BEGIN_IF [%{BID}/eq/1/and/%{VIEW}/eq/top] --><h1 class="site-name"><!-- ELSE --><p class="site-name"><!-- END_IF --><a href="%{BASE_URL}" class="navbar-brand">
+					<!-- BEGIN site_logo:veil --><img src="%{ARCHIVES_DIR}{site_logo@path}" alt="%{BLOG_NAME}" width="20" height="20" class="navbar-brand-img"><!-- END site_logo:veil --><!-- BEGIN site_name:veil --><span class="site-name-text">{site_name}</span><!-- END site_name:veil --></a>
+				<!-- BEGIN_IF [%{BID}/eq/1/and/%{VIEW}/eq/top] --></h1><!-- ELSE --></p><!-- END_IF -->
+				<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+					<p class="acms-admin-module-edit"><a href="/bid/{id}/admin/blog_edit/?edit=update#acms_custom" class="js-dialog-btn js-link_no_rewrite">編集</a></p>
+					<!-- END_MODULE Touch_SessionWithAdministration -->
+				</div>
+			<!-- END_MODULE Blog_Field -->
+
+			<div class="collapse navbar-collapse">
+				<!-- グローバルナビ -->
+				<!--#include file="/include/header/globalNavi.html" -->
+			</div>
+
+		</div>
+	</nav>
+</header>

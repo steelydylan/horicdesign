@@ -1,0 +1,47 @@
+/* ------------------------------
+　　タグクラウド
+------------------------------ */
+.tag-cloud {
+	padding: 0;
+	margin: 0 0 20px 0;
+
+	& a {
+		@include link-color(#2262AC);
+		@include only-underline-on-hover();
+	}
+
+	& li {
+		list-style-type: none;
+		display: inline;
+	}
+
+	& ul {
+		padding: 0 0 0 10px;
+		margin: 0;
+	}
+
+	& .acms-admin-module-edit a {
+		@include link-color(#FFFFFF);
+		text-decoration: underline;
+	}
+}
+
+@for $i from 1 through 25 {
+	.tag-cloud-item#{$i} {
+		@if $i >= 1 and $i <= 2 {
+			font-size: 12px;
+		} @else if $i >= 3 and $i <= 5 {
+			font-size: 14px;
+		} @else if $i >= 6 and $i < 13 {
+			font-size: 16px;
+		} @else if $i > 14 and $i < 17 {
+			font-size: 18px;
+		} @else if $i >= 20 {
+			font-size: 20px;
+		}
+
+		@if $i > 10 {
+			font-weight: bold;
+		}
+	}
+}

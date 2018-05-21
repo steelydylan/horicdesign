@@ -1,0 +1,79 @@
+// ---------------
+//　ボタン
+// ---------------
+@mixin btn-color($start-color, $end-color, $color){
+	background-color: $end-color;
+	background-image: linear-gradient(to bottom, $start-color, $end-color);
+	color: $color;
+}
+// ベース
+@mixin btn-base(){
+	font-weight: bold;
+	color: #FFF;
+	line-height: 1.2;
+	border: 0;
+	 &:hover,
+	 &:visited {
+		color: #FFF;
+		text-decoration: none;
+	}
+	 &:focus,
+	 &:active {
+		color: #FFF;
+		box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.50);
+	}
+}
+// サイズ小
+@mixin btn-small(){
+	display: inline-block;
+	padding: 8px 15px;
+	border-radius: 3px;
+}
+// サイズ大
+@mixin btn-large(){
+	display: inline-block;
+	padding: 15px 20px;
+	text-align: center;
+	border-radius: 5px;
+	@include font-size(20);
+}
+// ブロック
+@mixin btn-search-block(){
+	display: block;
+	width: 100%;
+	max-width: 360px;
+	margin: 0 auto;
+	padding: 15px 20px;
+	@include font-size(20);
+}
+
+// フッターSNSボタン
+@mixin footer-sns-list($sns-color){
+	display: block;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 1.7;
+	@include font-size(19);
+	color: #FFF;
+	border-radius: 4px;
+	background: $sns-color;
+	 &:before {
+		  vertical-align: middle;
+	}
+}
+// エントリー下シェアボタン
+@mixin share-sns-btn($sns-color){
+	display: block;
+	width: 22px;
+	height: 22px;
+	line-height: 1.2;
+	color: #FFF;
+	text-align: center;
+	@include font-size(16);
+	background: $sns-color;
+	border-radius: 4px;
+	 &:before {
+		vertical-align: middle;
+	}
+}

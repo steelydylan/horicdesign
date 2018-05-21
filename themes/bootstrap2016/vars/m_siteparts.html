@@ -1,0 +1,58 @@
+<!--@doc
+ # サブカラムで使用しているバナーを表示します
+ # 見出し内に挿入されるカスタムフィールドのアイコン対応に対応しています
+ # 
+ # @id banner
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="banner" module_id="banner" -->
+	<!-- BEGIN_MODULE Banner id="{{module_id}}" -->
+	<section class="module-section">
+		<!--#include file="/admin/module/setting.html"-->
+		<!-- BEGIN moduleField --><!-- BEGIN_IF [{module_heading}/nem] -->
+		<div class="module-header clearfix">
+			<h2 class="module-heading"><!-- BEGIN module_heading_icon:veil --><span class="{module_heading_icon}"></span><!-- END module_heading_icon:veil -->{module_heading}</h2>
+		</div><!-- END_IF --><!-- END moduleField -->
+		<ul class="banner">
+			<!-- BEGIN banner:loop -->
+			<li class="banner-list-item {banner:loop.class}">
+				<!-- BEGIN banner#src -->
+				{src}[raw]
+				<!-- END banner#src -->
+				<!-- BEGIN banner#img -->
+				<a href="{url}" target="{target}"><img src="%{ARCHIVES_DIR}{img}" width="{x}" height="{y}" alt="{alt}" class="img-responsive" /></a>
+				<!-- END banner#img -->
+			</li>
+			<!-- END banner:loop -->
+		</ul>
+	</section>
+	<!-- END_MODULE Banner -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # サブカラムで使用してるリンク集のリストを表示します
+ # 見出し内に挿入されるカスタムフィールドのアイコン対応に対応しています
+ # 
+ # @id link_list
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="link_list" module_id="link_list" -->
+<!-- BEGIN_MODULE Links id="{{module_id}}" -->
+<section class="module-section">
+	<!--#include file="/admin/module/setting.html"-->
+	<!-- BEGIN moduleField -->
+	<!-- BEGIN_IF [{module_heading}/nem] -->
+	<div class="module-header clearfix">
+		<h2 class="module-heading"><!-- BEGIN module_heading_icon:veil --><span class="{module_heading_icon}"></span><!-- END module_heading_icon:veil -->{module_heading}</h2>
+	</div><!-- END_IF --><!-- END moduleField -->
+	<ul class="nav nav-pills nav-stacked">
+		<!-- BEGIN loop -->
+		<li><a href="{url}">{name}</a></li>
+		<!-- END loop -->
+	</ul>
+</section>
+<!-- END_MODULE Links -->
+<!-- END_SetTemplate -->

@@ -1,0 +1,102 @@
+<!-- BEGIN main_photoBox:veil -->
+<div class="col-xs-12">
+	<!-- BEGIN main_photo:veil -->
+	<div class="column-image-auto">
+		<a href="%{HTTP_ROOT}archives/{main_photo@largePath}" rel="prettyPhoto[custom]"><img src="%{ARCHIVES_DIR}{main_photo@path}" rel="prettyPhoto[custom]"></a>
+	</div>
+	<!-- END main_photo:veil -->
+	<!-- BEGIN main_caption:veil --><p class="caption">{main_caption}</p><!-- END main_caption:veil -->
+</div>
+<!-- END main_photoBox:veil -->
+
+<!-- BEGIN main_photoBox:veil -->
+<div class="col-md-4">
+	<!-- BEGIN sub_photo01:veil -->
+	<div class="column-image-left">
+		<a href="%{HTTP_ROOT}archives/{sub_photo01@largePath}" rel="prettyPhoto[custom]">
+			<img class="columnImage" src="%{ARCHIVES_DIR}{sub_photo01@path}" alt="" width="{sub_photo01@x}" height="{sub_photo01@y}" />
+		</a>
+	<!-- BEGIN sub_caption01:veil --><p class="caption">{sub_caption01}</p><!-- END sub_caption01:veil -->
+	</div>
+	<!-- END sub_photo01:veil -->
+</div>
+<!-- END main_photoBox:veil -->
+
+<!-- BEGIN main_photoBox:veil -->
+<div class="col-md-4">
+	<!-- BEGIN sub_photo02:veil -->
+	<div class="column-image-left">
+		<a href="%{HTTP_ROOT}archives/{sub_photo02@largePath}" rel="prettyPhoto[custom]">
+			<img class="columnImage" src="%{ARCHIVES_DIR}{sub_photo02@path}" alt="" width="{sub_photo02@x}" height="{sub_photo02@y}" />
+		</a>
+	<!-- BEGIN sub_caption02:veil --><p class="caption">{sub_caption02}</p><!-- END sub_caption02:veil -->
+	</div>
+	<!-- END sub_photo02:veil -->
+</div>
+<!-- END main_photoBox:veil -->
+
+<!-- BEGIN main_photoBox:veil -->
+<div class="col-md-4">
+	<!-- BEGIN sub_photo03:veil -->
+	<div class="column-image-left">
+		<a href="%{HTTP_ROOT}archives/{sub_photo03@largePath}" rel="prettyPhoto[custom]">
+			<img class="columnImage" src="%{ARCHIVES_DIR}{sub_photo03@path}" alt="" width="{sub_photo03@x}" height="{sub_photo03@y}" />
+		</a>
+	<!-- BEGIN sub_caption03:veil --><p class="caption">{sub_caption03}</p><!-- END sub_caption03:veil -->
+	</div>
+	<!-- END sub_photo03:veil -->
+</div>
+<!-- END main_photoBox:veil -->
+
+<!-- BEGIN table:veil -->
+<div class="col-xs-12">
+	<div class="entry-container">
+		<div class="acms-table-responsive">
+			<table class="acms-table">
+				<tr>
+					<th>所在地</th>
+					<th>最寄駅</th>
+					<th>徒歩</th>
+					<th>区分</th>
+					<th>階/階建</th>
+				</tr>
+				<tr>
+					<td>{address}</td>
+					<td>{station}</td>
+					<td><!-- BEGIN toho:veil -->{toho}分<!-- END toho:veil --></td>
+					<td>{kubun}</td>
+					<td><!-- BEGIN kai:veil -->{kai}階<!-- END kai:veil -->
+					<!-- BEGIN kaidate:veil --> / {kaidate}階建<!-- END kaidate:veil --></td>
+				</tr>
+			</table>
+		</div>
+		<div class="acms-table-responsive">
+			<table class="acms-table">
+				<tr>
+					<th>家賃</th>
+					<th>管理費等</th>
+					<th>敷金/礼金</th>
+					<th>間取</th>
+					<th>専有面積</th>
+					<th>築年数</th>
+				</tr>
+				<tr>
+					<td><!-- BEGIN price:veil -->{price}[number_format]円<!-- END price:veil --></td>
+					<td><!-- BEGIN kanri:veil -->{kanri}[number_format]円<!-- END kanri:veil --></td>
+					<td>{shiki} / {rei}</td>
+					<td>{madori}</td>
+					<td><!-- BEGIN menseki:veil -->{menseki}m<sup>2</sup><!-- END menseki:veil --></td>
+					<td><!-- BEGIN chikunen:veil -->{chikunen}年<!-- END chikunen:veil --></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!-- END table:veil -->
+
+<!-- BEGIN lat:veil -->
+<div class="realestate-map realestate-map-entry" style="margin-bottom:20px">
+	<!--#include file="/include/gmaps-error.html" -->
+	<img class="js-s2d-ready" src="http://maps.google.com/maps/api/staticmap?center={map_lat},{map_lng}&zoom={map_zoom}&size=844x300&maptype=roadmap&markers={map_lat},{map_lng}&key=%{GOOGLE_API_KEY}" width="844" height="300" style="display:block;" />
+</div>
+<!-- END lat:veil -->

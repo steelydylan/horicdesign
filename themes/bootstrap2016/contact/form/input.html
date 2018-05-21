@@ -1,0 +1,166 @@
+<h3>お問い合わせ情報</h3>
+<div class="entry-container">
+<table class="contact-form">
+	<tr>
+		<th><label for="description">ご用件</label><span class="label-required">必須</span></th>
+		<td>
+			<select id="description" class="form-select" name="description[]">
+				<option value="" selected="selected">選択してください</option>
+				<option value="ご質問"{description:selected#ご質問}>ご質問</option>
+				<option value="ご要望"{description:selected#ご要望}>ご要望</option>
+				<option value="資料請求"{description:selected#資料請求}>資料請求</option>
+				<option value="その他"{description:selected#その他}>その他</option>
+			</select>
+			<input type="hidden" name="field[]" value="description">
+			<input type="hidden" name="description:v#required">
+			<!-- BEGIN description:validator -->
+			<p class="error-text"><span class="acms-icon acms-icon-attention"></span>お問い合わせ種類を選択してください。</p>
+			<!-- END description:validator -->
+		</td>
+	</tr>
+	<tr>
+		<th><label for="inquiry">お問い合わせ内容</label><span class="label-required">必須</span></th>
+		<td>
+			<textarea id="inquiry" name="inquiry" rows="5" class="form-control" placeholder="お問い合わせ内容を入力してください。">{inquiry}</textarea>
+			<input type="hidden" name="field[]" value="inquiry">
+			<input type="hidden" name="inquiry:v#required">
+			<input type="hidden" name="inquiry:c" value="KV">
+			<!-- BEGIN inquiry:validator -->
+			<p class="error-text"><span class="acms-icon acms-icon-attention"></span>お問い合わせ内容を入力してください。</p>
+			<!-- END inquiry:validator -->
+		</td>
+	</tr>
+</table>
+</div>
+
+<h3>お客様情報</h3>
+<div class="entry-container">
+<table class="contact-form">
+	<tr>
+		<th><label for="organization">会社名</label></th>
+		<td>
+			<input id="organization" type="text" name="organization" autocomplete="organization" value="{organization}" class="form-control" placeholder="株式会社サンプルサイト">
+			<input type="hidden" name="field[]" value="organization">
+			<input type="hidden" name="organization:c" value="KV">
+		</td>
+	</tr>
+	<tr>
+		<th><label for="name">お名前</label><span class="label-required">必須</span></th>
+		<td>
+			<input id="name" type="text" name="name" autocomplete="name" class="form-control" value="{name}" placeholder="山田 太郎">
+			<input type="hidden" name="field[]" value="name">
+			<input type="hidden" name="name:v#required">
+			<input type="hidden" name="name:c" value="KV">
+			<!-- BEGIN name:validator -->
+			<p class="error-text"><span class="acms-icon acms-icon-attention"></span>お名前を入力してください。</p>
+			<!-- END name:validator -->
+		</td>
+	</tr>
+	<tr>
+		<th><label for="email">メールアドレス</label><span class="label-required">必須</span></th>
+		<td>
+			<input id="email" type="email" name="email" autocomplete="email" value="{email}" class="form-control" placeholder="info@example.com">
+			<input type="hidden" name="field[]" value="email">
+			<input type="hidden" name="email:v#required">
+			<input type="hidden" name="email:c" value="a">
+			<input type="hidden" name="email:v#email">
+			<!-- BEGIN email:validator -->
+			<p class="error-text"><span class="acms-icon acms-icon-attention"></span>正しいメールアドレスを入力してください。</p>
+			<!-- END email:validator -->
+		</td>
+	</tr>
+	<tr>
+		<th><label for="tel">お電話番号</label></th>
+		<td>
+			<input id="tel" type="tel" name="tel" autocomplete="tel" value="{tel}" size="12" class="form-control" placeholder="000-000-0000">
+			<input type="hidden" name="field[]" value="tel">
+			<input type="hidden" name="tel:c" value="n">
+		</td>
+	</tr>
+	<tr>
+		<th><label for="address">ご住所</label><span class="label-required">必須</span></th>
+		<td>
+			<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+			<div class="form-inline contact-group-wrap">
+				<div class="form-group">
+					<span class="postal-code">〒</span><input type="text" name="postal-code" autocomplete="postal-code" value="{postal-code}" id="postal-code" class="form-control" size="8" maxlength="7" placeholder="0000000" onkeyup="AjaxZip3.zip2addr(this,'','address-level1','address');">
+					<input type="hidden" name="field[]" value="postal-code">
+					<input type="hidden" name="postal-code:c" value="a">
+				</div>
+
+				<div class="form-group">
+					<select class="form-select" name="address-level1" autocomplete="address-level1">
+						<option value="" selected="selected">都道府県</option>
+						<option value="北海道"{address-level1:selected#北海道}>北海道</option>
+
+						<option value="青森県"{address-level1:selected#青森県}>青森県</option>
+						<option value="岩手県"{address-level1:selected#岩手県}>岩手県</option>
+						<option value="宮城県"{address-level1:selected#宮城県}>宮城県</option>
+						<option value="秋田県"{address-level1:selected#秋田県}>秋田県</option>
+						<option value="山形県"{address-level1:selected#山形県}>山形県</option>
+						<option value="福島県"{address-level1:selected#福島県}>福島県</option>
+						<option value="茨城県"{address-level1:selected#茨城県}>茨城県</option>
+						<option value="栃木県"{address-level1:selected#栃木県}>栃木県</option>
+						<option value="群馬県"{address-level1:selected#群馬県}>群馬県</option>
+
+						<option value="埼玉県"{address-level1:selected#埼玉県}>埼玉県</option>
+						<option value="千葉県"{address-level1:selected#千葉県}>千葉県</option>
+						<option value="東京都"{address-level1:selected#東京都}>東京都</option>
+						<option value="神奈川県"{address-level1:selected#神奈川県}>神奈川県</option>
+						<option value="新潟県"{address-level1:selected#新潟県}>新潟県</option>
+						<option value="富山県"{address-level1:selected#富山県}>富山県</option>
+						<option value="石川県"{address-level1:selected#石川県}>石川県</option>
+						<option value="福井県"{address-level1:selected#福井県}>福井県</option>
+						<option value="山梨県"{address-level1:selected#山梨県}>山梨県</option>
+
+						<option value="長野県"{address-level1:selected#長野県}>長野県</option>
+						<option value="岐阜県"{address-level1:selected#岐阜県}>岐阜県</option>
+						<option value="静岡県"{address-level1:selected#静岡県}>静岡県</option>
+						<option value="愛知県"{address-level1:selected#愛知県}>愛知県</option>
+						<option value="三重県"{address-level1:selected#三重県}>三重県</option>
+						<option value="滋賀県"{address-level1:selected#滋賀県}>滋賀県</option>
+						<option value="京都府"{address-level1:selected#京都府}>京都府</option>
+						<option value="大阪府"{address-level1:selected#大阪府}>大阪府</option>
+						<option value="兵庫県"{address-level1:selected#兵庫県}>兵庫県</option>
+
+						<option value="奈良県"{address-level1:selected#奈良県}>奈良県</option>
+						<option value="和歌山県"{address-level1:selected#和歌山県}>和歌山県</option>
+						<option value="鳥取県"{address-level1:selected#鳥取県}>鳥取県</option>
+						<option value="島根県"{address-level1:selected#島根県}>島根県</option>
+						<option value="岡山県"{address-level1:selected#岡山県}>岡山県</option>
+						<option value="広島県"{address-level1:selected#広島県}>広島県</option>
+						<option value="山口県"{address-level1:selected#山口県}>山口県</option>
+						<option value="徳島県"{address-level1:selected#徳島県}>徳島県</option>
+						<option value="香川県"{address-level1:selected#香川県}>香川県</option>
+
+						<option value="愛媛県"{address-level1:selected#愛媛県}>愛媛県</option>
+						<option value="高知県"{address-level1:selected#高知県}>高知県</option>
+						<option value="福岡県"{address-level1:selected#福岡県}>福岡県</option>
+						<option value="佐賀県"{address-level1:selected#佐賀県}>佐賀県</option>
+						<option value="長崎県"{address-level1:selected#長崎県}>長崎県</option>
+						<option value="熊本県"{address-level1:selected#熊本県}>熊本県</option>
+						<option value="大分県"{address-level1:selected#大分県}>大分県</option>
+						<option value="宮崎県"{address-level1:selected#宮崎県}>宮崎県</option>
+						<option value="鹿児島県"{address-level1:selected#鹿児島県}>鹿児島県</option>
+
+						<option value="沖縄県"{address-level1:selected#沖縄県}>沖縄県</option>
+					</select>
+					<input type="hidden" name="field[]" value="address-level1">
+				</div>
+			</div>
+			<textarea id="address" name="address" rows="2" class="form-control">{address}</textarea>
+			<input type="hidden" name="field[]" value="address">
+			<input type="hidden" name="postal-code:v#required">
+			<input type="hidden" name="postal-code:v#regex" value="^[\d]\{7\}$">
+			<input type="hidden" name="address-level1:v#required">
+			<input type="hidden" name="address:v#required">
+			<input type="hidden" name="address:c" value="KV">
+
+			<!-- BEGIN postal-code:v#required --><p class="error-text"><span class="acms-icon acms-icon-attention"></span>郵便番号が入力されていません。</p><!-- END postal-code:v#required -->
+			<!-- BEGIN postal-code:v#regex --><p class="error-text"><span class="acms-icon acms-icon-attention"></span>郵便番号はハイフンなしの数値7桁で入力してください。</p><!-- END postal-code:v#regex -->
+			<!-- BEGIN address-level1:validator --><p class="error-text"><span class="acms-icon acms-icon-attention"></span>都道府県が選択されていません。</p><!-- END address-level1:validator -->
+			<!-- BEGIN address:validator --><p class="error-text"><span class="acms-icon acms-icon-attention"></span>住所が入力されていません。</p><!-- END address:validator -->
+		</td>
+	</tr>
+</table>
+</div>

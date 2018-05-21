@@ -1,0 +1,48 @@
+<!-- BEGIN custom_table -->
+<style>
+.entryFormColumnBody .spread-table{
+	background-color:#FFFFFF;
+}
+.entryFormColumnBody .spread-table th,
+.entryFormColumnBody .spread-table td{
+	    border: 1px solid #cccccc !important;
+}
+</style>
+<!-- BEGIN_IF [{table}[delnl]/em] -->
+<div class="table-{id}">
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+<!-- ELSE -->
+<div class="table-{id}">
+{table}[raw]
+</div>
+<!-- END_IF -->
+<textarea type="text" name="table{id}[]" rows="10" style="width:100%;display:none;" class="entryFormTextarea {diff}" placeholder="日本語">{table}</textarea>
+<input type="hidden" name="unit{id}[]" value="table{id}" />
+<script>
+(function(){
+var spread = new Spread(".table-{id} table");
+spread.afterRendered = 
+spread.afterEntered = function(){
+	$("[name^='table{id}']").val(this.getTable());
+}
+spread.afterRendered();
+})();
+</script>
+<!-- END custom_table -->

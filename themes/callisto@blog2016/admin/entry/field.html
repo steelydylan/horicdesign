@@ -1,0 +1,92 @@
+<!--#include file="/admin/entry/seo.html" -->
+<table class="acms-admin-mini-table">
+<tr>
+		<th>メイン画像</th>
+		<td>
+			<!-- BEGIN ogp_image@path:veil -->
+			<img src="%{ARCHIVES_DIR}{ogp_image@path}" width="200"/>
+			<input type="hidden" name="ogp_image@old" value="{ogp_image@path}" /><br />
+			<label class="acms-admin-form-checkbox">
+				<input type="checkbox" name="ogp_image@edit" value="delete" />
+				<i class="acms-admin-ico-checkbox"></i> 削除
+			</label>
+			<!-- END ogp_image@path:veil -->
+			<input type="file" name="ogp_image" size="20" /><br />
+			<input type="hidden" name="field[]" value="ogp_image" />
+			<input type="hidden" name="ogp_image:extension" value="image" />
+			<input type="hidden" name="ogp_image@filename" value="" />
+		</td>
+	</tr>
+</table>
+<h3 class="acms-admin-title2">開催場所</h3>
+<table class="acms-admin-mini-table">
+<tr>
+	<th>開催場所</th>
+	<td>
+		<label class="acms-form-checkbox" for="input-place-hokkaido">
+			<input type="checkbox" name="place[]" value="hokkaido" id="input-place-hokkaido"{place:checked#hokkaido} />
+			<i class="acms-ico-checkbox"></i>北海道
+		</label>
+		<label class="acms-form-checkbox" for="input-place-tohoku">
+			<input type="checkbox" name="place[]" value="tohoku" id="input-place-tohoku"{place:checked#tohoku} />
+			<i class="acms-ico-checkbox"></i>東北
+		</label>
+		<label class="acms-form-checkbox" for="input-place-chubu">
+			<input type="checkbox" name="place[]" value="chubu" id="input-place-chubu"{place:checked#chubu} />
+			<i class="acms-ico-checkbox"></i>中部
+		</label>
+		<label class="acms-form-checkbox" for="input-place-kinki">
+			<input type="checkbox" name="place[]" value="kinki" id="input-place-kinki"{place:checked#kinki} />
+			<i class="acms-ico-checkbox"></i>近畿
+		</label>
+		<label class="acms-form-checkbox" for="input-place-chugoku">
+			<input type="checkbox" name="place[]" value="chugoku" id="input-place-chugoku"{place:checked#chugoku} />
+			<i class="acms-ico-checkbox"></i>中国
+		</label>
+		<label class="acms-form-checkbox" for="input-place-kyushu">
+			<input type="checkbox" name="place[]" value="kyushu" id="input-place-kyushu"{place:checked#kyushu} />
+			<i class="acms-ico-checkbox"></i>九州
+		</label>
+		<label class="acms-form-checkbox" for="input-place-shikoku">
+			<input type="checkbox" name="place[]" value="shikoku" id="input-place-shikoku"{place:checked#shikoku} />
+			<i class="acms-ico-checkbox"></i>四国
+		</label>
+		<label class="acms-form-checkbox" for="input-place-kantou">
+			<input type="checkbox" name="place[]" value="kantou" id="input-place-kantou"{place:checked#kantou} />
+			<i class="acms-ico-checkbox"></i>関東
+		</label>
+		<input type="hidden" name="field[]" value="place" />
+	</td>
+</tr>
+</table>
+
+<table>
+	<tr>
+		<th>インクルードファイル名</th>
+		<td>
+			<input type="text" name="include_file" value="{include_file}" class="acms-form-width-3quarters" />
+			<input type="hidden" name="field[]" value="include_file" />
+		</td>
+	</tr>
+</table>
+
+<h2 class="acms-admin-admin-title2">言語設定</h2>
+<table class="acms-admin-admin-mini-table">
+<tr>
+	<th>タイトル（英語）</th>
+	<th>英語の記事を表示</th>
+</tr>
+<tr>
+	<td>
+		<input type="text" name="title_en" value="{title_en}" />
+		<input type="hidden" name="field[]" value="title_en" />
+	</td>
+	<td>
+		<label class="acms-form-checkbox" for="input-showEn-true">
+			<input type="checkbox" name="showEn[]" value="true" id="input-showEn-true"{showEn:checked#true} />
+			<i class="acms-ico-checkbox"></i>表示する
+		</label>
+		<input type="hidden" name="field[]" value="showEn" />
+	</td>
+</tr>
+</table>

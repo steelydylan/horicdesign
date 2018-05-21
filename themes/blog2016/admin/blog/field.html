@@ -1,0 +1,18 @@
+<!-- ブログのSEO設定 -->
+<!--#include file="/admin/blog/seo.html" -->
+<!-- OGP設定 -->
+<!--#include file="/admin/blog/ogp.html" -->
+<!--#include file="/admin/blog/twitter.html" -->
+
+<!-- カスタム設定 -->
+<h3 class="acms-admin-admin-title2">カスタム設定</h3>
+<table class="adminTable acms-admin-table-admin-edit" style="margin-bottom:30px">
+	<!--#include file="/admin/blog/header1.html" -->
+	<tr>
+		<th>Google Analytics<i data-acms-tooltip="Google Analytics の解析用のタグを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<textarea name="google_analytics" rows="5" class="acms-admin-form-width-half">{google_analytics}</textarea>
+			<input type="hidden" name="field[]" value="google_analytics" />
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,50 @@
+.media {
+	margin: 0 -7.5px;
+	margin-bottom: 30px;
+	@include clearfix();
+}
+
+.media-time {
+	font-weight: bold;
+	font-size: 12px;
+	color: #888888;
+}
+
+.media-item {
+	float: left;
+	width: 50%;
+	padding: 0 7.5px;
+	margin-bottom: 10px;
+}
+
+.media-img {
+	float: left;
+	width: 150px;
+	height: 100px;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+}
+
+.media-body {
+	margin-left: 160px;
+}
+
+.media-title {
+	font-weight: bold;
+	font-size: 14px;
+	margin: 0 0 10px 0;
+
+	a {
+		@include link-color(#333333);
+		@include text-decoration-none();
+	}
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.media-item {
+		float: none;
+		width: auto;
+	}
+}

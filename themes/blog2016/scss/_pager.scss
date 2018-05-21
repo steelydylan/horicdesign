@@ -1,0 +1,100 @@
+/* ----------------
+ページャー
+------------------ */
+.pager {
+	width: 100%;
+
+	& ul {
+		margin: 0 135px;
+		padding: 0;
+		text-align: center;
+	}
+
+	& li {
+		list-style-type: none;
+		background: #ffffff;
+		margin-bottom: 5px;
+
+		& span {
+			display: block;
+			width: 100%;
+			border-radius: 5px;
+			background: #ffffff;
+			border: 1px solid #949494;
+			font-size: 14px;
+			color: #949494;
+		}
+
+		& a > span {
+			color: #ffffff;
+			border: 1px solid $btn-bg-color;
+			@include roll-over($btn-bg-color, $btn-bg-color-on-hover, .2s);
+		}
+	}
+
+	& a {
+		display: block;
+		width: 100%;
+		@include text-decoration-none();
+		@include link-color(#FFFFFF);
+	}
+}
+
+.pager-item {
+	width: 37px;
+	height: 33px;
+	line-height: 33px;
+	display: inline-block;
+}
+
+.pager-next {
+	float: right;
+	height: 33px;
+	line-height: 33px;
+	margin: 0;
+}
+
+.pager-next a {
+	border-radius: 5px;
+	padding: 0 10px;
+	@include roll-over($btn-bg-color, $btn-bg-color-on-hover, .2s);
+}
+
+.pager-next-icon {
+	margin-left: 5px;
+}
+
+.pager-container {
+	position: relative;
+}
+
+.pager-prev {
+	float: left;
+	height: 33px;
+	line-height: 33px;
+	margin: 0;
+}
+
+.pager-prev a {
+	border-radius: 5px;
+	padding: 0 10px;
+	@include roll-over($btn-bg-color, $btn-bg-color-on-hover, .2s);
+}
+
+.pager-prev-icon {
+	margin-right: 5px;
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.pager {
+		display: table;
+	}
+
+	.pager-container {
+		display: table-footer-group;
+	}
+
+	.pager ul {
+		margin: 0;
+	}
+}

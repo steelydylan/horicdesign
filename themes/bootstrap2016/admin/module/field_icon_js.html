@@ -1,0 +1,55 @@
+<link href="/css/bootstrap-glyphicons.css" rel="stylesheet">
+<script src="/js/edit.js" charset="UTF-8"></script>
+<style>
+#selected-icon {
+	font-size: 24px;
+}
+.selectArea {
+	list-style: none;
+	height: 200px;
+	margin: 0;
+	padding: 10px;
+	background: #FFF;
+	border: 1px solid #CCC;
+	box-shadow: inset 0px -1px 3px 0 rgba(0,0,0,0.2);
+	overflow-y: scroll;
+}
+.selectArea li {
+	display: inline-block;
+	margin: 0;
+}
+.selectArea .acms-form-radio {
+	margin: 0;
+}
+.selectArea a {
+	padding: 8px;
+	color: #333;
+	font-size: 18px;
+	border: 1px solid #FFF;
+	border-radius: 4px;
+	transition: background-color linear .15s;
+}
+.selectArea a:hover {
+	text-decoration: none;
+	background: #BAE2F3;
+}
+.selectArea a.selected {
+	background: #F9EBB3;
+	border-color: #DABB3E;
+}
+</style>
+
+<div class="acms-admin-margin-bottom-small">
+	<span id="selected-icon" class="{module_heading_icon}"></span>
+	<input type="hidden" name="module_heading_icon" value="{module_heading_icon}" id="js-insert-icon">
+	<input type="hidden" name="field[]" value="module_heading_icon">
+	<a href="#iconArea" class="js-fader js-select-icon-start acms-admin-btn">アイコンを選ぶ</a>
+</div>
+
+<div id="iconArea">
+	<a href="#" class="js-delete-icon acms-admin-btn acms-admin-btn-danger acms-admin-btn-small acms-admin-margin-bottom-small">削除する</a>
+	<ul class="js-select-icon selectArea">
+		<!-- アイコンの一覧 -->
+		<!-- #include file="/admin/module/icon_list.html" -->
+	</ul>
+</div>

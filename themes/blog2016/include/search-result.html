@@ -1,0 +1,26 @@
+<!-- BEGIN_MODULE Touch_NotEntry -->
+<!-- BEGIN_IF [%{PAGE}/neq/1/_or_/%{CID}%{KEYWORD}%{TAG}/nem] -->
+<div class="search-result">
+	<h1 class="search-result-heading">
+		<!-- BEGIN_IF [%{PAGE}/neq/1] -->
+			%{PAGE}ページ目
+			<!-- BEGIN_IF [%{KEYWORD}%{CATEGORY_NAME}%{TAG}/nem] --> | <!-- END_IF -->
+		<!-- END_IF -->
+		<!-- BEGIN_IF [%{KEYWORD}/nem/] -->フリーワード検索：%{KEYWORD}<!-- END_IF -->
+		<!-- BEGIN_IF [%{CID}/nem] -->
+			<!-- BEGIN_IF [%{KEYWORD}/nem/] --> | <!-- END_IF -->
+				<a href="%{CATEGORY_URL}">%{CATEGORY_NAME}</a>
+		<!-- END_IF -->
+		<!-- BEGIN_MODULE Touch_Tag -->
+			<!-- BEGIN_IF [%{CID}/nem] --> |
+			<!-- ELSE -->
+				<!-- BEGIN_IF [%{KEYWORD}/nem/] --> | <!-- END_IF -->
+			<!-- END_IF -->
+			<!-- BEGIN_MODULE Tag_Filter -->
+				<!-- BEGIN selected:loop --><a href="{url}">{name}</a><!-- BEGIN glue --> | <!-- END glue --><!-- END selected:loop -->
+			<!-- END_MODULE Tag_Filter -->
+		<!-- END_MODULE Touch_Tag -->
+	</h1>
+</div>
+<!-- END_IF -->
+<!-- END_MODULE Touch_NotEntry -->

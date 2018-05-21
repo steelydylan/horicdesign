@@ -1,0 +1,80 @@
+/* ----------------
+ベース
+------------------ */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: $link-color;
+}
+
+a:link {
+	color: $link-color;
+}
+
+a:visited {
+	color: $link-color-visited;
+}
+
+dt {
+	font-weight: bold;
+}
+
+body {
+	color: #333333;
+	font-family: 游ゴシック体, 'Yu Gothic', 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+.base-container {
+	@include container();
+}
+
+.base-heading {
+	font-size: 18px;
+	font-weight: bold;
+	color: #333333;
+	border-bottom: 1px solid #979797;
+	padding-bottom: 5px;
+}
+
+.base-required-label {
+	background-color: #e30314;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 2px 8px;
+	line-height: 1;
+	display: inline-block;
+	float: right;
+	margin-top: 4px;
+}
+
+.sub-heading {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+#offcanvas {
+	padding-left: 20px;
+}
+
+#js-seo_info th {
+	width: 200px;
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.base-show-pc {
+		display: none;
+	}
+
+	#offcanvas {
+		padding: 15px 10px;
+	}
+}

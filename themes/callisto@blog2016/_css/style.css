@@ -1,0 +1,108 @@
+.blogEntryContent em{
+	background-color:#333333;
+	color:#FFFFFF;
+	display:inline-block;
+	border-radius:2px;
+	padding:2px;
+	margin: 2px 5px;
+}
+.blogCartBtn:link{
+	color:#FFFFFF !important;
+}
+
+svg {
+display:block;
+max-width: 100%;
+height:auto;
+}
+
+#hokkaido,
+#kanto,
+#chugoku,
+#chubu,
+#shikoku,
+#touhoku,
+#kyushu,
+#kinki{
+  -webkit-animation: anime1 1s ease -1s infinite alternate;
+     -moz-animation: anime1 1s ease -1s infinite alternate;
+       -o-animation: anime1 1s ease -1s infinite alternate;
+          animation: anime1 1s ease -1s infinite alternate;
+}
+
+@-webkit-keyframes anime1 {
+	0%{
+  -webkit-transform: translateY(0px);
+	}
+	100%{
+  -webkit-transform: translateY(-20px);
+	}
+}
+
+@-moz-keyframes anime1 {
+	0%{
+  -moz-transform: translateY(0px);
+	}
+	100%{
+  -moz-transform: translateY(-20px);
+	}
+}
+
+@-o-keyframes anime1 {
+	0%{
+  -o-transform: translateY(0px);
+	}
+	100%{
+  -o-transform: translateY(-20px);
+	}
+}
+
+@-keyframes anime1 {
+	0%{
+  transform: translateY(0px);
+	}
+	100%{
+  transform: translateY(-20px);
+	}
+}
+
+.landLoadingBg{
+	background-color: rgba(0,0,0,.5);
+	-webkit-transition: opacity .3s;
+	   -moz-transition: opacity .3s;
+	    -ms-transition: opacity .3s;
+	     -o-transition: opacity .3s;
+	        transition: opacity .3s;
+	position: fixed;
+	z-index: 1001;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+}
+.landLoadingBg.done{
+	opacity: 0;
+}
+.blogSpNavi{
+	margin-right: 0;
+	margin-left: 0;
+}
+.blogEntryContent p{
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}

@@ -1,0 +1,117 @@
+<!-- BEGIN_MODULE Entry_Body id="" -->
+<!-- BEGIN notFound -->
+<section class="entry">
+	<h2 class="entry-title">Not Found</h2>
+	<p>お探しの記事は見つかりませんでした。</p>
+</section>
+<!-- END notFound -->
+<!-- BEGIN entry:loop -->
+<!-- BEGIN adminEntryEdit -->
+<!--#include file="/admin/entry/revision-info.html"-->
+<!-- END adminEntryEdit -->
+<article class="entry">
+	<!-- BEGIN_MODULE Touch_NotEdit -->
+	<header class="entry-header">
+		<p class="entry-date">
+			<!-- BEGIN date:veil -->
+			<time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日</time>
+			<!-- END date:veil -->
+		</p>
+		<!-- BEGIN_MODULE Touch_Entry -->
+		<h1 class="entry-title"><a href="{titleUrl}">{title}[raw]</a></h1>
+		<!-- END_MODULE Touch_Entry -->
+		<!-- BEGIN_MODULE Touch_NotEntry -->
+		<h2 class="entry-title"><a href="{titleUrl}">{title}[raw]</a></h2>
+		<!-- END_MODULE Touch_NotEntry -->
+	</header>
+	<!-- END_MODULE Touch_NotEdit -->
+	<!-- BEGIN labels:veil -->
+	<ul class="entry-labels">
+		<!-- BEGIN category:loop -->
+		<li><a href="{url}" class="entry-category-label">{name}</a></li>
+		<!-- END category:loop -->
+		<!-- BEGIN tag:loop -->
+		<li><a href="{url}" class="entry-tag-label">{name}</a></li>
+		<!-- END tag:loop -->
+	</ul>
+	<!-- END labels:veil -->
+	<div class="entry-body acms-entry">
+		<!--#include file="/include/unit.html"-->
+		<hr class="clearHidden" />
+		<!--#include file="/include/entryfield.html"-->
+	</div>
+
+	<!-- BEGIN formBody -->
+	<!--#include file="/include/form/unit.html"-->
+	<hr class="clearHidden" />
+	<!-- END formBody -->
+
+
+	<!-- BEGIN adminEntryEdit -->
+	<!--#include file="/admin/entry/edit.html"-->
+	<!--#include file="/admin/entry/add.html"-->
+	<!-- END adminEntryEdit -->
+
+	<!-- BEGIN adminFormEdit -->
+	<!--#include file="/admin/form2/edit.html"-->
+	<!-- END adminFormEdit -->
+	<!-- BEGIN continueLink:veil -->
+	<p class="entry-continue-btn-wrap">
+		<a href="{continueUrl}" class="entry-continue-btn"><span class="base-show-pc">「{continueName}」の</span>続きを読む<i class="acms-icon-arrow-small-right"></i></a>
+	</p>
+	<!-- END continueLink:veil -->
+	<!-- BEGIN_IF [%{EID}/nem] -->
+	<!-- BEGIN footer:veil -->
+	<footer class="entry-footer">
+		<p class="entry-user">
+			<span class="entry-user-info"><i class="acms-icon-user"></i>{posterName}</span><span class="entry-user-info"><a href="%{PERMALINK}" class="js-viewing-indelible"><i class="acms-icon-time"></i>{date#Y}/{date#m}/{date#d} {date#H}:{date#i}</a> 投稿 </span><!-- BEGIN_IF [{date#Y}{date#m}{date#d}{date#H}{date#i}/lt/{udate#Y}{udate#m}{udate#d}{udate#H}{udate#i}] --><span class="entry-user-info"><i class="acms-icon-time"></i>{udate#Y}/{udate#m}/{udate#d} {udate#H}:{udate#i} 修正</span><!-- END_IF -->
+		</p>
+		<!--#include file="/include/social/sns_entry.html"-->
+	</footer>
+	<!-- END footer:veil -->
+	<!-- END_IF -->
+	<!--#include file="/admin/entry/action.html"-->
+</article>
+<!-- END entry:loop -->
+<!-- BEGIN serialNavi:veil -->
+<nav class="serial-nav clearfix">
+	<ul>
+		<!-- BEGIN prevLink -->
+		<li class="serial-nav-prev">
+			<a href="{url}">
+			<span class="acms-icon-arrow-small-left serial-nav-prev-icon"></span>
+			{name}[trim(27, '...')|escape]</a>
+		</li>
+		<!-- END prevLink -->
+		<!-- BEGIN nextLink -->
+		<li class="serial-nav-next">
+			<a href="{url}">{name}[trim(27, '...')|escape]<span class="acms-icon-arrow-small-right serial-nav-next-icon"></span>
+			</a>
+		</li>
+		<!-- END nextLink -->
+		<li class="serial-nav-index"><a href="{upperUrl}">一覧</a></li>
+	</ul>
+</nav>
+<!-- END serialNavi:veil -->
+
+<!-- BEGIN pager:veil -->
+<!-- ページ送り　開始▼▼ -->
+<nav class="pager">
+	<div class="pager-container">
+	<!-- BEGIN backLink -->
+		<p class="pager-prev"><a href="{url}" rel="prev"><span class="acms-icon-arrow-small-left pager-prev-icon"></span>前のページへ</a></p>
+	<!-- END backLink -->
+	<!-- BEGIN forwardLink -->
+		<p class="pager-next"><a href="{url}" rel="next">次のページへ<span class="acms-icon-arrow-small-right pager-next-icon"></span></a></p>
+	<!-- END forwardLink -->
+	</div>
+	<ul class="clearfix">
+		<!-- BEGIN page:loop -->
+		<li class="pager-item"><!-- BEGIN link#front --><a href="{url}"><!-- END link#front --><span>{page}</span><!-- BEGIN link#rear --></a><!-- END link#rear --><!-- BEGIN glue --><!-- END glue --></li><!-- END page:loop -->
+		<!-- BEGIN lastPage:veil --><li class="pager-item">...</li><li class="pager-item"><a href="{lastPageUrl}"><span>{lastPage}</span></a></li><!-- END lastPage:veil -->
+	</ul>
+</nav>
+<!-- ページ送り　終了▲▲ -->
+<!-- END pager:veil -->
+
+<!-- END_MODULE Entry_Body -->

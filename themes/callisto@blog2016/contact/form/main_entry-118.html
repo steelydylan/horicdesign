@@ -1,0 +1,69 @@
+<!-- BEGIN_MODULE Form -->
+						
+<!-- BEGIN step -->
+<!-- フォームステップ：初期 -->
+
+		<form action="?step=reapply" method="post" class="acms-form">
+			<!--#include file="/contact/form/input.html"-->
+			<div class="formBtnBox">
+				<input type="hidden" name="step" value="confirm" />
+				<input type="hidden" name="id" value="contactForm" /><br/>
+				<input type="submit" name="ACMS_POST_Form_Confirm" value="送信内容の確認へ" id="btnConfirm" class="cs-btn cs-btn-primary" />
+				<hr class="clearHidden" />
+			</div>
+		</form>
+<!-- END step -->
+	
+						
+
+<!-- BEGIN step#reapply -->
+<!-- フォームステップ：修正・エラー -->
+		<p class="message">入力内容を、もう一度ご確認下さい。</p>
+							
+		<form action="?step=reapply" method="post" class="acms-form">
+			<!--#include file="/contact/form/input.html"-->
+			<div class="formBtnBox">
+				<input type="hidden" name="step" value="confirm" />
+				<input type="hidden" name="id" value="contactForm" /><br/>
+				<input type="submit" name="ACMS_POST_Form_Confirm" value="送信内容の確認へ" id="btnConfirm" class="cs-btn cs-btn-primary" />
+				<hr class="clearHidden" />
+			</div>
+		</form>
+<!-- END step#reapply -->
+			
+
+<!-- BEGIN step#confirm -->
+<!-- フォームステップ：確認画面 -->
+
+		<p class="message">内容に誤りがないか、よくご確認ください。</p>
+		<!--#include file="/contact/form/confirm.html"-->
+		<form action="?step=reapply" method="post" class="acms-form acms-inline-btn">
+			<input type="hidden" name="step" value="reapply" />
+			<input type="hidden" name="takeover" value="{takeover}" /><br/>
+			<input type="submit" name="ACMS_POST_Form_Chain" value="入力画面へ戻る" id="btnToInput" class="cs-btn cs-btn-primary" />
+		</form>
+		
+		<form action="thanks.html" method="post" class="acms-form">
+			<input type="hidden" name="To[]" value="{email}" />
+			<input type="hidden" name="AdminReply-To[]" value="<{email}>" />
+			<input type="hidden" name="AdminFrom[]" value="<{email}>" />
+			<input type="hidden" name="step" value="result" />
+			<input type="hidden" name="takeover" value="{takeover}" />
+			<input type="hidden" name="id" value="contactForm" /><br/>
+			<input type="submit" name="ACMS_POST_Form_Submit" value="送信" id="btnSubmit" class="cs-btn cs-btn-primary" />
+		</form>
+
+<!-- END step#confirm -->
+
+
+<!-- BEGIN step#result -->
+<!-- フォームステップ：完了画面 -->
+	<p class="message">お問い合わせありがとうございました。以下の内容で送信しました。</p>
+	<!--#include file="/contact/form/confirm.html"-->
+<!-- END step#result -->
+
+<!-- BEGIN error -->
+	<!-- フォームID : {formID} / エラー項目 : {errorKey} -->
+<!-- END error -->
+
+<!-- END_MODULE Form -->

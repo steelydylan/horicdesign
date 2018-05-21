@@ -1,0 +1,28 @@
+<!--@doc
+ # タグフィルター
+ # 
+ # @id tagfilter
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="tagfilter" -->
+	<!-- BEGIN_MODULE Tag_Filter id="{{module_id}}" -->
+	<section class="acms-entry clearfix">
+	<!--#include file="/admin/module/setting.html"-->
+		<!-- BEGIN tagBox -->
+		<header class="page-header clearfix">
+			<h2 class="entry-title">選択されているタグ : <!-- BEGIN selected:loop --><a href="{url}tpl/entry.html">{name}</a><!-- BEGIN glue --> , <!-- END glue --><!-- END selected:loop --></h2>
+		</header>
+		<div class="acms-grid">
+			<div class="entry-column">
+				<!-- BEGIN choice:veil -->
+				<p id="nextTagTitle">タグを絞り込む : <!-- BEGIN choice:loop --><a href="{url}tpl/entry.html">{name}</a> <!-- END choice:loop -->
+					<!-- END choice:veil -->
+				</p>
+			</div>
+		</div>
+		<!-- END tagBox -->
+	</section>
+	<!-- END_MODULE Tag_Filter -->
+<!-- END_SetTemplate -->

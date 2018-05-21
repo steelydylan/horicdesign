@@ -1,0 +1,14 @@
+/* ------------------------------
+　　リスト
+------------------------------ */
+@media screen and (min-width: $screen-sm-min){
+	/* リスト */
+	a.acms-list-group-item {
+		padding: 10px 20px 10px 10px;
+		@include transition(padding .15s ease-out);
+		 &:hover {
+			padding: 10px 10px 10px 20px;
+			@include transition(padding .25s ease-out);
+		}
+	}
+}

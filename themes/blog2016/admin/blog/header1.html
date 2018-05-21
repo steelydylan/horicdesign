@@ -1,0 +1,55 @@
+<tr>
+	<th>メインイメージ<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="header1.htmlをincludeした際のヘッダーの背景画像を設定します。"></i></th>
+	<td class="js-img_resize_cf">
+		<!-- BEGIN_IF [{main_img@path}/em] -->
+		<img src="" style="display:none;width:600px;height:auto;" class="js-img_resize_preview"/>
+		<!-- END_IF -->
+		<!-- BEGIN main_img@path:veil -->
+		<img src="%{ARCHIVES_DIR}{main_img@path}" style="width:600px;height:auto;" class="js-img_resize_preview"/>
+		<input type="hidden" name="main_img@old" value="{main_img@path}" /><br />
+		<label class="acms-admin-form-checkbox">
+			<input type="checkbox" name="main_img@edit" value="delete" />
+			<i class="acms-admin-ico-checkbox"></i> 削除
+		</label>
+		<!-- END main_img@path:veil -->
+		<input type="file" name="main_img" size="20" class="js-img_resize_input" /><br />
+		<input type="hidden" name="field[]" value="main_img" />
+		<input type="hidden" name="main_img:extension" value="image" />
+		<input type="hidden" name="main_img@width" value="1200" />
+		<input type="hidden" name="main_img@filename" value="" />
+	</td>
+</tr>
+<tr>
+	<th>高さ<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="header1.htmlをincludeした際のヘッダーの高さを調整します。"></i></th>
+	<td>
+		<input type="text" name="height" value="{height}" placeholder="例）200"/>
+		<input type="hidden" name="field[]" value="height" />
+		<input type="hidden" name="height:c" value="n"/>
+		<span style="display:inline-block;margin-left:5px;">px</span>
+	</td>
+</tr>
+<tr>
+	<th>背景色<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="フッターやheader1.htmlを読み込んだ場合のヘッダーの背景色を変更します。"></i></th>
+	<td class="js-acms-color-picker">
+		<input id="background_color" class="js-acms-color-picker-value acms-admin-float-left" type="text" name="background_color" value="{background_color}" placeholder="例）#333333" />
+		<input type="hidden" name="field[]" value="background_color" />
+		<div id="background_color_demo" class="js-acms-color-picker-target acms-admin-float-left" style="background-color:{background_color}; width:27px; height:27px; margin: 0 5px; background-image:none;" id="background_color"></div>
+		<button class="js-acms-color-picker-submit acms-admin-btn-admin" data-target="#background_color"  data-bgcolor="#background_color_demo">色を選択</button>
+	</td>
+</tr>
+<tr>
+	<th>文字色<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="フッターやheader1.htmlを読み込んだ場合のヘッダーの文字色を変更します。"></i></th>
+	<td class="js-acms-color-picker">
+		<input id="font_color" class="js-acms-color-picker-value acms-admin-float-left" type="text" name="font_color" value="{font_color}" placeholder="例）#333333"/>
+		<input type="hidden" name="field[]" value="font_color" />
+		<div id="font_color_demo" class="js-acms-color-picker-target acms-admin-float-left" style="background-color:{font_color}; width:27px; height:27px; margin: 0 5px; background-image:none;" id="font_color"></div>
+		<button class="js-acms-color-picker-submit acms-admin-btn-admin" data-target="#font_color"  data-bgcolor="#font_color_demo">色を選択</button>
+	</td>
+</tr>
+<tr>
+	<th>サイトの説明文<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="この文章はheader1.htmlやheader2.html,header3.htmlをincludeした際に表示されるヘッダーに表示されます。"></i></th>
+	<td>
+		<input type="text" name="main_description" value="{main_description}" class="acms-admin-form-width-half"/>
+		<input type="hidden" name="field[]" value="main_description" />
+	</td>
+</tr>

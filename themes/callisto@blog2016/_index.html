@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--#include file="/include/meta.html" -->
+<!--#include file="/include/link.html" -->
+<style>
+@font-face{
+	font-family:Blank;
+	src:url(%{HTTP_THEMES_DIR}callisto@blog2015/AdobeBlank.otf);
+}
+.hideVisually{
+	font-family:Blank;
+}
+.blogHeaderNaviBtn{
+	border:none;
+}
+</style>
+<!--#include file="/include/js.html" -->
+</head>
+<body>
+<!--#include file="/include/social/sns_script.html" -->
+<a class="blogSpBg" href="#"></a>
+<!-- メインビジュアル -->
+<!--#include file="/include/mainVisual.html" -->
+<!--#include file="/include/globalNavigation.html" -->
+<!-- オフキャンバス開閉ボタン -->
+<button class="blogHeaderNaviBtn js-offcanvas-btn">
+	<span class="blogHeaderNaviBtnLine"></span>
+	<span class="blogHeaderNaviBtnLine"></span>
+	<span class="blogHeaderNaviBtnLine"></span>
+	<span class="hideVisually">メニュー（オフキャンバスメニューを開閉します）</span>
+</button>
+
+<div class="acms-container blogContainer">
+	<div class="acms-grid-r">
+		<div class="acms-col-md-9">
+			<main role="main">
+			<!-- 管理画面 -->
+			<!--#include file="/admin/action.html"-->
+
+			<!-- 検索時のタイトル -->
+			<!--#include file="/include/searchResult.html"-->
+
+			<!-- タグフィルター -->
+			<!--#include file="/include/tagFilter.html"-->
+
+			<!-- エントリーボディー -->
+			<!--#include file="/include/entryBody.html"-->
+
+			<!-- 現在のページのSEOチェック -->
+			<!--#include file="/include/%{VIEW}_check.html" -->
+			</main>
+		</div>
+		<div class="acms-col-md-3">
+			<div class="blogSubCol js-offcanvas">
+
+				<!-- スマートフォン時のみに表示されるナビゲーション-->
+				<!--#include file="/include/spNavigation.html" -->
+
+				<!--#include file="/include/subAdmin.html" -->
+
+				<!-- プロフィール -->
+				<!--#include file="/include/profile.html" -->
+
+				<!-- エントリーリスト -->
+				<!--#include file="/include/entryList.html" -->
+
+
+				<!-- リンク集 -->
+				<!--#include file="/include/links.html" -->
+
+				<!-- カテゴリーリスト -->
+				<!--#include file="/include/categoryList.html" -->
+
+				<!-- タグクラウド -->
+				<!--#include file="/include/tagCloud.html" -->
+
+				<!-- 検索フォーム -->
+				<!--#include file="/include/searchForm.html" -->
+
+				<!-- バナー -->
+				<!--#include file="/include/banner.html" -->
+
+				<!-- ブログパーツ -->
+				<!--#include file="/include/blogParts.html" -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- フッター -->
+<!--#include file="/include/footer.html" -->
+</body>
+</html>

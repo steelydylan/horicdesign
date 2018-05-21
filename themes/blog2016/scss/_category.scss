@@ -1,0 +1,84 @@
+/* ------------------------------
+　　カテゴリーリスト
+------------------------------ */
+.category-list {
+	margin: 0 0 20px 0;
+	padding: 0;
+
+	& ul {
+		border-top: 1px solid #979797;
+		padding: 0;
+		margin: 0;
+	}
+
+	& li {
+		display: block;
+		list-style-type: none;
+		font-size: 16px;
+		line-height: 1.5;
+		padding: 15px 45px 15px 5px;
+		border-bottom: 1px solid #979797;
+
+		& ul {
+			margin: 15px -45px -15px -5px;
+			border-top: none;
+		}
+
+		& li {
+			padding: 5px 45px 5px 20px;
+			border-top: 1px solid #dddddd;
+			border-bottom: none;
+			font-size: 15px;
+
+			& ul {
+				margin: 5px -45px -5px -20px;
+			}
+
+			& li {
+				padding: 5px 45px 5px 20px;
+				font-size: 14px;
+
+				& a {
+					margin: -5px -45px -5px -40px;
+					padding: 5px 45px 5px 40px;
+				}
+			}
+
+			& a {
+				margin: -5px -45px -5px -20px;
+				padding: 5px 45px 5px 20px;
+			}
+
+			& .category-list-label {
+				background-color: #f4f4f4;
+			}
+		}
+
+		& a {
+			position: relative;
+			display: block;
+			color: #333333;
+			text-decoration: none;
+			margin: -15px -45px -15px -5px;
+			padding: 15px 45px 15px 5px;
+			@include roll-over(transparent, #CCCCCC, .2s);
+		}
+	}
+}
+
+.category-list-label {
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	margin-top: -12px;
+	display: inline-block;
+	border-radius: 3px;
+	background: #e3e3e3;
+	font-size: 13px;
+	line-height: 25px;
+	min-width: 36px;
+	color: #777777;
+	padding: 0 5px;
+	text-align: center;
+	float: right;
+}

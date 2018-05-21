@@ -1,0 +1,205 @@
+<div style="margin: 0 10px;">
+
+<table class="acms-admin-table acms-admin-table-none">
+	<tr><th>メインイメージ</th></tr>
+	<tr><td style="padding: 0">
+
+		<!-- BEGIN main_photo@path:veil -->
+		<img src="%{ARCHIVES_DIR}{main_photo@path}" class="acms-admin-img-responsive">
+		<input type="hidden" name="main_photo@old" value="{main_photo@path}" /><br />
+		<label>
+			<input type="checkbox" name="main_photo@edit" value="delete" />削除
+		</label>
+		<!-- END main_photo@path:veil -->
+		<input type="file" name="main_photo" size="20" />
+		<input type="hidden" name="field[]" value="main_photo" />
+		<input type="hidden" name="main_photo:extension" value="image" />
+		<input type="hidden" name="main_photo@size" value="858" />
+		<input type="hidden" name="main_photo@tinyWidth" value="280" />
+		<input type="hidden" name="main_photo@largeWidth" value="1280" />
+		<input type="hidden" name="main_photo@squareWidth" value="480" />
+		<input type="hidden" name="main_photo@filename" value="" />
+		<input type="text" name="main_caption" value="{main_caption}" size="30"/>
+		<input type="hidden" name="field[]" value="main_caption" />
+	</td></tr>
+</table>
+
+<table class="acms-admin-table acms-admin-table-none">
+	<tr>
+		<th>サブイメージ1</th>
+		<th>サブイメージ2</th>
+		<th>サブイメージ3</th>
+	</tr>
+	<tr>
+		<td>
+			<!-- BEGIN sub_photo01@path:veil -->
+			<img src="%{ARCHIVES_DIR}{sub_photo01@path}" class="acms-admin-img-responsive">
+			<input type="hidden" name="sub_photo01@old" value="{sub_photo01@path}" /><br />
+			<label>
+				<input type="checkbox" name="sub_photo01@edit" value="delete" />削除
+			</label>
+			<!-- END sub_photo01@path:veil -->
+			<input type="file" name="sub_photo01" style="width:100px" />
+			<input type="hidden" name="field[]" value="sub_photo01" />
+			<input type="hidden" name="sub_photo01:extension" value="image" />
+			<input type="hidden" name="sub_photo01@size" value="282" />
+			<input type="hidden" name="sub_photo01@largeWidth" value="1280" />
+			<input type="hidden" name="sub_photo01@filename" value="" />
+		</td>
+		<td>
+			<!-- BEGIN sub_photo02@path:veil -->
+			<img src="%{ARCHIVES_DIR}{sub_photo02@path}" class="acms-admin-img-responsive">
+			<input type="hidden" name="sub_photo02@old" value="{sub_photo02@path}" /><br />
+			<label>
+				<input type="checkbox" name="sub_photo02@edit" value="delete" />削除
+			</label>
+			<!-- END sub_photo02@path:veil -->
+			<input type="file" name="sub_photo02" style="width:100px" />
+			<input type="hidden" name="field[]" value="sub_photo02" />
+			<input type="hidden" name="sub_photo02:extension" value="image" />
+			<input type="hidden" name="sub_photo02@size" value="282" />
+			<input type="hidden" name="sub_photo02@largeWidth" value="1280" />
+			<input type="hidden" name="sub_photo02@filename" value="" />
+		</td>
+		<td>
+			<!-- BEGIN sub_photo03@path:veil -->
+			<img src="%{ARCHIVES_DIR}{sub_photo03@path}" class="acms-admin-img-responsive">
+			<input type="hidden" name="sub_photo03@old" value="{sub_photo03@path}" /><br />
+			<label>
+				<input type="checkbox" name="sub_photo03@edit" value="delete" />削除
+			</label>
+			<!-- END sub_photo03@path:veil -->
+			<input type="file" name="sub_photo03" style="width:100px" />
+			<input type="hidden" name="field[]" value="sub_photo03" />
+			<input type="hidden" name="sub_photo03:extension" value="image" />
+			<input type="hidden" name="sub_photo03@size" value="282" />
+			<input type="hidden" name="sub_photo03@largeWidth" value="1280" />
+			<input type="hidden" name="sub_photo03@filename" value="" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<input type="text" name="sub_caption01" value="{sub_caption01}" class="acms-admin-form-width-full"/>
+		<input type="hidden" name="field[]" value="sub_caption01" />
+		</td>
+		<td>
+		<input type="text" name="sub_caption02" value="{sub_caption02}" class="acms-admin-form-width-full"/>
+		<input type="hidden" name="field[]" value="sub_caption02" />
+		</td>
+		<td>
+		<input type="text" name="sub_caption03" value="{sub_caption03}" class="acms-admin-form-width-full"/>
+		<input type="hidden" name="field[]" value="sub_caption03" />
+		</td>
+	</tr>
+</table>
+
+<table class="acms-admin-table acms-admin-table-bordered acms-margin-bottom-mini">
+	<tr>
+		<th>所在地</th>
+		<th>最寄駅</th>
+		<th>徒歩</th>
+		<th>区分</th>
+		<th>階/階建</th>
+	</tr>
+	<tr>
+		<td><input type="text" name="address" value="{address}" size="20"/>
+		<input type="hidden" name="field[]" value="address" /></td>
+		<td><select name="station">
+			<option value="">未設定</option>
+			<option value="あの駅"{station:selected#あの駅}>あの駅</option>
+			<option value="この駅"{station:selected#この駅}>この駅</option>
+			<option value="その駅"{station:selected#その駅}>その駅</option>
+		</select>
+		<input type="hidden" name="field[]" value="station" /></td>
+		<td><input type="text" name="toho" value="{toho}" style="width: 80%;"/>分
+		<input type="hidden" name="field[]" value="toho" />
+		<input type="hidden" name="toho:c" value="a" />
+		</td>
+		<td><select name="kubun">
+			<option value="">未設定</option>
+			<option value="一戸建て"{kubun:selected#一戸建て}>一戸建て</option>
+			<option value="マンション"{kubun:selected#マンション}>マンション</option>
+			<option value="アパート"{kubun:selected#アパート}>アパート</option>
+		</select>
+		<input type="hidden" name="field[]" value="kubun" /></td>
+		<td><input type="text" name="kai" value="{kai}" size="5" class="acms-admin-margin-bottom-mini"/>階/<input type="text" name="kaidate" value="{kaidate}" size="5"/>階建
+		<input type="hidden" name="field[]" value="kai" />
+		<input type="hidden" name="kai:c" value="a" />
+		<input type="hidden" name="field[]" value="kaidate" />
+		<input type="hidden" name="kaidate:c" value="a" /></td>
+	</tr>
+</table>
+<table class="acms-admin-table acms-admin-table-bordered">
+	<tr>
+		<th>家賃</th>
+		<th>管理費等</th>
+		<th>敷金/礼金</th>
+		<th>間取</th>
+		<th>専有面積</th>
+		<th>築年数</th>
+	</tr>
+	<tr>
+		<td><input type="text" name="price" value="{price}" class="acms-admin-form-width-3quarters"/>円
+		<input type="hidden" name="field[]" value="price" />
+		<input type="hidden" name="price:c" value="a" /></td>
+		<td><input type="text" name="kanri" value="{kanri}" class="acms-admin-form-width-3quarters"/>円
+		<input type="hidden" name="field[]" value="kanri" />
+		<input type="hidden" name="kanri:c" value="a" /></td>
+		<td class="acms-admin-text-nowrap"><select name="shiki" class="acms-admin-margin-bottom-mini">
+			<option value="無"{shiki:selected#無}>無</option>
+			<option value="有"{shiki:selected#有}>有</option>
+		</select>
+		<input type="hidden" name="field[]" value="shiki" />/<select name="rei">
+			<option value="無"{rei:selected#無}>無</option>
+			<option value="有"{rei:selected#有}>有</option>
+		</select>
+		<input type="hidden" name="field[]" value="rei" /></td>
+		<td><select name="madori">
+			<option value=""></option>
+			<!-- <option value="ワンルーム"{madori:selected#ワンルーム}>ワンルーム</option> -->
+			<option value="1K"{madori:selected#1K}>1K</option>
+			<option value="1DK"{madori:selected#1DK}>1DK</option>
+			<option value="1LDK"{madori:selected#1LDK}>1LDK</option>
+			<option value="2K"{madori:selected#2K}>2K</option>
+			<option value="2DK"{madori:selected#2DK}>2DK</option>
+			<option value="2LDK"{madori:selected#2LDK}>2LDK</option>
+			<option value="3K"{madori:selected#3K}>3K</option>
+			<option value="3DK"{madori:selected#3DK}>3DK</option>
+			<option value="3LDK"{madori:selected#3LDK}>3LDK</option>
+			<option value="4K"{madori:selected#4K}>4K</option>
+			<option value="4DK"{madori:selected#4DK}>4DK</option>
+			<option value="4LDK"{madori:selected#4LDK}>4LDK</option>
+			<!-- <option value="4LDK以上"{madori:selected#4LDK以上}>4LDK以上</option> -->
+		</select>
+		<input type="hidden" name="field[]" value="madori" /></td>
+		<td><input type="text" name="menseki" value="{menseki}" class="acms-admin-form-width-3quarters"/><span class="acms-admin-form-side">m<sup>2</sup></span>
+		<input type="hidden" name="field[]" value="menseki" />
+		<input type="hidden" name="menseki:c" value="a" /></td>
+		<td><input type="text" name="chikunen" value="{chikunen}" class="acms-admin-form-width-3quarters"/>年
+		<input type="hidden" name="field[]" value="chikunen" />
+		<input type="hidden" name="chikunen:c" value="a" /></td>
+	</tr>
+</table>
+
+<table class="acms-admin-table acms-admin-table-none">
+	<tr><th>地図</th></tr>
+	<tr class="js-map-editable">
+		<td style="padding: 0">
+			<div class="acms-margin-bottom-mini">
+				<input type="text" name="" value="" class="js-editable_map-search_text" disabled="disabled" size="40" />
+				<input type="button" name="" value="検索" class="js-editable_map-search_button acms-admin-btn" disabled="disabled" />
+			</div>
+			<div class="acms-margin-bottom-mini">
+				<img class="js-map_editable-container" src="http://maps.google.com/maps/api/staticmap?center=35.185574,136.899066&zoom=10&size=803x300&maptype=roadmap&markers=35.185574,136.899066&key=%{GOOGLE_API_KEY}" width="837" height="300" style="display:block;" />
+			</div>
+			緯度 <input type="text" name="map_lat" value="{map_lat}" size="9" class="js-map_editable-lat" />
+			経度 <input type="text" name="map_lng" value="{map_lng}" size="10" class="js-map_editable-lng" />
+			ズーム <input type="text" name="map_zoom" value="{map_zoom}" size="10" class="js-map_editable-zoom" />
+			<input type="hidden" name="field[]" value="map_lat" />
+			<input type="hidden" name="field[]" value="map_lng" />
+			<input type="hidden" name="field[]" value="map_zoom" />
+		</td>
+	</tr>
+</table>
+
+</div>

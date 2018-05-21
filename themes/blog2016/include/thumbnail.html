@@ -1,0 +1,24 @@
+<!-- BEGIN_MODULE Entry_Summary id="" -->
+<section>
+	<!--#include file="/admin/config/setting.html"-->
+	<h1 class="sub-heading">エントリーリスト</h1>
+	<!-- BEGIN notFound -->
+	<p>お探しの記事は見つかりませんでした。</p>
+	<!-- END notFound -->
+	<ul class="thumbnail">
+		<!-- BEGIN entry:loop -->
+		<li>
+			<div class="thumbnail-bg"<!-- BEGIN image:veil --> style="background-image:url(%{ROOT_DIR}{path});"<!-- END image:veil -->>
+				<a href="{url}" class="thumbnail-inner js-viewing-indelible">
+					<div class="thumbnail-shade">
+						<time class="thumbnail-date">{date#Y}年{date#m}月{date#d}日</time>
+						<!-- BEGIN new --><span class="acms-admin-label acms-admin-label-warning">NEW</span><!-- END new -->
+						<p class="thumbnail-title">{title}</p>
+					</div>
+				</a>
+			</div>
+		</li>
+		<!-- END entry:loop -->
+	</ul>
+</section>
+<!-- END_MODULE Entry_Summary -->

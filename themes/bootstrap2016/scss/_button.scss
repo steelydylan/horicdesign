@@ -1,0 +1,22 @@
+/* ------------------------------
+　　ボタン
+------------------------------ */
+/* ボーダーボタン */
+.home-btn {
+	margin: 20px 0 10px;
+}
+.btn-border {
+	display: inline-block;
+	padding: 7px 10px;
+	color: #333;
+	@include font-size(16);
+	border-radius: 4px;
+	border: 1px solid #CCC;
+	[class*='acms-icon-'] {
+		color: #CCC;
+		@include font-size(14);
+	}
+	 &:hover {
+		text-decoration: none;
+	}
+}

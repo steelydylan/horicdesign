@@ -1,0 +1,29 @@
+<!-- BEGIN_MODULE Touch_Entry -->
+<!-- BEGIN_MODULE Entry_Summary id="" -->
+<section>
+	<!--#include file="/admin/module/setting.html"-->
+	<h2 class="base-heading">エントリーサマリー</h2>
+	<div class="thumbnail">
+		<!-- BEGIN notFound -->
+		<p>お探しの記事は見つかりませんでした。</p>
+		<!-- END notFound -->
+		<!-- BEGIN entry:loop -->
+		<section class="thumbnail-item js-autoheight-r">
+			<div class="thumbnail-img-wrap">
+				<!-- BEGIN_IF [{path}/nem] -->
+				<div class="thumbnail-img" style="background-image:url(%{HTTP_ROOT}{path})">
+				</div>
+				<!-- ELSE -->
+				<div class="thumbnail-img" style="background-image:url(%{CURRENT_THEMES_DIR}images/noimage.png)"></div>
+				<!-- END_IF -->
+			</div>
+			<div class="thumbnail-body">
+				<p class="thumbnail-title"><!-- BEGIN new --><span class="acms-admin-label acms-admin-label-warning">NEW</span><!-- END new --><a href="{url}">{title}</a></p>
+				<p class="thumbnail-text">{summary}</p>
+			</div>
+		</section>
+		<!-- END entry:loop -->
+	</div>
+</section>
+<!-- END_MODULE Entry_Summary -->
+<!-- END_MODULE Touch_Entry -->

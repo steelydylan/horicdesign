@@ -1,0 +1,17 @@
+<!-- BEGIN_MODULE Banner id="top_image" -->
+<div class="module-section">
+	<!--#include file="/admin/module/setting.html"-->
+	<div class="js-slider">
+		<!-- BEGIN banner:loop --><div class="{banner:loop.class}">
+			<!-- BEGIN banner#src -->
+			{src}[raw]
+			<!-- END banner#src -->
+			<!-- BEGIN banner#img -->
+			<a href="{url}" target="{target}" class="slider-item">
+				<img src="%{ARCHIVES_DIR}{img}" width="{x}" height="{y}" alt="{alt}" class="img-responsive slider-image" />
+			</a>
+			<!-- END banner#img -->
+		</div><!-- END banner:loop -->
+	</div>
+</div>
+<!-- END_MODULE Banner -->

@@ -1,0 +1,154 @@
+/* ------------------------------
+　　お問い合わせ
+------------------------------ */
+.contact-box {
+	p {
+		 &.message {
+			margin: 0 0 35px 0;
+			padding: 0 10px;
+			font-weight: bold;
+			color: $primary-color;
+		}
+		 &.contact-no {
+			@include font-size(30);
+			font-weight: bold;
+			color: #333;
+			a {
+				color: inherit;
+			}
+		}
+		 &.error-text {
+			/* エラー文 */
+			margin: 5px 0 0 0;
+			color: $primary-color;
+		}
+	}
+	table.contact-form {
+		border-right: 1px solid $base-color;
+		border-bottom: 1px solid $base-color;
+		border-left: 1px solid $base-color;
+		tr {
+			background: #FFF;
+		}
+	}
+	@media screen and (min-width: $screen-xs-min){
+		th,
+		td {
+			display: table-cell;
+		}
+	}
+	@media screen and (min-width: $screen-sm-min){
+		th {
+			width: 260px;
+		}
+
+	}
+}
+
+/* ステップ */
+.contact-box {
+	.mail-step {
+		margin: 0 10px 35px 10px;
+		padding: 0 10px;
+		background: $base-color;
+		/* カウンターの設定 */
+		counter-reset: mailStep;
+	}
+	.mail-step-item {
+		float: left;
+		list-style: none;
+		margin: 0 10px;
+		padding: 18px 0 14px;
+		color: #999;
+		@include font-size(16);
+		font-weight: bold;
+		border-bottom: 4px solid transparent;
+		 &:before {
+			/* カウンターの設定 */
+			counter-increment: mailStep;
+			content: counter(mailStep)".";
+		}
+	}
+	.mail-step-item-current {
+		color: #333;
+		border-bottom: 4px solid $secondary-color;
+	}
+	@media screen and (min-width: $screen-sm-min){
+		.mail-step {
+			height: 60px;
+		}
+	}
+}
+/* 入力欄 */
+.contact-group-wrap {
+	margin: 0 0 10px 0; 
+}
+
+/* 送信ボタン */
+.form-btn-box {
+	margin: 0 10px 50px 10px;
+	text-align: center;
+}
+.form-btn {
+	display: inline-block;
+}
+.form-btn-return {
+	float: left;
+}
+.form-btn-send {
+	float: right;
+}
+@media screen and (min-width: $screen-sm-min){
+	.form-btn {
+	}
+	.form-btn-return {
+		float: none;
+	}
+	.form-btn-send {
+		float: none;
+		max-width: 360px;
+		width: 100%;
+	}
+}
+/* ラベル */
+.label-required {
+	margin: 0 5px;
+	padding: 2px 8px;
+	color: #FFF;
+	@include font-size(12);
+	border-radius: 3px;
+	background: $primary-color;
+}
+@media screen and (min-width: $screen-sm-min){
+	.label-required {
+		float: right;
+	}
+}
+
+
+/* 入力欄 */
+.contact-box {
+	select {
+		&[required]:required {
+			border: 1px solid #C49511; 
+		}
+		&.focused:invalid {
+			border: 1px solid #c41134; 
+		}
+		&[required]:valid {
+			border: 1px solid #A7A7AA;
+		}
+	}
+	input,
+	textarea {
+		&[required]:required {
+			background: #FFFDEB;
+		}
+		&.focused:invalid {
+			background: #FFEBEE;
+		}
+		&[required]:valid {
+			background: #FFF;
+		}
+	}
+}

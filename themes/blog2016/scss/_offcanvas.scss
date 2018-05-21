@@ -1,0 +1,31 @@
+@media screen and (min-width: $breakpoint-sm-min) {
+	.js-acms-offcanvas-body-right {
+		left: -300px;
+	}
+
+	.js-acms-offcanvas-body-left {
+		left: 300px;
+	}
+
+	.js-acms-offcanvas-active {
+		& .js-acms-offcanvas-sidebar {
+			width: 300px;
+		}
+
+		& .js-acms-offcanvas-sidebar-right {
+			margin-right: -300px;
+		}
+
+		& .js-acms-offcanvas-sidebar-left {
+			margin-left: -300px;
+		}
+	}
+
+	.js-acms-offcanvas-body-right .js-acms-header-fixed {
+		margin-left: -300px;
+	}
+
+	.js-acms-offcanvas-body-left .js-acms-header-fixed {
+		margin-left: 300px;
+	}
+}

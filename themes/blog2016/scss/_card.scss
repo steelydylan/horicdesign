@@ -1,0 +1,61 @@
+/* ----------------
+　　エントリーサマリー（カード表示）
+------------------ */
+.card {
+	margin: 0 -12.5px;
+	margin-bottom: 30px;
+	@include clearfix();
+}
+
+.card-item {
+	float: left;
+	width: 33.33333333333%;
+	padding: 0 12.5px;
+	margin-bottom: 10px;
+}
+
+.card-img {
+	width: 100%;
+	height: 0;
+	padding-bottom: 84%;
+	margin-bottom: 10px;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+}
+
+.card-title {
+	font-weight: bold;
+	font-size: 14px;
+	margin: 0 0 10px 0;
+
+	a {
+		@include text-decoration-none();
+	}
+}
+
+.card-text {
+	font-size: 12px;
+	color: #333;
+	margin: 0;
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.card-item {
+		float: none;
+		width: auto;
+		@include clearfix();
+	}
+
+	.card-img-wrap {
+		float: left;
+		width: 50%;
+	}
+
+	.card-body {
+		float: left;
+		width: 50%;
+		padding: 0 0 10px 10px;
+	}
+}

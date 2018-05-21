@@ -1,0 +1,34 @@
+/* ------------------------------
+　　バナー
+------------------------------ */
+.banner {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 7px 0;
+}
+
+.banner li {
+	width: 100%;
+	margin-bottom: 13px;
+	display: inline-block;
+}
+
+.banner a {
+	opacity: 1;
+	display: block;
+	-webkit-transition: opacity .2s;
+	-moz-transition: opacity .2s;
+	-ms-transition: opacity .2s;
+	-o-transition: opacity .2s;
+	transition: opacity .2s;
+
+	&:hover {
+		opacity: .7;
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+		filter: alpha(opacity=70);
+	}
+}
+
+.banner img {
+	line-height: 0;
+}

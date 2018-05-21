@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- #include file="/include/head/head.html" -->
+<!-- #include file="/include/head/ogp.html" -->
+<!--#include file="/include/head/docs-link.html"-->
+<!--#include file="/include/head/js.html"-->
+<script src="/js/vue.min.js"></script>
+<style>
+.search-group{
+	display: table;
+}
+.search-group .smallInput{
+	display: table-cell;
+	height:40px;
+}
+.search-group .cs-btn{
+	display: table-cell;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+</style>
+</head>
+<body>
+	<!-- ナビゲーション -->
+	<!--#include file="/include/header/navigationDocs.html" -->
+	<div class="cs-container">
+		<div class="cs-row"><!--entry body-->
+			<div class="cs-col-sm-8 cs-col-md-9">
+				<!-- 管理画面 -->
+				<!-- #include file="/admin/action.html"-->
+				
+				<div id="entry">
+					<div class="search-group">
+						<input type="text" class="smallInput" v-model="keyword" v-on="keydown: getEntries() | key enter" />
+						<a class="cs-btn cs-btn-primary" v-on="click: getEntries()">検索</a>
+					</div>
+					<p>アプリやイベント,githubといった単語で検索してみてください</p>
+					<section class="cs-entry" v-repeat="entries">
+						<div class="cs-card">
+							<h1 class="title_heading">{{title}}</h1>
+							<a href="{{url}}" class="cs-btn cs-btn-primary" target="_blank">続きを読む</a>
+						</div>
+					</section>
+				</div>
+			</div><!-- col-md-8-->
+			<div class="cs-col-sm-4 cs-col-md-3 showPc">
+				<!-- #include file="/include/sub/profile.html" -->
+				<!-- ##include file="/include/sub/socialBox.html" -->
+				<!-- #include file="/include/sub/categoryList.html" -->
+			</div>
+		</div>
+	</div><!-- /container -->
+	<!-- フッター -->
+	<!-- #include file="/include/footer/footerDocs.html" -->	
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--<script src="/js/bootstrap.min.js"></script>-->
+	<!-- #include file="/include/sub/socialButtonScript.html" -->
+	<script>
+		$(function(){
+			var vue = new Vue({
+				el:"#entry",
+				data:{
+					entries:[],
+					keyword:""
+				},
+				methods:{
+					getEntries:function(){
+						var that = this;
+						console.log("test.json/keyword/"+that.keyword);
+						$.getJSON("test.json/keyword/"+that.keyword,function(res){
+							that.entries = res;
+						});
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

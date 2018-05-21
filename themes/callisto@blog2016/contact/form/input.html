@@ -1,0 +1,79 @@
+<table class="cs-table" summary="お問い合わせ内容">
+	<tr>
+		<th><label for="name">お名前</label><span class="required">必須</span></th>
+		<td>
+			<input id="name" type="text" name="name" class="acms-form-width-medium" value="{name}" />
+			<input type="hidden" name="field[]" value="name" />
+			<input type="hidden" name="name:v#required" />
+			<input type="hidden" name="name:c" value="KV" />
+			<!-- BEGIN name:validator -->
+			<p class="acms-text-error">お名前を入力してください。</p>
+			<!-- END name:validator -->
+		</td>
+	</tr>
+	<tr>
+    <th>写真</th>
+    <td>
+        <!-- アップロード済みのファイルのプレビューエリア -->
+        <!-- BEGIN photo@path:veil -->
+        <img src="%{ARCHIVES_DIR}{photo@path}" width="450" alt="" /><br />
+        <input type="hidden" name="photo@old" value="{photo@path}" />
+        <input type="hidden" name="photo@secret" value="{photo@secret}" />
+        <label for="input-checkbox-photo@edit">
+            <input type="checkbox" name="photo@edit" value="delete" id="input-checkbox-photo@edit" />
+            削除
+        </label><br /><!-- END photo@path:veil -->
+        <!-- イメージファイルをアップロードするフィールド -->
+        <input type="file" name="photo" size="20" />
+        <input type="hidden" name="field[]" value="photo" />
+        <input type="hidden" name="photo:extension" value="file" />
+    </td>
+</tr>
+	<tr>
+		<th><label for="email">メールアドレス</label><span class="required">必須</span></th>
+		<td>
+			<input id="email" name="email" type="email" value="{email}" class="acms-form-width-medium" />
+			<input type="hidden" name="field[]" value="email" />
+			<input type="hidden" name="email:v#required" />
+			<input type="hidden" name="email:c" value="a" />
+			<input type="hidden" name="email:v#email" />
+			<!-- BEGIN email:validator -->
+			<p class="acms-text-error">正しいメールアドレスを入力してください。</p>
+			<!-- END email:validator -->
+		</td>
+	</tr>
+	<tr>
+		<th><label for="phone">お電話番号</label></th>
+		<td>
+			<input id="phone" name="phone" type="tel" value="{phone}" size="20" class="acms-form-width-medium" />
+			<input type="hidden" name="field[]" value="phone" />
+			<input type="hidden" name="phone:c" value="n" />
+		</td>
+	</tr>
+	<tr>
+		<th><label for="inquiry">お問い合わせ内容</label><span class="required">必須</span></th>
+		<td>
+			<textarea id="inquiry" name="inquiry" rows="5" class="acms-form-width-medium js-placeholder" title="お問い合わせ内容を入力してください。">{inquiry}</textarea>
+			<input type="hidden" name="field[]" value="inquiry" />
+			<input type="hidden" name="inquiry:v#required" />
+			<input type="hidden" name="inquiry:c" value="KV" />
+			<!-- BEGIN inquiry:validator -->
+			<p class="acms-text-error">お問い合わせ内容を入力してください。</p>
+			<!-- END inquiry:validator --> 
+		</td>
+	</tr>
+	<tr>
+		<th>テスト</th>
+		<td>
+			<label class="acms-form-checkbox" for="input-test-aaa">
+				<input type="checkbox" name="test[]" value="aaa" id="input-test-aaa"{test:checked#aaa} />
+				<i class="acms-ico-checkbox"></i>aaa
+			</label>
+			<label class="acms-form-checkbox" for="input-test-bbb">
+				<input type="checkbox" name="test[]" value="bbb" id="input-test-bbb"{test:checked#bbb} />
+				<i class="acms-ico-checkbox"></i>bbb
+			</label>
+			<input type="hidden" name="field[]" value="test" />
+		</td>
+	</tr>
+</table>

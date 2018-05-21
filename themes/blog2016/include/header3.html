@@ -1,0 +1,44 @@
+<header class="header">
+	<!-- BEGIN_MODULE Touch_SessionWithAdministration -->
+	<p class="acms-admin-module-edit"><a href="/bid/%{BID}/admin/blog_edit/#acms_custom" class="js-dialog-btn js-link_no_rewrite">編集</a></p>
+	<!-- END_MODULE Touch_SessionWithAdministration -->
+
+	<div class="header-inner header-inner-pattern3">
+		<div>
+			<!-- BEGIN_MODULE Blog_Field -->
+			<!-- BEGIN site_logo:veil -->
+			<div class="header-logo-wrap">
+				<img class="header-logo" src="%{ARCHIVES_DIR}{site_logo@path}" alt="">
+			</div>
+			<!-- END site_logo:veil -->
+			<div class="header-text">
+				<!-- BEGIN_MODULE Touch_Top -->
+				<h1 class="header-title"><a href="%{BLOG_URL}">%{BLOG_NAME}</a></h1>
+				<!-- END_MODULE Touch_Top -->
+				<!-- BEGIN_MODULE Touch_NotTop -->
+				<p class="header-title"><a href="%{BLOG_URL}">%{BLOG_NAME}</a></p>
+				<!-- END_MODULE Touch_NotTop -->
+				<!-- BEGIN main_description:veil -->
+				<p class="header-desc">{main_description}</p>
+				<!-- END main_description:veil -->
+			</div>
+			<!-- END_MODULE Blog_Field -->
+		</div>
+		<!-- BEGIN_MODULE User_Profile id="" -->
+		<!-- BEGIN user:loop -->
+		<!-- BEGIN icon:veil -->
+		<div class="header-icon-wrap">
+			<!-- BEGIN twitter:veil -->
+			<a href="{twitter}" class="social-icon social-icon-twitter"><i class="acms-icon-twitter"></i></a><!-- END twitter:veil --><!-- BEGIN facebook:veil --><a href="{facebook}" class="social-icon social-icon-facebook"><i class="acms-icon-facebook"></i></a><!-- END facebook:veil --><!-- BEGIN gplus:veil --><a href="{googlePlus}" class="social-icon social-icon-gplus"><i class="acms-icon-gplus"></i></a><!-- END gplus:veil --><!-- BEGIN profile_link:veil --><a href="{profile_link}" class="social-icon"><i class="acms-icon-user"></i></a><!-- END profile_link:veil -->
+		</div>
+		<!-- END icon:veil -->
+		<!-- END user:loop -->
+		<!-- END_MODULE User_Profile -->
+	</div>
+
+	<button class="header-btn js-offcanvas-btn js-offcanvas-btn-r" data-target="#offcanvas" aria-label="メニューを開く">
+		<span class="header-btn-line"></span>
+		<span class="header-btn-line"></span>
+		<span class="header-btn-line"></span>
+	</button>
+</header>

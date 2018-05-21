@@ -1,0 +1,74 @@
+/* ------------------------------
+　　物件情報
+------------------------------ */
+/* 地図 */
+.realestate-map {
+	overflow: hidden;
+}
+.realestate-map .js-s2d-ready,
+.realestate-map [class*='column-map-'] {
+	width: auto!important;
+	max-width: 100%;
+}
+.realestate-map img[class*='column-map-'] {
+	width: auto!important;
+	max-width: 100%;
+	height: auto;
+}
+.realestate-map-entry {
+	clear: both;
+	margin: 0 10px;
+}
+.entry-column {
+	table.realestate-search {
+		margin: 20px 0 30px 0;
+	}
+}
+@media screen and (min-width: $screen-md-min){
+	.table-nowrap {
+		white-space: nowrap;
+	}
+}
+
+/* 物件一覧 */
+.summary-custom {
+	margin: 0 0 40px 0;
+	padding: 0;
+	list-style: none;
+	border-left: 1px solid $base-color;
+}
+.summary-custom-entry {
+	padding: 10px;
+	border-top: 1px solid $base-color;
+	border-right: 1px solid $base-color;
+	border-bottom: 1px solid $base-color;
+	 &:hover {
+		background: #F5F5F5;
+		@include transition(background-color .25s linear);
+	}
+}
+.photo {
+	margin: 0 0 10px 0;
+}
+.photo-title {
+	margin: 0;
+	@include font-size(16);
+}
+.pickup-title {
+	color: #333;
+	@include font-size(16);
+}
+
+
+@media screen and (max-width: $screen-sm-max){
+	/* 物件情報 */
+	.realestate-search {
+		th,td {
+			display: block;
+			@include box-sizing(border-box);
+		}
+		input {
+			@include box-sizing(border-box);
+		}
+	}
+}

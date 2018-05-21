@@ -1,0 +1,40 @@
+/* ------------------------------
+　　フッター
+------------------------------ */
+.footer {
+	margin-top: 30px;
+	background-color: #eeeeee;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.footer-copyright {
+	text-align: center;
+	margin: 0;
+	font-size: 12px;
+	color: #333333;
+	font-family: verdana, sans-serif;
+}
+
+.footer-copyright img,
+.footer-copyright svg {
+	vertical-align: middle;
+	width: 96px;
+	height: 16.5px;
+}
+
+.footer .sub-heading {
+	border-bottom: 1px solid #979797;
+	padding-bottom: 5px;
+}
+
+//オーバーライド
+.footer .category-list > ul {
+	border-top: none;
+	margin-top: -10px;
+}
+
+.footer .entry-list {
+	border-top: none;
+	margin-top: -10px;
+}

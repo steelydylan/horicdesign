@@ -1,0 +1,26 @@
+<!--@doc
+ # サブカラムで使用しているカテゴリーリストを表示します
+ # 
+ # @id category_list
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="category_list" module_id="category_list" -->
+<!-- BEGIN_MODULE Category_List id="{{module_id}}" -->
+<section class="module-section">
+	<!--#include file="/admin/module/setting.html"-->
+	<div class="module-header clearfix">
+		<h2 class="module-heading">カテゴリーリスト</h2>
+	</div>
+	<div class="category-list">
+		<!-- BEGIN category:loop --><!-- BEGIN ul#front -->
+		<ul class="nav nav-pills nav-stacked"><!-- END ul#front --><!-- BEGIN li#front -->
+			<li><!-- END li#front --><!-- BEGIN category:veil -->
+				<a href="{url}">{name}</a><!-- BEGIN amount:veil --><!-- END amount:veil --><!-- END category:veil --><!-- BEGIN li#rear -->
+			</li><!-- END li#rear --><!-- BEGIN ul#rear -->
+		</ul><!-- END ul#rear --><!-- END category:loop -->
+	</div>
+</section>
+<!-- END_MODULE Category_List -->
+<!-- END_SetTemplate -->

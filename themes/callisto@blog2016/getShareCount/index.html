@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="/js/dev/dist/fetchShareButton.js"></script>
+	<script>
+	(function(){
+		fetchShareButton("http://horicdesign.com/test.json",{from:"json"})
+		.then(function(items){
+			console.log(items);
+		})
+		// fetchShareButton("http://horicdesign.com/rss2.xml",{from:"xml"})
+		// .then(function(items){
+		// 	console.log(items);
+		// })
+		// fetchShareButton([{url:"http://horicdesign.com/"}...],{from:"array"})
+		// .then(function(items){
+		// 	console.log(items);
+		// })
+	})();
+	</script>
+</body>
+</html>

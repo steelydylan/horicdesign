@@ -1,0 +1,27 @@
+<!-- BEGIN_MODULE Touch_Entry -->
+<!-- BEGIN_MODULE Entry_Summary id="" -->
+<section>
+	<!--#include file="/admin/config/setting.html"-->
+	<h2 class="base-heading">エントリーサマリー</h2>
+	<!-- BEGIN notFound -->
+	<p>お探しの記事は見つかりませんでした。</p>
+	<!-- END notFound -->
+	<div class="media">
+		<!-- BEGIN entry:loop -->
+		<section class="media-item js-autoheight-r">
+			<!-- BEGIN_IF [{path}/nem] -->
+			<div class="media-img" style="background-image:url(%{HTTP_ROOT}{path})">
+			</div>
+			<!-- ELSE -->
+			<div class="media-img" style="background-image:url(%{CURRENT_THEMES_DIR}images/noimage.png)"></div>
+			<!-- END_IF -->
+			<div class="media-body">
+				<time class="media-time" datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日</time>
+				<p class="media-title"><!-- BEGIN new --><span class="acms-admin-label acms-admin-label-warning">NEW</span><!-- END new --><a href="{url}">{title}</a></p>
+			</div>
+		</section>
+		<!-- END entry:loop -->
+	</div>
+</section>
+<!-- END_MODULE Entry_Summary -->
+<!-- END_MODULE Touch_Entry -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<!--#include file="/include/meta.html" -->
+	<!--#include file="/include/link.html" -->
+	<link rel="stylesheet" href="css/gallery.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body>
+	<!-- メインビジュアル -->
+<!--#include file="/include/mainVisual.html" -->
+<!--#include file="/include/globalNavigation.html" -->
+	
+	<div class="gallery-container">
+		<h1>ギャラリー</h1>
+		<!-- 管理画面 -->
+			<!--#include file="/admin/action.html"-->
+		<div class="acms-grid-r">
+		<!-- BEGIN_MODULE Blog_Field -->
+			<!-- BEGIN galleryGroup:loop -->
+			<div class="acms-col-md-4 acms-col-sm-12">
+				<div class="gallery-card js-card" data-link="{galleryLink}" data-caption="{galleryDescription}">
+					<div class="gallery-inner">
+						<div class="gallery-caption">
+							<p class="gallery-caption__title"><a href="{galleryLink}" target="_blank">{galleryTitle}<i class="fa fa-external-link"></i></a></p>
+							<p class="gallery-caption__description">{galleryDescription}</p>
+						</div>
+						<img src="%{ARCHIVES_DIR}{galleryImg@path}">
+					</div>
+				</div>
+			</div>
+			<!-- END galleryGroup:loop -->
+		<!-- END_MODULE Blog_Field -->
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/gallery-card.js"></script>
+	<script>
+	$(function(){
+		$(".js-card").galleryCard();
+	});
+	</script>
+</body>
+</html>

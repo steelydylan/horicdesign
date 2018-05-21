@@ -1,0 +1,118 @@
+<table class="js-fieldgroup-sortable table table-bordered">
+<!-- BEGIN portfolio_group:loop -->
+<tr class="sortable-item">
+<td class="item-handle">
+<div class="acms-form-group"><span class="acms-icon acms-icon-sort2"></span></div>
+<a class="item-delete acms-btn-admin acms-btn-admin-danger block-level" href="#" onclick="return false;">削除</a>
+</td>
+<td>
+<table class="table table-bordered">
+<tr>
+	<th>画像</th>
+	<th>見出しとURLとクラス</th>
+	<th>概要</th>
+</tr>
+<tr>
+	<td>
+		<!-- BEGIN portfolio_image:veil -->
+		<img width="200px" class="img-responsive"src="%{ARCHIVES_DIR}{portfolio_image@path}" />
+		<!-- END portfolio_image:veil -->
+		<br />
+		<label>
+			<input type="checkbox" name="portfolio_image@edit[{i}]" value="delete" />
+			削除
+		</label>
+		<input type="hidden" name="portfolio_image@old[{i}]" value="{portfolio_image@path}" />
+		<input type="file" name="portfolio_image[{i}]" class="acms-form-width-full" />
+		<input type="hidden" name="portfolio_image@width[{i}]" value="1000" />
+	</td>
+	<td>
+		<div class="acms-form-group">
+			<input type="text" name="portfolio_lead[{i}]" value="{portfolio_lead}" class="acms-form-width-full" />
+		</div>
+		<div class="acms-form-group">
+			<input type="text" name="portfolio_url[{i}]" value="{portfolio_url}" class="acms-form-width-full" />
+		</div>
+		<div class="acms-form-group">
+			<input type="text" name="portfolio_class[{i}]" value="{portfolio_class}" class="acms-form-width-full" />
+		</div>
+	</td>
+ 
+	<td>
+		<textarea name="portfolio_summary[{i}]" class="acms-form-width-full" >{portfolio_summary}</textarea>
+	</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END portfolio_group:loop -->
+<tr class="sortable-item item-template">
+<td class="item-handle">
+<span class="acms-icon acms-icon-sort2"></span>
+</td>
+<td>
+<table>
+<tr>
+	<th>画像</th>
+	<th>リードとURLとクラス</th>
+	<th>概要</th>
+</tr>
+<tr>
+	<td>
+		<input type="file" name="portfolio_image[]" class="acms-form-width-full" />
+		<input type="hidden" name="portfolio_image@width[]" value="1000" />
+	</td>
+	<td>
+		<div class="acms-form-group">
+			<input type="text" name="portfolio_lead[]" value="" class="acms-form-width-full" />
+		</div>
+		<div class="acms-form-group">
+			<input type="text" name="portfolio_url[]" value="" class="acms-form-width-full" />
+		</div>
+		<div class="acms-form-group">
+			<textarea name="portfolio_class[]" class="acms-form-width-full" ></textarea>
+		</div>
+	</td>
+	<td>
+		<textarea name="portfolio_summary[]" class="acms-form-width-full" ></textarea>
+	</td>
+</tr>
+</table>
+</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan="3">
+<input type="button" class="item-insert acms-btn-admin" value="項目を追加する" />
+</td>
+</tr>
+</tfoot>
+</table>
+ 
+<input type="hidden" name="@portfolio_group[]" value="portfolio_lead" />
+<input type="hidden" name="field[]" value="portfolio_lead" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_url" />
+<input type="hidden" name="field[]" value="portfolio_url" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_summary" />
+<input type="hidden" name="field[]" value="portfolio_summary" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_class" />
+<input type="hidden" name="field[]" value="portfolio_class" />
+
+<input type="hidden" name="portfolio_image:extension" value="image" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_image@path" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_image@x" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_image@y" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_image@edit" />
+<input type="hidden" name="@portfolio_group[]" value="portfolio_image@old" />
+<input type="hidden" name="field[]" value="portfolio_image" />
+<input type="hidden" name="field[]" value="@portfolio_group" />
+
+<table>
+	<tr>
+		<th>メタディスクリプション</th>
+		<td>
+			<textarea name="blog_meta_description" rows="3">{blog_meta_description}</textarea>
+			<input type="hidden" name="field[]" value="blog_meta_description" />
+		</td>
+	</tr>
+</table>

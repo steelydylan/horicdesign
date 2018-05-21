@@ -1,0 +1,25 @@
+<!-- BEGIN_MODULE Entry_Summary id="" -->
+<section>
+	<!--#include file="/admin/module/setting.html"-->
+	<h2 class="sub-heading">エントリーリスト</h2>
+	<!-- BEGIN notFound -->
+	<p>お探しの記事は見つかりませんでした。</p>
+	<!-- END notFound -->
+	<ul class="entry-list">
+		<!-- BEGIN entry:loop -->
+		<li>
+			<a href="{url}">
+
+				<!-- BEGIN categoryField:veil -->
+				<span class="entry-list-category"><!-- BEGIN categoryField -->{fieldCategoryName}<!-- END categoryField --></span>
+				<!-- END categoryField:veil -->
+
+				<!-- BEGIN new --><span class="acms-admin-label acms-admin-label-warning">NEW</span><!-- END new -->
+				<span class="entry-list-title">{title}</span>
+
+			</a>
+		</li>
+		<!-- END entry:loop -->
+	</ul>
+</section>
+<!-- END_MODULE Entry_Summary -->

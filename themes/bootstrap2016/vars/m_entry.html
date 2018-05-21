@@ -1,0 +1,327 @@
+<!--@doc
+ # サブカラムで使用しているエントリーリストを表示します
+ # 見出しは、カテゴリーがあるときはカテゴリー名を、そうでないときはブログ名を表示します
+ # 
+ # @id entry_list
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="entry_list" module_id="entry_list" -->
+<!-- BEGIN_MODULE Entry_List id="{{module_id}}" -->
+<section class="module-section">
+	<!--#include file="/admin/module/setting.html"-->
+	<div class="module-header clearfix">
+		<h2 class="module-heading"><!-- BEGIN_IF [%{CID}/nem] -->%{CATEGORY_NAME}<!-- ELSE -->%{BLOG_NAME}の記事一覧<!-- END_IF --></h2>
+	</div>
+	<ul class="nav nav-pills nav-stacked">
+		<!-- BEGIN entry:loop -->
+		<li class="{entry:loop.class}"><a href="{url}">{title}</a></li>
+		<!-- END entry:loop -->
+	</ul>
+</section>
+<!-- END_MODULE Entry_List -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # デフォルトのヘッドラインを表示します
+ # %{VIEW}がtopのときは右上に一覧ボタンを表示します
+ # 見出し内に挿入されるカスタムフィールドのアイコン対応に対応しています
+ # 
+ # @id headline_default
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="headline_default" module_id="top_headline" -->
+	<!-- BEGIN_MODULE Entry_Headline id="{{module_id}}" -->
+	<section class="module-section">
+		<!--#include file="/admin/module/setting.html"-->
+		<div class="module-header clearfix"><!-- BEGIN moduleField --><!-- BEGIN module_heading:veil -->
+			<h2 class="module-heading"><!-- BEGIN module_heading_icon:veil --><span class="{module_heading_icon}"></span><!-- END module_heading_icon:veil -->{module_heading}</h2><!-- END module_heading:veil --><!-- END moduleField -->
+			<!-- BEGIN_IF [%{VIEW}/eq/top] --><a href="{indexUrl}" class="module-index-link">一覧<span class="glyphicon glyphicon-chevron-right"></span></a><!-- END_IF -->
+		</div>
+		<ul class="headline clearfix"><!-- BEGIN entry:loop -->
+			<li class="headline-item {entry:loop.class} js-biggerlink">
+				<time class="headline-dat" datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日( {date#week} )</time>
+				<!-- BEGIN category:veil --><span class="label label-default">{categoryName}</span><!-- END category:veil -->
+				<a href="{url}" class=" headline-title">{title}</a><!-- BEGIN new --><span class="label label-warning label-new">NEW</span><!-- END new -->
+			</li><!-- END entry:loop -->
+		</ul>
+	</section>
+	<!-- END_MODULE Entry_Headline -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # デフォルトのエントリーサマリーを表示します
+ # %{VIEW}がtopのときは右上に一覧ボタンを表示します
+ # 見出し内に挿入されるカスタムフィールドのアイコン対応に対応しています
+ # 
+ # @id summary_default
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="summary_default" module_id="top_summary" -->
+	<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+	<section class="module-section">
+		<!--#include file="/admin/module/setting.html"-->
+		<div class="module-header clearfix"><!-- BEGIN moduleField --><!-- BEGIN_IF [{module_heading}/nem] -->
+			<h2 class="module-heading"><!-- BEGIN module_heading_icon:veil --><span class="{module_heading_icon}"></span><!-- END module_heading_icon:veil -->{module_heading}</h2><!-- END_IF --><!-- END moduleField --><!-- BEGIN_IF [%{VIEW}/eq/top] --><a href="{indexUrl}" class="module-index-link">一覧<span class="glyphicon glyphicon-chevron-right"></span></a><!-- END_IF -->
+		</div>
+
+		<!-- BEGIN notFound -->
+		<p>記事が見つかりませんでした。</p>
+		<!-- END notFound -->
+		<ul class="summary-default clearfix">
+			<!-- BEGIN unit:loop -->
+			<!-- BEGIN entry:loop -->
+			<li class="summary-default-entry js-autoheight-r js-biggerlink {entry:loop.class}">
+				<div class="media">
+					<div class="summary-default-entry-image-wrap media-left">
+						<!-- BEGIN image:veil -->
+						<img src="%{ROOT_DIR}{path}[resizeImg(120,120)]" width="120" height="120" alt="" class="media-object"><!-- END image:veil --><!-- BEGIN noimage -->
+						<img src="/images/noImage.png" width="120" height="120" alt="" class="media-object">
+						<!-- END noimage -->
+					</div>
+					<div class="media-body">
+						<p class="summary-title"><a href="{url}">{title}</a></p>
+						<p class="summary-detail">{summary}[trim(500, '...')]</p>
+					</div>
+				</div>
+			</li><!-- END entry:loop --><!-- END unit:loop -->
+		</ul>
+	</section>
+	<!-- END_MODULE Entry_Summary -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # サマリーを表示します
+ # サマリー用のデフォルトテンプレートよりもメイン画像が大きく表示されます
+ # 
+ # @id summary_imageMain
+ # @param module_id | モジュールIDを指定します
+ # @param message | リード文を指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="summary_imageMain" module_id="summary_index" -->
+	<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+	<section class="module-section">
+		<!--#include file="/admin/module/setting.html"-->
+		<div class="module-header clearfix">
+			<h2 class="module-heading">%{CATEGORY_NAME}</h2>
+		</div>
+
+		<!-- BEGIN_IF [{{message}}/nem] --><p>{{message}}</p><!-- END_IF -->
+
+		<!-- BEGIN notFound -->
+		<div>
+			<p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+		</div>
+		<!-- END notFound -->
+
+		<ul class="summary-custom clearfix">
+			<!-- BEGIN unit:loop -->
+			<!-- BEGIN entry:loop -->
+				<li class="summary-custom-entry {entry:loop.class} js-autoheight-r js-biggerlink">
+					<div class="photo"><!-- BEGIN image:veil -->
+						<img src="%{ROOT_DIR}{path}[resizeImg(480,480)]" alt="" class="img-responsive" /><!-- END image:veil --><!-- BEGIN noimage -->
+						<img src="/images/noImage.png" width="260" height="260" class="img-responsive">
+						<!-- END noimage -->
+					</div>
+					<p class="photo-title"><a href="{url}">{title}</a></p>
+					<p>{summary}[trim(500, '...')]</p>
+				</li>
+			<!-- END entry:loop -->
+			<!-- END unit:loop -->
+		</ul>
+		<!-- ページャー -->
+		<!-- #include file="/include/parts/pager.html" -->
+	</section>
+	<!-- END_MODULE Entry_Summary -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # 物件情報用カスタムフィールド画像を表示するためのサマリーです
+ # 
+ # @id summary_custom
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="summary_custom" -->
+	<!-- BEGIN_MODULE Entry_Summary id="summary_custom" -->
+	<div class="module-section">
+		<!--#include file="/admin/module/setting.html"-->
+
+		<!-- BEGIN notFound -->
+		<div>
+			<p>記事が見つかりませんでした。</p>
+		</div>
+		<!-- END notFound -->
+
+		<ul class="summary-custom clearfix">
+			<!-- BEGIN unit:loop -->
+			<!-- BEGIN entry:loop -->
+			<li class="summary-custom-entry js-biggerlink js-autoheight-r {entry:loop.class}">
+				<div class="photo"><!-- BEGIN main_photo@path:veil -->
+					<img src="%{ARCHIVES_DIR}{main_photo@path}[resizeImg(480,480)]" alt="" class="img-responsive">
+					<!-- END main_photo@path:veil -->
+					<!-- BEGIN main_photo@path:empty -->
+					<img src="/images/noImage.png" alt="" class="img-responsive">
+					<!-- END main_photo@path:empty -->
+				</div>
+				<p class="photo-title"><a href="{url}">{title}</a></p>
+			</li><!-- END entry:loop -->
+			<!-- END unit:loop -->
+		</ul>
+		<!-- ページャー -->
+		<!-- #include file="/include/parts/pager.html" -->
+	</div>
+	<!-- END_MODULE Entry_Summary -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # サブカラムで使用しているピックアップリストを表示します
+ # 見出し内に挿入されるカスタムフィールドのアイコン対応に対応しています
+ # 
+ # @id entry_list_pickup
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="entry_list_pickup" module_id="pickup_list" -->
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+
+<section class="module-section">
+	<!--#include file="/admin/module/setting.html"-->
+	<!-- BEGIN moduleField --><!-- BEGIN_IF [{module_heading}/nem] -->
+	<div class="module-header clearfix">
+		<h2 class="module-heading"><!-- BEGIN module_heading_icon:veil --><span class="{module_heading_icon}"></span><!-- END module_heading_icon:veil -->{module_heading}</h2>
+	</div><!-- END_IF --><!-- END moduleField -->
+	<ul class="pickup-list">
+		<!-- BEGIN unit:loop -->
+		<!-- BEGIN entry:loop -->
+			<li class="js-biggerlink {entry:loop.class}">
+			<div class="photo"><!-- BEGIN image:veil -->
+				<img src="%{ROOT_DIR}{path}" width="{imgX}" height="{imgY}" alt="" class="img-responsive" /><!-- END image:veil --><!-- BEGIN noimage -->
+				noimage
+				<!-- END noimage -->
+			</div>
+			<p class="pickup-title"><a href="{url}">{title}</a></p>
+			</li>
+		<!-- END entry:loop -->
+		<!-- END unit:loop -->
+	</ul>
+</section>
+
+<!-- END_MODULE Entry_Summary -->
+<!-- END_SetTemplate -->
+
+<!--@doc
+ # エントリー本文を表示します
+ # ユニット開始前にインクルードの条件に合うファイルがあった場合、カスタムフィールドの表示ができるようになっています
+ # ページャー、日付の表示はモジュールIDを作成して調節します
+ # 
+ # @id body_default
+ # @param module_id | モジュールIDを指定します
+ # @author 有限会社アップルップル
+ # @create 2016/04/26
+-->
+<!-- BEGIN_SetTemplate id="body_default" -->
+<!-- BEGIN_MODULE Entry_Body id="{{module_id}}" -->
+<!-- BEGIN notFound -->
+<section class="acms-entry entry">
+	<h2 class="not-found-title">Not Found</h2>
+	<p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+</section>
+<!-- END notFound -->
+
+<!-- 1記事▼▼ -->
+<!-- BEGIN entry:loop -->
+
+<!-- BEGIN Touch_Login -->
+<div class="acms-form-group">
+<!--#include file="/admin/entry/revision-info.html"-->
+</div><!-- END Touch_Login -->
+
+<article class="entry clearfix {entry:loop.class}">
+	<!--#include file="/admin/entry/title.html"-->
+
+	<!-- エントリーのタイトル　開始▼▼ -->
+	<!-- BEGIN title:veil -->
+	<header class="page-header">
+		<p class="entry-info">
+		<!-- BEGIN date:veil --><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日（{date#l}[weekEN2JP]）</time><!-- END date:veil -->
+		<!-- BEGIN category:veil --><!-- BEGIN category:loop -->
+		<span class="entry-category label label-default"><a href="{url}">{name}</a></span><!-- BEGIN glue --> &lt;<!-- END glue -->
+		<!-- END category:loop -->
+		<!-- END category:veil --><!-- BEGIN new --><span class="label label-warning entry-new">NEW</span><!-- END new --></p>
+		<!-- BEGIN_MODULE Touch_Entry --><h1 class="entry-title"><a href="{titleUrl}">{title}[raw]</a></h1><!-- END_MODULE Touch_Entry -->
+		<!-- BEGIN_MODULE Touch_NotEntry -->
+		<h2 class="entry-title"><a href="{titleUrl}">{title}[raw]</a></h2><!-- END_MODULE Touch_NotEntry -->
+	</header>
+	<!-- END title:veil -->
+
+	<!-- BEGIN entry:veil -->
+	<div class="entry-column">
+		<!-- カスタムフィールドの読み込み -->
+		<!-- #include file="/include/field/entry_%{CCD}.html" -->
+		<!-- #include file="/include/field/entry_%{ECD}" -->
+			
+		<!-- BEGIN unit:veil -->
+		<!--#include file="/include/unit.html"-->
+		<hr class="clearHidden" />
+		<!-- END unit:veil -->
+		<!-- 続きを読む -->
+		<!--#include file="/include/parts/continue.html"-->
+	</div>
+	<!-- END entry:veil -->
+
+	<!-- BEGIN formBody -->
+	<!--#include file="/include/form/unit.html"-->
+	<hr class="clearHidden" />
+	<!-- END formBody -->
+
+	<!-- BEGIN adminEntryEdit -->
+	<div class="acms-admin-box-medium">
+		<!--#include file="/admin/entry/edit.html"-->
+		<!--#include file="/admin/entry/add.html"-->
+	</div>
+	<!-- END adminEntryEdit -->
+
+	<!-- BEGIN adminFormEdit -->
+	<!--#include file="/admin/form2/edit.html"-->
+	<!-- END adminFormEdit -->
+
+	<!-- BEGIN_MODULE Touch_Entry -->
+	<footer class="entry-footer clearfix">
+		<div class="entry-tag-wrapper col-md-6">
+			<!-- BEGIN tag:veil -->
+			<dl class="entry-tag">
+				<dt class="entry-tag-icon"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span><span class="sr-only">タグ</span></dt>
+				<!-- BEGIN tag:loop -->
+				<dd class="entry-tag-item"><a href="/entry.html/tag/{name}">{name}</a></dd>
+				<!-- END tag:loop -->
+			</dl><!-- END tag:veil -->
+		</div>
+		<div class="col-md-6">
+			<!-- SNSシェアボタン -->
+			<!--#include file="/include/parts/sns.html"-->
+		</div>
+	</footer>
+	<!-- END_MODULE Touch_Entry -->
+
+	<div class="acms-admin-box-medium">
+	<!--#include file="/admin/entry/action.html"-->
+	</div>
+
+</article>
+<!-- END entry:loop -->
+<!-- 1記事▲▲ -->
+
+<!-- ページャー -->
+<!-- #include file="/include/parts/pager.html" -->
+
+<!-- END_MODULE Entry_Body -->
+<!-- END_SetTemplate -->

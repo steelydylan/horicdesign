@@ -1,0 +1,78 @@
+/* ------------------------------
+　　ベース
+------------------------------ */
+body {
+	background: #FFF;
+	color: #333;
+	font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3',Meiryo,'メイリオ','ＭＳ Ｐゴシック','MS PGothic',Verdana,sans-serif;
+	@include font-size(14);
+}
+
+/* コンテナー */
+.narrow-container {
+	margin: 0 auto;
+	max-width: $narrow-container;
+	padding-left: $sp-container;
+	padding-right: $sp-container;
+}
+
+@media (max-width : $container) {
+	.sp-container {
+		padding-right: $sp-container;
+		padding-left: $sp-container;
+		.acms-grid  & {
+			padding-right: $sp-container;
+			padding-left: $sp-container;
+		}
+	}
+	.sp-container {
+		.sp-container {
+			padding: 0;
+		}
+	}
+}
+
+
+/* アニメーション */
+@keyframes fade-in {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	20% {
+		display: block;
+		opacity: 0;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+	}
+}
+@-moz-keyframes fade-in {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	20% {
+		display: block;
+		opacity: 0;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fade-in {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	20% {
+		display: block;
+		opacity: 0;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+	}
+}

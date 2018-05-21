@@ -1,0 +1,23 @@
+// ---------------
+//　ベース
+// ---------------
+$container-width: 940px;
+$link-color: #4a90e2;
+$link-color-visited: #5e5cba;
+
+// ---------------
+//　カラー
+// ---------------
+//blogテーマのボタン等で使用される色
+$btn-bg-color: #007ab7;
+$btn-bg-color-on-hover: #02476a;
+
+//ナビゲーションで使用される色
+$nav-bg-color: #333333;
+$nav-bg-color-on-hover: lighten($nav-bg-color, 20%);
+$nav-border-color: #706f70;
+
+//ソーシャルアイコン
+$twitter-bg-color: #55acee;
+$facebook-bg-color: #3b5998;
+$gplus-bg-color: #cc3732;

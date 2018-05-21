@@ -1,0 +1,47 @@
+<h3 class="acms-admin-admin-title2">Twitterカードの設定</h3>
+<table class="acms-admin-table-admin-edit">
+	<tr>
+		<th>カードの種類</th>
+		<td>
+			<select name="twitter_card" class="acms-admin-form-width-medium">
+				<option value=""></option>
+				<option value="summary"{twitter_card:selected#summary}>サマリー</option>
+				<option value="summary_large_image"{twitter_card:selected#summary_large_image}>サマリー（拡大画像）</option>
+				<!--
+				<option value="photo"{twitter_card:selected#photo}>写真</option>
+				<option value="gallery"{twitter_card:selected#gallery}>ギャラリー</option>
+				<option value="app"{twitter_card:selected#app}>アプリ</option>
+				<option value="product"{twitter_card:selected#product}>製品</option>
+				-->
+			</select>
+			<input type="hidden" name="field[]" value="twitter_card" />
+		</td>
+	</tr>
+	<tr>
+		<th>カードのフッターで使用されるウェブサイトのユーザー名<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="例）ablogcms"></i></th>
+		<td>
+			<div class="acms-admin-form-action acms-admin-form-width-medium">
+				<span class="acms-admin-form-side">@</span>
+				<input type="text" name="twitter_site" value="{twitter_site}" class="acms-admin-form-width-medium"/>
+			</div>
+			<input type="hidden" name="field[]" value="twitter_site" />
+		</td>
+	</tr>
+	<tr>
+		<th>コンテンツ作成者のユーザー名<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="例）ablogcms"></i></th>
+		<td>
+			<div class="acms-admin-form-action acms-admin-form-width-medium">
+				<span class="acms-admin-form-side">@</span>
+				<input type="text" name="twitter_creator" value="{twitter_creator}" class="acms-admin-form-width-medium"/>
+			</div>
+			<input type="hidden" name="field[]" value="twitter_creator" />
+		</td>
+	</tr>
+	<tr>
+		<th>ドメイン名<i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="例）twitter.com/ablogcms"></i></th>
+		<td>
+			<input type="text" name="twitter_domain" value="{twitter_domain}" class="acms-admin-form-width-medium"/>
+			<input type="hidden" name="field[]" value="twitter_domain" />
+		</td>
+	</tr>
+</table>

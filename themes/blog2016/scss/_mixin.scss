@@ -1,0 +1,45 @@
+@mixin link-color($color: #FFFFFF) {
+	&:link,
+	&:hover,
+	&:visited {
+		color: $color;
+	}
+}
+
+@mixin text-decoration-none() {
+	&:link,
+	&:hover,
+	&:visited {
+		text-decoration: none;
+	}
+}
+
+@mixin only-underline-on-hover() {
+	&:link,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+@mixin container($width: $container-width, $pad: 15px) {
+	max-width: $width + ($pad*2);
+	padding: 0 $pad;
+	margin: 0 auto;
+}
+
+@mixin roll-over($before, $after, $speed) {
+	background-color: $before;
+	-webkit-transition: background-color $speed;
+	-moz-transition: background-color $speed;
+	-ms-transition: background-color $speed;
+	-o-transition: background-color $speed;
+	transition: background-color $speed;
+
+	&:hover {
+		background-color: $after;
+	}
+}

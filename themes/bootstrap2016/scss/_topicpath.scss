@@ -1,0 +1,30 @@
+/* ------------------------------
+　　トピックパス
+------------------------------ */
+.topicpath {
+	margin-bottom: 30px;
+	padding: 10px 0;
+	background: #F5F5F5;
+}
+.topicpath-list {
+	list-style: none;
+	margin: 0 auto;
+}
+.topicpath-item {
+	float: left;
+	padding: 0 10px 0 23px;
+	background: url(../images/marker/icon_arrow.png) no-repeat left center;
+	 &:first-child {
+		padding: 0 10px 0 0;
+		background: 0;
+	}
+}
+.topicpath-link {
+	color: #666;
+	@include font-size(14);
+	 &:visited,
+	 &:focus,
+	 &:active {
+		color: #666;
+	}
+}

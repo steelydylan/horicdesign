@@ -1,0 +1,43 @@
+<!-- BEGIN_MODULE Blog_Field --><!-- BEGIN style:veil -->
+<!-- BEGIN background_color:veil -->
+.header{
+	background-color:{background_color};
+}
+<!-- END background_color:veil -->
+<!-- BEGIN main_img:veil -->
+.header-bg{
+	background-position:center center;
+	background-image:url(%{ARCHIVES_DIR}{main_img@path});
+}
+<!-- END main_img:veil -->
+<!-- BEGIN font_color:veil -->
+.header .header-title,
+.header-title a,
+.header-title a:link,
+.header-title a:hover,
+.header-title a:visited{
+	color:{font_color};
+}
+.header .header-desc{
+	color:{font_color};
+}
+<!-- END font_color:veil -->
+<!-- BEGIN height:veil -->
+.header-wrap{
+	height:{height}px;
+}
+<!-- END height:veil -->
+.footer{
+	<!-- BEGIN background_color:veil -->
+	background-color:{background_color};<!-- END background_color:veil -->
+}
+<!-- BEGIN font_color:veil -->
+.footer-copyright{
+	color:{font_color};
+}
+.footer-copyright svg{
+	fill:{font_color};
+}
+<!-- END font_color:veil -->
+<!-- END style:veil -->
+<!-- END_MODULE Blog_Field -->

@@ -1,0 +1,59 @@
+<h3 class="acms-admin-admin-title2">サイト設定 基本</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+	<tr>
+		<th>サイト ロゴ<i data-acms-tooltip="サイトのロゴ画像を設定します。（リサイズされません）" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<!-- BEGIN site_logo@path:veil -->
+			<img src="%{ARCHIVES_DIR}{site_logo@path}" />
+			<input type="hidden" name="site_logo@old" value="{site_logo@path}" /><br />
+			<label>
+				<input type="checkbox" name="site_logo@edit" value="delete" />削除
+			</label>
+			<!-- END site_logo@path:veil -->
+			<input type="file" name="site_logo" size="20" />
+			<input type="hidden" name="field[]" value="site_logo" />
+			<input type="hidden" name="site_logo:extension" value="image" />
+			<input type="hidden" name="site_logo@size" value="{#size}" />
+			<input type="hidden" name="site_logo@filename" value="" /> ※リサイズされません
+		</td>
+	</tr>
+	<tr>
+		<th>サイト タイトル<i data-acms-tooltip="サイトのタイトルを文字で表示させる際に設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="site_name" value="{site_name}" class="acms-admin-form-width-large" />
+			<input type="hidden" name="field[]" value="site_name" />
+		</td>
+	</tr>
+	<tr>
+		<th>サイト 説明<i data-acms-tooltip="ロゴの下に表示する説明文を設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="site_description" value="{site_description}" class="acms-admin-form-width-large" />
+			<input type="hidden" name="field[]" value="site_description" />
+		</td>
+	</tr>
+	<tr>
+		<th>フッターテキスト<i data-acms-tooltip="フッターのテキストを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<input type="text" name="site_footer" value="{site_footer}" class="acms-admin-form-width-large" />
+			<input type="hidden" name="field[]" value="site_footer" />
+		</td>
+	</tr>
+	<tr>
+		<th>ログインヘッダー<i data-acms-tooltip="ログイン画面のヘッダーを設定します。幅：960px" class="acms-admin-icon-tooltip js-acms-tooltip"></i></th>
+		<td>
+			<!-- BEGIN loginHeaderImage@path:veil -->
+			<img src="%{ARCHIVES_DIR}{loginHeaderImage@path}" width="480" />
+			<input type="hidden" name="loginHeaderImage@old" value="{loginHeaderImage@path}" /><br />
+			<label>
+				<input type="checkbox" name="loginHeaderImage@edit" value="delete" />削除
+			</label>
+			<!-- END loginHeaderImage@path:veil -->
+			<input type="file" name="loginHeaderImage" size="20" />
+			<input type="hidden" name="field[]" value="loginHeaderImage" />
+			<input type="hidden" name="loginHeaderImage:extension" value="image" />
+			<input type="hidden" name="loginHeaderImage@width" value="960" />
+			<input type="hidden" name="loginHeaderImage@tinyWidth" value="480" />
+			<input type="hidden" name="loginHeaderImage@filename" value="" />
+		</td>
+	</tr>
+</table>

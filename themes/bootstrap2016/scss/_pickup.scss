@@ -1,0 +1,15 @@
+/* ------------------------------
+　　ピックアップリスト
+------------------------------ */
+.pickup-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	img {
+		display: block;
+		@include transition(opacity .25s ease-out);
+		 &:hover {
+			@include opacity(.75);
+		}
+	}
+}

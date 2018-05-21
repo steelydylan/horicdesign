@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="tab.css">
+</head>
+<body>
+<div class="js-tab">
+	<ul role="tablist" class="tab-list">
+		<li id="tab-item1" role="tab" aria-selected="true" aria-controls="tab-panel1" class="tab-item js-tab-item" tabindex="1"><a href="#tab-panel1">Animals</a></li>
+		<li id="tab-item2" role="tab" aria-selected="false" aria-controls="tab-panel2" class="tab-item js-tab-item" tabindex="-1"><a href="#tab-panel2">Foods</a></li>
+	</ul>
+	<div id="tab-panel1" role="tabpanel " aria-hidden="false" aria-labelledby="tab-item1" class="tab-panel js-tab-panel">
+		<input id="opt1" type="checkbox" name="animals" value="cats">
+		<label for="opt1">cats</label>
+		<input id="opt2" type="checkbox" name="animals" value="dogs">
+		<label for="opt2">dogs</label>
+	</div>
+	<div id="tab-panel2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-item2" class="tab-panel js-tab-panel">
+		<input id="opt3" type="checkbox" name="foods" value="bread">
+		<label for="opt3">bread</label>
+		<input id="opt4" type="checkbox" name="foods" value="rice">
+		<label for="opt4">rice</label>
+	</div>
+</li>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="tab.js"></script>
+</body>
+</html>

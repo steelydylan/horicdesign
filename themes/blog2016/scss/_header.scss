@@ -1,0 +1,155 @@
+/* ------------------------------
+　　ヘッダー
+------------------------------ */
+.header {
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 20px 0;
+}
+
+.header-bg {
+	background-color: #424242;
+	padding: 0;
+}
+
+.header-inner {
+	@include container();
+	text-align: center;
+	@include clearfix();
+}
+
+.header-title {
+	font-weight: bold;
+	font-size: 24px;
+	margin: 0;
+
+	& a {
+		color: #333333;
+		@include link-color(#333333);
+		@include text-decoration-none;
+	}
+}
+
+.header-desc {
+	font-size: 13px;
+	margin: 0;
+}
+
+.header-logo {
+	width: 100%;
+	height: auto;
+}
+
+.header-logo-wrap {
+	width: 67px;
+	height: 67px;
+	float: left;
+	margin-right: 5px;
+}
+
+.header-text {
+	float: left;
+}
+
+.header-icon-wrap {
+	float: right;
+}
+
+.header-wrap {
+	width: 100%;
+	height: 256px;
+	display: table;
+}
+
+.header-inner-pattern2 {
+	display: table-cell;
+	vertical-align: middle;
+	background-color: rgba(0, 0, 0, .3);
+
+	& a {
+		@include link-color(#FFFFFF);
+	}
+
+	& .header-title {
+		padding-right: 0;
+		color: #ffffff;
+		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
+	}
+
+	& .header-desc {
+		color: #ffffff;
+		text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+	}
+}
+
+.header-inner-pattern3 {
+	text-align: left;
+}
+
+.header-btn {
+	border: none;
+	display: none;
+	position: absolute;
+	cursor: pointer;
+	right: 10px;
+	top: 10px;
+	background: #555555;
+	box-shadow: 0 2px 0 0 #000;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	width: 50px;
+	height: 40px;
+	padding: 12px 0;
+}
+
+.header-btn-line {
+	background: #fff;
+	display: block;
+	width: 24px;
+	height: 3px;
+	margin: 0 auto 4px auto;
+	-webkit-box-shadow: 0 -2px 0 #000;
+	box-shadow: 0 -2px 0 #000;
+}
+
+@media screen and (max-width: $breakpoint-md-max) {
+	.header-btn {
+		display: block;
+	}
+
+	.header-inner {
+		text-align: left;
+	}
+
+	.header-title {
+		font-size: 18px;
+		padding-right: 50px;
+	}
+
+	.header-text {
+		float: none;
+	}
+
+	.header-desc {
+		margin-top: 15px;
+		text-align: center;
+	}
+
+	.header-logo-wrap {
+		width: 33px;
+		height: 33px;
+	}
+
+	.header-icon-wrap {
+		margin-top: 15px;
+		float: none;
+		text-align: center;
+	}
+
+	.header-inner-pattern2 {
+		text-align: center;
+		padding: 60px 10px;
+	}
+}

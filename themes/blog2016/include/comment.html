@@ -1,0 +1,51 @@
+<!-- BEGIN_MODULE Comment_Body id="" -->
+<div>
+<!--#include file="/admin/module/setting.html"-->
+<!-- BEGIN list:veil -->
+<ul class="comment-list">
+<!-- BEGIN comment:loop -->
+	<!-- BEGIN comment:veil -->
+	<li>
+		<!-- BEGIN body:veil -->
+		<!-- コメント本文　開始▼▼ -->
+		<p class="comment-list-title"><a name="comment-{cmid}">{title}<!-- BEGIN awaiting#header -->承認待ち<!-- END awaiting#header --></a></p>
+		<p class="comment-list-text">{body}[nl2br]
+			<!-- BEGIN awaiting#body -->
+			このコメントは承認待ちです。
+			<!-- END awaiting#body -->
+		</p>
+		<!-- コメントの管理操作ボタンのインクルード -->
+		<!--#include file="/admin/comment/action.html"-->
+		<p class="comment-list-info">
+			<!-- BEGIN posterName:veil -->投稿者名 {posterName} <!-- END posterName:veil -->
+			<time pubdate="pubdate">{date#Y}年{date#m}月{date#d}日</time><!-- BEGIN posterLink#front -->
+			<a href="{url}">Web<!-- END posterLink#front --><!-- BEGIN posterLink#rear --></a><!-- END posterLink#rear -->
+		</p>
+		<!-- コメント本文　終了▲▲ -->
+		<!-- END body:veil -->
+	</li>
+	<!-- END comment:veil -->
+<!-- END comment:loop -->
+</ul>
+<!-- END list:veil -->
+<!-- BEGIN serialNavi:veil -->
+<nav class="serial-nav clearfix">
+	<ul>
+		<!-- BEGIN backLink -->
+		<li class="serial-nav-prev">
+			<a href="{url}">
+			<span class="acms-icon-arrow-small-left serial-nav-prev-icon"></span>
+			前のコメント</a>
+		</li>
+		<!-- END backLink -->
+		<!-- BEGIN fowardLink -->
+		<li class="serial-nav-next">
+			<a href="{url}">次のコメント <span class="acms-icon-arrow-small-right serial-nav-next-icon"></span>
+			</a>
+		</li>
+		<!-- END fowardLink -->
+	</ul>
+</nav>
+<!-- END serialNavi:veil -->
+</div>
+<!-- END_MODULE Comment_Body -->

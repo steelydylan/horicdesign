@@ -1,0 +1,118 @@
+/* ----------------
+コメント
+------------------ */
+.comment-form {
+	margin-bottom: 50px;
+}
+
+.comment-table {
+	width: 100%;
+	margin-bottom: 15px;
+	border-top: none;
+
+	th {
+		width: 140px;
+		vertical-align: top;
+		font-size: 16px;
+		color: #000000;
+		line-height: 24px;
+		text-align: left;
+		font-weight: normal;
+		white-space: nowrap;
+		padding: 5px 20px 5px 0;
+		border-bottom: none;
+	}
+
+	td {
+		padding: 5px 0;
+		border-bottom: none;
+	}
+
+	input[type="text"],
+	input[type="password"] {
+		border-radius: 3px;
+		width: 100%;
+		height: 40px;
+		padding: 0 10px;
+		line-height: 40px;
+		font-size: 16px;
+		border: 1px solid #b2b2b4;
+	}
+
+	textarea {
+		border-radius: 3px;
+		width: 100%;
+		border: 1px solid #b2b2b4;
+		font-size: 16px;
+		padding: 0 10px;
+		line-height: 40px;
+	}
+
+	@media screen and (max-width: $breakpoint-md-max) {
+		display: block;
+
+		& tbody,
+		& td,
+		& th,
+		& tr {
+			display: block;
+			width: auto;
+		}
+	}
+}
+
+.comment-btn,
+.comment-btn-inline {
+	font-size: 14px;
+	width: 152px;
+	padding: 10px 0;
+	color: #ffffff;
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.comment-btn {
+	@include roll-over($btn-bg-color, $btn-bg-color-on-hover, .2s);
+	margin: 0 auto;
+	display: block;
+}
+
+.comment-btn-inline {
+	@include roll-over(#949494, #333333, .2s);
+	display: inline-block;
+}
+
+.comment-list {
+	padding: 0;
+	margin: 0 0 20px 0;
+	border-top: 1px solid #979797;
+
+	& li {
+		list-style-type: none;
+		border-bottom: 1px solid #979797;
+		display: block;
+		padding: 15px 0;
+	}
+}
+
+.comment-list-title {
+	margin: 0 0 15px 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333333;
+}
+
+.comment-list-text {
+	margin: 0 0 15px 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333333;
+}
+
+.comment-list-info {
+	text-align: right;
+	margin: 0;
+	font-size: 14px;
+	color: #636363;
+}
