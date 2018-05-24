@@ -48,3 +48,46 @@
 <!-- END entry_meta_description:empty -->
 <!-- BEGIN_IF [{entry_meta_keywords}/nem/] -->
 <meta name="keywords" content="{entry_meta_keywords}"><!-- END_IF --><!-- END entry:loop --><!-- END_MODULE Entry_Body --><!-- END_MODULE Touch_Entry -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement":
+    [
+    {
+        "@type": "ListItem",
+        "position": 1,
+        "item":
+        {
+        "@id": "%{HOME_URL}",
+        "name": "HOME"
+        }
+    }
+    
+    <!-- BEGIN_IF [%{CCD}/nem] -->
+    ,
+    {
+        "@type": "ListItem",
+        "position": 2,
+        "item":
+        {
+        "@id": "%{HOME_URL}%{CCD}/",
+        "name": "%{CATEGORY_NAME}"
+        }
+    }
+    <!-- END_IF -->
+    <!-- BEGIN_IF [%{ECD}/nem] -->
+    ,
+    {
+        "@type": "ListItem",
+        "position": 3,
+        "item":
+        {
+        "@id": "%{INHERLINK}",
+        "name": "%{ENTRY_TITLE}"
+        }
+    }
+    <!-- END_IF -->
+    ]
+}
+</script>
