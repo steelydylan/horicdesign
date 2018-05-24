@@ -10,17 +10,7 @@
     <small>&copy; 2017 Horic Design</small>
   </footer>
 <script src="https://unpkg.com/unitscss@latest/dist/units.min.js"></script>
-<script src="https://unpkg.com/smartphoto@0.6.2/js/smartphoto.min.js"></script>
-<script>
-window.addEventListener('DOMContentLoaded',function(){
-	[].forEach.call(document.querySelectorAll('.columnImage'),function(doc){
-		$(doc).wrap('<a href="'+doc.getAttribute('src')+'" class="js-smartPhoto"></a>');
-	});
-    new smartPhoto(".js-smartPhoto",{
-	    resizeStyle: 'fit',
-	    useOrientationApi: false
-    });
-});
+</script>
 ACMS.Ready(function(){
     ACMS.Config.SimpleWysiwygFeature = false
 	ACMS.Config.googleCodePrettifyTheme = 'desert';
