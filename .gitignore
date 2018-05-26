@@ -1,1 +1,15 @@
 .DS_Store
+/config.server.php
+php.ini
+/license.php
+.htaccess
+/archives
+/archives_rev
+/media
+/node_modules
+.DS_Store
+acms.php
+/*setup*
+.idea
+/cache
+/private/backup*
