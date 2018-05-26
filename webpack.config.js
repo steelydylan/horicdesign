@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const pkg = require('./package.json');
 const babelPlugins = [];
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   cache: true,
@@ -48,23 +49,17 @@ const config = {
       },
       {
         test: /\.scss$/,
-        use: [{
-            loader: "style-loader"
-        }, {
-            loader: "css-loader"
-        }, {
-            loader: "sass-loader",
-            options: {
-            },
-        }]
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          })
         },
         {
         test: /\.css$/,
-        use: [{
-            loader: "style-loader"
-        }, {
-            loader: "css-loader"
-        }]
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader']
+          })
         }
     ]
   },
@@ -73,7 +68,8 @@ const config = {
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
-    })
+    }),
+    new ExtractTextPlugin(`./themes/${pkg.config.theme}/dest/bundle.css`)
   ]
 };
 
