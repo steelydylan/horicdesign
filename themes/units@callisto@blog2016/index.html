@@ -24,9 +24,9 @@
             <article class="uc-card _banner">
               <a href="{url}">
                 <!-- BEGIN_IF [{path}/nem] -->
-                <div class="uc-card-image" style="background-image:url(%{ROOT_DIR}{path})"></div>
+                <div class="uc-card-image js-lazy" data-src="%{ROOT_DIR}{path}"></div>
                 <!-- ELSE -->
-                <div class="uc-card-image" style="background-image:url(https://source.unsplash.com/random)"></div>
+                <div class="uc-card-image js-lazy" data-src="https://source.unsplash.com/random"></div>
                 <!-- END_IF -->
                 <div class="uc-card-wrap">
                   <div class="uc-card-title">{title}</div>
