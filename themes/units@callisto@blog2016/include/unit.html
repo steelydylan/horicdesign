@@ -1,0 +1,11 @@
+@extends("/_layouts/unit.html")
+
+@section(image-unit)
+<!-- 画像 -->
+<div class="column-image-{align}{display_size_class}"{display_size}[raw]><!-- BEGIN link#front --><!-- BEGIN_IF [{url}/nem/] -->
+	<a href="{url}"{viewer}[raw] data-caption="{caption}[nl2br|delnl]"><!-- END_IF --><!-- END link#front -->
+		<img class="columnImage js-lazy" data-src="%{HTTP_ROOT}{path}" alt="{alt}[delnl]" width="{x}" height="{y}"><!-- BEGIN link#rear -->
+	</a><!-- END link#rear --><!-- BEGIN_IF [{caption}[delnl]/nem] -->
+	<p class="caption">{caption}[nl2br]</p><!-- END_IF -->
+</div>
+@endsection

@@ -1,0 +1,100 @@
+.entry-user {
+	color: #777;
+	font-size: 14px;
+}
+.entry-user i {
+	margin-right: 5px;
+}
+
+.entry-user-info {
+	display: inline-block;
+	margin-right: 5px;
+	font-size: 12px;
+	color: #999;
+}
+
+.entry-user-info a {
+	color: #999;
+}
+
+.entry-user-info i {
+	font-size: 14px;
+	vertical-align: text-top;
+}
+
+.entry-user-info i {
+	margin-left: 10px;
+}
+
+.entry-user-info:first-child i {
+	margin-left: 0;
+}
+
+._theme-entry .entry-container {
+	margin-right: 0;
+	margin-left: 0;
+}
+._theme-entry .entry-column h2,
+._theme-entry .entry-column h3,
+._theme-entry .entry-column h4 {
+	margin-right: 0;
+	margin-left: 0;
+}
+._theme-entry [class*=column-image-],
+._theme-entry [class*=column-eximage-] {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+._theme-entry [class*=column-image-] img,
+._theme-entry [class*=column-eximage-] img {
+	max-width: 100%;
+}
+
+._theme-entry [class*=column-quote-] {
+	margin-right: 0;
+	margin-left: 0;	
+}
+
+._theme-entry .linenums {
+    list-style-type: none;
+    padding-left:5px;
+}
+
+._theme-entry .entry-column ol li {
+	font-size: 14px;
+}
+
+entry-column pre ol {
+    margin: 0;
+    padding: 0 0 0 3.0em;
+}
+
+.smartphoto {
+	z-index: 10000;
+}
+
+._col-fit>.uc-grid-cell, .uc-grid-cell._col-fit {
+	overflow: hidden;
+}
+
+@media screen and (max-width:768px) {
+/*
+	.uc-grid {
+		display:block;	
+	}
+*/
+	.prettyprint {
+		overflow-x: auto;
+	}
+	.uc-section{
+		padding-right:5px;
+		padding-left:5px;
+	}
+	._theme-entry .uc-card  {
+		padding-right:10px;
+		padding-left: 10px;
+		overflow: hidden;
+	}
+
+}
