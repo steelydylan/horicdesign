@@ -1,17 +1,27 @@
-
- <footer class="uc-footer _dark">
-    <div class="uc-footer-menu">
-	  <a href="%{HTTP_ROOT}daily/aboutme.html">About</a>
-	  <a href="%{HTTP_ROOT}portfolio.html">Portfolio</a>
-	  <a href="https://github.com/steelydylan">GitHub</a>
-    </div>
-    <div class="uc-footer-logo"><cite>Horic Design</cite></div>
-    <p>This page was made using <a href="https://unitscss.com" target="_blank">UNITS</a>.</p>
-    <small>&copy; 2017 Horic Design</small>
-  </footer>
+<footer class="uc-footer _dark">
+  <div class="uc-footer-menu">
+  <a href="%{HTTP_ROOT}daily/aboutme.html">About</a>
+  <a href="%{HTTP_ROOT}portfolio.html">Portfolio</a>
+  <a href="https://github.com/steelydylan">GitHub</a>
+  </div>
+  <div class="uc-footer-logo"><cite>Horic Design</cite></div>
+  <p>This page was made using <a href="https://unitscss.com" target="_blank">UNITS</a>.</p>
+  <small>&copy; 2017 Horic Design</small>
+</footer>
+<!--[if lte IE 9]><script src="/js/html5shiv.min.js"></script><script src="/js/respond.min.js"></script><![endif]-->
+<script src="%{JS_LIB_JQUERY_DIR}jquery-%{JS_LIB_JQUERY_DIR_VERSION}.min.js" charset="UTF-8"></script>
+<!-- BEGIN_MODULE Js -->
+<script type="text/javascript" src="/acms.js{arguments}" charset="UTF-8" id="acms-js"></script><!-- END_MODULE Js -->
+<!--BEGIN_MODULE Touch_Unlogin --><!-- BEGIN_MODULE Blog_Field -->{google_analytics}[raw]<!-- END_MODULE Blog_Field --><!-- END_MODULE Touch_Unlogin -->
 <script src="https://unpkg.com/unitscss@latest/dist/units.min.js"></script>
+<script src="https://unpkg.com/pretty-scroll@1.1.5/js/pretty-scroll.js"></script>
 <script>
 ACMS.Ready(function(){
 	ACMS.Config.googleCodePrettifyTheme = 'desert';
+});
+new PrettyScroll('#ad', {
+    container: '.uc-section',
+    offsetTop: 20,
+    offsetBottom: 20
 });
 </script>
