@@ -1,6 +1,6 @@
-@import "/themes/system/css/acms.css";
+@import "../../../system/scss/acms.scss";
 @import "font-awesome/scss/font-awesome.scss";
-@import "unitscss/units.min.css";
+@import "unitscss/dist/units.min.css" !as-scss;
 @import "./override.scss";
-@import "highlight.js/styles/default.css";
-@import "highlight.js/styles/github.css";
+@import "highlight.js/styles/default.css" !as-scss;
+@import "highlight.js/styles/github.css" !as-scss;

@@ -45,7 +45,27 @@ const config = {
             limit: 20480
           }
         },
-      }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader"
+        }, {
+            loader: "sass-loader",
+            options: {
+            },
+        }]
+        },
+        {
+        test: /\.css$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader"
+        }]
+        }
     ]
   },
   plugins: [
