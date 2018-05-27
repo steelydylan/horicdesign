@@ -23,11 +23,8 @@ new LazyLoad({
 
 $('pre').each(function () {
   const html = $(this).html();
-  $('pre').html(`<code>${html}</code>`);
+  $(this).addClass('prettyprinted');
+  $(this).html(`<code>${html}</code>`);
 });
 
 hljs.initHighlightingOnLoad();
-
-ACMS.Ready(() => {
-  ACMS.Library.googleCodePrettify = null;
-});
