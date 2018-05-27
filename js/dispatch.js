@@ -4,6 +4,17 @@ ACMS.Dispatch = function (context) {
 
     new ACMS.Dispatch.ModuleDialog('index');
 
+    ACMS.Dispatch2(context);
+
+    //----------
+    // Ban drop
+    $(document).on('drop dragover', function (e) {
+        if (e.target.type !== 'file') {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    });
+
     //---------
     // utility
     Dispatch.Utility(context);
@@ -41,6 +52,10 @@ ACMS.Dispatch = function (context) {
     $(ACMS.Config.resizeImageTargetMarkCF, context).each(function () {
         ACMS.Dispatch._imgresize(this);
     });
+    /**
+     * iOSのバグ対策
+     * https://bugs.webkit.org/show_bug.cgi?id=84168
+     */
     ACMS.Dispatch.imageUnitAjaxUpload();
 
     //------------
@@ -138,17 +153,23 @@ ACMS.Dispatch = function (context) {
 
     //----------------
     // splash loading
-    $('.js-loading_splash').bind('click', function() {
+    $('.js-loading_splash', context).bind('click', function() {
         var message = $(this).data('msg');
         ACMS.Dispatch.splash(message);
-
         return true;
     });
-    $('.acms-admin-btn-admin-save').bind('click', function() {
-        ACMS.Dispatch.splash(ACMS.i18n('splash.save'));
-
+    $('form').submit(function() {
+        if ($('input[type=submit][clicked=true]').hasClass('js-saving-splash')) {
+            ACMS.Dispatch.splash(ACMS.i18n('splash.save'));
+        }
         return true;
     });
+    $('.js-saving-splash[type="submit"]', context).click(function() {
+        $('input[type=submit]', $(this).closest('form')).removeAttr('clicked');
+        $(this).attr('clicked', 'true');
+    });
+
+
 
     //-------------
     // prettyPhoto
@@ -172,11 +193,16 @@ ACMS.Dispatch = function (context) {
         $images.attr('target', Config.ppWindowTarget);
     }
 
+    var $smartimages = $(Config.SmartPhotoMark, context);
+    if ($smartimages.size()) {
+        ACMS.Library.SmartPhoto($smartimages.get());
+    }
+
     //-------------
     // modalVideo
     var $modalvideos = $(Config.modalVideoMark, context);
     if($modalvideos.size()) {
-        $modalvideos.modalVideo(Config.modalVideoConfig);
+        ACMS.Library.modalVideo($modalvideos.get());
     }
 
     //----------------------
@@ -284,23 +310,6 @@ ACMS.Dispatch = function (context) {
             }
         });
     });
-
-    //---------
-    // tooltip
-    $('.js-acms-tooltip', context).click(function () {
-        Dispatch._tooltip(this);
-        return false;
-    });
-
-    $('.js-acms-tooltip-hover', context).hover(function () {
-            Dispatch._tooltip(this, true);
-            return false;
-        },
-        function () {
-            Dispatch._tooltip(this, false);
-            return false;
-        });
-
     //-----------
     // highslide
     $.each(Config.hsArray.concat({
@@ -463,15 +472,17 @@ ACMS.Dispatch = function (context) {
 
     //-----------
     // acms tabs
-    $.each(Config.acmsTabsArray.concat({
-        'mark': Config.acmsTabsMark,
-        'config': Config.acmsTabsConfig
-    }), function () {
-        Config.acmsTabsConfig = this.config;
-        $(this.mark, context).each(function () {
-            Dispatch.acmsTabs(this);
+    if (location.href.indexOf('admin/customfield_maker') === -1) {
+        $.each(Config.acmsTabsArray.concat({
+            'mark': Config.acmsTabsMark,
+            'config': Config.acmsTabsConfig
+        }), function () {
+            Config.acmsTabsConfig = this.config;
+            $(this.mark, context).each(function () {
+                Dispatch.acmsTabs(this);
+            });
         });
-    });
+    }
 
     //------------------
     // acms alert close
@@ -774,10 +785,33 @@ ACMS.Dispatch = function (context) {
     }
 
     //-----------------------------
-    // a-table
-    $(Config.aTableFieldMark, context).each(function () {
-        Dispatch.fieldAtable(this);
-    });
+    // pretty-scroll
+    if ($(Config.prettyScrollMark, context).length > 0) {
+        Dispatch.prettyScroll($(Config.prettyScrollMark, context).get(0));
+    }
+
+    //-----------------------------
+    // google translate
+    if ($(Config.googleTranslateMark, context).length > 0) {
+        $(Config.googleTranslateMark, context).click(function(){
+            var $dest = $($(this).data('target'));
+            var query = {
+                target_language: $(this).data('lang'),
+                text: $($(this).data('source')).val()
+            }
+            var url = ACMS.Library.acmsLink({
+                tpl     : '/ajax/google-translate.json',
+                bid     : ACMS.BID,
+                Query   : query
+            }, false);
+            $.getJSON(url, function(res) {
+                if (res && res[0] && res[0].translatedText) {
+                    var result = res[0].translatedText;
+                    $dest.val(ACMS.Library.decodeEntities(result));
+                }
+            });
+        });
+    }
 
     ACMS.dispatchEvent("acmsDispatch");
 };
@@ -1404,11 +1438,6 @@ ACMS.Dispatch.showModuleDialog = function (type, mid, $indexTpl, callback) {
                     $modalBox.removeClass('out').addClass('in');
                 }, 200);
 
-                var zIndex = $('.acms-admin-modal-backdrop').length * 100000;
-
-                $backdrop.css('z-index', zIndex);
-                $modalBox.css('z-index', zIndex + 1);
-
                 ACMS.Dispatch($modalBox);
             }
 
@@ -1929,9 +1958,9 @@ ACMS.Dispatch.fieldgroupSortable = function (elm) {
                 $datepicker.attr('id','');
             }
             ACMS.Dispatch($clone);
-            ACMS.dispatchEvent("acmsAddCustomFieldGroup", {
+            ACMS.dispatchEvent("acmsAddCustomFieldGroup", $clone.get(0), {
                 item: $clone.get(0)
-            }, elm);
+            });
 
             return false;
         });
@@ -1943,9 +1972,9 @@ ACMS.Dispatch.fieldgroupSortable = function (elm) {
             }
             n++;
 
-            ACMS.dispatchEvent("acmsAddCustomFieldGroup", {
+            ACMS.dispatchEvent("acmsAddCustomFieldGroup", this, {
                 item: this
-            }, elm);
+            });
         });
         if (!n) {
             for (var i = 0; i < 1; i++) {
@@ -2099,15 +2128,15 @@ ACMS.Dispatch.acmsAdminTabs = function (elm) {
         var hash = panel.replace(/^#/, '');
 
         $panels.hide();
-        $panel.show();
+        $panel.show(0, function() {
+          ACMS.dispatchEvent('acmsAdminShowTabPanel', this);
+        });
         $('#js-tooltip').remove();
-
         if (location.hash != panel && !_.contains(['entry-edit', 'entry_editor'], ACMS.Config.admin)) {
             $panel.attr('id', '');
             location.hash = panel;
             $panel.attr('id', hash);
         }
-
         $panel.find('textarea[name^="text_text_"]').trigger('focus');
         $('textarea[name^="text_text_"]').trigger('keyup');
 
@@ -2133,7 +2162,9 @@ ACMS.Dispatch.acmsAdminTabs = function (elm) {
     var panel = $expr.filter(':first').addClass('js-acms_tab-active').attr('href');
 
     if ( !location.hash || (!!location.hash && $(location.hash).length === 0) ) {
-        $(panel).show();
+        $(panel).show(0, function() {
+            ACMS.dispatchEvent('acmsAdminShowTabPanel', this);
+        });
         $expr.filter('a[href=\'js-ready-acms_tabs\']').click();
         $expr.filter('.js-ready-acms_tabs').click();
     } else {
@@ -2256,13 +2287,12 @@ ACMS.Dispatch.offcanvas = function (context) {
     });
 };
 
-ACMS.Dispatch.fieldAtable = function (context) {
-    ACMS.Library.aTableEdit(context);
-};
-
 ACMS.Dispatch.imageUnitAjaxUpload = function()
 {
-    if ( !window.FormData ) {
+    if (!window.FormData) {
+        return;
+    }
+    if (!/iP(hone|(o|a)d)/.test(window.navigator.userAgent)) {
         return;
     }
     var $ajaxUploadImage = $('.js-ajax_upload_image');
@@ -2271,48 +2301,8 @@ ACMS.Dispatch.imageUnitAjaxUpload = function()
     $ajaxUploadImage.bind('submit.ajax_upload_image', function (e) {
         e.preventDefault();
 
-        var $form = $(this);
-        var $data = $form.clone(false);
-        var formData;
-
-        // セレクトボックスの入力値の登録(cloneのbug対応)
-        $form.find("select").each(function(i) {
-            $data.find('select').eq(i).val($(this).val());
-        });
-
-        $data.find('[name^=ACMS_POST_]').remove();
-        $data.find('.js-ajax_upload_image_unit :input').each(function(){
-            var $input = $(this);
-            if ( $input.hasClass('js-img_resize_data') ) {
-                $input.remove();
-            }
-            if ($input.attr('type') === 'file') {
-                $input.remove();
-            }
-        });
-
-        formData = new FormData($data.get(0));
-        formData.append('ACMS_POST_Image_AjaxUpload', true);
-
-        // base64画像をblobに変換してFormDataに追加
-        $form.find('.js-ajax_upload_image_box').each(function () {
-            var type = $(this).find("[name=type\\[\\]]").val();
-            if ( /^image/.test(type) ) {
-                var $resizeData = $(this).find('.js-img_resize_data');
-                if ( $resizeData.size() < 1 ) {
-                    return;
-                }
-                $resizeData.each(function() {
-                    var $base64Image = $(this);
-                    var dataUrl = $base64Image.val();
-                    var name = $base64Image.attr('name');
-                    var blob = ACMS.Dispatch.Utility.dataUrlToBlob(dataUrl);
-                    if ( blob ) {
-                        formData.append(name, blob);
-                    }
-                });
-            }
-        });
+        var formData = ACMS.Library.PerfectFormData(this, 'js-img_resize_data');
+        formData.append('ajaxAccess', true);
 
         $.ajax({
             async: true,
@@ -2320,62 +2310,39 @@ ACMS.Dispatch.imageUnitAjaxUpload = function()
             data: formData,
             processData: false,
             contentType: false,
-            dataType: 'text'
-        }).done(function (data) {
-            var json = JSON.parse(data);
-            if (!(json && json instanceof Array)) {
-                return;
+            dataType: 'json'
+        }).done(function (json) {
+            if (json.action === 'redirect') {
+                location.href = json.url;
+            } else if (json.action === 'post') {
+                var form = document.createElement('form');
+                var submit = document.createElement('input');
+                var data = document.createElement('input');
+                var token = document.createElement('input');
+
+                submit.name = 'ACMS_POST_Through';
+                submit.value = 'on';
+                submit.type = 'hidden';
+                data.name = 'throughPost';
+                data.type = 'hidden';
+                data.value = json.throughPost;
+                token.name = 'formToken';
+                token.type = 'hidden';
+                token.value = 'true';
+
+                form.method = 'post';
+                form.appendChild(submit);
+                form.appendChild(data);
+                form.appendChild(token);
+                document.body.appendChild(form);
+                form.submit();
+            } else {
+                location.reload();
             }
-            if ( json.length < 1 ) {
-                return;
-            }
-
-            $.each(json, function(i, item) {
-                var id = item.id;
-                var path = item.path;
-                var search = '[value=' + id + ']';
-
-                if ( !/^image/.test(item.type) ) {
-                    return; // 画像以外は処理しない
-                }
-
-                if ( $form.find(search).length > 0 ) {
-                    // id がある場合はパスで置き換え
-                    var $unit = $form.find(search).closest('.js-ajax_upload_image_box');
-                    $unit.find('[name^=image_old_]').val(path);
-                } else {
-                    // id がない場合は全てのフィールドを挿入
-                    $form.append($('<input/>', {type: 'hidden', name: 'id[]', value: id}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'type[]', value: item.type}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'clid[]', value: item.clid}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'sort[]', value: item.sort}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'align[]', value: item.align}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'group[]', value: item.group}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'attr[]', value: item.attr}));
-
-                    $form.append($('<input/>', {type: 'hidden', name: 'image_old_' + id, value: path}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'image_link_' + id, value: item.link}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'image_size_' + id, value: item.size}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'image_edit_' + id, value: item.edit}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'image_caption_' + id, value: item.caption}));
-                    $form.append($('<input/>', {type: 'hidden', name: 'image_alt_' + id, value: item.alt}));
-                }
-            });
-
-            // base64データは削除
-            $form.find('.js-ajax_upload_image_box').each(function () {
-                var type = $(this).find("[name=type\\[\\]]").val();
-                if ( /^image/.test(type) ) {
-                    $(this).find('.js-img_resize_data').remove();
-                }
-            });
-        }).fail(function(jqXHR, textStatus, errorThrown){
-            console.log(jqXHR.status);
-            console.log(textStatus);
-            console.log(errorThrown);
-        }).always(function() {
-            $form.unbind('submit.ajax_upload_image');
-            $form.find('[type="submit"][name^="ACMS_POST_Entry"]').click();
         });
     });
 };
+
+ACMS.Dispatch.prettyScroll = function (context) {
+    new ACMS.Library.PrettyScroll(context, ACMS.Config.prettyScrollConfig);
+}
