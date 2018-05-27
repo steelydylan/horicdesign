@@ -28,3 +28,6 @@ $('pre').each(function () {
 
 hljs.initHighlightingOnLoad();
 
+ACMS.Ready(() => {
+  ACMS.Library.googleCodePrettify = null;
+});
